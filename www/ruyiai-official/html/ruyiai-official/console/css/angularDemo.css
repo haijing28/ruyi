@@ -1,0 +1,360 @@
+.testTextarea{
+	width: 100%;
+	height: 135px;
+	position: absolute;
+	bottom: 50px;
+	border-top: 1px solid #ddd;
+}
+.testTextarea textarea{
+	border: none;
+	resize: none;
+	outline: none;
+	display: block;
+	width: 100%;
+	padding: 6px 12px;
+	font-size: 12px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	height: 69px;
+}
+#try-try .testTextarea textarea{
+	border: none;
+    resize: none;
+    outline: none;
+    display: block;
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 12px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    height: 43px;
+}
+.testTextarea button{
+	background-color: #3794FF;
+    border: medium none;
+    bottom: -14px;
+    float: right;
+    margin-right: 15px;
+    position: absolute;
+    right: 0;
+}
+.testTextarea button:hover{
+	background-color: #0A8CBE!important;
+}
+.testTextarea button:focus{
+	outline:none;
+}
+.testContain, .searchContainLocal{
+	height: 100%;
+	padding-bottom: 135px;
+}
+.testContain, .testContainLocal{
+	width: 100%;
+    height: 280px;
+    padding: 10px;
+    overflow-y: auto;
+}
+.testContain li,.testContainLocal li{
+	margin-bottom: 18px;
+}
+.serverTalk > img{
+	float: left;
+	height: 40px;
+	width: 40px;
+}
+.serverTalk > div{
+	position: relative;
+	left:13px;
+	max-width: 75%;
+	min-height:40px;
+	padding:10px;
+	border:1px solid #dcdddd;
+	border-radius:5px;
+	word-break: break-all; 
+	word-wrap:break-word;
+	background:#eee;
+	float: left;
+}
+.serverTalk div .serverBorder,.serverTalk div .serverContain{
+	position:absolute;
+	border-style:dashed solid dashed dashed; 
+	font-size:0; 
+	line-height:0;
+}
+.serverBorder{
+	left:-20px;
+	top:10px;
+	border-width:10px;
+	border-color:transparent #dcdddd transparent transparent;
+}
+.serverContain{
+	left:-18px;
+	top:11px;
+	border-width:9px;
+	border-color:transparent #eee transparent transparent;
+}
+.userTalk img{
+	float: right;
+	height: 40px;
+	width: 40px;
+}
+.userTalk div{
+	position: relative;
+	right:13px;
+	max-width: 75%;
+	min-height:40px;
+	padding:10px;
+	border: 1px solid #84cb5f;
+	border-radius:5px;
+	word-break: break-all;
+	word-wrap:break-word;
+	background: #adf06b;
+	float: right;
+	font-size:12px;
+}
+.userTalk div span{
+	position:absolute;
+	/* border-style:dashed solid dashed dashed; */
+	font-size:0;
+	line-height:0;
+	background: rgba(0, 0, 0, 0) url("../img/talk-arrow-right.png") no-repeat scroll 0 0 / 100% auto;
+	height: 13px;
+	position: absolute;
+	right: -9px;
+	top: 14px;        
+	width: 9px;
+}
+.userBorder{
+	right:-20px;
+	top:10px;
+	border-width:10px;
+	border-color:transparent transparent transparent #84cb5f;
+}
+.userContain{
+	/* right:-18px; */
+	/* top:11px; */
+	/* border-width:9px; */
+	/* border-color:transparent transparent transparent #66dd00; */
+}
+#responseJson{
+	height: 100%;
+	padding: 0 10px;
+	width: 100%;
+	overflow-y:auto;
+	padding-bottom: 37px;
+}
+#responseJson pre{
+	border: none;
+	border-radius: 0;
+	background-color: #fff;
+	padding-bottom: 13px;
+}
+#responseJson li{
+	padding-top: 23px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #3794FF;
+}
+.searchContain{
+	height: 100%;
+	position: relative;
+	top: -66px;
+	width: 100%;
+	padding-top: 70px;
+	padding-bottom: 135px;
+}
+.JSONContain{
+	position: relative;
+	top: -66px;
+	padding-top: 70px;
+	padding-bottom: 5px;
+	height: 100%;
+}
+.talk-content{
+	font-size:12px;
+}
+.talkType{
+	height: 20px;
+    line-height: 20px !important;
+    width: 70px;
+    border: none !important;
+    left: 10px;
+    font-size: 14px !important;
+    text-align: center;
+    color: #fff;
+    padding: 4px;
+    margin-right: 10px;
+}
+.dialog, .wechat_text{
+	padding-left: 10px !important;
+}
+.dialog .talkType, .wechat_text .talkType{
+	padding: 0;
+	margin: 0;
+}
+.dialog .talk-content, .wechat_text .talk-content{
+	text-decoration: none;
+	cursor: default;
+}
+.back{
+	width: 10px;
+    height: 10px;
+    top: -13px;
+    right: -24px;
+    border: none;
+    border-style: none !important;
+    background-size: cover;
+    position: absolute;
+    cursor: pointer;
+    background-image: url(../../img/close-modal.svg);
+}
+.voice .back{
+	top: -7px;
+}
+.localImage{
+	padding: 0 !important;
+	height: 170px;
+	width: 260px;
+	border: none !important;
+	background: none !important;
+}
+.localAudio{
+	padding: 0 !important;
+	height: 40px;
+	width: 260px;
+	border: none !important;
+	background: none !important;
+}
+.localVideo{
+	padding: 0 !important;
+	height: 160px;
+	width: 260px;
+	border: none !important;
+	background: none !important;
+}
+#app-list{
+	height: 100%;
+}
+#app-list .app-list-box{
+	padding: 0;
+	height: 100%;
+	overflow-y: auto;
+	padding-left:1px;
+}
+#app-list .ng-scope{
+	width: 100%;
+	border-bottom: 1px solid #ccc;
+	padding: 20px;
+	cursor: pointer;
+}
+#app-list .ng-scope:hover{
+	background-color: #f5f5f5;
+}
+#app-list .ng-scope.active{
+	background-color: #3794FF;
+}
+.appLogo{
+	width: 64px;
+	height: 64px;
+}
+
+#app-list .app-name-desc{
+	width: -moz-calc(100% - 64px);
+	width: -webkit-calc(100% - 64px);
+	width: calc(100% - 64px);
+}
+#app-list .app-name{
+	font-size: 18px;
+	cursor: pointer;
+	color: #191E24;
+	width: 96%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.app-list-box li.active .app-name-desc .app-name,.app-list-box li.active .app-name-desc .app-desc{
+	color:#fff !important;
+}
+#app-list .app-desc{
+	font-size: 14px;
+	color: #595757;
+	width: 96%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.wechat-multi-news li{
+	height: 50px;
+	width: 200px;
+	border-top: 1px solid #ccc;
+	margin: 0;
+	padding: 0;
+	background-color: #fff;
+	color: #fff;
+}
+.wechat-multi-news li:first-child{
+	height: 90px;
+	border: none;
+}
+.wechat-multi-news p{
+	display: inline-block;
+	color: #000;
+	font-size: 12px;
+	margin-left: 11px;
+	margin-top: 5px;
+	text-overflow:ellipsis;  
+	white-space:nowrap;   
+	overflow:hidden;
+	width: 135px;
+	height: 40px;
+	line-height: 40px;
+}
+.wechat-multi-news li:first-child p{
+	position: relative;
+	margin: 0;
+	left: 5px;
+	top: -30px;
+	width: 189px;
+	height: 25px;
+	line-height: 25px;
+	text-overflow:ellipsis;  
+	white-space:nowrap;   
+	overflow:hidden;
+	color: #fff;
+	background-color: rgba(0,0,0,0.85); 
+	padding-left: 5px;
+}
+.wechat-multi-news img{
+	float: right;
+	width: 40px;
+	height: 40px;
+	margin-top: 5px;
+	margin-right: 5px;
+}
+.wechat-multi-news li:first-child img{
+	height: 80px;
+	width: 190px;
+	margin: 5px;
+}
+.wechat-single-news{
+	width: 200px;
+	border: 1px solid #ccc;
+	background-color: #fff;
+	padding: 5px;
+}
+.wechat-single-news img{
+	width: 188px;
+	height: 80px;
+}
+img.wechat-image{
+	width: 200px;
+	height: 175px;
+	cursor: pointer;
+}
+.wechat-news-single{
+	cursor: pointer;
+	width: 200px !important;
+}

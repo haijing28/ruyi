@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="templateApp" ng-controller="templateAppCtrl">
+<head>
+    <meta charset="UTF-8">
+    <title>小米</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/template-one.css">
+    <link rel="stylesheet" type="text/css" href="css/template-two.css">
+</head>
+<body>
+	<!-- 模板一 -->
+    <div class="template-continer template-one-continer">
+    	<h4 class="question" ng-bind="question"></h4>
+   		<!-- <h2 class="title" ng-bind="toSpeak.text"></h2> -->
+   		<div class="ul-box clearfix">
+   			<div style="margin-right:10px;" class="pull-left" ng-repeat="item in templateOneObj.items" ng-if="$index <= 4">
+	   			<div style="margin-left:21px;width: 92px; height: 86px; border-radius: 12px;">
+	   				<img style="width: 100%;border-radius: 10px;height: 100%;" ng-src="{{item.images[0]}}" /><br/>
+	   			</div>
+	  			<div style="color:#000;max-height:62px;overflow:hidden;width: 134px; text-align: center; margin-top: 6px; font-size: 14px;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden;-webkit-line-clamp:3;" ng-bind-html="item.title.text"></div>
+   			</div>
+   		</div>
+   		<div class="prompt-box">
+   			<div class="blank-space">&nbsp;</div>
+	   		<section class="prompt" ng-bind="promptObj.text"></section>
+	   		<section class="tips"><span ng-repeat="hint in promptObj.hints">“<span ng-bind="hint.text"></span>”&nbsp;&nbsp;&nbsp;&nbsp;</span></section>
+	   		<section class="fixed-tips">按住<span class="audio-box">&nbsp;</span>说话</section>
+   		</div>
+    </div>
+    <!-- 模板二 有图片-->
+    <div class="template-continer template-two-continer template-two-display">
+   		<h4 class="question" ng-bind="question"></h4>
+    	<!-- <h2 class="title" ng-bind="toSpeak.text"></h2> -->
+   		<div class="media content-box">
+   			<div class="clearfix content-box-media">
+   			  <div class="media-left">
+			    <span href="javascript:;" style="display: block; width: 150px; height: 150px; overflow: hidden;">
+			      <img class="media-object media-img" ng-src="{{templateTwoObj.item.images[0]}}" ng-if="templateTwoObj.item.images[0]">
+			    </span>
+			  </div>
+			  <div class="media-body media-body-template">
+			    <h4 style="margin-top:30px;" class="media-heading media-heading-template" ng-bind="templateTwoObj.item.title.text"></h4>
+			    <span style="max-height:108px;" class="media-heading-desc" ng-repeat="bodyObj in templateTwoObj.item.body" ng-bind-html="bodyObj.text"></span>
+			  </div>
+   			</div>
+		</div>
+   		<div class="prompt-box">
+   			<div class="blank-space">&nbsp;</div>
+	   		<section class="prompt" ng-bind="promptObj.text"></section>
+	   		<section class="tips"><span ng-repeat="hint in promptObj.hints">“<span ng-bind="hint.text"></span>”&nbsp;&nbsp;&nbsp;&nbsp;</span></section>
+	   		<section class="fixed-tips">按住<span class="audio-box">&nbsp;</span>说话</section>
+   		</div>
+    </div>
+    <!-- 模板二 无图片-->
+    <div class="template-continer template-two-continer template-two-display-two">
+   		<h4 class="question" ng-bind="question"></h4>
+   		<div class="media content-box">
+   			<div class="clearfix content-box-media" style="margin-top: -2px;">
+			  <div class="media-body media-body-template" style="padding-left:0;">
+			    <h4 style="margin-top: 40px;" class="media-heading media-heading-template" ng-bind="templateTwoObj.item.title.text"></h4>
+			    <span style="width: 555px; text-align: center; margin-top: 12px; max-height: 70px; font-size: 15px; overflow: hidden;" class="media-heading-desc" ng-repeat="bodyObj in templateTwoObj.item.body" ng-bind-html="bodyObj.text"></span>
+			  </div>
+   			</div>
+		</div>
+   		<div class="prompt-box">
+   			<div class="blank-space">&nbsp;</div>
+	   		<section class="prompt" ng-bind="promptObj.text"></section>
+	   		<section class="tips"><span ng-repeat="hint in promptObj.hints">“<span ng-bind="hint.text"></span>”&nbsp;&nbsp;&nbsp;&nbsp;</span></section>
+	   		<section class="fixed-tips">按住<span class="audio-box">&nbsp;</span>说话</section>
+   		</div>
+    </div>
+    <!-- 系统提示 -->
+    <div class="template-continer template-server-tips">
+   		<div class="media content-box">
+   			<div class="clearfix content-box-media" style="position: absolute; top: 50%; transform: translateY(-50%);">
+   		  		<h3 class="system-tips" ng-bind="systemTips"></h3>
+   		  	</div>
+   		</div>
+   	</div>
+</body>
+<!-- <script src="js/jquery.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-sanitize.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/common.js"></script> -->
+<script src="js/xiaomi-ui-template.min.js"></script>
+<script src="js/template-one.js"></script>
+</html>
+

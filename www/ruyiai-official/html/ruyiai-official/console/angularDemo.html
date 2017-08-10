@@ -1,0 +1,51 @@
+<div class="row row-height">
+	<div class="col-md-5 col-sm-5 center-list-box">
+		<section class="center-list-title">
+			<span style="border-bottom: 0;">试试</span>
+		</section>
+		<div class="searchContain">
+			<div class="testContain">
+				<ul class="list-unstyled" ng-repeat="talk in talks">
+					<li ng-if="talk.userRight" class="clearfix userTalk">
+						<img ng-src="img/ruyi-user.svg">
+						<div>
+							<span class="userBorder"></span>
+							<span class="userContain"></span>
+							{{talk.talkText}}
+						</div>
+					</li>
+					<li ng-if="talk.serverLeft" class="clearfix serverTalk">
+						<img ng-src="img/ruyi-avatar.svg">
+						<div>
+							<span class="serverBorder"></span>
+							<span class="serverContain"></span>
+							{{talk.talkText}}
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="testTextarea">
+			<textarea data-act="sendMsg" rows="4" ng-model="userSaysText" placeholder="请填写你要说的话"></textarea>
+			<button type="button" class="btn btn-primary" ng-click="testSubmit()">发 送</button>
+		</div>
+	</div>
+	<div class="row-height col-md-7 col-sm-7 center-list-box">
+		<section class="center-list-title">
+			<span style="border-bottom: 0;">JSON代码</span>
+		</section>
+		<div class="JSONContain">
+			<div id="responseJson">
+		    <ul class="list-unstyled" >
+		    	<li ng-repeat="responseJSON in responseJSONS">
+			    	<span style="font-size: 20px;font-weight: bold;" ng-bind="responseJSON.request"></span>
+			    	<br>
+			    	<pre ng-bind="responseJSON.response"><pre/>
+				</li>
+		    </ul>
+		</div>
+		</div>
+	</div>
+</div>
+<!-- <script src="js/angularDemo.js"></script> -->

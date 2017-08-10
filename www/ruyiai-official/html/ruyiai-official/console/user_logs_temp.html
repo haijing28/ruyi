@@ -1,0 +1,30 @@
+<div class="right-box row-height" style="border-left:0;">
+	<!-- 右侧头部 start -->
+	<section class="right-box-title">
+	</section>
+	<!-- 右侧头部 end -->
+	<!-- 右侧主体部分 start -->
+	<div class="right-box-main" style="padding:0;">
+		<ul class="user-log-list">
+			<li class="clearfix" ng-repeat="userLog in userLogs" data-act="nav-log-{{userLog.user_id}}">
+				<div class="intent-info">
+					<span>{{userLog.response.intents[0].name || userLog.response.intents[0].intent}}</span>
+					<span ng-bind="userLog.request.gmt_create | date:'yyyy-MM-dd HH:mm:ss'"></span>
+				</div>
+				<div class="question" ng-if="userLog.request.request_params.q">
+					<img src="img/people-default.svg"/>&nbsp;
+					<span ng-class="{true: 'mysuccess', false: 'myerror'}[userLog.response.intents[0].result.text.length >= 1]" ng-bind="userLog.request.request_params.q"></span>
+				</div>
+				<div class="answer" ng-if="userLog.response.intents[0].result.text">
+					<img src="img/machine-default.svg"/>&nbsp;
+					<span ng-bind="userLog.response.intents[0].result.text"></span>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<!-- 右侧主体部分 end -->
+</div>
+<!-- <script src="js/user_logs.js"></script> -->
+
+
+

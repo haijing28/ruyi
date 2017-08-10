@@ -1,0 +1,285 @@
+<div class="right-box row-height user-logs-box" style="border-left:0;">
+	<!-- 右侧头部 start -->
+	<section class="user-logs-title">
+		<!-- <span ng-if="userObject.nickName != '佚名'" ng-bind="userObject.nickName"></span>问答对统计 -->
+		
+		<div class="personal-info">
+			<img class="media-object" ng-src="{{userObject.headimg | headImgFilter}}" width="46px;">
+			<div class="media-body" style="padding-left:14px;">
+				<section class="user-info">
+					<div class="nickname">
+						<span ng-if="userObject.nickName != '' && userObject.nickName != 'UNKNOWN'" ng-bind="userObject.nickName | nickNameFilter" style="font-size: 22px;"></span>
+						<span ng-if="userObject.nickName == '' || userObject.nickName == 'UNKNOWN'" class="unknown" style="font-size: 14px;">不详</span>
+					</div>
+					<div class="sex">
+						性别：<span ng-if="userObject.sex=='MALE'">男</span>
+							 <span ng-if="userObject.sex=='FEMALE'">女</span>
+							 <span ng-if="userObject.sex== '' || userObject.sex== 'UNKNOWN'" class="unknown">未知</span>
+					</div>
+					<div class="city">
+						地区：<span ng-if="userObject.city != '' && userObject.city != 'UNKNOWN'" ng-bind="userObject.city"></span>
+						<span ng-if="userObject.city == '' || userObject.city == 'UNKNOWN'" class="unknown">未知</span>
+
+					</div>
+				</section>
+			</div>
+		</div>
+		<div class="question-answer-pairs clearfix">
+			<p>
+				<span ng-bind="userObject.confidenceCount" style="color:#3794FF;font-size:44px;"></span>
+				<!-- <span ng-bind="userObject.confidenceCount" style="color:#ff6e00;font-size:44px;"></span> -->
+			</p>
+			<p>
+				<span>个人问答对总数</span>
+			<!-- 	<span>暂未评分</span> -->
+			</p>
+		</div>
+	</section>
+	<!-- 右侧头部 end -->
+	<!-- 右侧主体部分 start -->
+	<div class="right-box-main" style="padding:0;overflow:visible;">
+		<div class="tips-box">
+		<!--
+			<div>
+				<ul class="nav nav-tabs nav-count">
+					<li class="all-count active" style="margin-left: 20px;">
+						<a href="javascript:;" data-toggle="tab">全部（<span ng-bind="userObject.confidenceCount"></span>）</a>
+					</li>
+					<li class="unvalued-count">
+						<a href="javascript:;" data-toggle="tab">未评价（<span ng-bind="userObject.confidenceCount"></span>）</a>
+					</li>
+					<li class="valued-count">
+						<a href="javascript:;" data-toggle="tab">已评价（<span ng-bind="userObject.confidenceCount"></span>）</a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div class="fade in active tab-pane" id="all-count">全部</div>
+					<div class="fade tab-pane" id="unvalued-count">未评价</div>
+					<div class="fade tab-pane" id="valued-count">已评价</div>
+				</div>
+			</div>	
+			  -->
+			<!-- 
+			<ul class="tips clearfix">
+				<li>意图准确率</li>
+				<li class="clearfix"><i class="green">&nbsp;&nbsp;&nbsp;&nbsp;</i><span>95% - 100%</span></li>
+				<li class="clearfix"><i class="yellow">&nbsp;&nbsp;&nbsp;&nbsp;</i><span>80% - 95%</span></li>
+				<li class="clearfix"><i class="red">&nbsp;&nbsp;&nbsp;&nbsp;</i><span>0% - 80%</span></li>
+				<li class="clearfix"><i class="black">&nbsp;&nbsp;&nbsp;&nbsp;</i><span>0</span></li>
+			</ul>
+			 -->
+			<!-- <div class="progress">
+			   <div class="progress-bar progress-bar-success" role="progressbar" 
+				  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" 
+				  style="width: 40%;">
+				  <span class="sr-only">40% 完成</span>
+			   </div>
+			   <div class="progress-bar progress-bar-info" role="progressbar" 
+				  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" 	
+				  style="width: 30%;">
+				  <span class="sr-only">30% 完成（信息）</span>
+			   </div>
+			   <div class="progress-bar progress-bar-danger" role="progressbar" 
+				  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" 	
+				  style="width: 20%;">
+				  <span class="sr-only">20% 完成（警告）</span>
+			   </div>
+			   <div class="progress-bar progress-bar-failure" role="progressbar" 
+				  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" 	
+				  style="width: 10%;">
+				  <span class="sr-only">20% 完成（警告）</span>
+			   </div>
+			</div> -->
+		</div>
+		<!-- 加载 start-->
+		<div class="tips-text" ng-hide="userLogs">
+			<div class="loading">
+				<div class="spinner loading-icon">
+				    <div class="spinner-container container1">
+				        <div class="circle1"></div>
+				        <div class="circle2"></div>
+				        <div class="circle3"></div>
+				        <div class="circle4"></div>
+				    </div>
+				    <div class="spinner-container container2">
+				        <div class="circle1"></div>
+				        <div class="circle2"></div>
+				        <div class="circle3"></div>
+				        <div class="circle4"></div>
+				    </div>
+				    <div class="spinner-container container3">
+				        <div class="circle1"></div>
+				        <div class="circle2"></div>
+				        <div class="circle3"></div>
+				        <div class="circle4"></div>
+				    </div>
+				</div>
+			</div>
+		</div>
+		<!-- 加载 end-->
+		<ul class="logs">
+			<li class="clearfix" ng-repeat="userLog in userLogs">
+				<section class="edit">
+					<ul class="clearfix">
+						<li class="intent-time" ng-bind="userLog.request.gmt_create | beforeTimeFilter"></li>
+						<li class="edit-icon"><i data-toggle="tooltip" data-placement="bottom" ng-if="userLog.response" title="{{userLog.response | editIntentTitleFilter}}" ng-click="operationIntentFunc(userLog.response)" class="{{userLog.response | editIconFilter}}">&nbsp;</i></li>
+						<li class="{{userLog.response | rateColorFilter}}" data-toggle="tooltip" data-placement="bottom" title="意图准确率">	
+							<div ng-bind="userLog.response | rateFilter"></div>
+						</li>
+						<li data-toggle="tooltip" data-placement="bottom" title="评价" data-act="evaluate-box-li">
+							<input style="display:none;" data-log-id="{{userLog.response.logId}}" data-time="{{userLog.request.gmt_create}}" rating-diffError="{{userLog.response.rating.diffError | diffErrorFilter}}" rating-semanticError="{{userLog.response.rating.semanticError | diffErrorFilter}}" rating-text="{{userLog.response.rating.text}}" data-act="evaluate" value="{{userLog.response.rating.score}}" type="number" class="rating" min=0 max=5 step=1 data-size="sm" data-stars="5">
+						</li>
+						<li data-toggle="tooltip" data-placement="bottom" title="查看详细的JSON数据">	
+							<div data-act="look-log-json" data-json="{{userLog.resultJsonParse}}">查看JSON</div>
+						</li>
+					</ul>
+				</section>
+				<section class="question-answer">
+					<div class="media question">
+					   <a class="pull-left" href="#">
+					      <img class="media-object" width="20px" ng-src="{{userObject.headimg | headImgFilter}}">
+					   </a>
+					   <div class="media-body" ng-bind="userLog.request.request_params.q"></div>
+					</div>
+					<div class="media answer" style="margin-top:10px;" ng-repeat="outputs in userLog.response.intents[0].outputs">
+					   <a class="pull-left" href="#">
+					      <img class="media-object" ng-if="outputs.type == 'dialog' || outputs.type == 'voice' || outputs.type == 'video' || outputs.type == 'image'"  width="20px" src="img/ruyi-avatar.svg" >
+					      <img class="media-object" ng-if="outputs.type == 'wechat.text' || outputs.type == 'wechat.voice' || outputs.type == 'wechat.video' || outputs.type == 'wechat.image' || outputs.type == 'wechat.news' || outputs.type == 'wechat.music'"  width="20px" src="img/wechat-avatar.svg" >
+					   </a>
+					   <span class="pull-left" ng-bind="outputs.type | logTypeFilter" style="color:#fff;background-color:{{outputs.type | logTypeColorFilter}};"></span>
+					   <div class="media-body" ng-if="outputs.type == 'dialog' || outputs.type == 'wechat.text'" ng-bind="outputs.property.text">
+						</div>
+						<!-- 
+						<div class="media-body" ng-if="outputs.type == 'wechat.news'" ng-bind="outputs.list[0].title">
+						</div>
+						<div class="media-body" ng-if="outputs.type == 'wechat.music'" ng-bind="outputs.property.music_url">
+						</div>
+						<div class="media-body" ng-if="outputs.type == 'wechat.voice'" ng-bind="outputs.property.name">
+						</div>
+						<div class="media-body" ng-if="outputs.type == 'wechat.video'" ng-bind="outputs.property.name">
+						</div>
+						<div class="media-body" ng-if="outputs.type == 'wechat.image' || outputs.type == 'image'" ng-bind="outputs.property.image_url">
+						</div>
+						<div class="media-body" ng-if="outputs.type == 'voice'" ng-bind="outputs.property.voice_url">
+						</div>
+						<div class="media-body" ng-if="outputs.type == 'video'" ng-bind="outputs.property.video_url">
+						</div>
+						-->
+						<ul class="media-body wechat-multi-news" ng-if="outputs.type == 'wechat.news' && outputs.list.length > 1" style="padding-left: 0; border: 1px solid #ccc;">
+							<li class="wechat-news-single" ng-repeat="list in outputs.list" go_url="{{list.url}}">
+								<img ng-src="{{list.pic_url | trustUrlFilter}}">
+								<p>{{list.title}}</p>
+							</li>
+						</ul>
+						<div class="media-body wechat-single-news wechat-news-single" ng-if="outputs.type == 'wechat.news' && outputs.list.length == 1" go_url="{{outputs.list[0].url}}">
+							<p>{{outputs.list[0].title}}</p>
+							<img ng-src="{{outputs.list[0].pic_url | trustUrlFilter}}">
+							<p>{{outputs.list[0].description}}</p>
+							<span>查看全文</span>
+						</div>
+						<ul class="media-body wechat-multi-news" ng-if="outputs.type == 'wechat.news' && outputs.property.media_id != null" ng-init="initListFunc(outputs.property.media_id)" style="padding-left: 0; border: 1px solid #ccc;">
+							<li ng-if="news_list.length > 1" class="wechat-news-single" ng-repeat="list in news_list" go_url="{{list.url}}">
+								<img ng-src="{{list.pic_url | trustUrlFilter}}">
+								<p>{{list.title}}</p>
+							</li>
+							<div class="media-body wechat-single-news wechat-news-single" ng-if="news_list.length == 1" go_url="{{news_list[0].url}}">
+								<p>{{news_list[0].title}}</p>
+								<img ng-src="{{news_list[0].pic_url | trustUrlFilter}}">
+								<p>{{news_list[0].description}}</p>
+								<span>查看全文</span>
+							</div>
+						</ul>
+						<audio class="media-body" ng-if="outputs.type == 'wechat.music'" ng-src="{{outputs.property.music_url | trustUrlFilter}}"  controls="controls" style="height:30px;width:260px;">
+						</audio>
+						<audio class="media-body" ng-if="outputs.type == 'wechat.voice' && outputs.property.media_id !=null" ng-src="{{outputs.property.media_id | mediaTrustUrlFilter}}"  controls="controls" style="height:30px;width:260px;">
+						</audio>
+						<video class="media-body" ng-if="outputs.type == 'wechat.video' && outputs.property.media_id == null" ng-src="{{outputs.property.video_url | trustUrlFilter}}" controls="controls" style="height:150px;width:271px;margin-top:-2px;" ></video>
+						<img class="media-body wechat-image" ng-if="outputs.type == 'wechat.video' && outputs.property.media_id != null" videoURL="{{outputs.property.media_id}}"  src="https://dn-vbuluo-static.qbox.me/background_image.png"/>
+						<img class="media-body" ng-if="(outputs.type == 'wechat.image' && outputs.property.media_id == null) || outputs.type == 'image'" ng-src="{{outputs.property.image_url}}" style="width:200px;" />
+						<img class="media-body" ng-if="outputs.type == 'wechat.image' && outputs.property.media_id != null" ng-src="{{outputs.property.media_id | mediaTrustUrlFilter}}" style="width:200px;" />
+						<audio class="media-body" ng-if="outputs.type == 'voice'" ng-src="{{outputs.property.voice_url | trustUrlFilter}}" controls="controls" style="height:30px;width:260px;" ></audio>
+						<video class="media-body" ng-if="outputs.type == 'video'" ng-src="{{outputs.property.video_url | trustUrlFilter}}" controls="controls" style="height:150px;width:271px;margin-top:-2px;" ></video>
+						 
+					</div>
+				</section>
+			</li>
+		</ul>
+	</div>
+	<!-- 右侧主体部分 end -->
+</div>
+<!-- evaluate Modal start-->
+<div class="modal fade" id="evaluateModal">
+  <div class="modal-dialog">
+    <div class="modal-content" style="border:none;">
+      <div class="modal-header" style="padding: 30px;">
+        <div style="cursor:pointer;"><div class="close-modal">&nbsp;</div></div>
+      </div>
+      <div class="modal-body" style="padding-top: 10px;">
+         <ul class="choose-reason clearfix">
+         	<li data-act="diffError" ng-class="{true: 'active', false: ''}[ratingObj.diffError]">语义理解偏差</li>
+         	<li data-act="semanticError" ng-class="{true: 'active', false: ''}[ratingObj.semanticError]">文不对题</li>
+         </ul>
+         <div class="feedback">
+         	<textarea rows="3" placeholder="您的反馈将有助于我们为您解决问题" ng-model="ratingObj.text"></textarea>
+         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default rating-cancel" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary rating-submit">确定</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- evaluate Modal end-->
+<!-- evaluate Modal start-->
+<div class="modal fade" id="lookLogJson">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="padding: 30px;">
+        <div style="cursor:pointer;"><div class="close-modal">&nbsp;</div></div>
+      </div>
+      <div class="modal-body" style="padding-top: 10px;">
+         <pre data-act="log-json-box" style="overflow-y:hidden;"></pre>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- evaluate Modal end-->
+<style>
+.modal-backdrop.in{
+	/* opacity:0; */
+}
+.modal-content{
+	border-radius:0;
+}
+.modal-dialog{
+	width:400px;
+}
+.modal-header .close{
+	margin-top:-10px;
+}
+.modal-header{
+	border-bottom:0;
+}
+.modal-footer{
+	border-top:0;
+	padding-right:30px;
+}
+.rating-sm{
+	margin-top:-5px !important;
+}
+.modal-content{
+	padding:0;
+}
+.rating-container .rating-stars{
+	color: #ffb800 !important;
+    font-family: "Glyphicons Halflings";
+}
+</style>
+<!-- <link rel="stylesheet" type="text/css" href="css/star-rating.min.css"> -->
+<!-- <script type="text/javascript" id="my" src="js/star-rating.min.js"></script> --> 
+<!-- <script src="js/user_logs.js"></script> -->
+
+
+
+
