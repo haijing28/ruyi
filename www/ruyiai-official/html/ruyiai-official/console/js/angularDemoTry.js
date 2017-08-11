@@ -57,7 +57,7 @@ function angularDemoTryCtrl($rootScope, $scope, $state, $stateParams){
 			if(index !== currentIndex){
 				ele.pause();
 			}
-		});
+		})
 	}
 	
 	//微信端（硬件端）播放音频停止硬件端（微信端）正在播放的音频
@@ -292,7 +292,58 @@ function angularDemoTryCtrl($rootScope, $scope, $state, $stateParams){
 	};
 	$(".testContain").delegate(".wechat-image","click",function(){
 		var talkURL = $(this).attr("talkURL");
+//		switch(talkType){
+//			case "微信图片": 
+//				var url = ruyi_wechat + "/ruyi-wechat/"+ $rootScope.app_key +"/content/" + talkURL;
+//				//url = "http://ml.ruyi.ai/ruyi-wechat/1b793621-31ce-4a61-9e6f-fe4ed10422c2/content/WsqI-spqLgZCIKUFEPSP50PWAwYEMuUsTwJUqc-Xj3E";
+//				var $img = $("<span class='back' talkType='"+ $(this).attr("talkType") +"' talkURL='"+ talkURL +"' talkbackgroundcolor='"+ $(this).attr("talkBackgroundcolor") +"' talkText='"+$(this).attr("talkText")+"' type='"+ $(this).attr("Type") +"'>&nbsp;</span><img src='" + url + "' style='height:170px;width:260px;'/>");
+//				$(this).parent().addClass("localImage").html($img);
+//				break;
+//			case "微信音乐":
+//				var url = talkURL;
+//				//url = "http://ml.ruyi.ai/ruyi-wechat/1b793621-31ce-4a61-9e6f-fe4ed10422c2/content/WsqI-spqLgZCIKUFEPSP5whkHDLhyzJg1U7IMrcPDA8";
+//				var $music = $("<span class='back' talkType='"+ $(this).attr("talkType") +"' talkURL='"+ talkURL +"' talkbackgroundcolor='"+ $(this).attr("talkBackgroundcolor") +"' talkText='"+$(this).attr("talkText")+"' type='"+ $(this).attr("Type") +"'>&nbsp;</span><audio src='" + url +"' controls='controls' style='height:30px;width:260px;margin-top:5px;'></audio>")
+//				$(this).parent().addClass("localAudio").html($music);
+//				break;
+//			case "微信音频":
+//				var url = ruyi_wechat + "/ruyi-wechat/"+ $rootScope.app_key +"/content/" + talkURL;
+//				//url = "http://ml.ruyi.ai/ruyi-wechat/1b793621-31ce-4a61-9e6f-fe4ed10422c2/content/WsqI-spqLgZCIKUFEPSP5whkHDLhyzJg1U7IMrcPDA8";
+//				var $audio = $("<span class='back' talkType='"+ $(this).attr("talkType") +"' talkURL='"+ talkURL +"' talkbackgroundcolor='"+ $(this).attr("talkBackgroundcolor") +"' talkText='"+$(this).attr("talkText")+"' type='"+ $(this).attr("Type") +"'>&nbsp;</span><audio src='" + url +"' controls='controls' style='height:30px;width:260px;margin-top:5px;'></audio>")
+//				$(this).parent().addClass("localAudio").html($audio);
+//				break;
+//			case "微信视频": 
+//				var url = ruyiai_host + "/ruyi-ai/"+ $rootScope.app_key +"/transfor/video/" + talkURL;
+//				//url = "http://192.168.1.182/ruyi-ai/1b793621-31ce-4a61-9e6f-fe4ed10422c2/transfor/video/WsqI-spqLgZCIKUFEPSP5__LBFAdmdLqWS13nuRdJ2o";
+//				$.ajax({
+//					url : url,
+//					method : "get",
+//					success: function(data) {
+//						
+//						data = dataParse(data);
+					if(data.code == 0){
+//							window.open(data.result.down_url);
+//						}
+//					}
+//				});
+//				break;
+//			case "微信图文": 
+//				var url = ruyiai_host + "/ruyi-ai/"+ $rootScope.app_key +"/transfor/news/" + talkURL;
+//				//url = "http://192.168.1.182/ruyi-ai/1b793621-31ce-4a61-9e6f-fe4ed10422c2/transfor/news/WsqI-spqLgZCIKUFEPSP5ymo10vm3azU3nlfZb6CLFQ";
+//				$.ajax({
+//					url : url,
+//					method : "get",
+//					success: function(data) {
+//						
+//						data = dataParse(data);
+					if(data.code == 0){
+//							window.open(data.result.news_item[0].url);
+//						}
+//					}
+//				});
+//				break;
+//		}
 		var url = ruyiai_host + "/ruyi-ai/"+ $rootScope.app_key +"/transfor/video/" + talkURL;
+//		url = "http://127.0.0.1/ruyi-ai/1b793621-31ce-4a61-9e6f-fe4ed10422c2/transfor/video/WsqI-spqLgZCIKUFEPSP5__LBFAdmdLqWS13nuRdJ2o";
 		$.ajax({
 			url : url,
 			method : "get",
@@ -311,6 +362,67 @@ function angularDemoTryCtrl($rootScope, $scope, $state, $stateParams){
 		var go_url = $(this).attr("go_url");
 		window.open(go_url);
 	});
+//	$(".testContain").delegate(".talk-content","click",function(){
+//		var talkType = $(this).attr("talkType");
+//		var talkURL = $(this).attr("talkURL");
+//		switch(talkType){
+//			case "微信图片": 
+//				var url = ruyi_wechat + "/ruyi-wechat/"+ $rootScope.assistant_app_id +"/content/" + talkURL;
+//				//url = "http://ml.ruyi.ai/ruyi-wechat/1b793621-31ce-4a61-9e6f-fe4ed10422c2/content/WsqI-spqLgZCIKUFEPSP50PWAwYEMuUsTwJUqc-Xj3E";
+//				var $img = $("<span class='back' talkType='"+ $(this).attr("talkType") +"' talkURL='"+ talkURL +"' talkbackgroundcolor='"+ $(this).attr("talkBackgroundcolor") +"' talkText='"+$(this).attr("talkText")+"' type='"+ $(this).attr("Type") +"'>&nbsp;</span><img src='" + url + "' style='height:170px;width:260px;'/>");
+//				$(this).parent().addClass("localImage").html($img);
+//				break;
+//			case "微信音乐":
+//				var url = talkURL;
+//				//url = "http://ml.ruyi.ai/ruyi-wechat/1b793621-31ce-4a61-9e6f-fe4ed10422c2/content/WsqI-spqLgZCIKUFEPSP5whkHDLhyzJg1U7IMrcPDA8";
+//				var $music = $("<span class='back' talkType='"+ $(this).attr("talkType") +"' talkURL='"+ talkURL +"' talkbackgroundcolor='"+ $(this).attr("talkBackgroundcolor") +"' talkText='"+$(this).attr("talkText")+"' type='"+ $(this).attr("Type") +"'>&nbsp;</span><audio src='" + url +"' controls='controls' style='height:30px;width:260px;margin-top:5px;'></audio>")
+//				$(this).parent().addClass("localAudio").html($music);
+//				break;
+//			case "微信音频":
+//				var url = ruyi_wechat + "/ruyi-wechat/"+ $rootScope.assistant_app_id +"/content/" + talkURL;
+//				//url = "http://ml.ruyi.ai/ruyi-wechat/1b793621-31ce-4a61-9e6f-fe4ed10422c2/content/WsqI-spqLgZCIKUFEPSP5whkHDLhyzJg1U7IMrcPDA8";
+//				var $audio = $("<span class='back' talkType='"+ $(this).attr("talkType") +"' talkURL='"+ talkURL +"' talkbackgroundcolor='"+ $(this).attr("talkBackgroundcolor") +"' talkText='"+$(this).attr("talkText")+"' type='"+ $(this).attr("Type") +"'>&nbsp;</span><audio src='" + url +"' controls='controls' style='height:30px;width:260px;margin-top:5px;'></audio>")
+//				$(this).parent().addClass("localAudio").html($audio);
+//				break;
+//			case "微信视频": 
+//				var url = ruyiai_host + "/ruyi-ai/"+ $rootScope.assistant_app_id +"/transfor/video/" + talkURL;
+////				url = "http://192.168.1.182/ruyi-ai/1b793621-31ce-4a61-9e6f-fe4ed10422c2/transfor/video/WsqI-spqLgZCIKUFEPSP5__LBFAdmdLqWS13nuRdJ2o";
+//				$.ajax({
+//					url : url,
+//					method : "get",
+//					success: function(data) {
+//						
+//						data = dataParse(data);
+					if(data.code == 0){
+//							window.open(data.result.down_url);
+//						}
+//					}
+//				});
+//				break;
+//			case "微信图文": 
+//				var url = ruyiai_host + "/ruyi-ai/"+ $rootScope.assistant_app_id +"/transfor/news/" + talkURL;
+//				//url = "http://192.168.1.182/ruyi-ai/1b793621-31ce-4a61-9e6f-fe4ed10422c2/transfor/news/WsqI-spqLgZCIKUFEPSP5ymo10vm3azU3nlfZb6CLFQ";
+//				$.ajax({
+//					url : url,
+//					method : "get",
+//					success: function(data) {
+//						
+//						data = dataParse(data);
+					if(data.code == 0){
+//							window.open(data.result.news_item[0].url);
+//						}
+//					}
+//				});
+//				break;
+//		}
+//	});
+
+//	$(".testContain").delegate(".back","click",function(){
+//		var $pre = $("<span class='serverBorder'></span><span class='serverContain'></span>"+
+//					"<span class='talkType' style='background-color:"+ $(this).attr("talkbackgroundcolor") +"'>"+ $(this).attr("talkType") +"</span>"+
+//					"<span class='talk-content ng-binding' talkType='"+ $(this).attr("talkType") +"' talkURL='"+ $(this).attr("talkURL") +"' talkbackgroundcolor='"+ $(this).attr("talkBackgroundcolor") +"' talkText='"+$(this).attr("talkText")+"' type='"+ $(this).attr("Type") +"'>"+ $(this).attr("talkText") +"</span>");
+//		$(this).parent().removeClass("localAudio").removeClass("localImage").removeClass("localVideo").html($pre);
+//	});
 	
 	$scope.testSubmitMaxLocal = function($event){
 		if(!$(".testTextareaLocal textarea").val() || $(".testTextareaLocal textarea").val().length == 0 || $(".testTextareaLocal textarea").val().replace(/(^\s*)|(\s*$)/g,"")==""){
@@ -422,6 +534,31 @@ function angularDemoTryCtrl($rootScope, $scope, $state, $stateParams){
 			}
 		}
 	};
+//	$(".testContainLocal").delegate(".talk-content","click",function(){
+//		var talkType = $(this).attr("talkType");
+//		switch(talkType){
+//			case "硬件图片": 
+//				var $img = $("<span class='back' talkType='"+ $(this).attr("talkType") +"' talkURL='"+ $(this).attr("talkURL") +"' talkbackgroundcolor='"+ $(this).attr("talkBackgroundcolor") +"' talkText='"+$(this).attr("talkText")+"' type='"+ $(this).attr("Type") +"'>&nbsp;</span><img src='" + $(this).attr("talkURL") + "' style='height:170px;width:260px;'/>");
+//				$(this).parent().addClass("localImage").html($img);
+//				break;
+//			case "硬件音频": 
+//				var $audio = $("<span class='back' talkType='"+ $(this).attr("talkType") +"' talkURL='"+ $(this).attr("talkURL") +"' talkbackgroundcolor='"+ $(this).attr("talkBackgroundcolor") +"' talkText='"+$(this).attr("talkText")+"' type='"+ $(this).attr("Type") +"'>&nbsp;</span><audio src='" + $(this).attr("talkURL") +"' controls='controls' style='height:30px;width:260px;margin-top:5px;'></audio>")
+//				$(this).parent().addClass("localAudio").html($audio);
+//				break;
+//			case "硬件视频": 
+//				var $video = $("<span class='back' talkType='"+ $(this).attr("talkType") +"' talkURL='"+ $(this).attr("talkURL") +"' talkbackgroundcolor='"+ $(this).attr("talkBackgroundcolor") +"' talkText='"+$(this).attr("talkText")+"' type='"+ $(this).attr("Type") +"'>&nbsp;</span><video src='" + $(this).attr("talkURL") +"' controls='controls' style='height:150px;width:271px;margin-top:-2px;'></video>")
+//				$(this).parent().addClass("localVideo").html($video);
+//				break;
+//		}
+//	});
+
+
+//	$(".testContainLocal").delegate(".back","click",function(){
+//		var $pre = $("<span class='serverBorder'></span><span class='serverContain'></span>"+
+//					"<span class='talkType' style='background-color:"+ $(this).attr("talkbackgroundcolor") +"'>"+ $(this).attr("talkType") +"</span>"+
+//					"<span class='talk-content ng-binding' talkType='"+ $(this).attr("talkType") +"' talkURL='"+ $(this).attr("talkURL") +"' talkbackgroundcolor='"+ $(this).attr("talkBackgroundcolor") +"' talkText='"+$(this).attr("talkText")+"' type='"+ $(this).attr("Type") +"'>"+ $(this).attr("talkText") +"</span>");
+//		$(this).parent().removeClass("localAudio").removeClass("localImage").removeClass("localVideo").html($pre);
+//	});
 	
 	//双击关闭试一试窗口
 	$("body").off("dblclick",".try-nav-max").on("dblclick",".try-nav-max",function(event){

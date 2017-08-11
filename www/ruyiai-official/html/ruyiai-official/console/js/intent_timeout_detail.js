@@ -1,5 +1,7 @@
 function intent_timeout_detail($rootScope,$scope, $state, $stateParams,$sce){
-    $('[data-toggle="tooltip"]').tooltip(); //初始化提示
+    $('[data-toggle="tooltip"]').tooltip({
+        container: 'body'
+    }); //初始化提示
     $scope.app_response = getCookie("app_response");
     if($scope.app_response == "app-response-weixin"){
         $(".speach-response .app-response-weixin").addClass("active").siblings().removeClass("active");
@@ -256,6 +258,11 @@ function intent_timeout_detail($rootScope,$scope, $state, $stateParams,$sce){
                 data = dataParse(data);
 					if(data.code == 0){
                     $scope.intentDetail = data.result;
+                    let timeoutLimit = $scope.intentDetail.limit;
+                    timeoutLimit = timeoutLimit || 0;
+                    console.log($scope.intentDetail)
+                    $('#timeoutSt').val(timeoutLimit + ' ms');
+                    $('#timeoutSt').blur();
                     //TODO
                     //$scope.intentDetail.speech.push("@mediaResourceResponse-image#####mediaid&&&&&L7vIZuny21XNDdvfibno_9k8FaqMMtOLFQ4lNJgOl7A#####name&&&&&10.pic.jpg");
                     $scope.getMediaResponseFunc(true);
@@ -494,6 +501,8 @@ function intent_timeout_detail($rootScope,$scope, $state, $stateParams,$sce){
         intentDetailTemp = deleteEmptyParametersFunc(intentDetailTemp); //删除空的parameters
         //将空白用户说删除掉 start
         intentDetailTemp.templates = deleteBlankParaFunc(intentDetailTemp.templates);
+         let limit = parseInt($('#timeoutSt').val());
+         $scope.intentDetail.limit = limit;
         //将空白用户说删除掉 end
         $.ajax({
             url: ruyiai_host + "/ruyi-ai/"+appId+"/"+ $stateParams.scenes_id +"/intent/" + $scope.intentDetail.id,
@@ -502,6 +511,7 @@ function intent_timeout_detail($rootScope,$scope, $state, $stateParams,$sce){
             headers: {"Content-Type" : "application/json"},
             method: "PUT",
             success: function(data){
+                console.log($scope.intentDetail)
                 addEmptyParametersFunc($scope.intentDetail);//添加空的parameters
                 $scope.getMediaResponseFunc(false);//将助理答还原
                 data = dataParse(data);
@@ -4063,7 +4073,7 @@ function intent_timeout_detail($rootScope,$scope, $state, $stateParams,$sce){
                 f = this,
                 m = Math,
                 b = document.body,
-                minValue = 1,
+                minValue = 0,
                 maxValue = 5000;
             
             f.yuan.onmousedown =function(e){
@@ -4079,9 +4089,10 @@ function intent_timeout_detail($rootScope,$scope, $state, $stateParams,$sce){
                     var changeX = e.clientX;
                     var moveX = m.min(max,m.max(-2,offleft+(changeX-X)));
                     f.input.value = parseInt(m.max(0,moveX / max) * 5000) + ' ms';
-                    f.yuan.style.marginLeft = parseInt(f.input.value)/5000 * f.tiaoW +"px";
-                    f.jindu.style.width = parseInt(f.input.value)/5000 * f.tiaoW +"px";
-                    $('#yuan').attr('data-original-title',f.input.value);
+                    let ttt = (parseFloat(f.input.value))/5100 * f.tiaoW +"px";
+                    f.yuan.style.marginLeft = ttt;
+                    f.jindu.style.width = parseInt(f.input.value)/5100 * f.tiaoW +"px";
+                    $('#yuan').tooltip('hide');
                 }
             }
             b.onmouseup =function(){
@@ -4090,30 +4101,41 @@ function intent_timeout_detail($rootScope,$scope, $state, $stateParams,$sce){
                 f.input.value = f.input.value < minValue ? minValue : f.input.value;
                 f.input.value = f.input.value > maxValue ? maxValue : f.input.value;
                 f.input.value = parseInt(f.input.value) + ' ms';
+                $('#yuan').attr('data-original-title',f.input.value);
+                // $('#yuan').tooltip({
+                //     title: 'f.input.value'
+                // })
             }
 
             f.input.onblur =function(){
                 var nowValue = parseInt(f.input.value);
                 var theV = nowValue * 1;
-                if(theV > maxValue || theV <minValue){
-                    f.input.value = parseInt(f.input.value) + ' ms';
-                    return;
+                if(theV > maxValue){
+                    f.input.value = maxValue + ' ms';
                 }
+                if(theV < minValue){
+                    f.input.value = minValue + ' ms';
+                }
+                theV = parseInt(f.input.value);
                 // NaN != NaN
                 if(theV.toString() == 'NaN'){
                     theV = 1;
                     f.input.value = '1 ms';
                 }
                 var xxx = theV/5000 * f.tiaoW;
-                f.yuan.style.marginLeft = xxx + "px";
-                f.jindu.style.width = xxx + "px";
+                $('#yuan').animate({'marginLeft': xxx + 'px'},'slow',function(){
+                    $('#yuan').css({'marginLeft': xxx + 'px'});
+                });
+                $('#jindu').animate({'width': xxx + 'px'},'slow',function(){
+                    $('#jindu').css({'width': xxx + 'px'});
+                });
                 $('#yuan').attr('data-original-title',f.input.value);
             }
             f.input.onkeypress = function(e){
                 var code = e.keyCode;
                 if(code == 13){
                     f.input.blur();
-                    f.input.focus();
+                    // f.input.focus();
                     f.input.value = parseInt(f.input.value) + ' ms';
                 }
             }
