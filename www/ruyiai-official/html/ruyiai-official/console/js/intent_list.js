@@ -195,22 +195,7 @@ function intentListCtrl($rootScope,$scope, $state, $stateParams){
 		        	dataEditedFlag = false;
 		        	if(!$("[data-act=confirmShow]").css("display")){
 		        		if($scope.scenario && $scope.scenario.scenarioType == "SYSTEMACTION"){
-		    				var center = '';
-							switch(event.target.innerText){
-								case '订阅欢迎语':
-									center = '/intent_welcome_detail/';
-									break;
-								case '却省回复':
-									center = '/intent_lost_detail/';
-									break;
-								case '超时回复':
-									center = '/intent_timeout_detail/';
-									break;
-								case '重复多轮回复':
-									center = '/intent_repeat_detail/';
-									break;
-							}
-							window.location.href = "#/intent_list/" + scenarioId + center + intent_id;
+		        			sysActionUrl([event.target.innerText])
 		    			}else{
 		    				window.location.href = "#/intent_list/" + scenarioId + "/intent_detail/" + intent_id;
 		    			}
@@ -232,31 +217,14 @@ function intentListCtrl($rootScope,$scope, $state, $stateParams){
 		}
 		if(!$("[data-act=confirmShow]").css("display")){
     		if($scope.scenario && $scope.scenario.scenarioType == "SYSTEMACTION"){
-    			var center = '';
-				switch(event.target.innerText){
-					case '订阅欢迎语':
-						center = '/intent_welcome_detail/';
-						break;
-					case '缺省回复':
-						center = '/intent_lost_detail/';
-						break;
-					case '超时回复':
-						center = '/intent_timeout_detail/';
-						break;
-					case '重复多轮回复':
-						center = '/intent_repeat_detail/';
-						break;
-					default: 
-						center = '/intent_welcome_detail/';
-				}
-				console.log(center)
-				window.location.href = "#/intent_list/" +scenarioId+ center + intent_id;
+    			console.log(scenarioId)
+    			console.log(intent_id)
+    			sysActionUrl([event.target.innerText,scenarioId,intent_id]);
+    			/////////////////
 			}else{
 				window.location.href = "#/intent_list/" +scenarioId+ "/intent_detail/" + intent_id;
-				// 导向自己的页面     !!!!!!!!!!!!!!!
 			}
 		}
-//		$scope.getIntentListFunc(0, $scope.pageSize, "", intent_id);
 		$scope.searchIntentWords = "";
 	}
 	//点击+号创建意图
@@ -411,19 +379,29 @@ function intentListCtrl($rootScope,$scope, $state, $stateParams){
 		if(!keywords){
 			keywords = "";
 		}
+		if($scope.scenario && $scope.scenario.scenarioType == 'SYSTEMACTION'){
+			$scope.isSY = true;
+			$('.center-list-title input').attr('disabled',true);
+		}
 		$.ajax({
 			url: ruyiai_host + "/ruyi-ai/"+ appId + "/"+ $stateParams.scenes_id +"/intents",
 			data:{"start":startSize, "limit":pageSize, "keywords": keywords, "sortkey": sortkey},
 			method: "GET",
 			success: function(data){
 				data = dataParse(data);
-					if(data.code == 0){
+				if(data.code == 0){
 					$scope.intentList = data.result;
 					if($scope.intentList && $scope.intentList.length > 0){
-						if(window.location.href.indexOf("intent_list") != -1 && window.location.href.indexOf("intent_detail") == -1){
+						if(window.location.href.indexOf("intent_list") != -1){
 							// 针对系统动作
 							if($scope.scenario && $scope.scenario.scenarioType == "SYSTEMACTION"){
-								window.location.href = "#/intent_list/" + $stateParams.scenes_id + "/intent_welcome_detail/" + $scope.intentList[0].id;
+								sysActionUrl([$scope.intentList[0].name],true);
+							}else if(data.result[0].intentEventType == 'SYSTEM'){
+								sysActionUrl([$scope.intentList[0].name],true)
+								$scope.isSY = true;
+								setTimeout(() => {
+									$('.list-group.intent li:first').addClass('active');
+								},300)
 							}else{
 								window.location.href = "#/intent_list/"+ $stateParams.scenes_id + "/intent_detail/" + $scope.intentList[0].id;
 							}
@@ -465,7 +443,34 @@ function intentListCtrl($rootScope,$scope, $state, $stateParams){
 			}
 		});
 	};
-	
+
+	function sysActionUrl([name,scenarioId,intent_id],more = false){
+		var center = '';
+		switch(name){
+			case '订阅欢迎语':
+				center = '/intent_welcome_detail/';
+				break;
+			case '缺省回复':
+				center = '/intent_lost_detail/';
+				break;
+			case '超时回复':
+				center = '/intent_timeout_detail/';
+				break;
+			case '重复多轮回复':
+				center = '/intent_repeat_detail/';
+				break;
+			default: 
+				center = '/intent_welcome_detail/';
+		}
+		if(more){
+			window.location.href = "#/intent_list/" + $stateParams.scenes_id + center + $scope.intentList[0].id;
+			return;
+		}
+		//////////////
+		window.location.href = "#/intent_list/" + scenarioId + center + intent_id;
+		return;
+	}
+
 	var scenarioIndex = 0;
 	if(angular.element("#api-manager-box").scope().scenarioList){
 		scenarioIndex = angular.element("#api-manager-box").scope().scenarioList.length;
@@ -847,7 +852,6 @@ function intentListCtrl($rootScope,$scope, $state, $stateParams){
 //			$scope.searchIntentWordsNameFunc(searchIntentWords);
 //		}
 //	}
-
 	
 	$(".sort-key").click(function(){
 		var sortkey = getCookie("sortkey");
@@ -907,11 +911,6 @@ function intentListCtrl($rootScope,$scope, $state, $stateParams){
 			},0)
 		}
 	})
-
-	if($scope.scenario && $scope.scenario.scenarioType == 'SYSTEMACTION'){
-		$scope.isSY = true;
-		$('.center-list-title input').attr('disabled',true);
-	}
 };
 
 
