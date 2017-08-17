@@ -287,7 +287,12 @@ function entityDetailCtrl($rootScope,$scope, $state, $stateParams){
 				}else if(data.code == 2){
 					goIndex();
 				}else{
-					if(data.msg){ $.trace(data.msg + "( "+ data.detail +" )","error"); }
+					if(data.msg){ 
+						$.trace(data.msg + "( "+ data.detail +" )","error");
+						$(".save-and-apply .save-text").text("保存并应用");
+						$(".save-and-apply .dim-div").css("display","none");
+						$(".save-and-apply .saveing").css("width","0");
+					}
 				}
 			},error:function(){
 				$.trace("词典更新失败");

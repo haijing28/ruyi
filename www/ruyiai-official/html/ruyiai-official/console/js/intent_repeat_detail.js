@@ -3415,7 +3415,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
         $weixinTextarea.attr("myIndex",index);
         $weixinTextarea.attr("parentIndex",parentIndex);
         if(index == -1){ //如果是新创建的时候，直接点编辑器
-            $("#editor-iframe-box-wechat").html('<iframe id="editor-iframe-wechat" name="editor-iframe-wechat" width="718" height="570" frameborder="0" scrolling="yes" src="../console/editor.html"></iframe>');
+            $("#editor-iframe-box-wechat").html('<iframe id="editor-iframe-wechat" name="editor-iframe-wechat" width="718" height="470" frameborder="0" scrolling="yes" src="../console/editor.html"></iframe>');
             if(!outputTextWeixin || outputTextWeixin.length == 0){//如果助理答此时为空
                 return false;
             }else{
@@ -3432,7 +3432,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
                 }, 20);
             }
         }else{
-            $("#editor-iframe-box-wechat").html('<iframe id="editor-iframe-wechat" name="editor-iframe-wechat" width="718" height="570" frameborder="0" scrolling="yes" src="../console/editor.html"></iframe>');
+            $("#editor-iframe-box-wechat").html('<iframe id="editor-iframe-wechat" name="editor-iframe-wechat" width="718" height="470" frameborder="0" scrolling="yes" src="../console/editor.html"></iframe>');
             $weixinTextarea.val($scope.wechatOutputs[parentIndex][index].property.text);
             var editorWechatContentInterval = setInterval(function(){
                 try 
@@ -3457,7 +3457,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
         $localTextarea.attr("myIndex",index);
         $localTextarea.attr("parentIndex",parentIndex);
         if(index == -1){ //如果是新创建的时候，直接点编辑器
-            $("#editor-iframe-box-local").html('<iframe id="editor-iframe-local" name="editor-iframe-local" width="718" height="570" frameborder="0" scrolling="yes" src="../console/editor.html"></iframe>');
+            $("#editor-iframe-box-local").html('<iframe id="editor-iframe-local" name="editor-iframe-local" width="718" height="470" frameborder="0" scrolling="yes" src="../console/editor.html"></iframe>');
             if(!outputTextLocal || outputTextLocal.length == 0){//如果助理答此时为空
                 return false;
             }else{
@@ -3474,7 +3474,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
                 }, 20);
             }
         }else{
-            $("#editor-iframe-box-local").html('<iframe id="editor-iframe-local" name="editor-iframe-local" width="718" height="570" frameborder="0" scrolling="yes" src="../console/editor.html"></iframe>');
+            $("#editor-iframe-box-local").html('<iframe id="editor-iframe-local" name="editor-iframe-local" width="718" height="470" frameborder="0" scrolling="yes" src="../console/editor.html"></iframe>');
             $localTextarea.val($scope.localOutouts[parentIndex][index].property.text);
             var editorLocalContentInterval = setInterval(function(){
                 try 
