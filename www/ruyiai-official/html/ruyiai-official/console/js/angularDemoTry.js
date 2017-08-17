@@ -90,20 +90,20 @@ function angularDemoTryCtrl($rootScope, $scope, $state, $stateParams){
 	
 	//处理特殊符号
 	$scope.handleSpecialChars = function(inputText){
-		$scope.errorUserSaysTextTry = [];
-		var specialChars = "";
-		if(inputText.indexOf('%') > -1) {
-			specialChars = '%';
-		} else if(inputText.indexOf('"') > -1) {
-			specialChars = '"';
-		}
-		$scope.errorUserSaysTextTry = inputText.split(specialChars);
-		inputText = '';
-		$($scope.errorUserSaysTextTry).each(function(index, ele){
-			if(ele !== ''){
-				inputText += ele;
-			}
-		});
+		// $scope.errorUserSaysTextTry = [];
+		// var specialChars = "";
+		// if(inputText.indexOf('%') > -1) {
+		// 	specialChars = '%';
+		// } else if(inputText.indexOf('"') > -1) {
+		// 	specialChars = '"';
+		// }
+		// $scope.errorUserSaysTextTry = inputText.split(specialChars);
+		// inputText = '';
+		// $($scope.errorUserSaysTextTry).each(function(index, ele){
+		// 	if(ele !== ''){
+		// 		inputText += ele;
+		// 	}
+		// });
 		//		$scope.userSaysTextTry = inputText;
 		return inputText;
 	}
