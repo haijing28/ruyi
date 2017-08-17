@@ -221,7 +221,7 @@ function angularDemoTryCtrl($rootScope, $scope, $state, $stateParams){
 												
 												var list_temp = [];
 												data = dataParse(data);
-					if(data.code == 0){
+												if(data.code == 0){
 													for(var i in data.result.news_item){
 														var object = new Object();
 														object.description = data.result.news_item[i].digest;
@@ -320,7 +320,6 @@ function angularDemoTryCtrl($rootScope, $scope, $state, $stateParams){
 //					success: function(data) {
 //						
 //						data = dataParse(data);
-					if(data.code == 0){
 //							window.open(data.result.down_url);
 //						}
 //					}
@@ -335,7 +334,6 @@ function angularDemoTryCtrl($rootScope, $scope, $state, $stateParams){
 //					success: function(data) {
 //						
 //						data = dataParse(data);
-					if(data.code == 0){
 //							window.open(data.result.news_item[0].url);
 //						}
 //					}
@@ -393,7 +391,6 @@ function angularDemoTryCtrl($rootScope, $scope, $state, $stateParams){
 //					success: function(data) {
 //						
 //						data = dataParse(data);
-					if(data.code == 0){
 //							window.open(data.result.down_url);
 //						}
 //					}
@@ -408,7 +405,6 @@ function angularDemoTryCtrl($rootScope, $scope, $state, $stateParams){
 //					success: function(data) {
 //						
 //						data = dataParse(data);
-					if(data.code == 0){
 //							window.open(data.result.news_item[0].url);
 //						}
 //					}
