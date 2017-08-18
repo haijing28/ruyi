@@ -899,7 +899,8 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 						$scope.scenarioList.splice(i,1);
 						$scope.$apply();
 						if($scope.scenarioList.length > 1){
-							window.location.href = "#/intent_list/" + $scope.scenarioList[1].id;
+							////// [1]
+							window.location.href = "#/intent_list/" + $scope.scenarioList[0].id;
 						}else{
 							window.location.href = "";
 						}
@@ -982,7 +983,8 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 					}
 					if(window.location.href.length - (window.location.href.indexOf(".html") + 5) < 3){
 						if($scope.scenarioList && $scope.scenarioList.length > 1){
-							window.location.href = "#/intent_list/" + $scope.scenarioList[1].id;
+							///// [1]
+							window.location.href = "#/intent_list/" + $scope.scenarioList[0].id;
 						}
 					}
 					$scope.$apply();

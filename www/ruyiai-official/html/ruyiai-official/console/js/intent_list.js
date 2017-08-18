@@ -712,7 +712,7 @@ function intentListCtrl($rootScope,$scope, $state, $stateParams){
 		$this.parent().addClass("open");
 		$("[data-act=nav-intent-"+ current_intentId +"]").addClass("active");
 		var left = this.getBoundingClientRect().left+document.documentElement.scrollLeft;
-		var top = this.getBoundingClientRect().top+document.documentElement.scrollTop - 30;
+		var top = this.getBoundingClientRect().top+document.documentElement.scrollTop - 40;
 		$this.next().css({"left":left,"top":top});
 		
 	});
