@@ -107,7 +107,9 @@ angular.module('wechatApp', ['ionic']).run(function($ionicPlatform) {
  				url : ruyiai_host + "/ruyi-ai/"+ appId +"/transfor/"+ type +"/" + mediaId + "/second",
  				method:"GET",
  				success: function(data) {
- 					data = JSON.parse(data);
+ 					if(typeof data == 'string'){
+						data = JSON.parse(data);
+					}
  					if(data.code == 0){
  						if(fn){
  							fn(data.result);
@@ -299,7 +301,9 @@ angular.module('wechatApp', ['ionic']).run(function($ionicPlatform) {
    				data: demo_input,
    				method : "get",
    				success: function(data) {
-   					data = JSON.parse(data);
+   					if(typeof data == 'string'){
+						data = JSON.parse(data);
+					}
    					processApiResultFunc(data);
    				}
    			});

@@ -24,7 +24,10 @@ templateApp.controller("templateAppCtrl",function($rootScope,$scope){
 			data: demo_input,
 			success: function(data) {
 				try {
-					data = JSON.parse(data);
+					// data = JSON.parse(data);
+					if(typeof data == 'string'){
+						data = JSON.parse(data);
+					}
 					$scope.promptObj = data.prompt;
 					$scope.toSpeak = data.response.to_speak;
 					var uiTemplateObj = data.response.to_display.ui_template;
