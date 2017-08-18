@@ -399,7 +399,10 @@ function intentListCtrl($rootScope,$scope, $state, $stateParams){
 							}else if(data.result[0].intentEventType == 'SYSTEM'){
 								sysActionUrl([$scope.intentList[0].name],true)
 								$scope.isSY = true;
-								setTimeout(() => {
+								// setTimeout(() => {
+								// 	$('.list-group.intent li:first').addClass('active');
+								// },300)
+								setTimeout(function(){
 									$('.list-group.intent li:first').addClass('active');
 								},300)
 							}else{
@@ -444,7 +447,37 @@ function intentListCtrl($rootScope,$scope, $state, $stateParams){
 		});
 	};
 
-	function sysActionUrl([name,scenarioId,intent_id],more = false){
+	// function sysActionUrl([name,scenarioId,intent_id],more = false){
+	// 	var center = '';
+	// 	switch(name){
+	// 		case '订阅欢迎语':
+	// 			center = '/intent_welcome_detail/';
+	// 			break;
+	// 		case '缺省回复':
+	// 			center = '/intent_lost_detail/';
+	// 			break;
+	// 		case '超时回复':
+	// 			center = '/intent_timeout_detail/';
+	// 			break;
+	// 		case '重复多轮回复':
+	// 			center = '/intent_repeat_detail/';
+	// 			break;
+	// 		default: 
+	// 			center = '/intent_welcome_detail/';
+	// 	}
+	// 	if(more){
+	// 		window.location.href = "#/intent_list/" + $stateParams.scenes_id + center + $scope.intentList[0].id;
+	// 		return;
+	// 	}
+	// 	window.location.href = "#/intent_list/" + scenarioId + center + intent_id;
+	// 	return;
+	// }
+
+	function sysActionUrl(arr,more){
+		var name = arr[0],
+			scenarioId = arr[1],
+			intent_id = arr[2];
+		var more = more || false;
 		var center = '';
 		switch(name){
 			case '订阅欢迎语':
