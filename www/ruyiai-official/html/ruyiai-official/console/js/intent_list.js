@@ -466,7 +466,6 @@ function intentListCtrl($rootScope,$scope, $state, $stateParams){
 			window.location.href = "#/intent_list/" + $stateParams.scenes_id + center + $scope.intentList[0].id;
 			return;
 		}
-		//////////////
 		window.location.href = "#/intent_list/" + scenarioId + center + intent_id;
 		return;
 	}
