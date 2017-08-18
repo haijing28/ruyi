@@ -680,7 +680,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 			setTimeout(function(){
 				$($event.target).html(template);
 			}, 2);
-			if(1 == 2){
+			if(isproductDomain){
 				//dataEditedFlag = true;
 				/*根据用户说自动填充意图处理 start*/
 				//var userSysReg = /(@[^:]+):([^ ]+)/g;
