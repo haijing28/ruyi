@@ -4050,7 +4050,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
     $('#repeat_tabs').on('click','li',function(){
         $(this).siblings('.active').removeClass('active');
         $(this).addClass('active');
-        let index = $(this).index();
+        var index = $(this).index();
         localStorage.repeat_tabs_index = index;
     })
     

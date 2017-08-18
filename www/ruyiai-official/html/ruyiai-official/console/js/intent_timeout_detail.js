@@ -258,7 +258,7 @@ function intent_timeout_detail($rootScope,$scope, $state, $stateParams,$sce){
                 data = dataParse(data);
 					if(data.code == 0){
                     $scope.intentDetail = data.result;
-                    let timeoutLimit = $scope.intentDetail.limit;
+                    var timeoutLimit = $scope.intentDetail.limit;
                     timeoutLimit = timeoutLimit || 0;
                     console.log($scope.intentDetail)
                     $('#timeoutSt').val(timeoutLimit + ' ms');
@@ -501,7 +501,7 @@ function intent_timeout_detail($rootScope,$scope, $state, $stateParams,$sce){
         intentDetailTemp = deleteEmptyParametersFunc(intentDetailTemp); //删除空的parameters
         //将空白用户说删除掉 start
         intentDetailTemp.templates = deleteBlankParaFunc(intentDetailTemp.templates);
-         let limit = parseInt($('#timeoutSt').val());
+         var limit = parseInt($('#timeoutSt').val());
          $scope.intentDetail.limit = limit;
         //将空白用户说删除掉 end
         $.ajax({
@@ -4089,7 +4089,7 @@ function intent_timeout_detail($rootScope,$scope, $state, $stateParams,$sce){
                     var changeX = e.clientX;
                     var moveX = m.min(max,m.max(-2,offleft+(changeX-X)));
                     f.input.value = parseInt(m.max(0,moveX / max) * 5000) + ' ms';
-                    let ttt = (parseFloat(f.input.value))/5100 * f.tiaoW +"px";
+                    var ttt = (parseFloat(f.input.value))/5100 * f.tiaoW +"px";
                     f.yuan.style.marginLeft = ttt;
                     f.jindu.style.width = parseInt(f.input.value)/5100 * f.tiaoW +"px";
                     $('#yuan').tooltip('hide');
