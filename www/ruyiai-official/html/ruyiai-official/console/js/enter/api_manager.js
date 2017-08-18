@@ -982,10 +982,10 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 						}
 					}
 					if(window.location.href.length - (window.location.href.indexOf(".html") + 5) < 3){
-						if($scope.scenarioList && $scope.scenarioList.length > 1){
+						// if($scope.scenarioList && $scope.scenarioList.length > 1){
 							///// [1]
 							window.location.href = "#/intent_list/" + $scope.scenarioList[0].id;
-						}
+						// }
 					}
 					$scope.$apply();
 				}else if(data.code == 2){
@@ -1292,20 +1292,20 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 	}
 	
 	$scope.handleSpecialChars = function(inputText){
-		$scope.errorUserSaysTextTry = [];
-		var specialChars = "";
-		if(inputText.indexOf('%') > -1) {
-			specialChars = '%';
-		} else if(inputText.indexOf('"') > -1) {
-			specialChars = '"';
-		}
-		$scope.errorUserSaysTextTry = inputText.split(specialChars);
-		inputText = '';
-		$($scope.errorUserSaysTextTry).each(function(index, ele){
-			if(ele !== ''){
-				inputText += ele;
-			}
-		});
+		// $scope.errorUserSaysTextTry = [];
+		// var specialChars = "";
+		// if(inputText.indexOf('%') > -1) {
+		// 	specialChars = '%';
+		// } else if(inputText.indexOf('"') > -1) {
+		// 	specialChars = '"';
+		// }
+		// $scope.errorUserSaysTextTry = inputText.split(specialChars);
+		// inputText = '';
+		// $($scope.errorUserSaysTextTry).each(function(index, ele){
+		// 	if(ele !== ''){
+		// 		inputText += ele;
+		// 	}
+		// });
 //		$scope.userSaysTextTry = inputText;
 		return inputText;
 	}
