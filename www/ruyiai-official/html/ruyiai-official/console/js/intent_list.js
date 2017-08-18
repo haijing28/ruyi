@@ -169,7 +169,7 @@ function intentListCtrl($rootScope,$scope, $state, $stateParams){
 	//设置意图列表页面，放置的意图数
 	var setIntentListCountFunc = function(){
 		var windowHeight = $(window).height();
-		$scope.pageSize = parseInt((windowHeight - 190)/40);
+		$scope.pageSize = parseInt((windowHeight - 190)/40) - 1;
 		if($scope.setPagingCountFunc){
 			$scope.setPagingCountFunc();
 		}
