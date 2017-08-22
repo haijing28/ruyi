@@ -14,7 +14,9 @@ foodListApp.controller("foodListAppCtrl",function($rootScope,$scope){
 			method : "get",
 			data: demo_input,
 			success: function(data) {
-				data = JSON.parse(data);
+				if(typeof data == 'string'){
+					data = JSON.parse(data);
+				}
 				if(data.code == 0){
 					var intents = data.result.intents;
 					if(intents && intents.length > 0){

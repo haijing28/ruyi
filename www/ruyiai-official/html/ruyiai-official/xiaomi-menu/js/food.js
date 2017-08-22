@@ -76,7 +76,9 @@ foodApp.controller("foodAppCtrl",function($rootScope,$scope){
 			data: demo_input,
 			method : "get",
 			success: function(data) {
-				data = JSON.parse(data);
+				if(typeof data == 'string'){
+					data = JSON.parse(data);
+				}
 				$scope.resultOperatoinFunc(data);
 			}
 		});
