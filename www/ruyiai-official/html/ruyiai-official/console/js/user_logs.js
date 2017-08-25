@@ -433,6 +433,10 @@ function userLogsCtrl($rootScope, $scope, $state, $stateParams) {
 	$scope.correct = function(){
 		console.log(1)
 	}
+
+	$scope.sure_correct = function () {
+		console.log(2)
+	}
 	
 }
 

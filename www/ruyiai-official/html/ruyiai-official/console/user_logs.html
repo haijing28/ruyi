@@ -140,25 +140,17 @@
 					      <img class="media-object" width="20px" ng-src="{{userObject.headimg | headImgFilter}}">
 					   </a>
 					   <div class="media-body" ng-bind="userLog.request.request_params.q"></div>
-					   <!-- <a class='media-wrong' ng-click='correct' href='javascript:void(0)'>语音识别纠错</a> -->
+					   <a class='media-wrong' ng-click='correct' href='javascript:void(0)'>语音识别纠错</a>
 					</div>
-					<!-- <div class="correct">
+					<div class="correct">
 						<p>
 							语音识别（原句）：<span>简单的测试</span>
 						</p>
 						<p>
-							
+							纠正语句（新句）：<span><input type="text" class="correct_input"></span>
 						</p>
-						<dl>
-							<dd>语音识别（原句）：</dd>
-							<dt>简单的测试</dt>
-							<br>
-							<dd>纠正语句（新句）：</dd>
-							<dt>
-								<input type="text" class='correct_input'>
-							</dt>
-						</dl>
-					</div> -->
+						<a href="javascript:void(0)" ng-click='sure_correct'>确定</a>
+					</div>
 					<div class="media answer" style="margin-top:10px;" ng-repeat="outputs in userLog.response.intents[0].outputs">
 					   <a class="pull-left" href="#">
 					      <img class="media-object" ng-if="outputs.type == 'dialog' || outputs.type == 'voice' || outputs.type == 'video' || outputs.type == 'image'"  width="20px" src="img/ruyi-avatar.svg" >
