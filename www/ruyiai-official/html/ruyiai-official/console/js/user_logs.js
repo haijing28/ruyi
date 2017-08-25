@@ -429,6 +429,10 @@ function userLogsCtrl($rootScope, $scope, $state, $stateParams) {
 	$('#lookLogJson').on('shown.bs.modal', function () {
 		$("#lookLogJson .modal-content").scrollTop("0px");
 	});
+
+	$scope.correct = function(){
+		console.log(1)
+	}
 	
 }
 

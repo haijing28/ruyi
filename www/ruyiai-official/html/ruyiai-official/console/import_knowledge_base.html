@@ -16,6 +16,7 @@
 				<ul class="nav nav-tabs" style="margin-top: 10px;" data-act="nav-tabs">
 					<li class="active" data-act="Qa-library"><a>问答库</a></li>
 					<li data-act="entity-library"><a>词典库</a></li>
+					<!-- <li data-act="wrong-library"><a>纠错库</a></li> -->
 				</ul>
 				<div id="myTabContent" class="tab-content">
 					<!-- 问答库 start -->
@@ -151,10 +152,54 @@
 						</ul>	
 					</div>
 					<!-- 词典库 end -->
+					<!-- 纠错库 start-->
+					<div class="tab-pane fade import-faq-entity-pane" id="wrong-library"
+						data-act="response-type">
+						<p style="overflow: hidden; padding: 10px;line-height: 30px;">
+							<input type="text" placeholder="输入用户说回车搜索" class='myinput'>
+							<a href="javascript:void(0)" style="float: right;">
+								模板下载 <i class='glyphicon glyphicon-download-alt'></i>
+							</a>
+						</p>
+						<table class="table table-bordered table-striped table-hover mytable">
+							<tr class='head'>
+								<td>序号</td>
+								<td>语音识别结果</td>
+								<td>实际意图</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>2</td>
+								<td>3</td>
+							</tr>
+						</table>					
+					</div>
+					<!-- 纠错库 end -->
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<style>
+	.mytable .head td{
+		color: #0b7ac3;
+	}
+	.mytable td{
+		text-align: center;
+	}
+	.myinput{
+		padding: 6px 10px;
+	    width: 240px;
+	    border-radius: 4px;
+	    border: 1px solid #dcdddd;
+	}
+	.myinput:focus{
+		border: 1px solid #3794FF
+	}
+	.glyphicon-download-alt{
+		color: #82abc5;
+	}
+</style>
 <!-- <script src="js/jquery.Jcrop.min.js"></script>
 <script src="js/import_knowledge_base.js"></script> -->
