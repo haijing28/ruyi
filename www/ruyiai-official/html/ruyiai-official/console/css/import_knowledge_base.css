@@ -71,13 +71,6 @@
 /* .entity-knowledge-icon:hover{
 	background-color:#eee;
 } */
-#Qa-library table td{
-	padding:0;
-	position:relative;
-}
-#Qa-library table td div{
-	padding:8px;
-}
 .common-paging-box{
 	display:inline-block;
 	margin-top:10px;
@@ -113,18 +106,39 @@
 	width: 150px !important;border-left:1px solid #dcdddd !important;text-align:center !important;
 	padding-left:0 !important;vertical-align:middle !important;
 }
-#Qa-library #query_question{
-	margin: 10px 0 0 0; padding: 6px 10px; width: 240px; border-radius: 4px; border: 1px solid #dcdddd;
-}
-#Qa-library #query_question:focus{
-	border:1px solid #3794FF;
-}
 .questions-answers-help{
 	margin: 0 0 0 16px;
     cursor: pointer;
 }
 .questions-answers-help:hover{
 	color:#3399FF;
+}
+#Qa-library table td{
+	padding:0;
+	position:relative;
+}
+#Qa-library table td div{
+	padding:8px;
+}
+#Qa-library #query_question{
+	margin: 10px 0 0 0; padding: 6px 10px; width: 240px; border-radius: 4px; border: 1px solid #dcdddd;
+}
+#Qa-library #query_question:focus{
+	border:1px solid #3794FF;
+}
+/*纠错库*/
+#correction-qa-library table td{
+	padding:0;
+	position:relative;
+}
+#correction-qa-library table td div{
+	padding:8px;
+}
+#correction-qa-library #correction-query{
+	margin: 10px 0 0 0; padding: 6px 10px; width: 240px; border-radius: 4px; border: 1px solid #dcdddd;
+}
+#correction-qa-library #correction-query:focus{
+	border:1px solid #3794FF;
 }
 
 

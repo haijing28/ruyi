@@ -48,7 +48,6 @@ $(function(){
 		
 		$.ajax({
 			url : api_host + "/v1/tickets",
-			// url : ruyiai_host + "/ruyi-ai/user/login/email",
 			method : "POST",
 			data: {"username": loginEmail.val(), 'password': loginPassword.val()},
             headers: {
@@ -60,6 +59,7 @@ $(function(){
 				
                 var login_environment = "?type=prod_console";
                 var api_host_temp = ruyiai_host;
+                
                 if(window.location.origin.indexOf("test.ruyi.ai") > -1){
                 	api_host_temp = "http://test.ruyi.ai:8080";
                 	login_environment = "?type=local_console";
@@ -77,7 +77,6 @@ $(function(){
                 
 				if(localStorage.service == undefined){
 					//////// 要修改成相对路径
-					// localStorage.service = 'http://lab.ruyi.ai/ruyiai-official/app_manager.html';
 					localStorage.service = api_host_temp;			
 				}
 				
@@ -91,7 +90,6 @@ $(function(){
 	                },
 	                success: function(data, status, xhr) {
 	                	// 跳转回未登录之前浏览的界面
-	                	// window.location = localStorage.service;
 	                	localStorage.ruyi_tk = xhr.responseText;
 	                	setCookie('tgt', tgt);
 	                	setCookie('email',$('#login-email').val());

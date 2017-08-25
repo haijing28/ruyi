@@ -289,7 +289,7 @@
 				            	<div class="add-prompts" ng-show="parameter.required && parameter.name" data-toggle="modal" data-target="#addPrompts" ng-click="editPromptsList($index)">添加提示语</div>
 				            	<div ng-show="!parameter.required || !parameter.name">-</div>
 				            </td>
-				            <td><input type="text" ng-focus="commonIntentDetailFocus(parameter.defaultValue)" class="form-control" data-act="user-intent-defaultValue-update" ng-blur="addParamentDefaultValueFunc(parameter.defaultValue,$index)" placeholder="默认值" ng-model="parameter.defaultValue"/></td>
+				            <td><textarea style="border: 0px; box-shadow: none; padding-left: 10px; text-align: center; max-height: 30px;resize:none;" type="text" ng-focus="commonIntentDetailFocus(parameter.defaultValue)" class="form-control" data-act="user-intent-defaultValue-update" ng-blur="addParamentDefaultValueFunc(parameter.defaultValue,$index)" placeholder="默认值" ng-model="parameter.defaultValue"/></td>
 				            <td><i class="copy iconfont icon-copy" ng-click="copyParamentFunc($index)" data-toggle="tooltip" data-placement="bottom" title="复制"></i></td>
 				            <td><i class="delete iconfont icon-delete" ng-click="deleteParamentFunc($index)" data-toggle="tooltip" data-placement="bottom" title="删除"></i></td>
 				         </tr>
