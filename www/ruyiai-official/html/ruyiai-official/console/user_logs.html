@@ -140,6 +140,16 @@
 					      <img class="media-object" width="20px" ng-src="{{userObject.headimg | headImgFilter}}">
 					   </a>
 					   <div class="media-body" ng-bind="userLog.request.request_params.q"></div>
+					   <a class='media-wrong' ng-click='correct' href='javascript:void(0)'>语音识别纠错</a>
+					</div>
+					<div class="correct">
+						<p>
+							语音识别（原句）：<span>简单的测试</span>
+						</p>
+						<p>
+							纠正语句（新句）：<span><input type="text" class="correct_input"></span>
+						</p>
+						<a href="javascript:void(0)" ng-click='sure_correct'>确定</a>
 					</div>
 					<div class="media answer" style="margin-top:10px;" ng-repeat="outputs in userLog.response.intents[0].outputs">
 					   <a class="pull-left" href="#">
@@ -274,6 +284,25 @@
 .rating-container .rating-stars{
 	color: #ffb800 !important;
     font-family: "Glyphicons Halflings";
+}
+.media-wrong{
+	float: right;
+    margin-top: -25px;
+    border: 1px solid #ccc;
+    padding: 3px 7px;
+    font-size: 12px;
+    background: red;
+    color: white;
+}
+.correct{
+	border: 1px solid #ccc;
+	border-width: 1px 0;
+	background-color: #f5f7f7;
+	padding: 10px 8px;
+}
+.correct_input{
+	border: none;
+	border-bottom: 1px solid #ccc;
 }
 </style>
 <!-- <link rel="stylesheet" type="text/css" href="css/star-rating.min.css"> -->
