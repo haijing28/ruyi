@@ -11,6 +11,7 @@ if(window.location.href.indexOf("ruyiai-official/test") > -1){
 	static_host = "http://lab.ruyi.ai/ruyiai-official";
 	isproductDomain = false;
 }
+var correction_host = "http://test.ruyi.ai:3333/";
 var api_host = "https://api.ruyi.ai/sso";
 if(!isproductDomain){
 	api_host = "http://lab.ruyi.ai/sso";

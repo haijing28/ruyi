@@ -280,6 +280,9 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 		$this.closest("tr").find(".trash-icon").css("display","none");
 		setTimeout(function(){
 			var dataType = $this.closest(".questions-answers-parent").attr("data-type");
+			if(dataType == "oldQuestion"){
+				return false;
+			}
 			var dataId = $this.closest("tr").attr("data-id");
 			var operation_panel_width = $this.parent().outerWidth() + 40;
 			var positionTop = $this.position().top - 20;
@@ -331,27 +334,41 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 		var dataType = $this.closest(".questions-answers-panel").attr("data-type");
 		var $content = $this.parent(".questions-answers-panel").find(".questions-answers-content");
 		var content = $content.html();
+		console.log("===具体情况=========");
+		console.log(dataId,dataType,content);
 		content = $.trim(content).replace(/&nbsp;+/g,"");
 		if(!content || content.length == 0){
-			if(dataType == "question"){
-				$.trace("用户说不能为空");
-			}else if(dataType == "answer"){
-				$.trace("机器人答不能为空");
-			}
+//			if(dataType == "question"){
+//				$.trace("用户说不能为空");
+//			}else if(dataType == "answer"){
+//				$.trace("机器人答不能为空");
+//			}
+			$.trace("内容不能为空");
 			$content.focus();
 			return false;
 		}
-		for(var i in $scope.faqImportLogList){
-			if(dataId == $scope.faqImportLogList[i].id){
-				if(dataType == "question"){
-					$scope.faqImportLogList[i].question = content;
-				}else if(dataType == "answer"){
-					$scope.faqImportLogList[i].answer = content;
+		if(dataType == "question" || dataType == "answer"){
+			for(var i in $scope.faqImportLogList){
+				if(dataId == $scope.faqImportLogList[i].id){
+					if(dataType == "question"){
+						$scope.faqImportLogList[i].question = content;
+					}else if(dataType == "answer"){
+						$scope.faqImportLogList[i].answer = content;
+					}
+					$scope.updateFaqFunc($scope.faqImportLogList[i]);
+					break;
 				}
-				$scope.updateFaqFunc($scope.faqImportLogList[i]);
-				break;
+			}
+		}else if(dataType == "oldQuestion" || dataType == "newQuestion"){
+			for(var i in $scope.correctImportLogList){
+				if(dataId == $scope.correctImportLogList[i].id){
+					$scope.correctImportLogList[i].correctionSentence = content;
+					$scope.updateCorrectionFunc($scope.correctImportLogList[i]);
+					break;
+				}
 			}
 		}
+		
 		$scope.$apply();
 		$this.closest(".questions-answers-panel").fadeOut(500,function(){
 			$this.closest(".questions-answers-panel").remove();
@@ -424,7 +441,7 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 					$scope.$apply();
 					//显示分页
 					var totalPage = resultObj.totalPage;
-					showPagesHtml(faqPageNo,totalPage);
+					showPagesHtml(faqPageNo,totalPage,"common-paging-box");
 					setTimeout(function(){
 						//设置页面高度
 						setQuestionsAnswersTable();
@@ -510,7 +527,7 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 	}
 	
 	//展示分页
-	var showPagesHtml = function(pageNo,total){
+	var showPagesHtml = function(pageNo,total,faqTypeStr){
 		if(total > 1){
 			var pageList = showPages(pageNo,total).split(' ');
 			var pageListStr = ""; 
@@ -521,9 +538,11 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 					pageListStr += "<li class='pull-left'>"+pageList[i] + "</li>";
 				}
 			}
-			$(".common-paging-box").html("").append(pageListStr);
+			console.log("pageListStr");
+			console.log(pageListStr);
+			$("."+faqTypeStr).html("").append(pageListStr);
 		}else{
-			$(".common-paging-box").html("");
+			$("."+faqTypeStr).html("");
 		}
 	}
 	
@@ -562,6 +581,196 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 		var $this = $(this);
 		$this.find(".trash-icon").css("display","none");
 	});
+	
+	
+	
+	
+	
+	
+	
+	
+	/////////纠错问答对 strt//////////////////
+	/*纠错问答对导入 start **/
+	
+	
+	/*问答对的导入导出 start**/
+	var correcPageSize = 10;
+	var correcPageNo = 1;
+	//查询问答对列表
+	function queryCorrectList(correcPageSize,correcPageNo){
+		var correction_query = $("#correction-query").val();
+		$.ajax({
+			url: correction_host + "agents/" + appId + "/SentenceCorrection/",
+			data:{"size":correcPageSize,"page": correcPageNo,"query":correction_query},
+			method: "GET",
+			success: function(data){
+				data = dataParse(data);
+				$scope.correctImportLogList = data.resultList;
+				$scope.$apply();
+				//显示分页
+				var totalPage = parseInt((data.count / correcPageSize)) + 1;
+				showPagesHtml(correcPageNo,totalPage,"correct-common-paging-box");
+				setTimeout(function(){
+					//设置页面高度
+					setQuestionsAnswersTable();
+				}, 300);
+				
+//				data = dataParse(data);
+//				if(data.code == 0){
+//					var resultObj = data.result;
+//					var resultObj = '{ "hits": [ { "question": "晚安", "answer": "晚安，做个好梦！", "id": "AV4UbH4T7SsidbP9A1Na" }, { "question": "晚安", "answer": "晚安，睡个好觉！", "id": "AV4UbH4T7SsidbP9A1Nb" }, { "question": "你好", "answer": "好呀!", "id": "AV4UbH4T7SsidbP9A1Nd" }, { "question": "怎么联系你们", "answer": "请关注艾如意宝宝。", "id": "AV4UbH4T7SsidbP9A1Ne" }, { "question": "晚安", "answer": "晚安，好梦啦", "id": "AV4UbH4T7SsidbP9A1Nc" }, { "question": "你个傻x", "answer": "听你这么说，我好伤心哦", "id": "AVue2JwL7SsidbP98mAC" }, { "question": "晚安", "answer": "晚安，好梦啦", "id": "AVue2JwL7SsidbP98mAB" }, { "question": "蠢猪一只，不想和你说话了", "answer": "听你这么说，我好伤心哦", "id": "AVue2JwL7SsidbP98l_-" }, { "question": "用户说", "answer": "机器人答", "id": "AVue2JwL7SsidbP98l__" }, { "question": "你真笨", "answer": "听你这么说，我好伤心哦", "id": "AVue2JwL7SsidbP98mAA" } ], "totalSize": 47, "size": 10, "totalPage": 5, "currentPage": 1 }';
+//					resultObj = JSON.parse(resultObj);
+//					
+//					$scope.correctImportLogList = resultObj.hits;
+//					$scope.$apply();
+//					//显示分页
+//					var totalPage = resultObj.totalPage;
+//					showPagesHtml(correcPageNo,totalPage,"correct-common-paging-box");
+//					setTimeout(function(){
+//						//设置页面高度
+//						setQuestionsAnswersTable();
+//					}, 300);
+//				}else if(data.code == 2){
+//					goIndex();
+//				}else{
+//				}
+			}
+		});
+	}
+	queryCorrectList(correcPageSize ,correcPageNo);
+	/*问答对的导入导出 end**/
+	
+	$("body").off("click",".correct-common-paging-box li").on("click",".correct-common-paging-box li",function(event){
+		var $this = $(this);
+		var activePageNo  = $(".correct-common-paging-box li.active").html(); 
+		var pageNo = $this.html();
+		if(pageNo == "..."){
+			return false;
+		}else if(pageNo == "上一页"){
+			pageNo = parseInt(activePageNo) - 1;
+		}else if(pageNo == "下一页"){
+			pageNo = parseInt(activePageNo) + 1;
+		}else{
+			pageNo = parseInt(pageNo);
+		}
+		queryCorrectList(faqPageSize,pageNo);
+	});
+	
+	$("body").off("click","#importCorrectionFaqKnowledgeBaseButton").on("click","#importCorrectionFaqKnowledgeBaseButton",function(event){
+		$("[data-act=chooseImportCorrectionFaqInput]").trigger("click");
+	});
+	
+	$("body").off("change","[data-act=chooseImportCorrectionFaqInput]").on("change","[data-act=chooseImportCorrectionFaqInput]",function(event){
+		var formData = new FormData($("#importCorrectionFaqKnowledgeBaseForm")[0]);  
+		$.ajax({  
+			url: ruyiai_host + "/ruyi-ai/sentenceCorrection/import/" + appId,
+			type: 'POST',  
+			data: formData,  
+			async: false,  
+			cache: false,  
+			contentType: false,  
+			processData: false,  
+			success: function (data) {
+				data = dataParse(data);
+				if(data.code == 0){
+					result = dataParse(data.result);
+					if(result.status == 200){
+						$.trace("导入成功");
+						setTimeout(function(){
+							queryCorrectList(correcPageSize ,1);
+						}, 3000);
+					}else{
+						$.trace("导入出现异常");
+					}
+				}
+//				if(data.code == 0){
+//					$("[data-act=chooseImportCorrectionFaqInput]").val("");
+//					setTimeout(function(){
+//						queryCorrectList(correcPageSize,1); //更新纠错列表页面
+//					}, 1000);
+//					$.trace("总共"+data.result.totalCount+"个，成功导入"+data.result.successCount+"个，失败"+data.result.errorCount+"个","success");
+//				}else if(data.code == 2){
+//					goIndex();
+//				}else{
+//					if(data.msg){ $.trace(data.msg + "( "+ data.detail +" )","error"); }
+//				}
+			},  
+			error: function (data) {  
+			}  
+		});
+	});
+	
+	$scope.deleteCorrectFaqFunc = function(dataId){
+		console.log("delete dataId:" + dataId);
+		var dataIdList = [{"id":dataId}];
+		$.ajax({
+			url: correction_host + "agents/"+ appId +"/SentenceCorrection/",
+			method: "DELETE",
+			traditional: true,
+			headers: {"Content-Type" : "application/json"},
+			data:JSON.stringify(dataIdList),
+			success: function(data){
+				data = dataParse(data);
+				console.log("response data:" + JSON.stringify(data));
+				if(data.status == 200){
+					for(var i in $scope.correctImportLogList){
+						if(dataId == $scope.correctImportLogList[i].id){
+							$scope.correctImportLogList.splice(i,1);
+							break;
+						}
+					}
+					$scope.$apply();
+					//如果删除到最后，则从新查询10个
+					if($scope.correctImportLogList.length <= 1){
+						setTimeout(function(){
+							queryCorrectList(correcPageSize,1);
+						},2000);
+					}
+				}
+//				if(data.code == 0){
+//					for(var i in $scope.faqImportLogList){
+//						if(dataId == $scope.faqImportLogList[i].id){
+//							$scope.faqImportLogList.splice(i,1);
+//							break;
+//						}
+//					}
+//					$scope.$apply();
+//					//如果删除到最后，则从新查询10个
+//					if($scope.faqImportLogList.length <= 1){
+//						queryFaqList(faqPageSize,1);
+//					}
+//				}else if(data.code == 2){
+//					goIndex();
+//				}
+			}
+		});
+	}
+	
+	//修改faq数据
+	$scope.updateCorrectionFunc = function(correctionObj){
+		$.ajax({
+			url: correction_host + "agents/"+ appId +"/SentenceCorrection/"+ correctionObj.id +"/",
+			data: JSON.stringify(correctionObj),
+			traditional: true,
+			headers: {"Content-Type" : "application/json"},
+			method: "POST",
+			success: function(data){
+				data = dataParse(data);
+//				if(data.code == 0){
+//				}else if(data.code == 2){
+//					goIndex();
+//				}else{
+//				}
+			}
+		});
+	}
+	
+	
+	/*纠错问答对导入 end **/
+	/////////纠错问答对 end///////////////////
+	
+	
+	
 	
 };
 

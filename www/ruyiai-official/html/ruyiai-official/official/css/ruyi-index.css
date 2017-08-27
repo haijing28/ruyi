@@ -1065,13 +1065,13 @@ background-color: #3794FF;
 
 @media only screen and (min-width: 1300px) {
     .robot-picture{
-        width:350px;
+        width:420px;
     }
     .brief-introduce{
         margin-top: 90px;
     }
     .robot-text{
-        right:150px;
+        right:130px;
         top:30px;
     }
     /*.message{
