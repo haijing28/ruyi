@@ -32,29 +32,33 @@
         text-align: center;
         margin-bottom: 50px;
         margin-top: 50px;
-        font-size: 28px;
+        font-size: 26px;
     }
     .my_bannber p,.my_bannber li{
-        font-size: 18px;
+        font-size: 16px;
         text-align: left;
-        line-height: 1.7;
+        line-height: 1.9;
     }
     .mytable .th {
-        font-size: 20px;
+        font-size: 17px;
         color: #8e7e7e;
     }
     .mytable th{
         font-weight: bold;
         color: #333;
-        font-size: 22px;
+        font-size: 19px;
     }
     .mytable h3{
         margin-bottom: 10px;
     }
-    .mytable h3,li{
-        font-size: 18px;
+    .mytable h3{
+        font-size: 16px;
         color: #8e7e7e;
         line-height: 1;
+    }
+    .mytable li{
+        color: #655858;
+        font-size: 16px;
     }
     .mytable tr td:nth-child(2),.mytable tr th:nth-child(2){
         text-align: right;
@@ -63,14 +67,35 @@
         width: 30px;
         cursor: pointer;
     }
-    .tr_hide{
+    .mytable .tr_hide{
         display: none;
     }
     .navbar-collapse a{
         font-size: 14px;
     }
-    .otherH{
+    .mytable .otherH{
         margin-top: 50px;
+    }
+    .mytable tr:not(.tr_hide){
+        cursor: pointer;
+    }
+    .mystate{
+        margin-top: 100px !important;
+    }
+    .toggleBtn{
+        background-image: url(./img/hide_left.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 20px;
+    }
+    .us_email{
+        margin-top: 20px;
+        font-weight: bold;
+    }
+    .us_email a{
+        color: #3d96fc;
+        margin-left: 20px;
+        text-decoration: underline;
     }
     @media screen and (max-width: 768px){
         .mytable td h3,.my_bannber p,.my_bannber li,.mytable th,.mytable td{
@@ -80,10 +105,10 @@
             width: 90%;
         }
         .my_bannber h1{
-            margin: 10px auto;
+            margin: 17px auto;
         }
-        .my_bannber h1:last{
-            margin-bottom: 0;
+        .mystate{
+            margin-top: 80px !important;
         }
         .my_bannber p{
             text-indent: 1em;
@@ -172,7 +197,10 @@
                <li>5、扁平化管理:硅谷工作方式、氛围轻松、弹性工作等人性化管理;</li>
                <li>6、超多福利:具有竞争力的薪资、年终奖金激励、午餐补贴、节假日礼品、结婚生育补贴、带薪年假病假、定期团建娱乐活动;</li>
            </ul>
-           <h1>岗位列表</h1>
+           <p class="us_email">
+               hr邮箱地址: <a target="_blank" href="https://mail.qq.com/cgi-bin/loginpage">hr@ruyi.ai</a>
+           </p>
+           <h1 class="mystate">岗位列表</h1>
            <table class="table mytable">
                <thead>
                   <tr>
@@ -185,7 +213,7 @@
                   <tr class="th">
                      <td>开发工程师 - 自然语言处理</td>
                      <td>北京/上海</td>
-                     <td class="toggleBtn"><</td>
+                     <td class="toggleBtn"></td>
                   </tr>
                   <tr class="tr_hide">
                      <td colspan="3">
@@ -218,7 +246,7 @@
                   <tr class="th">
                      <td>开发工程师 - 知识图谱</td>
                      <td>北京</td>
-                     <td class="toggleBtn"><</td>
+                     <td class="toggleBtn"></td>
                   </tr>
                   <tr class="tr_hide">
                      <td colspan="3">
@@ -251,7 +279,7 @@
                   <tr class="th">
                      <td>开发工程师 - 机器学习</td>
                      <td>北京/上海</td>
-                     <td class="toggleBtn"><</td>
+                     <td class="toggleBtn"></td>
                   </tr>
                   <tr class="tr_hide">
                      <td colspan="3">
@@ -283,7 +311,7 @@
                   <tr class="th">
                      <td>智能金融</td>
                      <td>北京</td>
-                     <td class="toggleBtn"><</td>
+                     <td class="toggleBtn"></td>
                   </tr>
                   <tr class="tr_hide">
                      <td colspan="3">
@@ -313,7 +341,7 @@
                   <tr class="th">
                      <td>问答系统</td>
                      <td>北京/上海</td>
-                     <td class="toggleBtn"><</td>
+                     <td class="toggleBtn"></td>
                   </tr>
                   <tr class="tr_hide">
                      <td colspan="3">
@@ -338,6 +366,9 @@
                              <li>5、有强烈的自我提升和自我实现欲望。</li>
                          </ul>
                      </td>
+                  </tr>
+                  <tr>
+                      <td colspan="3"></td>
                   </tr>
                </tbody>
             </table>
@@ -419,10 +450,17 @@
     <script type="text/javascript" src="js/common.js"></script>
     <script type="text/javascript" src="official/js/ruyi-index.js"></script>
     <script>
-        $('.mytable').on('click','.toggleBtn',function(){
-            let tr = $(this).parent().next();
-            let txt = $(this).text() == '<' ? 'x' : '<';
-            $(this).text(txt)
+        $('.mytable').on('click','tr',function(){
+            let tr = $(this).next();
+            let url = 'url(./img/hide_down.svg)';
+            if(tr.hasClass('tr_hide')){
+                console.log($(this).find('.toggleBtn'))
+                url = 'url(./img/hide_down.svg)';
+                $(this).find('.toggleBtn').css('background-image',url);
+            }else{
+                url = 'url(./img/hide_left.svg)'
+                $(this).find('.toggleBtn').css('background-image',url);
+            }
             tr.toggleClass('tr_hide');
         })
     </script>
