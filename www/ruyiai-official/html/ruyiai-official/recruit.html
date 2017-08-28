@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ruyi.ai个性化聊天机器人开放技术平台-艾如意宝宝</title>
+<meta name="keywords"
+    content="自然语言理解，语义分析，人工智能，智能音箱，智能玩具，智能机器人，智能客服，知识图谱，个性化聊天机器人">
+<meta name="description"
+    content="海知智能（ruyi.ai)）提供个性化聊天机器人开放技术平台，即自然语言理解和开放知识图谱的技术接口，为智能硬件、机器人以及微信公众号、移动应用等提供语义API&SDK，创建各自的机器人“大脑”，能够和最终用户以人类最自然的沟通方式进行交互。公司的使命是“人人会做机器人”，愿景是”人人能有机器人”">
+<link href="https://at.alicdn.com/t/font_mei6hbieejgd5cdi.css"
+    rel="stylesheet">
+<link
+    href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css"
+    rel="stylesheet">
+<link href="https://cdn.bootcss.com/Swiper/3.4.0/css/swiper.min.css"
+    rel="stylesheet">
+<link href="https://dn-vbuluo-static.qbox.me/animate.min.css"
+    rel="stylesheet">
+<link href="//at.alicdn.com/t/font_melhdkhpn4uz0k9.css" rel="stylesheet">
+<link href="official/css/ruyi-index.css" rel="stylesheet">
+
+<style>
+    .my_bannber{
+        width: 70%;
+        margin: 0 auto;
+        margin-top: 50px;
+    }
+    .my_bannber h1{
+        text-align: center;
+        margin-bottom: 50px;
+        margin-top: 50px;
+        font-size: 28px;
+    }
+    .my_bannber p,.my_bannber li{
+        font-size: 18px;
+        text-align: left;
+        line-height: 1.7;
+    }
+    .mytable .th {
+        font-size: 20px;
+        color: #8e7e7e;
+    }
+    .mytable th{
+        font-weight: bold;
+        color: #333;
+        font-size: 22px;
+    }
+    .mytable h3{
+        margin-bottom: 10px;
+    }
+    .mytable h3,li{
+        font-size: 18px;
+        color: #8e7e7e;
+        line-height: 1;
+    }
+    .mytable tr td:nth-child(2),.mytable tr th:nth-child(2){
+        text-align: right;
+    }
+    .mytable tr td:nth-child(3){
+        width: 30px;
+        cursor: pointer;
+    }
+    .tr_hide{
+        display: none;
+    }
+    .navbar-collapse a{
+        font-size: 14px;
+    }
+    @media screen and (max-width: 768px){
+        .my_bannber{
+            width: 90%;
+        }
+        .my_bannber h1{
+            margin: 10px auto;
+        }
+        .my_bannber h1:last{
+            margin-bottom: 0;
+        }
+        .my_bannber p{
+            font-size: 15px !important;
+            text-indent: 1em;
+            margin-bottom: 10px;
+        }
+        .my_bannber li{
+            font-size: 15px;
+        }
+        .mytable th,.mytable td{
+            font-size: 15px;
+        }
+        .mytable td h3{
+            font-size: 15px !important;
+            color: #a28a8a;
+        }
+    }
+</style>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?f7ec6bda1ae48b34de486984c876bcd7";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+
+<body>
+    <header class="top-bar clearfix">
+        <div class="version clearfix col-xs-3 col-sm-3 col-md-3">
+            <a href="#"><i class="logo iconfont icon-ruyi"></i></a>
+        </div>
+        <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse"
+                        data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span> <span
+                            class="icon-bar"></span> <span class="icon-bar"></span> <span
+                            class="icon-bar"></span>
+                    </button>
+                    <!-- <a href="../" class="navbar-brand">社区</a> -->
+                </div>
+                <div class="navbar-collapse navbar-ex1-collapse collapse"
+                    id="header" role="navigation">
+                    <ul class="nav navbar-nav navbar-right option-list">
+                        <li class="myHome"><a href="javascript:void(0)">首页</a></li>
+                        <!-- <li class=""><a href="">社区</a></li> -->
+                        <!-- <li class=""><a href="http://blog.ruyi.ai/" target="_blank">博客</a></li> -->
+                        <li class="recruit"><a class="current" href="javascript:void(0)">招聘</a></li>
+                        <li class="sign-in" id="nav-mylogin" style="display: none;"><a
+                            href="base/login.html">登录</a></li>
+                        <li class="sign-up" id="nav-register" style="display: none;"><a
+                            href="base/invite-code.html"
+                            style="background-color: #3D96FC; color: #fff !important;">注册</a></li>
+                        <li role="presentation" id="nav-user-info" style="display: none;">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown" id="fat-menu"><a
+                                    style="margin-top: -8px;" aria-expanded="true"
+                                    aria-haspopup="true" role="button" data-toggle="dropdown"
+                                    class="dropdown-toggle" href="#" id="drop3"> <span
+                                        data-act="myemail"></span><span class="caret"></span>
+                                </a>
+                                    <ul aria-labelledby="drop3"
+                                        class="dropdown-menu user-action-box"
+                                        style="border-radius: 0; font-size: 18px; padding: 0; border: none;">
+                                        <li><a data-toggle="modal" data-target="#appkey" href="#"
+                                            id="appkey-manager">机器人列表</a></li>
+                                        <li><a href="#" data-toggle="modal"
+                                            data-target="#change-password">修改密码</a></li>
+                                        <li><a href="#" id="mylogout">退出登录</a></li>
+                                    </ul></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="main-box">
+        <section class="banner-area my_bannber">
+           <h1>加入我们</h1>
+           <p>人工智能的浪潮已经席卷而来,这场堪比“第四次工业革命”的技术,将推动各行业都发生颠覆性的改变。如果你想亲自参与这场革命,那就加入 我们吧,梦想从未远行。</p>
+           <ul>
+               <li>1、优秀团队共事:业界领先的科学家和技术专家共事和学习;</li>
+               <li>2、成长空间大:自主发挥空间大,职业成长不设限;</li>
+               <li>3、项目合作经历:与领域领军产品供应商的项目合作的经历,业界顶尖项目的开发经历。</li>
+               <li>4、工业实践与学术研究兼顾:与国内一流高校实验室联合培养的机会,优秀成果鼓励发表顶级论文。</li>
+               <li>5、扁平化管理:硅谷工作方式、氛围轻松、弹性工作等人性化管理;</li>
+               <li>6、超多福利:具有竞争力的薪资、年终奖金激励、午餐补贴、节假日礼品、结婚生育补贴、带薪年假病假、定期团建娱乐活动;</li>
+           </ul>
+           <h1>岗位列表</h1>
+           <table class="table mytable">
+               <thead>
+                  <tr>
+                     <th>职位名称</th>
+                     <th>工作地点</th>
+                     <th></th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr class="th">
+                     <td>开发工程师 - 自然语言处理</td>
+                     <td>北京/上海</td>
+                     <td class="toggleBtn"><</td>
+                  </tr>
+                  <tr class="tr_hide">
+                     <td colspan="3">
+                         <h3 style="margin-top: 10px;">职位描述:</h3>
+                         <ul>
+                             <li>1、应用自然语言处理技术实现实体识别、意图识别、情感分析等对话系统中的相关工作</li>
+                             <li>2、应用文本挖掘技术实现文本聚类分类,知识提取、知识图谱构建等研发工作</li>
+                         </ul>
+                         <h3 style="margin-top: 50px;">希望你具备:</h3>
+                         <ul>
+                             <li>1、计算机、统计学相关专业本科以上学历,1年以上相关的实习或工作经验;</li>
+                             <li>2、熟悉自然语言处理、文本挖掘的关键技术,有中文NLP经验者优先;</li>
+                             <li>3、了解自然语言处理的基本算法与概念,如:分词,词性标注等;</li>
+                             <li>4、熟练使用以下编程语言中的至少一种:Java, C++;</li>
+                             <li>5、熟练使用以下脚本语言中的至少一种:Python, Perl, R等;</li>
+                             <li>6、熟练使用以下深度学习框架中的至少一种:TensorFlow, Keras等;</li>
+                             <li>7、良好的编程能力、算法设计能力,具备大规模语料数据处理经验者优先;</li>
+                             <li>8、有较强的分析问题解决问题能力, 良好的沟通能力和团队协作精神;</li>
+                             <li>9、有开源项目经验优先</li>
+                         </ul>
+                     </td>
+                  </tr>
+                  <tr class="th">
+                     <td>开发工程师 - 知识图谱</td>
+                     <td>北京</td>
+                     <td class="toggleBtn"><</td>
+                  </tr>
+                  <tr class="tr_hide">
+                     <td colspan="3">
+                         <h3 style="margin-top: 10px;">职位描述:</h3>
+                         <ul>
+                             <li>1、应用自然语言处理技术实现实体识别、意图识别、情感分析等对话系统中的相关工作</li>
+                             <li>2、应用文本挖掘技术实现文本聚类分类,知识提取、知识图谱构建等研发工作</li>
+                         </ul>
+                         <h3 style="margin-top: 50px;">希望你具备:</h3>
+                         <ul>
+                             <li>1、计算机、统计学相关专业本科以上学历,1年以上相关的实习或工作经验;</li>
+                             <li>2、熟悉自然语言处理、文本挖掘的关键技术,有中文NLP经验者优先;</li>
+                             <li>3、了解自然语言处理的基本算法与概念,如:分词,词性标注等;</li>
+                             <li>4、熟练使用以下编程语言中的至少一种:Java, C++;</li>
+                             <li>5、熟练使用以下脚本语言中的至少一种:Python, Perl, R等;</li>
+                             <li>6、熟练使用以下深度学习框架中的至少一种:TensorFlow, Keras等;</li>
+                             <li>7、良好的编程能力、算法设计能力,具备大规模语料数据处理经验者优先;</li>
+                             <li>8、有较强的分析问题解决问题能力, 良好的沟通能力和团队协作精神;</li>
+                             <li>9、有开源项目经验优先</li>
+                         </ul>
+                     </td>
+                  </tr>
+                  <tr class="th">
+                     <td>开发工程师 - 机器学习</td>
+                     <td>北京/上海</td>
+                     <td class="toggleBtn"><</td>
+                  </tr>
+                  <tr class="tr_hide">
+                     <td colspan="3">
+                         <h3 style="margin-top: 10px;">职位描述:</h3>
+                         <ul>
+                             <li>1、应用自然语言处理技术实现实体识别、意图识别、情感分析等对话系统中的相关工作</li>
+                             <li>2、应用文本挖掘技术实现文本聚类分类,知识提取、知识图谱构建等研发工作</li>
+                         </ul>
+                         <h3 style="margin-top: 50px;">希望你具备:</h3>
+                         <ul>
+                             <li>1、计算机、统计学相关专业本科以上学历,1年以上相关的实习或工作经验;</li>
+                             <li>2、熟悉自然语言处理、文本挖掘的关键技术,有中文NLP经验者优先;</li>
+                             <li>3、了解自然语言处理的基本算法与概念,如:分词,词性标注等;</li>
+                             <li>4、熟练使用以下编程语言中的至少一种:Java, C++;</li>
+                             <li>5、熟练使用以下脚本语言中的至少一种:Python, Perl, R等;</li>
+                             <li>6、熟练使用以下深度学习框架中的至少一种:TensorFlow, Keras等;</li>
+                             <li>7、良好的编程能力、算法设计能力,具备大规模语料数据处理经验者优先;</li>
+                             <li>8、有较强的分析问题解决问题能力, 良好的沟通能力和团队协作精神;</li>
+                             <li>9、有开源项目经验优先</li>
+                         </ul>
+                     </td>
+                  </tr>
+                  <tr class="th">
+                     <td>智能金融</td>
+                     <td>北京</td>
+                     <td class="toggleBtn"><</td>
+                  </tr>
+                  <tr class="tr_hide">
+                     <td colspan="3">
+                         <h3 style="margin-top: 10px;">职位描述:</h3>
+                         <ul>
+                             <li>1、应用自然语言处理技术实现实体识别、意图识别、情感分析等对话系统中的相关工作</li>
+                             <li>2、应用文本挖掘技术实现文本聚类分类,知识提取、知识图谱构建等研发工作</li>
+                         </ul>
+                         <h3 style="margin-top: 50px;">希望你具备:</h3>
+                         <ul>
+                             <li>1、计算机、统计学相关专业本科以上学历,1年以上相关的实习或工作经验;</li>
+                             <li>2、熟悉自然语言处理、文本挖掘的关键技术,有中文NLP经验者优先;</li>
+                             <li>3、了解自然语言处理的基本算法与概念,如:分词,词性标注等;</li>
+                             <li>4、熟练使用以下编程语言中的至少一种:Java, C++;</li>
+                             <li>5、熟练使用以下脚本语言中的至少一种:Python, Perl, R等;</li>
+                             <li>6、熟练使用以下深度学习框架中的至少一种:TensorFlow, Keras等;</li>
+                             <li>7、良好的编程能力、算法设计能力,具备大规模语料数据处理经验者优先;</li>
+                             <li>8、有较强的分析问题解决问题能力, 良好的沟通能力和团队协作精神;</li>
+                             <li>9、有开源项目经验优先</li>
+                         </ul>
+                     </td>
+                  </tr>
+                  <tr class="th">
+                     <td>问答系统</td>
+                     <td>北京/上海</td>
+                     <td class="toggleBtn"><</td>
+                  </tr>
+                  <tr class="tr_hide">
+                     <td colspan="3">
+                         <h3 style="margin-top: 10px;">职位描述:</h3>
+                         <ul>
+                             <li>1、应用自然语言处理技术实现实体识别、意图识别、情感分析等对话系统中的相关工作</li>
+                             <li>2、应用文本挖掘技术实现文本聚类分类,知识提取、知识图谱构建等研发工作</li>
+                         </ul>
+                         <h3 style="margin-top: 50px;">希望你具备:</h3>
+                         <ul>
+                             <li>1、计算机、统计学相关专业本科以上学历,1年以上相关的实习或工作经验;</li>
+                             <li>2、熟悉自然语言处理、文本挖掘的关键技术,有中文NLP经验者优先;</li>
+                             <li>3、了解自然语言处理的基本算法与概念,如:分词,词性标注等;</li>
+                             <li>4、熟练使用以下编程语言中的至少一种:Java, C++;</li>
+                             <li>5、熟练使用以下脚本语言中的至少一种:Python, Perl, R等;</li>
+                             <li>6、熟练使用以下深度学习框架中的至少一种:TensorFlow, Keras等;</li>
+                             <li>7、良好的编程能力、算法设计能力,具备大规模语料数据处理经验者优先;</li>
+                             <li>8、有较强的分析问题解决问题能力, 良好的沟通能力和团队协作精神;</li>
+                             <li>9、有开源项目经验优先</li>
+                         </ul>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+        </section>
+        <footer class="copyright-area">
+            <div class="message clearfix">
+                <div class="qr-code">
+                    <img src="https://dn-vbuluo-static.qbox.me/小萝莉和二维码2.png" />
+                </div>
+                <div class="text-area">
+                    <div class="says-text clearfix">
+                        <p>我是由海知智能生产的、基于ruyi.ai开放技术平台的智能机器人</p>
+                        <p style="float: right;">——艾如意宝宝</p>
+                    </div>
+                    <div class="message-text">
+                        <p>
+                            扫码关注&nbsp;<span class="big">艾如意宝宝</span>
+                        </p>
+                        <p>
+                            和海知智能一起，玩转&nbsp;<span class="big">机器人</span>&nbsp;世界
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="company-info">
+                <ul class="info-list clearfix">
+                    <li class="info-item">
+                        <ul class="sub-info-list">
+                            <li class="myHome"><a href="http://ruyi.ai" target="_blank">首 页</a></li>
+                            <li><a href="" class="recruit" target="_blank">招 聘</a></li>
+                        </ul>
+                    </li>
+                    <li class="info-item">
+                        <ul class="sub-info-list">
+                            <li><a href="http://docs.ruyi.ai" target="_blank">开发者文档</a>
+                            </li>
+                            <li><a href="https://sunna.gitbooks.io/ruyi-ai/content/"
+                                target="_blank">新 手 帮 助</a></li>
+                        </ul>
+                    </li>
+                    <li class="info-item third">
+                        <ul class="sub-info-list">
+                            <li><a href="http://blog.ruyi.ai/" target="_blank">技 术 博
+                                    客</a></li>
+                            <li><a href="http://forums.ruyi.ai/" target="_blank">问 答
+                                    社 区</a></li>
+                        </ul>
+                    </li>
+                    <li class="info-item">
+                        <ul class="sub-info-list">
+                            <li>公 司 电 话：021－60483880</li>
+                            <li>商 务 合 作：187-6267-1093</li>
+                            <li>意 见 反 馈：support@ruyi.ai</li>
+                            <li>qq 讨 论 群：614025433</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <p class="copyright-text">
+                @沪ICP备120136335号-3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+                    style="color: #fff;"
+                    href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502004087"
+                    target="_blank">沪公网安备 31011502004087 号</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script
+        src="https://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/Swiper/3.4.0/js/swiper.min.js"></script>
+    <!-- <script src="http://cdn.bootcss.com/jquery-color/2.1.2/jquery.color.min.js"></script> -->
+    <script
+        src="https://dn-vbuluo-static.qbox.me/jquery.colorAnimations.js"></script>
+    <script src="js/components.js"></script>
+    <script src="https://dn-vbuluo-static.qbox.me/jquery.cookie.js"></script>
+
+    <script type="text/javascript" src="js/global-util.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="official/js/ruyi-index.js"></script>
+    <script>
+        $('.mytable').on('click','.toggleBtn',function(){
+            let tr = $(this).parent().next();
+            let txt = $(this).text() == '<' ? 'x' : '<';
+            $(this).text(txt)
+            tr.toggleClass('tr_hide');
+        })
+    </script>
+</body>
+</html>
