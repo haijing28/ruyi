@@ -696,6 +696,8 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 					}else{
 						$.trace("导入出现异常");
 					}
+				}else{
+					$.trace(data.msg,"error");
 				}
 //				if(data.code == 0){
 //					$("[data-act=chooseImportCorrectionFaqInput]").val("");
