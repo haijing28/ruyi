@@ -684,12 +684,12 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 			contentType: false,  
 			processData: false,  
 			success: function (data) {
+				$("[data-act=chooseImportCorrectionFaqInput]").val("");
 				data = dataParse(data);
 				if(data.code == 0){
 					result = dataParse(data.result);
 					if(result.status == 200){
 						$.trace("导入成功");
-						$("[data-act=chooseImportCorrectionFaqInput]").val("");
 						setTimeout(function(){
 							queryCorrectList(correcPageSize ,0);
 						}, 1000);
