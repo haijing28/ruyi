@@ -528,6 +528,7 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 	
 	//展示分页
 	var showPagesHtml = function(pageNo,total,faqTypeStr){
+		pageNo = pageNo + 1;
 		if(total > 1){
 			var pageList = showPages(pageNo,total).split(' ');
 			var pageListStr = ""; 
@@ -595,25 +596,35 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 	
 	/*问答对的导入导出 start**/
 	var correcPageSize = 10;
-	var correcPageNo = 1;
+	var correcPageNo = 0;
 	//查询问答对列表
 	function queryCorrectList(correcPageSize,correcPageNo){
 		var correction_query = $("#correction-query").val();
+		var queryUrl = "";
+		if(correction_query && correction_query.length > 0){
+			queryUrl = ruyiai_host + "/ruyi-ai/agents/" + appId + "/sentenceCorrectionTokenQuery?sentenceString=" + correction_query;
+			
+		}else{
+			queryUrl = ruyiai_host + "/ruyi-ai/agents/" + appId + "/sentenceCorrection";
+		}
 		$.ajax({
-			url: correction_host + "agents/" + appId + "/SentenceCorrection/",
-			data:{"size":correcPageSize,"page": correcPageNo,"query":correction_query},
+			url: queryUrl,
+			data:{"size":correcPageSize,"page": correcPageNo},
 			method: "GET",
 			success: function(data){
 				data = dataParse(data);
-				$scope.correctImportLogList = data.resultList;
-				$scope.$apply();
-				//显示分页
-				var totalPage = parseInt((data.count / correcPageSize)) + 1;
-				showPagesHtml(correcPageNo,totalPage,"correct-common-paging-box");
-				setTimeout(function(){
-					//设置页面高度
-					setQuestionsAnswersTable();
-				}, 300);
+				if(data.code == 0){
+					data = dataParse(data.result);
+					$scope.correctImportLogList = data.content;
+					$scope.$apply();
+					//显示分页
+					var totalPage = parseInt((data.pagination.totalElements / correcPageSize)) + 1;
+					showPagesHtml(correcPageNo,totalPage,"correct-common-paging-box");
+					setTimeout(function(){
+						//设置页面高度
+						setQuestionsAnswersTable();
+					}, 300);
+				}
 				
 //				data = dataParse(data);
 //				if(data.code == 0){
@@ -653,6 +664,7 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 		}else{
 			pageNo = parseInt(pageNo);
 		}
+		pageNo = pageNo - 1;
 		queryCorrectList(faqPageSize,pageNo);
 	});
 	
@@ -676,9 +688,10 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 					result = dataParse(data.result);
 					if(result.status == 200){
 						$.trace("导入成功");
+						$("[data-act=chooseImportCorrectionFaqInput]").val("");
 						setTimeout(function(){
-							queryCorrectList(correcPageSize ,1);
-						}, 3000);
+							queryCorrectList(correcPageSize ,0);
+						}, 1000);
 					}else{
 						$.trace("导入出现异常");
 					}
@@ -701,30 +714,31 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 	});
 	
 	$scope.deleteCorrectFaqFunc = function(dataId){
-		console.log("delete dataId:" + dataId);
-		var dataIdList = [{"id":dataId}];
+		var dataIdList = {"id":dataId};
 		$.ajax({
-			url: correction_host + "agents/"+ appId +"/SentenceCorrection/",
+			url: ruyiai_host + "/ruyi-ai/agents/"+ appId +"/sentenceCorrection/",
 			method: "DELETE",
 			traditional: true,
 			headers: {"Content-Type" : "application/json"},
 			data:JSON.stringify(dataIdList),
 			success: function(data){
 				data = dataParse(data);
-				console.log("response data:" + JSON.stringify(data));
-				if(data.status == 200){
-					for(var i in $scope.correctImportLogList){
-						if(dataId == $scope.correctImportLogList[i].id){
-							$scope.correctImportLogList.splice(i,1);
-							break;
+				if(data.code == 0){
+					data = dataParse(data.result);
+					if(data.status == 200){
+						for(var i in $scope.correctImportLogList){
+							if(dataId == $scope.correctImportLogList[i].id){
+								$scope.correctImportLogList.splice(i,1);
+								break;
+							}
 						}
-					}
-					$scope.$apply();
-					//如果删除到最后，则从新查询10个
-					if($scope.correctImportLogList.length <= 1){
-						setTimeout(function(){
-							queryCorrectList(correcPageSize,1);
-						},2000);
+						$scope.$apply();
+						//如果删除到最后，则从新查询10个
+						if($scope.correctImportLogList.length <= 1){
+							setTimeout(function(){
+								queryCorrectList(correcPageSize,1);
+							},2000);
+						}
 					}
 				}
 //				if(data.code == 0){
@@ -749,7 +763,7 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 	//修改faq数据
 	$scope.updateCorrectionFunc = function(correctionObj){
 		$.ajax({
-			url: correction_host + "agents/"+ appId +"/SentenceCorrection/"+ correctionObj.id +"/",
+			url: ruyiai_host + "/ruyi-ai/agents/"+ appId +"/sentenceCorrection/"+ correctionObj.id,
 			data: JSON.stringify(correctionObj),
 			traditional: true,
 			headers: {"Content-Type" : "application/json"},
@@ -764,6 +778,14 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 			}
 		});
 	}
+	
+	//搜索用户说
+	$("body").off("keydown","#correction-query").on("keydown","#correction-query",function(event){
+		var $this = $(this);
+		if(event.keyCode == 13){
+			queryCorrectList(faqPageSize,0);
+		}
+	});
 	
 	
 	/*纠错问答对导入 end **/
