@@ -115,27 +115,27 @@
 #correction-qa-library #correction-query:focus{
 	border:1px solid #3794FF;
 }
-.correct-common-paging-box,common-paging-box{
+.correct-common-paging-box,.common-paging-box{
 	display:inline-block;
 	margin-top:10px;
 }
-.correct-common-paging-box li,common-paging-box li{
+.correct-common-paging-box li,.common-paging-box li{
 	border: 1px solid #dcdddd !important;
     padding: 2px 12px;
     margin-right: 8px;
     cursor: pointer;
 }
-.correct-common-paging-box li:hover,common-paging-box li:hover{
+.correct-common-paging-box li:hover,.common-paging-box li:hover{
 	border:1px solid #eee;
 	background-color:#eee;
 }
-.correct-common-paging-box li.active,common-paging-box li.active{
+.correct-common-paging-box li.active,.common-paging-box li.active{
 	outline:none;
 	color:#fff;
 	border:1px solid #3794FF;
 	background-color:#3794FF;
 }
-.correct-common-paging-box li.disabled,common-paging-box li.disabled{
+.correct-common-paging-box li.disabled,.common-paging-box li.disabled{
 	color: #ccc;
     cursor: default;
 	border:1px solid #dcdddd;
