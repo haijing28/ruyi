@@ -140,16 +140,7 @@
 					      <img class="media-object" width="20px" ng-src="{{userObject.headimg | headImgFilter}}">
 					   </a>
 					   <div class="media-body" ng-bind="userLog.request.request_params.q"></div>
-					   <a class='media-wrong' ng-click='correct' href='javascript:void(0)'>语音识别纠错</a>
-					</div>
-					<div class="correct">
-						<p>
-							语音识别（原句）：<span>简单的测试</span>
-						</p>
-						<p>
-							纠正语句（新句）：<span><input type="text" class="correct_input"></span>
-						</p>
-						<a href="javascript:void(0)" ng-click='sure_correct'>确定</a>
+					   
 					</div>
 					<div class="media answer" style="margin-top:10px;" ng-repeat="outputs in userLog.response.intents[0].outputs">
 					   <a class="pull-left" href="#">
@@ -209,7 +200,16 @@
 						<img class="media-body" ng-if="outputs.type == 'wechat.image' && outputs.property.media_id != null" ng-src="{{outputs.property.media_id | mediaTrustUrlFilter}}" style="width:200px;" />
 						<audio class="media-body" ng-if="outputs.type == 'voice'" ng-src="{{outputs.property.voice_url | trustUrlFilter}}" controls="controls" style="height:30px;width:260px;" ></audio>
 						<video class="media-body" ng-if="outputs.type == 'video'" ng-src="{{outputs.property.video_url | trustUrlFilter}}" controls="controls" style="height:150px;width:271px;margin-top:-2px;" ></video>
-						 
+						 <a class='media-wrong' ng-click='correct' href='javascript:void(0)'>语音识别纠错</a>
+					</div>
+					<div class="correct">
+						<p>
+							语音识别（原句）：<span class='cor_anw'>简单的测试</span>
+						</p>
+						<p>
+							纠正语句（新句）：<span class='cor_anw'><input type="text" class="correct_input"></span>
+						</p>
+						<a href="javascript:void(0)" class="cor_btn" ng-click='sure_correct'>确定</a>
 					</div>
 				</section>
 			</li>
@@ -287,22 +287,50 @@
 }
 .media-wrong{
 	float: right;
-    margin-top: -25px;
+    margin-top: -24px;
     border: 1px solid #ccc;
-    padding: 3px 7px;
+    padding: 2px 7px;
     font-size: 12px;
     background: red;
-    color: white;
+    border-radius: 4px;
+    color: #f5ebeb;
 }
 .correct{
-	border: 1px solid #ccc;
-	border-width: 1px 0;
-	background-color: #f5f7f7;
-	padding: 10px 8px;
+    padding: 13px 17px;
+    background: #f5f7f7;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-width: 1px 0;
+    position: relative;
+    display: none;
 }
 .correct_input{
 	border: none;
-	border-bottom: 1px solid #ccc;
+    background: transparent;
+    border-bottom: 1px solid #ccc;
+    padding: 5px 0;
+    font-size: 14px;
+}
+.cor_anw{
+	margin-left: 30px;
+    font-weight: normal;
+    font-size: 14px;
+}
+.cor_btn{
+	position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px solid #ccc;
+    padding: 2px 13px;
+    font-size: 12px;
+    background: #0c7fbd;
+    color: white;
+    letter-spacing: 3px;
+}
+.cor_btn:hover,.media-wrong:hover{
+	box-shadow: 1px 1px 2px #ccc;
+	color: #f3ecec;
 }
 </style>
 <!-- <link rel="stylesheet" type="text/css" href="css/star-rating.min.css"> -->

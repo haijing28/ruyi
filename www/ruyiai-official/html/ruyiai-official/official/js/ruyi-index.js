@@ -92,15 +92,12 @@ $(function() {
     })
 
     /** 招聘 **/
-    $(".recruit").on("click",function(event){
-        event.preventDefault();
-        if(window.innerWidth >= 768){
-            $(".dark-background").fadeIn(200);
-        }else{
-            window.open("official/recruit.html","_self");
-        }
-        $(".make-robot-qrcode").hide();
-        $(".make-robot-mobile").hide();
-        $(".recruit-area").show();
+    $(".recruit").on("click",function(){
+        window.location.href = './recruit.html';
     })
+
+    $('.myHome').on('click',function () {
+        window.location.href = './index.html';
+    })
+
 })

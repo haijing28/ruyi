@@ -431,11 +431,12 @@ function userLogsCtrl($rootScope, $scope, $state, $stateParams) {
 	});
 
 	$scope.correct = function(){
-		console.log(1)
+		var correct = $(this).parent().next();
+		correct.css('display','block');
 	}
 
 	$scope.sure_correct = function () {
-		console.log(2)
+		$(this).parent().css('display','none');
 	}
 	
 }
