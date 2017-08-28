@@ -716,11 +716,10 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 	$scope.deleteCorrectFaqFunc = function(dataId){
 		var dataIdList = {"id":dataId};
 		$.ajax({
-			url: ruyiai_host + "/ruyi-ai/agents/"+ appId +"/sentenceCorrection/",
+			url: ruyiai_host + "/ruyi-ai/agents/"+ appId +"/sentenceCorrection/" + dataId,
 			method: "DELETE",
 			traditional: true,
 			headers: {"Content-Type" : "application/json"},
-			data:JSON.stringify(dataIdList),
 			success: function(data){
 				data = dataParse(data);
 				if(data.code == 0){
