@@ -724,7 +724,7 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 				data = dataParse(data);
 				if(data.code == 0){
 					data = dataParse(data.result);
-					if(data.status == 200){
+//					if(data.status == 200){
 						for(var i in $scope.correctImportLogList){
 							if(dataId == $scope.correctImportLogList[i].id){
 								$scope.correctImportLogList.splice(i,1);
@@ -735,10 +735,10 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 						//如果删除到最后，则从新查询10个
 						if($scope.correctImportLogList.length <= 1){
 							setTimeout(function(){
-								queryCorrectList(correcPageSize,1);
-							},2000);
+								queryCorrectList(correcPageSize,0);
+							},200);
 						}
-					}
+//					}
 				}
 //				if(data.code == 0){
 //					for(var i in $scope.faqImportLogList){
