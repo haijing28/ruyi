@@ -560,6 +560,7 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 		}else{
 			pageNo = parseInt(pageNo);
 		}
+		pageNo = pageNo - 1;
 		queryFaqList(faqPageSize,pageNo);
 	});
 	
@@ -683,18 +684,20 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 			contentType: false,  
 			processData: false,  
 			success: function (data) {
+				$("[data-act=chooseImportCorrectionFaqInput]").val("");
 				data = dataParse(data);
 				if(data.code == 0){
 					result = dataParse(data.result);
 					if(result.status == 200){
 						$.trace("导入成功");
-						$("[data-act=chooseImportCorrectionFaqInput]").val("");
 						setTimeout(function(){
 							queryCorrectList(correcPageSize ,0);
 						}, 1000);
 					}else{
 						$.trace("导入出现异常");
 					}
+				}else{
+					$.trace(data.msg,"error");
 				}
 //				if(data.code == 0){
 //					$("[data-act=chooseImportCorrectionFaqInput]").val("");
@@ -716,16 +719,15 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 	$scope.deleteCorrectFaqFunc = function(dataId){
 		var dataIdList = {"id":dataId};
 		$.ajax({
-			url: ruyiai_host + "/ruyi-ai/agents/"+ appId +"/sentenceCorrection/",
+			url: ruyiai_host + "/ruyi-ai/agents/"+ appId +"/sentenceCorrection/" + dataId,
 			method: "DELETE",
 			traditional: true,
 			headers: {"Content-Type" : "application/json"},
-			data:JSON.stringify(dataIdList),
 			success: function(data){
 				data = dataParse(data);
 				if(data.code == 0){
 					data = dataParse(data.result);
-					if(data.status == 200){
+//					if(data.status == 200){
 						for(var i in $scope.correctImportLogList){
 							if(dataId == $scope.correctImportLogList[i].id){
 								$scope.correctImportLogList.splice(i,1);
@@ -736,10 +738,10 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 						//如果删除到最后，则从新查询10个
 						if($scope.correctImportLogList.length <= 1){
 							setTimeout(function(){
-								queryCorrectList(correcPageSize,1);
-							},2000);
+								queryCorrectList(correcPageSize,0);
+							},200);
 						}
-					}
+//					}
 				}
 //				if(data.code == 0){
 //					for(var i in $scope.faqImportLogList){
