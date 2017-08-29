@@ -11,7 +11,7 @@ $(function() {
         prevButton: '.swiper-button-prev',
         loop: true,
         onSlideNextStart: function(swiper) {
-            $(".swiper-slide-active").find(".robot-text").removeClass('animated fadeInRight').hide();
+            // $(".swiper-slide-active").find(".robot-text").removeClass('animated fadeInRight').hide();
             // $(".swiper-slide-active").find(".robot-picture").removeClass('animated fadeIn');
             // $(".swiper-slide-active").find(".robot-picture").show().addClass('animated fadeIn');
             setTimeout(function() {
@@ -21,8 +21,7 @@ $(function() {
         onSlidePrevStart: function(swiper) {
             // $(".swiper-slide-active").find(".robot-picture").removeClass('animated fadeIn');
             // $(".swiper-slide-active").find(".robot-picture").show().addClass('animated fadeIn');
-
-            $(".swiper-slide-active").find(".robot-text").removeClass('animated fadeInRight').hide();
+            // $(".swiper-slide-active").find(".robot-text").removeClass('animated fadeInRight').hide();
             setTimeout(function() {
                 $(".swiper-slide-active").find(".robot-text").addClass('animated fadeInRight').show();
             }, 800);

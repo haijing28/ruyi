@@ -65,7 +65,7 @@ apiManagerApp.config(function($locationProvider , $stateProvider, $urlRouterProv
 		url: "/intent_repeat_detail/{intent_id}",
 		templateUrl: "intent_repeat_detail.html",
 		controller: function($rootScope,$scope, $state, $stateParams,$sce){
-			intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce);
+			intentRepeatDetail($rootScope,$scope, $state, $stateParams,$sce);
 		}
 	}).state('intent_list.intent_detail',{
 		url: "/intent_detail/{intent_id}",

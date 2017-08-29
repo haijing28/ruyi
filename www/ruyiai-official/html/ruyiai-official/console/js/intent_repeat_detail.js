@@ -1,4 +1,4 @@
-function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
+function intentRepeatDetail($rootScope,$scope, $state, $stateParams,$sce){
     $('[data-toggle="tooltip"]').tooltip(); //初始化提示
     $scope.app_response = getCookie("app_response");
     if($scope.app_response == "app-response-weixin"){
