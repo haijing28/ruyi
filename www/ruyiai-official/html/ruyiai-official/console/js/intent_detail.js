@@ -680,10 +680,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 			setTimeout(function(){
 				$($event.target).html(template);
 			}, 2);
-			if(isproductDomain){
-				//dataEditedFlag = true;
-				/*根据用户说自动填充意图处理 start*/
-				//var userSysReg = /(@[^:]+):([^ ]+)/g;
+//			if(isproductDomain){
 				var userSysReg = /(@[^:]+):([\S]+)/g;
 				var paras = template.match(userSysReg);
 				
@@ -718,19 +715,13 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 				$scope.response.parameters.push(tempParaObj);
 				$scope.$apply();
 				/*根据用户说自动填充意图处理 end*/
-			}
-			
-//			if(!template || $.trim(template).length <= 0){
-//				return false;
 //			}
+			
 			if(!$scope.intentDetail.templates){
 				console.log('fal');
 				$scope.intentDetail.templates = new Array();
 				$scope.intentDetail.templates.push(template);
 			}else{
-//				var firstText = $($target.parent().parent().find('div')[0]).text();
-				//判断当前数据中是否已经存在此用户说 start
-//				 && firstText !== "请输入用户说"
 				for(var i in $scope.intentDetail.templates){
 					if(i!= index && $.trim($scope.intentDetail.templates[i]) == $.trim(template)){
 						$.trace("此用户说已经存在，重复的只会保存一条");
