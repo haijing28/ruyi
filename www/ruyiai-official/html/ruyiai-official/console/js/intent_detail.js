@@ -253,6 +253,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 			url: ruyiai_host + "/ruyi-ai/"+ appId +"/"+ $stateParams.scenes_id +"/intent/" + intent_id,
 			method: "GET",
 			success: function(data){
+				var tag = 0;
 				data = dataParse(data);
 					if(data.code == 0){
 					$scope.intentDetail = data.result;
@@ -597,6 +598,18 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	}
 	//点击保存按钮，创建意图
 	$scope.saveIntentDetailFunc = function(){
+		// 清楚空回复
+		///////////
+		$scope.wechatOutputs[0].forEach(function (ele,index,arr) {
+			if(ele.property.text == ''){
+				arr.splice(index,1)
+			}
+		})
+		$scope.localOutouts[0].forEach(function (ele,index,arr) {
+			if(ele.property.text == ''){
+				arr.splice(index,1)
+			}
+		})
 		if (navigator.onLine) 
 		{ 
 			setTimeout(function(){
@@ -686,7 +699,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 				//var userSysReg = /(@[^:]+):([^ ]+)/g;
 				var userSysReg = /(@[^:]+):([\S]+)/g;
 				var paras = template.match(userSysReg);
-				
+
 				if(!$scope.response){
 					$scope.response = {};
 				}
@@ -1422,7 +1435,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	$scope.wechatMediaSetFunc = function(parentIndex, index){
 		$scope.currentWechatParentIndex = parentIndex;
 		$scope.currentWechatIndex = index;
-		$("#mediaResponseModal").modal("show");
+		$("#mediaResponseModal").modal({backdrop: 'static'});
 		if(parentIndex != -1){
 			var output = $scope.wechatOutputs[parentIndex][index];
 			switch(output.type){
@@ -2468,7 +2481,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		var $this = $(this);
 		var id = $this.closest(".image-operation").attr("data-id");
 		var title = $this.closest(".image-operation").attr("data-title");
-		$("#updateResource").modal("show");
+		$("#updateResource").modal({backdrop: 'static'});
 		$("[data-act=resource-name]").val(title);
 		$("[data-act=resource-id]").val(id);
 	});
@@ -2913,7 +2926,8 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		var $this = $(this);
 		var id = $this.closest("tr").attr("data-id");
 		var title = $this.closest("tr").attr("data-title");
-		$("#updateResource").modal("show");
+		$("#updateResource").modal({backdrop: 'static'});
+
 		$("[data-act=resource-name]").val(title);
 		$("[data-act=resource-id]").val(id);
 	});
@@ -2929,7 +2943,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	$scope.localResourceSetFunc = function(parentIndex, index){
 		$scope.currentWechatParentIndex = parentIndex;
 		$scope.currentWechatIndex = index;
-		$("#localResourceModal").modal("show");
+		$("#localResourceModal").modal({backdrop: 'static'});
 		if(parentIndex != -1){
 		var output = $scope.localOutouts[parentIndex][index];
 			switch(output.type){
@@ -3354,7 +3368,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	
 	//用户说多行编辑
 	$scope.editUserSayTextarea = function(index){
-		$("#editUserSayTextarea").modal("show");
+		$("#editUserSayTextarea").modal({backdrop: 'static'});
 		$("#userSayTextarea").attr("myIndex",index);
 		$("#userSayTextarea").val($scope.intentDetail.templates[index]);
 		setTimeout(function(){
@@ -3410,7 +3424,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	//微信编辑文字回复 end
 	$scope.editOutputWechatFunc = function(parentIndex,index){
 		var outputTextWeixin = checkAssistantEditStatusFunc("outputText");
-		$("#editWeixinTextarea").modal("show");
+		$("#editWeixinTextarea").modal({backdrop: 'static'});
 		var $weixinTextarea = $("#weixinTextarea");
 		$weixinTextarea.attr("myIndex",index);
 		$weixinTextarea.attr("parentIndex",parentIndex);
@@ -3452,7 +3466,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	$scope.editOutputLocalFunc = function(parentIndex,index){
 		var outputTextLocal = checkAssistantEditStatusFunc("outputText-local");
 		console.log("outputTextLocal:" + outputTextLocal);
-		$("#editLocalTextarea").modal("show");
+		$("#editLocalTextarea").modal({backdrop: 'static'});
 		var $localTextarea = $("#localTextarea");
 		$localTextarea.attr("myIndex",index);
 		$localTextarea.attr("parentIndex",parentIndex);
@@ -3780,6 +3794,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 					entityStr+="<li class='user-box-row'>"+ sysEntity[i] +"</li>";
 				}
 				$("body").find("div.user-box").html("<ul>"+ entityStr +"</ul>");
+				////////////////// usersay li
 				defaultItem();
 			}else if(data.code == 2){
 				goIndex();
@@ -3858,6 +3873,8 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 			return false;
 		}else if(event.keyCode == "13"){
 			if($this.closest(".mention-popup").find(".user-box-row.on").length){
+				/////////回车
+				console.log('-------')
 				choseFriend( $this, $commentOn, false);
 				$this.closest(".mention-popup").remove();
 				return false;				
@@ -3886,9 +3903,6 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		}
 		if(window.getSelection){
 			$commentOn.focus();
-			//var _atNode = document.getElementById("prompt").previousSibling;
-			//_atNodeStr = _atNode.nodeValue;
-			//_atNode.nodeValue = _atNodeStr.substring(0,_atNodeStr.length-1);
 			$commentOn.find("span#prompt").before(_text);
 			var selObj = window.getSelection();
 			var selRange = document.createRange();	
@@ -3907,7 +3921,6 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 					$textContent = $textContent.substr(atIndex + 1,$textContent.length - 1);
 				}
 				var pointIndex = $textContent.indexOf(".",0);
-				
 				var alias = $textContent.substr(pointIndex + 1,$textContent.length - pointIndex - 2);
 				for(var i = 0; i<= 20; i++){
 					if(i == 0){
@@ -3922,6 +3935,8 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 					}
 				}
 				alias = alias.replace(new RegExp(/\./g),"-");
+				///////// qingkong
+				alias = '';
 				$commentOn.find("span#prompt").before(alias + "&nbsp;");
 				var selObj = window.getSelection();
 				var selRange = document.createRange();

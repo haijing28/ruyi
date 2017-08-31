@@ -1423,7 +1423,7 @@ function intent_timeout_detail($rootScope,$scope, $state, $stateParams,$sce){
     //设置多媒体回复
 //  $scope.mediaSetFunc = function(mediaId){
 //      $scope.actionMediaId = mediaId;
-//      $("#mediaResponseModal").modal("show");
+//      $("#mediaResponseModal").modal({backdrop: "static"});
 //      $scope.loadNewsFunc();
 //      //$rootScope.newsList =JSON.parse('[{ "content": { "news_item": [{ "author": "", "content": "<p>324</p >", "content_source_url": "", "digest": "324", "show_cover_pic": 0, "thumb_media_id": "8UjzyOZ-djUITYsTWVP2R9eQ4x_a_acWIx4ANFjOJM4", "title": "23", "url": "http://mp.weixin.qq.com/s?__biz=MzI2NDIxNDAwMQ==&mid=501495439&idx=1&sn=6e02580327897df2931d86dd2b3e7818#rd" }, { "author": "", "content": "<p>324</p >", "content_source_url": "", "digest": "324", "show_cover_pic": 0, "thumb_media_id": "8UjzyOZ-djUITYsTWVP2R9eQ4x_a_acWIx4ANFjOJM4", "title": "23", "url": "http://mp.weixin.qq.com/s?__biz=MzI2NDIxNDAwMQ==&mid=501495439&idx=1&sn=6e02580327897df2931d86dd2b3e7818#rd" }, { "author": "", "content": "<p>324</p >", "content_source_url": "", "digest": "324", "show_cover_pic": 0, "thumb_media_id": "8UjzyOZ-djUITYsTWVP2R9eQ4x_a_acWIx4ANFjOJM4", "title": "23", "url": "http://mp.weixin.qq.com/s?__biz=MzI2NDIxNDAwMQ==&mid=501495439&idx=1&sn=6e02580327897df2931d86dd2b3e7818#rd" }, { "author": "", "content": "<p>324</p >", "content_source_url": "", "digest": "324", "show_cover_pic": 0, "thumb_media_id": "8UjzyOZ-djUITYsTWVP2R9eQ4x_a_acWIx4ANFjOJM4", "title": "23", "url": "http://mp.weixin.qq.com/s?__biz=MzI2NDIxNDAwMQ==&mid=501495439&idx=1&sn=6e02580327897df2931d86dd2b3e7818#rd" }, { "author": "", "content": "<p>324</p >", "content_source_url": "", "digest": "324", "show_cover_pic": 0, "thumb_media_id": "8UjzyOZ-djUITYsTWVP2R9eQ4x_a_acWIx4ANFjOJM4", "title": "23", "url": "http://mp.weixin.qq.com/s?__biz=MzI2NDIxNDAwMQ==&mid=501495439&idx=1&sn=6e02580327897df2931d86dd2b3e7818#rd" }, { "author": "", "content": "<p>324</p >", "content_source_url": "", "digest": "324", "show_cover_pic": 0, "thumb_media_id": "8UjzyOZ-djUITYsTWVP2R9eQ4x_a_acWIx4ANFjOJM4", "title": "23", "url": "http://mp.weixin.qq.com/s?__biz=MzI2NDIxNDAwMQ==&mid=501495439&idx=1&sn=6e02580327897df2931d86dd2b3e7818#rd" }] }, "media_id": "8UjzyOZ-djUITYsTWVP2RwMmqygBzHc_OVc48Quu0i8", "update_time": 1460440737 }]');
 //  }
@@ -1431,7 +1431,7 @@ function intent_timeout_detail($rootScope,$scope, $state, $stateParams,$sce){
     $scope.wechatMediaSetFunc = function(parentIndex, index){
         $scope.currentWechatParentIndex = parentIndex;
         $scope.currentWechatIndex = index;
-        $("#mediaResponseModal").modal("show");
+        $("#mediaResponseModal").modal({backdrop: "static"});
         if(parentIndex != -1){
             var output = $scope.wechatOutputs[parentIndex][index];
             switch(output.type){
@@ -2051,7 +2051,7 @@ function intent_timeout_detail($rootScope,$scope, $state, $stateParams,$sce){
         log_level: 5,
         init: {
             'FilesAdded': function(up, files) {
-                 $("#addresource").modal("show");
+                 $("#addresource").modal({backdrop: "static"});
                 $('table').show();
                 $('#success').hide();
                 plupload.each(files, function(file) {
@@ -2472,7 +2472,7 @@ function intent_timeout_detail($rootScope,$scope, $state, $stateParams,$sce){
         var $this = $(this);
         var id = $this.closest(".image-operation").attr("data-id");
         var title = $this.closest(".image-operation").attr("data-title");
-        $("#updateResource").modal("show");
+        $("#updateResource").modal({backdrop: "static"});
         $("[data-act=resource-name]").val(title);
         $("[data-act=resource-id]").val(id);
     });
@@ -2662,7 +2662,7 @@ function intent_timeout_detail($rootScope,$scope, $state, $stateParams,$sce){
         log_level: 5,
         init: {
             'FilesAdded': function(up, files) {
-                $("#addresource").modal("show");
+                $("#addresource").modal({backdrop: "static"});
                 $('table').show();
                 $('#success').hide();
                 plupload.each(files, function(file) {
@@ -2758,7 +2758,7 @@ function intent_timeout_detail($rootScope,$scope, $state, $stateParams,$sce){
         log_level: 5,
         init: {
             'FilesAdded': function(up, files) {
-                $("#addresource").modal("show");
+                $("#addresource").modal({backdrop: "static"});
                 $('table').show();
                 $('#success').hide();
                 plupload.each(files, function(file) {
@@ -2917,7 +2917,7 @@ function intent_timeout_detail($rootScope,$scope, $state, $stateParams,$sce){
         var $this = $(this);
         var id = $this.closest("tr").attr("data-id");
         var title = $this.closest("tr").attr("data-title");
-        $("#updateResource").modal("show");
+        $("#updateResource").modal({backdrop: "static"});
         $("[data-act=resource-name]").val(title);
         $("[data-act=resource-id]").val(id);
     });
@@ -2933,7 +2933,7 @@ function intent_timeout_detail($rootScope,$scope, $state, $stateParams,$sce){
     $scope.localResourceSetFunc = function(parentIndex, index){
         $scope.currentWechatParentIndex = parentIndex;
         $scope.currentWechatIndex = index;
-        $("#localResourceModal").modal("show");
+        $("#localResourceModal").modal({backdrop: "static"});
         if(parentIndex != -1){
         var output = $scope.localOutouts[parentIndex][index];
             switch(output.type){
@@ -3358,7 +3358,7 @@ function intent_timeout_detail($rootScope,$scope, $state, $stateParams,$sce){
     
     //用户说多行编辑
     $scope.editUserSayTextarea = function(index){
-        $("#editUserSayTextarea").modal("show");
+        $("#editUserSayTextarea").modal({backdrop: "static"});
         $("#userSayTextarea").attr("myIndex",index);
         $("#userSayTextarea").val($scope.intentDetail.templates[index]);
         setTimeout(function(){
@@ -3414,7 +3414,7 @@ function intent_timeout_detail($rootScope,$scope, $state, $stateParams,$sce){
     //微信编辑文字回复 end
     $scope.editOutputWechatFunc = function(parentIndex,index){
         var outputTextWeixin = checkAssistantEditStatusFunc("outputText");
-        $("#editWeixinTextarea").modal("show");
+        $("#editWeixinTextarea").modal({backdrop: "static"});
         var $weixinTextarea = $("#weixinTextarea");
         $weixinTextarea.attr("myIndex",index);
         $weixinTextarea.attr("parentIndex",parentIndex);
@@ -3456,7 +3456,7 @@ function intent_timeout_detail($rootScope,$scope, $state, $stateParams,$sce){
     $scope.editOutputLocalFunc = function(parentIndex,index){
         var outputTextLocal = checkAssistantEditStatusFunc("outputText-local");
         console.log("outputTextLocal:" + outputTextLocal);
-        $("#editLocalTextarea").modal("show");
+        $("#editLocalTextarea").modal({backdrop: "static"});
         var $localTextarea = $("#localTextarea");
         $localTextarea.attr("myIndex",index);
         $localTextarea.attr("parentIndex",parentIndex);
