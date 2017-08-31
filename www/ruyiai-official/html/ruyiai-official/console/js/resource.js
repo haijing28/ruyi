@@ -137,6 +137,7 @@ function resourceCtrl($rootScope,$scope, $state, $stateParams){
 				default:
 					break;
 				}
+                $("#fsUploadProgress").html("");
                 $scope.addResListTemp.push(tempObj);
                 $scope.loadImage();
                 $scope.addResListTemp = [];
