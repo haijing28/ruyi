@@ -1,10 +1,10 @@
 # kubectl --kubeconfig chenx.conf -n qa delete -f ruyiai-official.yaml
 # kubectl --kubeconfig chenx.conf -n qa apply -f ruyiai-official.yaml
 
-# kubectl --kubeconfig chenx.conf -n qa get po
-#kubectl --kubeconfig chenx.conf -n qa port-forward XXX 9999:8080
+# kubectl --kubeconfig chenx.conf -n dev get po
+#kubectl --kubeconfig chenx.conf -n dev port-forward XXX 9999:8080
 
-#kubectl --kubeconfig chenx.conf -n qa delete -f ruyiai-official.yaml
+#kubectl --kubeconfig chenx.conf -n dev delete -f ruyiai-official.yaml
 
 kind: Service
 apiVersion: v1
@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
       - name: ruyiai-official-controller
-        image: 10.10.150.149:5000/ruyi-ai/ruyiai-official:20170811-033055
+        image: 10.10.150.149:5000/ruyi-ai/ruyiai-official:20170831-074523
         ports:
         - containerPort: 80
       imagePullSecrets:
