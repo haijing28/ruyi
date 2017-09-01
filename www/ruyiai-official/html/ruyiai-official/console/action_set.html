@@ -10,7 +10,7 @@
 				<input type="hidden" value="{{$index}}" data-act="myindex"/>
 				<input type="hidden" value="{{actionObj.id}}" data-act="actionId"/>
 				<div class="action-title-top clearfix">
-					<i class="iconfont icon-down trigger-icon"></i>
+					<i class="iconfont icon-right trigger-icon"></i>
 					<input type="text" class="trigger-name" placeholder="触发器名字" data-act="name" value="{{actionObj.name}}"/>
 					<span ng-if="actionObj.errorModels.length > 0" class="error-text">未生效</span>
 					<i ng-if="actionObj.errorModels.length > 0" class="iconfont icon-iconfontzhifushibai" data-html="true" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="bottom" data-content="{{actionObj.errorList}}" data-original-title="" title=""></i>
