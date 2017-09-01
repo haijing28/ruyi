@@ -183,7 +183,7 @@ function assistantParaCtrl($rootScope, $scope, $state, $stateParams) {
 		log_level : 5,
 		init : {
 			'FilesAdded' : function(up, files) {
-				$("#addresource").modal("show");
+				$("#addresource").modal({backdrop: 'static'});
 				$('table').show();
 				$('#success').hide();
 				plupload.each(files, function(file) {
@@ -216,7 +216,7 @@ function assistantParaCtrl($rootScope, $scope, $state, $stateParams) {
 				progress.setComplete(up, info);
 				var url = mydomain + JSON.parse(info).hash + "/" + file.name;
 
-				$("#cut-header").modal("show");
+				$("#cut-header").modal({backdrop: 'static'});
 
 				var eImg = $(".container").html(
 						"<img src='" + url + "' id='tar'/>");
@@ -805,7 +805,7 @@ function assistantParaCtrl($rootScope, $scope, $state, $stateParams) {
 
 	$scope.editPetPhraseTextFunc = function(petPhrase, index) {
 		var outputTextWeixin = checkAssistantEditStatusFunc();
-		$("#editPetPhraseTextarea").modal("show");
+		$("#editPetPhraseTextarea").modal({backdrop: 'static'});
 		var $editPetPhraseText = $("#editPetPhraseText");
 		// $("#editPetPhraseText").val(petPhrase);
 		$editPetPhraseText.attr("myIndex", index);
