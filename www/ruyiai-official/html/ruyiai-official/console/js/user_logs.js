@@ -440,9 +440,13 @@ function userLogsCtrl($rootScope, $scope, $state, $stateParams) {
 	$(document).on('click','.cor_btn',function(){
 		var cur = $(this).parent();
 		let _this = this;
-		cur.css('display','none');
 		var cort_o = $(this).parent().find('.cor_anw').text().trim();
 		var cort_v = $(this).parent().find('.correct_input').val();
+		if(cort_v == ''){
+			$.trace('请输入纠错语句');
+			return;
+		}
+		cur.css('display','none');
 		var id = $(this).parent().find('.correct_input').attr('data-id');
 		// 纠正
 		if(id !== ''){
