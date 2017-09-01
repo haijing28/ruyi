@@ -439,6 +439,7 @@ function userLogsCtrl($rootScope, $scope, $state, $stateParams) {
 
 	$(document).on('click','.cor_btn',function(){
 		var cur = $(this).parent();
+		let _this = this;
 		cur.css('display','none');
 		var cort_o = $(this).parent().find('.cor_anw').text().trim();
 		var cort_v = $(this).parent().find('.correct_input').val();
@@ -451,8 +452,7 @@ function userLogsCtrl($rootScope, $scope, $state, $stateParams) {
 				traditional: true,
 				headers: {"Content-Type" : "application/json"},
 				data: JSON.stringify({correctionSentence: cort_v}),
-				success: function(){
-					$.trace('修改纠错语句成功');
+				complete: function(){
 				}
 			})
 		}else{
@@ -463,8 +463,8 @@ function userLogsCtrl($rootScope, $scope, $state, $stateParams) {
 				traditional: true,
 				headers: {"Content-Type" : "application/json"},
 				data: JSON.stringify([{correctionSentence: cort_v,rawSentence: cort_o}]),
-				success: function(){
-					$.trace('插入纠错语句成功');
+				complete: function(){
+					$(_this).parent().prev().find('.hasCorrected').attr('id','tabel-cell-show')
 				}
 			})
 		}
