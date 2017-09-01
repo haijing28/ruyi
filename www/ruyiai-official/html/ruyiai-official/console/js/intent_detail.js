@@ -3181,6 +3181,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 //			return false;
 //		}
 		if(!outputText || $.trim(outputText).length <= 0){
+			deleteEmptyAssistantAnswerFunc($scope.wechatOutputs,outputText,parentIndex,index);
 			return false;
 		}
 		setTimeout(function(){
@@ -3220,7 +3221,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		for(var i in outouts){
 			for(var j in outouts[i]){
 				if(i == parentIndex && j == index){
-					outouts[i].splice(i,1);
+					outouts[i].splice(j,1);
 					return;
 				}
 			}
@@ -3229,9 +3230,6 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	
 	//硬件文本框光标离开，添加文本内容 start
 	$scope.addTextOutputLocalFunc = function($event,outputText,parentIndex,index,type){
-		console.log("parentIndex:" + parentIndex);
-		console.log("index:" + index);
-		console.log("outputText:" + outputText);
 		if(checkIsChangeValue != outputText){
 			dataEditedFlag = true;
 		}
@@ -3240,7 +3238,6 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 			deleteEmptyAssistantAnswerFunc($scope.localOutouts,outputText,parentIndex,index);
 			return false;
 		}
-		console.log("错了");
 		setTimeout(function(){
 			var outputObj = createOutputObjectFunc(type,outputText,"","");
 			var flag = false;
