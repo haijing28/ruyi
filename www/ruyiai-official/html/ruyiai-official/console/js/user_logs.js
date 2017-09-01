@@ -444,6 +444,7 @@ function userLogsCtrl($rootScope, $scope, $state, $stateParams) {
 		var cort_v = $(this).parent().find('.correct_input').val();
 		if(cort_v == ''){
 			$.trace('纠正内容还未填写哦');
+			$(this).parent().find('.correct_input').focus();
 			return;
 		}
 		cur.css('display','none');
