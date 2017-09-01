@@ -424,7 +424,7 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 	
 	/*问答对的导入导出 start**/
 	var faqPageSize = 10;
-	var faqPageNo = 0;
+	var faqPageNo = 1;
 	//查询问答对列表
 	function queryFaqList(faqPageSize,faqPageNo){
 		var query_question = $("#query_question").val();
@@ -529,7 +529,8 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 	
 	//展示分页
 	var showPagesHtml = function(pageNo,total,faqTypeStr){
-		pageNo = pageNo + 1;
+//		console.log("pageNo:" + pageNo);
+//		pageNo = pageNo + 1;
 		if(total > 1){
 			var pageList = showPages(pageNo,total).split(' ');
 			var pageListStr = ""; 
@@ -540,8 +541,6 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 					pageListStr += "<li class='pull-left'>"+pageList[i] + "</li>";
 				}
 			}
-			console.log("pageListStr");
-			console.log(pageListStr);
 			$("."+faqTypeStr).html("").append(pageListStr);
 		}else{
 			$("."+faqTypeStr).html("");
@@ -561,8 +560,7 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 		}else{
 			pageNo = parseInt(pageNo);
 		}
-		pageNo = pageNo - 1;
-		/////////
+		//pageNo = pageNo - 1;
 		queryFaqList(faqPageSize,pageNo);
 	});
 	
@@ -622,7 +620,7 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 					$scope.$apply();
 					//显示分页
 					var totalPage = parseInt((data.pagination.totalElements / correcPageSize)) + 1;
-					showPagesHtml(correcPageNo,totalPage,"correct-common-paging-box");
+					showPagesHtml(correcPageNo + 1,totalPage,"correct-common-paging-box");
 					setTimeout(function(){
 						//设置页面高度
 						setQuestionsAnswersTable();
