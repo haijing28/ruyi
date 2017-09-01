@@ -443,7 +443,7 @@ function userLogsCtrl($rootScope, $scope, $state, $stateParams) {
 		var cort_o = $(this).parent().find('.cor_anw').text().trim();
 		var cort_v = $(this).parent().find('.correct_input').val();
 		if(cort_v == ''){
-			$.trace('请输入纠错语句');
+			$.trace('纠正内容还未填写哦');
 			return;
 		}
 		cur.css('display','none');
