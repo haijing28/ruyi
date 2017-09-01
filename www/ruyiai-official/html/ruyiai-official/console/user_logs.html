@@ -153,6 +153,7 @@
                                 <input 
                                     data-id='{{userLog.scentenceCorrection.id}}'
                                     ng-model='userLog.scentenceCorrection.correctionSentence'
+                                    placeholder="请输入纠错语句" 
                                     type="text" 
                                     class="correct_input" />
                             </span>
@@ -296,7 +297,7 @@
 .media-wrong{
 	float: right;
     margin-top: -24px;
-    border: 1px solid #ccc;
+    border: 1px solid transparent;
     padding: 2px 7px;
     font-size: 12px;
     background: red;
@@ -329,28 +330,35 @@
     right: 20px;
     top: 50%;
     transform: translateY(-50%);
-    border: 1px solid #ccc;
+    border: 1px solid #11b8de;
     padding: 2px 13px;
     font-size: 12px;
-    background: #0c7fbd;
+    background: #3794ff;
     color: white;
     letter-spacing: 3px;
 }
-.cor_btn:hover,.media-wrong:hover,.cor_btn:focus,.media-wrong:focus{
-	box-shadow: 1px 1px 2px #ccc;
+.cor_btn:hover,.cor_btn:focus{
+	box-shadow: 1px 1px 1px 1px #ccc;
 	color: #f3ecec;
+}
+.media-wrong:hover,.media-wrong:focus{
+    color: #ecd5d5;
+    box-shadow: 1px 1px 1px 1px #ccc;
 }
 .hasCorrected{
     display: table-cell;
     background: #63ca61;
     color: white;
-    padding: 0 3px;
+    padding: 0 10px;
     border-radius: 20px;
     font-size: 10px !important;
     line-height: 23px;
 }
 .question-answer .media-body{
     border-right: 10px solid transparent;
+}
+#tabel-cell-show{
+    display: table-cell !important;
 }
 </style>
 <!-- <link rel="stylesheet" type="text/css" href="css/star-rating.min.css"> -->

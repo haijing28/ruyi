@@ -600,15 +600,19 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	$scope.saveIntentDetailFunc = function(){
 		// 清楚空回复
 		///////////
-		$scope.wechatOutputs[0].forEach(function (ele,index,arr) {
-			if(ele.property.text == ''){
-				arr.splice(index,1)
-			}
+		$scope.wechatOutputs.forEach(function(ele){
+			ele.forEach(function(ele,index,arr){
+				if(ele.property.text == ''){
+					arr.splice(index,1)
+				}
+			})
 		})
-		$scope.localOutouts[0].forEach(function (ele,index,arr) {
-			if(ele.property.text == ''){
-				arr.splice(index,1)
-			}
+		$scope.localOutouts.forEach(function(ele){
+			ele.forEach(function(ele,index,arr){
+				if(ele.property.text == ''){
+					arr.splice(index,1)
+				}
+			})
 		})
 		if (navigator.onLine) 
 		{ 
@@ -3925,9 +3929,12 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 						}
 					}
 				}
-				alias = alias.replace(new RegExp(/\./g),"-");
-				///////// qingkong
-				alias = '';
+				console.log(alias)
+				var dotIndex = alias.lastIndexOf(':');
+				if(dotIndex > -1){
+					alias = alias.substr(0,dotIndex);
+				}
+				// alias = alias.replace(new RegExp(/\./g),"-");
 				$commentOn.find("span#prompt").before(alias + "&nbsp;");
 				var selObj = window.getSelection();
 				var selRange = document.createRange();
