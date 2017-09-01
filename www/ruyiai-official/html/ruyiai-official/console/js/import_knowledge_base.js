@@ -560,7 +560,7 @@ function importKnowledgeBaseCtrl($rootScope,$scope, $state, $stateParams){
 		}else{
 			pageNo = parseInt(pageNo);
 		}
-//		pageNo = pageNo - 1;
+		pageNo = pageNo - 1;
 		queryFaqList(faqPageSize,pageNo);
 	});
 	
