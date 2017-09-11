@@ -23,7 +23,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	$scope.commonIntentDetailBlur = function(tempValue){
 		$scope.saveIntentDetailFunc();
 		if(checkIsChangeValue != tempValue){
-			dataEditedFlag = true;
+			//dataEditedFlag = true;
 		}
 		//跟新列表页面的标题
 		var intentList = angular.element(".center-list-box").scope().intentList;
@@ -511,28 +511,28 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 					var validateResult = {};
 					var intentDetail = {};
 					if(data.result.validateResult){
-						$(".save-and-apply .saveing").css("display","none");
-						$(".save-and-apply .saveing").css("width","0");
-						$(".save-and-apply .saveing").css("display","block");
-						$(".save-and-apply .save-text").text("保存并应用");
-						$(".save-and-apply .dim-div").css("display","none");
+//						$(".save-and-apply .saveing").css("display","none");
+//						$(".save-and-apply .saveing").css("width","0");
+//						$(".save-and-apply .saveing").css("display","block");
+//						$(".save-and-apply .save-text").text("保存并应用");
+//						$(".save-and-apply .dim-div").css("display","none");
 						validateResult = data.result.validateResult;
 						intentDetail = data.result.intent;
 						$.trace(validateResult.message + "("+validateResult.detail+")");
 					}else{
 						intentDetail = data.result;
-						setTimeout(function(){
-							$(".save-and-apply .save-text").text("保存成功","success");
-							$(".save-and-apply .saveing").css("display","none");
-							$(".save-and-apply .saveing").css("width","0");
-							setTimeout(function(){
-								$(".save-and-apply .saveing").css("display","block");
-							}, 1000);
-							setTimeout(function(){
-								$(".save-and-apply .save-text").text("保存并应用");
-								$(".save-and-apply .dim-div").css("display","none");
-							}, 500);
-						}, 1000);
+//						setTimeout(function(){
+//							$(".save-and-apply .save-text").text("保存成功","success");
+//							$(".save-and-apply .saveing").css("display","none");
+//							$(".save-and-apply .saveing").css("width","0");
+//							setTimeout(function(){
+//								$(".save-and-apply .saveing").css("display","block");
+//							}, 1000);
+//							setTimeout(function(){
+//								$(".save-and-apply .save-text").text("保存并应用");
+//								$(".save-and-apply .dim-div").css("display","none");
+//							}, 500);
+//						}, 1000);
 					}
 					$scope.intentDetail = intentDetail;
 //					var intentList = angular.element(".center-list-box").scope().intentList;
@@ -558,14 +558,14 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 				}else if(data.code == 2){
 					goIndex();
 				}else{
-					if(data.msg){ 
-						$(".save-and-apply .saveing").css("display","none");
-						$(".save-and-apply .saveing").css("width","0");
-						$(".save-and-apply .saveing").css("display","block");
-						$(".save-and-apply .save-text").text("保存并应用");
-						$(".save-and-apply .dim-div").css("display","none");
+//					if(data.msg){ 
+//						$(".save-and-apply .saveing").css("display","none");
+//						$(".save-and-apply .saveing").css("width","0");
+//						$(".save-and-apply .saveing").css("display","block");
+//						$(".save-and-apply .save-text").text("保存并应用");
+//						$(".save-and-apply .dim-div").css("display","none");
 						$.trace(data.msg + "( "+ data.detail +" )","error"); 
-					}
+//					}
 				}
 				$scope.isSaveSuccess = true;
 			},error:function(){
@@ -730,7 +730,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 				for(var i in $scope.intentDetail.templates){
 					if(i == index){
 						if($scope.intentDetail.templates[i] !== template){
-							dataEditedFlag = true;
+							//dataEditedFlag = true;
 							$scope.intentDetail.templates[i] = template;
 						}
 						flag = true;
@@ -738,7 +738,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 				}
 				if(!flag){
 					$scope.intentDetail.templates.push(template);
-					dataEditedFlag = true;
+					//dataEditedFlag = true;
 				}
 			}
 			$scope.$apply();
@@ -765,7 +765,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	}
 	//删除用户说的模板
 	$scope.deleteTemplateFunc = function(index){
-		dataEditedFlag = true;
+		//dataEditedFlag = true;
 		for(var i in $scope.intentDetail.templates){
 			if(i == index){
 				$scope.intentDetail.templates.splice(i,1);
@@ -777,7 +777,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	
 	//复制用户说的模板
 	$scope.copyTemplateFunc = function(template){
-		dataEditedFlag = true;
+		//dataEditedFlag = true;
 		//判断当前数据中是否已经存在此用户说 start
 		for(var i in $scope.intentDetail.templates){
 			if($scope.intentDetail.templates[i] == template+"(副本)"){
@@ -799,7 +799,8 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 			}
 			$scope.intentDetail.contexts.push(addInputIntentTag);
 			$scope.addInputIntentTag = "";
-			dataEditedFlag = true;
+			//dataEditedFlag = true;
+			$scope.saveIntentDetailFunc();
 		}
 	}
 	//enter添加传入意图标签
@@ -813,7 +814,9 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		for(var i in $scope.intentDetail.contexts){
 			if($scope.intentDetail.contexts[i] == context){
 				$scope.intentDetail.contexts.splice(i,1);
-				dataEditedFlag = true;
+				//dataEditedFlag = true;
+				$scope.saveIntentDetailFunc();
+				break;
 			}
 		}
 	}
@@ -830,7 +833,8 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 			}
 			$scope.response.affectedContexts.push(affectedContextObj);
 			$scope.addAffectedContext = "";
-			dataEditedFlag = true;
+			//dataEditedFlag = true;
+			$scope.saveIntentDetailFunc();
 		}
 	}
 	//enter添加传入意图标签
@@ -844,7 +848,8 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		for(var i in $scope.response.affectedContexts){
 			if($scope.response.affectedContexts[i].name == addAffectedContext){
 				$scope.response.affectedContexts.splice(i,1);
-				dataEditedFlag = true;
+				//dataEditedFlag = true;
+				$scope.saveIntentDetailFunc();
 				break;
 			}
 		}
@@ -909,7 +914,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 				paramentObj.required = parameterRequired;
 				$scope.response.parameters.push(paramentObj);
 			}
-			dataEditedFlag = true;
+			//dataEditedFlag = true;
 			//清空最后添加的一行
 			if($scope.paramentObject){
 				$scope.paramentObject.required = false;
@@ -920,11 +925,12 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 				$scope.paramentObject.defaultValue = "";
 			}
 		}
+		$scope.saveIntentDetailFunc();
 	}
 	//设置参数名称
 	$scope.addParamentNameFunc = function(parameterName,index){
 		if(checkIsChangeValue != parameterName){
-			dataEditedFlag = true;
+			//dataEditedFlag = true;
 		}
 		if(parameterName && parameterName.length > 0 && $scope.response){
 			if($scope.response.parameters){ //如果$scope.response.parameters 存在
@@ -953,11 +959,12 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 			$scope.intentDetail = addEmptyParametersFunc($scope.intentDetail);
 		}
 		$('[data-toggle="tooltip"]').tooltip(); //初始化提示
+		$scope.saveIntentDetailFunc();
 	}
 	//设置参数值
 	$scope.addParamentValueFunc = function(parameterValue,index){
 		if(checkIsChangeValue != parameterValue){
-			dataEditedFlag = true;
+			//dataEditedFlag = true;
 		}
 		if(parameterValue && parameterValue.length > 0 && $scope.response){
 			if($scope.response.parameters){ //如果$scope.response.parameters 存在
@@ -985,12 +992,13 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 			}
 			$scope.intentDetail = addEmptyParametersFunc($scope.intentDetail);
 		}
+		$scope.saveIntentDetailFunc();
 		$('[data-toggle="tooltip"]').tooltip(); //初始化提示
 	}
 	//设置参数类型
 	$scope.addParamentDataTypeFunc = function(parameterDataType,index){
 		if(checkIsChangeValue != parameterDataType){
-			dataEditedFlag = true;
+			//dataEditedFlag = true;
 		}
 		if(parameterDataType && parameterDataType.length > 0 && $scope.response){
 			if($scope.response.parameters){ //如果$scope.response.parameters 存在
@@ -1018,13 +1026,14 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 			}
 			$scope.intentDetail = addEmptyParametersFunc($scope.intentDetail);
 		}
+		$scope.saveIntentDetailFunc();
 		$('[data-toggle="tooltip"]').tooltip(); //初始化提示
 	}
 	
 	//设置参数默认值
 	$scope.addParamentDefaultValueFunc = function(parameterDefaultValue,index){
 		if(checkIsChangeValue != parameterDefaultValue){
-			dataEditedFlag = true;
+			//dataEditedFlag = true;
 		}
 		if(parameterDefaultValue && parameterDefaultValue.length > 0 && $scope.response){
 			if($scope.response.parameters){ //如果$scope.response.parameters 存在
@@ -1053,13 +1062,15 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 			$scope.intentDetail = addEmptyParametersFunc($scope.intentDetail);
 		}
 		$('[data-toggle="tooltip"]').tooltip(); //初始化提示
+		$scope.saveIntentDetailFunc();
 	}
 	//删除参数
 	$scope.deleteParamentFunc = function($index){
 		for(var i in $scope.response.parameters){
 			if(i == $index){
 				$scope.response.parameters.splice(i,1);
-				dataEditedFlag = true;
+				//dataEditedFlag = true;
+				$scope.saveIntentDetailFunc();
 				break;
 			}
 		}
@@ -1086,8 +1097,9 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		parameterObj.required = parameterTemp.required;
 		parameterObj.value = parameterTemp.value;
 		var responseLength = $scope.response.parameters.length - 2;
-		dataEditedFlag = true;
+		//dataEditedFlag = true;
 		$scope.response.parameters.splice(responseLength,0,parameterObj);
+		$scope.saveIntentDetailFunc();
 	}
 	
 	//打开提示语列表,并初始化数据
@@ -1136,9 +1148,10 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 					$scope.prompts.push(addPromptValue);
 				}
 			}
-			dataEditedFlag = true;
+			//dataEditedFlag = true;
 			$scope.addPromptValue = "";
 			$scope.$apply();
+			$scope.saveIntentDetailFunc();
 //			$($event.target).scrollTop(0);
 		},200);
 	}
@@ -1198,8 +1211,9 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	
 	//设置意图优先级
 	$scope.setPriorityFunc = function(priority){
-		dataEditedFlag = true;
+		//dataEditedFlag = true;
 		$scope.intentDetail.priority = priority;
+		$scope.saveIntentDetailFunc();
 	}
 	
 	//查看更多用户说
@@ -1472,7 +1486,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		var outputObj = {};
 		switch (type) {
 			case "wechat.news":
-				dataEditedFlag = true;
+				//dataEditedFlag = true;
 				for(var i in $rootScope.newsList){
 					if($rootScope.newsList[i].selected){
 						outputObj = createOutputObjectFunc(type,$rootScope.newsList[i].content.news_item[0].title,"",$rootScope.newsList[i].media_id);
@@ -1481,7 +1495,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 				}
 				break;
 			case "wechat.image":
-				dataEditedFlag = true;
+				//dataEditedFlag = true;
 				for(var i in $rootScope.imageObjList){
 					if($rootScope.imageObjList[i].selected){
 						outputObj = createOutputObjectFunc(type,$rootScope.imageObjList[i].name,"",$rootScope.imageObjList[i].media_id);
@@ -1490,7 +1504,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 				}
 				break;
 			case "wechat.voice":
-				dataEditedFlag = true;
+				//dataEditedFlag = true;
 				for(var i in $rootScope.voiceList){
 					if($rootScope.voiceList[i].selected){
 						outputObj = createOutputObjectFunc(type,$rootScope.voiceList[i].name,"",$rootScope.voiceList[i].media_id);
@@ -1499,7 +1513,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 				}
 				break;
 			case "wechat.video":
-				dataEditedFlag = true;
+				//dataEditedFlag = true;
 				for(var i in $rootScope.videoList){
 					if($rootScope.videoList[i].selected){
 						outputObj = createOutputObjectFunc(type,$rootScope.videoList[i].name,"",$rootScope.videoList[i].media_id);
@@ -1508,7 +1522,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 				}
 				break;
 			case "wechat.customize":
-				dataEditedFlag = true;
+				//dataEditedFlag = true;
 				var $checkedId = $(".customize-body .active");
 				var id = $checkedId.attr("id");
 				if(id == "weixin-customize-image-detail"){
@@ -1550,6 +1564,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 				break;
 		}
 		createOrUpdateOutputsWechatFunc(outputObj);//创建或者更新多媒体列表
+		$scope.saveIntentDetailFunc();
 		$("#mediaResponseModal").modal("hide");
 	}
 	
@@ -2477,24 +2492,24 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		var choosedObject = {};
 		var outputObj = {};
 		if(type == "image"){
-			dataEditedFlag = true;
+			//dataEditedFlag = true;
 			choosedObject = findResourceObjectByActive($scope.resImgList);
 			outputObj = createOutputObjectFunc(choosedObject.type,choosedObject.title,choosedObject.url,"");
 		}else if($scope.resType == "voice"){
 			//获得id
-			dataEditedFlag = true;
+			//dataEditedFlag = true;
 			var $choosedObj = $("[name=local-choosed-voice]:checked");
 			var tr = $choosedObj.closest("tr");
 			choosedObject = findResourceObjectById($scope.resVoiceList, tr.attr("data-id"));
 			outputObj = createOutputObjectFunc(choosedObject.type,choosedObject.title,choosedObject.url,"");
 		}else if(type == "video"){
-			dataEditedFlag = true;
+			//dataEditedFlag = true;
 			var $choosedObj = $("[name=local-choosed-video]:checked");
 			var tr = $choosedObj.closest("tr");
 			choosedObject = findResourceObjectById($scope.resVideoList, tr.attr("data-id"));
 			outputObj = createOutputObjectFunc(choosedObject.type,choosedObject.title,choosedObject.url,"");
 		}else if(type == "customize"){
-			dataEditedFlag = true;
+			//dataEditedFlag = true;
 			var $checkedId = $("#customize .video-box .customize-body .active");
 			var id = $checkedId.attr("id");
 			if(id == "customize-image-detail"){
@@ -2514,6 +2529,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 //		outputObj = createOutputObjectFunc(choosedObject.type,choosedObject.title,choosedObject.url,"");
 		createOrUpdateOutputsLocalFunc(outputObj);//创建或者更新多媒体列表
 		//将选中的数据进行构建，在页面上渲染
+		$scope.saveIntentDetailFunc();
 		$("#localResourceModal").modal("hide");
 	}
 	
@@ -2610,7 +2626,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	//微信文本框光标离开，添加文本内容 start
 	$scope.addTextOutputWechatFunc = function($event,outputText,parentIndex,index,type){
 		if(checkIsChangeValue != outputText){
-			dataEditedFlag = true;
+			//dataEditedFlag = true;
 		}
 		//如果超出了长度限制
 		if(!outputText || $.trim(outputText).length <= 0){
@@ -2648,7 +2664,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 			$scope.$apply();
 			$('[data-toggle="tooltip"]').tooltip(); //初始化提示
 			$scope.saveIntentDetailFunc();
-		}, 200);
+		}, 30);
 	}
 	//微信文本框光标离开，添加文本内容 end
 	var deleteEmptyAssistantAnswerFunc = function(outouts,outputText,parentIndex,index){
@@ -2665,7 +2681,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	//硬件文本框光标离开，添加文本内容 start
 	$scope.addTextOutputLocalFunc = function($event,outputText,parentIndex,index,type){
 		if(checkIsChangeValue != outputText){
-			dataEditedFlag = true;
+			//dataEditedFlag = true;
 		}
 		if(!outputText || $.trim(outputText).length <= 0){
 			//删除空的助理答
@@ -2701,8 +2717,9 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 				}
 			}
 			$scope.$apply();
+			$scope.saveIntentDetailFunc();
 			$('[data-toggle="tooltip"]').tooltip(); //初始化提示
-		}, 200);
+		}, 30);
 	}
 	//硬件文本框光标离开，添加文本内容 end
 	
@@ -2725,7 +2742,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	//微信删除文字回复 start
 	$scope.deleteOutputWechatFunc = function(parentIndex,index){
 		setTimeout(function(){
-			dataEditedFlag = true;
+			//dataEditedFlag = true;
 			for(var i in $scope.wechatOutputs){
 				for(var j in $scope.wechatOutputs[i]){
 					if(i == parentIndex && j == index){
@@ -2747,12 +2764,13 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 				for(var j in $scope.localOutouts[i]){
 					if(i == parentIndex && j == index){
 						$scope.localOutouts[i].splice(j,1);
-						dataEditedFlag = true;
+						//dataEditedFlag = true;
 						break;
 					}
 				}
 			}
 			$scope.$apply();
+			$scope.saveIntentDetailFunc();
 		}, 200);
 	}
 	//硬件删除文字回复 end
@@ -2765,7 +2783,8 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 					var object = $scope.wechatOutputs[i][j];
 					var objectTemp = {"type":"wechat.text","property":{"text": object.property.text + "(副本)"}};
 					$scope.wechatOutputs[i].push(objectTemp);
-					dataEditedFlag = true;
+					//dataEditedFlag = true;
+					$scope.saveIntentDetailFunc();
 					break;
 				}
 			}
@@ -2781,7 +2800,8 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 					var object = $scope.localOutouts[i][j];
 					var objectTemp = {"type":"wechat.text","property":{"text": object.property.text + "(副本)"}};
 					$scope.localOutouts[i].push(objectTemp);
-					dataEditedFlag = true;
+					//dataEditedFlag = true;
+					$scope.saveIntentDetailFunc();
 					break;
 				}
 			}
@@ -2807,7 +2827,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		var editor_content_textarea = $textarea.val();
 		var myIndex  = $textarea.attr("myIndex");
 		if($scope.intentDetail.templates[myIndex] != $textarea.val()){
-			dataEditedFlag = true;
+			//dataEditedFlag = true;
 		}
 		$($scope.intentDetail.templates).each(function(index, ele) {
 			if($.trim(editor_content_textarea) === $.trim(ele)){
@@ -2980,7 +3000,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 			"text": '你确定要删除吗？',
 	        "title": "删除",
 	        "ensureFn": function() {
-	        	dataEditedFlag = true;
+	        	//dataEditedFlag = true;
 	        	if(type == "wechat"){
 	        		if($scope.wechatOutputs){
 		        		$scope.wechatOutputs.splice(index,1);
@@ -3008,7 +3028,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		var editor_content_textarea = $(window.frames["editor-iframe-wechat"].document).find("#editor_content_textarea").val();
 		if(myIndex == -1 || myIndex == "-1"){
 			var outputObj = createOutputObjectFunc("wechat.text",editor_content_textarea,"","");
-			dataEditedFlag = true;
+			//dataEditedFlag = true;
 			if(assistantEditStatus == "isEmpty"){
 				if(editor_content_textarea && $.trim(editor_content_textarea).length > 0){
 					$($scope.wechatOutputs[parentIndex]).each(function(index, ele) {
@@ -3031,7 +3051,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		}else{
 			$textarea.val(editor_content_textarea);
 			if($scope.wechatOutputs[parentIndex][myIndex].property.text != $textarea.val()){
-				dataEditedFlag = true;
+				//dataEditedFlag = true;
 			}
 			$($scope.wechatOutputs[parentIndex]).each(function(index, ele) {
 				if(ele.property.text === editor_content_textarea){
@@ -3057,7 +3077,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		
 		if(myIndex == -1 || myIndex == "-1"){
 				var outputObj = createOutputObjectFunc("dialog",editor_content_textarea,"","");
-				dataEditedFlag = true;
+				//dataEditedFlag = true;
 				if(assistantEditStatus == "isEmpty"){
 					if(editor_content_textarea && editor_content_textarea.length > 0){
 						$($scope.localOutouts[parentIndex]).each(function(index, ele) {
@@ -3078,7 +3098,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		}else{
 			$textarea.val(editor_content_textarea);
 			if($scope.localOutouts[parentIndex][myIndex].property.text != $textarea.val()){
-				dataEditedFlag = true;
+				//dataEditedFlag = true;
 			}
 			$($scope.localOutouts[parentIndex]).each(function(index, ele) {
 				if($.trim(ele.property.text) === $.trim(editor_content_textarea)){
@@ -3088,6 +3108,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 			});
 			$scope.localOutouts[parentIndex][myIndex].property.text = $textarea.val();
 		}
+		$scope.saveIntentDetailFunc();
 		$("#editLocalTextarea").modal("hide");
 	}
 	//确认硬件编辑end
@@ -3435,6 +3456,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		var $this = $(this);
 		$scope.response.action = $this.text();
 		$scope.$apply();
+		$scope.saveIntentDetailFunc();
 		$(".my-action-name-list").css("display","none");
 	});
 	
@@ -3477,7 +3499,8 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	}
 	
 	$scope.commonIntentDetailChange = function(){
-		dataEditedFlag = true;
+		//dataEditedFlag = true;
+		$scope.saveIntentDetailFunc();
 	}
 	
 //	$(document).click(function(event){

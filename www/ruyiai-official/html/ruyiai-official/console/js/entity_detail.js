@@ -137,6 +137,7 @@ function entityDetailCtrl($rootScope,$scope, $state, $stateParams){
 		$scope.addSynonym = "";
 		dataEditedFlag = true;
 		addEmptyEntityFunc($scope.entityDetail);
+		$scope.saveEntityDetailFunc();
 	}
 	
 	//添加同义词的值
@@ -179,6 +180,7 @@ function entityDetailCtrl($rootScope,$scope, $state, $stateParams){
 		$("[data-act=addEntitySynonym]").val("");
 		dataEditedFlag = true;
 		addEmptyEntityFunc($scope.entityDetail);
+		$scope.saveEntityDetailFunc();
 	}
 	
 //	$scope.addEntitySynonymKeydownFunc = function($event, addSynonym, $index){
@@ -372,6 +374,8 @@ function entityDetailCtrl($rootScope,$scope, $state, $stateParams){
     				if(j == $index){
     					$scope.entityDetail.entries[i].synonyms.splice(j,1);
     					dataEditedFlag = true;
+    					$scope.saveEntityDetailFunc();
+    					break;
     				}
     			}
     		}
@@ -387,6 +391,7 @@ function entityDetailCtrl($rootScope,$scope, $state, $stateParams){
 	
 	$scope.entityNameChangeFunc = function(){
 		dataEditedFlag = true;
+		$scope.saveEntityDetailFunc();
 	}
 	
 	
