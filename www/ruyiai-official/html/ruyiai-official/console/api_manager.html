@@ -11,10 +11,10 @@
 	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 	
 	<!-- 压缩后的css start -->
-	<link rel="stylesheet" type="text/css" href="css/merge.min.css?v=201708005a">
+	<!-- <link rel="stylesheet" type="text/css" href="css/merge.min.css?v=201708005a"> -->
 	<!-- 压缩后的css end -->
 	
-	<!-- <link rel="stylesheet" href="https://dn-vbuluo-static.qbox.me/jquery-ui.css">
+	<link rel="stylesheet" href="https://dn-vbuluo-static.qbox.me/jquery-ui.css">
 	<link rel="stylesheet" href="https://dn-vbuluo-static.qbox.me/font-awesome-ie7.min.css">
 	<link rel="stylesheet" href="https://dn-vbuluo-static.qbox.me/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/robot.css?v=20161102b">
@@ -23,9 +23,9 @@
 	<link rel="stylesheet" type="text/css" href="css/new-user.css">
 	<link rel="stylesheet" type="text/css" href="css/angularDemo.css">
 	<link rel="stylesheet" type="text/css" href="https://dn-vbuluo-static.qbox.me/bootstrap-submenu.min.css">
-	<link rel="stylesheet" type="text/css" href="css/common.css?20161012">-->
+	<link rel="stylesheet" type="text/css" href="css/common.css?20161012">
 	<!-- 文件中的引用 -->
-	<!-- <link rel="stylesheet" type="text/css" href="css/action_set.css">
+	<link rel="stylesheet" type="text/css" href="css/action_set.css">
 	<link rel="stylesheet" type="text/css" href="css/loading.css">
 	<link rel="stylesheet" type="text/css" href="css/skill_store.css">
 	<link rel="stylesheet" href="css/jquery.Jcrop.min.css" type="text/css" />
@@ -33,7 +33,7 @@
 	<link rel="stylesheet" type="text/css" href="css/log_statistics.css">
 	<link rel="stylesheet" href="css/jquery.Jcrop.min.css" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="css/skill_store.css">
-	<link rel="stylesheet" type="text/css" href="css/star-rating.min.css">-->
+	<link rel="stylesheet" type="text/css" href="css/star-rating.min.css">
 	<!-- 文件中的引用 -->
 	
 	<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_qlr8kbgvlwyiudi.css">
@@ -64,9 +64,6 @@ var _hmt = _hmt || [];
 	<ul class="nav nav-pills nav-box-ul">
 	  <li class="active" role="presentation"><a href="../index.html">首 页<div></div></a></li>
 	  <li role="presentation" id="help"><a href="http://docs.ruyi.ai/" target="_blank">开发者文档<div></div></a></li>
-	 <!--  <li role="presentation"><a href="#" data-toggle="modal" data-target="#qr-code">简介<div></div></a></li>
-	  <li role="presentation"><a href="#" data-toggle="modal" data-target="#qr-code">案例<div></div></a></li>
-	  <li role="presentation"><a href="#" data-toggle="modal" data-target="#qr-code">关于我们<div></div></a></li> -->
 	  <li role="presentation" id="nav-mylogin"><a href="#" class="nav-btn-login" data-toggle="modal" data-target="#login">登录</a></li>
 	  <li role="presentation" id="nav-register"><a href="#" class="nav-btn-login" data-toggle="modal" data-target="#qr-code">注册</a></li> 
 	  <li role="presentation" id="nav-user-info">
@@ -98,17 +95,13 @@ var _hmt = _hmt || [];
 				</ul>
 			</div>
 			<ul class="list-group" style="margin-top:0;">
-			  <!-- <li class="list-group-item" data-act="nav-statistics" ng-click="goCenterList('nav-statistics')">
-			  		<i class="statistics icon"></i>
-			  		<a href="javascript:;">统计分析</a>
-			  </li> -->
 			  <li class="list-group-item" data-act="nav-log-statistics" ng-click="goCenterList('log_statistics')">
 			  		<i class="iconfont left-icon">&#xe61c;</i>
-			  		<a href="javascript:;">数据统计</a>
+			  		<a href="#/log_statistics">数据统计</a>
 			  </li>
 			  <li class="list-group-item" data-act="user_log_list" ng-click="goCenterList('user_log_list')">
 			  		<i class="iconfont left-icon">&#xe619;</i>
-			  		<a href="javascript:;">粉丝管理</a>
+			  		<a href="#/user_log_list">粉丝管理</a>
 			  </li>
 			  <li class="list-group-item scenario-box" style="padding:8px;" data-act="nav-scenario" data-toggle="collapse" data-target="#dialogScenes" aria-expanded="true" aria-controls="dialogScenes">
 			  	<i class="iconfont left-icon">&#xe607;</i>
@@ -122,7 +115,7 @@ var _hmt = _hmt || [];
 				   		<!-- start  -->
 				   		<span style="background: #71c737;" data-toggle='tooltip' title="{{scenario.title || '该场景已打开'}}" ng-class='scenario.isAbledClass' class='colorBtn' data-container='body' ng-hide='scenario.shouldHide'>&nbsp;</span>
 				   		<!-- end -->
-				   		<span ng-bind="scenario.name"></span>
+				   		<a class="high-hover-ctrl" href="#/intent_list/{{scenario.id}}" ng-bind="scenario.name"></a>
 				   		<div class="btn-group my-btn-group pull-right" ng-hide='scenario.shouldHide'>
 			  	 			<div class="dropdown-toggle glyphicon glyphicon-option-vertical btn-scenario" type="button" data-submenu="" aria-expanded="false"></div>
 					   		<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
@@ -142,11 +135,11 @@ var _hmt = _hmt || [];
 			   </li>
 			  <li class="list-group-item" data-act="nav-entity" ng-click="goCenterList('entity_list')">
 			  	<i class="iconfont left-icon">&#xe615;</i>
-			  	<a href="javascript:;">词典实体</a>
+			  	<a href="#/entity_list">词典实体</a>
 			  </li>
 			 <li class="list-group-item" data-act="nav-import-knowledge-base" ng-click="goCenterList('import_knowledge_base')">
 			  	<i class="iconfont left-icon">&#xe618;</i>
-			  	<a href="javascript:;">导入知识库</a>
+			  	<a href="#/import_knowledge_base">导入知识库</a>
 			  </li>
 			  <li class="list-group-item" data-act="nav-robot-para" data-toggle="collapse" data-target="#robot-parament" aria-expanded="true" aria-controls="robot-parament">
 			  	<i class="iconfont left-icon">&#xe61a;</i>
@@ -155,82 +148,27 @@ var _hmt = _hmt || [];
 			  <li class="collapse dialogScenes" id="robot-parament">
 				 <ul class="list-group">
 					   <li data-act="nav-robot-role" ng-click="goCenterList('robot_paramenter')" class="list-group-item" style="height: 42px;">
-					   		<span>属性设置</span>
+					   		<a class="high-hover-ctrl" href="#/robot_paramenter">属性设置</a>
 					   </li>
 					   <li data-act="nav-action-set" ng-click="goCenterList('action_set')" class="list-group-item" style="height: 42px;">
-					   		<span>触发器设置</span>
+					   		<a class="high-hover-ctrl" href="#/action_set">触发器设置</a>
 					   </li>
-					   <!-- <li data-act="nav-robot-skill" ng-click="goCenterList('skill_store')" class="list-group-item" style="height: 42px;">
-					   		<span>技能插件</span>
-					   </li>
-					   <li data-act="nav-robot-delete" ng-click="goCenterList('delete_robot')" class="list-group-item" style="height: 42px;">
-					   		<span>高级设置</span>
-					   </li> -->
+					   <li data-act="nav-skill-publish" ng-click="goCenterList('skill_publish')" class="list-group-item">
+					  		<a class="high-hover-ctrl" href="#/skill_publish">技能插件发布</a>
+					  </li>
 					   <li data-act="nav-weixin" ng-click="goCenterList('nav-weixin')" class="list-group-item" style="height: 42px;">
-					   		<span><a style="font-size:14px;" target="_blank" href="{{ruyi_wechat}}/ruyi-wechat/authorize.jsp?appId={{appId}}">微信授权</a></span>
+					   		<a class="high-hover-ctrl" style="font-size:14px;" target="_blank" href="{{ruyi_wechat}}/ruyi-wechat/authorize.jsp?appId={{appId}}">微信授权</a>
 					   </li>
-					   <!-- <li class="list-group-item" style="height: 42px;" data-act="nav-weixin" ng-click="goCenterList('nav-weixin')">
-					  		<i class="iconfont left-icon">&#xe61e;</i>
-					  		<a target="_blank" href="{{ruyi_wechat}}/ruyi-wechat/authorize.jsp?appId={{appId}}">接入微信公众号</a>
-					  </li> -->
 				 </ul>
 			  </li>
-			 <!--  <li class="list-group-item" data-act="nav-robot-role" ng-click="goCenterList('robot_paramenter')">
-			  	<i class="iconfont left-icon">&#xe61a;</i>
-			  	<a href="javascript:;">属性设置</a>
-			  </li> -->
 			   <li class="list-group-item" data-act="nav-robot-skill" ng-click="goCenterList('skill_store')">
 			  	<i class="iconfont left-icon">&#xe600;</i>
-			  	<a href="javascript:;">技能插件</a>
+			  	<a href="#/skill_store">技能插件</a>
 			  </li>
 			  <li class="list-group-item" data-act="nav-resource" ng-click="goCenterList('resource')">
 			  	<i class="iconfont left-icon">&#xe617;</i>
-			  	<a href="javascript:;">素材管理</a>
+			  	<a href="#/resource">素材管理</a>
 			  </li>
-			  <!-- <li class="list-group-item" data-act="nav-weixin" ng-click="goCenterList('nav-weixin')">
-			  	<i class="iconfont left-icon">&#xe61e;</i>
-			  	<a target="_blank" href="{{ruyi_wechat}}/ruyi-wechat/authorize.jsp?appId={{appId}}">接入微信公众号</a>
-			  </li> -->
-			  <!-- <li class="list-group-item" data-act="nav-hardware" ng-click="goCenterList('nav-hardware')">
-			  	<i class="nav-hardware icon"></i>
-			  	<a href="javascript:;">接入硬件</a>
-			  </li> -->
-			  <!-- <li class="list-group-item" data-act="nav-reference" ng-click="goCenterList('skill_store')"><a href="javascript:;">扩展技能</a></li>
-			  <li class="list-group-item" data-act="robot-paramenter" ng-click="goCenterList('robot_paramenter')"><a href="javascript:;">机器人属性</a></li>
-			  <li class="list-group-item"><a target="_blank" href="{{ruyi_wechat}}/ruyi-wechat/authorize.jsp?appId={{appId}}">接入微信公众号</a></li>
-			  <li class="list-group-item list-group-item-try" data-act="nav-test-try"></li> -->
-			</ul>
-			<!-- <section class="left-footer clearfix">
-				设置菜单 start
-				<div class="dropdown dropup setting-menu pull-right">
-				   <div class="setting-icon btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">&nbsp;</div>
-				   <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
-				      <li role="presentation" ng-click="goCenterList('assistantPara')" class="assistantPara">
-				    <a role="menuitem" tabindex="-1" href="#" data-act="assistant-para">助理属性</a>        
-				         <a role="menuitem" tabindex="-1" href="#">助理属性</a>
-				      </li>
-				      <li role="presentation">
-				         <a role="menuitem" tabindex="-1" href="#" data-act="assistant-answer">缺省回复</a>
-				      </li>
-				      <li role="presentation" data-act="weixin-authorization">
-				         <a role="menuitem" tabindex="-1" href="{{ruyi_wechat}}/ruyi-wechat/authorize.jsp?appId={{appId}}">
-				            微信第三方授权
-				         </a>
-				      </li>
-				      <li role="presentation" data-act="html-link">
-				         <a role="menuitem" tabindex="-1" href="#" data-act="html5-link">导出html5链接</a>
-				      </li>
-				      <li role="presentation">
-				         <a role="menuitem" tabindex="-1" href="help.html" target="_blank">帮助文档</a>
-				      </li>
-				      <li role="presentation" class="divider"></li>
-				      <li role="presentation">
-				         <a role="menuitem" tabindex="-1" href="javascript:;" ng-click="goCenterList('logout')">退出登录</a>
-				      </li>
-				   </ul>
-				</div>
-				设置菜单  end
-			</section> -->
 		</div>
 		<div style="padding-left: 250px; width: 100%; padding-top: 10px;  margin-top: -10px;" class="center-box" ui-view>
 		</div>
@@ -562,6 +500,7 @@ var _hmt = _hmt || [];
 <script src="js/user_logs.js"></script>
 <script src='js/intent_timeout_detail.js'></script>
 <script src='js/intent_repeat_detail.js'></script>
+<script src='js/skill_publish.js'></script>
  <!-- 分开的js end -->
 
 </body>

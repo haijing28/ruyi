@@ -21,9 +21,20 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	}
 	
 	$scope.commonIntentDetailBlur = function(tempValue){
+		$scope.saveIntentDetailFunc();
 		if(checkIsChangeValue != tempValue){
 			dataEditedFlag = true;
 		}
+		//跟新列表页面的标题
+		var intentList = angular.element(".center-list-box").scope().intentList;
+		for(var i in intentList){
+			if(intentList[i].id == $scope.intentDetail.id){
+				intentList[i].name = $scope.intentDetail.name;
+				break;
+			}
+		}
+		angular.element(".center-list-box").scope().intentList = intentList;
+		angular.element(".center-list-box").scope().$apply();
 	}
 	
 	//检测是否更新 end
@@ -78,11 +89,6 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
     });
     
     //=======end
-	
-//	setTimeout(function(){
-//		$("[data-act=nav-intent-"+ $stateParams.intent_id +"]").siblings().removeClass("active");
-//		$("[data-act=nav-intent-"+ $stateParams.intent_id +"]").addClass("active")
-//	}, 500);
 	setTimeout(function(){
 		$('[data-toggle="tooltip"]').tooltip(); //初始化提示
 	}, 200);
@@ -90,13 +96,8 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	var intentDetailDuplicate = "";
 	
 	// intentDetail监视
-//	$scope.$watch('intentDetail', function(newValue, oldValue) {
-//		var newValueTemp = JSON.stringify(newValue);
-//		if(newValueTemp == intentDetailDuplicate){
-//			dataEditedFlag = false;
-//		}else{
-//			dataEditedFlag = true;
-//		}
+//	$scope.$watch('intentDetail.name', function(newValue, oldValue) {
+//		
 //	}, true);
 	
 	$scope.isSaveSuccess = true;
@@ -258,7 +259,6 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 					if(data.code == 0){
 					$scope.intentDetail = data.result;
 					//TODO
-					//$scope.intentDetail.speech.push("@mediaResourceResponse-image#####mediaid&&&&&L7vIZuny21XNDdvfibno_9k8FaqMMtOLFQ4lNJgOl7A#####name&&&&&10.pic.jpg");
 					$scope.getMediaResponseFunc(true);
 					//初始化response
 					if($scope.intentDetail.responses && $scope.intentDetail.responses.length > 0){
@@ -535,26 +535,21 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 						}, 1000);
 					}
 					$scope.intentDetail = intentDetail;
-//					var templatesListTemp = $scope.intentDetail.templates;
-//					$scope.intentDetail.templates = [];
-//					setTimeout(function(){
-//						for(var i in templatesListTemp){
-//							$scope.intentDetail.templates.push(templatesListTemp[i]);
+//					var intentList = angular.element(".center-list-box").scope().intentList;
+//					for(var i in intentList){
+//						if(intentList[i].id == $scope.intentDetail.id){
+//							 validateIntentDetailFunc();
+//							intentList[i] = $scope.intentDetail;
+//							break;
 //						}
-//						$scope.$apply();
-//					}, 1);
-					var intentList = angular.element(".center-list-box").scope().intentList;
-					for(var i in intentList){
-						if(intentList[i].id == $scope.intentDetail.id){
-							validateIntentDetailFunc();
-							intentList[i] = $scope.intentDetail;
-							break;
-						}
-					}
+//					}
+//					intentDetailDuplicate = JSON.stringify($scope.intentDetail);
+//					angular.element(".center-list-box").scope().intentList = intentList;
+//					$scope.$apply();
+//					angular.element(".center-list-box").scope().$apply();
+					validateIntentDetailFunc();
 					intentDetailDuplicate = JSON.stringify($scope.intentDetail);
-					angular.element(".center-list-box").scope().intentList = intentList;
 					$scope.$apply();
-					angular.element(".center-list-box").scope().$apply();
 					setTimeout(function(){
 						$("[data-act=nav-intent-"+ $stateParams.intent_id +"]").siblings().removeClass("active");
 						$("[data-act=nav-intent-"+ $stateParams.intent_id +"]").addClass("active")
@@ -587,19 +582,14 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 			$(".intent-name").focus();
 			return false;
 		}
-//		else if(!$scope.intentDetail.templates || $scope.intentDetail.templates.length <= 0){
-//			$.trace("至少添加一个用户对话模板");
-//			$(".user-say-templates:last-child input").focus();
-//			return false;
-//		}
 		if(editIntentEditFunc){
 			editIntentEditFunc();
 		}
 	}
 	//点击保存按钮，创建意图
 	$scope.saveIntentDetailFunc = function(){
+		console.log("您好，我触发了保存动作");
 		// 清楚空回复
-		///////////
 		$scope.wechatOutputs.forEach(function(ele){
 			ele.forEach(function(ele,index,arr){
 				if(ele.property.text == ''){
@@ -615,28 +605,18 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 			})
 		})
 		if (navigator.onLine) 
-		{ 
-			setTimeout(function(){
-				if($(".save-and-apply .dim-div").css("display") != "block"){
-					$scope.checkRequiredParaments(function(){//必填参数判断
-						$(".save-and-apply .dim-div").css("display","block");
-						$(".save-and-apply .save-text").text("保存中...");
-						$(".save-and-apply .saveing").css("width","90px");
-						$scope.intentDetail.responses = new Array();
-						if($scope.response.action || $scope.response.affectedContexts || $scope.response.parameters){
-							$scope.intentDetail.responses.push($scope.response);
-						}
-						$scope.intentDetail.appId = appId;
-						$scope.intentDetail.scenarioId = $stateParams.scenes_id;
-						if($scope.intentDetail.id && $scope.intentDetail.id.length > 0){//更新意图
-							$scope.updateIntentDetailFunc();
-						}else{//创建意图
-							$scope.addIntentDetailFunc();
-						}
-						
-					});
-				}
-			}, 200);
+		{
+			$scope.intentDetail.responses = new Array();
+			if($scope.response.action || $scope.response.affectedContexts || $scope.response.parameters){
+				$scope.intentDetail.responses.push($scope.response);
+			}
+			$scope.intentDetail.appId = appId;
+			$scope.intentDetail.scenarioId = $stateParams.scenes_id;
+			if($scope.intentDetail.id && $scope.intentDetail.id.length > 0){//更新意图
+				$scope.updateIntentDetailFunc();
+			}else{//创建意图
+				$scope.addIntentDetailFunc();
+			}
 		}else{
 			$.trace("您当前处于离线状态，保存意图失败！");
 		}
@@ -771,6 +751,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 					$scope.$apply();
 				}, 20);
 			}
+			$scope.saveIntentDetailFunc();
 		}, 20);
 	}
 	//enter添加用户说的模板
@@ -788,6 +769,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		for(var i in $scope.intentDetail.templates){
 			if(i == index){
 				$scope.intentDetail.templates.splice(i,1);
+				$scope.saveIntentDetailFunc();
 				break;
 			}
 		}
@@ -795,7 +777,6 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	
 	//复制用户说的模板
 	$scope.copyTemplateFunc = function(template){
-		console.log('cizhilou');
 		dataEditedFlag = true;
 		//判断当前数据中是否已经存在此用户说 start
 		for(var i in $scope.intentDetail.templates){
@@ -806,6 +787,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		}
 		//判断当前数据中是否已经存在此用户说 end
 		$scope.intentDetail.templates.push(template+ "(副本)");
+		$scope.saveIntentDetailFunc();
 	}
 	
 	//传入意图标签
@@ -1224,15 +1206,9 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	$("body").off("click","[data-act=showMoreTemplate] label").on("click","[data-act=showMoreTemplate] label",function(event){
 		var $this = $(this);
 		if($this.siblings("i").attr("class") == "glyphicon glyphicon-triangle-bottom"){
-//			$(".user-say-templates").animate({height:"100%"});
 			$scope.userSayFlag = true;
-//			$this.siblings("i").attr("class","glyphicon glyphicon-triangle-top");
-//			$this.text("收起");
 		}else{
-//			$(".user-say-templates").animate({height:"176px"});
 			$scope.userSayFlag = false;
-//			$this.siblings("i").attr("class","glyphicon glyphicon-triangle-bottom");
-//			$this.text("查看更多");
 		}
 		$scope.$apply();
 	});
@@ -1281,6 +1257,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		}else{
 			$scope.intentDetail.mlLevel = "CLOSE";
 		}
+		$scope.saveIntentDetailFunc();
 	}
 	
 	//初始设置机器学习级别
@@ -1290,35 +1267,6 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		}else{
 			$scope.mlLevel = true;
 		}
-//		var $learn_level_bar = $("[data-act=learn-level-bar]");
-//		if($scope.intentDetail.mlLevel == "CLOSE"){
-//			$learn_level_bar.css("width","0%");
-//			$("ul > .LOW i").removeClass("active");
-//			$("ul > .MIDDLE i").removeClass("active");
-//			$("ul > .HIGH i").removeClass("active");
-//			$scope.intentDetail.mlLevel = "CLOSE";
-//		}else if($scope.intentDetail.mlLevel == "LOW"){
-//			$learn_level_bar.css("width","34%");
-//			$("ul > .CLOSE i").addClass("active");
-//			$("ul > .LOW i").addClass("active");
-//			$("ul > .MIDDLE i").removeClass("active");
-//			$("ul > .HIGH i").removeClass("active");
-//			$scope.intentDetail.mlLevel = "LOW";
-//		}else if($scope.intentDetail.mlLevel == "MIDDLE"){
-//			$learn_level_bar.css("width","68%");
-//			$("ul > .CLOSE i").addClass("active");
-//			$("ul > .LOW i").addClass("active");
-//			$("ul > .MIDDLE i").addClass("active");
-//			$("ul > .HIGH i").removeClass("active");
-//			$scope.intentDetail.mlLevel = "MIDDLE";
-//		}else if($scope.intentDetail.mlLevel == "HIGH"){
-//			$learn_level_bar.css("width","100%");
-//			$("ul > .CLOSE i").addClass("active");
-//			$("ul > .LOW i").addClass("active");
-//			$("ul > .MIDDLE i").addClass("active");
-//			$("ul > .HIGH i").addClass("active");
-//			$scope.intentDetail.mlLevel = "HIGH";
-//		}
 	}
 	
 	//多媒体回复 start
@@ -1341,8 +1289,6 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 				}else if(data.code == 2){
 					goIndex();
 				}else{
-//					$(".authorize-tip-box").css("display","block");
-//					$.trace(data.msg);
 				}
 			}
 		});
@@ -1400,7 +1346,6 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	$scope.loadVoiceFunc = function(){
 		$scope.loadMaterialFunc("voice",function(item){
 			$rootScope.voiceList = item;
-			//$rootScope.voiceList = JSON.parse('[{"media_id":"8UjzyOZ-djUITYsTWVP2RxMx4EjZDp-FR-4sTKuU9xM","name":"B269EB17529FBCBC35AC7206B92104D1.mp3","update_time":1460433164}]');
 			for(var i in $rootScope.voiceList){
 				$rootScope.voiceList[i].selected = false;
 			}
@@ -1418,14 +1363,6 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 			$scope.$apply();
 		});
 	}
-	
-	//设置多媒体回复
-//	$scope.mediaSetFunc = function(mediaId){
-//		$scope.actionMediaId = mediaId;
-//		$("#mediaResponseModal").modal("show");
-//		$scope.loadNewsFunc();
-//		//$rootScope.newsList =JSON.parse('[{ "content": { "news_item": [{ "author": "", "content": "<p>324</p >", "content_source_url": "", "digest": "324", "show_cover_pic": 0, "thumb_media_id": "8UjzyOZ-djUITYsTWVP2R9eQ4x_a_acWIx4ANFjOJM4", "title": "23", "url": "http://mp.weixin.qq.com/s?__biz=MzI2NDIxNDAwMQ==&mid=501495439&idx=1&sn=6e02580327897df2931d86dd2b3e7818#rd" }, { "author": "", "content": "<p>324</p >", "content_source_url": "", "digest": "324", "show_cover_pic": 0, "thumb_media_id": "8UjzyOZ-djUITYsTWVP2R9eQ4x_a_acWIx4ANFjOJM4", "title": "23", "url": "http://mp.weixin.qq.com/s?__biz=MzI2NDIxNDAwMQ==&mid=501495439&idx=1&sn=6e02580327897df2931d86dd2b3e7818#rd" }, { "author": "", "content": "<p>324</p >", "content_source_url": "", "digest": "324", "show_cover_pic": 0, "thumb_media_id": "8UjzyOZ-djUITYsTWVP2R9eQ4x_a_acWIx4ANFjOJM4", "title": "23", "url": "http://mp.weixin.qq.com/s?__biz=MzI2NDIxNDAwMQ==&mid=501495439&idx=1&sn=6e02580327897df2931d86dd2b3e7818#rd" }, { "author": "", "content": "<p>324</p >", "content_source_url": "", "digest": "324", "show_cover_pic": 0, "thumb_media_id": "8UjzyOZ-djUITYsTWVP2R9eQ4x_a_acWIx4ANFjOJM4", "title": "23", "url": "http://mp.weixin.qq.com/s?__biz=MzI2NDIxNDAwMQ==&mid=501495439&idx=1&sn=6e02580327897df2931d86dd2b3e7818#rd" }, { "author": "", "content": "<p>324</p >", "content_source_url": "", "digest": "324", "show_cover_pic": 0, "thumb_media_id": "8UjzyOZ-djUITYsTWVP2R9eQ4x_a_acWIx4ANFjOJM4", "title": "23", "url": "http://mp.weixin.qq.com/s?__biz=MzI2NDIxNDAwMQ==&mid=501495439&idx=1&sn=6e02580327897df2931d86dd2b3e7818#rd" }, { "author": "", "content": "<p>324</p >", "content_source_url": "", "digest": "324", "show_cover_pic": 0, "thumb_media_id": "8UjzyOZ-djUITYsTWVP2R9eQ4x_a_acWIx4ANFjOJM4", "title": "23", "url": "http://mp.weixin.qq.com/s?__biz=MzI2NDIxNDAwMQ==&mid=501495439&idx=1&sn=6e02580327897df2931d86dd2b3e7818#rd" }] }, "media_id": "8UjzyOZ-djUITYsTWVP2RwMmqygBzHc_OVc48Quu0i8", "update_time": 1460440737 }]');
-//	}
 	
 	$scope.wechatMediaSetFunc = function(parentIndex, index){
 		$scope.currentWechatParentIndex = parentIndex;
@@ -1614,59 +1551,6 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		}
 		createOrUpdateOutputsWechatFunc(outputObj);//创建或者更新多媒体列表
 		$("#mediaResponseModal").modal("hide");
-//		var responseText = "";
-//		var typeSplit = "#####";
-//		var keySplit = "&&&&&";
-//		if(type == "weixin-news"){
-//			responseText +="@mediaResourceResponse-news"
-//			for(var i in $rootScope.newsList){
-//				if($rootScope.newsList[i].selected){
-//					responseText+= typeSplit + "mediaid" + keySplit + $rootScope.newsList[i].media_id;
-//					responseText+=typeSplit + "name" + keySplit + $rootScope.newsList[i].content.news_item[0].title;
-//					break;
-//				}
-//			}
-//		}else if(type == "weixin-image"){
-//			responseText +="@mediaResourceResponse-image"
-//			for(var i in $rootScope.imageObjList){
-//				if($rootScope.imageObjList[i].selected){
-//					responseText+= typeSplit + "mediaid" + keySplit + $rootScope.imageObjList[i].media_id;
-//					responseText+= typeSplit + "name" + keySplit + $rootScope.imageObjList[i].name;
-//					break;
-//				}
-//			}
-//		}else if(type == "weixin-voice"){
-//			responseText +="@mediaResourceResponse-voice"
-//			for(var i in $rootScope.voiceList){
-//				if($rootScope.voiceList[i].selected){
-//					responseText+= typeSplit + "mediaid" + keySplit + $rootScope.voiceList[i].media_id;
-//					responseText+= typeSplit + "name" + keySplit + $rootScope.voiceList[i].name;
-//					break;
-//				}
-//			}
-//		}else if(type == "weixin-video"){
-//			responseText +="@mediaResourceResponse-video"
-//			for(var i in $rootScope.videoList){
-//				if($rootScope.videoList[i].selected){
-//					responseText+= typeSplit + "mediaid" + keySplit + $rootScope.videoList[i].media_id;
-//					responseText+= typeSplit + "name" + keySplit + $rootScope.videoList[i].name;
-//					break;
-//				}
-//			}
-//		}
-//		$("#mediaResponseModal").modal("hide");
-//		var mediaObj = $scope.createMediaObjectFunc(responseText);
-//		if($scope.actionMediaId && $scope.actionMediaId.length > 0){
-//			for(var i in $scope.mediaResponseList){
-//				if($scope.mediaResponseList[i].mediaId == $scope.actionMediaId){
-//					$scope.mediaResponseList[i] = mediaObj;
-//					flag = true;
-//					break;
-//				}
-//			}
-//		}else{
-//			$scope.mediaResponseList.push(mediaObj);
-//		}
 	}
 	
 	//删除多媒体
@@ -1856,9 +1740,6 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	$('[data-act=change-media]').click(function(){
 		var $this = $(this);
 		var $href = $this.attr("href");
-//		$rootScope.imageObjList = JSON.parse('[{"media_id":"8UjzyOZ-djUITYsTWVP2R9eQ4x_a_acWIx4ANFjOJM4","name":"b17eca8065380cd7b84ba9eca344ad345982815d.jpg","update_time":1460432074,"url":"https://mmbiz.qlogo.cn/mmbiz/rIvVibyYnDr7H4ZeibMEaweArkxPJW38HxwUCT8xsQ7x6g6JCsJT8cpoa0wQWR9DGkAHhficRLwtSOGwl9QPFjXqA/0?wx_fmt=jpeg"},{"media_id":"8UjzyOZ-djUITYsTWVP2RxQ-0wQr3c3eyGWrL7mJ3O8","name":"40269979_404.jpg","update_time":1460432074,"url":"https://mmbiz.qlogo.cn/mmbiz/rIvVibyYnDr7H4ZeibMEaweArkxPJW38HxwIEd00P5d4hhUHfPAGQK6XiboiaeKEL3fCFMXXenol55mquEydQvdGzQ/0?wx_fmt=jpeg"},{"media_id":"8UjzyOZ-djUITYsTWVP2R8gpClMt-GDYnNLJq7jYq-o","name":"91529822720e0cf3ab9db9fb0846f21fbe09aa4c.jpg","update_time":1460432074,"url":"https://mmbiz.qlogo.cn/mmbiz/rIvVibyYnDr7H4ZeibMEaweArkxPJW38HxjXiaCcrgokH4R1qLUgtxj61OicEWafdGFNIiayhd39vACJTUkQvz9fDicg/0?wx_fmt=jpeg"},{"media_id":"8UjzyOZ-djUITYsTWVP2R-_DGiv_lY9JQiI7yH-oixM","name":"aa64034f78f0f736f514e2010855b319eac413c3.jpg","update_time":1460432074,"url":"https://mmbiz.qlogo.cn/mmbiz/rIvVibyYnDr7H4ZeibMEaweArkxPJW38HxmunHjPyPdffHOibiaUPUZibSXwGYwGeFDcic85fnQicYkqicIWL3Y3lrDjVg/0?wx_fmt=jpeg"},{"media_id":"8UjzyOZ-djUITYsTWVP2R5ZM8LbbcEOneM2hBki72DI","name":"80cb39dbb6fd526678b13b1aa918972bd4073621.jpg","update_time":1460432074,"url":"https://mmbiz.qlogo.cn/mmbiz/rIvVibyYnDr7H4ZeibMEaweArkxPJW38Hxq3Ztczg9RY6KLHTRpd9b5PtwFlsibMm6rdVWwjcrytQJibLPdITJ5duA/0?wx_fmt=jpeg"},{"media_id":"8UjzyOZ-djUITYsTWVP2Rz1GOTK1-EYir9GdZIOsOg8","name":"83025aafa40f4bfb27bfbf2b014f78f0f7361865.jpg","update_time":1460432074,"url":"https://mmbiz.qlogo.cn/mmbiz/rIvVibyYnDr7H4ZeibMEaweArkxPJW38HxQuJJ4tOoDUKU5Xu2LS0kupYcv21gcctD5gYcLlQFIVKkJvlibh82Sog/0?wx_fmt=jpeg"},{"media_id":"8UjzyOZ-djUITYsTWVP2R7g-RQ2UIac2Z-q_JqYlm84","name":"8644ebf81a4c510fa42d1bf66459252dd52aa575.jpg","update_time":1460432074,"url":"https://mmbiz.qlogo.cn/mmbiz/rIvVibyYnDr7H4ZeibMEaweArkxPJW38HxQUGpiagxzoyByjyQo26KF2PfWR81w86ySrG88aAQiajW6klNGKCiaiaTvA/0?wx_fmt=jpeg"},{"media_id":"8UjzyOZ-djUITYsTWVP2R_S7P7D0tYl1MT7QyQh1eUY","name":"55e736d12f2eb938d3de795ad0628535e4dd6fe2.jpg","update_time":1460432073,"url":"https://mmbiz.qlogo.cn/mmbiz/rIvVibyYnDr7H4ZeibMEaweArkxPJW38HxB494nGMztCX4Kfib9nLIyLLz04BQXt6jPg4Tj4r6purJibRW0nvZGckw/0?wx_fmt=jpeg"},{"media_id":"8UjzyOZ-djUITYsTWVP2R4iilmoToRjP_pEfikJ9PSs","name":"10dfa9ec8a136327a1de913a938fa0ec08fac78c.jpg","update_time":1460432073,"url":"https://mmbiz.qlogo.cn/mmbiz/rIvVibyYnDr7H4ZeibMEaweArkxPJW38HxO8N9icleSzMRAFkiaaFoWXcjogW5EJ47D4iasP9qkShvqOtrKjlRymE0Q/0?wx_fmt=jpeg"},{"media_id":"8UjzyOZ-djUITYsTWVP2R1jSEJliZcHSi5BSlxTQTqI","name":"3c6d55fbb2fb43163406930422a4462309f7d3b7.jpg","update_time":1460432073,"url":"https://mmbiz.qlogo.cn/mmbiz/rIvVibyYnDr7H4ZeibMEaweArkxPJW38HxdL32rBTdNtULiaO4TxbKMyLl8oW4ABQyF8Hduy6UPAKQpFPOsaSx5lw/0?wx_fmt=jpeg"},{"media_id":"8UjzyOZ-djUITYsTWVP2R1JbNBPIanxsoHYbnYeMZgQ","name":"6c224f4a20a446230761b9b79c22720e0df3d7bf.jpg","update_time":1460432073,"url":"https://mmbiz.qlogo.cn/mmbiz/rIvVibyYnDr7H4ZeibMEaweArkxPJW38HxTnTdQHB5ODYR2I2YztDMeHoHTNA3VoGdFuKWKce1RCrpgDyVdp1iadg/0?wx_fmt=jpeg"},{"media_id":"8UjzyOZ-djUITYsTWVP2R3f2nfr1_RwvY0rwepFQptQ","name":"00e93901213fb80edacf8d0f32d12f2eb83894c8.jpg","update_time":1460432073,"url":"https://mmbiz.qlogo.cn/mmbiz/rIvVibyYnDr7H4ZeibMEaweArkxPJW38HxAsbcqG7HlSSBydtjuHxicwHSXt6sxQfgDXCzyfic9ca3PxcpllgqaHfQ/0?wx_fmt=jpeg"},{"media_id":"8UjzyOZ-djUITYsTWVP2R97l3D8vLvkWKsOSCMC8gRk","name":"91529822720e0cf3ab9db9fb0846f21fbe09aa4c.jpg","update_time":1460432068,"url":"https://mmbiz.qlogo.cn/mmbiz/rIvVibyYnDr7H4ZeibMEaweArkxPJW38HxjXiaCcrgokH4R1qLUgtxj61OicEWafdGFNIiayhd39vACJTUkQvz9fDicg/0?wx_fmt=jpeg"},{"media_id":"8UjzyOZ-djUITYsTWVP2R95aJXJCrBW9L7ADhZu_CBw","name":"b17eca8065380cd7b84ba9eca344ad345982815d.jpg","update_time":1460432067,"url":"https://mmbiz.qlogo.cn/mmbiz/rIvVibyYnDr7H4ZeibMEaweArkxPJW38HxwUCT8xsQ7x6g6JCsJT8cpoa0wQWR9DGkAHhficRLwtSOGwl9QPFjXqA/0?wx_fmt=jpeg"},{"media_id":"8UjzyOZ-djUITYsTWVP2R-A2Dkip8zQnV-yxvow-zPE","name":"aa64034f78f0f736f514e2010855b319eac413c3.jpg","update_time":1460432067,"url":"https://mmbiz.qlogo.cn/mmbiz/rIvVibyYnDr7H4ZeibMEaweArkxPJW38HxmunHjPyPdffHOibiaUPUZibSXwGYwGeFDcic85fnQicYkqicIWL3Y3lrDjVg/0?wx_fmt=jpeg"},{"media_id":"8UjzyOZ-djUITYsTWVP2R8mq2DlnIjTrlOOk4lnoPmA","name":"40269979_404.jpg","update_time":1460432067,"url":"https://mmbiz.qlogo.cn/mmbiz/rIvVibyYnDr7H4ZeibMEaweArkxPJW38HxwIEd00P5d4hhUHfPAGQK6XiboiaeKEL3fCFMXXenol55mquEydQvdGzQ/0?wx_fmt=jpeg"},{"media_id":"8UjzyOZ-djUITYsTWVP2RyVhQ1_iW4nCwjtB7Q5hHYI","name":"83025aafa40f4bfb27bfbf2b014f78f0f7361865.jpg","update_time":1460432067,"url":"https://mmbiz.qlogo.cn/mmbiz/rIvVibyYnDr7H4ZeibMEaweArkxPJW38HxQuJJ4tOoDUKU5Xu2LS0kupYcv21gcctD5gYcLlQFIVKkJvlibh82Sog/0?wx_fmt=jpeg"},{"media_id":"8UjzyOZ-djUITYsTWVP2R0vVtam4r_1AZF21fjXRg-E","name":"8644ebf81a4c510fa42d1bf66459252dd52aa575.jpg","update_time":1460432067,"url":"https://mmbiz.qlogo.cn/mmbiz/rIvVibyYnDr7H4ZeibMEaweArkxPJW38HxQUGpiagxzoyByjyQo26KF2PfWR81w86ySrG88aAQiajW6klNGKCiaiaTvA/0?wx_fmt=jpeg"},{"media_id":"8UjzyOZ-djUITYsTWVP2R1pXnkYuIWTgQKxV8h8aTpc","name":"80cb39dbb6fd526678b13b1aa918972bd4073621.jpg","update_time":1460432066,"url":"https://mmbiz.qlogo.cn/mmbiz/rIvVibyYnDr7H4ZeibMEaweArkxPJW38Hxq3Ztczg9RY6KLHTRpd9b5PtwFlsibMm6rdVWwjcrytQJibLPdITJ5duA/0?wx_fmt=jpeg"},{"media_id":"8UjzyOZ-djUITYsTWVP2R4cuT8_nlRehtBUnta21ovE","name":"10dfa9ec8a136327a1de913a938fa0ec08fac78c.jpg","update_time":1460432066,"url":"https://mmbiz.qlogo.cn/mmbiz/rIvVibyYnDr7H4ZeibMEaweArkxPJW38HxO8N9icleSzMRAFkiaaFoWXcjogW5EJ47D4iasP9qkShvqOtrKjlRymE0Q/0?wx_fmt=jpeg"}]');
-//		$rootScope.voiceList = JSON.parse('[{"media_id":"8UjzyOZ-djUITYsTWVP2RxMx4EjZDp-FR-4sTKuU9xM","name":"B269EB17529FBCBC35AC7206B92104D1.mp3","update_time":1460433164}]');
-//		$rootScope.videoList =JSON.parse('[{"media_id":"8UjzyOZ-djUITYsTWVP2R_Hmd1gKoiqQsiurJ7_Nz-Q","name":"测试","update_time":1460433490}]');
 		if($href == "#weixin-news"){
 			$scope.loadNewsFunc();
 		}else if($href == "#weixin-image"){
@@ -1937,6 +1818,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 			}
 		});
 		$scope.intentDetail.templates = templatesTemp;
+		$scope.saveIntentDetailFunc();
 		$scope.$apply();
     } }); 
     
@@ -1952,12 +1834,6 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
     	}, 20);
     });
     
-//    $("body").off("focusout","[data-act=user-sya-add]").on("focusout","[data-act=user-sya-add]",function(){
-//    	var $this = $(this);
-//    	if(!$this.html() || $.trim($this.html()).length == 0){
-//    		$this.append('<div class="usersay-placeholder">请输入用户说</div>');
-//    	}
-//    });
     
   //失去光标的时候，显示移动图标
     $("body").off("blur",".user-says-input").on("blur",".user-says-input",function(){
@@ -2026,255 +1902,6 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
         }
       $scope.$apply();
     });
-    
-    /*七牛上传图片相关代码 start */
-    /*
-    //七牛上传图片文件 start
-    var optionImg = {
-        runtimes: 'html5,flash,html4',
-        browse_button: 'pickfiles',
-        container: 'container',
-        drop_element: 'container',
-        max_file_size: '1000mb',
-        flash_swf_url: 'bower_components/plupload/js/Moxie.swf',
-        dragdrop: true,
-        chunk_size: '4mb',
-        multi_selection: !(mOxie.Env.OS.toLowerCase()==="ios"),
-        //uptoken: $('#uptoken_url').val(),
-        uptoken_url:ruyiai_host + "/ruyi-ai/getuptoken",
-        domain: $('#domain').val(),
-        get_new_uptoken: false,
-        save_key: true,
-        filters : {
-            mime_types: [
-                     {title : "Image files", extensions : "BMP,DIB,EMF,GIF,ICB,ICO,JPG,JPEG,PBM,PCD,PCX,PGM,PNG,PPM,PSD,PSP,RLE,SGI,TGA,TIF"}
-            ]
-        },
-        auto_start: true,
-        log_level: 5,
-        init: {
-            'FilesAdded': function(up, files) {
-            	 $("#addresource").modal("show");
-                $('table').show();
-                $('#success').hide();
-                plupload.each(files, function(file) {
-                    var progress = new FileProgress(file, 'fsUploadProgress');
-                    progress.setStatus("等待...");
-                    progress.bindUploadCancel(up);
-                });
-            },
-            'BeforeUpload': function(up, file) {
-                var progress = new FileProgress(file, 'fsUploadProgress');
-                var chunk_size = plupload.parseSize(this.getOption('chunk_size'));
-                if (up.runtime === 'html5' && chunk_size) {
-                    progress.setChunkProgess(chunk_size);
-                }
-            },
-            'UploadProgress': function(up, file) {
-                var progress = new FileProgress(file, 'fsUploadProgress');
-                var chunk_size = plupload.parseSize(this.getOption('chunk_size'));
-                progress.setProgress(file.percent + "%", file.speed, chunk_size);
-            },
-            'UploadComplete': function() {
-            	$("#addresource").modal("hide");
-            	$scope.loadImage();
-            	$("#fsUploadProgress").html("");
-                //$('#success').show();
-            },
-            'FileUploaded': function(up, file, info) {
-                var progress = new FileProgress(file, 'fsUploadProgress');
-                progress.setComplete(up, info);
-                var tempObj = new Object();
-                tempObj.url = $('#domain').val() + JSON.parse(info).hash +"/" + file.name;
-                tempObj.title = file.name;
-                tempObj.size = file.size;
-                
-                switch ($scope.resType) {
-				case "image":
-					tempObj.type = "image"; 
-					break;
-				case "voice":
-					tempObj.type = "voice"; 
-					break;
-				case "video":
-					tempObj.type = "video"; 
-					break;
-				default:
-					break;
-				}
-                $scope.addResListTemp.push(tempObj);
-                $scope.$apply();
-            },
-            'Error': function(up, err, errTip) {
-                $('table').show();
-                var progress = new FileProgress(err.file, 'fsUploadProgress');
-                progress.setError();
-                progress.setStatus(errTip);
-            }
-                // ,
-                // 'Key': function(up, file) {
-                //     var key = "";
-                //     // do something with key
-                //     return key
-                // }
-        }
-    };
-    var uploader = Qiniu.uploader(optionImg);
-    //七牛上传图片文件 end
-
-    uploader.bind('FileUploaded', function() {
-    });
-    $('#container').on(
-        'dragenter',
-        function(e) {
-            e.preventDefault();
-            $('#container').addClass('draging');
-            e.stopPropagation();
-        }
-    ).on('drop', function(e) {
-        e.preventDefault();
-        $('#container').removeClass('draging');
-        e.stopPropagation();
-    }).on('dragleave', function(e) {
-        e.preventDefault();
-        $('#container').removeClass('draging');
-        e.stopPropagation();
-    }).on('dragover', function(e) {
-        e.preventDefault();
-        $('#container').addClass('draging');
-        e.stopPropagation();
-    });
-
-
-
-    $('#show_code').on('click', function() {
-        $('#myModal-code').modal();
-        $('pre code').each(function(i, e) {
-            hljs.highlightBlock(e);
-        });
-    });
-
-
-    $('body').on('click', 'table button.btn', function() {
-        $(this).parents('tr').next().toggle();
-    });
-
-
-    var getRotate = function(url) {
-        if (!url) {
-            return 0;
-        }
-        var arr = url.split('/');
-        for (var i = 0, len = arr.length; i < len; i++) {
-            if (arr[i] === 'rotate') {
-                return parseInt(arr[i + 1], 10);
-            }
-        }
-        return 0;
-    };
-
-    $('#myModal-img .modal-body-footer').find('a').on('click', function() {
-        var img = $('#myModal-img').find('.modal-body img');
-        var key = img.data('key');
-        var oldUrl = img.attr('src');
-        var originHeight = parseInt(img.data('h'), 10);
-        var fopArr = [];
-        var rotate = getRotate(oldUrl);
-        if (!$(this).hasClass('no-disable-click')) {
-            $(this).addClass('disabled').siblings().removeClass('disabled');
-            if ($(this).data('imagemogr') !== 'no-rotate') {
-                fopArr.push({
-                    'fop': 'imageMogr2',
-                    'auto-orient': true,
-                    'strip': true,
-                    'rotate': rotate,
-                    'format': 'png'
-                });
-            }
-        } else {
-            $(this).siblings().removeClass('disabled');
-            var imageMogr = $(this).data('imagemogr');
-            if (imageMogr === 'left') {
-                rotate = rotate - 90 < 0 ? rotate + 270 : rotate - 90;
-            } else if (imageMogr === 'right') {
-                rotate = rotate + 90 > 360 ? rotate - 270 : rotate + 90;
-            }
-            fopArr.push({
-                'fop': 'imageMogr2',
-                'auto-orient': true,
-                'strip': true,
-                'rotate': rotate,
-                'format': 'png'
-            });
-        }
-
-        $('#myModal-img .modal-body-footer').find('a.disabled').each(function() {
-
-            var watermark = $(this).data('watermark');
-            var imageView = $(this).data('imageview');
-            var imageMogr = $(this).data('imagemogr');
-
-            if (watermark) {
-                fopArr.push({
-                    fop: 'watermark',
-                    mode: 1,
-                    image: 'http://www.b1.qiniudn.com/images/logo-2.png',
-                    dissolve: 100,
-                    gravity: watermark,
-                    dx: 100,
-                    dy: 100
-                });
-            }
-
-            if (imageView) {
-                var height;
-                switch (imageView) {
-                    case 'large':
-                        height = originHeight;
-                        break;
-                    case 'middle':
-                        height = originHeight * 0.5;
-                        break;
-                    case 'small':
-                        height = originHeight * 0.1;
-                        break;
-                    default:
-                        height = originHeight;
-                        break;
-                }
-                fopArr.push({
-                    fop: 'imageView2',
-                    mode: 3,
-                    h: parseInt(height, 10),
-                    q: 100,
-                    format: 'png'
-                });
-            }
-
-            if (imageMogr === 'no-rotate') {
-                fopArr.push({
-                    'fop': 'imageMogr2',
-                    'auto-orient': true,
-                    'strip': true,
-                    'rotate': 0,
-                    'format': 'png'
-                });
-            }
-        });
-
-        var newUrl = Qiniu.pipeline(fopArr, key);
-
-        var newImg = new Image();
-        img.attr('src', 'images/loading.gif');
-        newImg.onload = function() {
-            img.attr('src', newUrl);
-            img.parent('a').attr('href', newUrl);
-        };
-        newImg.src = newUrl;
-        return false;
-    });
-    //七牛上传文件js end
-    */
    
     //上传图片 start
     $scope.loadImage = function(){
@@ -2637,200 +2264,6 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		});
     });
     /*七牛上传图片相关代码 end*/
-    
-    /*上传音频相关代码 start*/
-    /*
-    var QiniuVoice = new QiniuJsSDK();
-  //七牛上传图片文件 start
-    var optionVoice = {
-        runtimes: 'html5,flash,html4',
-        browse_button: 'pickfilesVoice',
-        container: 'container',
-        drop_element: 'container',
-        max_file_size: '1000mb',
-        flash_swf_url: 'bower_components/plupload/js/Moxie.swf',
-        dragdrop: true,
-        chunk_size: '4mb',
-        multi_selection: !(mOxie.Env.OS.toLowerCase()==="ios"),
-        //uptoken: $('#uptoken_url').val(),
-        uptoken_url:ruyiai_host + "/ruyi-ai/getuptoken",
-        domain: $('#domain').val(),
-        get_new_uptoken: false,
-        save_key: true,
-        filters : {
-             mime_types: [
-                      {title : "Voice files", extensions : "MP3,AAC,WAV,WMA,CDA,FLAC,M4A,MID,MKA,MP2,MPA,MPC,APE,OFR,OGG,RA,WV,TTA,AC3,DTS"}
-             ]
-        },
-        auto_start: true,
-        log_level: 5,
-        init: {
-            'FilesAdded': function(up, files) {
-            	$("#addresource").modal("show");
-                $('table').show();
-                $('#success').hide();
-                plupload.each(files, function(file) {
-                    var progress = new FileProgress(file, 'fsUploadProgress');
-                    progress.setStatus("等待...");
-                    progress.bindUploadCancel(up);
-                });
-            },
-            'BeforeUpload': function(up, file) {
-                var progress = new FileProgress(file, 'fsUploadProgress');
-                var chunk_size = plupload.parseSize(this.getOption('chunk_size'));
-                if (up.runtime === 'html5' && chunk_size) {
-                    progress.setChunkProgess(chunk_size);
-                }
-            },
-            'UploadProgress': function(up, file) {
-                var progress = new FileProgress(file, 'fsUploadProgress');
-                var chunk_size = plupload.parseSize(this.getOption('chunk_size'));
-                progress.setProgress(file.percent + "%", file.speed, chunk_size);
-            },
-            'UploadComplete': function() {
-            	$("#addresource").modal("hide");
-            	$scope.loadImage();
-            	$("#fsUploadProgress").html("");
-                //$('#success').show();
-            },
-            'FileUploaded': function(up, file, info) {
-                var progress = new FileProgress(file, 'fsUploadProgress');
-                progress.setComplete(up, info);
-                var tempObj = new Object();
-                tempObj.url = $('#domain').val() + JSON.parse(info).hash +"/" + file.name;
-                tempObj.title = file.name;
-                tempObj.size = file.size;
-                
-                switch ($scope.resType) {
-				case "image":
-					tempObj.type = "image"; 
-					break;
-				case "voice":
-					tempObj.type = "voice"; 
-					break;
-				case "video":
-					tempObj.type = "video"; 
-					break;
-				default:
-					break;
-				}
-                $scope.addResListTemp.push(tempObj);
-                $scope.$apply();
-            },
-            'Error': function(up, err, errTip) {
-                $('table').show();
-                var progress = new FileProgress(err.file, 'fsUploadProgress');
-                progress.setError();
-                progress.setStatus(errTip);
-            }
-                // ,
-                // 'Key': function(up, file) {
-                //     var key = "";
-                //     // do something with key
-                //     return key
-                // }
-        }
-    };
-    var uploaderVoice = QiniuVoice.uploader(optionVoice);
-    */
-    
-    /*上传音频相关代码 start*/
-    /*
-    var QiniuVideo = new QiniuJsSDK();
-  //七牛上传图片文件 start
-    var optionVideo = {
-        runtimes: 'html5,flash,html4',
-        browse_button: 'pickfilesVideo',
-        container: 'container',
-        drop_element: 'container',
-        max_file_size: '1000mb',
-        flash_swf_url: 'bower_components/plupload/js/Moxie.swf',
-        dragdrop: true,
-        chunk_size: '4mb',
-        multi_selection: !(mOxie.Env.OS.toLowerCase()==="ios"),
-        //uptoken: $('#uptoken_url').val(),
-        uptoken_url:ruyiai_host + "/ruyi-ai/getuptoken",
-        domain: $('#domain').val(),
-        get_new_uptoken: false,
-        save_key: true,
-        filters : {
-             mime_types: [
-                      {title : "video files", extensions : "avi,rmvb,rm,asf,divx,mpg,mpeg,mpe,wmv,mp4,mkv,vob"}
-             ]
-        },
-        auto_start: true,
-        log_level: 5,
-        init: {
-            'FilesAdded': function(up, files) {
-            	$("#addresource").modal("show");
-                $('table').show();
-                $('#success').hide();
-                plupload.each(files, function(file) {
-                    var progress = new FileProgress(file, 'fsUploadProgress');
-                    progress.setStatus("等待...");
-                    progress.bindUploadCancel(up);
-                });
-            },
-            'BeforeUpload': function(up, file) {
-                var progress = new FileProgress(file, 'fsUploadProgress');
-                var chunk_size = plupload.parseSize(this.getOption('chunk_size'));
-                if (up.runtime === 'html5' && chunk_size) {
-                    progress.setChunkProgess(chunk_size);
-                }
-            },
-            'UploadProgress': function(up, file) {
-                var progress = new FileProgress(file, 'fsUploadProgress');
-                var chunk_size = plupload.parseSize(this.getOption('chunk_size'));
-                progress.setProgress(file.percent + "%", file.speed, chunk_size);
-            },
-            'UploadComplete': function() {
-            	$("#addresource").modal("hide");
-            	$scope.loadImage();
-            	$("#fsUploadProgress").html("");
-                //$('#success').show();
-            },
-            'FileUploaded': function(up, file, info) {
-                var progress = new FileProgress(file, 'fsUploadProgress');
-                progress.setComplete(up, info);
-                var tempObj = new Object();
-                tempObj.url = $('#domain').val() + JSON.parse(info).hash +"/" + file.name;
-                tempObj.title = file.name;
-                tempObj.size = file.size;
-                
-                switch ($scope.resType) {
-				case "image":
-					tempObj.type = "image"; 
-					break;
-				case "voice":
-					tempObj.type = "voice"; 
-					break;
-				case "video":
-					tempObj.type = "video"; 
-					break;
-				default:
-					break;
-				}
-                $scope.addResListTemp.push(tempObj);
-                $scope.$apply();
-            },
-            'Error': function(up, err, errTip) {
-                $('table').show();
-                var progress = new FileProgress(err.file, 'fsUploadProgress');
-                progress.setError();
-                progress.setStatus(errTip);
-            }
-                // ,
-                // 'Key': function(up, file) {
-                //     var key = "";
-                //     // do something with key
-                //     return key
-                // }
-        }
-    };
-    var uploaderVideo = QiniuVideo.uploader(optionVideo);
-    //视频相关上传代码 end
-    */
-    
   //音频分页 start
 	var $voiceLoadMoreBox = true;
 	$("[data-act=voice-box]").on("scroll",function(e){
@@ -3180,10 +2613,6 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 			dataEditedFlag = true;
 		}
 		//如果超出了长度限制
-//		if(outputText.indexOf("sys.template.javascript") == -1 && outputText.indexOf("sys.template.mustache") == -1 && lengthCheckFunc(outputText, 2000)){
-//			$.trace("机器人答长度最多为2000个字节");
-//			return false;
-//		}
 		if(!outputText || $.trim(outputText).length <= 0){
 			deleteEmptyAssistantAnswerFunc($scope.wechatOutputs,outputText,parentIndex,index);
 			return false;
@@ -3218,6 +2647,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 			}
 			$scope.$apply();
 			$('[data-toggle="tooltip"]').tooltip(); //初始化提示
+			$scope.saveIntentDetailFunc();
 		}, 200);
 	}
 	//微信文本框光标离开，添加文本内容 end
@@ -3304,6 +2734,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 					}
 				}
 			}
+			$scope.saveIntentDetailFunc();
 			$scope.$apply();
 		}, 200);
 	}
@@ -3390,6 +2821,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		if(!flag){
 			$scope.intentDetail.templates[myIndex] = editor_content_textarea;
 		}
+		$scope.saveIntentDetailFunc();
 		$("#editUserSayTextarea").modal("hide");
 	}
 	//确认用户说编辑end
@@ -3559,6 +2991,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		        	}
 	        	}
 	        	$scope.$apply();
+	        	$scope.saveIntentDetailFunc();
 	        }
 		});
 	});
@@ -3608,6 +3041,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 			});
 			$scope.wechatOutputs[parentIndex][myIndex].property.text = editor_content_textarea;
 		}
+		$scope.saveIntentDetailFunc();
 		$("#editWeixinTextarea").modal("hide");
 	}
 	//确认微信编辑end
