@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="keywords" content="ruyi.ai，海知智能科技，智能科技，海知，如意如意，自然语言，如意自然语言理解接口">
+<meta name="description" content="海知智能科技登录页面">
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/reg-common.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_cl7jbu2chp3qh0k9.css">
+<link rel="stylesheet" href="css/login.css">
+<title>ruyi.ai 登录</title>
+<style>
+	::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+	    color:    #ccc;
+	}
+	:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	   color:    #ccc;
+	}
+	::-moz-placeholder { /* Mozilla Firefox 19+ */
+	   color:    #ccc;
+	}
+	:-ms-input-placeholder { /* Internet Explorer 10-11 */
+	   color:    #ccc;
+	}
+	.login-title {
+		font-family: STHeitiSC-Medium;
+		font-size: 18px;
+		color: #4A4A4A;
+		letter-spacing: 0;
+		margin-bottom: 50px;
+		text-indent: -7px;
+	}
+	.element-box{
+		margin-left: 0;
+	}
+	.container_box{
+		height: 700px;
+		width: 450px;
+		margin: auto;
+		min-width: 400px;
+		box-shadow: 1px 1px 7px 1px #c1bbbb;
+		position: relative;
+	}
+	.loginBtn {
+		margin-top: 50px;
+		width: 300px;
+		background: #3091FF;
+		height: 42px;
+		border: none;
+		border-radius: 3px;
+		letter-spacing: 1px;
+		color: white;
+	}
+	.helpTel {
+		position: absolute;
+		bottom: 40px;
+		font-family: STHeitiSC-Medium;
+		font-size: 14px;
+		color: #9B9B9B;
+		letter-spacing: 0;
+		right: 0; left: 0;
+		text-align: center;
+	}
+	.gray {
+		font-family: STHeitiSC-Medium;
+		font-size: 14px;
+		color: #9B9B9B;
+		letter-spacing: 0;
+	}
+	.dis {
+		background: #D5D5D5 !important;
+		width: 81.31px;
+	}
+</style>
+</head>
+<body>
+<div class="head" id="header">
+	<div class="head_box">
+		<div class="inner wrp">
+			<a href="../index.html" title="ruyi.ai 官网"><h1 class="logo iconfont icon-ruyi-logo" style="cursor: pointer; color: #fff; font-size: 36px; margin-top: -22px;"></h1></a>
+		</div>
+	</div>
+</div>
+<div id="body" class="body page_simple ">
+	<div class="container_box">
+		<div class="register-info-box">
+			<div class="login-box">
+				<div class="login-title">找回密码</div>
+				<div class="register-now"><!-- 还没账号？<a href="register-baseinfo.html">立即注册</a> --></div>
+				<div class="element-box" data-act="login-email">
+					<!-- <label>邮箱</label> -->
+					<input class="email-input" id="login-email" type="input" placeholder="请输入手机号或者邮箱号" />
+					<p class="error-tips"></p>
+				</div>
+				<div class="element-box" data-act="vaCode">
+					<input required style="width: 215px;" class="email-input" id="vaCode" type="input" placeholder="请输入验证码" />
+					<button id='getVCode' style="border: none;border-radius: 3px;background: #7ED321;color:#fff;height: 38px;vertical-align: top;box-sizing: border-box;">获取验证码</button>
+					<p class="error-tips"></p>
+				</div>
+				<div class="element-box" data-act="login-password" style="margin-bottom: 0;">
+					<!-- <label>密码</label> -->
+					<input class="email-input" id="login-password" type="password" placeholder="请输入8-20位由字母、数字组成的新密码" />
+					<p class="error-tips"></p>
+				</div>
+				<div class="element-box">
+					<button class='loginBtn'>确定</button>
+				</div>
+			</div>
+			<p class='helpTel'>客服电话：010-82740211</p>
+		</div>
+	</div>
+</div>
+<script src="https://dn-vbuluo-static.qbox.me/jquery.min.js"></script>
+<script src="https://dn-vbuluo-static.qbox.me/jquery-ui.js"></script>
+<script src="https://dn-vbuluo-static.qbox.me/jquery.cookie.js"></script>
+<script src="../js/global-util.js"></script>
+<script src="js/reg-common.js"></script>
+<script src="js/login.js"></script>
+<script>
+$(function() {
+	var t ;
+	var time = 30;
+	$('#login-email').val(localStorage.username)
+	// 获取验证码
+	$('#getVCode').click(function() {
+		clearInterval(t);
+		$.ajax({
+			url: api_host + '/password/reset/verify',
+			type: 'post',
+			headers: {
+				"Content-Type": 'application/json'
+			},
+			data: JSON.stringify({account: $('#login-email').val()}),
+			success: function(ret) {
+				console.log(ret);
+			}
+		})
+		$(this).attr('disabled',true);
+		t = setInterval(function() {
+			$('#getVCode').text(time + 's')
+			time --;
+			$('#getVCode').addClass('dis');
+			if(time == 0){
+				$('#getVCode').removeClass('dis');
+				$('#getVCode').text('获取验证码')
+				clearInterval(t);
+			}
+		}, 1000)
+	})
+	// 获取验证码 -- end
+	// 重置密码 -- 手机账户
+	$('.loginBtn').click(function () {
+		$.ajax({
+			url: api_host + '/password/reset',
+			type: 'post',
+			headers: {
+				"Content-Type": 'application/json'
+			},
+			data: JSON.stringify({account: $('#login-email').val(),newPassword: $('#login-password').val(),verifyCode: $('#vaCode').val()}),
+			success: function (ret) {
+				console.log(ret);
+			}
+		})
+	})
+	// 重置密码 -- end
+})
+</script>
+</body>
+</html>
