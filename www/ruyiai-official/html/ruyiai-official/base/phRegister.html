@@ -177,7 +177,10 @@ $('.nextStep').on('click', function() {
 		$.ajax({
 			url: api_host + '/signup',
 			type: 'post',
-			data: {email: email, phone_number: phoneNumber, password: pass, verify_code: vaCode, nick_name: loginName},
+			headers: {
+				"Content-Type": 'application/json'
+			},
+			data: JSON.stringify({email: email, phone_number: phoneNumber, password: pass, verify_code: vaCode, nick_name: loginName}),
 			success: function(ret) {
 				console.log(ret)
 				window.location.href = './phRegiSucc.html';
@@ -191,7 +194,10 @@ $('#getVCode').click(function() {
 	$.ajax({
 		url: api_host + '/signup/smsVerify',
 		type: 'post',
-		data: { phongNumber: $('#loginPhone').val() },
+		headers: {
+			"Content-Type": 'application/json'
+		},
+		data: JSON.stringify({phoneNumber: $('#loginPhone').val()}),
 		success: function(ret) {
 			console.log(ret)
 		}

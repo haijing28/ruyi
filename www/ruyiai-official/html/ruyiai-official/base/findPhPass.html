@@ -141,7 +141,10 @@ $(function() {
 		$.ajax({
 			url: api_host + '/password/reset/verify',
 			type: 'post',
-			data: {account: $('#login-email').val()},
+			headers: {
+				"Content-Type": 'application/json'
+			},
+			data: JSON.stringify({account: $('#login-email').val()}),
 			success: function(ret) {
 				console.log(ret);
 			}
@@ -164,7 +167,10 @@ $(function() {
 		$.ajax({
 			url: api_host + '/password/reset',
 			type: 'post',
-			data: {account: $('#login-email'), newPassword: $('#login-password').val(), verifyCode: $('#vaCode').val()},
+			headers: {
+				"Content-Type": 'application/json'
+			},
+			data: JSON.stringify({account: $('#login-email').val(),newPassword: $('#login-password').val(),verifyCode: $('#vaCode').val()}),
 			success: function (ret) {
 				console.log(ret);
 			}
