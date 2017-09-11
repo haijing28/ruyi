@@ -37,7 +37,6 @@ $(function(){
 	
 });
 
-//http://lab.ruyi.ai:8080/ruyi-ai' + $invite_code.val(), 
 
 
 
