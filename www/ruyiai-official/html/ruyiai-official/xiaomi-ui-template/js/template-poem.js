@@ -16,8 +16,10 @@ templateApp.controller("templateAppCtrl",function($rootScope,$scope){
 			data: demo_input,
 			success: function(data) {
 				try {
-					$scope.data = data;
-					data = JSON.parse(data);
+//					$scope.data = data;
+					if(typeof data == 'string'){
+						data = JSON.parse(data);
+					}
 					$scope.promptObj = data.prompt;
 					var type = 1;
 					$scope.title = data.title;

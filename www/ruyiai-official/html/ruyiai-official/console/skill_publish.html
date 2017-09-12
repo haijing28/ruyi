@@ -1,0 +1,77 @@
+<link rel="stylesheet" href="./css/skill-publish.css">
+<div class="my_body">
+
+	<h1 class='title'>提交发布到ruyi平台</h1>
+	<div class='skill_settings'>
+		<h2>技能设置</h2> <span>一键复制bot属性设置</span>
+	</div>
+	<div>
+		<h3>技能头像<span class='star'>*</span>:</h3>
+		<img src="{{imgSrc}}" alt="头像" title="头像" class="skill-img"><span class="sub">1024*1024 png/jpg 格式</span>
+		<input type="file" class='hide_input_img_upload'>
+	</div>
+	<div>
+		<h3>技能名称<span class='star'>*</span>:</h3>
+		<input type="text" placeholder="在商店中显示的名称" ng-model='robotName'>
+	</div>
+	<div>
+		<h3>姓名唤醒词<span class='star'>*</span>:
+			<button onmouseover="this.style.cssText='color:blue;'" onmouseout="this.style.cssText='color:black'" type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="top" data-content="将会帮助语音识别或者错别的唤醒">&nbsp;</button>
+		</h3>		
+		<input type="text" placeholder="请输入唤醒词" class="small" ng-repeat='awake in awakes track by $index' ng-model='awake'>
+		<a ng-hide='awakes.length >= 5' href="javascript:void(0)" repeat-type='awakes' class='addCorect'> <span class='glyphicon glyphicon-plus'></span> 添加唤醒词</a>
+	</div>
+	<div>
+		<h3>姓名语音纠错<span class='star'>*</span>:
+			<button onmouseover="this.style.cssText='color:blue;'" onmouseout="this.style.cssText='color:black'" type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="top" data-content="唤醒词将会成为用户进入技能的方式，不可重复">&nbsp;</button>
+		</h3>	
+		<input type="text" placeholder="请输入纠错词" class="small" ng-repeat='wrong in wrongs track by $index' ng-model='wrong'>
+		<a ng-hide='wrongs.length >= 5' href="javascript:void(0)" repeat-type='wrongs' class='addCorect'> <span class='glyphicon glyphicon-plus'></span> 添加纠错词</a>
+	</div>
+	<div>
+		<h3>技能简介<span class='star'>*</span>:</h3>
+		<textarea cols="30" placeholder="技能简介将会显示在商店页面（300字以下）" ng-model='robotDesc' ></textarea>
+	</div>
+	<div>
+		<h3>技能分类<span class='star'>*</span>:</h3>
+		<div class="dropdown mySel">
+			<button type="button" class="btn dropdown-toggle" id="dropdownMenu1" 
+				data-toggle="dropdown">
+				{{selectedType}}
+				<span class="glyphicon glyphicon-chevron-down myIcon"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+				<li role="presentation" ng-repeat='skillType in skillTypes track by $index'>
+					<a role="menuitem" tabindex="-1" href="javascript:void(0)">{{skillType}}</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div>
+		<h3>用户范例<span class='star'>*</span>:</h3>
+		<input type="text" placeholder="用户说" class="small" ng-repeat='userSay in userSays track by $index' ng-model='userSay'>
+		<a ng-hide='userSays.length >= 5' href="javascript:void(0)" repeat-type='userSays' class='addCorect'> <span class='glyphicon glyphicon-plus'></span> 添加用户说</a>
+	</div>
+	<div>
+		<h3>开发者简介<span class='star'>*</span>:</h3>
+		<input type="text" placeholder="将会在技能商店中显示" v-model='selfDesc'>
+	</div>
+	<div>
+		<h3>技能说明<span class='star'>*</span>:</h3>
+		<textarea cols="30" placeholder="请填写技能插件的功能介绍供平台审核（1500字以下，越详细越好）" v-model='skillDesc'></textarea>
+		<label class='addLabel'>备注：在发布为技能插件时，机器恩所获得的技能插件将不会生效。</label>
+	</div>
+	<hr>
+	<div>
+		<h3>第三方平台接入:</h3>
+		<input type="checkbox" ng-model='plateforms.sbc' value="1"> <span class="operatorImg sbc"></span> <a class='name'>思必驰</a>
+		<input type="checkbox" ng-model='plateforms.xm' value="2"> <span class="operatorImg xm"></span> <a class='name'>小米</a>
+		<input type="checkbox" ng-model='plateforms.bd' value="3"> <span class="operatorImg bd"></span> <a class='name'>百度</a>
+		<input type="checkbox" ng-model='plateforms.rk' value="4"> <span class="operatorImg rk"></span> <a class='name'>Rokid</a>
+	</div>
+	<button class='skill_publish'>提交发布</button>
+
+</div>
+<!-- <script src='../js/skill_publish.js'></script> -->
+
+

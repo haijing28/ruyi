@@ -16,7 +16,7 @@ function entityDetailCtrl($rootScope,$scope, $state, $stateParams){
 //		if(newValueTemp == entityDetailDuplicate){
 //			dataEditedFlag = false;
 //		}else{
-//			dataEditedFlag = true;
+//			//dataEditedFlag = true;
 //		}
 //	}, true);
 	
@@ -135,8 +135,9 @@ function entityDetailCtrl($rootScope,$scope, $state, $stateParams){
 		$scope.addSynonymsValue = new Array();
 		$scope.addEntitySynonym = "";
 		$scope.addSynonym = "";
-		dataEditedFlag = true;
+		//dataEditedFlag = true;
 		addEmptyEntityFunc($scope.entityDetail);
+		$scope.saveEntityDetailFunc();
 	}
 	
 	//添加同义词的值
@@ -177,8 +178,9 @@ function entityDetailCtrl($rootScope,$scope, $state, $stateParams){
 		$scope.addEntitySynonym = "";
 		$scope.addSynonym = "";
 		$("[data-act=addEntitySynonym]").val("");
-		dataEditedFlag = true;
+		//dataEditedFlag = true;
 		addEmptyEntityFunc($scope.entityDetail);
+		$scope.saveEntityDetailFunc();
 	}
 	
 //	$scope.addEntitySynonymKeydownFunc = function($event, addSynonym, $index){
@@ -357,7 +359,7 @@ function entityDetailCtrl($rootScope,$scope, $state, $stateParams){
 	        		if(i == $index){
 	        			$scope.entityDetail.entries.splice(i,1);
 	        			$scope.$apply();
-	        			dataEditedFlag = true;
+	        			//dataEditedFlag = true;
 	        			break;
 	        		}
 	        	}
@@ -371,7 +373,9 @@ function entityDetailCtrl($rootScope,$scope, $state, $stateParams){
     			for(var j in $scope.entityDetail.entries[i].synonyms){
     				if(j == $index){
     					$scope.entityDetail.entries[i].synonyms.splice(j,1);
-    					dataEditedFlag = true;
+    					//dataEditedFlag = true;
+    					$scope.saveEntityDetailFunc();
+    					break;
     				}
     			}
     		}
@@ -386,7 +390,8 @@ function entityDetailCtrl($rootScope,$scope, $state, $stateParams){
 	});
 	
 	$scope.entityNameChangeFunc = function(){
-		dataEditedFlag = true;
+		//dataEditedFlag = true;
+		$scope.saveEntityDetailFunc();
 	}
 	
 	

@@ -1817,6 +1817,10 @@ a:hover{
     color: #fff;
     background-color: #3794FF;
     border-radius: 3px;
+    border: 1px solid;
+}
+.modal .footer-modal .submit-modal:hover{
+	background-color:#54ADF7;
 }
 .modal .footer-modal .save-modal{
 	color:#fff;
@@ -3349,7 +3353,12 @@ li.birthday input.constellation{
 	border:1px solid #3794FF;
 }
 /*确认取消按钮 end*/
-
+.box .left-box .list-group-item a.high-hover-ctrl{
+	font-size:14px;
+}
+.box .left-box .list-group-item.active a.high-hover-ctrl{
+	color:#3794FF;
+}
 
 
 
