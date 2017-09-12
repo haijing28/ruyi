@@ -139,7 +139,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 				for(var i in intentDetail.responses){
 					if(intentDetail.responses[i].parameters){
 						for(var j in intentDetail.responses[i].parameters){
-							if($.trim(intentDetail.responses[i].parameters[j].dataType).length <= 0 && $.trim(intentDetail.responses[i].parameters[j].defaultValue).length <= 0
+							if(j != intentDetail.responses[i].parameters.length - 1 && $.trim(intentDetail.responses[i].parameters[j].dataType).length <= 0 && $.trim(intentDetail.responses[i].parameters[j].defaultValue).length <= 0
 									&& $.trim(intentDetail.responses[i].parameters[j].name).length <= 0 && $.trim(intentDetail.responses[i].parameters[j].value).length <= 0
 									&& intentDetail.responses[i].parameters[j].prompts.length <= 0 && !intentDetail.responses[i].parameters[j].required){
 								intentDetail.responses[i].parameters.splice(j,1);

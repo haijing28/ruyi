@@ -3359,6 +3359,9 @@ li.birthday input.constellation{
 .box .left-box .list-group-item.active a.high-hover-ctrl{
 	color:#3794FF;
 }
+.right-box .event-choose-list{
+	display:block;
+}
 
 
 
