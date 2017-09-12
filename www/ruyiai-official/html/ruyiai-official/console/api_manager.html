@@ -34,6 +34,7 @@
 	<link rel="stylesheet" href="css/jquery.Jcrop.min.css" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="css/skill_store.css">
 	<link rel="stylesheet" type="text/css" href="css/star-rating.min.css">
+	<link rel="stylesheet" type="text/css" href="css/skill-publish.min.css">
 	<!-- 文件中的引用 -->
 	
 	<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_qlr8kbgvlwyiudi.css">
@@ -153,13 +154,14 @@ var _hmt = _hmt || [];
 					   <li data-act="nav-action-set" ng-click="goCenterList('action_set')" class="list-group-item" style="height: 42px;">
 					   		<a class="high-hover-ctrl" href="#/action_set">触发器设置</a>
 					   </li>
-					   <li data-act="nav-skill-publish" ng-click="goCenterList('skill_publish')" class="list-group-item">
-					  		<a class="high-hover-ctrl" href="#/skill_publish">技能插件发布</a>
-					  </li>
 					   <li data-act="nav-weixin" ng-click="goCenterList('nav-weixin')" class="list-group-item" style="height: 42px;">
 					   		<a class="high-hover-ctrl" style="font-size:14px;" target="_blank" href="{{ruyi_wechat}}/ruyi-wechat/authorize.jsp?appId={{appId}}">微信授权</a>
 					   </li>
 				 </ul>
+			  </li>
+			   <li class="list-group-item" data-act="nav-skill-publish" ng-click="goCenterList('skill-publish')">
+			  	<i class="iconfont left-icon">&#xe615;</i>
+			  	<a href="#/skill_publish">技能插件发布</a>
 			  </li>
 			   <li class="list-group-item" data-act="nav-robot-skill" ng-click="goCenterList('skill_store')">
 			  	<i class="iconfont left-icon">&#xe600;</i>

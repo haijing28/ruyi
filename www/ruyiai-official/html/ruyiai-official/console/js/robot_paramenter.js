@@ -275,8 +275,8 @@ function assistantParaCtrl($rootScope, $scope, $state, $stateParams) {
 				"h" : parseInt(c.h * hScale),
 			},
 			success : function(data) {
+				console.log(data)
 				try {
-					
 					if (data.code == 0) {
 						$("#cut-header").modal("hide");
 						$("[data-act=edit-the-status]").find(".robot-head")

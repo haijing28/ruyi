@@ -23,8 +23,8 @@
 	:-ms-input-placeholder { /* Internet Explorer 10-11 */
 	   color:    #ccc;
 	}
-	body{
-		overflow-y: hidden;
+	.body {
+		padding: 36px 0;
 	}
 	.container_box {
 		position: relative;
@@ -59,6 +59,10 @@
 		letter-spacing: 0;
 		right: 0; left: 0;
 		text-align: center;
+	}
+	.dis {
+		background: #D5D5D5 !important;
+		width: 81.31px;
 	}
 </style>
 </head>
@@ -131,6 +135,60 @@
 <script src="js/reg-common.js"></script>
 <script src="js/login.js"></script>
 <script>
+// 各种正则验证
+var va = {
+	loginName: function(value) {
+		if( value.trim() == '' ) {
+			$('#loginName').next('.error-tips').text(this.nameError);
+			$('#loginName').next('.error-tips').show();
+			return false;
+		}else {
+			$('#loginName').next('.error-tips').hide();
+			return true;
+		}
+	},
+	nameError: ' 请输入用户名',
+	loginPhone: function(number) {
+		if( !(/^1[3|4|5|8][0-9]\d{4,8}$/.test(number)) ) {
+			$('#loginPhone').next('.error-tips').text(this.phoneError)
+			$('#loginPhone').next('.error-tips').show();
+			return false;
+		}else {
+			$('#loginPhone').next('.error-tips').hide();
+			return true;
+		}
+	},
+	phoneError: '请输入合法的手机号',
+	loginEmail: function(em) {
+		if( !(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/).test(em) ) {
+			$('#loginEmail').next('.error-tips').text(this.emailError)
+			$('#loginEmail').next('.error-tips').show();
+			return false;
+		}else{
+			$('#loginEmail').next('.error-tips').hide();
+			return true;
+		}
+	},
+	emailError: '请输入合法的邮箱',
+	loginPass: function(pass) {
+		if ( !/^[0-9A-Za-z]{8,20}$/.test(pass) ) {
+			$('#loginPass').next('.error-tips').text(this.passError)
+			$('#loginPass').next('.error-tips').show();
+			return false;
+		}else {
+			$('#loginPass').next('.error-tips').hide();
+			return true;
+		}
+	},
+	passError: '密码要求长度为8-20位'
+}
+// 各种正则验证 -- end
+// 失焦验证
+$('.element-box').on('blur', 'input', function() {
+	var id = this.id;
+	va[id]($(this).val());
+}) 
+// 失焦验证 -- end
 // 点击下一步完成注册
 $('.nextStep').on('click', function() {
 	var loginName = $('#loginName').val();
@@ -139,36 +197,22 @@ $('.nextStep').on('click', function() {
 	var email = $('#loginEmail').val();
 	var pass = $('#loginPass').val();
 	var check = $('#hasRead').prop('checked');
-	if(loginName == ''){
-		$('#loginName').next('.error-tips').text('请输入用户名')
-		$('#loginName').next('.error-tips').show();
-		return;
-	}else{
-		$('#loginName').next('.error-tips').hide();
+	var tag = true;
+
+	if( ! va.loginName(loginName) ){
+		tag = false;
 	}
-	// 手机正则
-	if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(phoneNumber))){
-		$('#loginPhone').next('.error-tips').text('请输入正确的手机号')
-		$('#loginPhone').next('.error-tips').show();
-		return;
-	}else {
-		$('#loginPhone').next('.error-tips').hide();
+	if( ! va.loginPhone(phoneNumber) ){
+		tag = false;
 	}
-	// 邮箱正则
-	if(!/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/.test(email)){
-		$('#loginEmail').next('.error-tips').text('请输入正确的邮箱')
-		$('#loginEmail').next('.error-tips').show();
-		return;
-	}else {
-		$('#loginEmail').next('.error-tips').hide();
+	if( ! va.loginEmail(email) ){
+		tag = false;
 	}
-	// 密码正则
-	if(!/^[0-9A-Za-z]{8,20}$/.test(pass)){
-		$('#loginPass').next('.error-tips').text('请输入正确的密码')
-		$('#loginPass').next('.error-tips').show();
+	if( ! va.loginPass(pass) ){
+		tag = false;
+	}
+	if( !tag ){
 		return;
-	}else {
-		$('#loginPass').next('.error-tips').hide();
 	}
 	if(!check){
 		alert('请勾选平台协议');
@@ -182,15 +226,21 @@ $('.nextStep').on('click', function() {
 			},
 			data: JSON.stringify({email: email, phone_number: phoneNumber, password: pass, verify_code: vaCode, nick_name: loginName}),
 			success: function(ret) {
-				console.log(ret)
 				window.location.href = './phRegiSucc.html';
 			}
 		})
 	}
 })
 // 点击下一步完成注册 -- end
+var time = 30;
+var t = 0;
 // 获取验证码
 $('#getVCode').click(function() {
+	// 验证已输入手机号
+	if( !va.loginPhone( $('#loginPhone').val() ) ) {
+		return;
+	}
+	// 验证已输入手机号 -- end
 	$.ajax({
 		url: api_host + '/signup/smsVerify',
 		type: 'post',
@@ -202,6 +252,19 @@ $('#getVCode').click(function() {
 			console.log(ret)
 		}
 	})
+	$(this).attr('disabled',true);
+	t = setInterval(function() {	
+		$('#getVCode').text(time + 's')
+		time --;
+		$('#getVCode').addClass('dis');
+		if(time == 0){
+			$('#getVCode').removeClass('dis');
+			$('#getVCode').text('获取验证码')
+			clearInterval(t);
+			time = 30;
+			$('#getVCode').attr('disabled',false);
+		}
+	}, 1000)
 })
 // 获取验证码 -- end
 </script>
