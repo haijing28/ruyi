@@ -1,581 +1,94 @@
-<hr>
-<div class="row row-height" id="assistantParaModal">
-	<div class="col-md-12 col-sm-12 center-list-box" style="min-width: 640px;">
-		<section class="center-list-title" style="“position: relative;">
-			<span style="border-bottom: 0;">技能插件发布</span> <a href="#/delete_robot"
-				class="robot-adb-setting">高级设置</a>
-		</section>
-		<div class="assistantPara-box col-md-12 col-sm-12">
-	          <!-- 头像信息 start -->
-	          <div class="ass-para-box" data-act="ass-para-box" style="padding:0;">
-	          	 <div class="robot-header" data-act="check-the-status">
-		          	 <img ng-src="{{currentRobot.headUrl | robotHeadUrlFilter}}" class="robot-head"/>
-		          	 <div class="robot-desc-box">
-		          	 	<p class="text"><span class="title">机器人类型</span>&nbsp;<span class="required-tip">&nbsp;</span><span class="content" ng-bind="currentRobot.robotType | robotTypeFilter"></span></p>
-		          	 	<p class="text" ng-if="currentUserId == 'SYSTEM_USER_ID'"><span class="title" style="padding-left:36px;">service</span>&nbsp;<span>&nbsp;</span><span class="content" style="padding-left:6px;" ng-bind="currentRobot.serviceName"></span></p>
-		          	 	<p class="text"><span class="title">机器人名称</span>&nbsp;<span class="required-tip">&nbsp;</span><span class="content" ng-bind="currentRobot.appName"></span></p>
-		          	 	<p><span class="title">机器人描述</span>&nbsp;
-		          	 	<span class="content" ng-bind="currentRobot.appDesc" style="padding-left:2px;"></span></p>
-		          	 </div>
-	          	 </div>
-	          	 <div class="robot-header-edit" data-act="edit-the-status" style="position:relative;">
-	          	 	<div style="font-size: 12px; top: 140px; left: 26px; position: absolute; color: rgb(255, 193, 7);">目前仅支持小于120M<br>的.jpg后缀文件</div>
-		          	 <div class="upload-header-box" id="container">
-		          	 	<img ng-src="{{currentRobot.headUrl | robotHeadUrlFilter}}" class="robot-head"/>
-		          	 	<p id="pickRobotImg" class="upload-header-text">编辑头像</p>
-		          	 </div>
-		          	 <div class="robot-desc-box">
-		          	 	<p class="text"><span class="title">机器人类型</span>&nbsp;<span class="required-tip">&nbsp;</span><span class="content" ng-bind="currentRobot.robotType | robotTypeFilter"></span></p>
-		          	 	<p style="margin-bottom:12px;" ng-if="currentUserId == 'SYSTEM_USER_ID'">
-		          	 		<span class="title" style="padding-left:36px;">service</span>
-		          	 		<input class="robot-name-input" data-act="service-name" style="margin-left:22px;" value="{{currentRobot.serviceName}}" />
-		          	 	</p>
-		          	 	<p style="margin-bottom:12px;">
-		          	 		<span class="title">机器人名称</span>
-		          	 		<input class="robot-name-input" data-act="robot-name-input" value="{{currentRobot.appName}}" />
-		          	 	</p>
-		          	 	<p>
-		          	 		<span class="title">机器人描述</span>
-		          	 	</p>
-		          	 	<textarea class="robot-desc-textarea" placeholder="限200字">{{currentRobot.appDesc}}</textarea>
-		          	 	<div class="robot-header-button">
-		          	 		<button class="common-active-button" ng-click="submitHeaderFunc()" data-act="header-submit" style="margin-right:46px;">确定</button>
-		          	 		<button class="common-blank-button">取消</button>
-		          	 	</div>
-		          	 </div>
-	          	 </div>
-	          	 <div class="edit-para" data-act="edit-para">&nbsp;</div>
-	          </div>
-	          <!-- 头像信息 end -->
-	          
-	          <!-- 姓名 start -->
-	          <!-- <div data-act="ass-para-box">
-		          喜好 查看状态 start
-		          <div class="ass-para-box" data-act="check-the-status">
-		          	 <div class="assistant-title" style="left:49px;">姓&nbsp;名&nbsp;<span class="required-tip">*</span><span class="required-tip">&nbsp;</span></div>
-		          	 <div class="assistant-value">
-			          	<label class="r-para-value" ng-bind-html="currentRobot.attribute.name | nameFirstFilter"></label>
-		          	 </div>
-		          	 <div class="assistant-learn">
-		          	 	<label class="r-para-tip-text">机器人名字</label>
-		          	 </div>
-		          </div>
-		          喜好 查看状态 end
-		          <div class="ass-para-box" data-act="edit-the-status">
-		          	 <div class="assistant-title" style="top:22px;left:49px;">
-		          	 	姓&nbsp;名
-		          	 	<span class="required-tip">*</span>
-						<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="机器人名字">&nbsp;</button>
-		          	 </div>
-		          	 <div class="assistant-learn">
-		          	 	<label class="r-para-value"><input type="checkbox" ng-model="nameTailsFlagTemp" />&nbsp;&nbsp;机器人小尾巴
-		          	 		<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="bottom" data-content="勾选后在相关问题回复的主干后，可自定义更多内容，多条小尾巴时，与主干随机组合回复。还没明白？玩玩预览呗。">&nbsp;</button>
-		          	 	</label>
-		          	 </div>
-		          	 <div class="assistant-value">
-		          	 	<ul class="value-box">
-							<li style="border:0 !important;">
-							  	<input type="text" class="inputbox" placeholder="输入机器人名字" style="margin-top:-2px;margin-left:-6px;" ng-model="namesTemp" />
-							</li>
-					  	</ul>
-					  	<ul class="tail-box" data-act="tail-box" ng-show="nameTailsFlagTemp">
-					  		<li ng-repeat="nameTailsStr in nameTailsTemp" class="tail-box-li">
-					  			<span class="and">&</span>
-					  			<input type="text" ng-model="nameTailsStr" ng-blur="actionAddAttrFunc(nameTailsTemp,nameTailsStr,'nameTailsStr',5,$index)" ng-keydown="actionAddAttrFunc(nameTailsTemp,nameTailsStr,'nameTailsStr',5,$index,$event)" class="inputbox" style="width:94%;" placeholder="例如：很高兴认识你。按回车键添加" />
-					  			<i class="delete" ng-click="valueDeleteFunc(nameTailsTemp,$index)">&nbsp;</i>
-					  		</li>
-					  		<li>
-					  			<span class="and">&</span>
-					  			<input type="text" ng-model="nameTails" ng-blur="actionAddAttrFunc(nameTailsTemp,nameTails,'nameTails',5,-1)" ng-keydown="actionAddAttrFunc(nameTailsTemp,nameTails,'nameTails',5,-1,$event)" class="inputbox" style="width:68%;" placeholder="例如：很高兴认识你。按回车键添加" />
-					  		</li>
-					  	</ul>
-					  	<div class="preview-box">
-					  		<div class="question">问：你叫什么？</div>
-					  		<div class="answer" ng-show="namesTemp.length > 0">答：我叫{{namesTemp}}！<span ng-show="nameTailsFlagTemp" ng-bind="nameTailsTemp[0]"></span></div>
-					  		<div class="answer" ng-show="!namesTemp || namesTemp.length == 0">答：我不告诉你！<span ng-show="nameTailsFlagTemp" ng-bind="nameTailsTemp[0]"></span></div>
-					  	</div>
-					  	<div class="robot-header-button">
-		          	 		<button class="common-active-button" ng-click="editNameSubmitFunc()" data-act="header-submit" style="margin-right:46px;">确定</button>
-		          	 		<button class="common-blank-button">取消</button>
-		          	 	</div>
-	          	 	</div>
-		          </div>
-		          <div class="edit-para" data-act="edit-para" ng-click="editNameFunc()">&nbsp;</div>
-	          </div> -->
-	          <!-- 姓名 end --> 
-	          
-	          <!-- 姓名 start -->
-	          <div data-act="ass-para-box">
-		          <!-- 姓名 查看状态 start -->
-		          <div class="ass-para-box" data-act="check-the-status">
-		          	 <div class="assistant-title" style="left:49px;">姓&nbsp;名&nbsp;<span class="required-tip">&nbsp;</span></div>
-		          	 <div class="assistant-value">
-			          	<label class="r-para-value" ng-bind-html="currentRobot.attribute.alias | arrayStrsFilter"></label>
-		          	 </div>
-		          	 <div class="assistant-learn">
-		          	 	<label class="r-para-tip-text">机器人姓名</label>
-		          	 </div>
-		          </div>
-		          <!-- 姓名 查看状态 end -->
-		          <div class="ass-para-box" data-act="edit-the-status">
-		          	 <div class="assistant-title" style="top:22px;left:49px;">姓&nbsp;名
-		          	 <button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="机器人姓名">&nbsp;</button>
-		          	 </div>
-		          	 <div class="assistant-learn">
-		          	 	<label class="r-para-value"><input type="checkbox" ng-model="aliasTailsFlagTemp" />&nbsp;&nbsp;机器人小尾巴
-		          	 		<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="bottom" data-content="勾选后在相关问题回复的主干后，可自定义更多内容，多条小尾巴时，与主干随机组合回复。还没明白？玩玩预览呗。">&nbsp;</button>
-		          	 	</label>
-		          	 </div>
-		          	 <div class="assistant-value">
-		          	 	<ul class="value-box">
-					  		<li class="alert alert-default alert-dismissable" ng-repeat="aliass in aliassTemp" ng-show="aliassTemp && aliassTemp.length > 0">
-								<p ng-bind="aliass"></p>
-								<span class="close" ng-click="valueDeleteFunc(aliassTemp,$index)">×</span>
-							</li>
-							<li style="border:0 !important;">
-							  	<input type="text" class="inputbox" placeholder="输入姓名，回车添加" style="margin-top:-2px;margin-left:-6px;" ng-model="aliasAdd" ng-blur="actionAddAttrFunc(aliassTemp,aliasAdd,'aliasAdd',100,-1)" ng-keydown="actionAddAttrFunc(aliassTemp,aliasAdd,'aliasAdd',100,-1,$event)" />
-							</li>
-					  	</ul>
-					  	<ul class="tail-box" data-act="tail-box" ng-show="aliasTailsFlagTemp">
-					  		<li ng-repeat="aliasTailsStr in aliasTailsTemp" class="tail-box-li">
-					  			<span class="and">&</span>
-					  			<input type="text" ng-model="aliasTailsStr" ng-blur="actionAddAttrFunc(aliasTailsTemp,aliasTailsStr,'aliasTailsStr',5,$index)" ng-keydown="actionAddAttrFunc(aliasTailsTemp,aliasTailsStr,'aliasTailsStr',5,$index,$event)" class="inputbox" style="width:94%;" placeholder="例如：很高兴认识你。按回车键添加" />
-					  			<i class="delete" ng-click="valueDeleteFunc(aliasTailsTemp,$index)">&nbsp;</i>
-					  		</li>
-					  		<li>
-					  			<span class="and">&</span>
-					  			<input type="text" ng-model="aliasTails" ng-blur="actionAddAttrFunc(aliasTailsTemp,aliasTails,'aliasTails',5,-1)" ng-keydown="actionAddAttrFunc(aliasTailsTemp,aliasTails,'aliasTails',5,-1,$event)" class="inputbox" style="width:68%;" placeholder="例如：很高兴认识你。按回车键添加" />
-					  		</li>
-					  	</ul>
-					  	<div class="preview-box">
-					  		<div class="question">问：你叫什么名字？</div>
-					  		<div class="answer" ng-show="aliassTemp.length > 0">答：我叫{{aliassTemp[0]}}！<span ng-show="aliasTailsFlagTemp" ng-bind="aliasTailsTemp[0]"></span></div>
-					  		<div class="answer" ng-show="!aliassTemp || aliassTemp.length == 0">答：我不告诉您！<span ng-show="aliasTailsFlagTemp" ng-bind="aliasTailsTemp[0]"></span></div>
-					  	</div>
-					  	<div class="robot-header-button">
-		          	 		<button class="common-active-button" ng-click="editAliasSubmitFunc()" data-act="header-submit" style="margin-right:46px;">确定</button>
-		          	 		<button class="common-blank-button">取消</button>
-		          	 	</div>
-	          	 	</div>
-		          </div>
-		          <div class="edit-para" data-act="edit-para" ng-click="editAliasFunc()">&nbsp;</div>
-	          </div>
-	          <!-- 姓名 end -->
-	          
-	          <!-- 语音纠正 start -->
-	          <div data-act="ass-para-box">
-		          <!-- 姓名 查看状态 start -->
-		          <div class="ass-para-box" data-act="check-the-status">
-		          	 <div class="assistant-title">语音纠正<span class="required-tip">&nbsp;</span></div>
-		          	 <div class="assistant-value">
-			          	<label class="r-para-value" style="padding-right:200px;" ng-bind-html="currentRobot.attribute.voiceToCorrect | arrayStrsFilter"></label>
-		          	 </div>
-		          	 <div class="assistant-learn">
-		          	 	<label class="r-para-tip-text">解决因为语音识别姓名错误的问题</label>
-		          	 </div>
-		          </div>
-		          <!-- 姓名 查看状态 end -->
-		          <div class="ass-para-box" data-act="edit-the-status">
-		          	 <div class="assistant-title" style="top:22px;width:90px;">语音纠正<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="机器人姓名、昵称的谐音，降低语音识别错误率，提高对话准确率。">&nbsp;</button></div>
-		          	 <div class="assistant-value">
-		          	 	<ul class="value-box">
-					  		<li class="alert alert-default alert-dismissable" ng-repeat="voice in voiceToCorrectTemp" ng-show="voiceToCorrectTemp && voiceToCorrectTemp.length > 0">
-								<p ng-bind="voice"></p>
-								<span class="close" ng-click="valueDeleteFunc(voiceToCorrectTemp,$index)">×</span>
-							</li>
-							<li style="border:0 !important;">
-							  	<input type="text" class="inputbox" placeholder="输入语音纠正，回车添加" style="margin-top:-2px;margin-left:-6px;" ng-model="voiceAdd" ng-blur="actionAddAttrFunc(voiceToCorrectTemp,voiceAdd,'voiceAdd',100,-1)" ng-keydown="actionAddAttrFunc(voiceToCorrectTemp,voiceAdd,'voiceAdd',100,-1,$event)" />
-							</li>
-					  	</ul>
-					  	<div class="robot-header-button">
-		          	 		<button class="common-active-button" ng-click="editvoiceToCorrectSubmit()" data-act="header-submit" style="margin-right:46px;">确定</button>
-		          	 		<button class="common-blank-button">取消</button>
-		          	 	</div>
-	          	 	</div>
-		          </div>
-		          <div class="edit-para" data-act="edit-para" ng-click="editvoiceToCorrect()">&nbsp;</div>
-	          </div>
-	          <!-- 语音纠正 end -->
-	          
-	          <!-- 性别 start -->
-	          <div data-act="ass-para-box">
-		          <!-- 性别 查看状态 start -->
-		          <div class="ass-para-box" data-act="check-the-status">
-		          	 <div class="assistant-title" style="left:49px;">性&nbsp;别&nbsp;<span class="required-tip">&nbsp;</span></div>
-		          	 <div class="assistant-value">
-			          	<label class="r-para-value" ng-bind-html="currentRobot.attribute.sex"></label>
-		          	 </div>
-		          	 <div class="assistant-learn">
-		          	 	<label class="r-para-tip-text">机器人性别</label>
-		          	 </div>
-		          </div>
-		          <!-- 性别 查看状态 end -->
-		          <div class="ass-para-box" data-act="edit-the-status">
-		          	 <div class="assistant-title" style="top:24px;left:49px;">性&nbsp;别
-						<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="机器人性别">&nbsp;</button>		          	 
-		          	 </div>
-		          	 <div class="assistant-learn">
-		          	 	<label class="r-para-value"><input type="checkbox" ng-model="sexTailsFlagTemp" />&nbsp;&nbsp;机器人小尾巴
-		          	 		<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="bottom" data-content="勾选后在相关问题回复的主干后，可自定义更多内容，多条小尾巴时，与主干随机组合回复。还没明白？玩玩预览呗。">&nbsp;</button>
-		          	 	</label>
-		          	 </div>
-		          	 <div class="assistant-value">
-		          	 	<ul class="value-box">
-		          	 		<div class="para-sex-box">
-						  		<label><input type="radio" ng-model="sexTemp" value="男" />&nbsp;男</label>
-						  		<label><input type="radio" ng-model="sexTemp" value="女" />&nbsp;女</label>
-						  		<label><input type="radio" ng-model="sexTemp" value="保密" />&nbsp;保密</label>
-		          	 		</div>
-					  	</ul>
-					  	<ul class="tail-box" data-act="tail-box" ng-show="sexTailsFlagTemp">
-					  		<li ng-repeat="sexTailsStr in sexTailsTemp" class="tail-box-li">
-					  			<span class="and">&</span>
-					  			<input type="text" ng-model="sexTailsStr" ng-blur="actionAddAttrFunc(sexTailsTemp,sexTailsStr,'sexTailsStr',5,$index)" ng-keydown="actionAddAttrFunc(sexTailsTemp,sexTailsStr,'sexTailsStr',5,$index,$event)" class="inputbox" style="width:94%;" placeholder="例如：很高兴认识你。按回车键添加" />
-					  			<i class="delete" ng-click="valueDeleteFunc(sexTailsTemp,$index)">&nbsp;</i>
-					  		</li>
-					  		<li>
-					  			<span class="and">&</span>
-					  			<input type="text" ng-model="sexTails" ng-blur="actionAddAttrFunc(sexTailsTemp,sexTails,'sexTails',5,-1)" ng-keydown="actionAddAttrFunc(sexTailsTemp,sexTails,'sexTails',5,-1,$event)" class="inputbox" style="width:68%;" placeholder="例如：很高兴认识你。按回车键添加" />
-					  		</li>
-					  	</ul>
-					  	<div class="preview-box">
-					  		<div class="question">问：你是男生还是女生？</div>
-					  		<div class="answer" ng-show="sexTemp.length > 0 && sexTemp != '保密'">答：我是{{sexTemp}}生！<span ng-show="sexTailsFlagTemp" ng-bind="sexTailsTemp[0]"></span></div>
-					  		<div class="answer" ng-show="!sexTemp || sexTemp.length == 0 || sexTemp=='保密'">答：我不告诉你！<span ng-show="sexTailsFlagTemp" ng-bind="sexTailsTemp[0]"></span></div>
-					  	</div>
-					  	<div class="robot-header-button">
-		          	 		<button class="common-active-button" ng-click="editSexSubmitFunc()" data-act="header-submit" style="margin-right:46px;">确定</button>
-		          	 		<button class="common-blank-button">取消</button>
-		          	 	</div>
-	          	 	</div>
-		          </div>
-		          <div class="edit-para" data-act="edit-para" ng-click="editSexFunc()">&nbsp;</div>
-	          </div>
-	          <!-- 性别 end -->
-	          
-	          <!-- 生日 start -->
-	          <div data-act="ass-para-box">
-		          <!-- 生日 查看状态 start -->
-		          <div class="ass-para-box" data-act="check-the-status">
-		          	 <div class="assistant-title" style="left:49px;">生&nbsp;日&nbsp;<span class="required-tip">&nbsp;</span></div>
-		          	 <div class="assistant-value">
-			          	<label class="r-para-value" ng-bind="currentRobot.attribute.birthdayDate"></label>
-			          	<label class="r-para-value" ><span ng-bind="currentRobot.attribute.ageyear"></span>岁<span ng-bind="currentRobot.attribute.agemonth"></span>个月<span ng-bind="currentRobot.attribute.ageday"></span>天</label>
-			          	<label class="r-para-value"  ng-bind="currentRobot.attribute.zodiac"></label>
-			          	<label class="r-para-value"  ng-bind="currentRobot.attribute.constellation"></label>
-		          	 </div>
-		          	 <div class="assistant-learn">
-		          	 	<label class="r-para-tip-text">机器人诞生日</label>
-		          	 </div>
-		          </div>
-		          <!-- 生日 查看状态 end -->
-		          <div class="ass-para-box" data-act="edit-the-status">
-		          	 <div class="assistant-title" style="top:31px;left:49px;">生&nbsp;日
-			          	 <!-- <span class="required-tip">*</span> -->
-			          	 <button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="机器人诞生日期">&nbsp;</button>
-		          	 </div>
-		          	 <div class="assistant-learn">
-		          	 	<label class="r-para-value"><input type="checkbox" ng-model="birthdayTailsFlagTemp" />&nbsp;&nbsp;机器人小尾巴
-		          	 		<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="bottom" data-content="勾选后在相关问题回复的主干后，可自定义更多内容，多条小尾巴时，与主干随机组合回复。还没明白？玩玩预览呗。">&nbsp;</button>
-		          	 	</label>
-		          	 </div>
-		          	 <div class="assistant-value">
-		          	 	<ul class="value-box">
-		          	 		<div class="para-sex-box">
-						  		<label><input type="text" name="birthday" ng-change="setBirthdayFunc(birthdayTemp)" ng-model="birthdayTemp"  class="inputbox ng-pristine ng-untouched ng-valid" placeholder="输入出生年月" style="margin-top:-2px;margin-left:-6px;"></label>
-						  		<label><span ng-bind="ageyearTemp"></span>岁<span ng-bind="agemonthTemp"></span>个月<span ng-bind="agedayTemp"></span>天</label>
-						  		<label ng-bind="zodiacTemp"></label>
-						  		<label ng-bind="constellationTemp"></label>
-		          	 		</div>
-					  	</ul>
-					  	<ul class="tail-box" data-act="tail-box" ng-show="birthdayTailsFlagTemp">
-					  		<li ng-repeat="birthdayTailsObj in birthdayTailsTemp" class="tail-box-li">
-					  			<span class="and">&</span>
-					  			<input type="text" ng-model="birthdayTailsObj" ng-blur="actionAddAttrFunc(birthdayTailsTemp,birthdayTailsObj,'birthdayTailsObj',5,$index)" ng-keydown="actionAddAttrFunc(birthdayTailsTemp,birthdayTailsObj,'birthdayTailsObj',5,$index,$event)" class="inputbox" style="width:94%;" placeholder="例如：很高兴认识你。按回车键添加" />
-					  			<i class="delete" ng-click="valueDeleteFunc(birthdayTailsTemp,$index)">&nbsp;</i>
-					  		</li>
-					  		<li>
-					  			<span class="and">&</span>
-					  			<input type="text" ng-model="birthdayTails" ng-blur="actionAddAttrFunc(birthdayTailsTemp,birthdayTails,'birthdayTails',5,-1)" ng-keydown="actionAddAttrFunc(birthdayTailsTemp,birthdayTails,'birthdayTails',5,-1,$event)" class="inputbox" style="width:68%;" placeholder="例如：很高兴认识你。按回车键添加" />
-					  		</li>
-					  	</ul>
-					  	<div class="preview-box">
-					  		<div class="question">问：你多大了？</div>
-					  		<div class="answer" ng-show="birthdayTemp.length > 0">答：我<span ng-bind="ageyearTemp"></span>岁<span ng-bind="agemonthTemp"></span>个月<span ng-bind="agedayTemp"></span>天了！<span ng-show="birthdayTailsFlagTemp" ng-bind="birthdayTailsTemp[0]"></span></div>
-					  		<div class="answer" ng-show="!birthdayTemp || birthdayTemp.length == 0">答：我也不知道我多大！<span ng-show="birthdayTailsFlagTemp" ng-bind="birthdayTailsTemp[0]"></span></div>
-					  	</div>
-					  	<div class="robot-header-button">
-		          	 		<button class="common-active-button" ng-click="editBirthdaySubmitFunc()" data-act="header-submit" style="margin-right:46px;">确定</button>
-		          	 		<button class="common-blank-button">取消</button>
-		          	 	</div>
-	          	 	</div>
-		          </div>
-		          <div class="edit-para" data-act="edit-para" ng-click="editBirthdayFunc()">&nbsp;</div>
-	          </div>
-	          <!-- 生日 end -->
-	          <!-- 喜好 start -->
-	          <div data-act="ass-para-box">
-		          <!-- 喜好 查看状态 start -->
-		          <div class="ass-para-box" data-act="check-the-status">
-		          	 <div class="assistant-title" style="left:49px;">喜&nbsp;好&nbsp;<span class="required-tip">&nbsp;</span></div>
-		          	 <div class="assistant-value">
-			          	<label class="r-para-value" ng-bind-html="currentRobot.attribute.hobby | arrayStrsFilter"></label>
-		          	 </div>
-		          	 <div class="assistant-learn">
-		          	 	<label class="r-para-tip-text">机器人喜好，最多10个</label>
-		          	 </div>
-		          </div>
-		          <!-- 喜好 查看状态 end -->
-		          <div class="ass-para-box" data-act="edit-the-status">
-		          	 <div class="assistant-title" style="top:22px;">喜&nbsp;好
-		          	 	<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="唱歌、讲笑话、调戏人类……………你的机器人喜欢干什么呢，多项喜好用”;”分隔。">&nbsp;</button>
-		          	 </div>
-		          	 <div class="assistant-learn">
-		          	 	<label class="r-para-value"><input type="checkbox" ng-model="hobbyTailsFlagTemp" />&nbsp;&nbsp;机器人小尾巴
-		          	 		<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="bottom" data-content="勾选后在相关问题回复的主干后，可自定义更多内容，多条小尾巴时，与主干随机组合回复。还没明白？玩玩预览呗。">&nbsp;</button>
-		          	 	</label>
-		          	 </div>
-		          	 <div class="assistant-value">
-		          	 	<ul class="value-box">
-					  		<li class="alert alert-default alert-dismissable" ng-repeat="hobbys in hobbysTemp" ng-show="hobbysTemp && hobbysTemp.length > 0">
-								<p ng-bind="hobbys"></p>
-								<span class="close" ng-click="valueDeleteFunc(hobbysTemp,$index)">×</span>
-							</li>
-							<li style="border:0 !important;">
-							  	<input type="text" class="inputbox" placeholder="输入喜好，回车添加" style="margin-top:-2px;margin-left:-6px;" ng-model="hobbyAdd" ng-blur="actionAddAttrFunc(hobbysTemp,hobbyAdd,'hobbyAdd',10,-1)" ng-keydown="actionAddAttrFunc(hobbysTemp,hobbyAdd,'hobbyAdd',10,-1,$event)" />
-							</li>
-					  	</ul>
-					  	<ul class="tail-box" data-act="tail-box" ng-show="hobbyTailsFlagTemp">
-					  		<li ng-repeat="hobbyTailsStr in hobbyTailsTemp" class="tail-box-li">
-					  			<span class="and">&</span>
-					  			<input type="text" ng-model="hobbyTailsStr" ng-blur="actionAddAttrFunc(hobbyTailsTemp,hobbyTailsStr,'hobbyTailsStr',5,$index)" ng-keydown="actionAddAttrFunc(hobbyTailsTemp,hobbyTailsStr,'hobbyTailsStr',5,$index,$event)" class="inputbox" style="width:94%;" placeholder="例如：很高兴认识你。按回车键添加" />
-					  			<i class="delete" ng-click="valueDeleteFunc(hobbyTailsTemp,$index)">&nbsp;</i>
-					  		</li>
-					  		<li>
-					  			<span class="and">&</span>
-					  			<input type="text" ng-model="hobbyTails" ng-blur="actionAddAttrFunc(hobbyTailsTemp,hobbyTails,'hobbyTails',5,-1)" ng-keydown="actionAddAttrFunc(hobbyTailsTemp,hobbyTails,'hobbyTails',5,-1,$event)" class="inputbox" style="width:68%;" placeholder="例如：很高兴认识你。按回车键添加" />
-					  		</li>
-					  	</ul>
-					  	<div class="preview-box">
-					  		<div class="question">问：你平时喜欢做什么？</div>
-					  		<div class="answer" ng-show="hobbysTemp.length > 0">答：我平时喜欢{{hobbysTemp[0]}}！<span ng-show="hobbyTailsFlagTemp" ng-bind="hobbyTailsTemp[0]"></span></div>
-					  		<div class="answer" ng-show="!hobbysTemp || hobbysTemp.length == 0">答：我不告诉你！<span ng-show="hobbyTailsFlagTemp" ng-bind="hobbyTailsTemp[0]"></span></div>
-					  	</div>
-					  	<div class="robot-header-button">
-		          	 		<button class="common-active-button" ng-click="editHobbySubmitFunc()" data-act="header-submit" style="margin-right:46px;">确定</button>
-		          	 		<button class="common-blank-button">取消</button>
-		          	 	</div>
-	          	 	</div>
-		          </div>
-		          <div class="edit-para" data-act="edit-para" ng-click="editHobbyFunc()">&nbsp;</div>
-	          </div>
-	          <!-- 喜好 end -->
-	          <!-- 父亲 start -->
-	          <div data-act="ass-para-box">
-		          <!-- 喜好 查看状态 start -->
-		          <div class="ass-para-box" data-act="check-the-status">
-		          	 <div class="assistant-title" style="left:49px;">父&nbsp;亲&nbsp;<span class="required-tip">&nbsp;</span></div>
-		          	 <div class="assistant-value">
-			          	<label class="r-para-value" ng-bind-html="currentRobot.attribute.father | arrayStrsFilter"></label>
-		          	 </div>
-		          	 <div class="assistant-learn">
-		          	 	<label class="r-para-tip-text">机器人父亲，只能添加1个</label>
-		          	 </div>
-		          </div>
-		          <!-- 喜好 查看状态 end -->
-		          <div class="ass-para-box" data-act="edit-the-status">
-		          	 <div class="assistant-title" style="top:22px;left:49px;">父&nbsp;亲
-		          	 	<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="也许机器人的父亲就是屏幕前的你，或你的团队。">&nbsp;</button>
-		          	 </div>
-		          	 <div class="assistant-learn">
-		          	 	<label class="r-para-value"><input type="checkbox" ng-model="fatherTailsFlagTemp" />&nbsp;&nbsp;机器人小尾巴
-		          	 		<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="bottom" data-content="勾选后在相关问题回复的主干后，可自定义更多内容，多条小尾巴时，与主干随机组合回复。还没明白？玩玩预览呗。">&nbsp;</button>
-		          	 	</label>
-		          	 </div>
-		          	 <div class="assistant-value">
-		          	 	<ul class="value-box">
-							<li style="border:0 !important;">
-							  	<input type="text" class="inputbox" placeholder="输入父亲姓名" style="margin-top:-2px;margin-left:-6px;" ng-model="fathersTemp" />
-							</li>
-					  	</ul>
-					  	<ul class="tail-box" data-act="tail-box" ng-show="fatherTailsFlagTemp">
-					  		<li ng-repeat="fatherTailsStr in fatherTailsTemp" class="tail-box-li">
-					  			<span class="and">&</span>
-					  			<input type="text" ng-model="fatherTailsStr" ng-blur="actionAddAttrFunc(fatherTailsTemp,fatherTailsStr,'fatherTailsStr',5,$index)" ng-keydown="actionAddAttrFunc(fatherTailsTemp,fatherTailsStr,'fatherTailsStr',5,$index,$event)" class="inputbox" style="width:94%;" placeholder="例如：很高兴认识你。按回车键添加" />
-					  			<i class="delete" ng-click="valueDeleteFunc(fatherTailsTemp,$index)">&nbsp;</i>
-					  		</li>
-					  		<li>
-					  			<span class="and">&</span>
-					  			<input type="text" ng-model="fatherTails" ng-blur="actionAddAttrFunc(fatherTailsTemp,fatherTails,'fatherTails',5,-1)" ng-keydown="actionAddAttrFunc(fatherTailsTemp,fatherTails,'fatherTails',5,-1,$event)" class="inputbox" style="width:68%;" placeholder="例如：很高兴认识你。按回车键添加" />
-					  		</li>
-					  	</ul>
-					  	<div class="preview-box">
-					  		<div class="question">问：你爸是谁？</div>
-					  		<div class="answer" ng-show="fathersTemp.length > 0">答：我爸是{{fathersTemp}}！<span ng-show="fatherTailsFlagTemp" ng-bind="fatherTailsTemp[0]"></span></div>
-					  		<div class="answer" ng-show="!fathersTemp || fathersTemp.length == 0">答：我不告诉你！<span ng-show="fatherTailsFlagTemp" ng-bind="fatherTailsTemp[0]"></span></div>
-					  	</div>
-					  	<div class="robot-header-button">
-		          	 		<button class="common-active-button" ng-click="editFatherSubmitFunc()" data-act="header-submit" style="margin-right:46px;">确定</button>
-		          	 		<button class="common-blank-button">取消</button>
-		          	 	</div>
-	          	 	</div>
-		          </div>
-		          <div class="edit-para" data-act="edit-para" ng-click="editFatherFunc()">&nbsp;</div>
-	          </div>
-	          <!-- 父亲 end -->
-	          <!-- 母亲 start -->
-	          <div data-act="ass-para-box">
-		          <!-- 母亲 查看状态 start -->
-		          <div class="ass-para-box" data-act="check-the-status">
-		          	 <div class="assistant-title" style="left:49px;">母&nbsp;亲&nbsp;<span class="required-tip">&nbsp;</span></div>
-		          	 <div class="assistant-value">
-			          	<label class="r-para-value">海知工程师</label>
-		          	 </div>
-		          	 <div class="assistant-learn">
-		          	 	<label class="r-para-tip-text">系统默认，用户可在问答对里自定义</label>
-		          	 </div>
-		          </div>
-		          <!-- 母亲 查看状态 end -->
-		     </div>
-		     <!-- 母亲 end -->
-		     <!-- 缺省回复 start -->
-	          <div data-act="ass-para-box">
-		          <!-- 缺省回复 查看状态 start -->
-		          <div class="ass-para-box" data-act="check-the-status">
-		          	 <div class="assistant-title">缺省回复<span class="required-tip">&nbsp;</span></div>
-		          	 <div class="assistant-value">
-			          	<label class="r-para-value">哎呦，不错哦！</label>
-		          	 </div>
-		          	 <div class="assistant-learn">
-		          	 	<label class="r-para-tip-text">多条缺省回复</label>
-		          	 </div>
-		          </div>
-		          <!-- 缺省回复 查看状态 end -->
-		          <div class="ass-para-box" data-act="edit-the-status">
-		          	 <div class="assistant-title" style="top:22px;">缺省回复<button type="button" style="margin-left:0;" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="在无语的时候，机器人也会和人类一样念叨缺省回复呢。">&nbsp;</button>
-		          	 </div>
-		          	 <div class="assistant-value">
-					  	<ul class="tail-box" data-act="tail-box">
-					  		<li ng-repeat="petPhraseStr in petPhraseTemp" class="tail-box-li">
-					  			<span class="and">&nbsp;</span>
-					  			<input type="text" ng-model="petPhraseStr" ng-blur="actionAddAttrFunc(petPhraseTemp,petPhraseStr,'petPhraseStr',100,$index)" ng-keydown="actionAddAttrFunc(petPhraseTemp,petPhraseStr,'petPhraseStr',100,$index,$event)" class="inputbox" style="width:94%;" placeholder="例如：很高兴认识你。按回车键添加" />
-					  			<i class="delete" ng-click="valueDeleteFunc(petPhraseTemp,$index)">&nbsp;</i>
-					  			<i class="edit" ng-click="editPetPhraseTextFunc(petPhraseStr,$index)">&nbsp;</i>
-					  		</li>
-					  		<li class="tail-box-li">
-					  			<span class="and">&nbsp;</span>
-					  			<input type="text" data-act="petPhrasePara" ng-model="petPhrasePara" ng-blur="actionAddAttrFunc(petPhraseTemp,petPhrasePara,'petPhraseStr',100,-1)" ng-keydown="actionAddAttrFunc(petPhraseTemp,petPhrasePara,'petPhrasePara',100,-1,$event)" class="inputbox" style="width:94%;" placeholder="例如：很高兴认识你。按回车键添加" />
-					  			<i class="edit" ng-click="editPetPhraseTextFunc(petPhrasePara,-1)">&nbsp;</i>
-					  		</li>
-					  	</ul>
-					  	<div class="preview-box">
-					  		<div class="question">问：这个怎么样？</div>
-					  		<div class="answer"><span>答：哎呦，不错哦！</span></div>
-					  	</div>
-					  	<div class="robot-header-button">
-		          	 		<button class="common-active-button" ng-click="editPetPhraseSubmitFunc()" data-act="header-submit" style="margin-right:46px;">确定</button>
-		          	 		<button class="common-blank-button">取消</button>
-		          	 	</div>
-	          	 	</div>
-		          </div>
-		          <div class="edit-para" data-act="edit-para" ng-click="editPetPhraseFunc()">&nbsp;</div>
-	          </div>
-	          <!-- 缺省回复 end -->
-	          <!-- 缺省回复 start -->
-	          <!-- 超时回复 start -->
-	          <!-- <div data-act="ass-para-box">
-		          <div class="ass-para-box" data-act="check-the-status">
-		          	 <div class="assistant-title">超时回复<span class="required-tip">&nbsp;</span></div>
-		          	 <div class="assistant-value">
-			          	<label class="r-para-value">超时回复设置</label>
-		          	 </div>
-		          	 <div class="assistant-learn">
-		          	 	<label class="r-para-tip-text">多条超时回复</label>
-		          	 </div>
-		          </div>
-		          <div class="ass-para-box" data-act="edit-the-status">
-		          	 <div class="assistant-title" style="top:22px;">触发条件<button type="button" style="margin-left:0;" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="在一定时间内可被触发超时缺省回复；">&nbsp;</button>
-		          	 </div>
-		          	 <div class="assistant-value">
-		          	 	<input type="range" name="timeout" min="1" value="1500" max="3000" ng-model="timeout" ng-change="timeoutChange(timeout)" style="width: 45%; display: inline-block; margin-left: 24px; margin-top: 14px;"/>
-		          	 	<input placeholder="触发时间" type="number" value="1500" name="timeout-input" ng-model="timeout" min="1" max="3000" style="font-size: 14px;padding: 8px; width: 120px; margin-left: 20px; border-radius: 4px; border: 1px solid #bbb;"/>
-		          	 </div>
-		          	 <div class="assistant-title" style="top:72px;">助理回复<button type="button" style="margin-left:0;" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="在超过限定的时间后需要返回的内容；">&nbsp;</button>
-		          	 </div>
-		          	 <div class="assistant-value">
-					  	<ul class="tail-box" data-act="tail-box" style="margin-top:5px;">
-					  		<li ng-repeat="timeoutResponseStr in timeoutResponseTemp" class="tail-box-li">
-					  			<span class="and">&nbsp;</span>
-					  			<input type="text" ng-model="timeoutResponseStr" ng-blur="actionAddAttrFunc(timeoutResponseTemp,timeoutResponseStr,'timeoutResponseStr',100,$index)" ng-keydown="actionAddAttrFunc(timeoutResponseTemp,timeoutResponseStr,'timeoutResponseStr',100,$index,$event)" class="inputbox" style="width:94%;" placeholder="例如：很高兴认识你。按回车键添加" />
-					  			<i class="delete" ng-click="valueDeleteFunc(timeoutResponseTemp,$index)">&nbsp;</i>
-					  			<i class="edit" ng-click="edittimeoutResponseTextFunc(timeoutResponseStr,$index)">&nbsp;</i>
-					  		</li>
-					  		<li class="tail-box-li">
-					  			<span class="and">&nbsp;</span>
-					  			<input type="text" data-act="timeoutResponsePara" ng-model="timeoutResponsePara" ng-blur="actionAddAttrFunc(timeoutResponseTemp,timeoutResponsePara,'timeoutResponseStr',100,-1)" ng-keydown="actionAddAttrFunc(timeoutResponseTemp,timeoutResponsePara,'timeoutResponsePara',100,-1,$event)" class="inputbox" style="width:94%;" placeholder="例如：很高兴认识你。按回车键添加" />
-					  			<i class="edit" ng-click="edittimeoutResponseTextFunc(timeoutResponsePara,-1)">&nbsp;</i>
-					  		</li>
-					  	</ul>
-					  	<div class="robot-header-button">
-		          	 		<button class="common-active-button" ng-click="editTimeoutResponseSubmitFunc()" data-act="header-submit" style="margin-right:46px;">确定</button>
-		          	 		<button class="common-blank-button">取消</button>
-		          	 	</div>
-	          	 	</div>
-		          </div>
-		          <div class="edit-para" data-act="edit-para" ng-click="editTimeoutResponseFunc()">&nbsp;</div>
-	          </div> -->
-	          <!-- 超时回复 end -->
+<link rel="stylesheet" href="./css/skill-publish.css">
+<link href="https://cdn.bootcss.com/jquery-jcrop/2.0.4/css/Jcrop.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/jquery-jcrop/2.0.4/js/Jcrop.min.js"></script>
+<div class="my_body">
+
+	<h1 class='title'>提交发布到ruyi平台</h1>
+	<div class='skill_settings'>
+		<h2>技能设置</h2> <span>一键复制bot属性设置</span>
+	</div>
+	<div>
+		<h3>技能头像<span class='star'>*</span>:</h3>
+		<img src="{{imgSrc}}" alt="头像" title="头像" class="skill-img"><span class="sub">1024*1024 png/jpg 格式</span>
+		<input type="file" class='hide_input_img_upload'>
+	</div>
+	<div>
+		<h3>技能名称<span class='star'>*</span>:</h3>
+		<input type="text" placeholder="在商店中显示的名称" ng-model='robotName'>
+	</div>
+	<div>
+		<h3>姓名唤醒词<span class='star'>*</span>:
+			<button onmouseover="this.style.cssText='color:blue;'" onmouseout="this.style.cssText='color:black'" type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="top" data-content="将会帮助语音识别或者错别的唤醒">&nbsp;</button>
+		</h3>		
+		<input type="text" placeholder="请输入唤醒词" class="small" ng-repeat='awake in awakes track by $index' ng-model='awake'>
+		<a ng-hide='awakes.length >= 5' href="javascript:void(0)" repeat-type='awakes' class='addCorect'> <span class='glyphicon glyphicon-plus'></span> 添加唤醒词</a>
+	</div>
+	<div>
+		<h3>姓名语音纠错<span class='star'>*</span>:
+			<button onmouseover="this.style.cssText='color:blue;'" onmouseout="this.style.cssText='color:black'" type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="top" data-content="唤醒词将会成为用户进入技能的方式，不可重复">&nbsp;</button>
+		</h3>	
+		<input type="text" placeholder="请输入纠错词" class="small" ng-repeat='wrong in wrongs track by $index' ng-model='wrong'>
+		<a ng-hide='wrongs.length >= 5' href="javascript:void(0)" repeat-type='wrongs' class='addCorect'> <span class='glyphicon glyphicon-plus'></span> 添加纠错词</a>
+	</div>
+	<div>
+		<h3>技能简介<span class='star'>*</span>:</h3>
+		<textarea cols="30" placeholder="技能简介将会显示在商店页面（300字以下）" ng-model='robotDesc' ></textarea>
+	</div>
+	<div>
+		<h3>技能分类<span class='star'>*</span>:</h3>
+		<div class="dropdown mySel">
+			<button type="button" class="btn dropdown-toggle" id="dropdownMenu1" 
+				data-toggle="dropdown">
+				{{selectedType}}
+				<span class="glyphicon glyphicon-chevron-down myIcon"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+				<li role="presentation" ng-repeat='skillType in skillTypes track by $index'>
+					<a role="menuitem" tabindex="-1" href="javascript:void(0)">{{skillType}}</a>
+				</li>
+			</ul>
 		</div>
 	</div>
+	<div>
+		<h3>用户范例<span class='star'>*</span>:</h3>
+		<input type="text" placeholder="用户说" class="small" ng-repeat='userSay in userSays track by $index' ng-model='userSay'>
+		<a ng-hide='userSays.length >= 5' href="javascript:void(0)" repeat-type='userSays' class='addCorect'> <span class='glyphicon glyphicon-plus'></span> 添加用户说</a>
+	</div>
+	<div>
+		<h3>开发者简介<span class='star'>*</span>:</h3>
+		<input type="text" placeholder="将会在技能商店中显示" v-model='selfDesc'>
+	</div>
+	<div>
+		<h3>技能说明<span class='star'>*</span>:</h3>
+		<textarea cols="30" placeholder="请填写技能插件的功能介绍供平台审核（1500字以下，越详细越好）" v-model='skillDesc'></textarea>
+		<label class='addLabel'>备注：在发布为技能插件时，机器恩所获得的技能插件将不会生效。</label>
+	</div>
+	<hr>
+	<div>
+		<h3>第三方平台接入:</h3>
+		<input type="checkbox" ng-model='plateforms.sbc' value="1"> <span class="operatorImg sbc"></span> <a class='name'>思必驰</a>
+		<input type="checkbox" ng-model='plateforms.xm' value="2"> <span class="operatorImg xm"></span> <a class='name'>小米</a>
+		<input type="checkbox" ng-model='plateforms.bd' value="3"> <span class="operatorImg bd"></span> <a class='name'>百度</a>
+		<input type="checkbox" ng-model='plateforms.rk' value="4"> <span class="operatorImg rk"></span> <a class='name'>Rokid</a>
+	</div>
+	<button class='skill_publish'>提交发布</button>
+	
+	<!-- 模态框（Modal） -->
+	<div id='uploadImg' class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content" style="width: 600px;">
+				<div class="modal-header">
+					<h1 style="text-align: center; font-size: 20px;">裁剪图片</h1>
+				</div>
+				<div class="modal-body" style="text-align: center;" id='clipContainer'>
+					<img ng-src="{{imgSrc}}" alt="" id='clipImg'>
+				</div>
+				<div class="modal-footer">
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+	</div>
+
 </div>
-<!-- 头像裁剪 Modal start-->
-<div class="modal fade" id="cut-header">
-  <div class="modal-dialog" style="width:452px;padding-top:120px;">
-    <div class="modal-content" style="width:452px;">
-      <div class="modal-header">
-      	<h4 class="modal-title modal-title">头像裁剪</h4>
-        <div style="cursor:pointer;"><div class="close-modal">&nbsp;</div></div>
-      </div>
-      <div class="modal-body" style="padding:0 21px 21px 10px;">
-		  <div style="font-size: 16px; padding-left: 13px; margin-bottom: 8px; color: #3794FF;">选择要截取的部分，双击确认</div>
-		  <div class="container"></div>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!-- 头像裁剪 Modal end-->
-<!-- 缺省回复多行编辑 Modal start-->
-<div class="modal fade" id="editPetPhraseTextarea">
-  <div class="modal-dialog" style="width: 800px;">
-    <div class="modal-content" style="width: 800px;">
-      <div class="modal-header">
-        <div style="cursor:pointer;"><div class="close-modal">&nbsp;</div></div>
-        <h4 class="modal-title font-size-style">编辑文本</h4>
-      </div>
-      <div class="modal-body">
-        <!-- 未申请 -->
-        <textarea type="hidden" class="form-control add-bottom"  id="editPetPhraseText" parentIndex="" myIndex="" style="display:none;border-radius: 0px; box-shadow: none;height: 400px;" placeholder="请输入编辑文本"></textarea>
-        <!-- js编辑器 start -->
-		<div id="editor-iframe-box-wechat">
-				
-		</div>
-		<!-- js编辑器 end -->
-      </div>
-	 <div class="modal-footer" style="padding: 20px 40px;">
-	    <div class="col-md-offset-1 col-md-10 clearfix footer-modal">
-            <button type="submit" class="pull-right submit-modal" ng-click="editPetPhraseTextSubmitFunc()">确 认</button>
-	        <a class="pull-right cancel-modal">取消</a>
-		</div>
-	  </div>
-	 
-	 
-    </div>
-  </div>
-</div>
-<!-- 缺省回复多行编辑 Modal end-->
-<!-- <script src="js/robot_paramenter.js?v=20161116a"></script> -->
-<script type="text/javascript">
-	setTimeout(function(){
-		hljs.initHighlightingOnLoad();
-	}, 500);
-</script>
+<!-- <script src='../js/skill_publish.js'></script> -->
+
