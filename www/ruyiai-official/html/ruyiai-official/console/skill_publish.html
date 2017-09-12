@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="./css/skill-publish.css">
+<link href="https://cdn.bootcss.com/jquery-jcrop/2.0.4/css/Jcrop.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/jquery-jcrop/2.0.4/js/Jcrop.min.js"></script>
 <div class="my_body">
 
 	<h1 class='title'>提交发布到ruyi平台</h1>
@@ -70,8 +72,23 @@
 		<input type="checkbox" ng-model='plateforms.rk' value="4"> <span class="operatorImg rk"></span> <a class='name'>Rokid</a>
 	</div>
 	<button class='skill_publish'>提交发布</button>
+	
+	<!-- 模态框（Modal） -->
+	<div id='uploadImg' class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content" style="width: 600px;">
+				<div class="modal-header">
+					<h1 style="text-align: center; font-size: 20px;">裁剪图片</h1>
+				</div>
+				<div class="modal-body" style="text-align: center;" id='clipContainer'>
+					<img ng-src="{{imgSrc}}" alt="" id='clipImg'>
+				</div>
+				<div class="modal-footer">
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+	</div>
 
 </div>
 <!-- <script src='../js/skill_publish.js'></script> -->
-
 

@@ -1,5 +1,4 @@
 function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
-
 	// 全局属性
 	$scope.imgSrc = 'http://img95.699pic.com/photo/50004/2199.jpg_wh300.jpg';
 	$scope.robotName = '';
@@ -11,7 +10,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	$scope.userSays = [];
 	$scope.selfDesc = '';
 	$scope.skillDesc = '';
-	$scope.plateforms = {sbc: false, xm: false, bd: false, rk: false}
+	$scope.plateforms = {sbc: false, xm: false, bd: false, rk: false};
 
 	$(".list-group-item").removeClass("active");
 	$("[data-act=nav-skill-publish]").addClass("active");
@@ -21,6 +20,11 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 		$('.mySel button').html(text + '<span class="glyphicon glyphicon-chevron-down myIcon"></span>');
 	})
 	// select 技能分类 -- end
+	// 获得裁剪的图片
+	$scope.setImg = function() {
+		console.log(1)
+	}
+	// 获得裁剪的图片 -- end
 	// 上传图片
 	$('.skill-img').click(function() {
 		$('.hide_input_img_upload').click();
@@ -29,7 +33,16 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 		var reader = new FileReader();
 		var img  = $('.hide_input_img_upload')[0].files[0];
 		reader.onload = function(ret) {
-			$('.skill-img').attr('src', ret.target.result);
+			var jcropApi;
+			$('#uploadImg').modal('show');
+			$("#clipImg").Jcrop({
+				aspectRatio: 1,
+				onDblClick: $scope.setImg()
+			}, function() {
+			  	jcropApi = this;
+			});
+			jcropApi.setImage('1.jpg')
+			// $('.skill-img').attr('src', ret.target.result);
 		}
 		reader.readAsDataURL(img);
 	})
@@ -61,7 +74,5 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	// 添加新项 -- end
 	
 }
-
-
 
 
