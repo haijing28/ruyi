@@ -26,6 +26,7 @@
 	.error-tips {
 		padding-left: 75px;
 		display: none;
+		padding-top: 0;
 	}
 	.login-title {
 		font-family: STHeitiSC-Medium;
@@ -134,7 +135,17 @@ $(function() {
 				return true;
 			}
 		},
-		phoneError: '请输入合法的手机号'
+		phoneError: '请输入正确的账户',
+		loginEmail: function(em) {
+			if( !(/^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/).test(em) ) {
+				$('#login-email').next('.error-tips').text(this.请输入正确的手机号)
+				$('#login-email').next('.error-tips').show();
+				return false;
+			}else{
+				$('#login-email').next('.error-tips').hide();
+				return true;
+			}
+		}
 	}
 	var t ;
 	var time = 30;
@@ -142,8 +153,14 @@ $(function() {
 	// 获取验证码
 	$('#getVCode').click(function() {
 		// 验证已输入手机号
-		console.time();
+		var tag = 0;
 		if( !va.loginPhone( $('#login-email').val() ) ) {
+			tag ++;
+		}
+		if( !va.loginEmail( $('#login-email').val() ) ) {
+			tag ++;
+		}
+		if(tag >= 2){
 			return;
 		}
 		// 验证已输入手机号 -- end
@@ -163,7 +180,6 @@ $(function() {
 				$('#getVCode').attr('disabled',false);
 			}
 		}, 1000)
-		console.timeEnd();
 		$.ajax({
 			url: api_host + '/password/reset/verify',
 			type: 'post',
@@ -172,7 +188,10 @@ $(function() {
 			},
 			data: JSON.stringify({account: $('#login-email').val()}),
 			success: function(ret) {
-				console.log(ret);
+				console.log(ret)
+				if( va.loginEmail( $('#login-email').val() ) ) {
+					window.location.href = '../base/reset-password-tips.html'
+				}
 			}
 		})
 	})
@@ -187,7 +206,7 @@ $(function() {
 			},
 			data: JSON.stringify({account: $('#login-email').val(),newPassword: $('#login-password').val(),verifyCode: $('#vaCode').val()}),
 			success: function (ret) {
-				console.log(ret);
+				window.location.href = '../app_manager.html';
 			}
 		})
 	})
