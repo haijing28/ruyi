@@ -245,20 +245,6 @@ $('#getVCode').click(function() {
 	// 验证已输入手机号 -- end
 	clearInterval(t);
 	$(this).attr('disabled',true);
-	$('#getVCode').text(time + 's')
-	$('#getVCode').addClass('dis');
-	t = setInterval(function() {
-		time --;
-		$('#getVCode').text(time + 's')
-		$('#getVCode').addClass('dis');
-		if(time == 0){
-			$('#getVCode').removeClass('dis');
-			$('#getVCode').text('获取验证码')
-			clearInterval(t);
-			time = 30;
-			$('#getVCode').attr('disabled',false);
-		}
-	}, 1000)
 	$.ajax({
 		url: api_host + '/signup/smsVerify',
 		type: 'post',
@@ -268,6 +254,26 @@ $('#getVCode').click(function() {
 		data: JSON.stringify({phoneNumber: $('#loginPhone').val()}),
 		success: function(ret) {
 			console.log(ret)
+			$('#loginPhone').next('.error-tips').hide();
+			$('#getVCode').text(time + 's')
+			$('#getVCode').addClass('dis');
+			t = setInterval(function() {
+				time --;
+				$('#getVCode').text(time + 's')
+				$('#getVCode').addClass('dis');
+				if(time == 0){
+					$('#getVCode').removeClass('dis');
+					$('#getVCode').text('获取验证码')
+					clearInterval(t);
+					time = 30;
+					$('#getVCode').attr('disabled',false);
+				}
+			}, 1000)
+		},
+		error: function(err) {
+			$('#loginPhone').next('.error-tips').text( JSON.parse(err.responseText.toString()).message )
+			$('#loginPhone').next('.error-tips').show();
+			$('#getVCode').attr('disabled',false);
 		}
 	})
 })
