@@ -111,7 +111,7 @@
 					<button class='loginBtn'>确定</button>
 				</div>
 			</div>
-			<p class='helpTel'>客服电话：010-82740211</p>
+			<p class='helpTel'>客服电话：18762671093</p>
 		</div>
 	</div>
 </div>
@@ -142,13 +142,28 @@ $(function() {
 	// 获取验证码
 	$('#getVCode').click(function() {
 		// 验证已输入手机号
+		console.time();
 		if( !va.loginPhone( $('#login-email').val() ) ) {
-			console.log(12)
 			return;
 		}
-		console.log(1)
 		// 验证已输入手机号 -- end
 		clearInterval(t);
+		$(this).attr('disabled',true);
+		$('#getVCode').text(time + 's')
+		$('#getVCode').addClass('dis');
+		t = setInterval(function() {
+			time --;
+			$('#getVCode').text(time + 's')
+			$('#getVCode').addClass('dis');
+			if(time == 0){
+				$('#getVCode').removeClass('dis');
+				$('#getVCode').text('获取验证码')
+				clearInterval(t);
+				time = 30;
+				$('#getVCode').attr('disabled',false);
+			}
+		}, 1000)
+		console.timeEnd();
 		$.ajax({
 			url: api_host + '/password/reset/verify',
 			type: 'post',
@@ -160,19 +175,6 @@ $(function() {
 				console.log(ret);
 			}
 		})
-		$(this).attr('disabled',true);
-		t = setInterval(function() {
-			$('#getVCode').text(time + 's')
-			time --;
-			$('#getVCode').addClass('dis');
-			if(time == 0){
-				$('#getVCode').removeClass('dis');
-				$('#getVCode').text('获取验证码')
-				clearInterval(t);
-				time = 30;
-				$('#getVCode').attr('disabled',false);
-			}
-		}, 1000)
 	})
 	// 获取验证码 -- end
 	// 重置密码 -- 手机账户

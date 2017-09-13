@@ -12,6 +12,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 } 
 .box .center-box{
 	overflow: auto;
+	margin-top: 0 !important;
 }
 .my_body {
 	padding: 30px 70px;
@@ -101,6 +102,7 @@ textarea {
 .addLabel {
 	margin-left: 152px;
 	color: #797474;
+	display: block;
 }
 input[type='checkbox']{
 	width: auto;
@@ -171,6 +173,12 @@ input[type='checkbox']{
 	/* margin-top: 5px; */
 	color: #807373;
 }
+.mySel ul{
+	min-width: 170px;
+}
+#clipImg {
+
+}
 hr{
 	margin-left: 149px;
 	margin-right: 113px;
@@ -189,6 +197,11 @@ hr{
 	}
 	div .small:nth-child(5) {
 		margin-left: 153px;
+	}
+}
+@media screen and (max-width: 1250px) {
+	textarea {
+		width: 500px;
 	}
 }
 
