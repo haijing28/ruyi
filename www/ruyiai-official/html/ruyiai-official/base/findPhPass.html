@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -93,19 +92,19 @@
 			<div class="login-box">
 				<div class="login-title">找回密码</div>
 				<div class="register-now"><!-- 还没账号？<a href="register-baseinfo.html">立即注册</a> --></div>
-				<div class="element-box" data-act="login-email">
+				<div class="element-box" data-act="login-account">
 					<!-- <label>邮箱</label> -->
-					<input class="email-input" id="login-email" type="input" placeholder="请输入手机号或者邮箱号" />
+					<input class="email-input" id="login-account" type="input" placeholder="请输入手机号或者邮箱号" />
 					<p class="error-tips"></p>
 				</div>
-				<div class="element-box" data-act="vaCode">
-					<input required style="width: 215px;" class="email-input" id="vaCode" type="input" placeholder="请输入验证码" />
+				<div class="element-box" data-act="myVaCode">
+					<input required style="width: 215px;" class="email-input" id="myVaCode" type="input" placeholder="请输入验证码" />
 					<button id='getVCode' style="border: none;border-radius: 3px;background: #7ED321;color:#fff;height: 38px;vertical-align: top;box-sizing: border-box;">获取验证码</button>
 					<p class="error-tips"></p>
 				</div>
-				<div class="element-box" data-act="login-password" style="margin-bottom: 0;">
+				<div class="element-box" data-act="loginPass" style="margin-bottom: 0;">
 					<!-- <label>密码</label> -->
-					<input class="email-input" id="login-password" type="password" placeholder="请输入8-20位由字母、数字组成的新密码" />
+					<input class="email-input" id="loginPass" type="password" placeholder="请输入8-20位由字母、数字组成的新密码" />
 					<p class="error-tips"></p>
 				</div>
 				<div class="element-box">
@@ -127,37 +126,37 @@ $(function() {
 	var va = {
 		loginPhone: function(number) {
 			if( !(/^1[3|4|5|8][0-9]\d{4,8}$/.test(number)) ) {
-				$('#login-email').next('.error-tips').text(this.phoneError)
-				$('#login-email').next('.error-tips').show();
+				$('#login-account').next('.error-tips').text(this.phoneError)
+				$('#login-account').next('.error-tips').show();
 				return false;
 			}else {
-				$('#login-email').next('.error-tips').hide();
+				$('#login-account').next('.error-tips').hide();
 				return true;
 			}
 		},
 		phoneError: '请输入正确的账户',
 		loginEmail: function(em) {
 			if( !(/^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/).test(em) ) {
-				$('#login-email').next('.error-tips').text(this.请输入正确的手机号)
-				$('#login-email').next('.error-tips').show();
+				$('#login-account').next('.error-tips').text(this.请输入正确的手机号)
+				$('#login-account').next('.error-tips').show();
 				return false;
 			}else{
-				$('#login-email').next('.error-tips').hide();
+				$('#login-account').next('.error-tips').hide();
 				return true;
 			}
 		}
 	}
 	var t ;
 	var time = 30;
-	$('#login-email').val(localStorage.username)
+	$('#login-account').val(localStorage.username)
 	// 获取验证码
 	$('#getVCode').click(function() {
 		// 验证已输入手机号
 		var tag = 0;
-		if( !va.loginPhone( $('#login-email').val() ) ) {
+		if( !va.loginPhone( $('#login-account').val() ) ) {
 			tag ++;
 		}
-		if( !va.loginEmail( $('#login-email').val() ) ) {
+		if( !va.loginEmail( $('#login-account').val() ) ) {
 			tag ++;
 		}
 		if(tag >= 2){
@@ -186,12 +185,17 @@ $(function() {
 			headers: {
 				"Content-Type": 'application/json'
 			},
-			data: JSON.stringify({account: $('#login-email').val()}),
+			data: JSON.stringify({account: $('#login-account').val()}),
 			success: function(ret) {
 				console.log(ret)
-				if( va.loginEmail( $('#login-email').val() ) ) {
+				if( va.loginEmail( $('#login-account').val() ) ) {
 					window.location.href = '../base/reset-password-tips.html'
 				}
+			},
+			error: function(err) {
+				err = JSON.parse(err.responseText);
+				$('#login-account').next('.error-tips').text(err.message)
+				$('#login-account').next('.error-tips').show();
 			}
 		})
 	})
@@ -204,7 +208,7 @@ $(function() {
 			headers: {
 				"Content-Type": 'application/json'
 			},
-			data: JSON.stringify({account: $('#login-email').val(),newPassword: $('#login-password').val(),verifyCode: $('#vaCode').val()}),
+			data: JSON.stringify({account: $('#login-account').val(),newPassword: $('#loginPass').val(),verifyCode: $('#myVaCode').val()}),
 			success: function (ret) {
 				window.location.href = '../app_manager.html';
 			}
