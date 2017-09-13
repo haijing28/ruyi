@@ -58,25 +58,23 @@
 		<!-- 用户说 end -->
 		<!-- 系统事件 start -->
 		<!-- 接受暗号 start -->
-		<!-- <div class="intent-detail-more-box" style="margin-top: 40px;">
+		<!-- <div data-act="event-more-box" class="clearfix" style="margin-top: 40px;">
 			<div class="input-intent-tag">
 				<div style="margin-bottom: -6px;margin-top: -18px;">
 					<span>
-						事件
-						<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="如果意图A接受了一个暗号X，意味着：<br/>1、意图A可以使用暗号X携带的词典条目的值;<br/>2、如果没有存活的暗号X存在，意图A不可能被触发。<a href='http://docs.ruyi.ai/344936' target='_blank'>更多</a>">
-						  	&nbsp;
+						事件<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="如果意图A接受了一个暗号X，意味着：<br/>1、意图A可以使用暗号X携带的词典条目的值;<br/>2、如果没有存活的暗号X存在，意图A不可能被触发。<a href='http://docs.ruyi.ai/344936' target='_blank'>更多</a>">
 						</button>
-						&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-left" style="color:#aaa;cursor:pointer;"></i>
+						&nbsp;&nbsp;<i data-act="event-show-hide" class="glyphicon glyphicon-chevron-left event-show-hide"></i>
 					</span>
 				</div>
-				<div class="intent-tag" style="overflow:inherit">
+				<div class="intent-tag" style="overflow:inherit;display:none;" data-act="event-show-ctrl">
 					<ul>
 						<li class="alert alert-default alert-dismissable" style="float:left;padding:0 10px 0 0;border:1px solid #dcdcdc;" ng-repeat="context in intentDetail.contexts track by $index">
 						    <span class="close" style="right:-6px;" ng-click="deleteInputIntentTagFunc(context)">&times;</span>
 							<input style="padding: 10px 6px; width: 50px; border: 0; background-color: #3794FF; border-right: #dcdddd 1px solid; color: #fff; text-align: center;" />
 							<div style="display:inline-block;padding-left:4px;" ng-bind="context"></div>
 						</li>
-						<li class="alert alert-default alert-dismissable" style="border:0;">
+						<li class="alert alert-default alert-dismissable" style="border:0;margin-left:0;">
 							<div style="position:relative;">
 								<input type="text" style="width: 300px; border: 1px solid #fff;padding-left:0; box-shadow: none;" placeholder="添加特殊事件以触发意图" ng-keydown="addInputIntentTagKeydownFunc($event,addInputIntentTag)" ng-blur="addInputIntentTagFunc(addInputIntentTag)" ng-model="addInputIntentTag" class="form-control"/>
 								<ul class="list-group event-choose-list">
@@ -106,7 +104,7 @@
 		</div> -->
 		<!-- 系统事件 end -->
 		<!-- 助理答 start -->
-		<div class="speach-response" style="margin-top:80px;">
+		<div class="speach-response">
 			<div class="clearfix">
 				<span data-act="robot-answer-text">机器人答
 					<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="bottom" data-content="添加随机回答：多条回答以相同概率随机出现。<br/>添加多条回复：返回多条消息。<a href='http://docs.ruyi.ai/344930' target='_blank'>更多</a>">
@@ -231,7 +229,7 @@
 		<div>
 			<div class="intent-detail-more"><i class="iconfont icon-arrow-right" style="color: #3794FF;font-size: 16px;margin-right: 6px;"></i>对话能力拓展</div>
 		</div>
-		<div class="intent-detail-more-box">
+		<div class="intent-detail-more-box" data-act="intent-detail-more-box">
 			<!-- 接受暗号 start -->
 			<div class="input-intent-tag">
 				<div style="margin-bottom: -6px;margin-top: -18px;">
@@ -340,19 +338,9 @@
 						<input type="text" placeholder="请输入触发器" ng-focus="commonIntentDetailFocus(response.action)" ng-blur="commonIntentDetailBlur(response.action)" ng-model="response.action" class="form-control" style="width:calc( 100% - 42px ) !important;display:inline-block;"/>
 						<span class="action-right-arrows"><i class="glyphicon glyphicon-chevron-down"></i></span>
 					</div>
-					<ul class="list-group my-action-name-list">
-					  <li class="list-group-item">
-					  	 <h3>缺省回复</h3>
-					  	 <p>我是一些说明内容</p>
-					  </li>
-					  <li class="list-group-item">
-					  	 <h3>缺省回复</h3>
-					  	 <p>我是一些说明内容</p>
-					  </li>
-					</ul>
-					<!-- <ul class="list-group my-action-name-list" ng-show="actionList.length > 0">
+					<ul class="list-group my-action-name-list" ng-show="actionList.length > 0">
 					  <li class="list-group-item" ng-repeat="actionObj in actionList" ng-bind="actionObj.name"></li>
-					</ul> -->
+					</ul>
 				</div>
 			</div>
 			<!-- action end -->
@@ -1167,7 +1155,6 @@
 	height: 470px !important;
 }
 </style>
-
-<!-- <script type="text/javascript" src="js/qiniu/customize.js"></script> -->
+<script>
 
 

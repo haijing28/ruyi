@@ -3467,7 +3467,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	//查看更多功能
 	$("body").off("click",".intent-detail-more").on("click",".intent-detail-more",function(event){
 		var $this = $(this);
-		var $more = $(".intent-detail-more-box");
+		var $more = $("[data-act=intent-detail-more-box]");
 		if($more.css("display") == "block"){
 			$more.css("display","none");
 			$this.find("i").removeClass("icon-arrow-down").addClass("icon-arrow-right");
@@ -3493,7 +3493,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	}
 	if(supports_html5_storage()){
 		if(localStorage.getItem("intentDetailMore" + $stateParams.intent_id) == "open"){
-			$(".intent-detail-more-box").css("display","block");
+			$("[data-act=intent-detail-more-box]").css("display","block");
 			$(".intent-detail-more").find("i").removeClass("icon-arrow-right").addClass("icon-arrow-down");
 		}
 	}
@@ -3513,6 +3513,24 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 //			});
 //		}
 //    });
+	
+	$("body").off("click","[data-act=event-show-hide]").on("click","[data-act=event-show-hide]",function(){
+		var $this = $(this);
+		if($this.hasClass("glyphicon-chevron-left")){
+			$this.removeClass("glyphicon-chevron-left").addClass("glyphicon-chevron-down");
+			$("[data-act=event-show-ctrl]").css("display","block");
+//			$(".speach-response").css("margin-top","80px");
+		}else{
+			$this.removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-left");
+			$("[data-act=event-show-ctrl]").css("display","none");
+//			$(".speach-response").css("margin-top","0");
+		}
+	});
+	
+	$("body").off("click","[data-act=event-show-ctrl]").on("click","[data-act=event-show-ctrl]",function(){
+		var $this = $(this);
+		
+	});
 	
 	
 }

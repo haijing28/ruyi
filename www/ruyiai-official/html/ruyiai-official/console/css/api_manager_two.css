@@ -3362,6 +3362,15 @@ li.birthday input.constellation{
 .right-box .event-choose-list{
 	display:block;
 }
+.right-box-main .event-show-hide{
+	color:#aaa;cursor:pointer;
+}
+.right-box-main .event-show-hide:hover{
+	color:#bbb;
+}
+.right-box-main .event-choose-list{
+	display:none;
+}
 
 
 
