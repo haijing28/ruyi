@@ -574,9 +574,10 @@ a{
 	border:0;
 }
 .usersay-placeholder{
-	font-size:14px !important;
-	color:#999 !important;
-	width:90px !important;
+	font-size: 14px !important;
+    color: #aaa !important;
+    width: 90px !important;
+    font-weight: 400;
 }
 .box .right-box .right-box-main .user-say .user-say-templates{
 	/* overflow:hidden; */
