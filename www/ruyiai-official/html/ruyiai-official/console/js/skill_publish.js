@@ -1,5 +1,13 @@
 function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 
+	/*-------------------------------启用toggle按钮--------------------------------*/
+
+	$('[data-toggle="toggle"]').bootstrapToggle({
+		size: 'mini',
+		on: '',
+	    	off: ''
+	});
+
 	/*-------------------------------全局属性--------------------------------*/
 
 	$scope.imgSrc = 'http://img95.699pic.com/photo/50004/2199.jpg_wh300.jpg';
@@ -42,6 +50,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	$('.mySel').on('click', 'li', function() {
 		var text = $(this).text();
 		$('.mySel button').html(text + '<span class="glyphicon glyphicon-chevron-down myIcon"></span>');
+		$scope.selectedType = text;
 	})
 
 	/*-------------------------------获得裁剪的图片--------------------------------*/
@@ -62,15 +71,15 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			var jcropApi;
 			$scope.imgSrc = ret.target.result;
 			$scope.$apply();
-			$('#uploadImg').modal('show');
-			$("#clipImg").Jcrop({
-				aspectRatio: 1,
-				onDblClick: function() {
-					console.log(111)
-				}
-			}, function() {
-			  	jcropApi = this;
-			});
+			// $('#uploadImg').modal('show');
+			// $("#clipImg").Jcrop({
+			// 	aspectRatio: 1,
+			// 	onDblClick: function() {
+			// 		console.log(111)
+			// 	}
+			// }, function() {
+			//   	jcropApi = this;
+			// });
 		}
 		reader.readAsDataURL(img);
 	})
@@ -117,9 +126,62 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 		$(this).prev('input').focus();
 	})
 	$('div').on('keydown', '.small', function(e) {
+		if($(this).val() == ''){
+			return;
+		}
 		if(e.keyCode == 13){
 			$(this).next('.addCorect').click();
 		}
+	})
+
+	/*-------------------------------点击发布--------------------------------*/
+
+	$('.skill_publish').click(function() {
+		$('.wrong').removeClass('wrong');
+		if( $scope.headUrl == '' ) {
+			$('.skill-img').addClass('wrong');
+		}
+		if($scope.robotName.trim() == ''){
+			$('.robotName').addClass('wrong');
+		}
+		if($scope.robotDesc.trim() == ''){
+			$('.robotDesc').addClass('wrong');
+		}
+		if($scope.selectedType == '请选择'){
+			$('.selectedType').addClass('wrong');
+		}
+		if($scope.selfDesc.trim() == ''){
+			$('.selfDesc').addClass('wrong');
+		}
+		if($scope.skillDesc.trim() == ''){
+			$('.skillDesc').addClass('wrong');
+		}
+		$scope.awakes.forEach(function(ele, index) {
+			if(ele.value.trim() == '') {
+				$('[repeat-type=awakes]').parent().find( 'input' )[index].classList.add('wrong');
+			}
+		})
+		$scope.wrongs.forEach(function(ele, index) {
+			if(ele.value.trim() == '') {
+				$('[repeat-type=wrongs]').parent().find( 'input' )[index].classList.add('wrong');
+			}
+		})
+		$scope.userSays.forEach(function(ele, index) {
+			if(ele.value.trim() == '') {
+				$('[repeat-type=userSays]').parent().find( 'input' )[index].classList.add('wrong');
+			}
+		})
+		if($('.wrong').length > 0) {
+			$.trace('要配置完技能插件才能发布哦！')
+		}else {
+			$('#uploadSuccess').modal('show');
+		}
+	})
+
+	/*-------------------------------点击模态框确定--------------------------------*/
+
+	$('.iKown').click(function() {
+		$('#uploadSuccess').modal('hide');
 	})
 	
 }

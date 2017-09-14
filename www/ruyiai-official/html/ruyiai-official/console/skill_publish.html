@@ -13,7 +13,7 @@
 	</div>
 	<div>
 		<h3>技能名称<span class='star'>*</span>:</h3>
-		<input type="text" placeholder="在商店中显示的名称" ng-model='robotName'>
+		<input type="text" placeholder="在商店中显示的名称" ng-model='robotName' class='robotName'>
 	</div>
 	<div>
 		<h3>姓名唤醒词<span class='star'>*</span>:
@@ -31,12 +31,12 @@
 	</div>
 	<div>
 		<h3>技能简介<span class='star'>*</span>:</h3>
-		<textarea cols="30" placeholder="技能简介将会显示在商店页面（300字以下）" ng-model='robotDesc' ></textarea>
+		<textarea cols="30" placeholder="技能简介将会显示在商店页面（300字以下）" ng-model='robotDesc' class='robotDesc'></textarea>
 	</div>
 	<div>
 		<h3>技能分类<span class='star'>*</span>:</h3>
 		<div class="dropdown mySel">
-			<button type="button" class="btn dropdown-toggle" id="dropdownMenu1" 
+			<button type="button" class="btn dropdown-toggle selectedType" id="dropdownMenu1" 
 				data-toggle="dropdown">
 				{{selectedType}}
 				<span class="glyphicon glyphicon-chevron-down myIcon"></span>
@@ -55,20 +55,46 @@
 	</div>
 	<div>
 		<h3>开发者简介<span class='star'>*</span>:</h3>
-		<textarea cols="30" placeholder="将会在技能商店中显示" v-model='selfDesc'></textarea>
+		<textarea cols="30" placeholder="将会在技能商店中显示" ng-model='selfDesc' class='selfDesc'></textarea>
 	</div>
 	<div>
 		<h3>技能说明<span class='star'>*</span>:</h3>
-		<textarea cols="30" placeholder="请填写技能插件的功能介绍供平台审核（1500字以下，越详细越好）" v-model='skillDesc'></textarea>
+		<textarea cols="30" class='skillDesc' placeholder="请填写技能插件的功能介绍供平台审核（1500字以下，越详细越好）" ng-model='skillDesc'></textarea>
 		<label class='addLabel'>备注：在发布为技能插件时，机器恩所获得的技能插件将不会生效。</label>
 	</div>
 	<hr>
 	<div>
 		<h3>第三方平台接入:</h3>
-		<input type="checkbox" ng-model='plateforms.sbc' value="1"> <span class="operatorImg sbc"></span> <a class='name'>思必驰</a>
-		<input type="checkbox" ng-model='plateforms.xm' value="2"> <span class="operatorImg xm"></span> <a class='name'>小米</a>
-		<input type="checkbox" ng-model='plateforms.bd' value="3"> <span class="operatorImg bd"></span> <a class='name'>百度</a>
-		<input type="checkbox" ng-model='plateforms.rk' value="4"> <span class="operatorImg rk"></span> <a class='name'>Rokid</a>
+		<ul class='skill-platform'>
+			<li class='sbc'>
+				<div class="my_btn">
+					<div class="toggleBox">
+			      			<input type="checkbox" data-toggle="toggle" ng-model="plateforms.sbc">
+			      		</div>
+				</div>
+			</li>
+			<li class='xm'>
+				<div class="my_btn">
+					<div class="toggleBox">
+			      			<input type="checkbox" data-toggle="toggle" ng-model="plateforms.xm">
+			      		</div>
+				</div>
+			</li>
+			<li class='bd'>
+				<div class="my_btn">
+					<div class="toggleBox">
+			      			<input type="checkbox" data-toggle="toggle" ng-model="plateforms.bd">
+			      		</div>
+				</div>
+			</li>
+			<li class='rk'>
+				<div class="my_btn">
+					<div class="toggleBox">
+			      			<input type="checkbox" data-toggle="toggle" ng-model="plateforms.rk">
+			      		</div>
+				</div>
+			</li>
+		</ul>
 	</div>
 	<button class='skill_publish'>提交发布</button>
 	
@@ -83,6 +109,25 @@
 					<img ng-src="{{imgSrc}}" alt="" id='clipImg'>
 				</div>
 				<div class="modal-footer">
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+	</div>
+
+	<div id='uploadSuccess' class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content" style="width: 600px;">
+				<div class="modal-header">
+					
+				</div>
+				<div class="modal-body my-modal-body" style="text-align: center;" id='clipContainer'>
+					<b class='okImg'>&nbsp;</b>
+					<h1>提交成功</h1>
+					<p>技能审核需要一到两个工作日，审核结果会通过手机或者邮箱通知，注意查看哦！</p>
+					<button class='iKown'>确定</button>
+				</div>
+				<div class="modal-footer">
+
 				</div>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal -->
