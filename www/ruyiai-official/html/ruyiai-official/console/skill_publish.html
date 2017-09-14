@@ -8,7 +8,7 @@
 	</div>
 	<div id="container">
 		<h3>技能头像<span class='star'>*</span>:</h3>
-		<img src="{{imgSrc}}" id="pickSkillImg" alt="头像" title="头像" class="skill-img"><span class="sub">目前仅支持小于120M<br>的.jpg后缀文件</span>
+		<img src="{{imgSrc}}" id="pickSkillImg" alt="头像" title="头像" class="skill-img"><span class="sub">目前仅支持小于120M的.jpg后缀文件</span>
 		<!-- <input type="file" class='hide_input_img_upload'> -->
 	</div>
 	<div>
@@ -58,9 +58,13 @@
 		<textarea cols="30" placeholder="将会在技能商店中显示" ng-model='selfDesc' class='selfDesc'></textarea>
 	</div>
 	<div>
+		<h3>开发者主页:</h3>
+		<input type="text" placeholder="主页域名将会在技能商店中显示" ng-model='self_homepage'>
+	</div>
+	<div>
 		<h3>技能说明<span class='star'>*</span>:</h3>
 		<textarea cols="30" class='skillDesc' placeholder="请填写技能插件的功能介绍供平台审核（1500字以下，越详细越好）" ng-model='skillDesc'></textarea>
-		<label class='addLabel'>备注：在发布为技能插件时，机器恩所获得的技能插件将不会生效。</label>
+		<label class='addLabel'>备注：在发布为技能插件时，机器人所获得的技能插件将不会生效。</label>
 	</div>
 	<hr>
 	<div>

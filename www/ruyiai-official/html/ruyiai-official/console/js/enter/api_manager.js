@@ -646,6 +646,8 @@ return out;
 				return '智能家居';
 			case "INTEL_CUSTOM_SERVICE":
 				return '智能客服';
+			case "aaaaaaaaaaa":
+				return '语义技能';
 			default:
 				return '通用';
 		}

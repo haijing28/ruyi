@@ -19,6 +19,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	$scope.selectedType = '请选择'
 	$scope.userSays = [{value: ''}];
 	$scope.selfDesc = '';
+	$scope.self_homepage = '';
 	$scope.skillDesc = '';
 	$scope.plateforms = [];
 
@@ -196,6 +197,18 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			$scope.plateforms.splice(index, 1);
 		}
 	})
+
+	/*-------------------------------失焦保存--------------------------------*/
+
+	function blurSave() {
+		console.log(1)
+	}
+
+	$('.my_body').on('blur', 'input, textarea', function() {
+		blurSave();
+	})
+
+	/*-------------------------------头像上传--------------------------------*/
 	
 	////头像上传 lucas start///////
 	var mydomain = "https://qiniu.ruyi.ai/";
@@ -325,8 +338,6 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 				try {
 					if (data.code == 0) {
 						$("#cut-header").modal("hide");
-//						$("[data-act=edit-the-status]").find(".robot-head")
-//								.attr("src", data.result);
 						$("#pickSkillImg").attr("src",data.result);
 					} else if (data.code == 2) {
 						goIndex();
@@ -344,7 +355,9 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 		});
 	}
 	/* 裁剪 end */
-	////头像上传 lucas end///////
+
+
+
 }
 
 
