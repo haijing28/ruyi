@@ -42,7 +42,6 @@ ul li{
 	background: #333
 }
 .colorBtn{
-    vertical-align: middle;
     display: inline-block;
     height: 7px;
     width: 7px;
@@ -50,7 +49,7 @@ ul li{
     vertical-align: middle;
     margin-left: -30px;
     margin-right: 20px;
-    /* margin-top: -18px; */
+    margin-top: -18px;
     position: relative;
 }
 /*系统动作*/
@@ -575,10 +574,9 @@ a{
 	border:0;
 }
 .usersay-placeholder{
-	font-size: 14px !important;
-    color: #aaa !important;
-    width: 90px !important;
-    font-weight: 400;
+	font-size:14px !important;
+	color:#999 !important;
+	width:90px !important;
 }
 .box .right-box .right-box-main .user-say .user-say-templates{
 	/* overflow:hidden; */
@@ -1443,7 +1441,7 @@ ul li{
 	color:#54ADF7;
 }
 .box .right-box .right-box-main .intent-analysis table tr td .copy{
-    margin: 8px 0;
+    margin: 8px -6px;
     padding-left: 0;
 }
 .box .right-box .right-box-main .intent-analysis table tr td .delete{
@@ -1909,9 +1907,6 @@ ul li{
     cursor: pointer;
     transform: translateY(-1px);
 }
-.action-right-arrows:hover{
-	background-color:#eee;
-}
 .my-action-name-list{
 	position:absolute;
 	z-index:3;
@@ -1922,22 +1917,10 @@ ul li{
 	margin-top:2px;
 	display:none;
 }
+.action-right-arrows:hover{
+	background-color:#eee;
+}
 .my-action-name-list li:hover{
   background-color:#eee;
   cursor:pointer;
 }
-.event-choose-list{
-	position:absolute;
-	z-index:3;
-	width:100%;
-	height:310px;
-	overflow:hidden;
-	overflow-y:auto;
-	margin-top:2px;
-	display:none;
-}
-.event-choose-list li:hover{
-  background-color:#eee;
-  cursor:pointer;
-}
-

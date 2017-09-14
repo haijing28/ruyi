@@ -439,7 +439,7 @@ function userLogsCtrl($rootScope, $scope, $state, $stateParams) {
 
 	$(document).on('click','.cor_btn',function(){
 		var cur = $(this).parent();
-		var _this = this;
+		let _this = this;
 		var cort_o = $(this).parent().find('.cor_anw').text().trim();
 		var cort_v = $(this).parent().find('.correct_input').val();
 		if(cort_v == ''){

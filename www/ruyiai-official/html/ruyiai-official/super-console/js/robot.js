@@ -163,9 +163,6 @@ robotApp.controller("robotCtrl",function($scope){
 	$("[data-act=skill-plugin]").click(function(){
 		window.location.href = "skill-plugin.html";
 	});
-	$("[data-act=skill-plugin-new]").click(function(){
-		window.location.href = "skill-plugin-new.html";
-	});
 	 
 	//获取所有技能插件 start
 	 $scope.getAllSkillFunc = function(){

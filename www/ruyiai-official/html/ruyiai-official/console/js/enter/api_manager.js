@@ -97,30 +97,6 @@ apiManagerApp.config(function($locationProvider , $stateProvider, $urlRouterProv
         controller: function($rootScope,$scope, $state, $stateParams){
         	referenceAppCtrl($rootScope,$scope, $state, $stateParams);
         }
-	}).state('skill_store.ruyi_skill',{
-		url: "/ruyi_skill",
-		templateUrl: "ruyi_skill.html",
-        controller: function($rootScope,$scope, $state, $stateParams){
-        	ruyiSkillCtrl($rootScope,$scope, $state, $stateParams);
-        }
-	}).state('skill_store.open_skill',{
-		url: "/open_skill",
-		templateUrl: "open_skill.html",
-        controller: function($rootScope,$scope, $state, $stateParams){
-        	openSkillCtrl($rootScope,$scope, $state, $stateParams);
-        }
-	}).state('skill_store.my_skill',{
-		url: "/my_skill",
-		templateUrl: "my_skill.html",
-        controller: function($rootScope,$scope, $state, $stateParams){
-        	mySkillCtrl($rootScope,$scope, $state, $stateParams);
-        }
-	}).state('skill_store.skill',{
-		url: "/skill/{skill_id}",
-		templateUrl: "skill.html",
-        controller: function($rootScope,$scope, $state, $stateParams){
-        	skillCtrl($rootScope,$scope, $state, $stateParams);
-        }
 	}).state('delete_robot',{
 		url: "/delete_robot",
 		templateUrl: "delete_robot.html",
@@ -150,12 +126,6 @@ apiManagerApp.config(function($locationProvider , $stateProvider, $urlRouterProv
 		templateUrl: "resource.html",
         controller: function($rootScope,$scope, $state, $stateParams){
         	resourceCtrl($rootScope,$scope, $state, $stateParams);
-        }
-	}).state('skill_publish',{
-		url: "/skill_publish",
-		templateUrl: "skill_publish.html",
-        controller: function($rootScope,$scope, $state, $stateParams){
-        	skillPublishCtrl($rootScope,$scope, $state, $stateParams);
         }
 	}).state('angularDemoTry',{
 		url: "/angularDemoTry",
@@ -748,8 +718,6 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 			    			$state.go("angularDemo");
 			    		}else if(listType == "resource"){
 			    			$state.go("resource");
-			    		}else if(listType == "skill_publish"){
-			    			$state.go("skill_publish");
 			    		}else if(listType == "angularDemoTry"){
 			    			$state.go("angularDemoTry");
 //			    			$(".fixed-btn").hide();
@@ -788,8 +756,6 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 			    			$state.go("angularDemo");
 			    		}else if(listType == "resource"){
 			    			$state.go("resource");
-			    		}else if(listType == "skill_publish"){
-			    			$state.go("skill_publish");
 			    		}else if(listType == "angularDemoTry"){
 			    			$state.go("angularDemoTry");
 //			    			$(".fixed-btn").hide();
@@ -834,8 +800,6 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 				$state.go("angularDemo");
 			}else if(listType == "resource"){
 				$state.go("resource");
-			}else if(listType == "skill_publish"){
-				$state.go("skill_publish");
 			}else if(listType == "angularDemoTry"){
 				$state.go("angularDemoTry");
 //				$(".fixed-btn").hide();
