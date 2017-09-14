@@ -196,6 +196,17 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			$scope.plateforms.splice(index, 1);
 		}
 	})
+
+	/*-------------------------------失焦保存--------------------------------*/
+
+	function blurSave() {
+		console.log(1)
+	}
+
+	$('.my_body').on('blur', 'input, textarea', function() {
+		blurSave();
+	})
+
 }
 
 
