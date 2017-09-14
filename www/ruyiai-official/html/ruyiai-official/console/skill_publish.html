@@ -1,15 +1,15 @@
 <link rel="stylesheet" href="./css/skill-publish.css">
-<link href="https://cdn.bootcss.com/jquery-jcrop/2.0.4/css/Jcrop.min.css" rel="stylesheet">
+<!-- <link href="https://cdn.bootcss.com/jquery-jcrop/2.0.4/css/Jcrop.min.css" rel="stylesheet"> -->
 <div class="my_body">
 
 	<h1 class='title'>提交发布到ruyi平台</h1>
 	<div class='skill_settings'>
 		<h2>技能设置</h2> <span>一键复制bot属性设置</span>
 	</div>
-	<div>
+	<div id="container">
 		<h3>技能头像<span class='star'>*</span>:</h3>
-		<img src="{{imgSrc}}" alt="头像" title="头像" class="skill-img"><span class="sub">1024*1024 png/jpg 格式</span>
-		<input type="file" class='hide_input_img_upload'>
+		<img src="{{imgSrc}}" id="pickSkillImg" alt="头像" title="头像" class="skill-img"><span class="sub">目前仅支持小于120M<br>的.jpg后缀文件</span>
+		<!-- <input type="file" class='hide_input_img_upload'> -->
 	</div>
 	<div>
 		<h3>技能名称<span class='star'>*</span>:</h3>
@@ -98,21 +98,22 @@
 	</div>
 	<button class='skill_publish'>提交发布</button>
 	
-	<!-- 模态框（Modal） -->
-	<div id='uploadImg' class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content" style="width: 600px;">
-				<div class="modal-header">
-					<h1 style="text-align: center; font-size: 20px;">裁剪图片</h1>
-				</div>
-				<div class="modal-body" style="text-align: center;" id='clipContainer'>
-					<img ng-src="{{imgSrc}}" alt="" id='clipImg'>
-				</div>
-				<div class="modal-footer">
-				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal -->
-	</div>
+	<!-- 头像裁剪 Modal start-->
+	<div class="modal fade" id="cut-header">
+	  <div class="modal-dialog" style="width:452px;padding-top:120px;">
+	    <div class="modal-content" style="width:452px;">
+	      <div class="modal-header">
+	      	<h4 class="modal-title modal-title">头像裁剪</h4>
+	        <div style="cursor:pointer;"><div class="close-modal">&nbsp;</div></div>
+	      </div>
+	      <div class="modal-body" style="padding:0 21px 21px 10px;">
+			  <div style="font-size: 16px; padding-left: 13px; margin-bottom: 8px; color: #3794FF;">选择要截取的部分，双击确认</div>
+			  <div class="container"></div>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<!-- 头像裁剪 Modal end-->
 
 	<div id='uploadSuccess' class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -135,4 +136,10 @@
 
 </div>
 <!-- <script src='../js/skill_publish.js'></script> -->
+<script src="js/external/jquery.Jcrop.min.js"></script>
+<script type="text/javascript">
+	setTimeout(function(){
+		hljs.initHighlightingOnLoad();
+	}, 500);
+</script>
 

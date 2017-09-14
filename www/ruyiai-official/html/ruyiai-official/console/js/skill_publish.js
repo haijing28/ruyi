@@ -196,6 +196,155 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			$scope.plateforms.splice(index, 1);
 		}
 	})
+	
+	////头像上传 lucas start///////
+	var mydomain = "https://qiniu.ruyi.ai/";
+	/* 七牛上传图片相关代码 start */
+	// 七牛上传图片文件 start
+	var optionImgSkill = {
+		runtimes : 'html5,flash,html4',
+		browse_button : 'pickSkillImg',
+		container : 'container',
+		drop_element : 'container',
+		max_file_size : '1000mb',
+		flash_swf_url : 'bower_components/plupload/js/Moxie.swf',
+		dragdrop : true,
+		chunk_size : '4mb',
+		multi_selection : !(mOxie.Env.OS.toLowerCase() === "ios"),
+		// uptoken: $('#uptoken_url').val(),
+		uptoken_url : ruyiai_host + "/ruyi-ai/getuptoken",
+		domain : mydomain,
+		get_new_uptoken : false,
+		save_key : true,
+		filters : {
+			mime_types : [ {
+				title : "Image files",
+				extensions : "JPG"
+			} ]
+		},
+		auto_start : true,
+		log_level : 5,
+		init : {
+			'FilesAdded' : function(up, files) {
+				$("#addresource").modal({backdrop: 'static'});
+				$('table').show();
+				$('#success').hide();
+				plupload.each(files, function(file) {
+					var progress = new FileProgress(file, 'fsUploadProgress');
+					progress.setStatus("等待...");
+					progress.bindUploadCancel(up);
+				});
+			},
+			'BeforeUpload' : function(up, file) {
+				var progress = new FileProgress(file, 'fsUploadProgress');
+				var chunk_size = plupload.parseSize(this
+						.getOption('chunk_size'));
+				if (up.runtime === 'html5' && chunk_size) {
+					progress.setChunkProgess(chunk_size);
+				}
+			},
+			'UploadProgress' : function(up, file) {
+				var progress = new FileProgress(file, 'fsUploadProgress');
+				var chunk_size = plupload.parseSize(this
+						.getOption('chunk_size'));
+				progress
+						.setProgress(file.percent + "%", file.speed, chunk_size);
+			},
+			'UploadComplete' : function() {
+				$("#addresource").modal("hide");
+				$("#fsUploadProgress").html("");
+			},
+			'FileUploaded' : function(up, file, info) {
+				var progress = new FileProgress(file, 'fsUploadProgress');
+				progress.setComplete(up, info);
+				var url = mydomain + JSON.parse(info).hash + "/" + file.name;
+
+				$("#cut-header").modal({backdrop: 'static'});
+				
+				console.log("上传成功后的url:" + url);
+
+				var eImg = $(".container").html(
+						"<img src='" + url + "' id='tar'/>");
+				toJcrop();
+			},
+			'Error' : function(up, err, errTip) {
+				$('table').show();
+				var progress = new FileProgress(err.file, 'fsUploadProgress');
+				progress.setError();
+				progress.setStatus(errTip);
+			}
+		}
+	};
+	var uploader = Qiniu.uploader(optionImgSkill);
+	// 七牛上传图片文件 end
+
+	// 图片剪裁 start
+	var api;
+	function toJcrop(c) {
+		$('#tar').Jcrop({
+			boxWidth : 400,
+			boxHeight : 400,
+			bgOpacity : 0.5,
+			aspectRatio : 1,
+			bgColor : 'black',
+			addClass : 'jcrop-light',
+			onChange : jds,
+			onDblClick : cutFunc
+		}, function() {
+			api = this;
+			api.setSelect([ 130, 65, 130 + 350, 65 + 285 ]);
+			api.setOptions({
+				bgFade : true
+			});
+			console.log("api.ui.selection:" + api.ui.selection);
+			api.ui.selection.addClass('jcrop-selection');
+		});
+	}
+
+	function jds(c) {
+
+	}
+
+	function cutFunc(c) {
+		var wScale = api.getScaleFactor()[0];
+		var hScale = api.getScaleFactor()[1];
+		var mywidth = api.tellSelect()[0];
+		var myheight = api.tellSelect()[1];
+		$.ajax({
+			url : ruyiai_host + "/ruyi-ai/app/cutImage/" + appId,
+			method : "get",
+			data : {
+				"imageUrl" : $("#tar").attr("src"),
+				"x" : parseInt(c.x * wScale),
+				"y" : parseInt(c.y * hScale),
+				"w" : parseInt(c.w * wScale),
+				"h" : parseInt(c.h * hScale),
+			},
+			success : function(data) {
+				data = dataParse(data);
+				try {
+					if (data.code == 0) {
+						$("#cut-header").modal("hide");
+//						$("[data-act=edit-the-status]").find(".robot-head")
+//								.attr("src", data.result);
+						$("#pickSkillImg").attr("src",data.result);
+					} else if (data.code == 2) {
+						goIndex();
+					} else {
+						if (data.msg) {
+							$.trace(data.msg + "( " + data.detail + " )",
+									"error");
+						}
+					}
+					$scope.$apply();
+				} catch (e) {
+					$.trace("请确保是.jpg格式图片(未修改过后缀)，并且小于120M");
+				}
+			}
+		});
+	}
+	/* 裁剪 end */
+	////头像上传 lucas end///////
 }
 
 
