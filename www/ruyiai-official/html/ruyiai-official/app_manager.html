@@ -54,6 +54,52 @@ var _hmt = _hmt || [];
 	    padding-top: 28%;
 	    padding-left: 46%;
 	}
+	.robot-box {
+		width: 1200px;
+	}
+	.maxThree {
+		overflow : hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		text-align: justify;
+	}
+	.media-body p label {
+		border-radius: 10px;
+		background: #3b3d40;
+		color: #fff;
+		padding: 0 7px;
+		margin-right: 10px;
+		font-size: 12px;
+	}
+	.media-body .succ label  {
+		background: #2c82e4;
+	}
+	.media-body .deny label {
+		background: #abacaf;
+	}
+	.skill-status {
+		color: #fff;
+		background: #3b3d40;
+		position: absolute;
+		height: 40px;
+		width: 200px;
+		top: -8px;
+		text-align: center;
+		font-size: 12px;
+		left: -82px;
+		line-height: 60px;
+		transform: rotateZ(-35deg);
+	}
+	.my_para{
+		margin-top: -5px;
+		margin-bottom: 5px;
+	}
+	.my_para a {
+		text-decoration: underline;
+		font-size: 12px;
+	}
 </style>
 <body>
 <input type="text" id="myappkey" style="position:fixed;top:-100000px;" />
@@ -113,19 +159,30 @@ var _hmt = _hmt || [];
 	<table class="table table-bordered robot-box-item" ng-repeat="appObject in appList">
 			<caption ng-if="$index == 0" style="margin-bottom: 16px;font-size: 16px;">机器人列表</caption>
 			<tr>
-				<td class="a-head-desc-box" style="width:300px;word-wrap:break-word;word-break:break-all">
-					<div class="media">
+				<td class="a-head-desc-box" style="overflow:hidden;position: relative;max-width: 530px;min-width:530px;word-wrap:break-word;word-break:break-all">
+					<div class="media" style="margin-left: 30px;">
 						<a class="pull-left" href="javascript:;" style="cursor:default;">
 							<img class="media-object a-header" ng-if="appObject.appModel.headUrl && appObject.appModel.headUrl != 'img/default-robot.svg'" ng-src="{{appObject.appModel.headUrl}}" alt="机器人头像">
 							<img class="media-object a-header" ng-if="!appObject.appModel.headUrl || appObject.appModel.headUrl == 'img/default-robot.svg'" src="https://dn-vbuluo-static.qbox.me/default-robot.svg" alt="机器人头像">
 						</a>
 						<div class="media-body">
 							<h4 class="media-heading a-robot-name" ng-bind="appObject.appModel.appName"></h4>
-							<p style="text-align: justify;">{{appObject.appModel.appDesc}}</p>
+							<p class="my_para">
+								<label>ruyiskillstore</label>
+								<a href="javascript:void(0)">审核成功</a>
+								<!-- <label>思必驰</label>
+								<label>小米水滴</label>
+								<label>Rokid</label>
+								<label>百度度秘</label> -->
+							</p>
+							<p class='maxThree'>{{appObject.appModel.appDesc}}</p>
 						</div>
 					</div>
+					<!-- <div class='skill-status'>
+						审核成功
+					</div> -->
 				</td>
-				<td style="width:260px;">
+				<!-- <td style="width:260px;">
 					<section class="a-message-count-box pull-left">
 					   <div class="a-message-title">新增交互数<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="今日0点到现在的新交互次数。" data-original-title="" title="">&nbsp;</button></div>
 					   <div class="a-message-total" ng-bind="appObject.msgCount"></div>
@@ -138,15 +195,15 @@ var _hmt = _hmt || [];
 					   <div class="a-message-title">总用户数&nbsp;<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="消息数" data-original-title="" title="">&nbsp;</button></div>
 					   <div class="a-message-total" ng-bind="appObject.totalCount"></div>
 					</section> -->
-				</td>
-				<td style="width:250px;">
+				<!-- </td>  -->
+				<td style="min-width:400px; max-width: 400px;">
 					<section class="a-message-count-box pull-left" style="padding-right:10px;">
 					   <div class="a-message-title">AppKey</div>
-					   <div class="a-appkey-value" style="width:200px;word-wrap: break-word;"><span>{{appObject.appModel.appKey}}</span><span class="a-robot-small-box" data-act="copy-btn" style="margin-left:6px;" ng-click="copyAppKeyFunc(appObject.appModel.appKey)">复 制</span></div>
+					   <div class="a-appkey-value" style="width:100%;word-wrap: break-all;"><span>{{appObject.appModel.appKey}}</span><span class="a-robot-small-box" data-act="copy-btn" style="margin-left:6px;" ng-click="copyAppKeyFunc(appObject.appModel.appKey)">复 制</span></div>
 					</section>
 				</td>
-				<td style="width:240px;">
-					<section class="a-message-count-box pull-left" style="padding-left: 37px;padding-right:10px;">
+				<td style="min-width:180px; max-width: 180px;">
+					<section class="a-message-count-box pull-left" style="padding-right:10px;">
 					   <div class="a-robot-small-margin"><span class="a-robot-small-box a-manager-btn" ng-click="goConsoleManagerFunc(appObject.appModel.id,appObject.appModel.appName,appObject.appModel.appKey)">管 理</span></div>
 					</section>
 					<section class="a-message-count-box pull-left">

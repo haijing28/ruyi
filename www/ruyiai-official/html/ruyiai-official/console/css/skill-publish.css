@@ -12,6 +12,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 } 
 .box .center-box{
 	overflow: auto;
+	margin-top: 0 !important;
 }
 .my_body {
 	padding: 30px 70px;
@@ -68,7 +69,7 @@ h3{
 	font-weight: lighter;
 	font-family: cursive;
 }
-input {
+input[type='text'] {
 	width: 270px;
 	height: 33px;
 	padding-left: 15px;
@@ -78,8 +79,8 @@ input.small {
 	width: 170px;
 	margin-right: 25px;
 }
-input.wrong, textarea.wrong {
-	border:  2px solid red;
+input.wrong, textarea.wrong, .skill-img.wrong, button.wrong {
+	border:  2px solid red !important;
 }
 textarea {
 	resize: none;
@@ -101,32 +102,37 @@ textarea {
 .addLabel {
 	margin-left: 152px;
 	color: #797474;
+	display: block;
 }
-input[type='checkbox']{
-	width: auto;
-	vertical-align: middle;
-	font-size: 16px;
+.skill-platform {
+	/* height: 50px; */
+	display: inline-block;
+	vertical-align: top;
+	margin-bottom: 20px;
+}
+.skill-platform li{
+	position: relative;
+	display: inline-block;
+	list-style: none;
+	height: 80px;
+	width: 120px;
+	border: 1px solid #ccc;
+	margin-right: 30px;
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-size: contain;
 }
 .sbc {
-	background: url('../../img/close-eye.svg');
+	background-image: url('../../img/close-eye.svg');
 }
 .xm {
-	background: url('../../img/close-eye.svg');
+	background-image: url('../../img/close-eye.svg');
 }
 .bd {
-	background: url('../../img/close-eye.svg');
+	background-image: url('../../img/close-eye.svg');
 }
 .rk {
-	background: url('../../img/close-eye.svg');
-}
-.operatorImg {
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: contain;
-	display: inline-block;
-	width: 100px;
-	height: 20px;
-	vertical-align: middle;
+	background-image: url('../../img/close-eye.svg');
 }
 .name {
 	font-size: 14px;
@@ -171,6 +177,12 @@ input[type='checkbox']{
 	/* margin-top: 5px; */
 	color: #807373;
 }
+.mySel ul{
+	min-width: 170px;
+}
+#clipImg {
+
+}
 hr{
 	margin-left: 149px;
 	margin-right: 113px;
@@ -191,4 +203,92 @@ hr{
 		margin-left: 153px;
 	}
 }
+@media screen and (max-width: 1250px) {
+	textarea {
+		width: 500px;
+	}
+}
+
+/*-------------------------------toggle btn 样式--------------------------------*/
+
+.my_btn {
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-30%);
+}
+.toggle.btn{
+	min-height: 0 !important;
+	min-width: 0 !important;
+	height: 10px !important;
+	width: 23px !important;
+	border-radius: 10px !important;
+	overflow: visible !important;
+	background: #bcdefc !important;
+	border: none !important;
+}
+.toggle.btn.primary{
+	background: #bcdefc !important;
+}
+.toggle.btn.primary:hover{
+	border:none !important;
+}
+.toggle.btn.off{
+	background: #ccc !important;
+}
+.toggle-handle.btn{
+	width: 15px !important;
+    height: 15px !important;
+    border-radius: 50% !important;
+
+    top: -3.9px !important;
+    background: #3795fe !important;
+}
+.box .center-box .center-list-title span{
+	margin-left: 29px !important;
+}
+.toggle-group label.btn{
+	display: none !important;
+}
+
+/*-------------------------------modal 样式--------------------------------*/
+
+.okImg {
+	background: url(../img/ok.svg);
+	background-repeat: no-repeat;
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	background-size: cover;
+	vertical-align: text-bottom;
+	margin-right: 5px;
+}
+
+.my-modal-body h1 {
+	display: inline-block;
+	font-size: 24px;
+	margin-bottom: 30px;
+}
+
+.my-modal-body p {
+	font-size: 14px;
+	width: 400px;
+	margin: 0 auto;
+}
+
+.my-modal-body button {
+	color: #fff;
+	background: #227ec7;
+	border: none;
+	margin-top: 20px;
+	width: 200px;
+	height: 35px;
+	border-radius: 3px;
+}
+
+
+
+
+
+
 
