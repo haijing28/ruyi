@@ -18,11 +18,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	padding: 30px 70px;
 	overflow-y: auto;
 }
-.title {
+.my_body .title {
 	margin-bottom: 30px;
 	font-size: 18px;
 }
-.skill_settings h2 {
+.my_body .skill_settings h2 {
 	font-size: 16px;
 	font-weight: bold;
 	display: inline-block;
@@ -31,25 +31,25 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	border-left: 4px solid #3794ff;
 	margin-bottom: 45px;
 }
-.skill_settings span {
+.my_body .skill_settings span {
 	color: #6d9fe4;
 	margin-left: 30px;
 	cursor: pointer;
 }
-h3{
+.my_body h3{
 	font-size: 15px;
 	padding-left: 13px;
 	display: inline-block;
 	width: 150px;
 	margin-bottom: 30px;
 }
-.star {
+.my_body .star {
 	color: #ff2222;
 	font-size: 20px;
 	vertical-align: middle;
 	margin-left: 2px;
 }
-.skill-img {
+.my_body .skill-img {
 	height: 40px;
 	width: 40px;
 	border-radius: 50%;
@@ -59,58 +59,58 @@ h3{
 	cursor: pointer;
 	border: 1px solid #ccc;
 }
-.hide_input_img_upload {
+.my_body .hide_input_img_upload {
 	display: none !important;
 }
-.sub {
+.my_body .sub {
 	color: #ccc;
 	font-size: 15px;
 	letter-spacing: 1px;
 	font-weight: lighter;
 	font-family: cursive;
 }
-input[type='text'] {
+.my_body input[type='text'] {
 	width: 270px;
 	height: 33px;
 	padding-left: 15px;
 	border: 1px solid #dedada;
 }
-input.small {
+.my_body input.small {
 	width: 170px;
 	margin-right: 25px;
 }
-input.wrong, textarea.wrong, .skill-img.wrong, button.wrong {
+.my_body input.wrong, .my_body textarea.wrong, .my_body .skill-img.wrong, .my_body button.wrong {
 	border:  2px solid red !important;
 }
-textarea {
+.my_body textarea {
 	resize: none;
 	font-size: 14px;
 	width: 700px;
-	height: 150px;
+	height: 64px;
 	min-width: 300px;
 	vertical-align: top;
 	padding: 7px 10px;
 	margin-bottom: 10px;
 	border: 1px solid #dedada;
 }
-.myhelp {
+.my_body .myhelp {
 	margin-left: 0;
 }
-.addCorect {
+.my_body .addCorect {
 	color: #369ce4;
 }
-.addLabel {
+.my_body .addLabel {
 	margin-left: 152px;
 	color: #797474;
 	display: block;
 }
-.skill-platform {
+.my_body .skill-platform {
 	/* height: 50px; */
 	display: inline-block;
 	vertical-align: top;
 	margin-bottom: 20px;
 }
-.skill-platform li{
+.my_body .skill-platform li{
 	position: relative;
 	display: inline-block;
 	list-style: none;
@@ -120,31 +120,51 @@ textarea {
 	margin-right: 30px;
 	background-repeat: no-repeat;
 	background-position: top center;
-	background-size: contain;
+	background-origin: content-box;
 }
-.sbc {
-	background-image: url('../../img/close-eye.svg');
+.my_body .sbc {
+	background-image: url('../../img/DUI _gray.svg');
+	background-size: 60%;
+	padding-top: 10px;
 }
-.xm {
-	background-image: url('../../img/close-eye.svg');
+.my_body .sbc.active {
+	background-image: url('../../img/DUI_colour.svg');
 }
-.bd {
-	background-image: url('../../img/close-eye.svg');
+.my_body .xm {
+	background-image: url('../../img/小米_gray.svg');
+	background-size: 30%;
+	padding-top: 5px;
 }
-.rk {
-	background-image: url('../../img/close-eye.svg');
+.my_body .xm.active {
+	background-image: url('../../img/小米_colour.svg');
 }
-.name {
+.my_body .bd {
+	background-image: url('../../img/百度_gery.svg');
+	background-size: 70%;
+    	padding-top: 15px;
+}
+.my_body .bd.active {
+	background-image: url('../../img/百度_colour.svg');
+}
+.my_body .rk {
+	background-image: url('../../img/rokid_gary.svg');
+	background-size: 50%;
+    	padding-top: 12px;
+}
+.my_body .rk.active {
+	background-image: url('../../img/rokid_colour.svg');
+}
+.my_body .name {
 	font-size: 14px;
 	vertical-align: text-top;
 	margin-right: 30px;
 }
-.name:hover{
+.my_body .name:hover{
 	text-decoration: underline;
 	color: #168fde;
 	cursor: pointer;
 }
-.skill_publish {
+.my_body .skill_publish {
 	width: 135px;
 	border: none;
 	height: 36px;
@@ -153,15 +173,15 @@ textarea {
 	background: #2b9cf7;
 	margin-bottom: 50px;
 }
-.skill_publish:hover {
+.my_body .skill_publish:hover {
 	background: #5daff1;
 	color: #f7f7f7;
 }
-.mySel {
+.my_body .mySel {
 	display: inline-block;
 	width: 170px;
 }
-.mySel button {
+.my_body .mySel button {
 	width: 100%;
 	background: #fff;
 	border: 1px solid #ccc;
@@ -172,52 +192,52 @@ textarea {
 	height: 33px;
 	font-weight: inherit;
 }
-.mySel .myIcon {
+.my_body .mySel .myIcon {
 	float: right;
 	/* margin-top: 5px; */
 	color: #807373;
 }
-.mySel ul{
+.my_body .mySel ul{
 	min-width: 170px;
 }
-#clipImg {
+.my_body #clipImg {
 
 }
-hr{
+.my_body hr{
 	margin-left: 149px;
 	margin-right: 113px;
 }
 @media screen and (max-width: 1529px) {
-	div .small {
+	.my_body div .small {
 		margin-bottom: 25px;
 	}
-	div .small:nth-child(6) {
+	.my_body div .small:nth-child(6) {
 		margin-left: 153px;
 	}
 }
 @media screen and (max-width: 1333px) {
-	div .small:nth-child(6) {
+	.my_body div .small:nth-child(6) {
 		margin-left: 0;
 	}
-	div .small:nth-child(5) {
+	.my_body div .small:nth-child(5) {
 		margin-left: 153px;
 	}
 }
 @media screen and (max-width: 1250px) {
-	textarea {
+	.my_body textarea {
 		width: 500px;
 	}
 }
 
 /*-------------------------------toggle btn 样式--------------------------------*/
 
-.my_btn {
+.my_body .my_btn {
 	position: absolute;
 	bottom: 10px;
 	left: 50%;
 	transform: translateX(-30%);
 }
-.toggle.btn{
+.my_body .toggle.btn{
 	min-height: 0 !important;
 	min-width: 0 !important;
 	height: 10px !important;
@@ -227,16 +247,16 @@ hr{
 	background: #bcdefc !important;
 	border: none !important;
 }
-.toggle.btn.primary{
+.my_body .toggle.btn.primary{
 	background: #bcdefc !important;
 }
-.toggle.btn.primary:hover{
+.my_body .toggle.btn.primary:hover{
 	border:none !important;
 }
-.toggle.btn.off{
+.my_body .toggle.btn.off{
 	background: #ccc !important;
 }
-.toggle-handle.btn{
+.my_body .toggle-handle.btn{
 	width: 15px !important;
     height: 15px !important;
     border-radius: 50% !important;
@@ -244,16 +264,16 @@ hr{
     top: -3.9px !important;
     background: #3795fe !important;
 }
-.box .center-box .center-list-title span{
+.my_body .box .center-box .center-list-title span{
 	margin-left: 29px !important;
 }
-.toggle-group label.btn{
+.my_body .toggle-group label.btn{
 	display: none !important;
 }
 
 /*-------------------------------modal 样式--------------------------------*/
 
-.okImg {
+.my_body .okImg {
 	background: url(../img/ok.svg);
 	background-repeat: no-repeat;
 	display: inline-block;

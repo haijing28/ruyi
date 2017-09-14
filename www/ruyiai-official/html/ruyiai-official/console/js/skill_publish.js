@@ -20,7 +20,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	$scope.userSays = [{value: ''}];
 	$scope.selfDesc = '';
 	$scope.skillDesc = '';
-	$scope.plateforms = {sbc: false, xm: false, bd: false, rk: false};
+	$scope.plateforms = [];
 
 	/*-------------------------------初始化--------------------------------*/
 
@@ -183,7 +183,19 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	$('.iKown').click(function() {
 		$('#uploadSuccess').modal('hide');
 	})
+
+	/*-------------------------------平台接入多选--------------------------------*/
 	
+	$('input[type=checkbox]').change(function() {
+		if($(this).prop('checked')) {
+			$(this).parents('li').addClass('active');
+			$scope.plateforms.push($(this).attr('name'))
+		}else {
+			$(this).parents('li').removeClass('active');
+			var index = $scope.plateforms.indexOf($(this).attr('name'));
+			$scope.plateforms.splice(index, 1);
+		}
+	})
 }
 
 
