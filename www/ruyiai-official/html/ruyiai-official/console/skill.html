@@ -1,18 +1,22 @@
 <style>
 .skill-container{
 	height:100%;
-	margin-top:-20px;
+	background-color:#fff;
 }
 .skill-container .skill-content{
 	position:relative;height:100%;padding-left:300px;width:100%;box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box;
 }
 .skill-container .skill-content-left{
-	position:absolute;left:0;top:0;border-right:1px solid #dcdddd;width:300px;height:100%;
+	position:absolute;left:0;top:0;
+	width:300px;height:100%;
 	overflow: hidden;
     overflow-y: auto;
+    border:1px solid #dcdddd;
+    border-right:0;
 }
 .skill-container .skill-content-right{
 	width:100%;height:100%;
+	border:1px solid #dcdddd;
 }
 .skill-container .skill-content-intro{
 	padding:20px;
@@ -24,6 +28,23 @@
 	font-size:14px;
 	margin-top:8px;
 	margin-bottom:30px;
+	color:#A4A9AF;
+}
+.skill-container .faq-test-example{
+	
+}
+.skill-container .faq-test-example li{
+	font-size: 14px;
+    color: #6885A6;
+    background: #efefef;
+    padding: 8px;
+    margin-top: 10px;
+    border-radius: 6px;
+    text-align: center;
+    cursor:pointer;
+}
+.skill-container .faq-test-example li:hover{
+	background-color:#f3f1f1;
 }
 </style>
 <div class="skill-container">
@@ -49,11 +70,13 @@
 					简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介
 				</p>
 				<h3 class="content-intro-title">功能范例</h3>
-				<p class="content-intro">
-					功能范例
-					功能范例
-					功能范例
-				</p>
+				<div class="content-intro">
+					<ul class="faq-test-example">
+						<li>“ 今天上海的天气如何 ”</li>
+						<li>“ 今天上海的天气如何 ”</li>
+						<li>“ 今天上海的天气如何 ”</li>
+					</ul>
+				</div>
 				<h3 class="content-intro-title">技能开发者</h3>
 				<p class="content-intro">
 					技能开发者技能开发者技能开发者
@@ -69,10 +92,9 @@
 		<!-- 左侧 技能详情 end -->
 		<!-- 右侧 试一试 start -->
 		<section class="skill-content-right">
-			<hr>
 			<div class="row row-height">
-				<div class="col-md-12 col-sm-12 center-list-box" style="min-width: 380px;">
-					<ul class="nav nav-tabs try-nav-left-max">
+				<div class="col-md-12 col-sm-12 center-list-box" style="min-width: 380px;border-right:0;">
+					<ul class="nav nav-tabs try-nav-left-max" style="padding-top:8px;">
 						<li class="active try-weixin" style="margin-top:0;">
 							<a href="javascript:;" data-toggle="tab">微信</a>
 						</li>
@@ -161,9 +183,9 @@
 								</div>
 							</div>
 					
-							<div class="testTextarea testTextareaLocal" style="height:80px;">
-								<textarea data-act="sendMsg-max" rows="4" style="height:77px;" ng-model="userSaysTextTryLocal" placeholder="请填写你要说的话"></textarea>
-								<button type="button" class="btn btn-primary" ng-click="testSubmitMaxLocal($event)" style="bottom:3px;">发 送</button>
+							<div class="testTextarea testTextareaLocal" style="height:44px;">
+								<textarea data-act="sendMsg-max" rows="4" style="height:44px;font-size:14px;" ng-model="userSaysTextTryLocal" placeholder="请填写你要说的话"></textarea>
+								<button type="button" class="btn btn-primary" ng-click="testSubmitMaxLocal($event)" style="bottom:-38px;">发 送</button>
 							</div>
 						</div>
 					</div>
