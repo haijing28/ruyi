@@ -1,0 +1,314 @@
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { 
+	color: #c3bebe; 
+} 
+input:-moz-placeholder, textarea:-moz-placeholder { 
+	color: #c3bebe; 
+} 
+input::-moz-placeholder, textarea::-moz-placeholder { 
+	color: #c3bebe; 
+} 
+input:-ms-input-placeholder, textarea:-ms-input-placeholder { 
+	color: #c3bebe; 
+} 
+.box .center-box{
+	overflow: auto;
+	margin-top: 0 !important;
+}
+.my_body {
+	padding: 30px 70px;
+	overflow-y: auto;
+}
+.my_body .title {
+	margin-bottom: 30px;
+	font-size: 18px;
+}
+.my_body .skill_settings h2 {
+	font-size: 16px;
+	font-weight: bold;
+	display: inline-block;
+	padding-left: 10px;
+	line-height: 1;
+	border-left: 4px solid #3794ff;
+	margin-bottom: 45px;
+}
+.my_body .skill_settings span {
+	color: #6d9fe4;
+	margin-left: 30px;
+	cursor: pointer;
+}
+.my_body h3{
+	font-size: 15px;
+	padding-left: 13px;
+	display: inline-block;
+	width: 150px;
+	margin-bottom: 30px;
+}
+.my_body .star {
+	color: #ff2222;
+	font-size: 20px;
+	vertical-align: middle;
+	margin-left: 2px;
+}
+.my_body .skill-img {
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	vertical-align: middle;
+	margin-right: 14px;
+	margin-bottom: 14px;
+	cursor: pointer;
+	border: 1px solid #ccc;
+}
+.my_body .hide_input_img_upload {
+	display: none !important;
+}
+.my_body .sub {
+	color: #ccc;
+	font-size: 15px;
+	letter-spacing: 1px;
+	font-weight: lighter;
+	font-family: cursive;
+}
+.my_body input[type='text'] {
+	width: 270px;
+	height: 33px;
+	padding-left: 15px;
+	border: 1px solid #dedada;
+}
+.my_body input.small {
+	width: 170px;
+	margin-right: 25px;
+}
+.my_body input.wrong, .my_body textarea.wrong, .my_body .skill-img.wrong, .my_body button.wrong {
+	border:  2px solid red !important;
+}
+.my_body textarea {
+	resize: none;
+	font-size: 14px;
+	width: 700px;
+	height: 64px;
+	min-width: 300px;
+	vertical-align: top;
+	padding: 7px 10px;
+	margin-bottom: 10px;
+	border: 1px solid #dedada;
+}
+.my_body .myhelp {
+	margin-left: 0;
+}
+.my_body .addCorect {
+	color: #369ce4;
+}
+.my_body .addLabel {
+	margin-left: 152px;
+	color: #797474;
+	display: block;
+}
+.my_body .skill-platform {
+	/* height: 50px; */
+	display: inline-block;
+	vertical-align: top;
+	margin-bottom: 20px;
+}
+.my_body .skill-platform li{
+	position: relative;
+	display: inline-block;
+	list-style: none;
+	height: 80px;
+	width: 120px;
+	border: 1px solid #ccc;
+	margin-right: 30px;
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-origin: content-box;
+}
+.my_body .sbc {
+	background-image: url('../../img/DUI _gray.svg');
+	background-size: 60%;
+	padding-top: 10px;
+}
+.my_body .sbc.active {
+	background-image: url('../../img/DUI_colour.svg');
+}
+.my_body .xm {
+	background-image: url('../../img/小米_gray.svg');
+	background-size: 30%;
+	padding-top: 5px;
+}
+.my_body .xm.active {
+	background-image: url('../../img/小米_colour.svg');
+}
+.my_body .bd {
+	background-image: url('../../img/百度_gery.svg');
+	background-size: 70%;
+    	padding-top: 15px;
+}
+.my_body .bd.active {
+	background-image: url('../../img/百度_colour.svg');
+}
+.my_body .rk {
+	background-image: url('../../img/rokid_gary.svg');
+	background-size: 50%;
+    	padding-top: 12px;
+}
+.my_body .rk.active {
+	background-image: url('../../img/rokid_colour.svg');
+}
+.my_body .name {
+	font-size: 14px;
+	vertical-align: text-top;
+	margin-right: 30px;
+}
+.my_body .name:hover{
+	text-decoration: underline;
+	color: #168fde;
+	cursor: pointer;
+}
+.my_body .skill_publish {
+	width: 135px;
+	border: none;
+	height: 36px;
+	color: #fff;
+	margin-left: 153px;
+	background: #2b9cf7;
+	margin-bottom: 50px;
+}
+.my_body .skill_publish:hover {
+	background: #5daff1;
+	color: #f7f7f7;
+}
+.my_body .mySel {
+	display: inline-block;
+	width: 170px;
+}
+.my_body .mySel button {
+	width: 100%;
+	background: #fff;
+	border: 1px solid #ccc;
+	text-align: left;
+	border-radius: 0;
+	color: #4f5463;
+	font-size: 13px;
+	height: 33px;
+	font-weight: inherit;
+}
+.my_body .mySel .myIcon {
+	float: right;
+	/* margin-top: 5px; */
+	color: #807373;
+}
+.my_body .mySel ul{
+	min-width: 170px;
+}
+.my_body #clipImg {
+
+}
+.my_body hr{
+	margin-left: 149px;
+	margin-right: 113px;
+}
+@media screen and (max-width: 1529px) {
+	.my_body div .small {
+		margin-bottom: 25px;
+	}
+	.my_body div .small:nth-child(6) {
+		margin-left: 153px;
+	}
+}
+@media screen and (max-width: 1333px) {
+	.my_body div .small:nth-child(6) {
+		margin-left: 0;
+	}
+	.my_body div .small:nth-child(5) {
+		margin-left: 153px;
+	}
+}
+@media screen and (max-width: 1250px) {
+	.my_body textarea {
+		width: 500px;
+	}
+}
+
+/*-------------------------------toggle btn 样式--------------------------------*/
+
+.my_body .my_btn {
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-30%);
+}
+.my_body .toggle.btn{
+	min-height: 0 !important;
+	min-width: 0 !important;
+	height: 10px !important;
+	width: 23px !important;
+	border-radius: 10px !important;
+	overflow: visible !important;
+	background: #bcdefc !important;
+	border: none !important;
+}
+.my_body .toggle.btn.primary{
+	background: #bcdefc !important;
+}
+.my_body .toggle.btn.primary:hover{
+	border:none !important;
+}
+.my_body .toggle.btn.off{
+	background: #ccc !important;
+}
+.my_body .toggle-handle.btn{
+	width: 15px !important;
+    height: 15px !important;
+    border-radius: 50% !important;
+
+    top: -3.9px !important;
+    background: #3795fe !important;
+}
+.my_body .box .center-box .center-list-title span{
+	margin-left: 29px !important;
+}
+.my_body .toggle-group label.btn{
+	display: none !important;
+}
+
+/*-------------------------------modal 样式--------------------------------*/
+
+.my_body .okImg {
+	background: url(../img/ok.svg);
+	background-repeat: no-repeat;
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	background-size: cover;
+	vertical-align: text-bottom;
+	margin-right: 5px;
+}
+
+.my-modal-body h1 {
+	display: inline-block;
+	font-size: 24px;
+	margin-bottom: 30px;
+}
+
+.my-modal-body p {
+	font-size: 14px;
+	width: 400px;
+	margin: 0 auto;
+}
+
+.my-modal-body button {
+	color: #fff;
+	background: #227ec7;
+	border: none;
+	margin-top: 20px;
+	width: 200px;
+	height: 35px;
+	border-radius: 3px;
+}
+
+
+
+
+
+
+

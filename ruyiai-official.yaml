@@ -2,11 +2,8 @@
 # kubectl --kubeconfig chenx.conf -n qa apply -f ruyiai-official.yaml
 
 # kubectl --kubeconfig chenx.conf -n dev get po
-<<<<<<< HEAD
-#kubectl --kubeconfig chenx.conf -n qa port-forward XXX 9999:808
-=======
+
 #kubectl --kubeconfig chenx.conf -n dev port-forward XXX 9999:8080
->>>>>>> 4a2adc09a150f3d204f38137451a3ebdece00255
 
 #查看服务端口
 #kubectl --kubeconfig chenx.conf -n qa describe po faq-deployment-1549144018-clhqd
@@ -37,7 +34,7 @@ spec:
     spec:
       containers:
       - name: ruyiai-official-controller
-        image: 10.10.150.149:5000/ruyi-ai/ruyiai-official:20170901-095538
+        image: 10.10.150.149:5000/ruyi-ai/ruyiai-official:20170914-065919
         ports:
         - containerPort: 80
       imagePullSecrets:
