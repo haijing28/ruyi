@@ -76,6 +76,9 @@
 		background: #D5D5D5 !important;
 		width: 81.31px;
 	}
+	.my_hide {
+		display: none;
+	}
 </style>
 </head>
 <body>
@@ -97,12 +100,12 @@
 					<input class="email-input" id="login-account" type="input" placeholder="请输入手机号或者邮箱号" />
 					<p class="error-tips"></p>
 				</div>
-				<div class="element-box" data-act="myVaCode">
+				<div class="element-box  my_hide" data-act="myVaCode">
 					<input required style="width: 215px;" class="email-input" id="myVaCode" type="input" placeholder="请输入验证码" />
 					<button id='getVCode' style="border: none;border-radius: 3px;background: #7ED321;color:#fff;height: 38px;vertical-align: top;box-sizing: border-box;">获取验证码</button>
 					<p class="error-tips"></p>
 				</div>
-				<div class="element-box" data-act="loginPass" style="margin-bottom: 0;">
+				<div class="element-box my_hide" data-act="loginPass" style="margin-bottom: 0;">
 					<!-- <label>密码</label> -->
 					<input class="email-input" id="loginPass" type="password" placeholder="请输入8-20位由字母、数字组成的新密码" />
 					<p class="error-tips"></p>
@@ -202,6 +205,17 @@ $(function() {
 	// 获取验证码 -- end
 	// 重置密码 -- 手机账户
 	$('.loginBtn').click(function () {
+		// 如果是邮箱
+		if(va.loginEmail($('#login-account').val())) {
+			$('#getVCode').click();
+			return;
+		}
+		if(va.loginPhone($('#login-account').val())){
+			$('.my_hide').removeClass('my_hide').addClass('my_show');
+		}
+		if($('.my_hide').length != 0) {
+			return;
+		}
 		$.ajax({
 			url: api_host + '/password/reset',
 			type: 'post',
@@ -210,7 +224,13 @@ $(function() {
 			},
 			data: JSON.stringify({account: $('#login-account').val(),newPassword: $('#loginPass').val(),verifyCode: $('#myVaCode').val()}),
 			success: function (ret) {
-				window.location.href = '../app_manager.html';
+				window.location.href = './login.html';
+			},
+			error: function(err) {
+				err = JSON.parse(err.responseText);
+				console.log($('#myVaCode'))
+				$('#myVaCode').nextAll('.error-tips').text(err.message)
+				$('#myVaCode').nextAll('.error-tips').show();
 			}
 		})
 	})
