@@ -89,7 +89,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	min-width: 300px;
 	vertical-align: top;
 	padding: 7px 10px;
-	margin-bottom: 10px;
+	margin-bottom: 25px;
 	border: 1px solid #dedada;
 }
 .my_body .myhelp {
@@ -199,6 +199,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .my_body .mySel ul{
 	min-width: 170px;
+	max-height: 208px;
+	overflow-y: scroll;
 }
 .my_body #clipImg {
 

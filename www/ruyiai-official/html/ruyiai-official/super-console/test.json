@@ -1,0 +1,15 @@
+[
+	{
+	    "name": "string",
+	    "description": "string",
+	    "serviceCategory": "string",
+	    "logo": "string",
+	    "nickNames": ["string", "hah"],
+	    "nickNameVoiceVariants": ["string", "yes"],
+	    "userInputExamples": ["string", "yes"],
+	    "developerMainSite": "string",
+	    "developerIntroduction": "string",
+	    "descriptionForAudit": "string",
+	    "thirdPartyPlatforms": ["string", "yes"],
+	}
+]

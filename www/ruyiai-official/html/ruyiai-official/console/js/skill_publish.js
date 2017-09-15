@@ -15,7 +15,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	$scope.awakes = [{value: ''}];
 	$scope.wrongs = [{value: ''}];
 	$scope.robotDesc = '';
-	$scope.skillTypes = [1, 2, 3, 4, 5]
+	$scope.skillTypes = [{name: '如意精选', value: ''},{name: '最新技能', value: ''},{name: '热门技能', value: ''},{name: '音频点播', value: ''},{name: '视频点播', value: ''},{name: '家居指令', value: ''},{name: '语音游戏', value: ''},{name: '电商购物', value: ''},{name: '生活服务', value: ''},{name: '美妆时尚', value: ''},{name: '医疗健康', value: ''},{name: '金融服务', value: ''},{name: '新闻资讯', value: ''},{name: '法律顾问', value: ''},{name: '效率工具', value: ''},{name: '体育健身', value: ''},{name: '测试娱乐', value: ''},{name: '其他', value: ''}]
 	$scope.selectedType = '请选择'
 	$scope.userSays = [{value: ''}];
 	$scope.selfDesc = '';

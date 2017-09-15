@@ -467,7 +467,7 @@
 }
 
 .my_store hr {
-	margin:  0;
+	margin:  0 -30px;
 }
 
 .my_store .card {
@@ -530,7 +530,8 @@
 }
 
 .my_store .top .detail  .my_button:hover {
-	background: #f9f9f9;
+	background: #3794FF;
+	color: #fff;
 }
 
 .my_store .card {
@@ -538,7 +539,7 @@
 	width: 350px;
 	margin:  20px;
 	background: #fff;
-	border: 1px solid #ccc;
+	border: 1px solid #f7f0f0;
 	position: relative;
 	overflow: hidden;
 }
