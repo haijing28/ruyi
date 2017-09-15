@@ -779,7 +779,7 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 			    		}else if(listType == "import_knowledge_base"){
 			    			$state.go("import_knowledge_base");
 			    		}else if(listType == "skill_store"){
-			    			$state.go("skill_store");
+			    			$state.go("skill_store.ruyi_skill");
 			    		}else if(listType == "delete_robot"){
 			    			$state.go("delete_robot");
 			    		}else if(listType == "robot_paramenter"){
@@ -825,7 +825,7 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 			}else if(listType == "import_knowledge_base"){
 				$state.go("import_knowledge_base");
 			}else if(listType == "skill_store"){
-				$state.go("skill_store");
+				$state.go("skill_store.ruyi_skill");
 			}else if(listType == "delete_robot"){
 				$state.go("delete_robot");
 			}else if(listType == "robot_paramenter"){
@@ -1928,7 +1928,7 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 			$(".para-action-tips p").text("点击卡片查看详情,添加机器人技巧插件");
 			$(".para-action-tips").css({"top":"176px","left":"30%"});
 			$(".nav-robot-box li:last").addClass("active");
-			$state.go("skill_store");
+			$state.go("skill_store.ruyi_skill");
 		}else if(href.indexOf("#/skill_store") > -1){
 			$(".nav-robot-box").css("display","none");
 			$(".create-robot-foot").css("display","none");
