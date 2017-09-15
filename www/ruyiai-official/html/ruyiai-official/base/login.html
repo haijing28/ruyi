@@ -27,7 +27,7 @@
 		padding-left: 75px;
 	}
 	body{
-		overflow-y: hidden
+		overflow-y: auto;
 	}
 	.login-title {
 		font-family: STHeitiSC-Medium;
@@ -152,6 +152,8 @@
 </body>
 <script>
 $(function(){
+	$('#login-email').val(localStorage.my_login_accout)
+ 	$('#login-password').val(localStorage.my_login_pass)
  	// 忘记密码
 	$('#forPass').click(function() {
 		window.location.href = './findPhPass.html';

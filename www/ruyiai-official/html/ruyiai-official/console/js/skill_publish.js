@@ -139,7 +139,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 
 	$('.skill_publish').click(function() {
 		$('.wrong').removeClass('wrong');
-		if( $scope.headUrl == 'http://img95.699pic.com/photo/50004/2199.jpg_wh300.jpg' ) {
+		if( $scope.headUrl.trim() == 'http://img95.699pic.com/photo/50004/2199.jpg_wh300.jpg' ) {
 			$('.skill-img').addClass('wrong');
 		}
 		if($scope.robotName.trim() == ''){

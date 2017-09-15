@@ -325,10 +325,6 @@ var _hmt = _hmt || [];
 											<img class="talk-content" ng-if="localTalk.talkType == '硬件图片'" ng-src="{{localTalk.url}}" style="width:200px;"/>
 											<audio class="talk-content" ng-src="{{localTalk.url | trustUrlFilter}}" ng-if="localTalk.talkType == '硬件音频'" controls="controls" style="height:30px;width:200px;margin-top:5px;" ></audio>
 											<video class="talk-content" ng-src="{{localTalk.url | trustUrlFilter}}" ng-if="localTalk.talkType == '硬件视频'" controls="controls" style="height:150px;width:200px;margin-top:-2px;" ></video>
-											<!-- 
-											<span class="talkType" ng-show="localTalk.talkType != '硬件文本'" style="background-color: {{localTalk.backgroundcolor}}">{{localTalk.talkType}}</span>
-											<span class="talk-content" talkType="{{localTalk.talkType}}" talkURL="{{localTalk.url}}" talkBackgroundcolor="{{localTalk.backgroundcolor}}" talkText="{{localTalk.talkText}}" Type="{{localTalk.type}}">{{localTalk.talkText}}</span>
-											-->
 										</div>
 									</li>
 								</ul>

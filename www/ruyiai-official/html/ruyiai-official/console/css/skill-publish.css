@@ -50,8 +50,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	margin-left: 2px;
 }
 .my_body .skill-img {
-	height: 40px;
-	width: 40px;
+	height: 80px;
+	width: 80px;
 	border-radius: 50%;
 	vertical-align: middle;
 	margin-right: 14px;
@@ -80,7 +80,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	margin-right: 25px;
 }
 .my_body input.wrong, .my_body textarea.wrong, .my_body .skill-img.wrong, .my_body button.wrong {
-	border:  2px solid red !important;
+	border:  1px solid red !important;
 }
 .my_body textarea {
 	resize: none;
@@ -98,6 +98,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .my_body .addCorect {
 	color: #369ce4;
+	display: none;
 }
 .my_body .addLabel {
 	margin-left: 152px;

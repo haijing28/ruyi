@@ -1,2 +1,198 @@
-<div>技能详情</div>
+<style>
+.skill-container{
+	height:100%;
+	background-color:#fff;
+}
+.skill-container .skill-content{
+	position:relative;height:100%;padding-left:300px;width:100%;box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box;
+}
+.skill-container .skill-content-left{
+	position:absolute;left:0;top:0;
+	width:300px;height:100%;
+	overflow: hidden;
+    overflow-y: auto;
+    border:1px solid #dcdddd;
+    border-right:0;
+}
+.skill-container .skill-content-right{
+	width:100%;height:100%;
+	border:1px solid #dcdddd;
+}
+.skill-container .skill-content-intro{
+	padding:20px;
+}
+.skill-container .skill-content-intro .content-intro-title{
+	font-size:16px;
+}
+.skill-container .skill-content-intro .content-intro{
+	font-size:14px;
+	margin-top:8px;
+	margin-bottom:30px;
+	color:#A4A9AF;
+}
+.skill-container .faq-test-example{
+	
+}
+.skill-container .faq-test-example li{
+	font-size: 14px;
+    color: #6885A6;
+    background: #efefef;
+    padding: 8px;
+    margin-top: 10px;
+    border-radius: 6px;
+    text-align: center;
+    cursor:pointer;
+}
+.skill-container .faq-test-example li:hover{
+	background-color:#f3f1f1;
+}
+</style>
+<div class="skill-container">
+	<section class="skill-content">
+		<!-- 左侧 技能详情 start -->
+		<section class="skill-content-left">
+			<div class="media" style="padding:20px;border-bottom:1px solid #dcdddd;">
+			  <div class="media-left">
+			    <a href="#">
+			      <img class="media-object" src="https://dn-vbuluo-static.qbox.me/default-robot.svg">
+			    </a>
+			  </div>
+			  <div class="media-body" style="padding-left:30px;">
+			    <h4 class="media-heading" style="font-size:20px;">天气查询</h4>
+			    <div style="margin-top: -2px;">海知智能</div>
+			    <button style="margin-top: 20px;" type="button" class="btn btn-default">获取技能</button>
+			  </div>
+			</div>
+			<div class="skill-content-intro">
+				<h3 class="content-intro-title">技能简介</h3>
+				<p class="content-intro">技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技
+					能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能
+					简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介
+				</p>
+				<h3 class="content-intro-title">功能范例</h3>
+				<div class="content-intro">
+					<ul class="faq-test-example">
+						<li>“ 今天上海的天气如何 ”</li>
+						<li>“ 今天上海的天气如何 ”</li>
+						<li>“ 今天上海的天气如何 ”</li>
+					</ul>
+				</div>
+				<h3 class="content-intro-title">技能开发者</h3>
+				<p class="content-intro">
+					技能开发者技能开发者技能开发者
+					技能开发者技能开发者技能开发者
+					技能开发者技能开发者技能开发者技能开发者
+				</p>
+				<h3 class="content-intro-title">开发者主页</h3>
+				<p class="content-intro">
+					<a href="http://www.baidu.com" target="_blank">www.baidu.com</a>
+				</p>
+			</div>
+		</section>
+		<!-- 左侧 技能详情 end -->
+		<!-- 右侧 试一试 start -->
+		<section class="skill-content-right">
+			<div class="row row-height">
+				<div class="col-md-12 col-sm-12 center-list-box" style="min-width: 380px;border-right:0;">
+					<ul class="nav nav-tabs try-nav-left-max" style="padding-top:8px;">
+						<li class="active try-weixin" style="margin-top:0;">
+							<a href="javascript:;" data-toggle="tab">微信</a>
+						</li>
+						<li class="try-local" style="margin-top:0;">
+							<a href="javascript:;" data-toggle="tab">硬件</a>
+						</li>
+					</ul>
+					<div class="tab-content tab-content-max">
+						<div id="weixin-try-max" class="fade in active tab-pane">
+							<div class="searchContain" style="padding-bottom:130px;">
+								<div class="testContain scrollContain" style="height:100%;">
+									<ul class="list-unstyled" ng-repeat="talk in talks">
+										<li ng-if="talk.userRight" class="clearfix userTalk">
+											<img ng-src="img/ruyi-user.svg">
+											<div>
+												<span class="userBorder"></span>
+												<span class="userContain"></span>
+												{{talk.talkText}}
+											</div>
+										</li>
+										<li ng-if="talk.serverLeft" class="clearfix serverTalk">
+											<img ng-src="img/ruyi-avatar.svg">
+											<div class="{{talk.type}}">
+												<span class="serverBorder"></span>
+												<span class="serverContain"></span>
+												<span class="talk-content" ng-if="talk.talkType == '微信文本' || talk.talkType == '未匹配到意图'" ng-bind-html="talk.talkText"></span>
+												<img class="talk-content" ng-if="talk.talkType == '微信图片'" ng-src="{{talk.url}}" style="width:200px;"/>
+												<audio class="talk-content" ng-src="{{talk.url | trustUrlFilter}}" ng-if="talk.talkType == '微信音乐' || talk.talkType == '微信音频'" controls="controls" style="height:30px;width:260px;margin-top:5px;" ></audio>
+												<video class="talk-content" ng-src="{{talk.url | trustUrlFilter}}" ng-if="talk.talkType == '微信视频' && talk.mediaId == null" controls="controls" style="height:150px;width:271px;margin-top:-2px;" ></video>
+												<ul class="talk-content wechat-multi-news" ng-if="talk.talkType == '微信图文' && talk.list.length > 1" style="padding-left: 0; border: 1px solid #ccc;">
+													<li class="wechat-news-single" ng-repeat="list in talk.list" go_url="{{list.url}}">
+														<img ng-src="{{list.pic_url | trustUrlFilter}}">
+														<p>{{list.title}}</p>
+													</li>
+												</ul>
+												<div class="talk-content wechat-single-news wechat-news-single" ng-if="talk.talkType == '微信图文' && talk.list.length == 1" go_url="{{talk.list[0].url}}">
+													<p>{{talk.list[0].title}}</p>
+													<img ng-src="{{talk.list[0].pic_url | trustUrlFilter}}">
+													<p>{{talk.list[0].description}}</p>
+													<span>查看全文</span>
+												</div>
+												<img class="talk-content wechat-image" talkType="{{talk.talkType}}" talkURL="{{talk.mediaId}}" ng-if="talk.talkType == '微信视频' && talk.mediaId != null" src="https://dn-vbuluo-static.qbox.me/background_image.png"/>
+												<!-- 
+												<span class="talkType" ng-show="talk.talkType != '微信文本'" style="background-color: {{talk.backgroundcolor}}">{{talk.talkType}}</span>
+												<span class="talk-content" talkType="{{talk.talkType}}" talkURL="{{talk.url}}" talkBackgroundcolor="{{talk.backgroundcolor}}" talkText="{{talk.talkText}}" Type="{{talk.type}}">{{talk.talkText}}</span>
+												 -->
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+					
+							<div class="testTextarea" style="height:80px;">
+								<textarea data-act="sendMsg-max" style="height:77px;" rows="4" ng-model="userSaysTextTry" placeholder="请填写你要说的话"></textarea>
+								<button type="button" class="btn btn-primary" ng-click="testMaxSubmit($event)"  style="bottom:3px;">发 送</button>
+							</div>
+						</div>
+						<div id="local-try-max" class="fade tab-pane">
+							<div class="searchContainLocal" style="padding-bottom:130px;">
+								<div class="testContainLocal scrollContainLocal" style="height:100%;">
+									<ul class="list-unstyled" ng-repeat="localTalk in localTalks">
+										<li ng-if="localTalk.userRight" class="clearfix userTalk">
+											<img ng-src="img/ruyi-user.svg">
+											<div>
+												<span class="userBorder"></span>
+												<span class="userContain"></span>
+												{{localTalk.talkText}}
+											</div>
+										</li>
+										<li ng-if="localTalk.serverLeft" class="clearfix serverTalk">
+											<img ng-src="img/ruyi-avatar.svg">
+											<div class="{{localTalk.type}}">
+												<span class="serverBorder"></span>
+												<span class="serverContain"></span>
+												<span class="talk-content" ng-if="localTalk.talkType == '硬件文本' || localTalk.talkType == '未匹配到意图'" ng-bind-html="localTalk.talkText"></span>
+												<img class="talk-content" ng-if="localTalk.talkType == '硬件图片'" ng-src="{{localTalk.url}}" style="height:170px;width:260px;"/>
+												<audio class="talk-content" ng-src="{{localTalk.url | trustUrlFilter}}" ng-if="localTalk.talkType == '硬件音频'" controls="controls" style="height:30px;width:260px;margin-top:5px;" ></audio>
+												<video class="talk-content" ng-src="{{localTalk.url | trustUrlFilter}}" ng-if="localTalk.talkType == '硬件视频'" controls="controls" style="height:150px;width:271px;margin-top:-2px;" ></video>
+												<!--
+												<span class="talkType" style="background-color: {{localTalk.backgroundcolor}}">{{localTalk.talkType}}</span>
+												<span class="talk-content" talkType="{{localTalk.talkType}}" talkURL="{{localTalk.url}}" talkBackgroundcolor="{{localTalk.backgroundcolor}}" talkText="{{localTalk.talkText}}" Type="{{localTalk.type}}">{{localTalk.talkText}}</span>
+												  -->
+											</div>
+										</li>	
+									</ul>
+								</div>
+							</div>
+					
+							<div class="testTextarea testTextareaLocal" style="height:44px;">
+								<textarea data-act="sendMsg-max" rows="4" style="height:44px;font-size:14px;" ng-model="userSaysTextTryLocal" placeholder="请填写你要说的话"></textarea>
+								<button type="button" class="btn btn-primary" ng-click="testSubmitMaxLocal($event)" style="bottom:-38px;">发 送</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- 右侧 试一试 end -->					
+	</section>
+</div>
 

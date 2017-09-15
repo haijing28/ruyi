@@ -2,6 +2,10 @@
 	margin:  0 !important;
 }
 
+.nav-tabs{
+	margin-left: 30px !important;
+}
+
 .s-skill-box-nav{
 	height:100%;
 	overflow:hidden;
@@ -469,9 +473,10 @@
 .my_store .card {
 	display: inline-block;
 	width: 350px;
-	margin:  20px;
+	margin:  0 20px 20px 0 !important;
 	background: #fff;
 	border: 1px solid #ccc;
+	padding: 0 30px;
 }
 .my_store .desc{
 	text-align: center;
@@ -486,7 +491,7 @@
 .my_store .top {
 	display: flex;
 	padding: 20px 0;
-	justify-content: space-around;
+	justify-content: space-between;
 }
 .my_store .top img {
 	border-radius: 50%;
@@ -506,14 +511,14 @@
 	font-size: 20px;
 	color: #4A4A4A;
 }
-.my_store .top .detail span {
+.my_store .top .detail .span {
 	font-family: STHeitiSC-Light;
 	font-size: 14px;
 	color: #9B9B9B;
 	text-align: right;
 	margin-bottom: 12px;
 }
-.my_store .top .detail  button {
+.my_store .top .detail  .my_button {
 	border: 1px solid #3794FF;
 	font-family: PingFangSC-Regular;
 	font-size: 14px;
@@ -522,6 +527,10 @@
 	padding: 5px 0;
 	width: 84px;
 	align-self: flex-end;
+}
+
+.my_store .top .detail  .my_button:hover {
+	background: #f9f9f9;
 }
 
 .my_store .card {
@@ -555,8 +564,8 @@
 	font-size: 16px;
 	color: #4A4A4A;
 	letter-spacing: 0;
-	padding: 20px;
-	padding-bottom: 0;
+	padding: 0;
+	padding-bottom: 20px;
 	position: relative;
 }
 
