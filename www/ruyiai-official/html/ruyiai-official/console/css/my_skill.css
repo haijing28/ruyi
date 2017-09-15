@@ -1,137 +1,26 @@
 .my_own_skill {
-	background: #f7f8f8;
-	height: 100%;
-	overflow-y: auto;
-}
 
-.my_store .my_ul {
-	display: flex;
-	flex-wrap: wrap;
 }
-
-.my_store hr {
-	margin:  0;
-}
-
-.my_store h1 {
-	font-family: PingFangSC-Regular;
-	font-size: 16px;
-	color: #4A4A4A;
-	letter-spacing: 0;
-	padding: 0;
-	padding-bottom: 0;
-	position: relative;
-}
-
-.my_store .card {
-	display: inline-block;
-	width: 350px;
-	margin:  0;
-	background: #fff;
+.my_own_skill .detail .btn {
 	border: 1px solid #ccc;
-	position: relative;
-	overflow: hidden;
-}
-.my_store .card .status {
-	position: absolute;
-	height: 37px;
-	width: 100px;
-	background: #ccc;
-	transform: rotate(-40deg);
-	font-family: PingFangSC-Regular;
-	font-size: 12px;
-	color: #FFFFFF;
-	letter-spacing: 0;
-	text-align: center;
-	top: -8px;
-	left: -36px;
-	line-height: 50px;
-}
-.my_store .desc{
-	text-align: center;
-	font-size: 16px;
-	margin: 20px;
-	font-weight: 400;
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 3;
-	overflow: hidden;
-}
-.my_store .top {
-	display: flex;
-	padding: 20px 0;
-	justify-content: space-around;
-}
-.my_store .top img {
-	border-radius: 50%;
-	width: 64px;
-	height: 64px;
-	margin-right: 20px;
-	border: 1px solid #ccc;
-}
-.my_store .top .detail {
-	display: flex;
-	flex-direction: column;
-}
-
-.my_store .top .detail h2 {
-	font-weight: 500;
-	font-family: PingFangSC-Medium;
-	font-size: 20px;
-	color: #4A4A4A;
-}
-.my_store .top .detail span {
-	font-family: STHeitiSC-Light;
-	font-size: 14px;
-	color: #9B9B9B;
-	text-align: right;
-	margin-bottom: 12px;
-}
-.my_store .top .detail  button {
-	border: 1px solid #3794FF;
-	font-family: PingFangSC-Regular;
-	font-size: 14px;
-	background: #fff;
-	color: #3794FF;
-	padding: 5px 0;
+	background: transparent;
+	height: 32px;
 	width: 84px;
 	align-self: flex-end;
+	border-radius: 1px;
 }
-.my_store .top .detail .have_icon {
-	background-image: url(../../img/my_download.svg);
-	background-position: 23%;
-	background-size: 20%;
-	background-repeat: no-repeat;
-	text-indent: 14px;
+.my_own_skill .detail .btn:hover {
+	background: #f1f1f1 !important;
 }
-.my_store .my_down {
-	position: absolute;
-	right: 20px;
-	top: 13px;
+.my_own_skill .removeSkill {
+	font-family: PingFangSC-Regular !important;
+	font-size: 14px !important;
+	color: #FFFFFF !important;
+	background: #B8C4D1 !important;
+	border: 1px solid #B8C4D1 !important;
+	height: 32px;
 }
-.my_store .my_down button {
-	background: transparent;
+.my_own_skill .removeSkill:hover{
+	background: #aab0b7 !important;
 }
-.my_ul_down {
-	min-width: 0;
-	width: 100px;
-	left: -20px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

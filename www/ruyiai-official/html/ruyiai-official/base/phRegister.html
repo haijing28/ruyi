@@ -229,6 +229,8 @@ $('.nextStep').on('click', function() {
 			},
 			data: JSON.stringify({email: email, phone_number: phoneNumber, password: pass, verify_code: vaCode, nick_name: loginName}),
 			success: function(ret) {
+				localStorage.my_login_accout = $('#loginPhone').val();
+				localStorage.my_login_pass = $('#loginPass').val();
 				window.location.href = './phRegiSucc.html';
 			}
 		})

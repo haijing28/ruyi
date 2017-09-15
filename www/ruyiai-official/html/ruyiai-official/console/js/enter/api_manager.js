@@ -2149,6 +2149,7 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
     },800)
 
     $('.left-box ul:first li:first').click();
+    
 
 });
 

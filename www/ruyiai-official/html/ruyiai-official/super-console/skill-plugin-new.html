@@ -50,13 +50,21 @@
 	dd {
 		width: 100px;
 		line-height: 50px;
+		/* vertical-align: top; */
 	}
 	dt {
-		width: 150px;
+		width: 200px;
 		color: #15baf3;
 	}
 	.center {
 		display: flex;
+		flex-direction: column;
+	}
+	.top {
+		display: flex;
+	}
+	.bottom {
+		flex:  1;
 	}
 	.left_center {
 		width: 100px;
@@ -71,7 +79,7 @@
 		min-width: 100px;
 		max-width: 200px;
 		color: #fff;
-		margin-bottom: 10px;
+		margin-bottom: 8px;
 	}
 	.right button {
 		display: block;
@@ -85,20 +93,42 @@
 	}
 	.right button.deny {
 		background: #e63838;
+		margin-bottom: 60px;
 	}
 	.more {
 		display: none;
 	}
 	.rel td{
 		position: relative;
+		max-height: 500px;
+		height: 500px;
+		overflow-y: auto;
 	}
 	.close_tr {
 		position: absolute;
 		right: 20px;
 		top: 10px;
 	}
+	.al_top {
+		vertical-align: top;
+	}
+	.al_top + dt {
+		margin-top: 10px;
+	}
+	.my_skill_img {
+		border-radius: 50%;
+		width: 100px;
+		height: 100px;
+		margin: 3px 0 0 20px;
+	}
+	.skill-img-label {
+		margin-bottom: 0;
+		margin-top: 10px;
+		font-weight: normal;
+		text-indent: 40px;
+	}
 </style>
-<body style="overflow: hidden;">
+<body style="overflow-y: auto;">
 <div class="head" id="header">
 	<div class="head_box">
 		<div class="inner wrp" style="position:relative;">
@@ -167,23 +197,52 @@
 							<br>
 							<dd>唤醒语&nbsp;&nbsp;</dd>
 							<dt>如意天气；天气预报</dt>
+							<br>
+							<dd class='al_top'>开发者简介</dd>
+							<dt>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat adipisci debitis reiciendis, placeat id ab nostrum, facere tempore recusandae omnis temporibus voluptates praesentium ducimus asperiores. Odio facilis ipsam, natus deleniti.</dt>
+							<br>
+							<dd>纠错语&nbsp;&nbsp;</dd>
+							<dt>如意天气；天气预报</dt>
+							<br>
 						</dl>
 					</div>
 					<div class="center">
-						<div class="left_center">
-							范例语句
+						<div class="top">
+							<div class="left_center">
+								范例语句
+								<label class="skill-img-label">技能头像:</label>
+								<img class='my_skill_img' src="http://img95.699pic.com/photo/50004/2199.jpg_wh300.jpg" alt="">
+							</div>
+							<div class="right_center">
+								<label>今天天气怎么样</label> <br>
+								<label>今天天气怎么样</label> <br>
+								<label>今天天气怎么样</label> <br>
+								<label>今天天气怎么样</label> <br>
+								<label>今天天气怎么样</label> <br>
+							</div>
 						</div>
-						<div class="right_center">
-							<label>今天天气怎么样</label> <br>
-							<label>今天天气怎么样</label> <br>
-							<label>今天天气怎么样</label> <br>
-							<label>今天天气怎么样</label> <br>
-							<label>今天天气怎么样</label> <br>
+						<div class="bottom">
+							<dl>
+								<dd class='al_top'>技能简介</dd>
+								<dt>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat adipisci debitis reiciendis, placeat id ab nostrum, facere tempore recusandae omnis temporibus voluptates praesentium ducimus asperiores. Odio facilis ipsam, natus deleniti.</dt>
+								<br>
+								<dd>开发者主页</dd>
+								<dt>如意天气；天气预报</dt>
+								<br>
+							</dl>
 						</div>
 					</div>
 					<div class="right">
-						<button>通过上线</button>
-						<button class='deny'>提交失败</button>
+						<button id='btn_succ'>通过上线</button>
+						<button class='deny' id='deny'>提交失败</button>
+						<dl>
+							<dd class='al_top'>技能说明</dd>
+							<dt>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat adipisci debitis reiciendis, placeat id ab nostrum, facere tempore recusandae omnis temporibus voluptates praesentium ducimus asperiores. Odio facilis ipsam, natus deleniti.</dt>
+							<br>
+							<dd>平台接入</dd>
+							<dt>如意天气；天气预报</dt>
+							<br>
+						</dl>
 					</div>
 				</div>
 			</td>
@@ -208,6 +267,13 @@
 	$('table').on('click', '.data', function() {
 		$(this).next('.more').removeClass('more');
 	})
+	$('#btn_succ').click(function() {
+
+	})
+	$('#deny').click(function() {
+		
+	})
+	$scope.name = '1231312'
 </script>
 </body>
 </html>
