@@ -20,7 +20,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .my_body .title {
 	margin-bottom: 30px;
-	font-size: 18px;
+	font-size: 20px;
+	font-weight: 300;
 }
 .my_body .skill_settings h2 {
 	font-size: 16px;
@@ -50,8 +51,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	margin-left: 2px;
 }
 .my_body .skill-img {
-	height: 40px;
-	width: 40px;
+	height: 60px;
+	width: 60px;
 	border-radius: 50%;
 	vertical-align: middle;
 	margin-right: 14px;
@@ -64,10 +65,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .my_body .sub {
 	color: #ccc;
-	font-size: 15px;
-	letter-spacing: 1px;
+	font-size: 14px;
 	font-weight: lighter;
-	font-family: cursive;
 }
 .my_body input[type='text'] {
 	width: 270px;
@@ -80,7 +79,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	margin-right: 25px;
 }
 .my_body input.wrong, .my_body textarea.wrong, .my_body .skill-img.wrong, .my_body button.wrong {
-	border:  2px solid red !important;
+	border:  1px solid red !important;
 }
 .my_body textarea {
 	resize: none;
@@ -98,6 +97,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .my_body .addCorect {
 	color: #369ce4;
+	/* display: none; */
 }
 .my_body .addLabel {
 	margin-left: 152px;
@@ -306,9 +306,34 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	border-radius: 3px;
 }
 
+/*-------------------------------copy 抖动效果--------------------------------*/
+@keyframes shake {
+	from {
+		transform: translate(0, 0)
+	},
+	15% {
+		transform: translate(-3px, -3px)
+	}
+	30% {
+		transform: translate(3px, 3px)
+	}
+	45% {
+		transform: translate(-5px, -5px)
+	}
+	60% {
+		transform: translate(5px, 5px)
+	}
+	75% {
+		transform: translate(-7px, -7px)
+	}
+	to {
+		transform: translate(0, 0)
+	}	
+}
 
-
-
+.my_shake {
+	animation: shake .4s ease 0s 1 normal;
+}
 
 
 

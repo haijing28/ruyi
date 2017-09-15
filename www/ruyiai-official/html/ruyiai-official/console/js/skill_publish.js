@@ -30,16 +30,17 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	// 	type: 'get',
 	// 	success: function(ret) {
 	// 		console.log(ret)
-	// 		$scope.imgSrc = ret.logo;
 	// 		$scope.robotName = ret.name;
-	// 		$scope.awakes = ret.nickNameVoiceVariants;
-
-	// 		$scope.robotDesc = ret.descriptionForAudit;
-	// 		$scope.userSays = ret.userInputExamples;
-	// 		$scope.selfDesc = ret.developerIntroduction;
 	// 		$scope.skillDesc = ret.description;
-			
-			
+	// 		$scope.selectedType = ret.serviceCategory; 
+	// 		$scope.imgSrc = ret.logo;
+	// 		$scope.awakes = stringToObjectArr(ret.nickNames);
+	// 		$scope.wrongs = stringToObjectArr(ret.nickNameVoiceVariants);
+	// 		$scope.userSays = stringToObjectArr(ret.userInputExamples);
+	// 		$scope.self_homepage = ret.developerMainSite;
+	//		$scope.selfDesc = ret.developerIntroduction;
+	// 		$scope.robotDesc = ret.descriptionForAudit;
+	// 		$scope.plateforms = ret.thirdPartyPlatforms;		
 	// 	}
 	// })
 
@@ -96,6 +97,16 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 		return objArr;
 	}
 
+	/*-------------------------------objArr to string--------------------------------*/
+
+	function objectArrToArr(arr) {
+		var array = [];
+		arr.forEach(function(ele){
+			array.push(ele.value);
+		})
+		return array;
+	}	
+
 	/*-------------------------------copy 机器人--------------------------------*/
 	
 	$('.skill_settings').on('click', 'span', function() {
@@ -113,6 +124,13 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			$scope.userSays.splice(5, 100);
 		}catch(e){}
 		$scope.$apply();
+		$('#pickSkillImg').addClass('my_shake');
+		$('.robotName').addClass('my_shake');
+		$('.small').addClass('my_shake');
+		$('.robotDesc').addClass('my_shake');
+		setTimeout(function() {
+			$('.my_shake').removeClass('my_shake');
+		}, 1000)
 	})
 
 	/*-------------------------------添加新项--------------------------------*/
@@ -176,6 +194,26 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			$.trace('要配置完技能插件才能发布哦！')
 		}else {
 			$('#uploadSuccess').modal('show');
+			// $.ajax({
+			// 	url: '',
+			// 	type: 'post',
+			// 	data: JSON.stringify({
+			// 		"name": $scope.robotName,
+			// 		"description": $scope.skillDesc,
+			// 		"serviceCategory": $scope.selectedType,
+			// 		"logo": $scope.imgSrc,
+			// 		"nickNames": objectArrToArr($scope.awakes),
+			// 		"nickNameVoiceVariants": objectArrToArr($scope.wrongs),
+			// 		"userInputExamples": objectArrToArr($scope.userSays),	
+			// 		"developerMainSite": $scope.self_homepage,
+			// 		"developerIntroduction": $scope.selfDesc,
+			// 		"descriptionForAudit": $scope.robotDesc,
+			// 		"thirdPartyPlatforms": $scope.plateforms	
+			// 	}),
+			// 	success: function(ret) {
+
+			// 	}
+			// })
 		}
 	})
 
