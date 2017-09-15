@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="robotApp" ng-controller="robotCtrl">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>超级后台</title>
@@ -129,13 +129,15 @@
 	}
 </style>
 <body style="overflow-y: auto;">
+<div ng-app='app' ng-controller='controller'>
+
 <div class="head" id="header">
 	<div class="head_box">
 		<div class="inner wrp" style="position:relative;">
 			<div class="logo">
 				<span style="margin-right:40px;" data-act="overall-situation"><i class="iconfont icon-overall-situation"></i>&nbsp;整体概况</span>
 				<span style="margin-right:40px;"><i class="iconfont icon-robot-head"></i>&nbsp;机器人概况</span>
-				<span data-act="skill-plugin" style="margin-right:40px;"><i class="iconfont icon-ruyiaiwidget"></i>&nbsp;技能插件</span>
+				<!-- <span data-act="skill-plugin" style="margin-right:40px;"><i class="iconfont icon-ruyiaiwidget"></i>&nbsp;技能插件</span> -->
 				<span data-act="skill-plugin-new" class='active'><i class="iconfont icon-ruyiaiwidget"></i>&nbsp;技能插件( new )</span>
 				<div class="dropdown user-name-box">
 					<button type="button" class="btn dropdown-toggle user-name-btn" id="dropdownMenu1" 
@@ -155,7 +157,7 @@
 	</div>
 </div>
 <div class="body">
-	<h1 class="bigTitle">技能插件总览</h1>
+	<h1 class="bigTitle">技能插件总览{{name}}</h1>
 	<table class="table table-hover table-bordered">
 	<thead>
 		<tr>
@@ -186,48 +188,44 @@
 				<div class="content">
 					<div class="left">
 						<dl>
-							<dd>提交版本</dd>
-							<dt>1.1.2</dt>
+							<dd>技能名字</dd>
+							<dt>{{name}}</dt>
 							<br>
 							<dd>技能分类</dd>
-							<dt>生活服务</dt>
+							<dt>{{serviceCategory}}</dt>
 							<br>
-							<dd>版本说明</dd>
+							<!-- <dd>版本说明</dd>
 							<dt>增加了回答</dt>
-							<br>
+							<br> -->
 							<dd>唤醒语&nbsp;&nbsp;</dd>
-							<dt>如意天气；天气预报</dt>
+							<dt>{{nickNames}}</dt>
 							<br>
 							<dd class='al_top'>开发者简介</dd>
-							<dt>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat adipisci debitis reiciendis, placeat id ab nostrum, facere tempore recusandae omnis temporibus voluptates praesentium ducimus asperiores. Odio facilis ipsam, natus deleniti.</dt>
+							<dt>{{developerIntroduction}}</dt>
 							<br>
 							<dd>纠错语&nbsp;&nbsp;</dd>
-							<dt>如意天气；天气预报</dt>
+							<dt>{{nickNameVoiceVariants}}</dt>
 							<br>
 						</dl>
 					</div>
 					<div class="center">
 						<div class="top">
 							<div class="left_center">
-								范例语句
 								<label class="skill-img-label">技能头像:</label>
-								<img class='my_skill_img' src="http://img95.699pic.com/photo/50004/2199.jpg_wh300.jpg" alt="">
+								<img class='my_skill_img' ng-src="logo" alt="">
 							</div>
 							<div class="right_center">
-								<label>今天天气怎么样</label> <br>
-								<label>今天天气怎么样</label> <br>
-								<label>今天天气怎么样</label> <br>
-								<label>今天天气怎么样</label> <br>
-								<label>今天天气怎么样</label> <br>
+								<p>范例语句</p>
+								<label ng-repeat='uie in userInputExamples'>{{uie}}</label> 
 							</div>
 						</div>
 						<div class="bottom">
 							<dl>
 								<dd class='al_top'>技能简介</dd>
-								<dt>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat adipisci debitis reiciendis, placeat id ab nostrum, facere tempore recusandae omnis temporibus voluptates praesentium ducimus asperiores. Odio facilis ipsam, natus deleniti.</dt>
+								<dt>{{description}}</dt>
 								<br>
 								<dd>开发者主页</dd>
-								<dt>如意天气；天气预报</dt>
+								<dt>{{developerMainSite}}</dt>
 								<br>
 							</dl>
 						</div>
@@ -237,10 +235,10 @@
 						<button class='deny' id='deny'>提交失败</button>
 						<dl>
 							<dd class='al_top'>技能说明</dd>
-							<dt>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat adipisci debitis reiciendis, placeat id ab nostrum, facere tempore recusandae omnis temporibus voluptates praesentium ducimus asperiores. Odio facilis ipsam, natus deleniti.</dt>
+							<dt>{{descriptionForAudit}}</dt>
 							<br>
 							<dd>平台接入</dd>
-							<dt>如意天气；天气预报</dt>
+							<dt>{{thirdPartyPlatforms}}</dt>
 							<br>
 						</dl>
 					</div>
@@ -249,6 +247,8 @@
 		</tr>
 	</tbody>
 	</table>
+
+</div>
 </div>
 <!-- 账号信息 Modal end-->
 <script src="//dn-vbuluo-static.qbox.me/jquery.min.js"></script>
@@ -261,6 +261,9 @@
 <script src="js/common.js"></script>
 <script src="js/robot.js"></script>
 <script>
+
+	/*-------------------------------  table tr 点击事件  --------------------------------*/
+
 	$('table').on('click', '.close_tr', function() {
 		$(this).parents('.rel').addClass('more');
 	})
@@ -273,7 +276,50 @@
 	$('#deny').click(function() {
 		
 	})
-	$scope.name = '1231312'
+	
+	/*-------------------------------string to objArr--------------------------------*/
+	
+	function stringToObjectArr(string) {
+		var arr = string.split(';');
+		var objArr = [];
+		arr.forEach(function(ele) {
+			objArr.push({value: ele})
+		})
+		return objArr;
+	}
+
+	/*-------------------------------objArr to string--------------------------------*/
+
+	function objectArrToArr(arr) {
+		var array = [];
+		arr.forEach(function(ele){
+			array.push(ele.value);
+		})
+		return array;
+	}
+
+	var app = angular.module('app', []);
+	app.controller('controller', function($scope) {
+		// $.ajax({
+		// 	url: './test.json',
+		// 	type: 'get',
+		// 	success: function(ret) {
+		// 		console.log(ret)
+		// 		$scoscope.name = ret.name;
+		// 		$scoscope.description = ret.description;
+		// 		$scoscope.serviceCategory = ret.serviceCategory;
+		// 		$scoscope.logo = ret.logo;
+		// 		$scoscope.nickNames = ret.nickNames.toString();
+		// 		$scoscope.nickNameVoiceVariants = ret.nickNameVoiceVariants.toString();
+		// 		$scoscope.userInputExamples = ret.userInputExamples.toString();
+		// 		$scoscope.developerMainSite = ret.developerMainSite;
+		// 		$scoscope.developerIntroduction = ret.developerIntroduction;
+		// 		$scoscope.descriptionForAudit = ret.descriptionForAudit;
+		// 		$scoscope.thirdPartyPlatforms = ret.thirdPartyPlatforms.toString();
+		// 	}
+		// })
+	})
+	
 </script>
 </body>
 </html>

@@ -1,16 +1,18 @@
 .my_own_skill {
 
 }
-.my_own_skill .detail .btn {
-	border: 1px solid #ccc;
-	background: transparent;
+.my_own_skill .detail .my_btn {
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	background: #fff;
+	border: 1px solid #D3D3D3;
 	height: 32px;
 	width: 84px;
 	align-self: flex-end;
-	border-radius: 1px;
+	text-align: center;
 }
-.my_own_skill .detail .btn:hover {
-	background: #f1f1f1 !important;
+.my_own_skill .detail .my_btn:hover {
+	background: #F6F6F6 !important;
 }
 .my_own_skill .removeSkill {
 	font-family: PingFangSC-Regular !important;
@@ -19,8 +21,21 @@
 	background: #B8C4D1 !important;
 	border: 1px solid #B8C4D1 !important;
 	height: 32px;
+	align-self: flex-end;
 }
 .my_own_skill .removeSkill:hover{
 	background: #aab0b7 !important;
 }
 
+.down_arrow {
+	display: inline-block;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-image: url(../../img/down_arrow.svg);
+	height: 32px;
+	vertical-align: middle;
+	width: 13px;
+	line-height: 32px;
+	margin-top: -2px;
+}
