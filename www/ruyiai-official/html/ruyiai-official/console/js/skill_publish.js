@@ -10,6 +10,27 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 
 	var agentType = getCookie('agentType');
 
+	/*-------------------------------stringArr to objArr--------------------------------*/
+	
+	function stringToObjectArr(str) {
+		var arr = str;
+		var objArr = [];
+		arr.forEach(function(ele) {
+			objArr.push({value: ele})
+		})
+		return objArr;
+	}
+
+	/*-------------------------------objArr to stringArr--------------------------------*/
+
+	function objectArrToArr(arr) {
+		var array = [];
+		arr.forEach(function(ele){
+			array.push(ele.value);
+		})
+		return array;
+	}
+
 	/*-------------------------------全局属性--------------------------------*/
 
 	$scope.imgSrc = 'http://img95.699pic.com/photo/50004/2199.jpg_wh300.jpg';
@@ -24,12 +45,33 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	$scope.self_homepage = '';
 	$scope.skillDesc = '';
 	$scope.plateforms = [];
+
+
+	/*-------------------------------失焦保存--------------------------------*/
+
+	$('.my_body').on('blur', 'input, textarea', function() {
+		localStorage.hasSkill_storage = 'true';
+		localStorage.imgSrc =  $scope.imgSrc;
+		localStorage.robotName = $scope.robotName;
+		
+		localStorage.awakes = JSON.stringify($scope.awakes);
+		localStorage.wrongs = JSON.stringify($scope.wrongs);
+		localStorage.userSays = JSON.stringify($scope.userSays);
+		
+		localStorage.robotDesc = $scope.robotDesc;
+		localStorage.selectedType = $scope.selectedType;
+		localStorage.selfDesc = $scope.selfDesc;
+		localStorage.self_homepage = $scope.self_homepage;
+		localStorage.skillDesc = $scope.skillDesc;
+		localStorage.plateforms = $scope.plateforms.toString();
+	})
+
 	
 	/*-------------------------------获得skill详情--------------------------------*/
 
 	var botId = getCookie('botId');
 	
-	var getSkillDetailFunc = function(){
+	function getSkillDetailFunc (){
 		var skillId = getCookie("skillId");
 		if(skillId && skillId.length > 0){
 			$.ajax({
@@ -41,7 +83,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 					var ret = data.agents[0].agent;
 					$scope.robotName = ret.name;
 			 		$scope.skillDesc = ret.description;
-			 		$scope.selectedType = ret.category; 
+			 		$scope.selectedType = ret.category || '请选择';
 			 		$scope.imgSrc = ret.logo;
 			 		$scope.awakes = stringToObjectArr(ret.attributes.nickNames);
 			 		$scope.wrongs = stringToObjectArr(ret.attributes.nickNameVoiceVariants);
@@ -50,13 +92,44 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 					$scope.selfDesc = ret.attributes.developerIntroduction;
 			 		$scope.robotDesc = ret.attributes.descriptionForAudit;
 			 		$scope.plateforms = ret.attributes.thirdPartyPlatforms;
+			 		$scope.$apply();
 				},error:function(){
 					goIndex();
 				}
 			});
 		}
 	}
-	getSkillDetailFunc();
+
+	/*-------------------------------图片切换--------------------------------*/
+	function checkImgStatus() {
+		$scope.plateforms.forEach(function(ele){
+			$('.' + ele).addClass('active');
+			$('.' + ele).find('input').prop('checked');
+			$('.' + ele).find('.off').removeClass('off').addClass('on')
+		})
+		console.log($scope.plateforms)
+	}
+
+	/*-------------------------------先从本地缓存拿数据--------------------------------*/
+	
+	if( localStorage.hasSkill_storage == 'true') {
+		$scope.imgSrc = localStorage.imgSrc;
+		$scope.robotName = localStorage.robotName;
+
+		$scope.awakes = JSON.parse(localStorage.awakes);
+		$scope.wrongs = JSON.parse(localStorage.wrongs);
+		$scope.userSays = JSON.parse(localStorage.userSays);
+		
+		$scope.robotDesc = localStorage.robotDesc;
+		$scope.selectedType = localStorage.selectedType;
+		$scope.selfDesc = localStorage.selfDesc;
+		$scope.self_homepage = localStorage.self_homepage;
+		$scope.skillDesc = localStorage.skillDesc;
+		$scope.plateforms = localStorage.plateforms.split(',');
+		checkImgStatus();
+	}else {
+		getSkillDetailFunc();
+	}
 	
 
 	$(".list-group-item").removeClass("active");
@@ -68,13 +141,9 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 		var text = $(this).text();
 		$('.mySel button').html(text + '<span class="glyphicon glyphicon-chevron-down myIcon"></span>');
 		$scope.selectedType = text;
+		$scope.$apply();
+		$('.small').blur();
 	})
-
-	/*-------------------------------获得裁剪的图片--------------------------------*/
-
-	$scope.setImg = function() {
-		console.log(1)
-	}
 
 	/*-------------------------------上传图片--------------------------------*/
 
@@ -99,32 +168,11 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			// });
 		}
 		reader.readAsDataURL(img);
-	})
-
-	/*-------------------------------string to objArr--------------------------------*/
-	
-	function stringToObjectArr(string) {
-		var arr = string.split(';');
-		var objArr = [];
-		arr.forEach(function(ele) {
-			objArr.push({value: ele})
-		})
-		return objArr;
-	}
-
-	/*-------------------------------objArr to string--------------------------------*/
-
-	function objectArrToArr(arr) {
-		var array = [];
-		arr.forEach(function(ele){
-			array.push(ele.value);
-		})
-		return array;
-	}	
+	})	
 
 	/*-------------------------------copy 机器人--------------------------------*/
 	
-	$('.skill_settings').on('click', 'span', function() {
+	$('.skill_settings').on('click', '.copy_robot_attr', function() {
 		try{
 			$scope.imgSrc = $rootScope.currentRobot.headUrl || $scope.imgSrc;
 			$scope.robotName = $rootScope.currentRobot.appName;
@@ -164,7 +212,8 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			return;
 		}
 		if(e.keyCode == 13){
-			$(this).next('.addCorect').click();
+			$(this).parent().next('.addCorect').click();
+			$(this).parent().next().find('input').focus();
 		}
 	})
 
@@ -175,6 +224,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 		var index = $(this).parent().index() - 1;
 		$scope[tp].splice(index, 1);
 		$scope.$apply();
+		$('.small').blur();
 	})
 
 	/*-------------------------------点击发布--------------------------------*/
@@ -268,17 +318,8 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			$(this).parents('li').removeClass('active');
 			var index = $scope.plateforms.indexOf($(this).attr('name'));
 			$scope.plateforms.splice(index, 1);
+			console.log($scope.plateforms)
 		}
-	})
-
-	/*-------------------------------失焦保存--------------------------------*/
-
-	function blurSave() {
-		console.log(1)
-	}
-
-	$('.my_body').on('blur', 'input, textarea', function() {
-		blurSave();
 	})
 
 	/*-------------------------------头像上传--------------------------------*/
@@ -339,6 +380,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			'UploadComplete' : function() {
 				$("#addresource").modal("hide");
 				$("#fsUploadProgress").html("");
+				$('.small').blur();
 			},
 			'FileUploaded' : function(up, file, info) {
 				var progress = new FileProgress(file, 'fsUploadProgress');
