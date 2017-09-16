@@ -7,7 +7,7 @@
 	background: #fff;
 	border: 1px solid #D3D3D3;
 	height: 32px;
-	width: 84px;
+	width: 184px;
 	align-self: flex-end;
 	text-align: center;
 }
@@ -27,7 +27,7 @@
 	background: #aab0b7 !important;
 }
 
-.down_arrow {
+.my_own_skill .down_arrow {
 	display: inline-block;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -39,3 +39,25 @@
 	line-height: 32px;
 	margin-top: -2px;
 }
+.my_own_down_div {
+	text-align: center !important;
+}
+.down_web_label {
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+.down_web_span {
+	font-size: 14px;
+	color: #c3c0c0;
+}
+
+
+
+
+
+
+
+
+
+
+

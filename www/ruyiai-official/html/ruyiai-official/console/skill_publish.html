@@ -18,14 +18,14 @@
 		<h3>姓名唤醒词<span class='star'>*</span>:
 			<button onmouseover="this.style.cssText='color:blue;'" onmouseout="this.style.cssText='color:black'" type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="top" data-content="唤醒词将会成为用户进入技能的方式，不可重复">&nbsp;</button>
 		</h3>		
-		<input type="text" placeholder="请输入唤醒词" class="small" ng-repeat='awake in awakes track by $index' ng-model='awake.value'>
+		<b ng-repeat='awake in awakes track by $index'><input type="text" placeholder="请输入唤醒词" class="small" ng-model='awake.value'><a href="javascript:void(0)" class='del_input'>&times;</a></b>
 		<a ng-hide='awakes.length >= 5' href="javascript:void(0)" repeat-type='awakes' class='addCorect'> <span class='glyphicon glyphicon-plus'></span> 添加唤醒词</a>
 	</div>
 	<div>
 		<h3>姓名语音纠错<span class='star'>*</span>:
 			<button onmouseover="this.style.cssText='color:blue;'" onmouseout="this.style.cssText='color:black'" type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="top" data-content="将会帮助语音识别或者错别的唤醒">&nbsp;</button>
 		</h3>
-		<input type="text" placeholder="请输入纠错词" class="small" ng-repeat='wrong in wrongs track by $index' ng-model='wrong.value'>
+		<b ng-repeat='wrong in wrongs track by $index'><input type="text" placeholder="请输入纠错词" class="small" ng-model='wrong.value'><a href="javascript:void(0)" class='del_input'>&times;</a></b>
 		<a ng-hide='wrongs.length >= 5' href="javascript:void(0)" repeat-type='wrongs' class='addCorect'> <span class='glyphicon glyphicon-plus'></span> 添加纠错词</a>
 	</div>
 	<div>
@@ -49,7 +49,7 @@
 	</div>
 	<div>
 		<h3>用户范例<span class='star'>*</span>:</h3>
-		<input type="text" placeholder="用户说" class="small" ng-repeat='userSay in userSays track by $index' ng-model='userSay.value'>
+		<b ng-repeat='userSay in userSays track by $index'><input type="text" placeholder="用户说" class="small" ng-model='userSay.value'><a href="javascript:void(0)" class='del_input'>&times;</a></b>
 		<a ng-hide='userSays.length >= 5' href="javascript:void(0)" repeat-type='userSays' class='addCorect'> <span class='glyphicon glyphicon-plus'></span> 添加用户说</a>
 	</div>
 	<div>

@@ -209,6 +209,20 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	margin-left: 149px;
 	margin-right: 113px;
 }
+
+.my_body b {
+	position: relative;
+}
+
+.my_body .del_input {
+	position: absolute;
+	right: 35px;
+	font-size: 20px;
+	top: -7px;
+	font-weight: 100;
+	color: #ccc;
+}
+
 @media screen and (max-width: 1529px) {
 	.my_body div .small {
 		margin-bottom: 25px;
