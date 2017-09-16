@@ -10,7 +10,7 @@ function openSkillCtrl($rootScope,$scope, $state, $stateParams){
 			success: function(data) {
 				data = dataParse(data);
 				$scope.openSkillList = data.content;
-				hasSkillCheckFunc($scope.openSkillList,$rootScope.currentRobot.referencedApp);//判断是否已经获取
+				hasSkillCheckFunc($scope.openSkillList,$rootScope.currentRobot);//判断是否已经获取
 				$scope.$apply();
 			},
 			error: function() {
@@ -25,8 +25,7 @@ function openSkillCtrl($rootScope,$scope, $state, $stateParams){
 		event.stopPropagation();
 		var $this = $(this);
 		var skillId = $this.attr("data-skill-id");
-		console.log("获取技能：" + skillId);
-		addSkillToBotFunc($scope.openSkillList,skillId,$rootScope.currentRobot.referencedApp);
+		addSkillToBotFunc($scope.openSkillList,skillId,$rootScope.currentRobot);
 		$scope.$apply();
 	});
 	
@@ -34,10 +33,15 @@ function openSkillCtrl($rootScope,$scope, $state, $stateParams){
 	$("body").off("click","[data-act=removeSkill]").on("click","[data-act=removeSkill]",function(event){
 		event.stopPropagation();
 		var $this = $(this);
-		var skillId = $this.attr("data-skill-id");
-		console.log("移除技能：" + skillId);
-		removeSkillFromBotFunc($scope.openSkillList,skillId,$rootScope.currentRobot.referencedApp);
-		$scope.$apply();
+		$.confirm({
+	        "text": '<div class="my_own_down_div"><label class="down_web_label">是否确认下线该技能？</label>' + '<br>' + '<span class="down_web_span">下线技能后需要重新提交技能进行审核哦！</span></div>',
+	        "title": " ",
+	        "ensureFn": function() {
+	        	var skillId = $this.attr("data-skill-id");
+	        	removeSkillFromBotFunc($scope.openSkillList,skillId,$rootScope.currentRobot);
+	        	$scope.$apply();
+	        }
+		})
 	});
 
 }

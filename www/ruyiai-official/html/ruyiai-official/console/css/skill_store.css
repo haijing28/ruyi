@@ -608,7 +608,18 @@
 	text-overflow: ellipsis;
 	white-space: nowrap
 }
-
+.removeSkill_button{
+	font-family: PingFangSC-Regular !important;
+	font-size: 14px !important;
+	color: #FFFFFF !important;
+	background: #B8C4D1 !important;
+	border: 1px solid #B8C4D1 !important;
+	height: 32px;
+	align-self: flex-end;
+}
+.removeSkill_button:hover{
+	background: #aab0b7 !important;
+}
 
 
 

@@ -102,11 +102,11 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 
 	/*-------------------------------图片切换--------------------------------*/
 	function checkImgStatus() {
-		$scope.plateforms.forEach(function(ele){
-			$('.' + ele).addClass('active');
-			$('.' + ele).find('input').prop('checked', true);
-			$('.' + ele).find('.off').removeClass('off')
-		})
+//		$scope.plateforms.forEach(function(ele){
+//			$('.' + ele).addClass('active');
+//			$('.' + ele).find('input').prop('checked', true);
+//			$('.' + ele).find('.off').removeClass('off')
+//		})
 		console.log($scope.plateforms)
 	}
 
@@ -274,32 +274,39 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			$.trace('要配置完技能插件才能发布哦！')
 		}else {
 			$('#uploadSuccess').modal('show');
-			 $.ajax({
-			 	url: api_host_v2beta + 'skills?botId=' + getCookie("botId"),
-			 	type: 'POST',
-			 	headers: {"Content-Type" : "application/json", "Authorization" : "Bearer " + getCookie('accessToken')},
-			 	data: JSON.stringify({
-			 		"name": $scope.robotName.trim(),
-			 		"description": $scope.skillDesc.trim(),
-			 		"category": $scope.selectedType.trim(),
-			 		"service": '3124321441412341241',
-			 		"agentType": agentType,
-			 		"logo": $scope.imgSrc,
-			 		"nickNames": objectArrToArr($scope.awakes),
-			 		"nickNameVoiceVariants": objectArrToArr($scope.wrongs),
-			 		"userInputExamples": objectArrToArr($scope.userSays),
-			 		"developerMainSite": $scope.self_homepage.trim(),
-			 		"developerIntroduction": $scope.selfDesc.trim(),
-			 		"descriptionForAudit": $scope.robotDesc.trim(),
-			 		"thirdPartyPlatforms": $scope.plateforms
-			 	}),
-			 	success: function(ret) {
-			 		setCookie('skillId' ,ret.id);
-			 	},
-			 	error: function() {
-			 		goIndex();
-			 	}
-			 })
+			var skillId = getCookie("skillId");
+			var url = "";
+			if(skillId && skillId.length > 0){
+				url = api_host_v2beta + 'skills/' + skillId;
+			}else{
+				url = api_host_v2beta + 'skills?botId=' + getCookie("botId");
+			}
+			$.ajax({
+				url: url,
+				type: 'POST',
+				headers: {"Content-Type" : "application/json", "Authorization" : "Bearer " + getCookie('accessToken')},
+				data: JSON.stringify({
+					"name": $scope.robotName.trim(),
+					"description": $scope.skillDesc.trim(),
+					"category": $scope.selectedType.trim(),
+					"service": '123',
+					"agentType": agentType,
+					"logo": $scope.imgSrc,
+					"nickNames": objectArrToArr($scope.awakes),
+					"nickNameVoiceVariants": objectArrToArr($scope.wrongs),
+					"userInputExamples": objectArrToArr($scope.userSays),
+					"developerMainSite": $scope.self_homepage.trim(),
+					"developerIntroduction": $scope.selfDesc.trim(),
+					"descriptionForAudit": $scope.robotDesc.trim(),
+					"thirdPartyPlatforms": $scope.plateforms
+				}),
+				success: function(ret) {
+					setCookie('skillId' ,ret.id);
+				},
+				error: function() {
+					goIndex();
+				}
+			})
 		}
 	})
 
