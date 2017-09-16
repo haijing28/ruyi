@@ -245,6 +245,22 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	}
 }
 
+@media screen and (max-width: 1140px) {
+	.addCorect {
+		margin-left: 153px;
+		display: inline-block;
+		margin-bottom: 20px;
+	}
+}
+
+/* @media screen and (max-width: 1120px) {
+	.addCorect {
+		margin-left: 153px;
+		display: inline-block;
+		margin-bottom: 20px;
+	}
+} */
+
 /*-------------------------------toggle btn 样式--------------------------------*/
 
 .my_body .my_btn {
