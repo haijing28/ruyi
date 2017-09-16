@@ -67,6 +67,8 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
             crossDomain: true,
 		 	success: function(data,status,xhr) {
 		 		data = dataParse(data);
+		 		console.log('------------')
+		 		console.log()
 		 		if(data.code == 0){
 					$scope.appList = data.result;
 					$scope.$apply();
@@ -377,11 +379,12 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 			 }
 	 });
 	
-	 $scope.goConsoleManagerFunc = function(appId,appName,appKey,botId,skillId){
+	 $scope.goConsoleManagerFunc = function(appId,appName,appKey,botId,skillId, agentType){
 		setCookie("appId",appId);
 		setCookie("appName",appName);
 		setCookie("appKey",appKey);
 		setCookie("botId",botId);
+		setCookie("agentType",agentType);
 		if(skillId && skillId != null && skillId.length > 10){
 			setCookie("skillId",skillId);
 		}else{
@@ -504,7 +507,7 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 	var getBotListFunc = function(){
 		// 获取 st
         $.ajax({
-            url: api_host_v2beta + '/bots?tag=' + commonTag + "&size=100",
+            url: api_host_v2beta + 'bots?tag=' + commonTag + "&size=100",
             method: 'GET',
             headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
             error: function(xhr, status, error) {

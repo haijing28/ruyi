@@ -9,5 +9,20 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 		        	}
 		})
 	})
+
+	var getSkillCards = function() {
+		$.ajax({
+			url: api_host_v2beta + 'skills',
+			type: 'get',
+			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+			success: function(ret) {
+				console.log(ret);
+			},
+			error: function() {
+				// goIndex();
+			}
+		})
+	}
+	getSkillCards();
 }
 
