@@ -17,6 +17,7 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
 			success: function(ret) {
 				console.log(ret);
+
 			},
 			error: function() {
 				// goIndex();

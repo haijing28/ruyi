@@ -1,7 +1,7 @@
 <div class="my_own_skill my_store">
 	<h1>已发布的技能</h1>
 	<ul class='my_ul'>
-		<li class='card'>
+		<li class='card' ng-repeat='pub_card in pub_cards'>
 			<div class="status">审核中</div>
 			<div class="top">
 				<img src="../img/DUI_colour.svg" alt="技能头像">
@@ -33,7 +33,7 @@
 		</div>
 	</h1>
 	<ul>
-		<li class='card'>
+		<li class='card' ng-repeat='has_card in has_cards'>
 			<div class="top">
 				<img src="../img/DUI_colour.svg" alt="技能头像">
 				<div class="detail">
