@@ -104,8 +104,8 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	function checkImgStatus() {
 		$scope.plateforms.forEach(function(ele){
 			$('.' + ele).addClass('active');
-			$('.' + ele).find('input').prop('checked');
-			$('.' + ele).find('.off').removeClass('off').addClass('on')
+			$('.' + ele).find('input').prop('checked', true);
+			$('.' + ele).find('.off').removeClass('off')
 		})
 		console.log($scope.plateforms)
 	}
@@ -168,6 +168,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			// });
 		}
 		reader.readAsDataURL(img);
+		$('input').blur();
 	})	
 
 	/*-------------------------------copy 机器人--------------------------------*/
@@ -319,7 +320,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			var index = $scope.plateforms.indexOf($(this).attr('name'));
 			$scope.plateforms.splice(index, 1);
 		}
-		console.log($scope.plateforms)
+		$('input').blur();
 	})
 
 	/*-------------------------------头像上传--------------------------------*/
@@ -360,6 +361,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 					var progress = new FileProgress(file, 'fsUploadProgress');
 					progress.setStatus("等待...");
 					progress.bindUploadCancel(up);
+					$('input').blur();
 				});
 			},
 			'BeforeUpload' : function(up, file) {
@@ -376,11 +378,12 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 						.getOption('chunk_size'));
 				progress
 						.setProgress(file.percent + "%", file.speed, chunk_size);
+						$('input').blur();
 			},
 			'UploadComplete' : function() {
 				$("#addresource").modal("hide");
 				$("#fsUploadProgress").html("");
-				$('.small').blur();
+				$('input').blur();
 			},
 			'FileUploaded' : function(up, file, info) {
 				var progress = new FileProgress(file, 'fsUploadProgress');
@@ -394,6 +397,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 				var eImg = $(".container").html(
 						"<img src='" + url + "' id='tar'/>");
 				toJcrop();
+				$('input').blur();
 			},
 			'Error' : function(up, err, errTip) {
 				$('table').show();
