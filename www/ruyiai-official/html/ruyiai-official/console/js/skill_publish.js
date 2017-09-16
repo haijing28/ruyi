@@ -8,6 +8,8 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	    	off: ''
 	});
 
+	var agentType = getCookie('agentType');
+
 	/*-------------------------------全局属性--------------------------------*/
 
 	$scope.imgSrc = 'http://img95.699pic.com/photo/50004/2199.jpg_wh300.jpg';
@@ -22,29 +24,11 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	$scope.self_homepage = '';
 	$scope.skillDesc = '';
 	$scope.plateforms = [];
-
-	/*-------------------------------初始化--------------------------------*/
-
-//	 $.ajax({
-//	 	url: api_host + '/skills/' + $rootScope.currentRobot.id,
-//	 	type: 'get',
-//	 	success: function(ret) {
-//	 		console.log(ret)
-//	 		$scope.robotName = ret.name;
-//	 		$scope.skillDesc = ret.description;
-//	 		$scope.selectedType = ret.serviceCategory; 
-//	 		$scope.imgSrc = ret.logo;
-//	 		$scope.awakes = stringToObjectArr(ret.nickNames);
-//	 		$scope.wrongs = stringToObjectArr(ret.nickNameVoiceVariants);
-//	 		$scope.userSays = stringToObjectArr(ret.userInputExamples);
-//	 		$scope.self_homepage = ret.developerMainSite;
-//			$scope.selfDesc = ret.developerIntroduction;
-//	 		$scope.robotDesc = ret.descriptionForAudit;
-//	 		$scope.plateforms = ret.thirdPartyPlatforms;		
-//	 	}
-//	 });
 	
-	//获得skill详情
+	/*-------------------------------获得skill详情--------------------------------*/
+
+	var botId = getCookie('botId');
+	
 	var getSkillDetailFunc = function(){
 		var skillId = getCookie("skillId");
 		if(skillId && skillId.length > 0){
@@ -54,7 +38,20 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 				headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
 				success: function(data) {
 					data = dataParse(data);
-					
+					var ret = data.agents[0].agent;
+					$scope.robotName = ret.name;
+			 		$scope.skillDesc = ret.description;
+			 		$scope.selectedType = ret.category; 
+			 		$scope.imgSrc = ret.logo;
+			 		$scope.awakes = stringToObjectArr(ret.attributes.nickNames);
+			 		$scope.wrongs = stringToObjectArr(ret.attributes.nickNameVoiceVariants);
+			 		$scope.userSays = stringToObjectArr(ret.attributes.userInputExamples);
+			 		$scope.self_homepage = ret.attributes.developerMainSite;
+					$scope.selfDesc = ret.attributes.developerIntroduction;
+			 		$scope.robotDesc = ret.attributes.descriptionForAudit;
+			 		$scope.plateforms = ret.attributes.thirdPartyPlatforms;
+				},error:function(){
+					goIndex();
 				}
 			});
 		}
@@ -231,20 +228,25 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			 	type: 'POST',
 			 	headers: {"Content-Type" : "application/json", "Authorization" : "Bearer " + getCookie('accessToken')},
 			 	data: JSON.stringify({
-			 		"name": $scope.robotName,
-			 		"description": $scope.skillDesc,
-			 		"serviceCategory": $scope.selectedType,
+			 		"name": $scope.robotName.trim(),
+			 		"description": $scope.skillDesc.trim(),
+			 		"category": $scope.selectedType.trim(),
+			 		"service": '3124321441412341241',
+			 		"agentType": agentType,
 			 		"logo": $scope.imgSrc,
 			 		"nickNames": objectArrToArr($scope.awakes),
 			 		"nickNameVoiceVariants": objectArrToArr($scope.wrongs),
-			 		"userInputExamples": objectArrToArr($scope.userSays),	
-			 		"developerMainSite": $scope.self_homepage,
-			 		"developerIntroduction": $scope.selfDesc,
-			 		"descriptionForAudit": $scope.robotDesc,
-			 		"thirdPartyPlatforms": $scope.plateforms	
+			 		"userInputExamples": objectArrToArr($scope.userSays),
+			 		"developerMainSite": $scope.self_homepage.trim(),
+			 		"developerIntroduction": $scope.selfDesc.trim(),
+			 		"descriptionForAudit": $scope.robotDesc.trim(),
+			 		"thirdPartyPlatforms": $scope.plateforms
 			 	}),
 			 	success: function(ret) {
-
+			 		setCookie('skillId' ,ret.id);
+			 	},
+			 	error: function() {
+			 		goIndex();
 			 	}
 			 })
 		}
