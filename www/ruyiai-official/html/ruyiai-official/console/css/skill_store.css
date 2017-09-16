@@ -500,8 +500,8 @@
 }
 .my_store .top img {
 	border-radius: 50%;
-	width: 64px;
-	height: 64px;
+	width: 70px;
+	height: 70px;
 	margin-right: 20px;
 	border: 1px solid #ccc;
 }
@@ -544,7 +544,7 @@
 	width: 350px;
 	margin:  20px;
 	background: #fff;
-	border: 1px solid #f7f0f0;
+	border: 1px solid #eee;
 	position: relative;
 	overflow: hidden;
 }
