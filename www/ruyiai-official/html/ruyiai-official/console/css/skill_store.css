@@ -484,6 +484,10 @@
 	border: 1px solid #ccc;
 	padding: 0 30px;
 }
+
+.my_store .card:hover {
+	box-shadow: 1px 1px 1px 1px #ccc;
+}
 .my_store .desc{
 	text-align: center;
 	font-size: 16px;
@@ -521,6 +525,7 @@
 	font-family: PingFangSC-Medium;
 	font-size: 20px;
 	color: #4A4A4A;
+	align-self: flex-end;
 }
 .my_store .top .detail .span {
 	font-family: STHeitiSC-Light;
@@ -557,7 +562,7 @@
 
 .my_store .card .status {
 	position: absolute;
-	height: 37px;
+	height: 36px;
 	width: 100px;
 	background: #ccc;
 	transform: rotate(-40deg);
@@ -566,9 +571,13 @@
 	color: #FFFFFF;
 	letter-spacing: 0;
 	text-align: center;
-	top: -8px;
-	left: -36px;
-	line-height: 50px;
+	top: -7px;
+	left: -34px;
+	line-height: 55px;
+}
+
+.my_store .card.succ .status {
+	background:  #5cc124;
 }
 
 .my_store h1 {
