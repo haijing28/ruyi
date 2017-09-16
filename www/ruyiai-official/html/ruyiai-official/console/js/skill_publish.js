@@ -153,6 +153,15 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 		}
 	})
 
+
+	/*-------------------------------删除新项--------------------------------*/
+	$('body').on('click', '.del_input', function() {
+		var tp = $(this).parent().parent().find('.addCorect').attr('repeat-type');
+		var index = $(this).parent().index() - 1;
+		$scope[tp].splice(index, 1);
+		$scope.$apply();
+	})
+
 	/*-------------------------------点击发布--------------------------------*/
 
 	$('.skill_publish').click(function() {
@@ -175,21 +184,26 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 		if($scope.skillDesc.trim() == ''){
 			$('.skillDesc').addClass('wrong');
 		}
-		$scope.awakes.forEach(function(ele, index) {
-			if(ele.value.trim() == '') {
-				$('[repeat-type=awakes]').parent().find( 'input' )[index].classList.add('wrong');
-			}
+
+		var awakes = $scope.awakes.some(function(ele) {
+			return ele.value.trim() != '';
 		})
-		$scope.wrongs.forEach(function(ele, index) {
-			if(ele.value.trim() == '') {
-				$('[repeat-type=wrongs]').parent().find( 'input' )[index].classList.add('wrong');
-			}
+		if(!awakes) {
+			$('[repeat-type=awakes]').parent().find( 'input' ).addClass('wrong');
+		}
+		var wrongs = $scope.wrongs.some(function(ele) {
+			return ele.value.trim() != '';
 		})
-		$scope.userSays.forEach(function(ele, index) {
-			if(ele.value.trim() == '') {
-				$('[repeat-type=userSays]').parent().find( 'input' )[index].classList.add('wrong');
-			}
+		if(!wrongs) {
+			$('[repeat-type=wrongs]').parent().find( 'input' ).addClass('wrong');
+		}
+		var userSays = $scope.userSays.some(function(ele) {
+			return ele.value.trim() != '';
 		})
+		if(!userSays) {
+			$('[repeat-type=userSays]').parent().find( 'input' ).addClass('wrong');
+		}
+
 		if($('.wrong').length > 0) {
 			$.trace('要配置完技能插件才能发布哦！')
 		}else {
