@@ -318,8 +318,8 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			$(this).parents('li').removeClass('active');
 			var index = $scope.plateforms.indexOf($(this).attr('name'));
 			$scope.plateforms.splice(index, 1);
-			console.log($scope.plateforms)
 		}
+		console.log($scope.plateforms)
 	})
 
 	/*-------------------------------头像上传--------------------------------*/
