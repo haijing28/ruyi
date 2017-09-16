@@ -377,10 +377,16 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 			 }
 	 });
 	
-	 $scope.goConsoleManagerFunc = function(appId,appName,appKey){
+	 $scope.goConsoleManagerFunc = function(appId,appName,appKey,botId,skillId){
 		setCookie("appId",appId);
 		setCookie("appName",appName);
 		setCookie("appKey",appKey);
+		setCookie("botId",botId);
+		if(skillId && skillId != null && skillId.length > 10){
+			setCookie("skillId",skillId);
+		}else{
+			setCookie("skillId","");
+		}
 		if("isNewUser" == getCookie("app"+appId)){
 			console.log(1111)
 			window.location.href = static_host + "/console/api_manager.html#/log_statistics";
@@ -469,21 +475,25 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 		}
 	});
 	
-//	var getUserInfoFunc = function(){
-//		alert();
-//		// 获取 st
-//        $.ajax({
-//            url: 'http://lab.ruyi.ai/v2beta/agents',
-//            method: 'GET',
-//            headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
-//            error: function(xhr, status, error) {
-//            },
-//            success: function(data, status, xhr) {
-//            	console.log("data:" + JSON.stringify(data));
-//            }
-//        });
-//	}
-//	getUserInfoFunc();
+	var getBotListFunc = function(){
+		// 获取 st
+        $.ajax({
+            url: api_host_v2beta + '/bots?tag=' + commonTag + "&size=100",
+            method: 'GET',
+            headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+            error: function(xhr, status, error) {
+            },
+            success: function(data, status, xhr) {
+            	data = dataParse(data);
+            	$scope.botList = data.content;
+            	console.log("botList:" + $scope.botList);
+            	$scope.$apply();
+            }
+        });
+	}
+	getBotListFunc();
+	
+	
 	
 });
 

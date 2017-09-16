@@ -156,7 +156,7 @@ var _hmt = _hmt || [];
 	</div>
 </div>
 <div class="robot-box">
-	<table class="table table-bordered robot-box-item" ng-repeat="appObject in appList">
+	<!-- <table class="table table-bordered robot-box-item" ng-repeat="appObject in appList">
 			<caption ng-if="$index == 0" style="margin-bottom: 16px;font-size: 16px;">机器人列表</caption>
 			<tr>
 				<td class="a-head-desc-box" style="overflow:hidden;position: relative;max-width: 530px;min-width:530px;word-wrap:break-word;word-break:break-all">
@@ -169,33 +169,19 @@ var _hmt = _hmt || [];
 							<h4 class="media-heading a-robot-name" ng-bind="appObject.appModel.appName"></h4>
 							<p class="my_para">
 								<label>ruyi skill store</label>
-								<a href="javascript:void(0)" style="color:#a0a1a7;">审核成功</a>
-								<!-- <label>思必驰</label>
+								<span href="javascript:void(0)" style="color:#a0a1a7;">审核成功</span>
+								<label>思必驰</label>
 								<label>小米水滴</label>
 								<label>Rokid</label>
-								<label>百度度秘</label> -->
+								<label>百度度秘</label>
 							</p>
 							<p class='maxThree'>{{appObject.appModel.appDesc}}</p>
 						</div>
 					</div>
-					<!-- <div class='skill-status'>
+					<div class='skill-status'>
 						审核成功
-					</div> -->
+					</div>
 				</td>
-				<!-- <td style="width:260px;">
-					<section class="a-message-count-box pull-left">
-					   <div class="a-message-title">新增交互数<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="今日0点到现在的新交互次数。" data-original-title="" title="">&nbsp;</button></div>
-					   <div class="a-message-total" ng-bind="appObject.msgCount"></div>
-					</section>
-					<section class="a-message-count-box pull-left">
-					   <div class="a-message-title">活跃用户数<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="今日0点到现在的活跃用户数。" data-original-title="" title="">&nbsp;</button></div>
-					   <div class="a-message-total" ng-bind="appObject.activeUserCount"></div>
-					</section>
-					<!-- <section style="padding-right:10px;" class="a-message-count-box pull-left">
-					   <div class="a-message-title">总用户数&nbsp;<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="消息数" data-original-title="" title="">&nbsp;</button></div>
-					   <div class="a-message-total" ng-bind="appObject.totalCount"></div>
-					</section> -->
-				<!-- </td>  -->
 				<td style="min-width:400px; max-width: 400px;">
 					<section class="a-message-count-box pull-left" style="padding-right:10px;">
 					   <div class="a-message-title">AppKey</div>
@@ -209,10 +195,45 @@ var _hmt = _hmt || [];
 					<section class="a-message-count-box pull-left">
 					   <div class="a-robot-small-margin"><span class="a-robot-small-box" style="font-size: 14px;padding: 6px 12px;" ng-click="exportHtml5LinkFunc(appObject.appModel.appName,appObject.appModel.id)">推 广</span></div>
 					</section>
-					<!-- <section class="a-message-count-box pull-left">
-					   <div class="a-message-title">更新时间</div>
-					   <div class="a-robot-small-margin">2016-09-20</div>
-					</section> -->
+				</td>
+			</tr>
+	</table> -->
+	
+	<table class="table table-bordered robot-box-item" ng-repeat="botObj in botList">
+			<caption ng-if="$index == 0" style="margin-bottom: 16px;font-size: 16px;">机器人列表</caption>
+			<tr>
+				<td class="a-head-desc-box" style="overflow:hidden;position: relative;max-width: 530px;min-width:530px;word-wrap:break-word;word-break:break-all">
+					<div class="media" style="margin-left: 30px;">
+						<a class="pull-left" href="javascript:;" style="cursor:default;">
+							<img class="media-object a-header" ng-if="botObj.agents[0].agent.logo && botObj.agents[0].agent.logo != 'img/default-robot.svg'" ng-src="{{botObj.agents[0].agent.logo}}" alt="机器人头像">
+							<img class="media-object a-header" ng-if="!botObj.agents[0].agent.logo || botObj.agents[0].agent.logo == 'img/default-robot.svg'" src="https://dn-vbuluo-static.qbox.me/default-robot.svg" alt="机器人头像">
+						</a>
+						<div class="media-body">
+							<h4 class="media-heading a-robot-name" ng-bind="botObj.agents[0].agent.name"></h4>
+							<p class="my_para">
+								<label>ruyi skill store</label>
+								<span href="javascript:void(0)" style="color:#a0a1a7;">审核成功</span>
+							</p>
+							<p class='maxThree'>{{botObj.agents[0].agent.description}}</p>
+						</div>
+					</div>
+					<div class='skill-status'>
+						审核成功
+					</div>
+				</td>
+				<td style="min-width:400px; max-width: 400px;">
+					<section class="a-message-count-box pull-left" style="padding-right:10px;">
+					   <div class="a-message-title">AppKey</div>
+					   <div class="a-appkey-value" style="width:100%;word-wrap: break-all;"><span>{{botObj.agents[0].agent.appKey}}</span><span class="a-robot-small-box" data-act="copy-btn" style="margin-left:6px;" ng-click="copyAppKeyFunc(botObj.agents[0].agent.appKey)">复 制</span></div>
+					</section>
+				</td>
+				<td style="min-width:180px; max-width: 180px;">
+					<section class="a-message-count-box pull-left" style="padding-right:10px;">
+					   <div class="a-robot-small-margin"><span class="a-robot-small-box a-manager-btn" ng-click="goConsoleManagerFunc(botObj.agents[0].agent.id,botObj.agents[0].agent.name,botObj.agents[0].agent.appKey,botObj.id,botObj.companionSkillId)">管 理</span></div>
+					</section>
+					<section class="a-message-count-box pull-left">
+					   <div class="a-robot-small-margin"><span class="a-robot-small-box" style="font-size: 14px;padding: 6px 12px;" ng-click="exportHtml5LinkFunc(botObj.agents[0].agent.name,botObj.agents[0].agent.id)">推 广</span></div>
+					</section>
 				</td>
 			</tr>
 	</table>
