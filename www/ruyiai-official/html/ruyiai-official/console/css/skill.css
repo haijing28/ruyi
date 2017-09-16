@@ -10,12 +10,12 @@
 	width:300px;height:100%;
 	overflow: hidden;
     overflow-y: auto;
-    border:1px solid #dcdddd;
+    border:1px solid #eee;
     border-right:0;
 }
 .skill-container .skill-content-right{
 	width:100%;height:100%;
-	border:1px solid #dcdddd;
+	border:1px solid #eee;
 }
 .skill-container .skill-content-intro{
 	padding:20px;
@@ -45,3 +45,26 @@
 .skill-container .faq-test-example li:hover{
 	background-color:#f3f1f1;
 }
+.skill-container .get-skill-detail{
+	border: 1px solid #3794FF;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    background: #fff;
+    color: #3794FF;
+    padding: 5px 0;
+    width: 84px;
+    align-self: flex-end;
+    border-radius: 0;
+    font-size: 14px;
+}
+.skill-container .get-skill-detail:hover{
+	color:#fff;
+	background-color:#3794FF;	
+}
+
+
+
+
+
+
+

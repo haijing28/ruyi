@@ -2,41 +2,32 @@
 	<section class="skill-content">
 		<!-- 左侧 技能详情 start -->
 		<section class="skill-content-left">
-			<div class="media" style="padding:20px;padding-right:30px;border-bottom:1px solid #dcdddd;">
+			<div class="media" style="padding:20px;padding-right:30px;border-bottom:1px solid #eee;">
 			  <div class="media-left">
 			    <a href="javascript:;">
-			      <img class="media-object" style="width:90px;" src="https://dn-vbuluo-static.qbox.me/default-robot.svg">
+			      <img class="media-object" style="width:80px;margin-left:10px;" src="https://dn-vbuluo-static.qbox.me/default-robot.svg">
 			    </a>
 			  </div>
 			  <div class="media-body clearfix" style="padding-left:30px;">
-			    <h4 class="media-heading" style="font-size:20px;text-align:right;">天气查询</h4>
-			    <div style="margin-top: -2px;text-align:right;">海知智能</div>
-			    <button style="margin-top: 20px;" type="button" class="btn btn-default pull-right">获取技能</button>
+			    <h4 class="media-heading" style="font-size:18px;text-align:right;">天气查询</h4>
+			    <div style="margin-top: -2px;font-size:14px;text-align:right;">海知智能</div>
+			    <button style="margin-top: 20px;" type="button" class="btn btn-default pull-right get-skill-detail">获取技能</button>
 			  </div>
 			</div>
 			<div class="skill-content-intro">
 				<h3 class="content-intro-title">技能简介</h3>
-				<p class="content-intro">技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技
-					能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能
-					简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介技能简介
-				</p>
+				<p class="content-intro" ng-bind="skillDetailObj.description"></p>
 				<h3 class="content-intro-title">功能范例</h3>
 				<div class="content-intro">
 					<ul class="faq-test-example">
-						<li>“ <span>今天上海的天气如何</span> ”</li>
-						<li>“ <span>今天上海的天气如何</span> ”</li>
-						<li>“ <span>今天上海的天气如何</span> ”</li>
+						<li ng-repeat="userInputExample in skillDetailObj.userInputExamples">“ <span ng-bind="userInputExample"></span> ”</li>
 					</ul>
 				</div>
 				<h3 class="content-intro-title">技能开发者</h3>
-				<p class="content-intro">
-					技能开发者技能开发者技能开发者
-					技能开发者技能开发者技能开发者
-					技能开发者技能开发者技能开发者技能开发者
-				</p>
+				<p class="content-intro" ng-bind="skillDetailObj.developerIntroduction"></p>
 				<h3 class="content-intro-title">开发者主页</h3>
 				<p class="content-intro" style="margin-bottom:0;">
-					<a href="http://www.baidu.com" style="color:#A4A9AF;" target="_blank">www.baidu.com</a>
+					<a href="http://www.baidu.com" style="color:#A4A9AF;" target="_blank" ng-bind="skillDetailObj.developerMainSite"></a>
 				</p>
 			</div>
 		</section>
@@ -94,7 +85,7 @@
 								</div>
 							</div>
 					
-							<div class="testTextarea testTextareaWechat" style="height:44px;">
+							<div class="testTextarea testTextareaWechat" style="height:44px;border-top:1px solid #eee;">
 								<textarea data-act="sendMsg-max" style="height:44px;font-size:14px;" rows="4" ng-model="skillUserSaysTextTry" placeholder="请填写你要说的话"></textarea>
 								<button type="button" class="btn btn-primary" ng-click="testMaxSubmit($event)"  style="bottom:-38px;">发 送</button>
 							</div>
@@ -130,7 +121,7 @@
 								</div>
 							</div>
 					
-							<div class="testTextarea testTextareaLocal" style="height:44px;">
+							<div class="testTextarea testTextareaLocal" style="height:44px;border-top:1px solid #eee;">
 								<textarea data-act="sendMsg-max" rows="4" style="height:44px;font-size:14px;" ng-model="skillUserSaysTextTryLocal" placeholder="请填写你要说的话"></textarea>
 								<button type="button" class="btn btn-primary" ng-click="testSubmitMaxLocal($event)" style="bottom:-38px;">发 送</button>
 							</div>

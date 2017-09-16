@@ -25,24 +25,42 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 
 	/*-------------------------------初始化--------------------------------*/
 
-	// $.ajax({
-	// 	url: api_host + '/skills/' + $rootScope.currentRobot.id,
-	// 	type: 'get',
-	// 	success: function(ret) {
-	// 		console.log(ret)
-	// 		$scope.robotName = ret.name;
-	// 		$scope.skillDesc = ret.description;
-	// 		$scope.selectedType = ret.serviceCategory; 
-	// 		$scope.imgSrc = ret.logo;
-	// 		$scope.awakes = stringToObjectArr(ret.nickNames);
-	// 		$scope.wrongs = stringToObjectArr(ret.nickNameVoiceVariants);
-	// 		$scope.userSays = stringToObjectArr(ret.userInputExamples);
-	// 		$scope.self_homepage = ret.developerMainSite;
-	//		$scope.selfDesc = ret.developerIntroduction;
-	// 		$scope.robotDesc = ret.descriptionForAudit;
-	// 		$scope.plateforms = ret.thirdPartyPlatforms;		
-	// 	}
-	// })
+//	 $.ajax({
+//	 	url: api_host + '/skills/' + $rootScope.currentRobot.id,
+//	 	type: 'get',
+//	 	success: function(ret) {
+//	 		console.log(ret)
+//	 		$scope.robotName = ret.name;
+//	 		$scope.skillDesc = ret.description;
+//	 		$scope.selectedType = ret.serviceCategory; 
+//	 		$scope.imgSrc = ret.logo;
+//	 		$scope.awakes = stringToObjectArr(ret.nickNames);
+//	 		$scope.wrongs = stringToObjectArr(ret.nickNameVoiceVariants);
+//	 		$scope.userSays = stringToObjectArr(ret.userInputExamples);
+//	 		$scope.self_homepage = ret.developerMainSite;
+//			$scope.selfDesc = ret.developerIntroduction;
+//	 		$scope.robotDesc = ret.descriptionForAudit;
+//	 		$scope.plateforms = ret.thirdPartyPlatforms;		
+//	 	}
+//	 });
+	
+	//获得skill详情
+	var getSkillDetailFunc = function(){
+		var skillId = getCookie("skillId");
+		if(skillId && skillId.length > 0){
+			$.ajax({
+				url: api_host_v2beta + 'skills/' + skillId + "?tag=" + commonTag,
+				type: 'GET',
+				headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+				success: function(data) {
+					data = dataParse(data);
+					
+				}
+			});
+		}
+	}
+	getSkillDetailFunc();
+	
 
 	$(".list-group-item").removeClass("active");
 	$("[data-act=nav-skill-publish]").addClass("active");
@@ -208,26 +226,27 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			$.trace('要配置完技能插件才能发布哦！')
 		}else {
 			$('#uploadSuccess').modal('show');
-			// $.ajax({
-			// 	url: '',
-			// 	type: 'post',
-			// 	data: JSON.stringify({
-			// 		"name": $scope.robotName,
-			// 		"description": $scope.skillDesc,
-			// 		"serviceCategory": $scope.selectedType,
-			// 		"logo": $scope.imgSrc,
-			// 		"nickNames": objectArrToArr($scope.awakes),
-			// 		"nickNameVoiceVariants": objectArrToArr($scope.wrongs),
-			// 		"userInputExamples": objectArrToArr($scope.userSays),	
-			// 		"developerMainSite": $scope.self_homepage,
-			// 		"developerIntroduction": $scope.selfDesc,
-			// 		"descriptionForAudit": $scope.robotDesc,
-			// 		"thirdPartyPlatforms": $scope.plateforms	
-			// 	}),
-			// 	success: function(ret) {
+			 $.ajax({
+			 	url: api_host_v2beta + 'skills?botId=' + getCookie("botId"),
+			 	type: 'POST',
+			 	headers: {"Content-Type" : "application/json", "Authorization" : "Bearer " + getCookie('accessToken')},
+			 	data: JSON.stringify({
+			 		"name": $scope.robotName,
+			 		"description": $scope.skillDesc,
+			 		"serviceCategory": $scope.selectedType,
+			 		"logo": $scope.imgSrc,
+			 		"nickNames": objectArrToArr($scope.awakes),
+			 		"nickNameVoiceVariants": objectArrToArr($scope.wrongs),
+			 		"userInputExamples": objectArrToArr($scope.userSays),	
+			 		"developerMainSite": $scope.self_homepage,
+			 		"developerIntroduction": $scope.selfDesc,
+			 		"descriptionForAudit": $scope.robotDesc,
+			 		"thirdPartyPlatforms": $scope.plateforms	
+			 	}),
+			 	success: function(ret) {
 
-			// 	}
-			// })
+			 	}
+			 })
 		}
 	})
 

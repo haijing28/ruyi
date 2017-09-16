@@ -1,5 +1,4 @@
 function skillCtrl($rootScope,$scope, $state, $stateParams){
-	//$(".fixed-btn").hide();
 	$("#try-try").css("display","none");
 	var data_act = $(".list-group-item.active").attr("data-act");
 	var scenarioId = $(".scenario-object.list-group-item.active").attr("data-scenario-id");
@@ -669,6 +668,20 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 			$scope.testSubmitMaxLocal();
 		}
 	});
+	
+	$scope.skillDetailObj = {
+	    "name": "天气查询接口",
+	    "description": "天气查询接口描述",
+	    "serviceCategory": "test",
+	    "logo": "https://dn-vbuluo-static.qbox.me/default-robot.svg",
+	    "nickNames": ["张三","李四"],
+	    "nickNameVoiceVariants": ["老张","老李"],
+	    "userInputExamples": ["今天上海天气如何","今天北京天气如何"],	
+	    "developerMainSite": "http://www.jd.com",
+	    "developerIntroduction": "我的一个开发者的简介",
+		"descriptionForAudit": "我是一个开发者说明",
+		 "thirdPartyPlatforms": ["xiaomi","baidu","dui"]
+	};
 	
 }
 
