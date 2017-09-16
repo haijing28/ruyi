@@ -3403,5 +3403,7 @@ li.birthday input.constellation{
 .right-box-main input::-webkit-input-placeholder{
     color: #aaa;opacity:1;
 }
-
+.center-list-box .change-option li.active a{
+	cursor:pointer;
+}
 

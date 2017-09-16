@@ -488,10 +488,15 @@
 	-webkit-line-clamp: 3;
 	overflow: hidden;
 }
+.my_store .desc i,.my_store .desc span{
+	color:#333;
+	font-weight:400;
+}
 .my_store .top {
 	display: flex;
 	padding: 20px 0;
 	justify-content: space-between;
+	cursor:pointer;
 }
 .my_store .top img {
 	border-radius: 50%;

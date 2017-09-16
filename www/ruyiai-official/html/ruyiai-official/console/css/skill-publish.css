@@ -64,7 +64,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	display: none !important;
 }
 .my_body .sub {
-	color: #ccc;
+	color: #888;
 	font-size: 14px;
 	font-weight: lighter;
 }
