@@ -244,6 +244,12 @@
 	cursor:pointer;
 }
 
+.my_store .icon-zuoshuangyinhao, .my_store .icon-youshuangyinhao {
+	font-size: 10px;
+	vertical-align: super;
+	color: #6f6b6b !important;
+}
+
 /** 技能排序 **/
 .skill-sort{
 	width:750px;
@@ -488,10 +494,15 @@
 	-webkit-line-clamp: 3;
 	overflow: hidden;
 }
+.my_store .desc i,.my_store .desc span{
+	color:#333;
+	font-weight:400;
+}
 .my_store .top {
 	display: flex;
 	padding: 20px 0;
 	justify-content: space-between;
+	cursor:pointer;
 }
 .my_store .top img {
 	border-radius: 50%;

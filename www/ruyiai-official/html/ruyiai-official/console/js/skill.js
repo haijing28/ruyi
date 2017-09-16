@@ -90,37 +90,34 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 	
 	//处理特殊符号
 	$scope.handleSpecialChars = function(inputText){
-		// $scope.errorUserSaysTextTry = [];
+		// $scope.errorskillUserSaysTextTry = [];
 		// var specialChars = "";
 		// if(inputText.indexOf('%') > -1) {
 		// 	specialChars = '%';
 		// } else if(inputText.indexOf('"') > -1) {
 		// 	specialChars = '"';
 		// }
-		// $scope.errorUserSaysTextTry = inputText.split(specialChars);
+		// $scope.errorskillUserSaysTextTry = inputText.split(specialChars);
 		// inputText = '';
-		// $($scope.errorUserSaysTextTry).each(function(index, ele){
+		// $($scope.errorskillUserSaysTextTry).each(function(index, ele){
 		// 	if(ele !== ''){
 		// 		inputText += ele;
 		// 	}
 		// });
-		//		$scope.userSaysTextTry = inputText;
+		//		$scope.skillUserSaysTextTry = inputText;
 		return inputText;
 	}
 	
 	$scope.testMaxSubmit = function($event){
+		var $testTextareaWechat = $(".testTextareaWechat textarea");
 		var content_type = $(".tab-content-max .tab-pane.active").attr("id");
-		if(!$(".testTextarea textarea").val() || $(".testTextarea textarea").val().length == 0 || $(".testTextarea textarea").val().replace(/(^\s*)|(\s*$)/g,"")=="" ){
+		if(!$testTextareaWechat.val() || $testTextareaWechat.val().length == 0 || $testTextareaWechat.val().replace(/(^\s*)|(\s*$)/g,"")=="" ){
 			$.trace("请填写你要说的话");
-			$(".testTextarea textarea").focus();
+			$testTextareaWechat.focus();
 			return false;
 		}
-		if($(".testTextarea textarea").val()){
-			$scope.talks.push({serverLeft: false,userRight: true,talkText:$(".testTextarea textarea").val()});
-			setTimeout(function(){
-				$(".testContain").scrollTop($(".testContain")[0].scrollHeight);
-			},500);
-			$(".testTextarea textarea").val('');
+		if($testTextareaWechat.val()){
+			$scope.talks.push({serverLeft: false,userRight: true,talkText:$testTextareaWechat.val()});
 		}
 		
 		//TODO 记得提交代码的时候注释掉
@@ -139,8 +136,12 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 			'timezone':'Asia/Shanghai',
 			'domains':domains
 		}
-		$scope.userSaysTextTry = $scope.handleSpecialChars($scope.userSaysTextTry);
-		var demo_input = encodeURIComponent($scope.userSaysTextTry);
+		$scope.skillUserSaysTextTry = $scope.handleSpecialChars($testTextareaWechat.val());
+		var demo_input = encodeURIComponent($testTextareaWechat.val());
+		setTimeout(function(){
+			$(".testContain").scrollTop($(".testContain")[0].scrollHeight);
+		},500);
+		$testTextareaWechat.val('');
 		demo_input = {
 				"app_key":$rootScope.app_key,
 //				"app_key":'7b730914-a5c5-43d7-889a-e27e62931fff',
@@ -283,7 +284,7 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 				processApiResultFunc(data);
 			}
 		});
-		$scope.userSaysTextTry = "";
+		$scope.skillUserSaysTextTry = "";
 		if($event && $event.target){
 			if($($($event.target)[0])){
 				$($($event.target)[0]).css("background-color","#3794FF");
@@ -421,6 +422,7 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 //	});
 	
 	$scope.testSubmitMaxLocal = function($event){
+		console.log('$(".testTextareaLocal textarea").val():' + $(".testTextareaLocal textarea").val());
 		if(!$(".testTextareaLocal textarea").val() || $(".testTextareaLocal textarea").val().length == 0 || $(".testTextareaLocal textarea").val().replace(/(^\s*)|(\s*$)/g,"")==""){
 			$.trace("请填写你要说的话");
 			$(".testTextarea textarea").focus();
@@ -428,10 +430,6 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 		}
 		if($(".testTextareaLocal textarea").val()){
 			$scope.localTalks.push({serverLeft: false,userRight: true,talkText:$(".testTextareaLocal textarea").val()});
-			setTimeout(function(){
-				$(".testContainLocal").scrollTop($(".testContainLocal")[0].scrollHeight);
-			},500);
-			$(".testTextareaLocal textarea").val('');
 		}
 		
 		//TODO 记得提交代码的时候注释掉
@@ -451,8 +449,13 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 			'domains':domains
 		}
 		
-		$scope.userSaysTextTryLocal = $scope.handleSpecialChars($scope.userSaysTextTryLocal);
-		var demo_input = encodeURIComponent($scope.userSaysTextTryLocal);
+		$scope.skillUserSaysTextTryLocal = $scope.handleSpecialChars($(".testTextareaLocal textarea").val());
+		var demo_input = encodeURIComponent($(".testTextareaLocal textarea").val());
+		console.log("demo_input:" + demo_input);
+		setTimeout(function(){
+			$(".testContainLocal").scrollTop($(".testContainLocal")[0].scrollHeight);
+		},500);
+		$(".testTextareaLocal textarea").val('');
 		demo_input = {
 				"app_key":$rootScope.app_key,
 //				"app_key":'7b730914-a5c5-43d7-889a-e27e62931fff',
@@ -522,7 +525,7 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 				processApiResultFunc(data);
 			}
 		});
-		$scope.userSaysTextTryLocal = "";
+		$scope.skillUserSaysTextTryLocal = "";
 		if($event && $event.target){
 			console.log(1);
 			if($($($event.target)[0])){
@@ -578,8 +581,8 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 			 $scope.clickPlay('.testContain');
 			 $scope.clickPlay('.testContainLocal');
 		 }, 0);
-		$("[ng-model=userSaysTextTry]").val($scope.userSaysTextTry);
-		$("[ng-model=userSaysTextTryLocal]").val($scope.userSaysTextTryLocal);
+		$("[ng-model=skillUserSaysTextTry]").val($scope.skillUserSaysTextTry);
+		$("[ng-model=skillUserSaysTextTryLocal]").val($scope.skillUserSaysTextTryLocal);
 		//确保小窗口跟大窗口的active一致
 		if(getCookie("weixin_local") == "try-local"){
 			$(".try-nav .try-local").addClass("active").siblings().removeClass("active");
@@ -652,5 +655,20 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 	setTimeout(function(){
 		$("#responseJson").scrollTop($("#responseJson")[0].scrollHeight);
 	}, 200);
+	
+	$("body").off("click",".content-intro li span").on("click",".content-intro li span",function(event){
+		var $this = $(this);
+		var example = $this.text();
+		if($(".try-nav-left-max li.active").hasClass("try-weixin")){
+			$scope.userSaysTextTry = example;
+			$(".testTextareaWechat textarea").val(example);
+			$scope.testMaxSubmit();
+		}else if($(".try-nav-left-max li.active").hasClass("try-local")){
+			$scope.userSaysTextTryLocal = example;
+			$(".testTextareaLocal textarea").val(example);
+			$scope.testSubmitMaxLocal();
+		}
+	});
+	
 }
 

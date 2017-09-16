@@ -477,8 +477,6 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		}
 		$scope.response.outputs = $scope.wechatOutputs.concat($scope.localOutouts); 
 		
-		console.log("$scope.eventNameList:---:" + $scope.eventNameList);
-		
 		$scope.intentDetail.eventNameList = mergeEventFunc($scope.eventNameList); //拼接事件字符串
 		
 		
@@ -3614,7 +3612,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	var splitEventFunc = function(eventNameList){
 		var eventNameListTemp = new Array();
 		for(var i in eventNameList){
-			var eventObjArr = eventNameList[i].split("-");
+			var eventObjArr = eventNameList[i].split("#####");
 			if(eventObjArr[1]){
 				eventObjArr[1] = parseInt(eventObjArr[1]);
 			}
@@ -3628,7 +3626,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 		var eventNameListTemp = new Array();
 		for(var i in eventNameList){
 			if(eventNameList[i].length > 1){
-				eventObjArr = eventNameList[i][0] + '-' + eventNameList[i][1];
+				eventObjArr = eventNameList[i][0] + '#####' + eventNameList[i][1];
 			}else if(eventNameList[i].length == 1){
 				eventObjArr = eventNameList[i][0];
 			}

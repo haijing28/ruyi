@@ -168,7 +168,32 @@ $(function(){
 	$(document).mouseup(function() {
 		$('#login-password').attr('type','password');
 		$('.pass_div i').removeClass('open');
-	})
+	});
+	
+	/*测试获取用户信息*/
+	
+	
+	//获取accessToken
+	var getAccessTokenFunc = function(userName,password,fn){
+		// 获取 st
+        $.ajax({
+            url: api_host + '/auth/accessToken',
+            method: 'POST',
+            headers: {"Content-Type" : "application/json"},
+            data:JSON.stringify({"account": userName, "password": password}),
+            error: function(xhr, status, error) {
+            },
+            success: function(data, status, xhr) {
+            	data = dataParse(data);
+            	setCookie('accessToken', data.accessToken);
+            	//getUserInfoFunc();
+              	if(fn){
+              		fn();
+              	}
+            }
+        });
+	}
+	
 	// 显示密码 -- end
 	// 登录
 	$('.loginBtn').click(function () {
@@ -223,7 +248,9 @@ $(function(){
 		                        localStorage.ruyi_tk = xhr.responseText;
 		                        setCookie('tgt', tgt);
 		                        setCookie('email', $('#login-email').val());
-		                        window.location = api_host_temp + "/ruyi-ai/request" + login_environment + "&ticket=" + xhr.responseText;		             
+		                        getAccessTokenFunc($('#login-email').val(),$('#login-password').val(),function(){
+		                        	window.location = api_host_temp + "/ruyi-ai/request" + login_environment + "&ticket=" + xhr.responseText;		             
+		                        });
 		                    }
 		                })
 		                // 获取 st -- end

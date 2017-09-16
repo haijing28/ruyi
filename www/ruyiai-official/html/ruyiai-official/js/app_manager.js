@@ -469,6 +469,22 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 		}
 	});
 	
+//	var getUserInfoFunc = function(){
+//		alert();
+//		// 获取 st
+//        $.ajax({
+//            url: 'http://lab.ruyi.ai/v2beta/agents',
+//            method: 'GET',
+//            headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+//            error: function(xhr, status, error) {
+//            },
+//            success: function(data, status, xhr) {
+//            	console.log("data:" + JSON.stringify(data));
+//            }
+//        });
+//	}
+//	getUserInfoFunc();
+	
 });
 
 
