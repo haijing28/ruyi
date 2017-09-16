@@ -75,7 +75,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 		var skillId = getCookie("skillId");
 		if(skillId && skillId.length > 0){
 			$.ajax({
-				url: api_host_v2beta + 'skills/' + skillId + "?tag=" + commonTag,
+				url: api_host_v2beta + 'skills/' + skillId + "?tag=" + developTag,
 				type: 'GET',
 				headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
 				success: function(data) {

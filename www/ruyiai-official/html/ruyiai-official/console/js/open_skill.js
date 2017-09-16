@@ -3,10 +3,10 @@ function openSkillCtrl($rootScope,$scope, $state, $stateParams){
 	
 	var getSkillCards = function() {
 		$.ajax({
-			url: api_host_v2beta + 'skills',
+			url: api_host_v2beta + 'skills/public',
 			type: 'get',
 			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
-			data:{"size": 100,"tag": commonTag},
+			data:{"size": 100,"tag": productTag},
 			success: function(data) {
 				data = dataParse(data);
 				$scope.openSkillList = data.content;

@@ -482,7 +482,7 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 	var getSkillListFunc = function(botList){
 		// 获取 st
         $.ajax({
-            url: api_host_v2beta + '/skills?tag=' + commonTag + "&size=100",
+            url: api_host_v2beta + '/skills?tag=' + developTag + "&size=100",
             method: 'GET',
             headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
             error: function(xhr, status, error) {
@@ -507,7 +507,7 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 	var getBotListFunc = function(){
 		// 获取 st
         $.ajax({
-            url: api_host_v2beta + 'bots?tag=' + commonTag + "&size=100",
+            url: api_host_v2beta + 'bots?tag=' + developTag + "&size=100",
             method: 'GET',
             headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
             error: function(xhr, status, error) {
