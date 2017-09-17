@@ -106,9 +106,12 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 	        "text": '<div class="my_own_down_div"><label class="down_web_label">是否确认下线该技能？</label>' + '<br>' + '<span class="down_web_span">下线技能后需要重新提交技能进行审核哦！</span></div>',
 	        "title": " ",
 	        "ensureFn": function() {
-	        	var skillId = $this.attr("data-skill-id");
-	        	removeSkillFromBotFunc($scope.myHasSkillList,skillId,$rootScope.currentRobot);
-	        	$scope.$apply();
+		        	var skillId = $this.attr("data-skill-id");
+		        	removeSkillFromBotFunc($scope.myHasSkillList,skillId,$rootScope.currentRobot);
+		        	$scope.$apply();
+		        	$($this).text('已下线');
+		        	$($this).attr('disabled', true);
+		        	$($this).addClass('has_dis_true');
 	        }
 		})
 	});
