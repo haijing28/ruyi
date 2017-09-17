@@ -71,7 +71,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			
 			localStorage[awakes] = JSON.stringify($scope.awakes);
 			localStorage[wrongs] = JSON.stringify($scope.wrongs);
-			localStorage.[userSays] = JSON.stringify($scope.userSays);
+			localStorage[userSays] = JSON.stringify($scope.userSays);
 		
 			localStorage[robotDesc] = $scope.robotDesc;
 			localStorage[selectedType] = $scope.selectedType;
@@ -108,6 +108,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 					$scope.selfDesc = ret.attributes.developerIntroduction;
 			 		$scope.robotDesc = ret.attributes.descriptionForAudit;
 			 		$scope.plateforms = ret.attributes.thirdPartyPlatforms;
+			 		checkImgStatus();
 			 		$scope.$apply();
 				},error:function(){
 					goIndex();
@@ -145,6 +146,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			if(localStorage[plateforms].length > 1){
 				$scope.plateforms = localStorage[plateforms].split(',');
 			}
+			$scope.$apply();
 			checkImgStatus();
 		}catch(e){}
 		
@@ -344,7 +346,9 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 					setCookie('skillId' ,ret.id);
 					$('#uploadSuccess').modal('show');
 				},
-				error: function() {
+				error: function(err) {
+					err = JSON.parse(err.responseText);
+					$.trace(err.message)
 					goIndex();
 				},
 				complete: function() {
@@ -525,10 +529,8 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 				}
 			}
 		});
-	}
+	} 
 	/* 裁剪 end */
-
-
 
 }
 
