@@ -482,8 +482,8 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 		}
 	});
 	
-	//获取skill对象
-	var getSkillListFunc = function(botList){
+	//获取develop状况的skill对象
+	var getSkillListDevelopFunc = function(botList){
         $.ajax({
             url: api_host_v2beta + 'skills?tag=' + developTag + "&size=100",
             method: 'GET',
@@ -497,11 +497,35 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
             		for(var j in botList){
             			if(skillList[i].id == botList[j].companionSkillId){
             				botList[j].auditStatus = skillList[i].auditStatus;
-            				console.log("botList[j].auditStatus:" + botList[j].auditStatus);
             			}
             		}
             	}
-            	console.log(JSON.stringify(botList));
+            	getSkillListProductFunc(botList);//获取develop状况的skill对象
+            	$scope.$apply();
+            },error: function(){
+            	goIndex();
+            }
+        });
+	}
+	
+	//获取develop状况的skill对象
+	var getSkillListProductFunc = function(botList){
+        $.ajax({
+            url: api_host_v2beta + 'skills?tag=' + productTag + "&size=100",
+            method: 'GET',
+            headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+            error: function(xhr, status, error) {
+            },
+            success: function(data, status, xhr) {
+            	data = dataParse(data);
+            	var skillList = data.content;
+            	for(var i in skillList){
+            		for(var j in botList){
+            			if(skillList[i].id == botList[j].companionSkillId){
+            				botList[j].auditStatus = skillList[i].auditStatus;
+            			}
+            		}
+            	}
             	$scope.$apply();
             },error: function(){
             	goIndex();
@@ -522,7 +546,7 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
             	data = dataParse(data);
             	$scope.botList = data.content;
             	$scope.$apply();
-            	getSkillListFunc($scope.botList);
+            	getSkillListDevelopFunc($scope.botList);
             }
         });
 	}

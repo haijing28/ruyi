@@ -19,28 +19,63 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 			url: api_host_v2beta + 'skills/' + mySkillId,
 			type: 'get',
 			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
-			data: {"tag": "Product"},
+			data: {"tag": "Develop"},
 			success: function(data) {
-				//data = dataParse(data);
+				data = dataParse(data);
+				updateAuditStatusFunc(data);
 			},
 			error: function() {
-				//goIndex();
+				$.ajax({
+					url: api_host_v2beta + 'skills/' + mySkillId,
+					type: 'get',
+					headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+					data: {"tag": "Product"},
+					success: function(data) {
+						data = dataParse(data);
+						updateAuditStatusFunc(data);
+					},
+					error: function() {
+						
+					}
+				});
 			}
 		});
-		var mySkillDetail = '{ "id": "9c70c763-1b5e-455d-a49c-a10fabf6652d", "developerId": "50f6837d-f1a4-4cf5-95cb-3f2cff7149c4", "published": true, "auditStatus": "APPROVED", "gmtCreate": "2017-09-17T01:31:50", "gmtUpdate": "2017-09-17T01:31:50", "agents": [ { "version": "0.0.1", "tag": "Product", "agentId": "34dfd63a-7896-410c-991b-bfca91aaa56a", "agent": { "name": "seconhhhd 222 skill", "description": "description", "logo": "path-to-logo image", "service": "service", "category": "children toy", "agentType": "SKILL", "skillIds": [], "attributes": { "nickNames": [ "bot", "dadou" ], "nickNameTail": null, "nickNameVoiceVariants": [ "bolt", "kaka" ], "gender": "", "genderTail": null, "birthday": null, "birthdayTail": null, "hobbies": [], "hobbiesTail": null, "father": "", "fatherTail": null, "userInputExamples": [ "你好！" ], "developerMainSite": "http://ruyi.ai", "developerIntroduction": "best ai developer", "descriptionForAudit": "realy good skill", "thirdPartyPlatforms": [ "ruyi.ai" ] }, "defaultResponses": [], "id": "34dfd63a-7896-410c-991b-bfca91aaa56a", "appKey": "479cbdb0-e368-4dd8-8e46-c51a101926c8", "auditStatus": "APPROVED" } } ], "companionBotId": null, "recommendTag": "Ruyi_Selected" }';
-		mySkillDetail = JSON.parse(mySkillDetail);
+	}
+	
+	//更新页面显示的审核状态
+	var updateAuditStatusFunc = function(mySkillDetail){
+		//mySkillDetail = '{ "auditStatus": "REJECTED","id": "9c70c763-1b5e-455d-a49c-a10fabf6652d", "developerId": "50f6837d-f1a4-4cf5-95cb-3f2cff7149c4", "published": true, "developStatus": null, "gmtCreate": "2017-09-17T01:31:50", "gmtUpdate": "2017-09-17T01:31:50", "agents": [ { "version": "0.0.1", "tag": "Product", "agentId": "34dfd63a-7896-410c-991b-bfca91aaa56a", "agent": { "name": "seconhhhd 222 skill", "description": "description", "logo": "path-to-logo image", "service": "service", "category": "children toy", "agentType": "SKILL", "skillIds": [], "attributes": { "nickNames": [ "bot", "dadou" ], "nickNameTail": null, "nickNameVoiceVariants": [ "bolt", "kaka" ], "gender": "", "genderTail": null, "birthday": null, "birthdayTail": null, "hobbies": [], "hobbiesTail": null, "father": "", "fatherTail": null, "userInputExamples": [ "你好！" ], "developerMainSite": "http://ruyi.ai", "developerIntroduction": "best ai developer", "descriptionForAudit": "realy good skill", "thirdPartyPlatforms": [ "ruyi.ai" ] }, "defaultResponses": [], "id": "34dfd63a-7896-410c-991b-bfca91aaa56a", "appKey": "479cbdb0-e368-4dd8-8e46-c51a101926c8" } } ], "companionBotId": null }';
+		mySkillDetail = dataParse(mySkillDetail);
 		mySkillList.push(mySkillDetail);
 		$scope.mySkillList = mySkillList;
+		$scope.mySkillList.forEach(function(ele) {
+			if(ele.auditStatus == 'APPROVED') {
+				ele.statuClass = 'succ';
+				ele.statuText = '通过审核'
+			}
+			if(ele.auditStatus == 'PENDING_APPROVAL') {
+				ele.statuText = '审核中'
+			}
+			if(ele.auditStatus == 'REJECTED') {
+				ele.statuText = '未通过'
+			}
+			if(ele.auditStatus == 'OFFLINE') {
+				ele.statuText = '下线'
+			}
+		})
+		
 		$scope.$apply();
 	}
 	
-	//我引用的技能 TODO
-	var getMyHasSkillFunc = function() {
+	//通过引用的技能id列表查询技能列表
+	var getMyHasSkillFunc = function(){
+		var referencedSkillId = $rootScope.currentRobot.referencedApp.join(",");
 		$.ajax({
 			url: api_host_v2beta + 'skills/public',
 			type: 'get',
 			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
-			data:{"size": 100,"tag": productTag},
+			//data:{"size": 100,"tag": productTag,"skillIds": "9c70c763-1b5e-455d-a49c-a10fabf6652d,a159b729-1dca-4df9-ae25-48d270de70ca"},
+			data:{"size": 100,"tag": productTag,"skillIds": referencedSkillId},
 			success: function(data) {
 				data = dataParse(data);
 				$scope.myHasSkillList = data.content;
@@ -50,7 +85,7 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 			error: function() {
 				 goIndex();
 			}
-		})
+		});
 	}
 	getMyHasSkillFunc();
 	
