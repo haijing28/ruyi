@@ -480,7 +480,6 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 	
 	//获取skill对象
 	var getSkillListFunc = function(botList){
-		// 获取 st
         $.ajax({
             url: api_host_v2beta + '/skills?tag=' + developTag + "&size=100",
             method: 'GET',

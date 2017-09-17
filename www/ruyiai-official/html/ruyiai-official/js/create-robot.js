@@ -152,7 +152,7 @@ $(function(){
 		 
 		 var appObjectPara = {
 		    "name": appName,
-		    "agentType": robotType,
+		    "agentType": agentType,
 		    "description": "来自海知智能ruyi.ai的酷炫聊天机器人",
 		    "serviceCategory": "",
 		    "logo": "https://dn-vbuluo-static.qbox.me/default-robot.svg",
