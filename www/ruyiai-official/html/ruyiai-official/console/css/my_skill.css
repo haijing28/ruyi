@@ -6,7 +6,7 @@
 	font-size: 14px;
 	background: #fff;
 	border: 1px solid #D3D3D3;
-	height: 27px;
+	height: 32px;
 	width: 184px;
 	align-self: flex-end;
 	text-align: center;
@@ -18,6 +18,10 @@
 }
 .my_own_skill .detail .my_btn:hover {
 	background: #F6F6F6 !important;
+}
+
+.my_own_skill .detail .has_dis_true:hover {
+	background: #B8C4D1 !important;
 }
 
 .my_own_skill .down_arrow {
