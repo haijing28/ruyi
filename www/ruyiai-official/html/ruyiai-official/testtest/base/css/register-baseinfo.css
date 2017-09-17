@@ -1,0 +1,58 @@
+.element-box{
+	margin-bottom:28px;
+}
+.element-box label{
+    font-weight: 400;
+    width: 100px;
+}
+.email-input{
+	padding: 6px;
+    width: 300px;
+    border-radius: 2px;
+    border: 1px solid #dcdddd;
+}
+.error-tips{
+	padding-left: 102px;
+    padding-top: 10px;
+    padding-bottom: 4px;
+    color: #e15f63;
+    font-size:14px;
+}
+.info-tips{
+	padding-left: 102px;
+    color: #b5b5b6;
+    font-size:14px;
+}
+.agreeon-box label{
+	cursor: pointer;
+    font-weight: 400 !important;
+    margin-left: 102px;
+}
+.register-info-right{
+	width:300px;
+	float: right;
+    border-right: 1px solid #e7e7eb;
+    padding-left:54px;
+    font-size:14px;
+}
+.register-info-right a{
+	color:#3794FF;
+}
+.submit-box{
+	padding: 30px 100px;
+}
+.submit-box button{
+	padding: 8px 26px;
+    border-radius: 4px;
+    box-shadow: none;
+    border: 0px solid #ddd;
+    background-color: #ced7db;
+    color: #fff;
+    margin-left: 108px;
+    margin-top: 20px;
+    cursor:default;
+}
+.submit-box button.active{
+	background-color: #3794FF;
+	cursor:pointer;
+}

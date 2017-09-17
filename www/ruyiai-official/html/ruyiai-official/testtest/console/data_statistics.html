@@ -1,0 +1,166 @@
+<style>
+	[text-anchor=end]
+	{
+	display:none;
+	}
+	.highcharts-axis-labels{
+		display: block;
+	} 
+	.highcharts-axis-labels text{
+		display: block;
+	} 
+	.highcharts-legend{
+		display:none;
+	}
+	#rate-title .highcharts-legend{
+		display: block;
+	}
+</style>
+<!-- <link rel="stylesheet" type="text/css" href="css/loading.css"> -->
+<style>
+.stat-loading{
+	text-align: center;
+    color: #D5DBE0;
+    font-size: 30px;
+    border-left: 1px solid #dcdddd;
+    margin-left: 50%;
+}
+</style>
+<hr>
+<div class="tips-text" data-act="tips-text">
+	<div class="loading" style="padding-top:24%;">
+		<div class="spinner loading-icon">
+		    <div class="spinner-container container1">
+		        <div class="circle1"></div>
+		        <div class="circle2"></div>
+		        <div class="circle3"></div>
+		        <div class="circle4"></div>
+		    </div>
+		    <div class="spinner-container container2">
+		        <div class="circle1"></div>
+		        <div class="circle2"></div>
+		        <div class="circle3"></div>
+		        <div class="circle4"></div>
+		    </div>
+		    <div class="spinner-container container3">
+		        <div class="circle1"></div>
+		        <div class="circle2"></div>
+		        <div class="circle3"></div>
+		        <div class="circle4"></div>
+		    </div>
+		</div>
+	</div>
+</div>
+<div class="row row-height">
+	<div class="col-md-12 col-sm-12 col-xs-12 right-box row-height statistics-box" style="border-left:0;">
+		<!-- 右侧头部 start -->
+		<section class="title">
+			数据统计
+		</section>
+		<!-- 右侧头部 end -->
+		<div data-act="empty-tips" style="position:relative;display:none;">
+			<div style="position: absolute; left: 34%; top: 22%; font-size: 24px; font-weight: bold;">
+				通过以下方式让更多人认识你的机器人
+				<a href="{{ruyi_wechat}}/ruyi-wechat/authorize.jsp?appId={{appId}}" target="_blank" style="display:block;color:#3794ff;font-size:20px;margin-top:12px;">接入微信公众号</a>
+				<span ng-click="exportHtml5LinkFunc(currentRobot.appName,currentRobot.appKey)" target="_blank" style="font-weight:bold;cursor:pointer;display:block;color:#3794ff;font-size:20px;">生成H5链接</span>
+			</div>
+			<img src="https://dn-vbuluo-static.qbox.me/%E6%95%B0%E6%8D%AE%E7%BB%9F%E8%AE%A1%E8%83%8C%E6%99%AF.png" width="90%;" />
+		</div>
+		<!-- 右侧主体部分 start -->
+		<div class="right-box-main statistics" data-act="statistics-box" style="padding:0;display:none;">
+			<!-- 问答对统计表start -->
+			<div class="table-responsive">
+			  <table class="table">
+				<thead>
+			      <tr>
+			         <th>类  别</th>
+			         <th>用户数目</th>
+			         <th>人均问答</th>
+			         <th>问答对总数</th>
+			         <th>意图总数</th>
+			      </tr>
+			   </thead>
+			   <tbody>
+			      <tr>
+			         <td>微信统计</td>
+			         <td class="count" ng-bind="statistics.wechat_user_count"></td>
+			         <td class="count" ng-bind="statistics.wechat_avg"></td>
+			         <td class="count" ng-bind="statistics.wechat_qa"></td>
+			         <td class="count" ng-bind="statistics.wechat_intent_count"></td>
+			      </tr>
+			      <tr>
+			         <td>硬件统计</td>
+			         <td class="count" ng-bind="statistics.other_user_count"></td>
+			         <td class="count" ng-bind="statistics.other_avg"></td>
+			         <td class="count" ng-bind="statistics.other_qa"></td>
+			         <td class="count" ng-bind="statistics.other_intent_count"></td>
+			      </tr>
+			      <tr>
+			         <td>总数统计</td>
+			         <td class="count" ng-bind="statistics.user_count"></td>
+			         <td class="count" ng-bind="statistics.avg"></td>
+			         <td class="count" ng-bind="statistics.total_qa"></td>
+			         <td class="count" ng-bind="statistics.intent_count"></td>
+			      </tr>
+			   </tbody>
+			  </table>
+			</div>
+			<!-- 问答对统计表end -->
+			
+			<!-- 问答对和意图图表 start -->
+			<div class="row" style="margin-top:30px;">
+				<div class="col-md-4 col-md-offset-1">
+					<!-- <div class="rate-title" ng-show="statistics.totalQa > 0">问答对准确率</div>
+					<canvas id="question-answer-rate" width="400" height="246" ng-show="statistics.totalQa > 0">  
+		              浏览器不支持canvas  
+		          	</canvas>-->
+		          	<div id ="rate-title" style="width:300px;height:300px;margin:auto;"></div>
+				</div>
+				<div class="col-md-4 col-md-offset-1 barchat-box">
+					<!-- <div class="rate-title" ng-show="statistics.totalQa > 0">意图准确率</div>
+					<canvas id="intent-rate" width="300" height="176" ng-show="statistics.intentCount > 0">  
+		              浏览器不支持canvas  
+		          	</canvas> -->
+		          	<div id="container" style="width:300px;height:400px;margin:auto;"></div>
+		       <!--   	<ul class="intent-name-list clearfix">
+		          		<li ng-repeat="intentName in intentNamesTemp" ng-bind="intentName.name">
+		          		</li>
+		          	</ul>
+		          	 --> 
+				</div>
+			</div>
+			</div>
+			<!-- 问答对和意图图表 end -->
+		</div>
+		<!-- 右侧主体部分 end -->
+	</div>
+</div>
+<!-- 导出html5链接 Modal start-->
+<div class="modal fade" id="export-html5-link" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					Html5推广链接
+				</h4>
+			</div>
+			<div class="modal-body" style="padding:0;">
+				<div class="modal-body default-answer-box" style="padding:40px 40px 20px;">
+				  复制以下文本框中的链接，在浏览器打开，用户无需关注公众号即可与你的聊天机器人直接对话体验，建议在推广时使用。
+			      </div>
+			      <div class="form-group footer-box" style="padding:0 40px 42px;">
+			      	 <input type="text" class="form-control link" style="width:100%;" ng-model="htmlLink" id="html5-link-extend"/>
+			      	 <div class="pull-right btn btn-primary" data-act="copy-link" style="display:none;">复制链接</div>
+			      </div>
+				</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+<!-- 导出html5链接 Modal end-->
+<!-- <script src="js/data_statistics.js?v=20161102"></script> -->
+
+
+

@@ -1,0 +1,3365 @@
+a:hover{
+	text-decoration: none;
+}
+/*场景开关*/
+.box .center-box .center-list-title span{
+	margin-left: 37px !important;
+}
+.toggle-off.btn{
+	padding-left: 7px !important;
+    z-index: 1;
+    margin-left: 10px !important;
+}
+.toggleBox{
+	margin-left: 3px;
+	width: 50px;
+}
+/*右侧的select*/
+.dropdown-toggle.iconfont.icon-sort{
+	position: absolute;
+    right: -40px;
+    top: -1px;
+}
+ /*新建意图框*/
+.myNewIssue{
+	border: 1px solid #dcdddd !important;
+}
+.myNewIssue:focus{
+	border-color: #4588ce !important;
+}
+.addIcon{
+	font-size: 30px;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+/*end*/
+.box .right-box .right-box-main .intent-priority label{
+	font-size: 16px;
+	background-color: #efefef;
+	box-shadow: none;
+	width:60px;
+	margin-bottom:4px;
+}
+.box .right-box .right-box-main .intent-priority label.active:hover{
+	color:#fff;
+}
+.btn-default.active, .btn-default:active, .open>.dropdown-toggle.btn-default{
+	background-color: #3794FF !important;
+    border-color: #3794FF !important;
+    color:#fff;
+}
+.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle){
+	border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+.btn-group>.btn:last-child:not(:first-child):not(.dropdown-toggle){
+	border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+/* intent-priority */
+/* input-intent-tag */
+.box .right-box .right-box-main .input-intent-tag .alert{
+	padding:6px;
+	display:inline-block;
+	border: 1px solid #dcdddd;
+	color: #999;
+	font-size: 15px;
+	border-radius: 0;
+	margin: 4px;
+	/* float: left; */
+	font-weight: 300;
+	padding-right: 22px;
+	border:1px solid #3794FF;
+}
+.box .right-box .right-box-main .input-intent-tag .alert:hover{
+	cursor:default;
+}
+.box .right-box .right-box-main .input-intent-tag .alert:first-child{
+	/* margin-left:-6px; */
+}
+.box .right-box .right-box-main .input-intent-tag .alert span{
+	right: -18px;
+	font-size: 20px;
+	font-weight: 200;
+	height: 0;
+	top: 2px;
+	opacity:0;
+}
+.box .right-box .right-box-main .input-intent-tag .alert:hover span{
+	opacity:0.3;
+}
+.box .right-box .right-box-main .input-intent-tag .alert:hover span:hover{
+	opacity:0.6;
+}
+.box .right-box .right-box-main .input-intent-tag .intent-tag{
+	overflow: hidden;
+}
+.box .right-box .right-box-main .input-intent-tag .intent-tag>ul{
+    padding: 8px;
+    float: left;
+    padding-bottom: 0;
+    margin-left: -11px;
+}
+.box .right-box .right-box-main .input-intent-tag .intent-tag>div{
+	float: left;
+	padding: 12px 8px 8px 0;
+	margin-left: -6px;
+}
+.box .right-box .right-box-main .input-intent-tag .intent-tag>div input{
+	border: 0;
+	box-shadow: none;
+	padding-left: 4px;
+}
+/*right-box end*/
+/*output-intent-tag start */
+.box .right-box .right-box-main .output-intent-tag .intent-tag>ul{
+    padding: 8px;
+    float: left;
+    padding-bottom: 0;
+    margin-left: -16px;
+}
+.box .right-box .right-box-main .output-intent-tag .intent-tag>ul li:first-child{
+	/* margin-left:-12px; */
+}
+.box .right-box .right-box-main .output-intent-tag .intent-tag>ul li{
+	list-style:none;
+	margin-left:10px;
+	margin-top: 10px;
+}
+.box .right-box .right-box-main .output-intent-tag .intent-tag>ul li ul li:first-child{
+	margin-left:0;
+	margin-top:0;
+}
+.box .right-box .right-box-main .output-intent-tag .intent-tag>ul li ul li:last-child{
+	color: #999;
+	cursor: pointer;
+	padding: 6px 10px;
+	margin-top:4px;
+}
+.box .right-box .right-box-main .output-intent-tag .intent-tag>ul li ul li:last-child:hover{
+	color:#000;
+}
+.box .right-box .right-box-main .output-intent-tag .intent-tag>ul li div button{
+	border-radius:0;
+	margin-left: 0px;
+	border: 1px solid #3794FF;
+}
+.box .right-box .right-box-main .output-intent-tag .intent-tag>ul li div button:hover{
+	color:#fff;
+	background-color:#3794FF;
+}
+.box .right-box .right-box-main .output-intent-tag .intent-tag>ul li div button span{
+	color: #999; 
+	font-size: 12px;
+}
+.box .right-box .right-box-main .output-intent-tag .intent-tag>ul li div button:hover span{
+	color:#fff;
+}
+.box .right-box .right-box-main .output-intent-tag .intent-tag>ul li div button:focus span{
+	color:#fff;
+}
+.box .right-box .right-box-main .output-intent-tag .intent-tag>ul li div button:focus{
+	color:#fff;
+	background-color:#3794FF;
+}
+.box .right-box .right-box-main .output-intent-tag .intent-tag>ul li div button .caret{
+	opacity:0;
+}
+.box .right-box .right-box-main .output-intent-tag .intent-tag>ul li div.open button .caret,.box .right-box .right-box-main .output-intent-tag .intent-tag>ul li div button:hover .caret{
+	opacity:1;
+}
+.box .right-box .right-box-main .output-intent-tag .intent-tag>ul li div ul{
+	padding:0;
+	border-radius: 0;
+	margin-left: 0px;
+}
+.box .right-box .right-box-main .output-intent-tag .intent-tag>ul li div ul li{
+	margin-left: 0;
+}
+.box .right-box .right-box-main .output-intent-tag .intent-tag>ul li div ul li input{
+	box-shadow: none;
+	border: 0;
+	border-bottom: 1px solid #dcdddd;
+	padding: 0 10px;
+	border-radius: 0;
+}
+.box .right-box .right-box-main .output-intent-tag .intent-tag>div{
+	float: left;
+	padding: 0px 8px 8px 0;
+}
+.box .right-box .right-box-main .output-intent-tag .intent-tag>div input{
+	border: 0;
+	box-shadow: none;
+	padding-left: 0;
+	margin-top: 17px;
+	margin-left: 4px;
+}
+/*output-intent-tag end */
+/*speach-response start */
+.box .right-box .right-box-main .speach-response{
+	margin-top: 10px;
+    margin-bottom: 12px;
+}
+.box .right-box .right-box-main .speach-response div{
+	margin-top: 32px;
+    font-size: 15px;
+    /* margin-bottom: -10px; */
+}
+.box .right-box .right-box-main .speach-response div.tooltip,.box .right-box .right-box-main .speach-response div.tooltip div{
+	margin-top: 0;
+	font-size: 12px;
+	/* padding-bottom: 5px; */
+}
+.box .right-box .right-box-main .speach-response .list-group{
+	margin-bottom:0;
+}
+.box .right-box .right-box-main .speach-response .list-group li{
+	border-radius:0;
+	font-size:15px;
+}
+.response-box-text li:first-child{
+	border-top:0;
+}
+
+.box .right-box .right-box-main .speach-response .list-group li{
+	padding:0;
+	position:relative;
+	
+}
+
+.box .right-box .right-box-main .speach-response .list-group li i{
+	position: absolute;
+	width:18px;
+	height:18px;
+	top: 9px;
+	cursor:pointer;
+	display:none;
+}
+.box .right-box .right-box-main .speach-response .list-group li:hover i{
+	display:block;
+	padding-left:0;
+}
+.box .right-box .right-box-main .speach-response .list-group li:hover i:hover{
+	color:#54ADF7;
+}
+
+.box .right-box .right-box-main .speach-response .list-group li:hover .delete{
+	right: 14px;
+}
+.box .right-box .right-box-main .speach-response .list-group li:hover .copy{
+	right: 38px;
+}
+.box .right-box .right-box-main .speach-response .list-group li:hover .edit{
+	right: 62px;
+}
+.box .right-box .right-box-main .speach-response .list-group li:last-child i{
+	/* display:none; */
+}
+.box .right-box .right-box-main .speach-response .list-group li input{
+	border: 0;
+	padding: 10px 95px 10px 10px;
+	box-shadow: none;
+}
+/* speach-response end */
+/*speach-response-media start */
+.box .right-box .right-box-main .speach-response-media{
+	margin-top: 10px;
+	/* margin-bottom: 20px; */
+}
+.box .right-box .right-box-main .speach-response-media div{
+	margin-top: 0px;
+	font-size: 15px;
+	padding-bottom: 5px;
+}
+.box .right-box .right-box-main .speach-response-media .list-group{
+	margin-bottom:0;
+	margin-top:-33px;
+}
+.box .right-box .right-box-main .speach-response-media .list-group li{
+	border-radius: 0;
+    padding: 0;
+    position: relative;
+    height: 35px;
+    padding-top: 5px;
+    font-size: 14px;
+    border-bottom: 1px solid #dcdddd;
+    margin-top: 0px;
+    /* margin-bottom: 34px; */
+}
+
+.box .right-box .right-box-main .speach-response-media .list-group li:hover .delete{
+	position: absolute;
+	background-image: url(../img/delete.svg);
+	background-size:cover;
+	width:18px;
+	height:18px;
+	right: 12px;
+	top: 9px;
+	display:block;
+	cursor:pointer;
+}
+.box .right-box .right-box-main .speach-response-media .list-group li:hover .delete:hover {
+	background-image: url(../img/delete-hover.svg);
+}
+.box .right-box .right-box-main .speach-response-media .list-group li:hover .media{
+	position: absolute;
+	background-image: url(../img/response-media.svg);
+	background-size:cover;
+	width:18px;
+	height:18px;
+	right: 36px;
+	top: -6px;
+	display:block;
+	cursor:pointer;
+}
+.box .right-box .right-box-main .speach-response-media .list-group li:hover .media:hover {
+	background-image: url(../img/response-media-hover.svg);
+}
+.box .right-box .right-box-main .speach-response-media .list-group li:hover .preview{
+	position: absolute;
+	background-image: url(../img/response-preview.svg);
+	background-size:cover;
+	width:18px;
+	height:18px;
+	right: 60px;
+	top: 9px;
+	display:block;
+	cursor:pointer;
+}
+.box .right-box .right-box-main .speach-response-media .list-group li:hover .preview:hover {
+	background-image: url(../img/response-preview-hover.svg);
+}
+.box .right-box .right-box-main .speach-response-media .list-group li:last-child i{
+	display:none;
+}
+.box .right-box .right-box-main .speach-response-media .list-group li input{
+	border: 0;
+	padding: 10px 60px 10px 10px;
+	box-shadow: none;
+}
+.speach-response-media .media-title{
+	background: #F4F4F4;
+    padding: 6px 8px 8px 8px;
+    cursor: pointer;
+}
+.speach-response-media .media-title:hover{
+	background-color:#dcdddd;
+}
+/* speach-response-media end */
+.box #addPrompts ul li{
+	border-radius:0;
+	padding:0;
+	position:relative;
+	border: none;
+}
+.box #addPrompts ul li textarea{
+	border-radius:0;
+	box-shadow:none;
+	padding-right:60px;
+	padding-top: 5px;
+	line-height: 20px;
+	resize: none;
+	height: 34px;
+	max-height: 73px;
+}
+.box #addPrompts ul li .prompt-item {
+	padding-right:60px;
+	border-radius:0;
+	height: auto !important;
+	max-height: 75px;
+	overflow: hidden;
+	overflow-y: auto;
+}
+.box #addPrompts ul li input{
+	border-radius:0;
+	box-shadow:none;
+	padding-right:60px;
+	word-wrap:break-word ;
+}
+.box #addPrompts ul li:hover i{
+	position: absolute;
+	background-size:cover;
+	width:16px;
+	height:16px;
+	display:block;
+	cursor:pointer;
+}
+.box #addPrompts ul li:hover .delete-prompt{
+	background-image: url(../img/delete.svg);
+	right: 17px;
+	top: 10px;
+}
+.box #addPrompts ul li:hover .copy-prompt{
+	background-image: url(../img/copy.svg);
+	right: 38px;
+	top: 10px;
+}
+.box #addPrompts ul li:hover .delete-prompt:hover{
+	background-image: url(../img/delete-hover.svg);
+}
+.box #addPrompts ul li:hover .copy-prompt:hover{
+	background-image: url(../img/copy-hover.svg);
+}
+.box #addPrompts ul li:last-child i{
+	display:none;
+}
+/* entity-synonymous-tag start */
+.center-list-box-entity{height:100%;padding:0;border-right:1px solid #dcdddd;}
+.box .right-box .right-box-main .entity-synonymous-tag .alert{
+	padding:6px;
+	display:inline-block;
+	border: 1px solid #3794FF !important;
+	color: #999;
+	font-size: 15px;
+	border-radius: 0;
+	margin: -2px 4px 4px 0;
+	font-weight: 300;
+	padding-right: 22px;
+}
+.box .right-box .right-box-main .entity-synonymous-tag .alert span{
+	right: -18px;
+	font-size: 20px;
+	font-weight: 200;
+	height: 0;
+	top: -1px;
+	display:none;
+}
+.box .right-box .right-box-main .entity-synonymous-tag .alert:hover span{
+	display:block;
+}
+.box .right-box .right-box-main .entity-synonymous-tag .intent-tag{
+	overflow: hidden;
+}
+.box .right-box .right-box-main .entity-synonymous-tag .intent-tag>ul{
+    padding: 8px;
+    float: left;
+    padding-bottom: 0;
+}
+.box .right-box .right-box-main .entity-synonymous-tag .intent-tag>div{
+	float: left;
+	padding: 0px 8px 0px 0;
+}
+.box .right-box .right-box-main .entity-synonymous-tag .intent-tag>div input{
+	border: 0;
+	box-shadow: none;
+	padding-left: 0;
+	margin-top: 6px;
+	padding-top: 0;
+}
+.box .right-box .right-box-main .help-text{
+	background-color: #F7F8F8;
+	font-size: 15px;
+	margin-top: 20px;
+	border-color: #dcdddd;
+	color: #999;
+	line-height: 2rem;
+	margin-bottom: 0;
+}
+.box .right-box .right-box-main .help-text a{
+	margin-top: -17px;
+}
+.box .right-box .right-box-main .entity-synonymous-tag>ul{
+	padding-left:0;
+}
+.box .right-box .right-box-main .entity-synonymous-tag>ul li{
+	border:1px solid #dcdddd;
+	padding-left:14px;
+	border-bottom:0;
+	position: relative;
+}
+.box .right-box .right-box-main .entity-synonymous-tag>ul li:hover i{
+	background-image: url(../img/delete.svg);
+	position:absolute;
+	background-size:cover;
+	width:18px;
+	height:18px;
+	right: 12px;
+	top: 14px;
+	cursor:pointer;
+}
+.box .right-box .right-box-main .entity-synonymous-tag>ul li:hover i:hover{
+	background-image: url(../img/delete-hover.svg);
+}
+.box .right-box .right-box-main .entity-synonymous-tag>ul li:last-child:hover i{
+	display:none;
+}
+.box .right-box .right-box-main .entity-synonymous-tag>ul li:last-child{
+	border-bottom:1px solid #dcdddd;
+}
+.box .right-box .right-box-main .help-text{
+	
+}
+/* entity-synonymous-tag end */
+#testpage .user-says-response{
+	border: 0px;
+    background-color: rgb(221, 221, 221);
+}
+.pagination{width: 100%;margin:0;}
+.pagination>li>a, .pagination>li>span{
+	width: 9%;
+	text-align: center;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+	background-color: #3794FF;
+	border-color: #3794FF;
+	z-index:0;
+}
+.pagination>li:last-child>a, .pagination>li:last-child>span{
+	    border-top-right-radius: 0px;
+	    border-bottom-right-radius: 0px;
+}
+.pagination>li:first-child>a, .pagination>li:first-child>span{
+	    border-top-left-radius: 0px;
+	    border-bottom-left-radius: 0px;
+}
+.box .center-box  .user-log-group{
+	margin-top: 16px;
+}
+.box .center-box  .user-log-group li{
+	border-bottom: 1px solid #dcdddd;
+	padding: 14px;
+	padding-top: 14px;
+	cursor:pointer;
+	margin-left: -1px;
+	margin-top: -1px;
+}
+.box .center-box  .user-log-group li:first-child{margin-top:-15px;}
+.box .center-box  .user-log-group li:hover{
+	background-color: #f5f5f5;
+}
+.box .center-box  .user-log-group li.active{
+	background-color:#3794FF;
+}
+
+.box .center-box  .user-log-group li div:first-child span:FIRST-CHILD{
+	float:left;
+	font-size: 12px;
+	display:block;
+	color: #000;
+	max-width: 100px;
+	padding-right: 10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.box .user-log-box li .basic-info img.male-hover,.box .user-log-box li .basic-info img.womale-hover{
+	display:none;
+}
+.box .user-log-box li:hover .basic-info img.male,.box .user-log-box li:hover .basic-info img.womale{
+	display:block;
+}
+.box .user-log-box li.active .basic-info img.male-hover,.box .user-log-box li.active .basic-info img.womale-hover{
+	display:block;
+}
+.box .user-log-box li.active .basic-info img.male,.box .user-log-box li.active .basic-info img.womale{
+	display:none;
+}
+.box .center-box  .user-log-group li.active div:first-child span:FIRST-CHILD{
+	color:#fff;
+}
+.box .user-log-box .basic-info img{
+	float: left;
+}
+.box .user-log-box li .basic-info .position{
+	max-width: 100px;
+	padding-left:8px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	display: block;
+	float: left;
+}
+.box .user-log-box li.active .basic-info .position{
+	color:#fff;
+}
+.box .center-box .user-log-group li div:first-child span:last-CHILD{
+	float:right;
+	font-size: 13px;
+}
+.box .center-box .user-log-group li.active div:first-child span:last-CHILD{
+	color:#fff;
+}
+.box .center-box  .user-log-group li div:last-child{
+	font-size: 18px;
+	word-wrap: break-word;
+	word-break:break-all;
+	margin-bottom: 0;
+}
+.box .right-box-main .user-log-list{
+	
+	padding: 0;
+}
+.box .right-box-main .user-log-list li{
+	border-bottom:1px solid #dcdddd;
+	font-size:18px;
+	padding:16px 20px;
+}
+.box .right-box-main .user-log-list li .intent-info{
+	overflow:hidden;
+}
+.box .right-box-main .user-log-list li .intent-info span:first-child{
+	float:left;
+	font-size: 20px;
+	color: #888;
+}
+.box .right-box-main .user-log-list li .intent-info span:last-child{
+	float:right;
+	font-size: 13px;
+	color: #888;
+}
+.box .right-box-main .user-log-list li .question{
+	padding: 10px 0px 6px 0;
+}
+.box .right-box-main .user-log-list li .question span.mysuccess{
+	color: #13AE67;
+}
+.box .right-box-main .user-log-list li .question span.myerror{
+	color: #EA5514;
+}
+.box .right-box-main .user-log-list li .question img{
+	width:20px;
+}
+.box .right-box-main .user-log-list li .answer{
+	
+}
+.box .right-box-main .user-log-list li .answer span{
+	color: #888;
+}
+.box .right-box-main .user-log-list li .answer img{
+	width:20px;
+}
+.box .center-box .center-list-box .reference-app-box{
+	margin: 10px 0px 0px 30px;
+	border-top: 0;
+	font-size: 16px;
+	height: 87%;
+	padding-bottom: 20px;
+	/* overflow: hidden; */
+	/* overflow-y: auto; */
+}
+.box .center-box .center-list-box .reference-app-box .table tr:FIRST-CHILD{
+	border:0;
+}
+.box .center-box .center-list-box .reference-app-box .table tr:FIRST-CHILD td{
+	border-top:0;
+}
+.box .center-box .center-list-box .reference-app-box .table tr{
+	/* border:1px solid #dcdddd; */
+}
+.user-logs-box .logs{
+	padding: 0;
+	font-size: 14px;
+	color: #000;
+	height: 77%;
+	overflow: hidden;
+	overflow-y: auto;
+	margin-bottom: 0;
+	border-top: 1px solid #dcdddd;
+}
+.user-logs-box .logs>li{
+	border-bottom: 1px solid #dcdddd;
+	padding: 12px 30px 12px 20px;
+}
+.user-logs-box .logs .edit ul{
+	padding: 0;
+}
+.user-logs-box .logs .edit ul li{
+	float: right;
+	margin-right: 18px;
+}
+.user-logs-box .logs .edit ul li.edit-icon{margin-right:0;}
+
+.user-logs-box .logs .edit ul li:last-first{
+	
+}
+.user-logs-box .logs .edit ul li.intent-rate-black{
+	float: right;
+	margin-right: 19px;
+}
+
+.user-logs-box .logs .edit ul li.intent-rate-yellow{
+	/* margin-right:26px; */
+}
+.user-logs-box .logs .edit ul li:first-child{
+	float: left;
+	margin-top: 0;
+}
+.user-logs-box .logs .edit ul .intent-time{
+	color: #B1BCC2;
+	margin-bottom: 14px;
+	font-size: 14px;
+}
+.user-logs-box .logs .edit ul .intent-rate-green div{
+	background-color:#00AA88;
+	padding: 3px 0;
+	color:#fff;
+	border-radius: 18px;
+	font-size:12px;
+	width: 60px;
+	text-align: center;
+	overflow:hidden;
+}
+.user-logs-box .logs .edit ul .intent-rate-yellow div{
+	background-color:#FFB800;
+	padding: 3px 0;
+	color:#fff;
+	border-radius: 18px;
+	font-size:12px;
+	width: 60px;
+	text-align: center;
+	margin-top: -1px;
+}
+.user-logs-box .logs .edit ul .intent-rate-red div{
+	background-color:#DD4B39;
+	padding: 3px 0;
+	color:#fff;
+	border-radius: 18px;
+	font-size:12px;
+	width: 60px;
+	text-align: center;
+}
+.user-logs-box .logs .edit ul .intent-rate-black div{
+	background-color:#52656D;
+	padding: 3px 0;
+	color:#fff;
+	border-radius: 18px;
+	font-size:12px;
+	width: 60px;
+	text-align: center;
+}
+.user-logs-box .logs .edit ul .edit-icon i.edit{
+	width: 18px;
+	height: 20px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	/* position: absolute; */
+	cursor: pointer;
+	background-image: url(../img/edit-intent.svg);
+	/* right: 45px; */
+	display: block;
+}
+.user-logs-box .logs .edit ul .edit-icon i.edit:hover{
+	background-image: url(../img/edit-intent-hover.svg);
+}
+.user-logs-box .logs .edit ul .edit-icon i.create{
+	background-image: url("../img/add-intent.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    display: block;
+    height: 18px;
+    margin-top: 4px;
+    width: 19px;
+}
+.user-logs-box .logs .edit ul .edit-icon i.create:hover{
+	background-image: url(../img/add-intent-hover.svg);
+}
+.user-logs-box .logs .edit ul .edit-icon img{
+	width:24px;
+}
+.box .right-box .right-box-main .tips-box div .nav-count span{
+	font-size: 14px;
+}
+.box .right-box .right-box-main .tips-box div .nav-count li:hover span,.box .right-box .right-box-main .tips-box div .nav-count li.active span{
+	color: #3794FF;
+}
+.user-logs-box .tips-box .question-answer-pairs{text-align: center;padding: 13px;}
+.user-logs-box .tips-box .question-answer-pairs img{
+	width: 20px;
+}
+.user-logs-box .tips-box .question-answer-pairs span{
+	font-size: 24px;
+	margin-left:10px;
+	color: #415063;
+}
+.user-logs-box .tips-box .question-answer-pairs span:last-child{color: #3794FF;margin-left: 10px;}
+.user-logs-box .tips-box .tips{padding: 0 20px 0px 20px;}
+.user-logs-box .tips-box .tips li{float: left;padding-left: 30px;}
+.user-logs-box .tips-box .tips li:FIRST-CHILD{font-size: 18px;color: #415063;padding-left: 0;margin-top: 9px;}
+.user-logs-box .tips-box .tips .green{
+	background-color: #00AA88;
+	margin-right: 10px;
+	display: block;
+	width: 16px;
+	height: 16px;
+	float: left;
+	margin-top: 12px;
+}
+.user-logs-box .tips-box .tips .yellow{
+	background-color: #FFB800;
+	margin-right: 10px;
+	display: block;
+	width: 16px;
+	height: 16px;
+	float: left;
+	margin-top: 12px;
+}
+.user-logs-box .tips-box .tips .red{
+	background-color: #DD4B39;
+	margin-right: 10px;
+	display: block;
+	width: 16px;
+	height: 16px;
+	float: left;
+	margin-top: 12px;
+}
+.user-logs-box .tips-box .tips .black{
+	background-color: #52656D;
+	margin-right: 10px;
+	display: block;
+	width: 16px;
+	height: 16px;
+	float: left;
+	margin-top: 12px;
+}
+.user-logs-box .tips-box .tips span{
+	font-size: 16px;
+	display: block;
+	float: left;
+	margin-top: 8px;
+}
+.tips-box .nav > li{
+	margin-left: 20px;
+}
+.tips-box .btn-group{
+	float: left;
+	margin-left: 20px;
+	height: 34px;
+	margin-top: 7px;
+}
+.tips-box .btn-group .btn-default{
+	height: 100%;
+	border-radius: 0;
+	border-bottom: none;
+	width: 90px;
+}
+.tips-box .btn-group .btn-default .caret{
+	float: right;
+	margin: 8px 0;
+}
+.tips-box .open>.dropdown-toggle.btn-default {
+    background-color: #fff !important;
+    border: 1px solid #ccc !important;
+    color: #333;
+    box-shadow: none;
+    border-bottom: none !important;
+}
+.tips-box .btn-group .btn-default:hover,.tips-box .btn-group .btn-default:active{
+	border: 1px solid #ccc !important;
+	background-color: #fff !important;
+	border-bottom: none !important;
+}
+.user-log-box .progress{
+	height:4px;
+}
+.user-log-box .progress .progress-bar-success{
+	background-color:#00AA88;
+}
+.user-log-box .progress .progress-bar-info{
+	background-color:#FFB800;
+}
+.user-log-box .progress .progress-bar-danger{
+	background-color:#DD4B39;
+}
+.user-log-box .progress .progress-bar-failure{
+	background-color:#52656D;
+}
+.user-log-box .user-logs-box .progress{
+	margin: 0 20px;
+}
+.statistics-box{
+	
+}
+.statistics-box .title{
+	height: 70px;
+	line-height: 70px;
+	font-size: 20px;
+	padding-left: 20px;
+}
+.statistics-box .statistics .user-avg-count{
+	padding-top: 5%;
+}
+.statistics-box .statistics .user-count{
+}
+.statistics-box .statistics .question-answer-rate-box{
+	margin-top: 6%;
+	/* margin-bottom: 2%; */
+}
+.statistics-box .statistics .user-count>div:first-child{
+	text-align:center;
+	/* padding: 0; */
+}
+.statistics-box .statistics .user-count img{
+	width: 26px;
+}
+.statistics-box .statistics .user-count .count{
+	font-size: 40px;
+	color: #3794FF;
+	margin-top: 10px;
+	text-align: center;
+}
+.statistics-box .statistics .user-count .count-title{
+	color: #415063;
+	margin-left: 10px;
+	font-size: 16px;
+}
+.statistics-box .statistics .rate-title{
+	font-size: 18px;
+	color:#415063;
+	text-align:center;
+	margin-top: 4px;
+}
+
+.star-rating .caption, .clear-rating{
+	display:none !important;
+}
+.rating-sm{
+	font-size: 2.2rem !important;
+	margin-top: -6px;
+	cursor: pointer !important;
+}
+.rating-container .rating-stars:before{
+	text-shadow:none !important;
+}
+.user-log-box .basic-info{
+	color: #B1BCC2;
+	font-size: 12px;
+}
+.user-log-box li .user-intent p{
+	font-size: 14px;
+	color:#000;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 200px;
+}
+.user-log-box li.active .user-intent p{
+	color:#fff;
+}
+#evaluateModal .star-rating{
+	display: inline-block;
+}
+#evaluateModal .score{
+	color: #FFB800;
+}
+#evaluateModal .choose-reason{
+	padding: 0;
+	margin-top: 20px;
+	padding-right: 20px;
+}
+.choose-reason label{
+	margin-top: 11px;
+	margin-bottom: 0;
+    font-weight: 300;
+    font-size: 12px;
+}
+.tips{
+	float: right;
+	margin-top: 32px;
+	font-size: 14px;
+}
+.tips li{
+	border: 1px solid #4cb5ab;
+	color: #4cb5ab;
+	background-color: #fff;
+	float: left;
+	padding:3px 5px;
+	margin-right: 10px;
+}
+#evaluateModal .choose-reason li{
+	border: 1px solid #dff6f9;
+	float: left;
+	padding:3px 5px;
+	text-align:center;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	background-color: #dff6f9;
+	color: #4cb5ab;
+}
+#evaluateModal .choose-reason li:hover,#evaluateModal .choose-reason li.active{
+	color:#fff;
+	background-color:#4cb5ab;
+	cursor:pointer;
+	border:1px solid #fff;
+}
+#evaluateModal .feedback textarea{
+	margin-top: 10px;
+	border:1px solid #dcdddd;
+	padding:4px 10px;
+	font-size:14px;
+	width: 100%;
+}
+#evaluateModal .rating-submit{
+	background-color: #3794FF;
+	color: #fff;
+	padding: 2px 16px;
+	border-radius: 0;
+	border: 1px solid #3794FF;
+}
+#evaluateModal .rating-submit:hover{
+	border: 1px solid #3794FF;
+}
+#evaluateModal .rating-submit:active{
+	background-color:#3794FF !important;
+	border:1px solid #3794FF !important;
+	outline:none !important;
+	border-radius:0 !important;
+	color:#fff;
+}
+
+.rating-submit{
+	background-color: #3794FF;
+    color: #fff;
+    padding: 6px 20px;
+    border-radius: 0;
+    border: 1px solid #3794FF;
+}
+.rating-submit:hover{
+	border: 1px solid #3794FF;
+	background-color: #3794FF;
+}
+.rating-submit:active{
+	background-color:#3794FF !important;
+	border:1px solid #3794FF !important;
+	outline:none !important;
+	border-radius:0 !important;
+	color:#fff;
+}
+
+.tips-text{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	color: #D5DBE0;
+	font-size: 30px;
+	margin-left: -17px;
+}
+.tips-text .mytext{
+	padding: 26% 100px;
+	word-wrap: break-word;
+	word-break: break-all;
+}
+.tips-text .loading{
+	padding-top: 28%;
+    padding-left: 46%;
+}
+
+.tips-text .loading .loading-icon{
+}
+.barchat-box{
+	
+}
+.barchat-box .intent-name-list{
+	position: absolute;
+	top: 238px;
+	left: 24px;
+	font-size:12px !important;
+	width: 300px;
+	padding-left: 0;
+}
+.barchat-box .intent-name-list li{
+	float:left;
+	width: 57px;
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	padding: 0 2px;
+}
+/* #mediaResponseModal start*/
+#mediaResponseModal .news-box{
+	padding: 10px;
+	height: 500px;
+	overflow: hidden;
+	overflow-y: auto;
+	padding-left: 30px;
+}
+#mediaResponseModal .news-box .news-li .news-title{
+	font-size: 16px;
+    margin-bottom: -10px;
+    display: block;
+    color: #000;
+}
+#mediaResponseModal .news-box .news-object .bg.active{
+	position:absolute;
+	z-index:10;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.4);
+	top: 0px;
+	left: 0px;
+	border-radius: 4px;
+}
+#mediaResponseModal .news-box .news-object{
+	position:relative;
+	cursor: pointer;
+	border: 0px solid #dcdddd;
+	border-radius:4px;
+	/* height: 200px; */
+	/* overflow: hidden; */
+	/* overflow-y: auto; */
+}
+#mediaResponseModal .news-box .news-object .bg img,#mediaResponseModal .news-box .news-object .bg img{
+	width: 40%;
+	position: absolute;
+	top: 50%;
+	margin-top: -20%;
+	left: 50%;
+	margin-left: -20%;
+	display:none;
+}
+#mediaResponseModal .news-box .news-object .bg.active img{
+	display:block;
+}
+#mediaResponseModal .image-box{
+	padding: 20px;
+	height: 500px;
+	overflow: hidden;
+	overflow-y: auto;
+	position:relative;
+}
+#mediaResponseModal .image-box .image-object{
+	cursor:pointer;
+}
+#mediaResponseModal .image-box .image-object .bg.active{
+	position:absolute;
+	z-index:10;
+	height:100%;
+	background-color: rgba(0,0,0,0.4);
+	top: -8px;
+    width: 96%;
+    left: 1%;
+}
+
+#mediaResponseModal .image-box .image-object .bg img,#mediaResponseModal .image-box .image-object .bg img{
+	width: 40%;
+	position: absolute;
+	top: 50%;
+	margin-top: -20%;
+	left: 50%;
+	margin-left: -20%;
+	display:none;
+}
+
+#mediaResponseModal .image-box .image-object .bg.active img{
+	display:block;
+}
+#mediaResponseModal .voice-box{
+	padding: 10px 20px;
+	height: 500px;
+	overflow: hidden;
+	overflow-y: auto;
+}
+#mediaResponseModal .voice-box table tr td{
+	border:0;
+}
+#mediaResponseModal .video-box{
+	padding: 0 20px;
+	height: 500px;
+	overflow: hidden;
+	overflow-y: auto;
+}
+#mediaResponseModal .video-box table tr td{
+	border:0;
+}
+#mediaResponseModal .video-box{
+	padding: 16px;
+	height: 500px;
+	overflow: hidden;
+	overflow-y: auto;
+}
+#mediaResponseModal .news-box{
+	
+}
+#mediaResponseModal .news-box>div{border: 1px solid #dcdddd;border-radius: 4px;padding: 10px;}
+.news-border{
+    border: 1px solid #dcdddd;
+    padding: 10px;
+    border-radius: 4px;
+    height: 300px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+/* #mediaResponseModal end*/
+.weixin-authorize{
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    padding: 6px 10px;
+    background-color: #00AA88;
+    color: #fff;
+    cursor: pointer;
+}
+.weixin-authorize:hover{
+    background-color: #00AA68;
+    
+}
+.weixin-authorize a{
+	text-decoration: none;
+	color:#fff;
+}
+.dropdown-toggle-customize{
+	height: 42px;
+	background: none;
+	padding: 0;
+}
+.setting-menu{
+	position: absolute;
+    bottom: 0px;
+    right: -50px;
+    margin-right: 20px;
+}
+.setting-icon{
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	background-repeat:no-repeat;
+	background-image: url(../img/setting.svg);
+	background-size: cover;
+}
+.setting-icon:hover{
+	background-image: url(../img/setting-hover.svg);
+}
+#assistantParaModal .assistant-para-box li{padding-top: 4px;padding-bottom: 6px;}
+#assistantParaModal .assistant-para-box li input{
+	padding: 4px 2px;
+	border: 0;
+	border-bottom: 1px solid #dcdddd;
+}
+#society-attributes .assistant-para-box li input{
+	text-align:left;
+}
+#assistantParaModal .assistant-para-box li span:FIRST-CHILD {
+	margin-right:20px;
+}
+#assistantParaModal .assistant-para-box li.sex{
+	padding-top: 7px;
+    padding-bottom: 3px;
+}
+#assistantParaModal .assistant-para-box li.sex label:FIRST-CHILD{
+	margin-right: 24px;
+}
+#assistantParaModal .assistant-para-box li.age input{
+	width:40px;
+}
+#assistantParaModal .assistant-para-box li.constellation input{
+	color: #999;
+    width: 70px;
+}
+#assistantParaModal .assistant-para-box li.zodiac input{
+	color: #999;
+    width: 70px;
+}
+#assistantAnswerModal .default-answer-box li{
+	padding:0;
+	border: none;
+}
+#assistantAnswerModal .default-answer-box li input{
+	border-radius: 0px;
+	box-shadow: none;
+	padding-right:32px;
+}
+.myhelp{
+	border: 0;
+    background-image: url(../img/help.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 1px;
+    height: 0px;
+    padding: 8px;
+    margin-left: 5px;
+    margin-top: -4px;
+}
+.myhelp:hover{
+	background-image: url(../img/help-hover.svg);
+	background-color:#fff;
+}
+.myhelp:focus, .myhelp:active{
+	outline:rgba(0,0,0,0) thin solid !important;
+	background-color:#fff !important;
+}
+.default-answer-box ul li{
+	position:relative;
+}
+.def-res-input{
+	
+}
+.default-answer-box ul li:hover i{
+	width: 18px;
+    height: 18px;
+    top: 8px;
+    right:10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    cursor: pointer;
+    background-image: url(../img/delete.svg);
+}
+.default-answer-box ul li:hover i:hover{
+	background-image: url(../img/delete-hover.svg);
+}
+.scenario-box .mysearch{
+	height: 23px;
+	width: 21px;
+	overflow: hidden;
+	top: 12px;
+	background-repeat: no-repeat;
+	position: absolute;
+	cursor: pointer;
+	background: url(../img/sprite.png) -396px -221px no-repeat;
+	background-image: url(../img/sprite.png) !important
+}
+.scenario-box .mysearch:hover{
+	background: url(../img/sprite.png) -522px -221px no-repeat;
+	background-image: url(../img/sprite.png) !important;
+}
+.scenario-box.active .mysearch{
+	background: url(../img/sprite.png) -51px -491px no-repeat;
+	background-image: url(../img/sprite.png) !important;
+}
+.scenario-box .mysearch{
+	right: 45px;
+}
+
+.mysearch-intent{
+	height: 22px !important;
+    width: 20px !important;
+    overflow: hidden !important;
+    top: 7px !important;
+    background-repeat: no-repeat !important;
+    position: absolute !important;
+    cursor: pointer !important;
+    background: url(../img/sprite.png) -396px -221px no-repeat !important;
+    background-image: url(../img/sprite.png) !important;
+    right: 100px !important;
+}
+.mysearch-intent:hover,.mysearch-intent.active{
+	background: url(../img/sprite.png) -522px -221px no-repeat !important;
+	background-image: url(../img/sprite.png) !important;
+}
+.add-intent{
+	overflow: hidden !important;
+    top: 4px !important;
+    background-repeat: no-repeat !important;
+    position: absolute !important;
+    cursor: pointer !important;
+    right: 14px !important;
+    background-size: cover !important;
+    font-size: 22px !important;
+    color: #3794FF;
+    width:36px;
+    height:22px;
+}
+.add-intent:hover,.add-intent.active{
+	color: #54ADF7;
+}
+.add-entity{
+	     height: 22px !important;
+    width: 20px !important;
+    overflow: hidden !important;
+    top: 24px !important;
+    background-repeat: no-repeat !important;
+    position: absolute !important;
+    cursor: pointer !important;
+    background: url(../img/entity-add.svg) -0px -0px no-repeat !important;
+    background-image: url(../img/entity-add.svg) !important;
+    right: 24px !important;
+    background-size: cover !important;
+}
+.add-entity:hover,.add-entity.active{
+	background-size: cover !important;
+	background-image: url(../img/entity-add-hover.svg) !important;
+}
+
+.image-obj{
+	overflow: hidden;
+    overflow-y: auto;
+    height: 200px;
+}
+.choose-service-type{
+	
+}
+.chose-line{
+	border-top: 1px solid #dcdddd;
+	margin: 8px 20px -16px 0;
+}
+.choosed-service-box{
+	padding: 0;
+	/* margin-top: 12px; */
+	margin-bottom: 14px;
+}
+.choosed-service-box li{
+	float: left;
+	border: 1px solid #3794FF;
+	padding: 2px 20px 4px 10px;
+	position: relative;
+	margin-right: 6px;
+	margin-top: 12px;
+}
+.choosed-service-box li:hover{
+	
+}
+.choosed-service-box li div{
+	
+}
+.choosed-service-box li span{
+	position: absolute;
+	top: 0px;
+	right: 4px;
+	color: #aaa;
+	font-size: 16px;
+	cursor:pointer;
+	display:none;
+}
+.choosed-service-box li:hover span{
+	display:block;
+}
+.choosed-service-box li span:hover{
+	color:#333;
+
+}
+.service-table{
+	margin-bottom: 0;
+	padding-bottom: 30px;
+	height: 84%;
+	overflow: hidden;
+	overflow-y: auto;
+	display: block;
+}
+.confirm-service{
+	text-align: center;
+}
+.confirm-service span{
+	padding: 6px 14px;
+	border: 1px solid #999;
+	cursor: pointer;
+}
+.confirm-service span:hover{
+	border:1px solid #3794FF;
+	background-color:#3794FF;
+	color:#fff;
+}
+.all-service-box{
+	display:none;
+}
+.selected-service-box{
+	display:none;
+}
+.edit-service{
+	border: 0;
+	background-image: url(../img/service-edit.svg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin-left: 10px;
+	margin-top: -4px;
+	width: 18px;
+	height: 20px;
+	display: inline-block;
+	cursor: pointer;
+}
+.edit-service:hover{
+	background-image: url(../img/service-edit-hover.svg);
+}
+.left-footer{
+	   position: absolute;
+    left: 190px;
+    bottom: 56px;
+}
+.left-footer .left-footer-help{
+	float:right;
+	border: 0;
+	background-image: url(../img/help.svg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 28px;
+	height: 28px;
+	cursor: pointer;
+	margin-right: 20px;
+	display: block;
+	text-decoration: none;
+	margin-top: 1px;
+}
+.left-footer .left-footer-help:hover{
+	background-image: url(../img/help-hover.svg);
+}
+/*脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗聽脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗戮脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗戮脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗聽脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭兟⒚⑩�卢脗娄脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮久兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗聽脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠脗垄脙垄芒鈥毬吢久冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮久兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗娄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗娄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗篓脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗聽脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗戮脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗戮脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗娄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓娄脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗娄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓娄脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗聽脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠脗垄脙垄芒鈥毬吢久冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮久兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗娄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗娄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗碌脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗聽脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗戮脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗戮脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗娄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗聽脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗戮脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗娄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓娄脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗娄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓娄脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗聽脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠脗垄脙垄芒鈥毬吢久冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓娄脙鈥毭偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮γ兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭兟⒚⑩�卢脗娄脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓娄脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗聽脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠脗垄脙垄芒鈥毬吢久冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮久兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗娄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗娄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗戮脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗聽脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗戮脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗戮脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗聽脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭兟⒚⑩�卢脗娄脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮久兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗聽脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠脗垄脙垄芒鈥毬吢久冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮久兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗娄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗娄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗娄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗聽脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗戮脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗戮脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗娄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓娄脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗娄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓娄脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗聽脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠脗垄脙垄芒鈥毬吢久冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮久兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗娄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗娄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗潞脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗聽脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗戮脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗戮脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗娄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓娄脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗娄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓娄脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗聽脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠脗垄脙垄芒鈥毬吢久冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮久兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗娄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗娄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗聬脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗聽脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗戮脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗戮脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗聽脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭兟⒚⑩�卢脗娄脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮久兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗聽脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠脗垄脙垄芒鈥毬吢久冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮久兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗娄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗娄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗搂脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗聽脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗戮脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗戮脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗娄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓娄脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗娄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓娄脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗聽脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠脗垄脙垄芒鈥毬吢久冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮久兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗娄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗娄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗庐脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗聽脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗戮脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗戮脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗娄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓娄脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗娄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓娄脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗聽脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠脗垄脙垄芒鈥毬吢久冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮久兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗娄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗娄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗聽脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗戮脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗戮脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗聽脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭兟⒚⑩�卢脗娄脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮久兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗聽脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠脗垄脙垄芒鈥毬吢久冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮久兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗娄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗娄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗搂脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗聽脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗戮脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗戮脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗娄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓娄脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗娄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓娄脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗聽脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠脗垄脙垄芒鈥毬吢久冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮久兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗娄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗娄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗聬脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗聽脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗戮脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗戮脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗娄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗聽脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗戮脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗娄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓娄脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗娄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓娄脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗聽脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠脗垄脙垄芒鈥毬吢久冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓娄脙鈥毭偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮γ兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭兟⒚⑩�卢脗娄脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓娄脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗聽脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠脗垄脙垄芒鈥毬吢久冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗⑩偓拧脙鈥毭偮犆兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮久兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脗聽脙茠脗垄脙垄芒鈧∶偮兟⒚⑩偓啪脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗嗏�脙垄芒鈥毬吢∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧∶冣�脗娄脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥毭偮犆兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩�卢脜隆脙鈥毭偮兤捗偮⒚兟⒚⑩�卢脜戮脙鈥毭偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧∶冣�脗垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗卢脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗娄脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠芒鈧犆兟⒚⑩�卢芒鈥灺⒚兤捗嗏�脙垄芒鈥毬偮犆兤捗偮⒚兟⒚⑩偓拧脗卢脙垄芒鈧久偮⒚兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓拧脙鈥毭偮⒚兤捗嗏�脙鈥毭偮⒚兤捗偮⒚兟⒚⑩偓拧脗卢脙鈥γ偮∶兤捗⑩偓拧脙鈥毭偮兤捗嗏�脙垄芒鈥毬偮γ兤捗⑩偓拧脙鈥毭偮∶兤捗嗏�脙鈥犆⑩偓鈩⒚兤捗⑩偓聽脙垄芒鈥毬⑩�垄脙茠脝鈥櫭冣�脗垄脙茠脗垄脙垄芒鈥毬吢∶冣�脗卢脙茠芒鈧γ冣�脗隆脙茠脝鈥櫭冣�芒鈧劉脙茠脗垄脙垄芒鈧∶偮冣�脗隆脙茠脝鈥櫭兟⒚⑩�卢脜隆脙茠芒鈧∶冣�脗聽 start*/
+.resource-manager .image-box{
+	padding: 20px 0;
+	/* height: 500px; */
+	overflow: hidden;
+	overflow-y: auto;
+	position:relative;
+	padding-top: 0px;
+}
+.resource-manager .image-box .image-object{
+	cursor:pointer;
+}
+.resource-manager .image-box .image-object .bg.active{
+	position:absolute;
+	z-index:10;
+	height:100%;
+	background-color: rgba(0,0,0,0.4);
+	top: -8px;
+    width: 96%;
+    left: 1%;
+}
+
+.resource-manager .image-box .image-object .bg img,.resource-manager .image-box .image-object .bg img{
+	width: 40%;
+	position: absolute;
+	top: 50%;
+	margin-top: -20%;
+	left: 50%;
+	margin-left: -20%;
+	display:none;
+}
+
+.resource-manager .image-box .image-object .bg.active img{
+	display:block;
+}
+.resource-manager .voice-box{
+	padding: 10px 20px;
+	height: 500px;
+	overflow: hidden;
+	overflow-y: auto;
+}
+.resource-manager .voice-box table tr td{
+	border:0;
+}
+.resource-manager .video-box{
+	padding: 0 20px;
+	height: 500px;
+	overflow: hidden;
+	overflow-y: auto;
+}
+.resource-manager .video-box table tr td{
+	border:0;
+}
+.resource-manager .video-box{
+	padding: 16px;
+	height: 500px;
+	overflow: hidden;
+	overflow-y: auto;
+}
+.resource-manager .news-box{
+	
+}
+.resource-manager .news-box>div{border: 1px solid #dcdddd;border-radius: 4px;padding: 10px;}
+.resource-manager .image-obj{
+	overflow: hidden;
+    overflow-y: auto;
+    height: 200px;
+}
+.resource-manager .image-box-ul{
+	margin:0;padding:0;
+}
+.resource-manager .image-box-li{
+	width: 170px;
+	height: 220px;
+	margin-right: 20px;
+	margin-bottom: 30px;
+	position:relative;
+}
+.resource-manager{
+	padding:30px;padding-right:0;
+}
+.resource-manager .image-box-li .img-box{
+	position:relative;
+}
+.resource-manager .image-box-li .img-box .bg{
+	position: absolute;
+    background-color: rgba(0,0,0,0.3);
+    width: 170px;
+    height: 170px;
+    display:none;
+    cursor:pointer;
+}
+.resource-manager .image-box-li .img-box:hover .bg,.resource-manager .image-box-li .img-box.active .bg{
+	display:block;
+}
+.resource-manager .image-box-li .bg img{
+	width: 80px;
+    margin: 60px 46px;
+}
+.resource-manager .image-pic{
+	width: 170px;
+	height: 170px;
+	cursor: pointer;
+}
+.resource-manager .image-text{
+	text-align: center;
+	padding: 6px 3px;
+	border: 1px solid #dcdddd;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	word-wrap: break-word;
+	word-break:break-all;
+}
+.resource-manager .image-operation{
+	position:relative;
+	border: 1px solid #dcdddd;
+	height: 30px;
+	border-top: 0;
+}
+.resource-manager .image-operation .edit{
+	position:absolute;
+	background-image: url(../img/edit.svg);
+	background-size:cover;
+	width: 15px;
+	height: 17px;
+	cursor:pointer;
+	left: 46px;
+	top:6px;
+}
+.resource-manager .image-operation .edit:hover{
+	background-image: url(../img/edit-hover.svg);
+}
+.resource-manager .image-operation .delete{
+	position:absolute;
+	background-image: url(../img/delete.svg);
+	background-size:cover;
+	width: 16px;
+	height: 16px;
+	cursor:pointer;
+	left: 110px;
+	top: 7px;
+}
+.resource-manager .image-operation .delete:hover{
+	background-image: url(../img/delete-hover.svg);
+}
+.reource-operation{
+	padding: 2px 14px;
+	margin-bottom: 10px;
+	background-color: #F7F7F7;
+	margin-right: 26px;
+	color: #B5B5B6;
+	padding-top: 10px;
+	margin-top: 16px;
+	/* padding: 0; */
+}
+#weixin-customize-news-detail .reource-operation{
+	margin-right: 0 !important;
+}
+.reource-operation label,.reource-operation .all-delete{
+	cursor:pointer;
+}
+.reource-operation .all-delete:hover{
+	color:#3794FF;
+}
+.image-box table tr{
+	position:relative;
+}
+.image-box table td{
+	border:0 !important;
+}
+#img .upload-image{
+	background-image: url(../img/upload-image.svg);
+	background-size:cover;
+	background-repeat: no-repeat;
+	width: 76px;
+    height: 16px;
+	cursor:pointer;
+}
+#img .upload-image:hover{
+	background-image: url(../img/upload-image-hover.svg);
+}
+.upload-voice{
+	background-image: url(../img/upload-voice.svg);
+	background-size:cover;
+	background-repeat: no-repeat;
+	width: 76px;
+	height: 16px;
+	cursor:pointer;
+	margin-right: 10px;
+}
+.upload-voice:hover{
+	background-image: url(../img/upload-voice-hover.svg);
+}
+.upload-video{
+	background-image: url(../img/upload-video.svg);
+	background-size:cover;
+	background-repeat: no-repeat;
+	width: 76px;
+	height: 16px;
+	cursor:pointer;
+	margin-right: 10px;
+}
+.upload-video:hover{
+	background-image: url(../img/upload-video-hover.svg);
+}
+.voice-action{
+	width: 60px;border:1px solid red;position:relative;
+}
+.voice-action .edit{
+	background-image: url(../img/edit.svg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 15px;
+	height: 17px;
+	cursor: pointer;
+	/* display: block; */
+	float: right;
+	position:absolute;
+	right: 82px;
+}
+.voice-action .edit:hover{
+	background-image: url(../img/edit-hover.svg);
+}
+.voice-action .delete{
+	background-image: url(../img/delete.svg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 14px;
+	height: 16px;
+	cursor: pointer;
+	display: block;
+	/* float: right; */
+	position:absolute;
+	right: 50px;
+}
+.voice-action .delete:hover{
+	background-image: url(../img/delete-hover.svg);
+}
+
+#addresource .info div div{
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 300px;
+}
+#addresource .info{
+	position: relative;
+}
+#addresource .info a{
+	position: absolute;
+   	right: 2px;
+    top: 0;
+}
+#addresource .info .status{
+	display: inline;
+    position: absolute;
+    right: 20px;
+    top: 0;
+}
+/*end*/
+.modal-dialog{
+	width: 490px;
+}
+.modal{
+	font-family: "Microsoft YaHei", "Lucida Grande", "Lucida Sans Unicode", arial, sans-serif;
+}
+.modal .modal-header{
+	border-bottom:0;
+	padding: 20px;
+	padding-bottom: 10px;
+}
+.modal .modal-content{
+	border-radius:0;
+	width: 490px;
+}
+
+.modal .add-material{
+	width: 800px;
+}
+
+.modal .modal-title{
+	color: #33495f;
+	font-weight: 500;
+	padding-left: 4px;
+	font-size: 20px;
+}
+.modal .close-modal{
+	width: 18px;
+    height: 18px;
+    top: 25px;
+    right: 18px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: absolute;
+	cursor: pointer;
+	background-image: url(../../img/close-modal.svg);
+}
+.modal .close-modal:hover{
+	background-image: url(../../img/close-modal-hover.svg);
+	cursor: pointer;
+}
+
+.modal .modal-body{
+	padding: 16px 40px 10px;
+	word-break: break-all;
+}
+.modal .modal-footer{
+	border-top:none;
+	padding: 40px;	
+	padding-bottom: 30px;
+}
+
+.modal .footer-modal{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+.modal .footer-modal .save-modal,.modal .footer-modal .cancel-modal,.modal .footer-modal .not-save-modal{
+	padding: 5px 34px;
+	cursor: pointer;
+	background-color: #ffffff;
+	font-size: 16px;
+}
+.modal .footer-modal .submit-modal{
+	padding: 7px 20px;
+    cursor: pointer;
+    color: #fff;
+    background-color: #3794FF;
+    border-radius: 3px;
+    border: 1px solid;
+}
+.modal .footer-modal .submit-modal:hover{
+	background-color:#54ADF7;
+}
+.modal .footer-modal .save-modal{
+	color:#fff;
+	background-color:#3794FF;
+}
+.modal .footer-modal .cancel-modal:hover,.modal .footer-modal .not-save-modal:hover{
+	color:#3794FF;
+	background-color:#fff;
+}
+#assistantAnswerModal .submit-modal{
+	background-color: #3794FF;
+	color: #fff;
+	border-radius: 0;
+	border: 0;
+}
+.modal .footer-box{
+	margin-bottom:8px;
+}
+.modal-header .close{
+	margin-top: -5px !important;
+    font-size: 40px !important;
+    font-weight: 100 !important;
+}
+.resource-empty-tips{
+	font-size: 24px;
+    width: 100%;
+    text-align: center;
+    color: #ddd;
+    margin-top: 14%;
+}
+.speach-response .response-action{
+	margin-top: -18px;
+    padding: 6px 10px;
+    background-color: #F0F2F4;
+    margin-bottom: -34px;
+    border: 1px solid #dcdddd;
+    cursor: pointer;
+    position: relative;
+}
+.speach-response .response-action li.folding{
+	color:#B5B5B6;
+	cursor:pointer;
+}
+.speach-response .response-action li.folding i{
+	color: #B5B5B6;
+	font-size: 14px;
+	margin-right: 10px;
+	margin-top: 4px;
+}
+
+.speach-response .response-action li.folding:hover{
+	color:#3794FF;
+}
+.speach-response .response-action li.delete{
+	color:#B5B5B6;
+	margin-left: 20px;
+	cursor:pointer;
+	margin-right: 20px;
+	font-size: 16px;
+}
+.speach-response .response-action li.delete i{
+	position: absolute;
+	background-image: url(../img/delete.svg);
+	background-size:cover;
+	width: 18px;
+	height: 18px;
+	right: 54px;
+	top: 9px;
+	display:none;
+	cursor:pointer;
+}
+.speach-response .response-action:hover li.delete i{
+	display:block;
+}
+.speach-response .response-action:hover li.delete i:hover{
+	background-image: url(../img/delete-hover.svg);
+}
+.speach-response .response-action li.delete:hover{
+	color:#3794FF;	
+}
+
+
+.speach-response .response-box{
+	margin-top: 0;
+	overflow: hidden;
+}
+
+.customize-header .customize-radio{
+	margin: 0;
+	vertical-align: middle;
+	margin-right: 10px;
+	margin-left: 15px;
+}
+
+.customize-body label{
+	display: inline-block;
+	margin: 0;
+	vertical-align: middle;
+	font-weight: 300;
+	width: 15%;
+	padding-right: 20px;
+	text-align: right;
+	margin-bottom: 0;
+}
+
+.customize-header label{
+	display: inline-block;
+	width: 8%;
+	vertical-align: middle;
+	margin-left: 2%;
+	margin-right: 3%;
+	margin-bottom: 0;
+}
+
+#customize .customize-header label{
+	width: 22%;
+}
+
+.customize-body .form-control{
+	display: inline-block;
+	width: 84%;	
+	border-bottom: 1px solid rgba(0,0,0,0);
+}
+.customize-body .customize-news .form-control{
+	width: 85%;
+}
+.customize-body .form-control:focus{
+	border-bottom: 1px solid #66afe9 !important;
+	border-right: 1px solid #66afe9 !important;
+	border-top: 1px solid #66afe9 !important;
+}
+.add-bottom{
+	border-bottom: 1px solid #ccc !important;
+}
+.speach-response .add-more-response i{
+	position: absolute;
+    background-image: url(../img/add-gray.svg);
+    background-size: cover;
+    width: 18px;
+    height: 18px;
+    left: 1px;
+    display: inline-block;
+    cursor: pointer;
+    top: 1px;
+}
+.speach-response .add-more-response span{
+	color: #b5b5b6;
+}
+.speach-response .add-more-response section{
+	position: relative;
+	padding-left: 20px;
+	cursor:pointer;
+	margin-top: -10px;
+}
+.speach-response .add-more-response section:hover i{
+	background-image: url(../img/add.svg);
+}
+.speach-response .add-more-response section:hover span{
+	color:#7fd5ff;
+}
+.response-box-close{
+	height:0;
+}
+.response-box-open{
+	height:100%;
+}
+.intent-table-th{
+	font-weight:100;
+}
+
+.customize-body .col-md-offset-1{
+	margin-left: 0;
+}
+
+.customize-body .col-md-10{
+	width: 100%;
+	padding: 0;
+}
+
+#personal-box .list-group-item{
+	border: none;
+}
+
+#family-box .list-group-item{
+	border: none;
+}
+#weixin-customize-news-detail .add-customize-news{
+	position: absolute;
+	background-size: 18px 18px;
+    background-repeat: no-repeat;
+    width: 127px;
+    height: 18px;
+    line-height: 18px;
+    cursor: pointer;
+	background-image: url(../img/add.svg);
+	top: -22px;
+	right: 5px;
+	padding-left: 24px;
+	color: #3dbefd;
+}
+.add-customize-news:hover{
+	color: #3794FF;
+}
+
+.delete-customize-news{
+	border-top: 1px solid #ccc;
+	height: 30px;
+	background:#F0F2F4 url(../img/delete.svg) no-repeat center;
+	background-size: 16px;
+}
+.delete-customize-news:hover{
+	background:#F0F2F4 url(../img/delete-hover.svg) no-repeat center;
+	background-size: 16px;
+	cursor: pointer;
+}
+	
+.btn-danger, .btn-danger.active, .btn-danger:active, .open>.dropdown-toggle.btn-danger, .btn-danger:hover{
+	border: none;
+	background: none;
+	color: #333;
+	font-weight: 300;
+	box-shadow: none;
+}
+.btn-danger.active.focus, .btn-danger.active:focus, .btn-danger.active:hover, .btn-danger:active.focus, .btn-danger:active:focus, .btn-danger:active:hover, .open>.dropdown-toggle.btn-danger.focus, .open>.dropdown-toggle.btn-danger:focus, .open>.dropdown-toggle.btn-danger:hover{
+	border: none;
+	background: none;
+	color: #333;
+	font-weight: 300;
+	box-shadow: none;
+}
+.btn-group-vertical>.btn.active, .btn-group-vertical>.btn:active, .btn-group-vertical>.btn:focus, .btn-group-vertical>.btn:hover, .nav-tabs>.btn-group>.btn.active, .nav-tabs>.btn-group>.btn:active, .nav-tabs>.btn-group>.btn:focus, .nav-tabs>.btn-group>.btn:hover{
+	border: none;
+	background: none;
+	color: #333;
+	font-weight: 300;
+	box-shadow: none;
+}
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover{
+	background: none;
+	border: none;
+}
+.dropdown-menu-customize{
+	width: 100px;
+	min-width: 120px;
+}
+.caret-customize{
+	border-top: 6px dashed;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    color: #3794FF;
+}
+.nav-tabs>.btn-group>.customize:hover{
+	color: #3794FF;
+}
+.nav-tabs>.btn-group>.customize:focus{
+	color: #3794FF;
+	border-bottom: 2px solid #3794FF;
+}
+.customize-news{
+	width: 100%;
+	border: 1px solid #ccc;
+	font-size: 0;
+}
+.customize-news label{
+	font-size: 14px;
+}
+
+.fixed-btn {
+    position: fixed;
+    bottom: 2px;
+    width: 234px;
+    height: 34px;
+    line-height: 34px;
+    color: #595757;
+    font-size: 14px;
+    font-weight: 200;
+    text-align: center;
+    font-family: "Microsoft YaHei", "Lucida Grande", "Lucida Sans Unicode", arial, sans-serif;
+    z-index: 1040;
+    -webkit-backface-visibility: hidden;
+    cursor: pointer;
+    background-color: #F4F4F4;
+}
+.fixed-btn:hover{
+    color: #3794FF;
+}
+.fixed-btn .try-icon{
+	height: 15px;
+    width: 18px;
+    overflow: hidden;
+    position: absolute;
+    cursor: pointer;
+    left: -moz-calc(50% - 45px);
+    left: -webkit-calc(50% - 45px);
+    left: -ms-calc(50% - 45px);
+    left: -o-calc(50% - 45px);
+    left: calc(50% - 45px);
+    top: 9px;
+    background-repeat: no-repeat;
+    background: url(https://dn-vbuluo-static.qbox.me/try.svg) -0px -0px no-repeat;
+}
+.fixed-btn:hover .try-icon{
+	background: url(../img/try-hover.svg) -0px -0px no-repeat;
+}
+.try-dialog{
+	margin: 0;
+	padding: 0;
+	width: 348px !important;
+	position: absolute;
+	left: 10px;
+	bottom: 8px;
+	z-index: 1040;
+}
+.try-contant{
+	width: 348px;
+	height: 408px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+}
+.modal .try-header{
+	height: 40px;
+	padding: 0;
+	line-height: 40px;
+}
+.try-header span{
+	margin-left: 20px;
+}
+.try-header .close-modal{
+	height: 15px;
+	width: 15px;
+	top: 12.5px;
+	right: 12.5px;
+}
+.modal .try-body{
+	padding: 0;
+	height: -moz-calc(100% - 40px);
+	height: -webkit-calc(100% - 40px);
+	height: calc(100% - 40px);
+	border: none;
+}
+.try-nav{
+	padding-left: 20px;
+}
+.try-nav li{
+	margin-right: 30px;
+}
+.tab-content{
+	height: -moz-calc(100% - 42px) !important;
+	height: -webkit-calc(100% - 42px) !important;
+	height: calc(100% - 42px) !important;
+}
+.try-body .center-list-box{
+	position: relative;
+	height: 100%;
+	border-right: none !important;
+}
+.try-searchContain{
+	height: 100%;
+    position: relative;
+    width: 100%;
+    padding-bottom: 62px !important;
+    top: 0 !important;
+    padding-top: 0 !important;
+}
+.try-testContain{
+	width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+.try-testTextarea {
+    width: 100%;
+    height: 62px !important;
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid #ddd;
+}
+.try-testTextarea textarea {
+    border: none;
+    resize: none;
+    outline: none;
+    display: block;
+    width: 100%;
+    padding: 0;
+    font-size: 14px;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    height: 61px;
+}
+.try-testTextarea button {
+    background-color: #3794FF;
+    border: medium none;
+    bottom: 0;
+    float: right;
+    margin-bottom: 4px;
+    margin-right: 4px;
+    position: absolute;
+    right: 0;
+    padding: 4px 8px;
+}
+.max-modal{
+	height: 15px;
+    width: 15px;
+    top: 12.5px;
+    right: 40px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    cursor: pointer;
+    background-image: url(../img/large-default.svg);
+}
+.max-modal:hover{
+	background-image: url(../img/large-hover.svg);
+}
+.try-nav-left-max{
+	height: 70px;
+	border-bottom: none;
+	margin-left: 20px;
+}
+.try-nav-left-max li{
+	margin-top: 28px;
+}
+.try-nav-max{
+	height: 70px;
+	border-bottom: none;
+	margin-left: 20px;
+}
+.try-nav-max li{
+	margin-top: 28px;
+}
+#weixin-try-max, #local-try-max{
+	height: 100%;
+	position: relative;
+}
+#weixin-try-max .searchContain{
+	top: 0;
+	padding-top: 0;
+}
+.tab-content-max{
+	height: -moz-calc(100% - 72px) !important;
+	height: -webkit-calc(100% - 72px) !important;
+	height: calc(100% - 72px) !important;
+}
+#json, #applist{
+	height: 100%;
+	position: relative;
+}
+#json .JSONContain{
+	top: 0;
+	padding-top: 0;
+}
+.try-nav-max .close-try-max{
+    height: 16px;
+    width: 16px;
+    top: 14px;
+    right: 16px;
+    background-image: url(../../img/close-modal.svg);
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+}
+.try-nav-max .close-try-max:hover{
+	background-image: url(../../img/close-modal-hover.svg);
+}
+.box .left-box .list-group-item-try{
+	background: none;
+	background-color: #fff !important;
+}
+.try-nav-max .min-try-max{
+    height: 18px;
+    width: 18px;
+    top: 13px;
+    right: 50px;
+    background-image: url(../img/small-default.svg);
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+}
+.try-nav-max .min-try-max:hover{
+	background-image: url(../img/small-hover.svg);
+}
+.chooseed-tips{
+	font-size: 12px;
+	color: #00acc1;
+}
+#assistantParaModal li{
+	border: none;
+}
+#assistantParaModal .btn{
+	border-radius: 0;
+	color: #747474;
+	border-color: #747474;
+}
+#assistantParaModal .btn:not(.myhelp):hover{
+	color:#fff;
+	border:1px solid #fff;
+}
+#assistantParaModal .btn[disabled],#assistantParaModal li.disabled a{
+	cursor: default !important;
+}
+#assistantParaModal .assistant-para-box li:hover i.delete{
+	display: inline-block;
+}
+#assistantParaModal .assistant-para-box li.favorite:hover i.delete{
+	display: none;
+}
+#assistantParaModal .assistant-para-box li.favorite div:hover i.delete{
+	display: inline-block;
+}
+#assistantParaModal .assistant-para-box li.appearance:hover i.delete{
+	display: none;
+}
+#assistantParaModal .assistant-para-box li.appearance div:hover i.delete{
+	display: inline-block;
+}
+#assistantParaModal .assistant-para-box li i.delete{
+	background-image: url(../img/delete.svg);
+    background-size: cover;
+    width: 14px;
+    height: 14px;
+    display: none;
+    cursor: pointer;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+#assistantParaModal .assistant-para-box .appearance i.delete{
+	margin-top: 9px;
+	margin-right: 35px;
+}
+#assistantParaModal .assistant-para-box li i.delete:hover{
+	background-image: url(../img/delete-hover.svg);
+}
+li.birthday input.age{
+	width: 40px;
+	text-align: center;
+}
+li.birthday input.zodiac{
+	width: 28px;
+	text-align: center;
+}
+li.birthday input.constellation{
+	width: 60px;
+	text-align: center;
+}
+.assistantPara-box{
+	height: 85%;
+    margin-top: 70px;
+    top: -70px;
+    overflow-y: auto;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 80px;
+}
+.assistantPara-box .list-group-item ul{
+	margin: 0;
+	padding: 0;
+	margin-left: -4px;
+    display: inline-block;
+} 
+.assistantPara-box .list-group-item ul.dropdown-menu{
+	display: none;
+}
+.assistantPara-box .list-group-item .open ul.dropdown-menu{
+	display: block;
+}
+.assistantPara-box .list-group-item ul li{
+	margin: 0 !important;
+	padding: 2px !important;
+	padding-right: 24px !important;
+	height: 35px;
+}
+.assistantPara-box .list-group-item ul.dropdown-menu li{
+	height: 27px;
+	padding: 0 !important;
+}
+.assistantPara-box .list-group-item ul .alert{
+    padding: 6px !important;
+    display: inline-block;
+    color: #999;
+    font-size: 15px;
+    border-radius: 0;
+    font-weight: 300;
+    padding-right: 22px !important;
+    border: 1px solid #3794FF !important;
+    margin-right: 4px !important;
+}
+.assistantPara-box .list-group-item ul .alert .close{
+	top: -20px;
+    right: -18px;
+	font-size: 20px !important;
+	font-weight: 300;
+}	
+.appearance .panel{
+	margin: 0;
+	margin-top: 5px;
+}
+.appearance .panel-heading{
+	cursor: pointer;
+}
+#physical-attributes .panel-body ul.item-list li{
+	padding-right: 0 !important;
+}
+#try-try .try-close{
+    height: 15px;
+    width: 15px;
+    top: 12.5px;
+    right: 11px;
+    background-image: url(../../img/close-modal.svg);
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+}
+#try-try .try-close:hover{
+	background-image: url(../../img/close-modal-hover.svg);
+}
+.physical-attributes-title{
+	font-family: "Microsoft YaHei", "Lucida Grande", "Lucida Sans Unicode", arial, sans-serif;
+	font-size: 20px;
+}
+#assistantParaModal .group-head{
+	font-size: 16px;
+	color: #556572;
+	background-color: #EBEEF0;
+	border-radius: 0 !important;
+}
+#assistantParaModal .list-group-item span{
+	font-size: 16px;
+}
+#assistantParaModal .group-head span{
+	font-size: 12px;
+}
+#assistantParaModal .list-group-item div span{
+	font-size: 14px;
+}
+#assistantParaModal .btn[disabled],.assistant-para-box .btn:hover{
+	border-color: #3794FF !important;
+	color: #3794FF !important;
+	background-color: #fff;
+}
+#assistantParaModal .close-assistantPara{
+	height: 18px;
+    width: 18px;
+    top: 26px;
+    right: 42px;
+    background-image: url(../../img/close-modal.svg);
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+}
+.rating-cancel{
+	border: 0;
+	margin-right: 14px;
+}
+.rating-cancel:hover{
+	background-color:#fff;
+	color:#3794FF !important;
+}
+.rating-cancel:active{
+	background-color:#fff !important;
+	color:#000 !important;
+	border:none !important;
+	outline:none !important;
+	border-radius:0 !important;
+}
+
+#assistantParaModal .rating-submit{
+	background-color: #3794FF;
+	color: #fff;
+	padding: 2px 16px;
+	border-radius: 0;
+	border: 1px solid #3794FF;
+}
+#assistantParaModal .rating-submit:hover{
+	border: 1px solid #3794FF;
+}
+.rating-submit:active{
+	background-color:#3794FF !important;
+	border:1px solid #3794FF !important;
+	outline:none !important;
+	border-radius:0 !important;
+	color:#fff;
+}
+#try-try{
+	display:none;
+}
+#try-try .try-close:hover{
+	background-image: url(../../img/close-modal-hover.svg);
+}
+
+#assistantParaModal .close-assistantPara:hover{
+	background-image: url(../../img/close-modal-hover.svg);
+}
+#assistantParaModal .ass-para-box{
+	    position: relative;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 0;
+    border: 1px solid #dcdddd;
+    margin-top: 2px;
+    margin-bottom: 10px;
+}
+#assistantParaModal .assistant-title{
+	    position: absolute;
+    left: 22px;
+     top: 14px; 
+    width: 80px;
+    color: #333333;
+}
+#assistantParaModal .assistant-learn{
+	    position: absolute;
+    right: 60px;
+    width: 300px;
+    padding: 16px 0;
+    text-align: right;
+    top: -1px;
+}
+#assistantParaModal .assistant-learn label{
+}
+.assistant-learn .preview{
+	height: 25px;
+	width: 23px;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    position: absolute;
+    cursor: pointer;
+    background: url(../img/sprite.png) -265px -50px no-repeat;
+    background-image: url(https://dn-vbuluo-static.qbox.me/sprite1.png) !important;
+    margin-left:12px;
+    margin-top: -3px;
+}
+.assistant-learn .preview:hover{
+	background: url(../img/sprite.png) -288px -50px no-repeat;
+}
+.assistant-learn .preview:hover{
+	
+}
+#assistantParaModal .assistant-value{
+	width: 100%;
+    padding: 0px 0px 0 126px;
+    text-align: left;
+    margin-top:2px;
+}
+#assistantParaModal .assistant-value label{
+	padding: 1px 0 0px 0;
+    margin-right: 200px;
+    color:#999;
+    font-weight:400;
+}
+#assistantParaModal .assistant-value label input{
+	margin-right:10px;
+}
+#assistantParaModal .assistant-value .inputbox{
+	border: 0;
+    border-bottom: 1px solid #dcdddd;
+    font-size: 15px;
+    margin-left: 6px;
+    padding: 0 6px;
+    height: 36px;
+    padding-right:70px;
+}
+#assistantParaModal .assistant-value .tail-box{
+	
+}
+#assistantParaModal .assistant-value .tail-box li{
+	padding:6px;
+}
+#assistantParaModal .assistant-value .tail-box li .and{
+	color:#3794FF;
+}
+#assistantParaModal .assistant-value .tail-box li .add-tail{
+	margin-left:20px;
+	cursor:pointer;
+	color:#aaa;
+}
+#assistantParaModal .assistant-value .tail-box li .add-tail:hover{
+	color:#3794FF;
+}
+#assistantParaModal .assistant-value .preview-box{
+	background-color: #F7F7F7;
+    padding: 8px;
+    width: 68%;
+    margin: 10px 0px 10px 24px;
+    color: #666;
+}
+#assistantParaModal .assistant-value .preview-box .question{
+	margin-bottom:6px;
+}
+#assistantParaModal .assistant-value .value-box{
+	display: inline-block;
+    margin: -2px 0 4px 24px;
+    padding: 0 200px 0 0;
+}
+#assistantParaModal .assistant-value .value-box li{
+	padding: 6px !important;
+    display: inline-block;
+    color: #999;
+    font-size: 15px;
+    border-radius: 0;
+    font-weight: 300;
+    padding-right: 22px !important;
+    border: 1px solid #3794FF !important;
+    margin-right: 4px !important;
+    margin: 2px !important;
+    height: 38px;
+}
+#assistantParaModal .assistant-value .value-box li p{
+	
+}
+#assistantParaModal .assistant-value .value-box li .close{
+	top: -23px;
+    right: -18px;
+    font-size: 20px !important;
+    font-weight: 300;
+    position: relative;
+    color: inherit;
+}
+
+#assistantParaModal .assistant-value ul{
+	margin: 0;
+	padding:0;
+}
+.appearance .panel-heading{
+	background-color: #fff !important;
+	border: 1px solid #ccc;
+}
+.assistant-para-personal .dropdown-menu li{
+	padding: 0px !important;
+	border-bottom: 1px solid #fff !important;
+	height: 27px;
+}
+.assistant-para-personal .dropdown-menu li.disabled a{
+	background-color: #DFDFDF;
+	color: #b5b5b6;
+}
+.assistant-para-personal .open>.dropdown-toggle.btn-default{
+	color: #fff !important;
+	box-shadow: none;
+}
+.assistant-para-box .btn:active{
+	color: #fff !important;
+	box-shadow: none !important;
+}
+.assistant-para-box .list-group-item .btn{
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+.assistant-para-box .list-group-item.birthday .btn,.assistant-para-box .list-group-item.name .btn{
+	margin-right: 0;
+	margin-bottom: 0;
+}
+.assistant-footer{
+	height: 60px;
+    line-height: 60px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-left: 40px;
+    padding-right: -moz-calc(20% + 15px);
+    padding-right: -webkit-calc(20% + 15px);
+    padding-right: calc(20% + 15px);
+    padding-top: 12px;
+    background-color: #fff;
+}
+.assistant-footer .alert{
+	margin-right: 5px !important;
+}
+.assistant-footer .rating-cancel{
+    margin-right: 5px;
+}
+.assistant-footer .rating-submit{
+    margin-top: 4px;
+}
+.delete-tips{
+	font-size: 12px;
+	font-weight: 300 !important;
+}
+.delete-tips label{
+	font-size: 12px;
+	font-weight: 300 !important;
+}
+.assistant-para-box li,.assistant-para-personal li.appearance > div,.assistant-para-personal li.favorite > div{
+	display: none;
+}
+.favorite div{
+	padding-top: 8px;
+    padding-bottom: 6px;
+}
+.assistant-para-personal .dropdown-menu li{
+	display: block;
+}
+.assistant-para-personal li.appearance li{
+	display: list-item;
+}
+.box .center-box .center-list-main>.list-group.intent .list-group-item{
+	overflow: visible;
+}
+.box .center-box .center-list-main>.list-group.intent .list-group-item span{
+	display: inline-block;
+	width: 88%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.box .center-box .center-list-main>.list-group.intent .list-group-item .dropdown-menu span{
+	width: 120px;
+}
+.list-group.intent .btn-group{
+	display: none;
+}
+.list-group.intent .list-group-item:hover .btn-group{
+	display: inline-block;
+}
+.list-group.intent .list-group-item .dropdown-menu{
+	border-radius: 0;
+	color: #333;
+	font-size: 14px;
+	position: fixed;
+	left: auto;
+	top: auto;
+	right: auto;
+    margin-left: -131px;
+    margin-top: -12px;
+}
+.list-group.intent .list-group-item .dropdown-toggle{
+	box-shadow: none;
+}
+.list-group.intent .list-group-item .dropdown-submenu .dropdown-menu{
+	margin-left: 160px;
+	margin-top: -58px;
+	overflow-y: auto;
+    max-height: 130px;
+}
+.list-group.intent .list-group-item .dropdown-submenu .dropdown-menu li{
+	padding: 0;
+	border: none !important;
+}
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block;
+}
+.scenario-object span{
+	font-size: 14px !important;
+}
+.sort-key{
+	width: 22px;
+    height: 22px;
+    right: 66px;
+    position: absolute;
+    cursor: pointer;
+    top: 4px;
+
+}
+.sort-key .dropdown-toggle{
+	width: 22px;
+    height: 22px;
+    font-size: 20px;
+}
+.sort-key .dropdown-toggle:hover{
+	color:#54ADF7;
+}
+.sort-key .dropdown-menu{
+	position: fixed;
+	left: auto;
+	top: auto;
+}
+.sort-key li.active a{
+	background: none;
+	color: #3794FF;
+}
+.sort-key li.active:hover{
+	background-color: #f5f5f5;	
+}
+.sort-key li.active a:hover{
+	background: none;
+	color: #3794FF;	
+}
+ .sort-key li i{
+ 	width: 13px !important;
+    height: 8px !important;
+    margin-top: 6px !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background: url(../img/checked1.svg) !important;
+ }
+.sort-key li.active i{
+	width: 13px !important;
+    height: 8px !important;
+    margin-top: 6px !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background: url(../img/checked.svg) !important;
+ }
+.logs .question-answer .pull-left{
+ 	padding-right: 0;
+ 	margin-right: 10px;
+}
+.logs .question-answer span.pull-left{
+	padding: 0 5px;
+}
+#export-html5-link .link{
+	display: inline-block;
+ 	width: -moz-calc(100% - 100px);
+ 	width: -webkit-calc(100% - 100px);
+ 	width: -ms-calc(100% - 100px);
+ 	width: -o-calc(100% - 100px);
+ 	width: calc(100% - 100px);
+ 	border-radius: 0;
+ 	height: 30px;
+}
+#export-html5-link .modal-body{
+    color: #00ACC1
+}
+.copy-link{
+	background-color: #fff;
+	color: #33495F;
+	padding: 4px 16px;
+	border-radius: 0;
+	border: 1px solid #33495F;
+	height: 30px;
+	margin-left: 10px;
+}
+.copy-link:hover{
+	background-color:#3794FF;
+	border:1px solid #3794FF;
+}
+#editWeixinTextarea .form-control:focus{
+	border-bottom-color: #66afe9 !important; 
+}
+#weixin-customize .video-box{
+	overflow: visible;
+}
+.wechat-news-single{
+	cursor: pointer;
+}
+.create-intent i {
+	height: 20px;
+	width: 96px;
+	top: 0;
+	right: 0;
+	background-repeat: no-repeat;
+	position:absolute;
+	cursor:pointer;
+	background: url(../img/sprite.png) -500px -418px no-repeat;
+}
+.create-intent i:hover{
+	background: url(../img/sprite.png) -500px -396px no-repeat;
+}
+.dialogScenes{
+    border-bottom: 1px solid #f5f5f5;
+}
+#dialogScenes .list-group-item .btn-group {
+    display: none;
+}
+#dialogScenes .list-group-item:hover .btn-group {
+    display: inline-block;
+}
+#dialogScenes .list-group-item .dropdown-menu {
+    border-radius: 0;
+    color: #333;
+    font-size: 14px;
+    position: fixed;
+    left: auto;
+    top: auto;
+    right: auto;
+    margin-left: -131px;
+    margin-top: -12px;
+    z-index: 9999;
+}
+#dialogScenes .list-group-item .dropdown-menu li{
+	padding: 0;
+}
+#dialogScenes .list-group-item .dropdown-menu li a{
+	color: #333;
+	font-size: 14px;
+}
+#dialogScenes .list-group-item .dropdown-submenu .dropdown-menu{
+	margin-left: 160px;
+	margin-top: -31px;
+	overflow-y: auto;
+    max-height: 130px;
+}
+.list-group-item.active,.center-list-main .input-group .form-control{
+	z-index: 0;
+}
+.list-group-item .dropdown-submenu .dropdown-menu li a{
+	background-color: #fff;
+	color: #333;
+}
+.list-group-item .dropdown-submenu .dropdown-menu li a:hover{
+	background-color: #f5f5f5;
+}
+/* #ui-datepicker-div{
+	background-color: #fff;
+	width: 150px;
+	height: 180px;
+	font-size: 16px;
+} */
+.question-answer .media-body{
+	width: auto;
+}
+.popover{
+	border: none;
+}
+.user-logs-box .user-logs-title{
+	font-size: 16px;
+	padding: 10px 0;
+}
+.user-logs-title .personal-info{
+	display: inline-block;
+	width: 50%;
+	font-size: 16px;
+	color: #b1bcc2;
+	vertical-align: middle;
+	padding: 0;
+	border-right: 1px solid #dcdddd;
+	padding-left:14px;
+}
+.user-logs-title .personal-info span{
+	color: #000;
+}
+.user-logs-title .personal-info .media-object{
+	float: left;
+	width: 90px;
+	border-radius: 100%;
+	margin-left:5px;
+}
+.personal-info .user-info div{
+	width: 240px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+	height: 30px;
+	line-height: 30px;
+}
+.user-logs-title .question-answer-pairs{
+	display: inline-block;
+	width: 49%;
+	vertical-align: middle;
+}
+.question-answer-pairs p span{
+	display: inline-block;
+	width: 98%;
+	text-align: center;
+	color: #000;
+}
+.user-logs-title .personal-info span.unknown{
+	color: #515151;
+}
+.batch-evaluation{
+	color: #3794FF;
+	line-height: 41px;
+	cursor: pointer;
+	margin-right: 44px;
+}
+.user-logs-box .logs>li{
+	position: relative;
+}
+.logs .userLog-checked{
+	position: absolute;
+    cursor: pointer;
+    z-index: 2;
+    left: 2%;
+    background: url("../img/user-log-chose.svg") no-repeat 0 45%;
+    width: 90%;
+    height: 90%;
+}
+.logs li.checked .userLog-checked{
+	background: url("../img/user-log-chose-click.svg") no-repeat 0 45%;
+}
+.logs.batch li{
+	cursor: pointer;
+}
+.logs.batch li:hover{
+	border-left: 1px solid #3794FF;
+}
+.batch-evaluation-footer{
+	height: 50px;
+    line-height: 50px;
+    background-color: #E6F9FF;
+}
+.btn.evaluation{
+	color: #fff;
+    background-color: #3794FF;
+    padding: 2px 5px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 18px;
+    border-radius: 0;
+    margin-left: 20px;
+}
+.btn.cancel-evaluation,.btn.chose-all{
+	cursor: pointer;
+    font-size: 14px;
+    line-height: 18px;
+    border: none;
+    color: #3794FF;
+    background: none;
+}
+.btn.chose-all{
+	margin: 10px;
+	margin-right: 32px;
+}
+#chose-all{
+	margin: 18px 0;
+}
+.btn.cancel-evaluation:focus,.btn.cancel-evaluation:active,.btn.chose-all:focus,.btn.chose-all:active{
+	box-shadow: none;
+	outline: none;
+}
+#assistantParaModal .assistant-para-box li{
+	padding-top: 8px;
+   	padding-bottom: 6px;
+}
+.bloodtype label{
+  		 font-weight: 300;
+}
+#physical-attributes .title{
+	border: 0; border-radius: 0;
+}
+#physical-attributes .panel-body{
+	padding-bottom: 10px;
+	border:0;
+}
+#physical-attributes .panel-heading{
+	border-radius:0;
+	padding:0;
+}
+.panel-default>.panel-heading{
+	background-color:#F0F2F4;
+}
+#physical-attributes .title-action{
+	display: inline-block;
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 14px;
+    text-decoration: none;
+    position: relative;
+    padding-right: 40px;
+}
+#physical-attributes .title-action:hover{
+	text-decoration: none;
+}
+#physical-attributes .title-action span:first-child{
+	color:#333333;
+}
+#physical-attributes .title-action i{
+	padding-top: 10px;
+    color: #66818D;
+    padding-right: 10px;
+    position: absolute;
+    right: 0px;
+    font-size:14px;
+}
+#physical-attributes .title-action span{
+	color:#797979;
+}
+.physical-attributes-title{
+	color: #000;
+    font-size: 18px;
+    margin-bottom: 9px;
+    margin-top: 30px;
+}
+#physical-attributes .panel-body ul.item-list{
+    margin: 0;
+    padding: 0;
+    padding-bottom: 6px;
+}
+#physical-attributes .panel-body ul.item-list li{
+	margin-bottom: 3px;
+    padding-right: 21px;
+    width: 100px;
+}
+#physical-attributes .panel-body ul.item-list li label{
+	cursor:pointer;
+}
+#physical-attributes .panel-body .example-box{
+	border: 1px solid #dcdddd;
+   	padding: 10px 14px;
+}
+#physical-attributes .panel-body .example-box .template{
+	font-weight:400;
+}
+#physical-attributes .panel-body .example-box .template span{
+	color: #8AA1AC;
+    border-bottom: 1px solid #8AA1AC;
+    padding: 2px 6px;
+}
+#physical-attributes .panel-body .example-box .question{
+	font-weight:400;
+	margin:8px 0px;
+}
+#physical-attributes .panel-body .example-box .answer{
+	font-weight:400;
+}
+#physical-attributes .custom{
+	width: 91px;
+    margin-left: 4px;
+    border: 0;
+    border-bottom: 1px solid #dcdddd;
+    padding-left: 9px;
+}
+
+
+#society-attributes .title{
+	border: 0; border-radius: 0;
+}
+#society-attributes .panel-body{
+	padding-bottom: 10px;
+	border:0;
+}
+#society-attributes .panel-heading{
+	border-radius:0;
+	padding:0;
+}
+.panel-default>.panel-heading{
+	background-color:#F0F2F4;
+}
+#society-attributes .title-action{
+	display: inline-block;
+    width: 100%;
+    height: 36px;
+    line-height: 40px;
+    padding: 0 14px;
+    text-decoration: none;
+    position: relative;
+    padding-right: 40px;
+}
+#society-attributes .title-action:hover{
+	text-decoration: none;
+}
+#society-attributes .title-action span:first-child{
+	color:#333333;
+}
+#society-attributes .title-action i{
+	padding-top: 10px;
+    color: #66818D;
+    padding-right: 10px;
+    position: absolute;
+    right: 0px;
+    font-size:14px;
+}
+#society-attributes .title-action span{
+	color:#797979;
+}
+.society-attributes-title{
+	color: #000;
+    font-size: 18px;
+    margin-bottom: 9px;
+    margin-top: 30px;
+}
+#society-attributes .panel-body ul.item-list{
+    margin: 0;
+    padding: 0;
+    padding-bottom: 6px;
+}
+#society-attributes .panel-body ul.item-list li{
+	margin-bottom: 3px;
+    padding-right: 23px;
+    width: 100px;
+}
+#society-attributes .panel-body ul.item-list li label{
+	cursor:pointer;
+}
+#society-attributes .panel-body .example-box{
+	border: 1px solid #dcdddd;
+   	padding: 10px 14px;
+}
+#society-attributes .panel-body .example-box .template{
+	font-weight:400;
+}
+#society-attributes .panel-body .example-box .template span{
+	color: #8AA1AC;
+    border-bottom: 1px solid #8AA1AC;
+    padding: 2px 6px;
+}
+#society-attributes .panel-body .example-box .question{
+	font-weight:400;
+	margin:8px 0px;
+}
+#society-attributes .panel-body .example-box .answer{
+	font-weight:400;
+}
+#society-attributes .custom{
+	width: 91px;
+    margin-left: 4px;
+    border: 0;
+    border-bottom: 1px solid #dcdddd;
+    padding-left: 9px;
+}
+.intent-detail-more{
+	cursor: pointer;
+    padding: 4px 0px;
+    border: 1px solid #dcdddd;
+    font-size: 16px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    color: #3794FF;
+    border-color: #3794FF;
+    margin-bottom: 40px;
+}
+.intent-detail-more:hover{
+	color: #54ADF7;
+    border-color: #54ADF7;
+}
+.intent-detail-more-box{
+	display:none;
+}
+.nav-box-ul a{
+	padding: 6px 15px !important;
+}
+.upload-resource-button{
+	padding:4px;margin-top:6px;color:#3794ff;border:1px solid #3794ff;
+}
+[data-act=look-log-json]{
+	width: 80px !important;
+    cursor: pointer;
+    border-radius: 2px;
+    background-color: #fff;
+    text-align:center;
+    color: #bdb8b8;
+    border: 1px solid #bdb8b8;
+}
+[data-act=look-log-json]:hover{
+	color: #3794FF;
+    border: 1px solid #3794FF;
+}
+#lookLogJson .modal-content{
+	border: none; border-radius: 0px; width: 1000px; height: 807px; margin-left: -70%; overflow: auto;
+}
+#dialogScenes ul.multi-level>li{
+	padding:0;
+	margin:0;
+}
+#dialogScenes ul.multi-level .robot-list-ul{
+	height:500px;
+}
+#dialogScenes ul.multi-level .robot-list-ul li{
+	padding:0;
+	margin:0;
+}
+/*#addresource .progressName {
+	display: inline-block;
+	width: 500px;
+}*/
+
+#addresource .modal-dialog {
+	width: 710px;
+}
+#addresource .modal-content {
+	width: 710px;
+}
+#addresource .progressContainer td:nth-child(3) .info div:nth-child(1) div:nth-child(1) strong, 
+#addresource .progressContainer td:nth-child(3) .info div:nth-child(1) div:nth-child(1) a{
+	display: none;
+}
+#addresource .imgWrapper{
+	width: 50% !important;
+}
+#addresource .progressName {
+	display: inline-block;
+	width: 320px;
+}
+/*确认取消按钮 start*/
+#Qa-library [data-act-focus="questions-answers"]:focus{
+	outline: none;
+    background-color: #fff;
+}
+.common-cancel-modal{
+	padding: 5px 14px;
+    cursor: pointer;
+    background-color: #ffffff;
+    font-size: 16px;
+    border: 1px solid #fff;
+    margin:16px 10px;
+}
+.common-cancel-modal:hover,.common-cancel-modal:focus{
+	color:#3794FF;
+}
+.common-submit-button{
+	padding: 5px 14px;
+    cursor: pointer;
+    background-color: #ffffff;
+    font-size: 16px;
+    border: none;
+    color:#fff;
+    border: 1px solid #3794FF;
+    background-color:#3794FF;
+    margin:16px 0 16px 10px;
+}
+.common-submit-button:focus{
+	border: 1px solid #379fFF;
+    background-color:#379fFF;
+}
+@keyframes questions-answers-panel-fade-in {  
+    0% {opacity: 0;}/*初始状态 透明度为0*/  
+    40% {opacity: 0;}/*过渡状态 透明度为0*/  
+    100% {opacity: 1;}/*结束状态 透明度为1*/  
+}  
+@-webkit-keyframes questions-answers-panel-fade-in {/*针对webkit内核*/  
+    0% {opacity: 0;}  
+    40% {opacity: 0;}  
+    100% {opacity: 1;}  
+} 
+.questions-answers-panel{
+	border: 1px solid #dcdddd;
+	border-top:0;
+	z-index:1;
+	box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.3);
+	background-color:rgba(255,255,255,1);
+	padding:18px !important;
+	padding-bottom:0 !important;
+	position:absolute;
+	left:-20px;
+	border-radius:4px;
+    animation: questions-answers-panel-fade-in;/*动画名称*/  
+    animation-duration: 0.5s;/*动画持续时间*/  
+    -webkit-animation:questions-answers-panel-fade-in 0.5s;/*针对webkit内核*/  
+}
+.questions-answers-content{
+	padding: 8px;
+	border: 1px solid #dcdddd;
+}
+.questions-answers-content:focus{
+	outline:none;
+	border:1px solid #3794FF;
+}
+/*确认取消按钮 end*/
+.box .left-box .list-group-item a.high-hover-ctrl{
+	font-size:14px;
+}
+.box .left-box .list-group-item.active a.high-hover-ctrl{
+	color:#3794FF;
+}
+
+
+
+    

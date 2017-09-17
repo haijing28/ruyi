@@ -1,0 +1,77 @@
+.main-box{
+	padding: 0 0 30px 0;
+}
+.common-title{
+	font-size:18px;
+	margin-top: 30px;
+}
+.container-box{
+	border:1px solid #bbb;
+	overflow:hidden;
+	margin-top:14px;
+	border-radius:6px 6px 0 0;
+}
+.container-title{
+	background-color:#ddd;
+	border-bottom:1px solid #bbb;
+	text-align:left;
+	padding:12px;
+}
+.trend-box>li{
+	float:left;
+	text-align:center;
+	border-right:1px solid #bbb;
+	
+	padding:10px;
+	width:14.2%;
+}
+.trend-box>li:last-child{
+	border:0;
+}
+.trend-box{
+	text-align:center;
+}
+.trend-box .trend-title{
+	
+}
+.trend-box .trend-number{
+	margin-top:10px;
+	font-size:20px;
+}
+.myhelp {
+    border: 0;
+    background-image: url(../img/help.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 1px;
+    height: 0px;
+    padding: 8px;
+    margin-left: 5px;
+    margin-top: -4px;
+    border-radius: 50%;
+}
+.myhelp:hover {
+    background-image: url(../img/help-hover.svg);
+    background-color: #fff;
+}
+.myhelp:focus, .myhelp:active {
+    outline: rgba(0,0,0,0) thin solid !important;
+    background-color: #fff !important;
+}
+.robot-list-box caption{
+	border-bottom:2px solid #dcdddd;
+	font-size:12px;
+	text-align:center;
+}
+
+
+
+
+
+
+
+
+
+
+
+

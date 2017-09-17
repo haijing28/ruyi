@@ -1,0 +1,183 @@
+<!-- <link rel="stylesheet" type="text/css" href="css/action_set.css?v=20161102b"> -->
+<hr>
+<div class="row row-height">
+	<div class="center-list-box" style="min-width: 640px;">
+		<section class="center-list-title" style="“position: relative;">
+			<span style="border-bottom: 0;">触发器设置</span>
+		</section>
+		<div class="action-set-box-parent clearfix">
+			<div class="action-set-box clearfix show-action" ng-repeat="actionObj in actionList">
+				<input type="hidden" value="{{$index}}" data-act="myindex"/>
+				<input type="hidden" value="{{actionObj.id}}" data-act="actionId"/>
+				<div class="action-title-top clearfix">
+					<i class="iconfont icon-right trigger-icon"></i>
+					<input type="text" class="trigger-name" placeholder="触发器名字" data-act="name" value="{{actionObj.name}}"/>
+					<span ng-if="actionObj.errorModels.length > 0" class="error-text">未生效</span>
+					<i ng-if="actionObj.errorModels.length > 0" class="iconfont icon-iconfontzhifushibai" data-html="true" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="bottom" data-content="{{actionObj.errorList}}" data-original-title="" title=""></i>
+					<i class="iconfont icon-delete pull-right" data-act="delete-action" data-index="{{$index}}" data-action-id="{{actionObj.id}}"></i>
+					<i class="iconfont icon-copy pull-right" data-act="copy-action" data-index="{{$index}}" data-action-id="{{actionObj.id}}"></i>
+					<p class="show-url">{{actionObj.url}}</p>
+				</div>
+				<ul class="clearfix action-set-ul close">
+					<!--  <li>
+						<span class="action-title">name：</span>
+						<input type="text" data-act="name" placeholder="名称（只能唯一）" value="{{actionObj.name}}" />
+					</li>	-->
+					<li>
+						<span class="action-title">url：</span>
+						<input type="text" data-act="url" placeholder="接口地址" value="{{actionObj.url}}"/>
+					</li>
+					<li data-act="change-method">
+						<span class="action-title">method：</span>
+						<!--  <input type="text" placeholder="key" data-act="method" value="{{actionObj.method}}"/>	-->
+						<div class="btn-group">
+							<button type="button" class="btn btn-default dropdown-toggle" 
+									data-toggle="dropdown" data-act="method">
+								{{actionObj.method}}<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="javascript:;"class="method-item">GET</a></li>
+								<li class="divider"></li>
+								<li><a href="javascript:;" class="method-item">POST</a></li>
+								<!-- <li class="divider"></li>
+								<li><a href="javascript:;" class="method-item">PUT</a></li>
+								<li class="divider"></li>
+								<li><a href="javascript:;" class="method-item">DELETE</a></li> -->
+							</ul>
+						</div>
+					</li>
+					<li class="header-li">
+						<span class="action-title">header：</span>
+						<ul class="header-list">
+							<li class="header-list-li clearfix" ng-repeat="(key, value) in actionObj.header">
+								<input type="text" placeholder="name" data-act="header-key" value="{{key}}"/>
+								<input type="text" class="header-value" placeholder="value" data-act="header-value" value="{{value}}"/>
+								<i class="iconfont icon-delete pull-right"></i>
+							</li>
+						</ul>
+						<i class="iconfont icon-ruyiaiaddscence" style="display:block;">添加更多header</i>
+					</li>
+					<li>
+						<span class="action-title">json body：</span>
+						<textarea class="json-body-textarea">{{actionObj.jsonBody}}</textarea>
+					</li>
+					<li>
+						<span class="action-title">是否缓存：</span>
+						<div class="btn-group is-need-cache" role="group" aria-label="...">
+						  <button type="button" style="width:30px;" data-act="true" class="btn btn-default" ng-class="{'active': actionObj.enableCache == true || actionObj.enableCache == 'true'}">ON</button>
+						  <button type="button" style="width:58px;" data-act="false" class="btn btn-default" ng-class="{'active': actionObj.enableCache == false || actionObj.enableCache == 'false'}">OFF</button>
+						</div>
+					</li>
+					<li>
+						<span class="action-title">缓存周期：</span>
+						<select class="expire-time" ng-model="actionObj.expireTime">
+							<option value="3600">1小时</option>
+							<option value="today">当天</option>
+							<option value="86400">24小时</option>
+							<option value="604800">1周</option>
+						</select>
+					</li>
+					<li>
+						<span class="action-title">缓存key：</span>
+						<section class="clearfix add-cache-key-box">
+							<div>
+								<span class="add-cache-key-span" style="position:relative;" ng-repeat="keyName in actionObj.entitiesInCacheKey track by $index">
+									<input placeholder="key名称" value="{{keyName}}" />
+									<i class="add-cache-key-close">&times;</i>
+								</span>
+								<input placeholder="key名称" />
+							</div>
+							<i class="iconfont icon-ruyiaiaddscence" id="add-cache-key">添加缓存key</i>
+						</section>
+					</li>
+					<li>
+						<button type="button" class="common-blank-button">取 消</button>&nbsp;&nbsp;&nbsp;
+						<button type="button" class="common-active-button">确定</button>
+					</li>
+				</ul>
+			</div>
+			<div class="action-set-box clearfix add-action">
+				<div class="action-title-top clearfix" style="display: none;"><input type="text" class="trigger-name" placeholder="触发器名字" data-act="name"/></div>
+				<ul class="clearfix action-set-ul close">
+					<!--  <li>
+						<span class="action-title">name：</span>
+						<input type="text" data-act="name" placeholder="名称（只能唯一）" value="{{actionObj.name}}" />
+					</li>	-->
+					<li>
+						<span class="action-title">url：</span>
+						<input type="text" data-act="url" placeholder="接口地址" value="{{actionObj.url}}"/>
+					</li>
+					<li data-act="change-method">
+						<span class="action-title">method：</span>
+						<!--  <input type="text" placeholder="key" data-act="method" value="{{actionObj.method}}"/>	-->
+						<div class="btn-group">
+							<button type="button" class="btn btn-default dropdown-toggle" 
+									data-toggle="dropdown" data-act="method">
+								GET<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="javascript:;" class="method-item">GET</a></li>
+								<li class="divider"></li>
+								<li><a href="javascript:;" class="method-item">POST</a></li>
+								<!-- <li class="divider"></li>
+								<li><a href="javascript:;" class="method-item">PUT</a></li>
+								<li class="divider"></li>
+								<li><a href="javascript:;" class="method-item">DELETE</a></li> -->
+							</ul>
+						</div>
+					</li>
+					<li class="header-li">
+						<span class="action-title">header：</span>
+						<ul class="header-list">
+							<li class="header-list-li clearfix">
+								<input type="text" placeholder="name" data-act="header-key" />
+								<input type="text" class="header-value" placeholder="value" data-act="header-value"  />
+								<i class="iconfont icon-delete pull-right"></i>
+							</li>
+						</ul>
+						<i class="iconfont icon-ruyiaiaddscence" style="display:block;">添加更多header</i>
+					</li>
+					<li>
+						<span class="action-title">json body：</span>
+						<textarea class="json-body-textarea"></textarea>
+					</li>
+					<li>
+						<span class="action-title">是否缓存：</span>
+						<div class="btn-group is-need-cache" role="group" aria-label="...">
+						  <button type="button" style="width:30px;" data-act="true" class="btn btn-default">ON</button>
+						  <button type="button" style="width:58px;" data-act="false" class="btn btn-default active">OFF</button>
+						</div>
+					</li>
+					<li>
+						<span class="action-title">缓存周期：</span>
+						<select class="expire-time">
+							<option value="3600">1小时</option>
+							<option value="today">当天</option>
+							<option value="86400">24小时</option>
+							<option value="604800">1周</option>
+						</select>
+					</li>
+					<li>
+						<span class="action-title">缓存key：</span>
+						<section class="clearfix add-cache-key-box">
+							<div class="add-cache-key-help">
+								<span class="add-cache-key-span" style="position:relative;"><input placeholder="key名称"/></span><input placeholder="key名称" />
+							</div>
+							<i class="iconfont icon-ruyiaiaddscence" id="add-cache-key">添加缓存key</i>
+						</section>
+					</li>
+					<li>
+						<button type="button" class="common-blank-button">取 消</button>&nbsp;&nbsp;&nbsp;
+						<button type="button" class="common-active-button">确定</button>
+					</li>
+				</ul>
+				<div class="add-trigger">
+					<i class="iconfont icon-ruyiaiaddscence" style="display:block;">添加触发器</i>
+				</div>
+			</div>
+			<!-- <div style="float:left;padding-left:0px;margin-left:-46px;"><i class="iconfont icon-ruyiaiaddscence" style="display:block;font-size:18px;">添加更多请求</i></div> -->
+		</div>
+  </div>
+</div>
+<!-- 缺省回复多行编辑 Modal end-->
+<!-- <script src="js/action_set.js?v=20161116a"></script> -->

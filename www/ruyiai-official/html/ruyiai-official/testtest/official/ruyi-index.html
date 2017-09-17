@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>首页</title>
+    <link href="http://at.alicdn.com/t/font_odnw7rnovtvuz0k9.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/Swiper/3.4.0/css/swiper.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/ruyi-index.css" rel="stylesheet">
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?f7ec6bda1ae48b34de486984c876bcd7";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+
+<body>
+    <header class="top-bar clearfix">
+        <div class="version clearfix col-xs-3 col-sm-3 col-md-3">
+            <a href="#"><i class="logo iconfont icon-ruyi"></i></a>
+        </div>
+        <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- <a href="../" class="navbar-brand">社区</a> -->
+                </div>
+                <div class="navbar-collapse navbar-ex1-collapse collapse" id="header" role="navigation">
+                    <ul class="nav navbar-nav navbar-right option-list">
+                        <li><a class="current" href="">首页</a></li>
+                        <!-- <li class=""><a href="">社区</a></li> -->
+                        <li class=""><a href="http://blog.ruyi.ai/" target="_blank">博客</a></li>
+                        <li class="recruit"><a href="">招聘</a></li>
+                        <li class="sign-in" id="nav-mylogin"><a href="../base/login.html">登录</a></li>
+                        <!-- <li class="sign-up" style="visibility: hidden;"><a href="">注册</a></li> -->
+                        <li role="presentation" id="nav-user-info">
+                      		<ul class="nav navbar-nav navbar-right">
+					            <li class="dropdown" id="fat-menu">
+					              <a style="margin-top:-8px;" aria-expanded="true" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#" id="drop3">
+					                <span data-act="myemail"></span><span class="caret"></span>
+					              </a>
+					              <ul aria-labelledby="drop3" class="dropdown-menu user-action-box" style="border-radius:0;font-size:18px;padding:0;border: none;">
+					                <li><a data-toggle="modal" data-target="#appkey" href="#" id="appkey-manager">机器人列表</a></li>
+					                <!-- <li><a href="#" data-toggle="modal" data-target="#change-password">修改密码</a></li> -->
+					                <li><a href="#" id="mylogout">退出登录</a></li>
+					              </ul>
+					            </li>
+				            </ul>
+                      	</li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="main-box">
+        <section class="banner-area">
+            <div class="brief-introduce col-xs-12 col-sm-5 col-md-6 clearfix">
+                <!-- <div class="float-box"> -->
+                    <div class="ruyi-logo">
+                        <i class="iconfont icon-ruyi"></i>
+                    </div>
+                    <h3 class="h3">人人会做机器人</h3>
+                    <p>个性化聊天机器人开放技术平台</p>
+                    <p>快速简单定制机器人大脑</p>
+                    <p>实现客服、硬件、微信公众号智能化</p>
+                    <span class="make-robot">我要産机器人</span>
+                <!-- </div> -->
+            </div>
+            <div class="swiper-container col-xs-12 col-sm-7 col-md-6">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="./images/banner_robot3 2.png" width="350px" class="robot-picture" />
+                        <img class="robot-text" id="kid-box" src="./images/banner_kid_robot.svg" width="30%" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./images/kidrobot_family4.png" width="350px" class="robot-picture" />
+                        <img class="robot-text" src="./images/banner_kid_robots-family.svg" width="30%" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./images/speaker_ruyi.png" width="350px" class="robot-picture robot-meizu" />
+                        <img class="robot-text meizu" src="./images/banner_smart_speaker.svg" width="30%" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="./images/wechat_airuyibaobao3.png" width="350px" class="robot-picture" />
+                        <img class="robot-text" src="./images/banner_wechat.svg" width="30%" />
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+        <section class="make-product" id="make-product">
+            <div class="step-content">
+                <div class="title">
+                    <h1 class="h1">“三步,做个机器人”</h1>
+                </div>
+                <div class="make-step">
+                    <div class="step-item col-xs-12 col-sm-4 col-md-4">
+                        <div class="step-icon">
+                            <i class="iconfont icon-howwork_born icon-main"></i>
+                            <i class="iconfont icon-howwork_arrow arrow-pc"></i>
+                        </div>
+                        <div class="step-name">
+                            <h4 class="h4">诞生</h4>
+                        </div>
+                        <div class="step-describe">
+                            <p>注册ruyi.ai个性化聊天机器人开放平台,简单几步,零基础也能创建机器人大脑。</p>
+                        </div>
+                    </div>
+                    <div class="arrow-mobile">
+                        <i class="iconfont icon-howwork_arrow-copy"></i>
+                    </div>
+                    <div class="step-item col-xs-12 col-sm-4 col-md-4">
+                        <div class="step-icon">
+                            <i class="iconfont icon-howwork_raise icon-main arrow-pc"></i>
+                            <i class="iconfont icon-howwork_arrow"></i>
+                        </div>
+                        <div class="step-name">
+                            <h4 class="h4">培养</h4>
+                        </div>
+                        <div class="step-describe">
+                            <p>提供行业知识库批量导入,更有海量资源、第三方接口及技能插件,强化机器人大脑。</p>
+                        </div>
+                    </div>
+                    <div class="arrow-mobile">
+                        <i class="iconfont icon-howwork_arrow-copy"></i>
+                    </div>
+                    <div class="step-item col-xs-12 col-sm-4 col-md-4">
+                        <div class="step-icon">
+                            <i class="iconfont icon-howwork_award icon-main"></i>
+                        </div>
+                        <div class="step-name">
+                            <h4 class="h4">成才</h4>
+                        </div>
+                        <div class="step-describe">
+                            <p>支持智能对接机器人、音箱、客服、微信公众号等软硬件,多元化使用机器人大脑。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="function-characteristic">
+            <div class="title">
+                <h1 class="h1">“我们有些啥”</h1>
+            </div>
+            <div class="abstract">
+                <p>ruyi.ai 让设备更智能,涉及更多领域,我们希望所有设备都能和用户以自然的方式沟通。</p>
+            </div>
+            <div class="characteristic-list">
+                <div class="characteristic-item col-xs-12 col-sm-6 col-md-4">
+                    <span class="icon-characteristic iconfont icon-feature_get_started col-xs-3 col-sm-3 col-md-3"></span>
+                    <div class="col-xs-9 col-sm-9 col-md-9">
+                        <h4 class="h4">轻松入门</h4>
+                        <p>零基础用户,无障碍入门,搭建个性化聊天机器人。</p>
+                    </div>
+                </div>
+                <div class="characteristic-item col-xs-12 col-sm-6 col-md-4">
+                    <span class="icon-characteristic iconfont icon-feature_capacity_support col-xs-3 col-sm-3 col-md-3"></span>
+                    <div class="col-xs-9 col-sm-9 col-md-9">
+                        <h4 class="h4">海量实体识别</h4>
+                        <p>时间、地点、等实体识别能力 在交互中灵活调用。</p>
+                    </div>
+                </div>
+                <div class="characteristic-item col-xs-12 col-sm-6 col-md-4">
+                    <span class="icon-characteristic iconfont icon-feature_material_management col-xs-3 col-sm-3 col-md-3"></span>
+                    <div class="col-xs-9 col-sm-9 col-md-9">
+                        <h4 class="h4">多样的素材管理</h4>
+                        <p>支持文字、图片、视频、音频 多种素材形式交互。</p>
+                    </div>
+                </div>
+                <div class="characteristic-item col-xs-12 col-sm-6 col-md-4">
+                    <span class="icon-characteristic iconfont icon-feature_skilled col-xs-3 col-sm-3 col-md-3"></span>
+                    <div class="col-xs-9 col-sm-9 col-md-9">
+                        <h4 class="h4">丰富的技能插件</h4>
+                        <p>数十项机器人技能插件,海量第三方资源。</p>
+                    </div>
+                </div>
+                <div class="characteristic-item col-xs-12 col-sm-6 col-md-4">
+                    <span class="icon-characteristic iconfont icon-feature_Language col-xs-3 col-sm-3 col-md-3"></span>
+                    <div class="col-xs-9 col-sm-9 col-md-9">
+                        <h4 class="h4">灵活的语言支持</h4>
+                        <p>支持JavaScript、handlebar等脚本语言,逻辑设定更灵活。</p>
+                    </div>
+                </div>
+                <div class="characteristic-item col-xs-12 col-sm-6 col-md-4">
+                    <span class="icon-characteristic iconfont icon-feature_dialogue_management col-xs-3 col-sm-3 col-md-3"></span>
+                    <div class="col-xs-9 col-sm-9 col-md-9">
+                        <h4 class="h4">多轮对话管理</h4>
+                        <p>多重机制定义复杂对话,满足大部分垂直场景的自定义搭建。</p>
+                    </div>
+                </div>
+                <div class="characteristic-item col-xs-12 col-sm-6 col-md-4">
+                    <span class="icon-characteristic iconfont icon-feature_machine_learning col-xs-3 col-sm-3 col-md-3"></span>
+                    <div class="col-xs-9 col-sm-9 col-md-9">
+                        <h4 class="h4">机器学习与训练</h4>
+                        <p>支持机器学习与主动训练,让机器人更懂用户的意思。</p>
+                    </div>
+                </div>
+                <div class="characteristic-item col-xs-12 col-sm-6 col-md-4">
+                    <span class="icon-characteristic iconfont icon-feature_api_interface col-xs-3 col-sm-3 col-md-3"></span>
+                    <div class="col-xs-9 col-sm-9 col-md-9">
+                        <h4 class="h4">API接口双向调用</h4>
+                        <p>支持第三方接口回调,各类API无缝整合。</p>
+                    </div>
+                </div>
+                <div class="characteristic-item col-xs-12 col-sm-6 col-md-4">
+                    <span class="icon-characteristic iconfont icon-feature_Multi-platform_support col-xs-3 col-sm-3 col-md-3"></span>
+                    <div class="col-xs-9 col-sm-9 col-md-9">
+                        <h4 class="h4">支持多平台接入</h4>
+                        <p>硬件设备、网站、APP、H5、微信公众平台多渠道接入支持。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="news-information">
+            <h1 class="h1 news-title">“来自江湖的传说”</h1>
+            <div class="news-content">
+                <div class="swiper-container col-xs-12 col-sm-12 col-md-12 slide-pc">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="news-con">
+                                <div class="news-item col-xs-6">
+                                    <div class="news-image">
+                                        <a href="http://c.m.163.com/news/a/C4FUMFKB00097U80.html?spss=newsapp&spsw=1"><img src="images/news1.png" /></a>
+                                    </div>
+                                    <div class="news-text">
+                                        <a href="http://c.m.163.com/news/a/C4FUMFKB00097U80.html?spss=newsapp&spsw=1">海知智能谢殿侠:聊天机器人将引爆新革命</a>
+                                    </div>
+                                    <div class="logo-time clearfix">
+                                        <span class="news-logo"></span>
+                                        <img src="images/news-wangyi.svg" />
+                                        <span class="update-time">2016-10-28</span>
+                                    </div>
+                                </div>
+                                <div class="news-item col-xs-6">
+                                    <div class="news-image">
+                                        <a href="http://tech.163.com/16/0629/19/BQOJ0MPE00097U80.html"><img src="images/news2.png" /></a>
+                                    </div>
+                                    <div class="news-text">
+                                        <a href="http://tech.163.com/16/0629/19/BQOJ0MPE00097U80.html">谢殿侠:机器人将人机交互还原到了最自然状态</a>
+                                    </div>
+                                    <div class="logo-time clearfix">
+                                        <img src="images/news-wangyi.svg" />
+                                        <span class="news-logo"></span>
+                                        <span class="update-time">2016-06-29</span>
+                                    </div>
+                                </div>
+                                <div class="news-item col-xs-6">
+                                    <div class="news-image">
+                                        <a href="http://www.yicai.com/news/5031686.html">
+                                            <img src="images/news6.png" /></a>
+                                    </div>
+                                    <div class="news-text">
+                                        <a href="http://www.yicai.com/news/5031686.html">海知智能：人工智能让机器僧开口说话</a>
+                                    </div>
+                                    <div class="logo-time clearfix">
+                                        <img src="images/news-yicai.svg" />
+                                        <span class="news-logo"></span>
+                                        <span class="update-time">2016-06-22</span>
+                                    </div>
+                                </div>
+                                <div class="news-item col-xs-6 last-item">
+                                    <div class="news-image">
+                                        <a href="http://www.yicai.com/news/5021123.html"><img src="images/news3.png" /></a>
+                                    </div>
+                                    <div class="news-text">
+                                        <a href="http://www.yicai.com/news/5021123.html">谁都会说大数据，但大数据离智能数据到底多远</a>
+                                    </div>
+                                    <div class="logo-time clearfix">
+                                        <img src="images/news-yicai.svg" />
+                                        <span class="news-logo"></span>
+                                        <span class="update-time">2016-05-31</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="news-con">
+                                <div class="news-item col-xs-6 less">
+                                    <div class="news-image">
+                                        <a href="http://www.yicai.com/news/5020727.html">
+                                            <img src="images/news7.png" /></a>
+                                    </div>
+                                    <div class="news-text">
+                                        <a href="http://www.yicai.com/news/5020727.html">智能贤二炼成记</a>
+                                    </div>
+                                    <div class="logo-time clearfix">
+                                        <img src="images/news-yicai.svg" />
+                                        <span class="news-logo"></span>
+                                        <span class="update-time">2016-05-30</span>
+                                    </div>
+                                </div>
+                                <div class="news-item col-xs-6">
+                                    <div class="news-image">
+                                        <a href="http://tech.163.com/16/0529/15/BO8ASU9N00094P0U.html"><img src="images/news4.png" /></a>
+                                    </div>
+                                    <div class="news-text">
+                                        <a href="http://tech.163.com/16/0529/15/BO8ASU9N00094P0U.html">海知智能谢殿侠:2020年人人都将有自己的机器人</a>
+                                    </div>
+                                    <div class="logo-time clearfix">
+                                        <img src="images/news-wangyi.svg" />
+                                        <span class="news-logo"></span>
+                                        <span class="update-time">2016-05-29</span>
+                                    </div>
+                                </div>
+                                <div class="news-item col-xs-6">
+                                    <div class="news-image">
+                                        <a href="http://money.163.com/15/0313/08/AKIRULT000253G87.html"><img src="images/news5.png" /></a>
+                                    </div>
+                                    <div class="news-text">
+                                        <a href="http://money.163.com/15/0313/08/AKIRULT000253G87.html">人工智能技术将如何颠覆产品设计和提升用户体验</a>
+                                    </div>
+                                    <div class="logo-time clearfix">
+                                        <img src="images/news-wangyi.svg" />
+                                        <span class="news-logo"></span>
+                                        <span class="update-time">2015-03-13</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination">
+                    </div>
+                    <div class="swiper-button-prev swiper-button-white"></div>
+                    <div class="swiper-button-next swiper-button-white"></div>
+                </div>
+                <div class="swiper-container col-xs-12 col-sm-12 col-md-12 slide-mobile">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="news-con">
+                                <div class="news-item col-xs-12">
+                                    <div class="news-image">
+                                        <a href="http://c.m.163.com/news/a/C4FUMFKB00097U80.html?spss=newsapp&spsw=1"><img src="images/news1.png" /></a>
+                                    </div>
+                                    <div class="news-text">
+                                        <a href="http://c.m.163.com/news/a/C4FUMFKB00097U80.html?spss=newsapp&spsw=1">海知智能谢殿侠:聊天机器人将引爆新革命</a>
+                                    </div>
+                                    <div class="logo-time clearfix">
+                                        <span class="news-logo"></span>
+                                        <img src="images/news-wangyi.svg" />
+                                        <span class="update-time">2016-10-28</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="news-con">
+                                <div class="news-item col-xs-12">
+                                    <div class="news-image">
+                                        <a href="http://tech.163.com/16/0629/19/BQOJ0MPE00097U80.html"><img src="images/news2.png" /></a>
+                                    </div>
+                                    <div class="news-text">
+                                        <a href="http://tech.163.com/16/0629/19/BQOJ0MPE00097U80.html">谢殿侠:机器人将人机交互还原到了最自然状态</a>
+                                    </div>
+                                    <div class="logo-time clearfix">
+                                        <img src="images/news-wangyi.svg" />
+                                        <span class="news-logo"></span>
+                                        <span class="update-time">2016-06-29</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="news-con">
+                                <div class="news-item col-xs-12">
+                                    <div class="news-image">
+                                        <a href="http://www.yicai.com/news/5031686.html">
+                                            <img src="images/news6.png" /></a>
+                                    </div>
+                                    <div class="news-text">
+                                        <a href="http://www.yicai.com/news/5031686.html">海知智能：人工智能让机器僧开口说话</a>
+                                    </div>
+                                    <div class="logo-time clearfix">
+                                        <img src="images/news-yicai.svg" />
+                                        <span class="news-logo"></span>
+                                        <span class="update-time">2016-06-22</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="news-con">
+                                <div class="news-item col-xs-12 last-item">
+                                    <div class="news-image">
+                                        <a href="http://www.yicai.com/news/5021123.html"><img src="images/news3.png" /></a>
+                                    </div>
+                                    <div class="news-text">
+                                        <a href="http://www.yicai.com/news/5021123.html">谁都会说大数据，但大数据离智能数据到底多远</a>
+                                    </div>
+                                    <div class="logo-time clearfix">
+                                        <img src="images/news-yicai.svg" />
+                                        <span class="news-logo"></span>
+                                        <span class="update-time">2016-05-31</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="news-con">
+                                <div class="news-item col-xs-12">
+                                    <div class="news-image">
+                                        <a href="http://www.yicai.com/news/5020727.html">
+                                            <img src="images/news7.png" /></a>
+                                    </div>
+                                    <div class="news-text">
+                                        <a href="http://www.yicai.com/news/5020727.html">智能贤二炼成记</a>
+                                    </div>
+                                    <div class="logo-time clearfix">
+                                        <img src="images/news-yicai.svg" />
+                                        <span class="news-logo"></span>
+                                        <span class="update-time">2016-05-30</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="news-con">
+                                <div class="news-item col-xs-12">
+                                    <div class="news-image">
+                                        <a href="http://tech.163.com/16/0529/15/BO8ASU9N00094P0U.html"><img src="images/news4.png" /></a>
+                                    </div>
+                                    <div class="news-text">
+                                        <a href="http://tech.163.com/16/0529/15/BO8ASU9N00094P0U.html">海知智能谢殿侠:2020年人人都将有自己的机器人</a>
+                                    </div>
+                                    <div class="logo-time clearfix">
+                                        <img src="images/news-wangyi.svg" />
+                                        <span class="news-logo"></span>
+                                        <span class="update-time">2016-05-29</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="news-con">
+                                <div class="news-item col-xs-12">
+                                    <div class="news-image">
+                                        <a href="http://money.163.com/15/0313/08/AKIRULT000253G87.html"><img src="images/news5.png" /></a>
+                                    </div>
+                                    <div class="news-text">
+                                        <a href="http://money.163.com/15/0313/08/AKIRULT000253G87.html">人工智能技术将如何颠覆产品设计和提升用户体验</a>
+                                    </div>
+                                    <div class="logo-time clearfix">
+                                        <img src="images/news-wangyi.svg" />
+                                        <span class="news-logo"></span>
+                                        <span class="update-time">2015-03-13</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination">
+                    </div>
+                    <div class="swiper-button-prev swiper-button-white"></div>
+                    <div class="swiper-button-next swiper-button-white"></div>
+                </div>
+            </div>
+            <!-- </div> -->
+        </section>
+        <section class="partner-comment">
+            <h1 class="h1 partner-title">“有人在点赞”</h1>
+            <div class="swiper-container col-xs-12 col-sm-12 col-md-12">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="partner-describe">
+                            <div class="product col-xs-12 col-sm-4 col-md-2">
+                                <img src="./images/guixudianzi_product.png" />
+                            </div>
+                            <div class="describe-text col-xs-12 col-sm-8 col-md-10">
+                                <i class="iconfont icon-zuoshuangyinhao"></i>
+                                <p>“我们对多家语义系统进行了对比，海知以独特的开放平台提供了最灵活、高效的语义解析，将张小盒机器人智能对话和运动特性发挥到极致。更难得的是，海知这个专业高效、有创意的团队，对客户需求响应与解决速度极快，近半年合作愉快。我们相信海知必会成为业界翘楚，很幸运和海知智能合作推出张小盒机器人。”</p>
+                                <i class="iconfont icon-zuoshuangyinhao-copy"></i>
+                            </div>
+                        </div>
+                        <div class="leader-introduce clearfix">
+                            <div class="leader-head">
+                                <img src="./images/guixudianzi_wh.png" />
+                            </div>
+                            <div class="introduce-text">
+                                <p>王欢</p>
+                                <p>归墟电子 产品经理</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="partner-describe">
+                            <div class="product col-xs-12 col-sm-4 col-md-2">
+                                <img src="./images/meizu_product2.png" />
+                            </div>
+                            <div class="describe-text col-xs-12 col-sm-8 col-md-10">
+                                <i class="iconfont icon-zuoshuangyinhao"></i>
+                                <p>“在遇到海知ruyi之前，我们团队一直在摸索智能音箱和AI结合这条路，后来和谢总聊下来，大家对待产品和创业的理念出奇的一致，立刻就开始了合作。海知的小伙伴非常给力，和我们一起攻克了许多困难，产品体验越来越好了。谢谢海知团队！”</p>
+                                <i class="iconfont icon-zuoshuangyinhao-copy"></i>
+                            </div>
+                        </div>
+                        <div class="leader-introduce clearfix">
+                            <div class="leader-head">
+                                <img src="./images/meizu_wxc.png" />
+                            </div>
+                            <div class="introduce-text">
+                                <p>王兴超</p>
+                                <p>魅族 智能硬件产品总监</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="partner-describe">
+                            <div class="product col-xs-12 col-sm-4 col-md-2">
+                                <img src="./images/haitiandi_product.png" />
+                            </div>
+                            <div class="describe-text col-xs-12 col-sm-8 col-md-10">
+                                <i class="iconfont icon-zuoshuangyinhao"></i>
+                                <p>“从使用ruyi.ai到现在，服务真的很好，每一次优化的的响应速度和解决速度都超出了我们想象。作为一个专注搭建延伸机器人大脑的平台，也在不断地丰富知识图谱和技能，还给我们使用者很强的场景扩展操作。很赞！”</p>
+                                <i class="iconfont icon-zuoshuangyinhao-copy"></i>
+                            </div>
+                        </div>
+                        <div class="leader-introduce clearfix partner-haitiandi">
+                            <div class="leader-head">
+                                <img src="./images/haitiandi_cd.png" />
+                            </div>
+                            <div class="introduce-text">
+                                <p>曹东</p>
+                                <p>海天地数码 产品经理</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="partner-describe">
+                            <div class="product col-xs-12 col-sm-4 col-md-2">
+                                <img src="./images/ayirui_product.png" />
+                            </div>
+                            <div class="describe-text col-xs-12 col-sm-8 col-md-10">
+                                <i class="iconfont icon-zuoshuangyinhao"></i>
+                                <p>“如意在开放知识图谱构建和语义分析方面成绩卓越。真正拥有核心技术和快速进化能力，却从不吹牛不炒作，是家令人敬佩的公司，踏踏实实自身积累，认认真真为客户着想，这样的合作伙伴让我看到人工智能快速产业化的希望。”</p>
+                                <i class="iconfont icon-zuoshuangyinhao-copy"></i>
+                            </div>
+                        </div>
+                        <div class="leader-introduce clearfix">
+                            <div class="leader-head">
+                                <img src="./images/ayirui_hrl.png" />
+                            </div>
+                            <div class="introduce-text">
+                                <p>黄瑞丽</p>
+                                <p>阿亦睿机器人 CEO</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="partner-describe">
+                            <div class="product col-xs-12 col-sm-4 col-md-2">
+                                <img src="./images/kidrobot_laoshukaihua.png" />
+                            </div>
+                            <div class="describe-text col-xs-12 col-sm-8 col-md-10">
+                                <i class="iconfont icon-zuoshuangyinhao"></i>
+                                <p>“与海知智能的合作中，我们见证了人工智能平台的快速迭代，其强大的功能给我们留下深刻的印象。合作过程中，海知团队的快速反馈、专业技术和开放的合作态度，让我们感受到这是一个很优秀的团队，我们有理由相信，海知将成为业内领先的AI平台。我们期待与海知智能进一步合作，祝海知智能未来发展越来越好！”</p>
+                                <i class="iconfont icon-zuoshuangyinhao-copy"></i>
+                            </div>
+                        </div>
+                        <div class="leader-introduce clearfix">
+                            <div class="leader-head">
+                                <img src="./images/laoshukaihua_thp.png" />
+                            </div>
+                            <div class="introduce-text">
+                                <p>童和平</p>
+                                <p>老树开花 智能硬件总监</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="partner-describe">
+                            <div class="product col-xs-12 col-sm-4 col-md-2">
+                                <img src="./images/wawaqinqin_product.png" />
+                            </div>
+                            <div class="describe-text col-xs-12 col-sm-8 col-md-10">
+                                <i class="iconfont icon-zuoshuangyinhao"></i>
+                                <p>“人工智能是物联网入口之一，类似服务的公司很多，但满意的鲜有。AI有3个阶段：1智能交互，2自然交互，3情感交互。海知提供的AI服务优势很明显，且领先进入了自然语言交互阶段。未来，在儿童交互领域，我们将和海知进行更紧密的合作，借助娃娃亲亲儿童终端传感器的发展，提前跨入情感交互的人工智能时代！”
+                                </p>
+                                <i class="iconfont icon-zuoshuangyinhao-copy"></i>
+                            </div>
+                        </div>
+                        <div class="leader-introduce clearfix">
+                            <div class="leader-head">
+                                <img src="./images/wawaqinqin_zgx.png" />
+                            </div>
+                            <div class="introduce-text">
+                                <p>郑国新</p>
+                                <p>娃娃亲亲科技 CEO</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next swiper-button-white"></div>
+                <div class="swiper-button-prev swiper-button-white"></div>
+            </div>
+        </section>
+        <section class="more-partner">
+            <h1 class="h1">“可爱的小伙伴们”</h1>
+            <ul class="partner-list clearfix">
+                <li>
+                    <a class="meiz" href="http://www.meizu.com/"></a>
+                </li>
+                <li>
+                    <a class="haitiandi" href="http://www.haitiand.com/"></a>
+                </li>
+                <li>
+                    <a class="iray" href="http://www.irayrobot.com/"></a>
+                </li>
+                <li>
+                    <a class="guixu" href="http://www.robo-sys.com/"></a>
+                </li>
+                <li>
+                    <a class="ximalaya" href="http://www.ximalaya.com/"></a>
+                </li>
+                <li>
+                    <a class="wawaqinqin" href="http://www.wawaqinqin.com/"></a>
+                </li>
+                <li>
+                    <a class="cvte" href="http://www.cvte.com/"></a>
+                </li>
+                <li>
+                    <a class="red-stone" href="http://www.redstone.net.cn/"></a>
+                </li>
+                <li>
+                    <a class="beida" href="http://www.pku.org.cn/"></a>
+                </li>
+                <li>
+                    <a class="ouruibo" href="http://www.orvibo.com/"></a>
+                </li>
+                <li>
+                    <a class="sugr" href="http://sugr.fm/"></a>
+                </li>
+                <li>
+                    <a class="roobo" href="http://www.roobo.com/"></a>
+                </li>
+                <li>
+                    <a class="guanjia" href="http://www.cnyanglao.com/"></a>
+                </li>
+                <li>
+                    <a class="hudong" href="http://www.x-focus.com/"></a>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <footer class="copyright-area">
+        <div class="message clearfix">
+            <div class="qr-code">
+                <img src="images/小萝莉和二维码2.png" />
+            </div>
+            <div class="message-text">
+                <p>扫码关注&nbsp;<span class="big">艾如意宝宝</span></p>
+                <p>教你&nbsp;<span class="big">玩转</span>&nbsp;机器人!</p>
+            </div>
+        </div>
+        <p class="copyright-text">@沪ICP备120136335号-3</p>
+    </footer>
+    <section class="dark-background">
+        <div class="make-robot-qrcode">
+            <img src="images/小萝莉和二维码2.png" />
+            <div class="qrcode-text">
+                <p>扫码关注 <span class="big">艾如意宝宝</span></p>
+                <p>打造你的 <span class="big">机器人大脑</span></p>
+            </div>
+            <i class="iconfont icon-ruyiaiclose2"></i>
+        </div>
+        <div class="recruit-area">
+            <div class="recruit-container">
+                <img src="images/招聘卡片.png" />
+                <i class="iconfont icon-ruyiaiclose2"></i>
+            </div>
+        </div>
+        <div class="make-robot-mobile" style="display: none;">
+            <div class="qrcode-mobile-graph">
+                <img src="images/小萝莉和二维码2.png" width="100%"/>
+            </div>
+            <div class="qrcode-descripe">
+                <p class="attention">关注 <span class="big">艾如意宝宝</span></p>
+                <p>打造你的 <span class="big">机器人大脑</span></p>
+            </div>
+            <i class="iconfont icon-ruyiaiclose2"></i>
+        </div>
+    </section>
+<!-- change-password Modal start-->
+<div class="modal fade" style="margin-top:60px;" id="change-password">
+  <div class="modal-dialog mydialog">
+    <div class="modal-content register">
+      <div class="modal-header">
+        <div style="cursor:pointer;"><div class="close-modal">&nbsp;</div></div>
+        <h4 class="modal-title font-size-style modal-title">修改密码</h4>
+      </div>
+      <div class="modal-body">
+       	<form class="form-horizontal" autocomplete="off">
+		  <div class="form-group" style="margin-bottom: 0;">
+		    <div class="col-md-10  col-md-offset-1">
+		      <input style="border-radius: 0px; box-shadow: none;" type="password" required="required" class="form-control" id="oldpasswd" placeholder="输入原始密码">
+		    </div>
+		  </div>
+		  <div class="form-group" style="margin-bottom: 0;">
+		    <div class="col-md-10  col-md-offset-1">
+		      <input style="border-radius: 0px; box-shadow: none;" type="password" required="required" class="form-control" id="newpasswd" placeholder="输入新密码">
+		    </div>
+		  </div>
+		  <div class="form-group" style="margin-bottom: 25px;">
+		    <div class="col-md-10  col-md-offset-1">
+		      <input style="border-radius: 0px; box-shadow: none;" type="password" required="required" class="form-control add-bottom" id="re-newpasswd" placeholder="确认新密码">
+		    </div>
+		  </div>
+		  <div class="form-group footer-box">
+		    <div class="col-md-offset-1 col-md-10 clearfix footer-modal">
+		      <div class="pull-right submit-modal" data-act="change-password">保存</div>
+		      <a class="pull-right cancel-modal">取消</a>
+		    </div>
+		  </div>
+		</form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- change-password Modal end-->
+    <!-- <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script> -->
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/Swiper/3.4.0/js/swiper.min.js"></script>
+    <!-- <script src="http://cdn.bootcss.com/jquery-color/2.1.2/jquery.color.min.js"></script> -->
+    <script src="js/jquery.colorAnimations.js"></script>
+    <script src="../js/components.js"></script>
+    <script src="https://dn-vbuluo-static.qbox.me/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../js/global-util.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/ruyi-index.js"></script>
+</body>
+</html>

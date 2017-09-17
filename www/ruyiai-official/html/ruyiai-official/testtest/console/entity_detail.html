@@ -1,0 +1,64 @@
+<div class="right-box row-height">
+	<!-- 右侧头部 start -->
+	<section class="right-box-title">
+	 	<div class="form-group">
+	      <div class="col-lg-9 col-md-8 col-sm-7 col-xs-4">
+	         <input type="text" class="form-control intent-name" data-act="entity-name" placeholder="请输入词典条目" ng-change="entityNameChangeFunc()" ng-model="entityDetail.name"/>
+	      </div>
+	      <!-- <i class="col-sm-1 col-xs-1" ng-click="saveEntityDetailFunc()" data-toggle="tooltip" data-placement="bottom" title="保存">&nbsp;</i> -->
+  		  <!-- <div class="save-and-apply" ng-click="saveEntityDetailFunc()">
+	      	 <div class="dim-div"></div>
+	      	 <div class="save-text">保存并应用</div>
+	      	 <div class="to-save"></div>
+	      	 <div class="saveing"></div>
+	      </div> -->
+  		</div>
+	</section>
+	<!-- 右侧头部 end -->
+	<!-- 右侧主体部分 start -->
+	<div class="right-box-main">
+		<!-- <div class="alert alert-warning help-text" style="display:none;">
+		   <a href="javascript:;" class="close" data-dismiss="alert" ng-click="deleteHelpText()">
+		      &times;
+		   </a>
+		   帮助文档帮助文档帮助文档帮助文档帮助文档帮助文档帮助文档帮助文档帮助
+		   文档帮助文档帮助文档帮助文档帮助文档帮助文档帮助文档帮助文档
+		   帮助文档帮助文档帮助文档帮助文档帮助文档帮助文档帮助文档帮助文档
+		   帮助文档帮助文档帮助文档帮助文档帮助文档帮助文档帮助文档帮助文档
+		</div> -->
+		<!-- 传入词典标签 start -->
+		<div class="entity-synonymous-tag">
+			<ul>
+				<li>
+					<div class="intent-tag clearfix title">
+						<div class="pull-left">词条名</div>
+						<div class="pull-left">同义词</div>
+					</div>
+				</li>
+				<li ng-repeat="entity in entityDetail.entries track by $index" data-act="entity-li-{{$index}}">
+					<div class="intent-tag intent-row-box">
+						<div>
+							<input type="text" style="padding-top:2px;" data-act="entity-similar-title" placeholder="请输入参数值" ng-model="entity.value" ng-blur="addEntityValueFunc(entity.value, $index)" class="form-control"/>
+						</div>
+						<ul>
+							<li class="alert alert-default alert-dismissable" ng-repeat="synonym in entity.synonyms track by $index">
+							    <span class="close" ng-click="deleteSynonymFunc($parent.$index, $index)">&times;</span>
+								<p ng-bind="synonym"></p>
+							</li>
+						</ul>
+						<div>
+							<input type="text" style="padding-top:3px;" data-act="addEntitySynonym" data-act-index="addEntitySynonym-{{$index}}" data-index="{{$index}}" placeholder="请输入同义词" ng-keydown="addEntitySynonymKeydownFunc($event,addEntitySynonym, $index)" ng-blur="addEntitySynonymFunc(addEntitySynonym, $index)" ng-model="addEntitySynonym" class="form-control"/>
+						</div>
+					</div>
+					<i ng-click="deleteEntityFunc($index,entity.value)"></i>
+				</li>
+			</ul>
+		</div>
+		<!-- 传入词典标签 end -->
+	</div>
+	<!-- 右侧主体部分 end -->
+</div>
+<!-- <script src="js/entity_detail.js"></script> -->
+
+
+

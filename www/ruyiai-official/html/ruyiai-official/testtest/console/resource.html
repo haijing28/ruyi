@@ -1,0 +1,197 @@
+<hr>
+<div class="row row-height">
+	<div class="col-md-12 col-sm-12 col-xs-12 center-list-box">
+		<section class="center-list-title">
+			<span>素材
+			<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="添加的素材可在意图详情页中被引用，用来作为问题的回答">
+			  	&nbsp;
+			</button>
+			</span>
+		</section>
+		<!-- 内容主体 start -->
+		<div class="resource-manager">
+        	<ul id="myTab" class="nav nav-tabs">
+			   <li class="active">
+			   		<a href="#img" data-toggle="tab" data-act="change-media">图片</a>
+			   	</li>
+			   <li>
+			      <a href="#voice" data-toggle="tab" data-act="change-media">音频</a>
+			   </li>
+			   <li>
+			      <a href="#video" data-toggle="tab" data-act="change-media">
+			         视频
+			      </a>
+			   </li>
+			</ul>
+			<div id="myTabContent" class="tab-content">
+	      	 <!-- 图片 start -->
+			   <div class="tab-pane fade choose-media-response active in" id="img">
+		      	  <div class="reource-operation">
+				  		<label data-act="all-choose" style="color:#666;"><input type="checkbox" class="all-choose" />&nbsp;&nbsp;全选</label>
+				  		<span class="all-delete" style="margin-left:20px;" data-act="all-delete">删 除</span>
+				  		<div id="container" class="pull-right" style="display:inline-block;">
+				  		<div class="upload-image" id="pickfilesImg">&nbsp;</div>
+				  </div>
+				  </div>
+			      <div class="image-box" data-act="image-box">
+			      	<div class="resource-empty-tips" ng-show="!resImgList || resImgList == 0">没有图片文件，点击右上角上传</div>
+					  <ul class="clearfix image-box-ul">
+					  	<li class="pull-left image-box-li" data-id="{{imageObj.id}}" ng-repeat="imageObj in resImgList">
+							<div class="img-box" ng-class="{true: 'active', false: ''}[imageObj.active]" data-act="img-box-active">
+						  		<div class="bg">
+								  	 <img ng-src="img/selected.svg"/>
+								</div>
+						  		<img ng-src="{{imageObj.url}}" class="image-pic" />
+							</div>
+					  		<div class="image-text" ng-bind="imageObj.title"></div>
+					  		<div class="image-operation" data-title="{{imageObj.title}}" data-id="{{imageObj.id}}"><i class="edit">&nbsp;</i><i class="delete">&nbsp;</i></div>
+					  	</li>
+					  </ul>
+			      </div>
+			   </div>
+			  <!-- 图片 end -->
+			  <!-- 音频 start -->
+			  <div class="tab-pane fade choose-media-response" id="voice">
+			       <div class="reource-operation">
+				  		<label data-act="all-choose" style="color:#666;"><input type="checkbox" class="all-choose" />&nbsp;&nbsp;全选</label>
+				  		<span class="all-delete" style="margin-left:20px;" data-act="all-delete">删 除</span>
+				  		<div id="container" class="pull-right" style="display:inline-block;">
+				  		<div class="upload-voice" id="pickfilesVoice">&nbsp;</div>
+				  	</div>
+				  </div>
+			      <div class="image-box" data-act="voice-box">
+			      		<div class="resource-empty-tips" ng-show="!resVoiceList || resVoiceList == 0">没有音频文件，点击右上角上传</div>
+					  	<table class="table image-box-ul">
+						   <tbody>
+						      <tr ng-repeat="voice in resVoiceList" data-id="{{voice.id}}" data-title="{{voice.title}}">
+						      	 <td style="padding-left:8px;width:4px;padding-right:20px;">
+						      	 	<img src="img/voice-pic.svg" style="margin-top:-6px;width:24px;"/>
+						      	 </td>
+						         <td style="width:40px;">
+						         	<input type="checkbox" name="choosed-voice" ng-model="voice.active" ng-true-value="true" ng-false-value="false" >
+						         </td>
+						         <td ng-bind="voice.title"></td>
+						         <td><span ng-bind="voice.size"></span>&nbsp;&nbsp;<span style="color:#999;">KB</span></td>
+						         <td ng-bind="voice.createTime | dataFormatMilliFilter"></td>
+						      	 <td class="voice-action">
+						      	 	<i class="delete">&nbsp;</i>
+						      	 	<i class="edit">&nbsp;</i>
+						      	 </td>
+						      </tr>
+						   </tbody>
+						</table>
+			      </div>
+			   </div>
+			   <!-- 音频 start -->
+			   <!-- 视频 start -->
+			  <div class="tab-pane fade choose-media-response" id="video">
+			     <div class="reource-operation">
+				  		<label data-act="all-choose" style="color:#666;"><input type="checkbox" class="all-choose" />&nbsp;&nbsp;全选</label>
+				  		<span class="all-delete" style="margin-left:20px;" data-act="all-delete">删 除</span>
+				  		<div id="container" class="pull-right" style="display:inline-block;"><div class="upload-video" id="pickfilesVideo">&nbsp;</div></div>
+				  </div>
+			      <div class="image-box" data-act="video-box">
+			      		<div class="resource-empty-tips" ng-show="!resVideoList || resVideoList.length == 0">没有视频文件，点击右上角上传</div>
+					  	<table class="table image-box-ul">
+						   <tbody>
+						      <tr ng-repeat="video in resVideoList" data-id="{{video.id}}" data-title="{{video.title}}">
+						      	 <td style="padding-left:8px;width:4px;padding-right:20px;">
+						      	 	<img src="img/video-pic.svg" style="margin-top:-6px;width:24px;"/>
+						      	 </td>
+						         <td style="width:40px;">
+						         	<input type="checkbox" name="choosed-voice" ng-model="video.active" ng-true-value="true" ng-false-value="false" >
+						         </td>
+						         <td ng-bind="video.title"></td>
+						         <td><span ng-bind="video.size"></span>&nbsp;&nbsp;<span style="color:#999;">KB</span></td>
+						         <td ng-bind="video.createTime | dataFormatMilliFilter"></td>
+						      	 <td class="voice-action">
+						      	 	<i class="delete">&nbsp;</i>
+						      	 	<i class="edit">&nbsp;</i>
+						      	 </td>
+						      </tr>
+						   </tbody>
+						</table>
+			      </div>
+			   </div>
+			   <!-- 视频 end -->
+         <!-- 内容主体 end -->
+		</div>
+	</div>
+</div>
+<!-- 上传素材 start-->
+<!-- <input type="hidden" id="domain"
+	value="http://o8naiyefa.bkt.clouddn.com/"> -->
+<input type="hidden" id="domain"
+	value="https://qiniu.ruyi.ai/">
+<input
+	type="hidden" id="uptoken_url"
+	value="abw8Nvkbep1-KsOe6co2PgwX0vYHh0epKcCE-IX1:g4w5FLkvmSs31ZcZg05E-t5rZtg=:eyJzY29wZSI6Im11bHRpbWVkaWEiLCJkZWFkbGluZSI6MTQ5Njk0MDg4NX0=" />
+<div class="modal fade" id="addresource" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+       <div style="cursor:pointer;"><div class="close-modal">&nbsp;</div></div>
+        <h4 class="modal-title" id="myModalLabel">上传素材</h4>
+      </div>
+      <div class="modal-body clearfix">
+      	<!-- 添加图片 start -->
+		<div class="col-md-12" style="overflow:hidden;">
+			<table class="table table-striped table-hover text-left"
+				style="display: none">
+				<thead>
+					<tr>
+						<th class="col-md-3">Filename</th>
+						<th class="col-md-4">Size</th>
+						<th class="col-md-5">Detail</th>
+					</tr>
+				</thead>
+				<tbody id="fsUploadProgress">
+				</tbody>
+			</table>
+		</div>
+		<!-- 添加图片 end -->
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+<!-- 上传素材 end -->
+
+<!-- 修改素材名称 start-->
+<div class="modal fade" id="updateResource">
+  <div class="modal-dialog mydialog" style="width:460px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div style="cursor:pointer;"><div class="close-modal">&nbsp;</div></div>
+        <h4 class="modal-title font-size-style modal-title">修改</h4>
+      </div>
+      <div class="modal-body">
+       	<form class="form-horizontal" autocomplete="off">
+		  <div class="form-group" style="margin-bottom: 25px;">
+		    <div class="col-md-10  col-md-offset-1">
+		      <input style="border-radius: 0px;" data-act="resource-name" type="text" class="form-control" placeholder="修改素材名称">
+		      <input data-act="resource-id" type="hidden" />
+		    </div>
+		  </div>
+		  <div class="form-group footer-box">
+		    <div class="col-md-offset-1 col-md-10 clearfix footer-modal">
+		      <div class="pull-right submit-modal" data-act="submit-rename-resource">确定</div>
+		      <a class="pull-right cancel-modal">取消</a>
+		    </div>
+		  </div>
+		</form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- login 修改素材名称 end-->
+</div>
+<!-- <script type="text/javascript" src="https://dn-vbuluo-static.qbox.me/main.js"></script> -->
+<script src="js/resource.js?v=20161027i"></script>
+<script type="text/javascript">
+	setTimeout(function(){
+		hljs.initHighlightingOnLoad();
+	}, 500);
+</script>

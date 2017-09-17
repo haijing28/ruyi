@@ -1,0 +1,225 @@
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0"> 
+<!-- <link rel="stylesheet" href="css/jquery.Jcrop.min.css" type="text/css" />
+<link rel="stylesheet" href="css/import_knowledge_base.css?20161014a" type="text/css" /> -->
+<hr>
+<div class="row row-height" id="assistantParaModal">
+	<div class="col-md-12 col-sm-12 col-xs-12 center-list-box"
+		style="width: 98%; border-right: 0;">
+		<section class="center-list-title">
+			<span>导入知识库
+			</span>
+		</section>
+		<div class="reference-app-box" style="padding-bottom: 60px; position: relative;font-size:14px;">
+			<div class="speach-response" style="height:100%;">
+				<ul class="nav nav-tabs" style="margin-top: 10px;" data-act="nav-tabs">
+					<li class="active" data-act="Qa-library"><a>问答库</a></li>
+					<li data-act="entity-library"><a>词典库</a></li>
+					<li data-act="correction-qa-library"><a>纠错库</a></li>
+				</ul>
+				<div id="myTabContent" class="tab-content">
+				
+					<!-- 问答库 start -->
+					<div class="tab-pane fade in active import-faq-entity-pane" id="Qa-library"
+						data-act="response-type"> <!-- style="margin-top:20px;" -->
+						<input type="text" placeholder="输入用户说回车搜索" id="query_question" />
+						 &nbsp;&nbsp;&nbsp;&nbsp;
+						 <span class="questions-answers-help" ng-hide="!faqImportLogList || faqImportLogList.length == 0" data-html="true" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="说明<br> 1.文件格式：仅支持zip格式文件，zip压缩包内为excel格式文件，可包含多个文件。<br> 2.撰写格式：请下载<a style='color:#3794FF;' href='./example-file/问答对导入示例文件.zip'> 《问答对导入示例.zip》</a>文件，按照模板中的结构修改添加。<br> 3.注意：请直接压缩excel文件，而不是通过文件夹。<br> 4.规格：总共最多支持5000个问答对的导入，超过将无法导入成功。" data-original-title="" title="" aria-describedby="popover426643">
+							帮助</span>
+						 <a class="questions-answers-help" ng-hide="!faqImportLogList || faqImportLogList.length == 0" href='./example-file/问答对导入示例文件.zip'>模板下载</a>
+						<div style="text-align:left;padding:30px 0px;" ng-show="!faqImportLogList || faqImportLogList.length == 0">
+							说明<br>
+							1.文件格式：仅支持zip格式文件，zip压缩包内为excel格式文件，可包含多个文件。<br>
+							2.撰写格式：请下载<a style="color:#3794FF;" href="./example-file/问答对导入示例文件.zip">
+							  《问答对导入示例.zip》</a>文件，按照模板中的结构修改添加。<br>
+							3.注意：请直接压缩excel文件，而不是通过文件夹。<br>
+							4.规格：总共最多支持5000个问答对的导入，超过将无法导入成功。
+						</div>
+						<div class="questions-answers-table" style="margin-top:12px;" ng-show="faqImportLogList && faqImportLogList.length > 0">
+							<table class="table knowledge-base-table table-hover" style="margin-top:0;"><!--  -->
+							<!-- 问答库表格 start -->
+								<thead>
+									<tr>
+										<th style="width: 150px;text-align:center;padding-left:0;">序号</th>
+										<th style="width:30%;">用户说</th>
+										<th>机器人答</th>
+										<th style="width: 50px;"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-show="$index <= 9 && faqImportLog.question.length > 0 && faqImportLog.answer.length > 0" data-act="questions-answers-tr" data-id="{{faqImportLog.id}}" ng-repeat="faqImportLog in faqImportLogList track by $index">
+										<td class="sequence_num" ng-bind="$index + 1"></td>
+										<td class="questions-answers-parent" data-type="question" style="width: 30%;border-left:1px solid #dcdddd;vertical-align:middle;">
+											<div data-act-focus="questions-answers" style="cursor:pointer;" ng-bind="faqImportLog.question">
+											</div>
+										</td>
+										<td class="questions-answers-parent" data-type="answer" style="border-left:1px solid #dcdddd;vertical-align:middle;">
+											<div data-act-focus="questions-answers" style="cursor:pointer;" ng-bind="faqImportLog.answer">
+											</div>
+										</td>
+										<td style="width: 50px;text-align:right;vertical-align:middle;"><i class="iconfont trash-icon" ng-click="deleteFaqFunc(faqImportLog.id)">&#xe611;</i></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div style="text-align: center;margin-top:10px;">
+							<ul class="clearfix common-paging-box">
+							</ul>
+							<div style="text-align:center;margin-top: 12px;">
+								<button class="common-blank-button entity-knowledge-icon" id="importFaqKnowledgeBaseButton" style="display: inline-block;">
+									<i class="iconfont trash-icon">&#xe625;</i>
+										&nbsp;导入问答对
+								</button>
+							</div>
+							<!-- 上传问答对文件 -->
+							<div data-act="importFaqSuccessTips"></div>
+							<form id="importFaqKnowledgeBaseForm" style="opacity:0;">  
+							      <p><input type="file" name="file" data-act="chooseImportFaqInput"/></p>  
+							</form> 
+							<!-- 上传问答对文件 -->
+						</div>
+						<!-- 问答库表格 end -->
+						<!-- <ul class="knowledge-base-explain">
+							<li>说明</li>
+							<li>1.文件格式：仅支持zip格式文件，zip压缩包内为excel格式文件，且只能包含一个文件。</li>
+							<li>2.撰写格式：请下载模板文件，按照模板中的结构修改添加。</li>
+							<li>3.注意：请直接压缩excel文件，而不是通过文件夹。</li>
+							<li>4.规格：目前仅支持10000条以内的问答导入。大小需为1M以内。</li>
+							<li>5.修改：不可在线修改，需要将已经修改好的文件重新导入，系统自动覆盖原有文件。注意在下载保留旧文件。</li>
+							<li>6.帮助：如遇问题，请查看帮助文件，或者联系客服。</li>
+						</ul> -->
+					</div>
+					<!-- 问答库 end -->
+					
+					<!-- 词典库 start -->
+					<div class="tab-pane fade import-faq-entity-pane" id="entity-library"
+						data-act="response-type">
+						<!-- 问答库表格 start -->
+						<div id="entity-library-box" style="overflow:hidden;overflow-y:auto;">
+							<table class="table knowledge-base-table">
+								<thead>
+									<tr>
+										<th>文件名</th>
+										<th style="width: 150px;">大小</th>
+										<th style="width: 150px;">时间</th>
+										<th style="width: 50px;"></th>
+										<th style="width: 50px;"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>词典示例.zip</td>
+										<td style="width: 150px">8kb</td>
+										<td style="width: 150px">2016-10-20 11:20</td>
+										<td style="width: 50px;"><i class="iconfont download-icon" data-act="download-example-entity" style="font-size:14px;">&#xe612;</i></td>
+										<td style="width: 50px;text-align:left;"><i class="iconfont trash-icon" style="font-size:14px;">&#xe611;</i></td>
+									</tr>
+									<tr ng-repeat="entityImportLog in entityImportLogList">
+										<td ng-bind="entityImportLog.fileName"></td>
+										<td ng-bind="entityImportLog.fileSize">1200M</td>
+										<td  ng-bind="entityImportLog.gmtCreate" style="width: 150px"></td>
+										<td style="width: 50px;"><i class="iconfont download-icon" ng-click="downloadEntityFile(entityImportLog.hashId)" style="font-size:14px;">&#xe612;</i></td>
+										<td style="width: 50px;text-align:left;" ng-click="deleteImportLog(entityImportLog.id,entityImportLog.fileName)"><i class="iconfont trash-icon" style="font-size:14px;">&#xe611;</i></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!-- 问答库表格 end -->
+						<div style="text-align: center;margin-top:10px;">
+							<button class="common-blank-button entity-knowledge-icon" id="importEntityKnowledgeBaseButton">
+								<i class="iconfont trash-icon">&#xe625;</i>
+									&nbsp;导入词典
+							</button>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<button class="common-blank-button entity-knowledge-icon" id="exportEntityKnowledgeBaseButton">
+								<i class="iconfont trash-icon">&#xe612;</i>
+									&nbsp;导出词典库
+							</button>
+							<!-- 上传文件 -->
+							<div data-act="importSuccessTips"></div>
+							<form id="importEntityKnowledgeBaseForm" style="opacity:0;">  
+							      <p><input type="file" name="file" data-act="chooseImportEntityInput"/></p>  
+							</form> 
+							<!-- 上传文件 -->
+						</div>
+						<ul class="knowledge-base-explain">
+							<li>说明</li>
+							<li>1.文件格式：仅支持zip格式文件，zip压缩包内为excel格式文件，可包含多个文件。</li>
+							<li>2.撰写格式：请下载模板文件，按照模板中的结构修改添加。</li>
+							<li>3.注意：请直接压缩excel文件，而不是通过文件夹。</li>
+							<li>4.规格：文件大小需为1M以内。每个文件支持20个以内的词典条目，每个条目词条名最多1000个，每个词条名同义词最多200个。</li>
+							<li>5.修改：不可在线修改，需要将已经修改好的文件重新导入，系统自动覆盖原有文件。注意在下载保留旧文件。</li>
+							<li>6.帮助：如遇问题，请查看帮助文件，或者联系客服。</li>
+						</ul>	
+					</div>
+					<!-- 词典库 end -->
+					
+					<!-- 纠错库 start -->
+					<div class="tab-pane fade in import-faq-entity-pane" id="correction-qa-library"
+						data-act="response-type"> <!-- style="margin-top:20px;" -->
+						<input type="text" placeholder="回车搜索" id="correction-query" />
+						 &nbsp;&nbsp;&nbsp;&nbsp;
+						 <span class="questions-answers-help" ng-hide="!correctImportLogList || correctImportLogList.length == 0" data-html="true" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="说明<br> 1.文件格式：仅支持zip格式文件，zip压缩包内为excel格式文件，可包含多个文件。<br> 2.撰写格式：请下载<a style='color:#3794FF;' href='./example-file/纠错模板示例.zip'> 《纠错模板示例.zip》</a>文件，按照模板中的结构修改添加。<br> 3.注意：请直接压缩excel文件，而不是通过文件夹。<br> 4.规格：总共最多支持5000个问答对的导入，超过将无法导入成功。" data-original-title="" title="" aria-describedby="popover426643">
+							帮助</span>
+						 <a class="questions-answers-help" ng-hide="!correctImportLogList || correctImportLogList.length == 0" href='./example-file/纠错模板示例.zip'>模板下载</a>
+						<div style="text-align:left;padding:30px 0px;" ng-show="!correctImportLogList || correctImportLogList.length == 0">
+							说明<br>
+							1.文件格式：仅支持zip格式文件，zip压缩包内为excel格式文件，可包含多个文件。<br>
+							2.撰写格式：请下载<a style="color:#3794FF;" href="./example-file/纠错模板示例.zip">
+							  《纠错模板示例.zip》</a>文件，按照模板中的结构修改添加。<br>
+							3.注意：请直接压缩excel文件，而不是通过文件夹。<br>
+							4.规格：总共最多支持5000个问答对的导入，超过将无法导入成功。
+						</div>
+						<div class="questions-answers-table" style="margin-top:12px;" ng-show="correctImportLogList && correctImportLogList.length > 0">
+							<table class="table knowledge-base-table table-hover" style="margin-top:0;"><!--  -->
+							<!-- 问答库表格 start -->
+								<thead>
+									<tr>
+										<th style="width: 150px;text-align:center;padding-left:0;">序号</th>
+										<th style="width:30%;">语音识别结果</th>
+										<th>纠正语句</th>
+										<th style="width: 50px;"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-show="$index <= 9 && correctImportLog.rawSentence.length > 0 && correctImportLog.correctionSentence.length > 0" data-act="questions-answers-tr" data-id="{{correctImportLog.id}}" ng-repeat="correctImportLog in correctImportLogList track by $index">
+										<td class="sequence_num" ng-bind="$index + 1"></td>
+										<td class="questions-answers-parent" data-type="oldQuestion" style="width: 30%;border-left:1px solid #dcdddd;vertical-align:middle;">
+											<div data-act-focus="questions-answers" style="cursor:pointer;" ng-bind="correctImportLog.rawSentence">
+											</div>
+										</td>
+										<td class="questions-answers-parent" data-type="newQuestion" style="border-left:1px solid #dcdddd;vertical-align:middle;">
+											<div data-act-focus="questions-answers" style="cursor:pointer;" ng-bind="correctImportLog.correctionSentence">
+											</div>
+										</td>
+										<td style="width: 50px;text-align:right;vertical-align:middle;"><i class="iconfont trash-icon" ng-click="deleteCorrectFaqFunc(correctImportLog.id)">&#xe611;</i></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div style="text-align: center;margin-top:10px;">
+							<ul class="clearfix correct-common-paging-box">
+							</ul>
+							<div style="text-align:center;margin-top: 12px;">
+								<button class="common-blank-button entity-knowledge-icon" id="importCorrectionFaqKnowledgeBaseButton" style="display: inline-block;">
+									<i class="iconfont trash-icon">&#xe625;</i>
+										&nbsp;导入纠错问答对
+								</button>
+							</div>
+							<!-- 上传问答对文件 -->
+							<div data-act="importCorrectionFaqSuccessTips"></div>
+							<form id="importCorrectionFaqKnowledgeBaseForm" style="opacity:0;">  
+							      <p><input type="file" name="file" data-act="chooseImportCorrectionFaqInput"/></p>  
+							</form> 
+							<!-- 上传问答对文件 -->
+						</div>
+					</div>
+					<!-- 纠错库 end -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <script src="js/jquery.Jcrop.min.js"></script>
+<script src="js/import_knowledge_base.js"></script> -->

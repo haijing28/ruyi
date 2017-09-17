@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>ACE in Action</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<style type="text/css" media="screen">
+    #editor { 
+      position: absolute;
+      top: 90px;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border:1px solid #dcdddd;
+    }
+    .ace_content{
+      height: 395px !important;
+    }
+  .assistant-answer-box button:focus{
+    outline: none !important;
+      color: #fff !important;
+      background-color: #3794FF !important;
+      border: 1px solid #3794ff !important;
+      border-color: #3794ff !important;
+  }
+  .assistant-answer-box button.active,.assistant-answer-box button.active:hover{
+    background-color:#3794FF;
+    color:#fff;
+  }
+  #templateHeader{
+    margin-left:4px;padding: 6px;border: 1px solid #ccc;color: #aaa;width: 50%;
+  }
+</style>
+</head>
+<body>
+<textarea id="editor_content_temp" style="display:none;">
+</textarea>
+<textarea id="editor_content_textarea" style="display:none;">
+</textarea>
+切换模板类型：
+<div class="btn-group assistant-answer-box" role="group" style="margin:0 0 10px 0;">
+  <button type="button" class="btn btn-default" id="js-type">javascript</button>
+  <button type="button" class="btn btn-default" id="text-type">普通文本</button>
+  <button type="button" class="btn btn-default" style="display:none;" id="js-old-type">javascript（旧版）</button>
+  <button type="button" class="btn btn-default" id="handlebars-type">handlebars</button>
+</div>
+<div>
+  模板类型前缀：<input type="input" disabled="disabled" id="templateHeader">
+</div>
+<div id="editor" style="width:718px;height:380px;">
+</div>
+<script src="https://dn-vbuluo-static.qbox.me/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.6.8/beautify.js"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.getSession().setMode("ace/mode/javascript");
+  editor.setShowPrintMargin(false);
+  editor.resize();
+    editor.getSession().on('change', function(e) {
+      var templatePrex = getTemplatePrexFunc(); //获得模板前缀
+        $("#editor_content_textarea").val(templatePrex + editor.getValue());
+    });
+
+  //根据当前的类型，切换编辑器
+    var changeEditorTheme = function(templateType){
+     if(templateType == "js-type"){
+       editor.setTheme("ace/theme/monokai");
+       editor.getSession().setMode("ace/mode/javascript");
+     }else if(templateType == "text-type"){
+       editor.setTheme("ace/theme/chrome");
+       editor.getSession().setMode("ace/mode/text");
+     }else if(templateType == "handlebars-type"){
+       editor.setTheme("ace/theme/cobalt");
+       editor.getSession().setMode("ace/mode/handlebars");
+     }else if(templateType == "js-old-type"){
+       editor.setTheme("ace/theme/twilight");
+       editor.getSession().setMode("ace/mode/javascript");
+     }
+    }
+    
+    //获得当前选中的模板类型
+    var getTemplateTypeFunc = function(){
+      var $currentButton = $(".assistant-answer-box").find("button.active");
+      return $currentButton.attr("id");
+    }
+  
+    //设置当前模板类型
+    var templateTypeCheckFunc = function(content){
+      var templateType = "";
+      if(content.indexOf("sys.template.javascript.v2") > -1){
+        $("#js-type").addClass("active").css("display","block").siblings().removeClass("active");
+        $("#text-type").css("display","block");
+        $("#templateHeader").val("sys.template.javascript.v2=");
+        templateType = "js-type";
+      }else if(content.indexOf("sys.template.javascript") > -1){
+        $("#js-old-type").addClass("active").css("display","block").siblings().removeClass("active");
+        $("#js-type").css("display","block");
+        $("#templateHeader").val("sys.template.javascript=");
+        templateType = "js-old-type";
+      }else if(content.indexOf("sys.template.mustache") > -1){
+        $("#handlebars-type").addClass("active").css("display","block").siblings().removeClass("active");
+        $("#js-type").css("display","block");
+        $("#templateHeader").val("sys.template.mustache=");
+        templateType = "handlebars-type";
+      }else{
+        $("#text-type").addClass("active").css("display","block").siblings().removeClass("active");
+        $("#templateHeader").val("无前缀");
+        $("#js-type").css("display","block");
+        templateType = "text-type";
+      }
+      changeEditorTheme(templateType);
+      editor.focus();
+      return templateType;
+    }
+    
+    //根据不同的类型模板，拼接前缀
+    var getTemplatePrexFunc = function(){
+      var $assistant_answer_box = $(".assistant-answer-box");
+      var $current_button = $assistant_answer_box.find("button.active");
+      var template_id = $current_button.attr("id");
+      var template_prex = "";
+      if(template_id == "js-type"){
+        template_prex = "sys.template.javascript.v2= ";
+      }else if(template_id == "js-old-type"){
+        template_prex = "sys.template.javascript= ";
+      }else if(template_id == "handlebars-type"){
+        template_prex = "sys.template.mustache= ";
+      }
+      return template_prex;
+    }
+    
+    //新版js前缀删除
+    var jsTypePrexDelFunc = function(content){
+      content = content.replace("sys.template.javascript.v2=","");
+      content = content.replace("sys.template.javascript.v2 =","");
+      content = content.replace("sys.template.javascript=","");
+      content = content.replace("sys.template.javascript =","");
+      content = content.replace("sys.template.mustache=","");
+      content = content.replace("sys.template.mustache =","");
+      return content;
+    }
+    
+    //将老版js转换为新版的
+    var transformTemplateFunc = function(content){
+      var pattern = /getParameter\(\s*in\.*[.|\w]*\s*\)/g;
+        /* var pattern = /getParameter\(in\.[.|\w]+\)/g; */
+        var match_strs = content.match(pattern);
+        for(var i in match_strs){
+          var replaceOld = match_strs[i];
+          var replaceNew = match_strs[i].replace("getParameter(in.","sys.in.");
+          replaceNew = replaceNew.replace("getParameter( in.","sys.in.");
+          replaceNew = replaceNew.replace("getParameter(  in.","sys.in.");
+          replaceNew = replaceNew.replace("getParameter(   in.","sys.in.");
+          replaceNew = replaceNew.replace(")","");
+          content = content.replace(replaceOld,replaceNew);
+        }
+        /* var patternOut = /getParameter\(out\.[.|\w]+\)/g; */
+        var patternOut = /getParameter\(\s*out\.*[.|\w]*\s*\)/g;
+        var match_strsOut = content.match(patternOut);
+        for(var i in match_strsOut){
+          var replaceOldOut = match_strsOut[i];
+          var replaceNewOut = match_strsOut[i].replace("getParameter(out.","sys.out.");
+          replaceNewOut = replaceNewOut.replace("getParameter( out.","sys.out.");
+          replaceNewOut = replaceNewOut.replace("getParameter(  out.","sys.out.");
+          replaceNewOut = replaceNewOut.replace("getParameter(   out.","sys.out.");
+          replaceNewOut = replaceNewOut.replace(")","");
+          content = content.replace(replaceOldOut,replaceNewOut);
+        }
+        content = content.replace("getParameter(in)","sys.in");
+        content = content.replace("getParameter(out)","sys.out");
+        content = content.replace("sys.template.javascript=","sys.template.javascript.v2=");
+        return content;
+    }
+    
+    //设置当前模板类型
+    templateTypeCheckFunc("");
+    var setEditorInterval = setInterval(function(){
+      if($("#editor_content_temp").val().length > 0){
+        var editorContentTemp = $("#editor_content_temp").val();
+        editorContentTemp = transformTemplateFunc(editorContentTemp);//将老版js转换为新版的
+        //设置当前模板类型
+          var template_type = templateTypeCheckFunc(editorContentTemp);
+          //新版js前缀删除
+          editorContentTemp = jsTypePrexDelFunc(editorContentTemp);
+          editor.getSession().setValue(editorContentTemp);
+          if(template_type == "js-type"){
+            formatCode();
+          }
+          editor.focus();
+          clearInterval(setEditorInterval);
+      }
+    },20);
+    
+    
+    editor.commands.addCommand({
+        name: 'myCommand',
+        bindKey: {win: 'Ctrl-M',  mac: 'Command-M'},
+        exec: function(editor) {
+            formatCode();
+        },
+        readOnly: true // 如果不需要使用只读模式，这里设置false
+    });
+    var jsbOpts = {
+      indent_size : 4
+    };
+    function formatCode() {
+      var templateType =  getTemplateTypeFunc();
+      if(templateType == "js-type" || templateType == "js-old-type"){
+        var session = editor.getSession();
+        session.setValue(js_beautify(session.getValue(), jsbOpts));
+      }
+    }
+    
+   //更换助理答类型
+  $("body").off("click",".assistant-answer-box button").on("click",".assistant-answer-box button",function(event){
+    var $this = $(this);
+    $this.addClass("active").siblings("button").removeClass("active");
+    var templatePrex = getTemplatePrexFunc();//获得模板前缀
+    $("#templateHeader").val(templatePrex);
+    changeEditorTheme($this.attr("id"));
+    if($this.attr("id") == "text-type"){
+      $("#templateHeader").val("无前缀");
+    }
+        $("#editor_content_textarea").val(templatePrex + editor.getValue());
+  });
+   
+</script>
+</body>
+</html>

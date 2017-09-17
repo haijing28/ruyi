@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: ruyiai-official-controller
-        image: 10.10.150.149:5000/ruyi-ai/ruyiai-official:20170917-164950
+        image: 10.10.150.149:5000/ruyi-ai/ruyiai-official:20170917-165753
         ports:
         - containerPort: 80
       imagePullSecrets:

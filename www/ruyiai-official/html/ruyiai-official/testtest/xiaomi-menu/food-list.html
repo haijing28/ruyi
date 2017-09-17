@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="foodListApp" ng-controller="foodListAppCtrl">
+<head>
+    <meta charset="UTF-8">
+    <title>菜谱列表</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <style>
+	   html,body{
+	   	font-size:12px;
+	   }
+  		body{ 
+  			margin: 0;
+		    padding: 0;
+		    font-family: "微软雅黑";
+		    overflow: hidden;
+		    height: 100%;
+		    overflow: hidden;
+		    overflow-y: auto;
+		    background: url(img/food-list-bg.jpg) no-repeat;
+		    background-size: cover;
+        }
+        body,html{-webkit-text-size-adjust: none;width: 100%;height: 100%;}
+        *{text-decoration: none;list-style: none;}
+        img{border: 0px;}
+        ul,li,dl,dd,dt,p,ol,h1,h2,h3,h4,h5{font-size: 0.6rem;font-weight: 100;padding: 0;margin: 0;}
+        .wrap{margin: 0 auto;}
+        .fl{float: left;}
+        .fr{float: right;}
+        .index{overflow: hidden;}
+        .clr{clear:both; width:100%;overflow:hidden;}
+        .pointer{cursor:pointer;}
+        a,input,button{ outline:none; }
+        ::-moz-focus-inner{border:0px;}
+        a:link {color:#0f0;text-decoration:none;} 
+        a:visited {color: #FFFF00; text-decoration:none;} 
+        a:hover {color: #00FF00; text-decoration:none;} 
+        a:active {color: #0000FF; text-decoration:none;}
+        a{color: #000;}
+        .food-list-box{
+        	width:100%;
+        	height:100%;
+        	padding-left:190px;
+        	display:none;
+        }
+        .menu-list-box{
+        	position: relative;
+		    width: 790px;
+		    color: #fff;
+		    padding: 10px 20px;
+		    height: 100%;
+		    overflow: hidden;
+		    overflow-y: auto;
+        }
+        .media-list-box{
+        	margin-top:20px;
+        }
+        .menu-list-box .title{
+        	font-size:26px;
+        	margin-top:30px;
+        	padding-left:15px;
+        }
+        .menu-list-box .media-box{
+        	padding:15px;
+        	display:block;
+        	color:#fff;
+        	margin-top:0;
+        }
+        .menu-list-box .media-box:hover,.menu-list-box .media-box:focus{
+        	background-color:#d3690d;
+        }
+        .menu-list-box .img-box{
+        	display:block;
+        	width: 200px; 
+        	height: 120px; 
+        	overflow: hidden;
+        }
+        .menu-list-box .img-box img{
+        	width:100%;
+        }
+        .menu-list-box .media-title{
+        	font-size:20px;
+        }
+        .menu-list-box .media-body-text{
+        	font-size: 15px;
+		    line-height: 22px;
+		    height: 68px;
+		    overflow: hidden;
+        }
+        .menu-list-box .media-body{
+        	padding-left:20px;
+        }
+        .menu-list-box .media-number-text{
+        	font-size: 12px;
+		    padding: 3px 0;
+        }
+        .help-box{
+        	color: #fff;
+		    width: 190px;
+		    height: 100%;
+		    overflow: hidden;
+		    overflow-y: auto;
+		    position: fixed;
+		    left: 0;
+		    top: 0;
+		    background-color: #1e1e1e;
+        }
+        .help-box .help-other-say{
+        	font-size: 15px;
+		    color: rgba(255,255,255,0.6);
+		    text-align: center;
+		    margin-top: 40px;
+        }
+        .help-box .help-example-tips{
+        	font-size:12px;
+        	color:rgba(255,255,255,0.6);
+        	text-align:center;
+        	margin-top:32px;
+        }
+        .help-box .help-example-question{
+        	font-size:15px;
+        	color:rgba(255,255,255,1);
+        	text-align:center;
+        	margin-top:12px;
+        }
+        .help-box .shrink-icon{
+        	position:absolute;
+        	width:11px;
+        	height:18px;
+        	background: url(img/left-arrow.png) no-repeat;
+		    background-size: cover;
+		    top:50%;
+		    right:13px;
+		    margin-top:-9px;
+        }
+        .help-box .shrink-icon:focus{
+        	background: url(img/left-arrow-hover.png) no-repeat;
+        	background-size: cover;
+        }
+        .help-box .shrink-icon-right{
+        	position:absolute;
+        	width:11px;
+        	height:18px;
+        	background: url(img/right-arrow.png) no-repeat;
+		    background-size: cover;
+		    top:50%;
+		    right:13px;
+		    margin-top:-9px;
+        }
+        .help-box .shrink-icon-right:focus{
+        	background: url(img/right-arrow-hover.png) no-repeat;
+        	background-size: cover;
+        }
+        .douguomeishi-logo{
+        	position: fixed;
+		    top: 11px;
+		    right: 25px;
+		    width: 121px;
+		    height: 36px;
+		    background: url(img/douguo-logo.png) no-repeat;
+		    background-size: cover;
+        }
+    </style>
+</head>
+<body>
+	<div class="douguomeishi-logo"></div>
+    <div class="food-list-box clearfix">
+        <div class="help-box">
+        	<a data-act="shrink-icon" class="shrink-icon" href="javascript:;"></a>
+        	<div class="user-say-example-box">
+	            <div class="help-other-say">您还可以这样说</div>
+	            <ul class="help-example-box">
+	            	<li>
+	                    <section class="help-example-tips">说菜名</section>
+	                    <section class="help-example-question">“农家小炒肉怎么做”</section>
+	                </li>
+	                <li>
+	                    <section class="help-example-tips">说类别</section>
+	                    <section class="help-example-question">“川菜怎么做”</section>
+	                </li>
+	                <li>
+	                    <section class="help-example-tips">说场景</section>
+	                    <section class="help-example-question">“早餐菜谱”</section>
+	                </li>
+	                <li>
+	                    <section class="help-example-tips">翻页</section>
+	                    <section class="help-example-question">“换一批”</section>
+	                </li>
+	                <li>
+	                	<section class="help-example-tips">进入菜谱详情</section>
+	                    <section class="help-example-question">“打开第一个”</section>
+	                </li>
+	                <li>
+	                	<section class="help-example-question">“第一步怎么做”</section>
+	                </li>
+	                <li>
+	                    <section class="help-example-question">“下一步”</section>
+	                </li>
+	            </ul>
+        	</div>
+        </div>
+    	<div class="menu-list-box">
+    		<h2 class="title">今日推荐</h2>
+    		<div class="media-list-box">
+	    		<a href="javascript:;" class="media media-box" ng-repeat="foodObject in foodObjects" ng-click="goFoodDetail($index)">
+				  <div class="media-left">
+				    <span class="img-box">
+				      <img class="media-object" data-act="img-desc{{$index+1}}" ng-src="{{foodObject.img.s300}}">
+				    </span>
+				  </div>
+				  <div class="media-body">
+				    <h4 class="media-heading media-title" ng-bind="foodObject.name"></h4>
+				    <div class="media-body-text">
+				    	<span ng-if="foodObject.major && foodObject.major.length > 0">主料：</span>
+				    	<span ng-repeat="major in foodObject.major"><span ng-if="$index != 0">，</span><span ng-bind="major.title"></span>
+				    </div>
+				    <div class="media-number-text" ng-bind="$index + 1"></div>
+				  </div>
+				</a>
+    		</div>
+    	</div>
+    </div>
+</body>
+<!-- <script src="js/jquery.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/common.js"></script> -->
+<script src="js/xiaomi-menu.min.js"></script>
+<script src="js/food-list.js"></script>
+</html>
+
+
+
+

@@ -1,0 +1,88 @@
+<div class="tips-text" ng-if="userList && userList.length == 0">
+	<div class="mytext">还没有人用过您的<span ng-bind="appName"></span>哦~</div>
+</div>
+<div class="tips-text" ng-hide="userList">
+	<div class="loading">
+		<div class="spinner loading-icon">
+		    <div class="spinner-container container1">
+		        <div class="circle1"></div>
+		        <div class="circle2"></div>
+		        <div class="circle3"></div>
+		        <div class="circle4"></div>
+		    </div>
+		    <div class="spinner-container container2">
+		        <div class="circle1"></div>
+		        <div class="circle2"></div>
+		        <div class="circle3"></div> 
+		        <div class="circle4"></div>
+		    </div>
+		    <div class="spinner-container container3">
+		        <div class="circle1"></div>
+		        <div class="circle2"></div>
+		        <div class="circle3"></div>
+		        <div class="circle4"></div>
+		    </div>
+		</div>
+	</div>
+</div>
+<div class="row row-height user-log-box" ng-if="userList && userList.length > 0">
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 center-list-box">
+	<hr>
+		<section class="center-list-title">
+			<span style="border-bottom:0;">粉丝管理
+			<!-- <a href="../v2/console/api_manager.html#/user_log_list/user_logs/log_statistics" style=" float: right; margin-right: -60px; font-size: 16px; ">旧版日志</a> -->
+			</span>
+		</section>
+		<div class="center-list-main" style="padding:0;">
+			<ul class="list-group user-log-group">
+			  <li data-act="nav-log-{{user.id}}" data-nickname="{{user.nickname | nickNameFilter:user.id}}" data-headImg="{{user.headImg | headImgFilter}}" data-sex="{{user.sex}}" data-city="{{user.city}}" data-confidence-count="{{user.confidenceCount}}" ng-repeat="user in userList" class="user-info" ng-click="goUserLogsFunc(user.id)">
+			  		<div class="media">
+					   <a class="pull-left" href="#">
+					      <img class="media-object" ng-src="{{user.headImg | headImgFilter}}" 
+					      alt="{{user.nickname | nickNameFilter:user.id}}" width="46px;">
+					   </a>
+					   <div class="media-body">
+					      <h4 class="media-heading basic-info clearfix">
+					      	<span ng-bind="user.nickname | nickNameFilter:user.id" title="{{user.nickname | nickNameFilter:user.id}}"></span>
+					      	<img class="male" ng-if="user.sex=='MALE'" src="img/ruyi_man.png" />
+					      	<img class="male-hover" ng-if="user.sex=='MALE'" src="img/ruyi_man_hover.png" />
+					      	<img class="womale" ng-if="user.sex=='FEMALE'" src="img/ruyi_woman.png" />
+					      	<img class="womale-hover" ng-if="user.sex=='FEMALE'"src="img/ruyi_woman_hover.png" />
+					      	<span class="position" ng-bind="user.city | positionFilter"></span>
+					      	<span>{{user.gmtUpdate | beforeTimeFilter}}</span>
+					      </h4>
+						  <section class="user-intent">
+							  <p ng-bind="user.lastSentence | mediaShowFilter"></p>
+						   </section>
+						  <div class="progress">
+						   <div class="progress-bar progress-bar-success" role="progressbar" 
+							  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" 
+							  style="width: {{user.confidenceCount | confidenceCountGreenFilter}}%;">
+							  <span class="sr-only">40% 完成</span>
+						   </div>
+						   <div class="progress-bar progress-bar-info" role="progressbar" 
+							  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" 	
+							  style="width: {{user.confidenceCount | confidenceCountYellowFilter}}%;">
+							  <span class="sr-only">30% 完成（信息）</span>
+						   </div>
+						   <div class="progress-bar progress-bar-danger" role="progressbar" 
+							  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" 	
+							  style="width: {{user.confidenceCount | confidenceCountRedFilter}}%;">
+							  <span class="sr-only">20% 完成（警告）</span>
+						   </div>
+						   <div class="progress-bar progress-bar-failure" role="progressbar" 
+							  aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" 	
+							  style="width: {{user.confidenceCount | confidenceCountBlackFilter}}%;">
+							  <span class="sr-only">20% 完成（警告）</span>
+						   </div>
+						</div>
+					   </div>
+					</div>
+			  </li> 
+			</ul>
+		</div>
+	</div>
+	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 row-height" style="padding:0;" ui-view></div>
+</div>
+<!-- <link rel="stylesheet" type="text/css" href="css/loading.css"> -->
+<!-- <script src="js/user_log_list.js?v=20161031"></script> -->

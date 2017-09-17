@@ -1,0 +1,51 @@
+<hr>
+<div class="row row-height">
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 center-list-box">
+		<section class="center-list-title" style="position:relative;">
+			<input type="text" style="padding-right:42px;font-size: 14px; border: 1px solid #dcdddd; padding: 2px 6px; width: 90%; box-shadow: 1px 0px 8px 2px #dcdddd;" ng-keydown="searchIntentWordsNameKeydownFunc($event,searchIntentWords)" ng-model="searchIntentWords" class="form-control search-intent-list" placeholder="可跨场景搜索意图">
+			<b class="iconfont icon-search-placeholder" ng-click="searchIntentWordsNameFunc(searchIntentWords)" style="cursor:pointer;position: absolute; right: 36px; top: 3px; font-size: 26px;"></b>
+		</section>
+		<div class="center-list-main" style="margin-top:-14px;">
+			<div style="color: #999; padding-left: 7px;" ng-show="!intentList">请按“回车”键搜索</div>
+			<div style="color: #999; padding-left: 7px;" ng-show="intentList.length == 0">未搜索到意图</div>
+			<ul class="list-group intent">
+			  <li class="list-group-item" data-act="nav-intent-{{intent.id}}" ng-click="goIntentDetail(intent.scenarioId,intent.id,$event)" ng-repeat="intent in intentList">
+			  	<span ng-bind="intent.name"></span>
+			  	<div class="btn-group pull-right">
+			  	 	<div class="dropdown-toggle glyphicon glyphicon-option-vertical btn-intent" type="button" data-submenu="" aria-expanded="false"></div>
+			  	 	<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+			  	 		<li class="copy-intent" ng-click="copyIntentNameFunc(intent.id,intent.scenarioId)"><a href="javascript:;" class="copy-intent-target">复制</a></li>
+			  	 		<li class="dropdown-submenu">
+			  	 			<a href="javascript:;" data-act="move-scenario">移动到对话场景</a>
+			  	 			<ul class="dropdown-menu">
+							   <li ng-repeat="scenario in scenarioList" data-act="nav-scenario-{{scenario.id}}" class="list-group-item" ng-click="moveIntentNameFunc(intent.id,scenario.id)">
+							   		<a href="javascript:;"><span data-click="scenario-name" ng-bind="scenario.name"></span></a>
+							   	</li>
+							</ul>
+			  	 		</li>
+			  	 		<li class="delete-intent" ng-click="deleteIntentNameFunc(intent.id)"><a href="javascript:;" class="delete-intent-target">删除</a></li>
+			  	 	</ul>
+			  	</div>
+			  	<!--
+			  	<i class="delete" ng-click="deleteIntentNameFunc(intent.id)"></i>
+			  	<i class="copy" ng-click="copyIntentNameFunc(intent.id)"></i>
+			  	  -->
+			  	<p class="{{intent.intentStatus | intentStatusFilter:intent.errorModelStr}} intent-popvoer" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="{{$index | popTypeFilter}}" data-content="{{intent.errorModelStr}}" ></p>
+			  	<!-- <p class="{{intent.intentStatus | intentStatusFilter}} intent-popvoer" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="{{$index | popTypeFilter}}" data-content="{{intent.errorModelStr}}" ></p> -->
+			  	<!-- <p class="{{intent.intentStatus | intentStatusFilter}}" class="btn btn-default myhelp"></p> -->
+			  </li>
+			  <li class="list-group-item" style="display:none;">
+			  	<input type="text" ng-model="intentName" ng-keydown="addIntentNameKeydownFunc($event,intentName,$index)" ng-blur="addIntentNameFunc(intentName,$index)" class="form-control" placeholder="添加意图" />
+			  </li>
+			</ul>
+			<ul class="pagination pagination-md paging-box" ng-show="pageCount > 1">
+			  <li ng-class="{true: 'disabled', false: ''}[firstNum<9]"><a href="javascript:;">&laquo;</a></li>
+			  <li ng-repeat="intentPageNum in intentPageNumList"><a href="javascript:;" ng-bind="intentPageNum"></a></li>
+			  <li ng-class="{true: 'disabled', false: ''}[lastNum>=pageCount]"><a href="javascript:;">&raquo;</a></li>
+		   </ul>
+		</div>
+	</div>
+	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 row-height" style="padding:0;border-left:0;" ui-view></div>
+</div>
+
+

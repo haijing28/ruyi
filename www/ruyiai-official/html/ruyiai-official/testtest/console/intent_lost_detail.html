@@ -1,0 +1,1097 @@
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<div class="right-box row-height">
+  <!-- 测试 start -->
+  <!-- <div class="container">
+    <form>
+      <div contenteditable id="userSyaTest" style="padding:10px;border:1px solid green;margin:20px;" ng-blur="testTemplateKeydownFunc()" ng-bind-html="userSyaTest" ></div>
+    </form>
+  </div> -->
+  <!-- 测试 end -->
+
+  <!-- 右侧头部 start -->
+  <section class="right-box-title">
+    <div class="form-group">
+        <div class="col-lg-9 col-md-8 col-sm-7 col-xs-4">
+           <input type="text" value="缺省回复" readonly="" style="background: #fff;margin-right: -90px;" />
+           <button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="未匹配到的意图时所返回的内容">
+              &nbsp;
+          </button>
+        </div>
+        <!-- <i class="col-sm-1 col-xs-1" ng-click="saveIntentDetailFunc()" data-toggle="tooltip" data-placement="bottom" title="保存">&nbsp;</i> -->
+        <div class="save-and-apply" ng-click="saveIntentDetailFunc()">
+           <div class="dim-div"></div>
+           <div class="save-text">保存并应用</div>
+           <div class="to-save"></div>
+           <div class="saveing"></div>
+        </div>
+        <span class="col-sm-1 col-xs-1" ng-click="demotest()" data-toggle="tooltip" data-placement="bottom" title="测试">&nbsp;</span>
+      </div>
+  </section>
+  <!-- 右侧头部 end -->
+  <!-- 右侧主体部分 start --> 
+  <div class="right-box-main">
+    <!-- 助理答 start -->
+    <div class="speach-response">
+      <div class="clearfix">
+        <span data-act="robot-answer-text">机器人答
+        </span>
+      </div>
+      <!-- 微信和硬件 助理答切换 start -->
+      <ul class="nav nav-tabs" style="margin-top:10px;" data-act="nav-tabs">
+         <li class="active app-response-weixin" data-act="weixin">
+            <a>微信</a>
+         </li>
+         <li class="app-response-local" data-act="local">
+            <a>硬件</a>
+         </li>
+      </ul>
+      <div id="myTabContent" class="tab-content">
+         <div class="tab-pane fade in active" id="weixin" data-act="response-type">
+          <!-- 微信助理答 start -->
+          <div class="response-group" ng-repeat="myoutputs in wechatOutputs track by $index">
+            <ul class="clearfix response-action">
+              <li class="pull-left">微信回复<span style="font-weight:100;" ng-show="wechatOutputs.length > 1">{{$index+1}}</span></li>
+              <li class="pull-right folding"><i class="iconfont icon-arrow-down" style="font-size: 16px;"></i></li>
+              <li class="pull-right delete" data-act="delete-response-block" data-type="wechat" data-index="{{$index}}"><i></i></li>
+            </ul>
+            <!-- 一组助理答 start -->
+            <div class="response-box" ng-class="{true: 'response-box-close', false: 'response-box-open'}[$index>0]">
+              <ul class="list-group response-box-text">
+                <li class="list-group-item" ng-repeat="outputObj in myoutputs track by $index" ng-show="outputObj.type == 'wechat.text' || outputObj.type == 'dialog'">
+                  <input type="text" ng-disabled="outputObj.property.text.indexOf('sys.template.javascript') > -1 || outputObj.property.text.indexOf('sys.template.handlebars') > -1" ng-focus="commonIntentDetailFocus(outputObj.property.text)" ng-model="outputObj.property.text" data-act="tab-help" ng-blur="addTextOutputWechatFunc($event,outputObj.property.text,$parent.$index,$index,'wechat.text')" class="form-control input-weixin" placeholder="添加随机回答" />
+                  <!-- <textarea type="text" style="resize:none;" rows="1" ng-focus="commonIntentDetailFocus(outputObj.property.text)" ng-model="outputObj.property.text" data-act="tab-help" ng-blur="addTextOutputWechatFunc($event,outputObj.property.text,$parent.$index,$index,'wechat.text')" class="form-control" placeholder="添加随机回答" ></textarea> -->
+                  <i class="delete iconfont icon-delete" ng-click="deleteOutputWechatFunc($parent.$index,$index)" data-toggle="tooltip" data-placement="bottom" title="删除"></i>
+                  <i class="copy iconfont icon-copy" ng-click="copyOutputWechatFunc($parent.$index,$index)" data-toggle="tooltip" data-placement="bottom" title="复制"></i>
+                  <i class="edit iconfont icon-edit" ng-click="editOutputWechatFunc($parent.$index,$index)" data-toggle="tooltip" data-placement="bottom" title="编辑"></i>
+                </li>
+                <li class="list-group-item">
+                  <!-- 这个地方的nu-blur和ng-keydown方法的parentIndex和index两个参数传递写反了，但是现在先不改，以免出现问题 -->
+                  <input type="text" ng-focus="commonIntentDetailFocus(outputTextWeixin)" data-act="outputText" ng-model="outputTextWeixin" ng-keydown="addTextOutputWechatKeydownFunc($event,outputTextWeixin,-1,$index,'wechat.text')" ng-blur="addTextOutputWechatFunc($event,outputTextWeixin,-1,$index,'wechat.text')"  class="form-control input-weixin" placeholder="添加随机回答" />
+                  <i class="edit iconfont icon-edit" ng-click="editOutputWechatFunc($index,-1)" data-toggle="tooltip" data-placement="bottom" title="编辑"></i>
+                </li>
+              </ul>
+              <!-- 助理答 多媒体回复 start -->
+              <div class="speach-response-media">
+                <ul class="list-group">
+                  <li class="list-group-item" ng-repeat="outputObj in myoutputs track by $index" ng-show="outputObj.type == 'wechat.news' || outputObj.type == 'wechat.image' || outputObj.type == 'wechat.voice' || outputObj.type == 'wechat.video' || outputObj.type == 'wechat.music'">
+                    <span class="media-title" ng-click="wechatMediaSetFunc($parent.$index,$index)" style="font-size:14px;">
+                      <span ng-bind="outputObj.type | mediaTypeFilter" style="color:#00AA88;font-size: 14px;font-weight:100;"></span>
+                      {{outputObj.property.name}}
+                  </span>
+                    <i class="delete" ng-click="deleteOutputWechatFunc($parent.$index,$index)"></i>
+                    <i class="media" ng-click="wechatMediaSetFunc($parent.$index,$index)"></i>
+                  </li>
+                  <li class="list-group-item">
+                    <span class="media-title my" ng-click="wechatMediaSetFunc(-1,$index)" style="color:#aaa;font-size:14px;font-weight:100;">使用微信素材</span>
+                  </li>
+                </ul>
+              </div>
+              <!-- 助理答 多媒体回复 end -->
+            </div>
+            <!-- 一组助理答 end -->
+          </div>
+          <div class="add-more-response clearfix">
+                <section class="pull-right" data-type="wechat" ng-click="addMoreResponseFunc()"><i></i>&nbsp;&nbsp;<span>添加认证号多条回复</span></section>
+              </div>
+          <!-- 微信助理答 end -->
+         </div>
+         <div class="tab-pane fade" id="local" data-act="response-type">
+          <!-- 硬件助理答 start -->
+          <div class="response-group" ng-repeat="myoutputs in localOutouts track by $index">
+            <ul class="clearfix response-action">
+              <li class="pull-left">硬件回复<span style="font-weight:100;" ng-show="localOutouts.length > 1">{{$index+1}}</span></li>
+              <li class="pull-right folding"><i class="iconfont icon-arrow-down" style="font-size: 16px;"></i></li>
+              <li class="pull-right delete" data-act="delete-response-block" data-type="local" data-index="{{$index}}"><i></i></li>
+            </ul>
+            <!-- 一组助理答 start -->
+            <div class="response-box" ng-class="{true: 'response-box-close', false: 'response-box-open'}[$index>0]">
+              <ul class="list-group response-box-text">
+                <li class="list-group-item" ng-repeat="outputObj in myoutputs track by $index" ng-show="outputObj.type == 'wechat.text' || outputObj.type == 'dialog'">
+                  <input type="text" ng-disabled="outputObj.property.text.indexOf('sys.template.javascript') > -1 || outputObj.property.text.indexOf('sys.template.handlebars') > -1" ng-focus="commonIntentDetailFocus(outputObj.property.text)" ng-model="outputObj.property.text" data-act="tab-help" ng-blur="addTextOutputLocalFunc($event,outputObj.property.text,$parent.$index,$index,'dialog')" class="form-control input-local" placeholder="添加随机回答" />
+                  <i class="delete iconfont icon-delete" ng-click="deleteOutputLocalFunc($parent.$index,$index)" data-toggle="tooltip" data-placement="bottom" title="删除"></i>
+                  <i class="copy iconfont icon-copy" ng-click="copyOutputLocalFunc($parent.$index,$index)" data-toggle="tooltip" data-placement="bottom" title="复制"></i>
+                  <i class="edit iconfont icon-edit" ng-click="editOutputLocalFunc($parent.$index,$index)" data-toggle="tooltip" data-placement="bottom" title="编辑"></i>
+                </li>
+                <li class="list-group-item">
+                  <input type="text" ng-focus="commonIntentDetailFocus(outputTextLocal)" data-act="outputText-local" ng-model="outputTextLocal" ng-keydown="addTextOutputLocalKeydownFunc($event,outputTextLocal,-1,$index,'dialog')" ng-blur="addTextOutputLocalFunc($event,outputTextLocal,$parent.$index,$index,'dialog')"  class="form-control input-local" placeholder="添加随机回答" />
+                  <i class="edit iconfont icon-edit" ng-click="editOutputLocalFunc($index,-1)" data-toggle="tooltip" data-placement="bottom" title="编辑"></i>
+                </li>
+              </ul>
+              <!-- 助理答 多媒体回复 start -->
+              <div class="speach-response-media">
+                <ul class="list-group">
+                  <li class="list-group-item" ng-repeat="outputObj in myoutputs track by $index" ng-show="outputObj.type == 'image' || outputObj.type == 'voice' || outputObj.type == 'video'">
+                    <span class="media-title" ng-click="localResourceSetFunc($parent.$index,$index)" style="font-size:14px;">
+                      <span ng-bind="outputObj.type | mediaTypeFilter" style="color:#00AA88;font-size: 14px;font-weight:100;"></span>
+                      {{outputObj.property.name}}
+                  </span>
+                    <i class="delete" ng-click="deleteOutputLocalFunc($parent.$index,$index)"></i>
+                    <i class="media" ng-click="localResourceSetFunc($parent.$index,$index)"></i>
+                  </li>
+                  <li class="list-group-item">
+                    <span class="media-title my" ng-click="localResourceSetFunc(-1,$index)" style="color:#aaa;font-size:14px;font-weight:100;">使用硬件素材</span>
+                  </li>
+                </ul>
+              </div>
+              <!-- 助理答 多媒体回复 end -->
+            </div>
+            <!-- 一组助理答 end -->
+          </div>
+          <!-- 添加更多回复 end -->
+          <div class="add-more-response clearfix">
+                <section class="pull-right" data-type="local" ng-click="addMoreResponseFunc()"><i></i>&nbsp;&nbsp;<span>添加认证号多条回复</span></section>
+              </div>
+          <!-- 硬件助理答 end -->
+         </div>
+      </div>
+      <!-- 微信和硬件 助理答切换 end -->
+
+    <div class="intent-detail-more-box">
+      <!-- 接受暗号 start -->
+      <div class="input-intent-tag">
+        <div style="margin-bottom: -6px;margin-top: -18px;">
+          <span>
+          接受暗号
+          <button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="如果意图A接受了一个暗号X，意味着：<br/>1、意图A可以使用暗号X携带的词典条目的值;<br/>2、如果没有存活的暗号X存在，意图A不可能被触发。<a href='http://docs.ruyi.ai/344936' target='_blank'>更多</a>">
+              &nbsp;
+          </button>
+          </span>
+        </div>
+        <div class="intent-tag">
+          <ul>
+            <li class="alert alert-default alert-dismissable" ng-repeat="context in intentDetail.contexts track by $index">
+                <span class="close" ng-click="deleteInputIntentTagFunc(context)">&times;</span>
+              <p ng-bind="context"></p>
+            </li>
+          </ul>
+          <div>
+            <input type="text" placeholder="添加接受暗号" ng-keydown="addInputIntentTagKeydownFunc($event,addInputIntentTag)" ng-blur="addInputIntentTagFunc(addInputIntentTag)" ng-model="addInputIntentTag" class="form-control"/>
+          </div>
+        </div>
+      </div>
+      <!-- 接受暗号 end -->
+      <!-- 发出暗号 start -->
+      <div class="output-intent-tag">
+        <div style="margin-bottom: -10px;margin-top: 10px;">
+          <span>发出暗号
+          <button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="如果意图A发出了一个暗号X，意味着：<br/>1、只有意图A被触发后，才会发出暗号X；<br/>2、暗号X会携带意图A中所有在意图处理中进行了配置的词典条目。<br/>3、在没有意图重新发出暗号X的情况下，暗号X会存活N次对话，N取决于X的生命周期，默认为5。<a href='http://docs.ruyi.ai/344936' target='_blank'>更多</a>">
+              &nbsp;
+          </button>
+          </span>
+        </div>
+        <div class="intent-tag clearfix">
+          <ul>
+            <li class="pull-left" ng-repeat="affectedContext in response.affectedContexts">
+                <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   <acronym ng-bind="affectedContext.name"></acronym>&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-down"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><input type="text" onkeyup="value=value.replace(/[^\d]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" ng-change="commonIntentDetailChange()" ng-model="affectedContext.lifespan" placeholder="生命周期" class="form-control"/></li>
+                  <li ng-click="deleteAffectedContextFunc(affectedContext.name)">删除</li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+          <div>
+            <input type="text" ng-model="addAffectedContext" ng-blur="addAffectedContextFunc(addAffectedContext)" ng-keydown="addAffectedContextKeydownFunc($event,addAffectedContext)" placeholder="添加发出暗号" class="form-control"/>
+          </div>
+        </div>
+      </div>
+      <!-- 发出暗号 end -->
+      <!-- 意图处理 start -->
+      <div class="intent-analysis">
+        <div>
+          <span>意图处理
+          <button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="词典条目的配置。">
+              &nbsp;
+          </button>
+          </span>
+        </div>
+        <div class="table-responsive">
+           <table class="table">
+              <thead>
+                 <tr class="active">
+                    <th class="intent-table-th">&nbsp;是否必须</th>
+                    <th class="intent-table-th">名称</th>
+                    <th class="intent-table-th">值</th>
+                    <th class="intent-table-th">类型</th>
+                    <th class="intent-table-th">提示语</th>
+                    <th class="intent-table-th">默认值</th>
+                    <th style="width:3.5%;"></th>
+                    <th style="width:3.5%;"></th>
+                 </tr>
+              </thead>
+              <tbody>
+                 <tr ng-repeat="parameter in response.parameters track by $index">
+                    <td><input class="checkbox" ng-change="commonIntentDetailChange()" data-act="tab-help" type="checkbox" ng-click="addParamentRequiredFunc(parameter.required,$index)" ng-model="parameter.required" ng-true-value="true" ng-false-value="false" /></td>
+                    <td><input type="text" ng-focus="commonIntentDetailFocus(parameter.name)" class="form-control" data-act="tab-help" ng-blur="addParamentNameFunc(parameter.name,$index)" placeholder="参数名称" ng-model="parameter.name"/></td>
+                    <td><input type="text" ng-focus="commonIntentDetailFocus(parameter.value)" class="form-control" data-act="tab-help" ng-blur="addParamentValueFunc(parameter.value,$index)" placeholder="值" ng-model="parameter.value"/></td>
+                    <td><input type="text" ng-focus="commonIntentDetailFocus(parameter.dataType)" class="form-control" data-act="user-intent-dataType-update" ng-blur="addParamentDataTypeFunc(parameter.dataType,$index)" placeholder="参数类型" ng-model="parameter.dataType" /></td>
+                    <td>
+                      <div class="add-prompts" ng-show="parameter.required && parameter.name" data-toggle="modal" data-target="#addPrompts" ng-click="editPromptsList($index)">添加提示语</div>
+                      <div ng-show="!parameter.required || !parameter.name">-</div>
+                    </td>
+                    <td><input type="text" ng-focus="commonIntentDetailFocus(parameter.defaultValue)" class="form-control" data-act="user-intent-defaultValue-update" ng-blur="addParamentDefaultValueFunc(parameter.defaultValue,$index)" placeholder="默认值" ng-model="parameter.defaultValue"/></td>
+                    <td><i class="copy iconfont icon-copy" ng-click="copyParamentFunc($index)" data-toggle="tooltip" data-placement="bottom" title="复制"></i></td>
+                    <td><i class="delete iconfont icon-delete" ng-click="deleteParamentFunc($index)" data-toggle="tooltip" data-placement="bottom" title="删除"></i></td>
+                 </tr>
+              </tbody>
+           </table>
+        </div>
+      </div>
+      <!-- 意图处理 end -->
+      <!-- action start -->
+      <div class="intent-action">
+        <div style="margin-top:-10px;font-size:16px;font-weight:bold;">
+          触发器
+          <button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="触发器：即action，面向开发者，是由开发者自定义实现的功能接口，输入语义解析结果，输出服务内容。<a href='http://docs.ruyi.ai/344938' target='_blank'>更多</a>">
+              &nbsp;
+          </button>
+          </span>
+        </div>
+        <div style="position:relative;">
+          <div data-act="action-list-trigger">
+            <input type="text" placeholder="请输入触发器" ng-focus="commonIntentDetailFocus(response.action)" ng-blur="commonIntentDetailBlur(response.action)" ng-model="response.action" class="form-control" style="width:calc( 100% - 42px ) !important;display:inline-block;"/>
+            <span class="action-right-arrows"><i class="glyphicon glyphicon-chevron-down"></i></span>
+          </div>
+          <ul class="list-group my-action-name-list" ng-show="actionList.length > 0">
+            <li class="list-group-item" ng-repeat="actionObj in actionList" ng-bind="actionObj.name"></li>
+          </ul>
+        </div>
+      </div>
+      <!-- action end -->
+      <!-- 意图优先级 start -->
+      <div class="intent-priority" style="margin-bottom:20px;" ng-if="currentUserId == 'SYSTEM_USER_ID'">
+        <div>
+          <span>意图优先级
+          <button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="共有11个等级，当用户说可以同时触发多个意图时，可以调整意图优先级确保触发到正确意图，数值越大优先级越高。">
+              &nbsp;
+          </button>
+          </span>
+        </div>
+        <div class="btn-group priority-box" data-toggle="buttons">
+          <label style="background-color:#fff;" class="btn btn-default" ng-click="setPriorityFunc(-5)" ng-class="{true: 'active', false: ''}[intentDetail.priority==-5]">
+            <input type="radio" name="options" id="priority-5" autocomplete="off">
+            <samp>-5</samp>
+          </label>
+          <label style="background-color:#fff;" class="btn btn-default" ng-click="setPriorityFunc(-4)" ng-class="{true: 'active', false: ''}[intentDetail.priority==-4]">
+            <input type="radio" name="options" id="priority-4" autocomplete="off">
+            <samp>-4</samp>
+          </label>
+          <label style="background-color:#fff;" class="btn btn-default" ng-click="setPriorityFunc(-3)" ng-class="{true: 'active', false: ''}[intentDetail.priority==-3]">
+            <input type="radio" name="options" id="priority-3" autocomplete="off">
+            <samp>-3</samp>
+          </label>
+          <label style="background-color:#fff;" class="btn btn-default" ng-click="setPriorityFunc(-2)" ng-class="{true: 'active', false: ''}[intentDetail.priority==-2]">
+            <input type="radio" name="options" id="priority-2" autocomplete="off">
+            <samp>-2</samp>
+          </label>
+          <label style="background-color:#fff;" class="btn btn-default" ng-click="setPriorityFunc(-1)" ng-class="{true: 'active', false: ''}[intentDetail.priority==-1]">
+            <input type="radio" name="options" id="priority-1" autocomplete="off">
+            <samp>-1</samp>
+          </label>
+          <label style="background-color:#fff;" class="btn btn-default" ng-click="setPriorityFunc(0)" ng-class="{true: 'active', false: ''}[intentDetail.priority==0]">
+            <input type="radio" name="options" id="priority0" autocomplete="off">
+            <samp>0</samp>
+          </label>
+          <label style="background-color:#fff;" class="btn btn-default" ng-click="setPriorityFunc(1)" ng-class="{true: 'active', false: ''}[intentDetail.priority==1]">
+            <input type="radio" name="options" id="priority1" autocomplete="off">
+            <samp>1</samp>
+          </label>
+          <label style="background-color:#fff;" class="btn btn-default" ng-click="setPriorityFunc(2)" ng-class="{true: 'active', false: ''}[intentDetail.priority==2]">
+            <input type="radio" name="options" id="priority2" autocomplete="off">
+            <samp>2</samp>
+          </label>
+          <label style="background-color:#fff;" class="btn btn-default" ng-click="setPriorityFunc(3)" ng-class="{true: 'active', false: ''}[intentDetail.priority==3]">
+            <input type="radio" name="options" id="priority3" autocomplete="off">
+            <samp>3</samp>
+          </label>
+          <label style="background-color:#fff;" class="btn btn-default" ng-click="setPriorityFunc(4)" ng-class="{true: 'active', false: ''}[intentDetail.priority==4]">
+            <input type="radio" name="options" id="priority4" autocomplete="off">
+            <samp>4</samp>
+          </label>
+          <label style="background-color:#fff;" class="btn btn-default" ng-click="setPriorityFunc(5)" ng-class="{true: 'active', false: ''}[intentDetail.priority==5]">
+            <input type="radio" name="options" id="priority5" autocomplete="off">
+            <samp>5</samp>
+          </label>
+        </div>
+      </div>
+      <!-- 意图优先级 end -->
+      <!-- 意图优先级 start -->
+      <div class="intent-priority" style="margin-bottom:20px;" ng-if="currentUserId != 'SYSTEM_USER_ID'">
+        <div>
+          <span>意图优先级
+          <button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="共有5个等级，当用户说可以同时触发多个意图时，可以调整意图优先级确保触发到正确意图，数值越大优先级越高。">
+              &nbsp;
+          </button>
+          </span>
+        </div>
+        <div class="btn-group priority-box" data-toggle="buttons">
+          <label style="background-color:#fff;" class="btn btn-default" ng-click="setPriorityFunc(-2)" ng-class="{true: 'active', false: ''}[intentDetail.priority==-2]">
+            <input type="radio" name="options" id="priority-2" autocomplete="off">
+            <samp>-2</samp>
+          </label>
+          <label style="background-color:#fff;" class="btn btn-default" ng-click="setPriorityFunc(-1)" ng-class="{true: 'active', false: ''}[intentDetail.priority==-1]">
+            <input type="radio" name="options" id="priority-1" autocomplete="off">
+            <samp>-1</samp>
+          </label>
+          <label style="background-color:#fff;" class="btn btn-default" ng-click="setPriorityFunc(0)" ng-class="{true: 'active', false: ''}[intentDetail.priority==0]">
+            <input type="radio" name="options" id="priority0" autocomplete="off">
+            <samp>0</samp>
+          </label>
+          <label style="background-color:#fff;" class="btn btn-default" ng-click="setPriorityFunc(1)" ng-class="{true: 'active', false: ''}[intentDetail.priority==1]">
+            <input type="radio" name="options" id="priority1" autocomplete="off">
+            <samp>1</samp>
+          </label>
+          <label style="background-color:#fff;" class="btn btn-default" ng-click="setPriorityFunc(2)" ng-class="{true: 'active', false: ''}[intentDetail.priority==2]">
+            <input type="radio" name="options" id="priority2" autocomplete="off">
+            <samp>2</samp>
+          </label>
+        </div>
+      </div>
+      <!-- 意图优先级 end -->
+    </div>
+
+    </div>
+  </div>
+  <!-- 右侧主体部分 end -->
+</div>
+
+<!-- 编辑微信多行文本 Modal start-->
+<div class="modal fade" id="editWeixinTextarea">
+  <div class="modal-dialog" style="width: 800px;">
+    <div class="modal-content" style="width: 800px;">
+      <div class="modal-header">
+        <div style="cursor:pointer;"><div class="close-modal">&nbsp;</div></div>
+        <h4 class="modal-title font-size-style">编辑微信机器人答
+          <button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="<b>提示：<br/>a.支持编辑器常用快捷键。<br/>b.javascript模板下，Windows可使用“Ctrl+m”, Mac可使用”Command+m“快速格式化代码。 </b></br></br><b>切换模板类型：特别注意，所写内容一定要跟所选择的模板类型一致，否则不能正常使用。</b><br/><br/><b>模板类型前缀：</b>用于区分不同模板类型；根据所选择的模板，会自动更换，无需手动修改。<br/><br/><b>a.javascript：</b>使用sys.in和sys.out获得对应所需参数，例：”sys.in.question”。 其他遵循javascript基本语法。<a href='https://docs.ruyi.ai/43-js%E6%A8%A1%E7%89%88%E8%AF%AD%E8%A8%80%E6%A1%88%E4%BE%8B.html' target='_blank'>更多>></a><br/><br/><b>b.普通文本：</b>此模板类型下保存，均显示为普通文本。<br/><br/><b>c.handlebars：</b>遵循handlebars基本语法。<a href='https://docs.ruyi.ai/42-handlebars%E6%A8%A1%E6%9D%BF%E8%AF%AD%E8%A8%80%E6%A1%88%E4%BE%8B.html' target='_blank'>更多>></a><br/><br/>">
+          &nbsp;
+      </button>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <textarea type="hidden" style="display:none;" id="weixinTextarea" parentIndex="" myIndex="" ></textarea>
+        <!-- 文本内容 start -->
+        <!-- <form class="form-horizontal ng-pristine ng-valid" style="display:block;">
+            <div class="form-group" style="margin-bottom:0;"> 
+          <div class="col-sm-12">
+              <textarea type="input" class="form-control add-bottom"  id="weixinTextarea" parentIndex="" myIndex="" style="border-radius: 0px; box-shadow: none;height: 400px;" placeholder="请输入编辑文本"></textarea>
+          </div>
+      </div>
+    </form>
+    <!-- 文本内容 end -->
+    <!-- js编辑器 start -->
+    <div id="editor-iframe-box-wechat">
+        
+    </div>
+    <!-- js编辑器 end -->
+      </div>
+      <div class="modal-footer" style="padding: 20px 40px;">
+      <div class="col-md-offset-1 col-md-10 clearfix footer-modal">
+            <button type="submit" class="pull-right submit-modal" ng-click="editWeixinTextareaSubmitFunc()">确 认</button>
+          <a class="pull-right cancel-modal">取消</a>
+    </div>
+    </div>
+    </div>
+  </div>
+</div>
+<!-- 编辑微信多行文本 Modal end-->
+
+<!-- 编辑硬件多行文本 Modal start-->
+<div class="modal fade" id="editLocalTextarea">
+  <div class="modal-dialog" style="width: 800px;">
+    <div class="modal-content" style="width: 800px;">
+      <div class="modal-header">
+        <div style="cursor:pointer;"><div class="close-modal">&nbsp;</div></div>
+        <h4 class="modal-title font-size-style">编辑硬件机器人答
+          <button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="<b>提示：<br/>a.支持编辑器常用快捷键。<br/>b.javascript模板下，Windows可使用“Ctrl+m”, Mac可使用”Command+m“快速格式化代码。 </b></br></br><b>切换模板类型：特别注意，所写内容一定要跟所选择的模板类型一致，否则不能正常使用。</b><br/><br/><b>模板类型前缀：</b>用于区分不同模板类型；根据所选择的模板，会自动更换，无需手动修改。<br/><br/><b>a.javascript：</b>使用sys.in和sys.out获得对应所需参数，例：”sys.in.question”。 其他遵循javascript基本语法。<a href='https://docs.ruyi.ai/43-js%E6%A8%A1%E7%89%88%E8%AF%AD%E8%A8%80%E6%A1%88%E4%BE%8B.html' target='_blank'>更多>></a><br/><br/><b>b.普通文本：</b>此模板类型下保存，均显示为普通文本。<br/><br/><b>c.handlebars：</b>遵循handlebars基本语法。<a href='https://docs.ruyi.ai/42-handlebars%E6%A8%A1%E6%9D%BF%E8%AF%AD%E8%A8%80%E6%A1%88%E4%BE%8B.html' target='_blank'>更多>></a><br/><br/>">
+          &nbsp;
+      </button>
+    </h4>
+      </div>
+      <div class="modal-body">
+        <!-- 未申请 -->
+        <textarea type="hidden" style="display:none;" id="localTextarea" parentIndex="" myIndex="" ></textarea>
+    <!-- js编辑器 start -->
+    <div id="editor-iframe-box-local">
+        
+    </div>
+    <!-- js编辑器 end -->
+        <!-- <form class="form-horizontal ng-pristine ng-valid" style="display:block;">
+            <div class="form-group" style="margin-bottom:0;"> 
+          <div class="col-sm-12">
+              <textarea type="input" class="form-control add-bottom"  id="localTextarea" parentIndex="" myIndex="" style="border-radius: 0px; box-shadow: none;height: 400px;" placeholder="请输入编辑文本"></textarea>
+          </div>
+      </div>
+          
+    </form> -->
+      </div>
+      <div class="modal-footer">
+          <div class="col-md-offset-1 col-md-10 clearfix footer-modal">
+                <button type="submit" class="pull-right submit-modal" ng-click="editLocalTextareaSubmitFunc()">确 认</button>
+              <a class="pull-right cancel-modal">取消</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 编辑硬件多行文本 Modal end-->
+<!-- 编辑用户说多行文本 Modal start-->
+<div class="modal fade" id="editUserSayTextarea">
+  <div class="modal-dialog" style="width: 800px;">
+    <div class="modal-content" style="width: 800px;">
+      <div class="modal-header">
+        <div style="cursor:pointer;"><div class="close-modal">&nbsp;</div></div>
+        <h4 class="modal-title font-size-style">编辑用户说</h4>
+      </div>
+      <div class="modal-body">
+        <!-- 未申请 -->
+        <form class="form-horizontal ng-pristine ng-valid" style="display:block;">
+            <div class="form-group" style="margin-bottom:0;"> 
+          <div class="col-sm-12">
+              <textarea type="input" class="form-control add-bottom"  id="userSayTextarea" parentIndex="" myIndex="" style="border-radius: 0px; box-shadow: none;height: 400px;" placeholder="请输入编辑文本"></textarea>
+          </div>
+      </div>
+          
+    </form>
+      </div>
+      <div class="modal-footer">
+          <div class="col-md-offset-1 col-md-10 clearfix footer-modal">
+                <button type="submit" class="pull-right submit-modal" ng-click="editUserSayTextareaSubmitFunc()">确 认</button>
+              <a class="pull-right cancel-modal">取消</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 编辑用户说多行文本 Modal end-->
+
+<!-- 添加提示语 start-->
+<div class="modal fade" id="addPrompts" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document" style="padding-top:120px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div style="cursor:pointer;"><div class="close-modal">&nbsp;</div></div>
+        <h4 class="modal-title" id="myModalLabel">添加提示语</h4>
+      </div>
+      <div class="modal-body" style="padding-bottom: 40px;">
+         <ul class="list-group">
+      <li class="list-group-item" ng-repeat="prompt in prompts track by $index">
+        <!--  <input type="text" ng-blur="addPromptFunc(prompt,$index)" ng-model="prompt" class="form-control" placeholder="回车添加提示语" /> -->
+        <!--  <textarea type="text" ng-blur="addPromptFunc(prompt,$index, $event)" ng-focus="check($event)" ng-keydown="check($event)" ng-model="prompt" class="form-control prompt-item" placeholder="回车添加提示语"></textarea> -->
+        <div contenteditable="true" ng-blur="addPromptFunc($index, $event)" ng-focus="hideOprationIcon($event)" ng-model="prompt" ng-bind="prompt" class="form-control prompt-item" placeholder="回车添加提示语"></div>
+        <i ng-click="deletePromptFunc($index)" class="delete-prompt"></i>
+        <i ng-click="copyPromptFunc($index, $event)" class="copy-prompt"></i>
+      </li>
+      <li class="list-group-item">
+        <input type="text" ng-keydown="addPromptKeydownFunc($event,addPromptValue,$index)" ng-blur="addPromptFunc($index, $event)" ng-model="addPromptValue" class="form-control" placeholder="回车添加提示语" />
+      </li>
+    </ul>
+    <div class="modal-footer" style="padding: 10px; padding-right: 40px; padding-bottom: 0; margin-bottom: -16px;">
+          <button type="button" style="margin-right:-40px;" class="btn btn-primary rating-submit" ng-click="promptSubmit()">确定</button>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 设置微信多媒体素材 start-->
+<div class="modal fade" id="mediaResponseModal">
+  <div class="modal-dialog" style="width:800px;">
+    <div class="modal-content add-material">
+      <div class="modal-header">
+        <span>使用微信素材</span>
+        <div style="cursor:pointer;"><div class="close-modal">&nbsp;</div></div>
+      </div>
+      <div class="modal-body">
+         <!-- 内容主体 start -->
+         <ul id="myTab-media" class="nav nav-tabs">
+         <li class="active"><a href="#weixin-news" data-toggle="tab" data-act="change-media">图文 </a></li>
+         <li><a href="#weixin-image" data-toggle="tab" data-act="change-media">图片</a></li>
+         <li>
+            <a href="#weixin-voice" data-toggle="tab" data-act="change-media">
+               音频
+            </a>
+         </li>
+         <li>
+            <a href="#weixin-video" data-toggle="tab" data-act="change-media">
+               视频
+            </a>
+         </li>
+         <li class="btn-group">
+    <!--        <a href="#weixin-customize" data-toggle="tab" data-act="change-media">
+               自定义 <span class="caret dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false"></span>
+               <span class="sr-only">Toggle Dropdown</span>
+            </a>
+            --> 
+            <a href="#weixin-customize" style="background-color: white; margin-bottom: 1px; border: 1px solid white;" class="btn btn-danger customize" data-toggle="tab" data-act="change-media">自定义图片</a>
+          <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-customize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 0;">
+            <span class="caret caret-customize"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-customize">
+            <li><a href="#weixin-customize-image-detail" data-act="change-customize" id="weixin-customize-image-chosen">自定义图片</a></li>
+            <li><a href="#weixin-customize-music-detail" data-act="change-customize" id="weixin-customize-music-chosen">自定义音乐</a></li>
+            <li><a href="#weixin-customize-voice-detail" data-act="change-customize" id="weixin-customize-voice-chosen">自定义音频</a></li>
+            <li><a href="#weixin-customize-video-detail" data-act="change-customize" id="weixin-customize-video-chosen">自定义视频</a></li>
+            <li><a href="#weixin-customize-news-detail" data-act="change-customize" id="weixin-customize-news-chosen">自定义图文</a></li>
+            </ul>
+         </li>
+         <!-- li>
+            <a href="#url" data-toggle="tab" data-act="change-media">
+               url
+            </a>
+         </li> -->
+      </ul>
+      <div id="myTabContent" class="tab-content">
+         <div class="tab-pane fade in active choose-media-response" data-type="wechat.news" id="weixin-news">
+            <div class="row news-box clearfix">
+              <!-- <section class="authorize-tip-box">
+                <div class="weixin-authorize" style="margin: 50% 35%;">
+              <a href="{{ruyi_wechat}}/ruyi-wechat/authorize.jsp?appId={{appId}}">微信第三方授权</a>
+            </div>
+              </section> -->
+              <!-- news-box start -->
+           <div class="col-md-4 col-lg-4 news-object" ng-repeat="news in newsList" ng-click="newsObjectClickFunc(news.media_id)">
+             <div class="bg" ng-class="{true: 'active', false: ''}[news.selected]">
+               <img ng-src="img/selected.svg"/>
+             </div>
+             <div class="news-border">
+              <div class="thumbnail news-li" ng-repeat="newsObjFirst in news.content.news_item" ng-if="$index==0">
+                <h5><span ng-bind="newsObjFirst.title" class="news-title"></span></span><br/><small ng-bind="news.update_time | dataFormatFilter"></small></h5>
+                <img ng-src="{{ruyi_wechat}}/ruyi-wechat/{{appId}}/image/{{news.content.news_item[0].thumb_media_id}}">
+                <div class="caption">
+                  <p ng-bind="newsObjFirst.digest"></p>
+                  <!-- <p target="_blank" data-href="{{news.content.news_item[0].url}}" data-act="read-more">查看全文</p> -->
+                </div>
+              </div>
+              <!-- 文章列表 start-->
+              <div class="media" ng-repeat="newsObjFirst in news.content.news_item" ng-if="news.content.news_item.length > 1">
+                <div class="media-body"  ng-bind="newsObjFirst.title">
+                </div>
+                <div class="media-right">
+                  <a href="#">
+                    <img class="media-object" ng-src="{{ruyi_wechat}}/ruyi-wechat/{{appId}}/image/{{newsObjFirst.thumb_media_id}}" style="width: 34px; height: 34px;" />
+                  </a>
+                </div>
+              </div>
+              <!-- 文章列表 end-->
+              </div>
+            </div>
+            <!-- news-box end -->
+          </div>
+         </div>
+           <!-- 图片 start -->
+         <div class="tab-pane fade choose-media-response" data-type="wechat.image" id="weixin-image">
+            <div class="row image-box">
+               <div class="col-sm-6 col-md-4 image-object" ng-repeat="imageObj in imageObjList" ng-click="imageObjectClickFunc(imageObj.media_id)">
+                <div class="bg" ng-class="{true: 'active', false: ''}[imageObj.selected]">
+                 <img ng-src="img/selected.svg"/>
+            </div>
+              <div class="thumbnail image-obj">
+                <img ng-src="{{ruyi_wechat}}/ruyi-wechat/{{appId}}/image/{{imageObj.media_id}}">
+                <div class="caption">
+                 <p ng-bind="imageObj.name" class="english-number-break"></p>
+                </div>
+              </div>
+            </div>
+            </div>
+         </div>
+        <!-- 图片 end -->
+        <!-- 音频 start -->
+         <div class="tab-pane fade choose-media-response" data-type="wechat.voice" id="weixin-voice">
+           <div class="row voice-box">
+            <table class="table">
+             <tbody>
+                <tr ng-repeat="voice in voiceList">
+                   <td style="width: 33px;"><input type="radio" ng-click="voiceObjectClickFunc(voice.media_id)" name="choosed-voice" data-mediaid="{{voice.media_id}}"></td>
+                   <td style="width: 400px;" ng-bind="voice.name"></td>
+                   <td ng-bind="voice.update_time | dataFormatFilter"></td>
+                </tr>
+             </tbody>
+          </table>
+           </div>
+         </div>
+         <!-- 音频 start -->
+         <!-- 视频 start -->
+         <div class="tab-pane fade choose-media-response" data-type="wechat.video" id="weixin-video">
+           <div class="row video-box">
+            <table class="table">
+             <tbody>
+                <tr ng-repeat="video in videoList">
+                   <td style="width: 33px;"><input type="radio" ng-click="videoObjectClickFunc(video.media_id)" name="choosed-video" data-mediaid="{{video.media_id}}"></td>
+                   <td style="width: 400px;" ng-bind="video.name"></td>
+                   <td ng-bind="video.update_time | dataFormatFilter"></td>
+                </tr>
+             </tbody>
+          </table>
+           </div>
+         </div>
+         <!-- 视频end -->
+         <!-- 自定义 start -->
+         <div class="tab-pane fade choose-media-response" data-type="wechat.customize" id="weixin-customize">
+           <div class="row video-box">
+             <div class="customize-body">
+               <div id="weixin-customize-image-detail" class="active">
+                <div class="form-group" style="margin-bottom: 0;">
+                  <div class="col-md-10  col-md-offset-1">
+                    <label for="weixin-customize-image-name">名称：</label>
+                      <input autocomplete="off" style="border-radius: 0px; box-shadow: none;" type="text" required="required" class="form-control" id="weixin-customize-image-name" placeholder="名称" />
+                  </div>
+                </div>
+                <div class="form-group" style="margin-bottom: 25px;">
+                  <div class="col-md-10  col-md-offset-1">
+                    <label for="weixin-customize-image-url">url：</label>
+                    <input autocomplete="off" style="border-radius: 0px; box-shadow: none;" type="text" required="required" class="form-control add-bottom" id="weixin-customize-image-url" placeholder="url" />
+                  </div>
+                </div>
+               </div>
+               <div id="weixin-customize-music-detail" style="display:none">
+              <div class="form-group" style="margin-bottom: 0;">
+                  <div class="col-md-10  col-md-offset-1">
+                    <label for="weixin-customize-music-name">名称：</label>
+                      <input autocomplete="off" style="border-radius: 0px; box-shadow: none;" type="text" required="required" class="form-control" id="weixin-customize-music-name" placeholder="名称" />
+                  </div>
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <div class="col-md-10  col-md-offset-1">
+                    <label for="weixin-customize-music-abstract">摘要：</label>
+                      <textarea style="border-radius: 0px; box-shadow: none; vertical-align: middle;" required="required" class="form-control" id="weixin-customize-music-abstract" placeholder="摘要"></textarea>
+                  </div>
+                </div>
+                <div class="form-group" style="margin-bottom: 25px;">
+                  <div class="col-md-10  col-md-offset-1">
+                    <label for="weixin-customize-music-url">url：</label>
+                    <input autocomplete="off" style="border-radius: 0px; box-shadow: none;" type="text" required="required" class="form-control add-bottom" id="weixin-customize-music-url" placeholder="url" />
+                  </div>
+                </div>
+             </div>
+               <div id="weixin-customize-voice-detail" style="display:none">
+              <div class="form-group" style="margin-bottom: 0;">
+                  <div class="col-md-10  col-md-offset-1">
+                    <label for="weixin-customize-voice-name">名称：</label>
+                      <input autocomplete="off" style="border-radius: 0px; box-shadow: none;" type="text" required="required" class="form-control" id="weixin-customize-voice-name" placeholder="名称" />
+                  </div>
+                </div>
+                <div class="form-group" style="margin-bottom: 25px;">
+                  <div class="col-md-10  col-md-offset-1">
+                    <label for="weixin-customize-voice-url">mediaId：</label>
+                    <input autocomplete="off" style="border-radius: 0px; box-shadow: none;" type="text" required="required" class="form-control add-bottom" id="weixin-customize-voice-url" placeholder="mediaId" />
+                  </div>
+                </div>
+             </div>
+               <div id="weixin-customize-video-detail" style="display:none">
+                <div class="form-group" style="margin-bottom: 0;">
+                  <div class="col-md-10  col-md-offset-1">
+                    <label for="weixin-customize-video-name">名称：</label>
+                      <input autocomplete="off" style="border-radius: 0px; box-shadow: none;" type="text" required="required" class="form-control" id="weixin-customize-video-name" placeholder="名称" />
+                  </div>
+                </div>
+                <div class="form-group" style="margin-bottom: 25px;">
+                  <div class="col-md-10  col-md-offset-1">
+                    <label for="weixin-customize-video-url">mediaId：</label>
+                    <input autocomplete="off" style="border-radius: 0px; box-shadow: none;" type="text" required="required" class="form-control add-bottom" id="weixin-customize-video-url" placeholder="mediaId" />
+                  </div>
+                </div>
+               </div>
+               <div id="weixin-customize-news-detail" style="display:none">
+                <div class="add-customize-news-detail">
+                  <div class="reource-operation" style="padding-top: 30px; margin-top: 0;">
+                    <div id="container" class="pull-right" style="display:inline-block; position: relative;">
+                      <div class="add-customize-news"  ng-click="addNewsFunc()">添加自定义图文&nbsp;</div>
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="customize-news-body" style="height: 450px; overflow:auto;">
+                  <div class="customize-news clearfix">               
+                    <div class="form-group" style="margin-bottom: 0;">
+                      <div class="col-md-10  col-md-offset-1">
+                        <label for="weixin-customize-news-name">名称：</label>
+                          <input autocomplete="off" style="border-radius: 0px; box-shadow: none; border-top: 1px solid rgba(0,0,0,0);border-right: 1px solid rgba(0,0,0,0);" type="text" required="required" class="form-control weixin-customize-news-name" id="weixin-customize-news-name" placeholder="名称" />
+                      </div>
+                    </div>                
+                    <div class="form-group" style="margin-bottom: 0;">
+                      <div class="col-md-10  col-md-offset-1">
+                        <label for="weixin-customize-news-abstract">摘要：</label>
+                          <textarea style="border-radius: 0px; box-shadow: none; vertical-align: middle; width: 85%;max-width:85%;border-right: 1px solid rgba(0,0,0,0);" required="required" class="form-control weixin-customize-news-abstract" id="weixin-customize-news-abstract" placeholder="摘要"></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 25px;">
+                      <div class="col-md-10  col-md-offset-1">
+                        <label for="weixin-customize-news-url">封面URL：</label>
+                        <input autocomplete="off" style="border-radius: 0px; box-shadow: none;border-right: 1px solid rgba(0,0,0,0);" type="text" required="required" class="form-control weixin-customize-news-url" id="weixin-customize-news-url" placeholder="封面URL" />
+                      </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 25px;">
+                      <div class="col-md-10  col-md-offset-1">
+                        <label for="weixin-customize-news-jumpto">跳转链接：</label>
+                        <input autocomplete="off" style="border-radius: 0px; box-shadow: none;border-right: 1px solid rgba(0,0,0,0);" type="text" required="required" class="form-control weixin-customize-news-jumpto" id="weixin-customize-news-jumpto" placeholder="跳转链接" />
+                      </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 25px;">
+                      <div class="col-md-10  col-md-offset-1">
+                        <div class="delete-customize-news">&nbsp;
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               </div>
+             </div>
+             
+           </div>
+         </div>
+         <!-- 自定义 start -->
+         <!-- url start
+         <div class="tab-pane fade choose-media-response" id="url">
+            <div class="row image-box">
+               <input type="text" placeholder="请输入资源url" style="width: 60%;padding: 6px;"/>
+            </div>
+         </div> -->
+        <!-- url end -->
+      </div>
+         <!-- 内容主体 end -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default rating-cancel" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary rating-submit" ng-click="setMediaSubmitFunc()">确定</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- 设置微信多媒体素材 start-->
+
+<!-- 设置硬件多媒体素材 start-->
+<div class="modal fade" id="localResourceModal" style="overflow-y:hidden;">
+  <div class="modal-dialog" style="width:800px;">
+    <div class="modal-content add-material">
+      <div class="modal-header">
+        <span>使用硬件素材</span>
+        <div style="cursor:pointer;"><div class="close-modal">&nbsp;</div></div>
+      </div>
+      <div class="modal-body">
+         <!-- 内容主体 start -->
+          <!-- 内容主体 start -->
+    <div class="resource-manager" style="padding:0 16px 16px 16px;">
+          <ul id="myTab-local" class="nav nav-tabs">
+         <li class="active">
+            <a href="#image" data-toggle="tab" data-act="change-media">图片</a>
+          </li>
+         <li>
+            <a href="#voice" data-toggle="tab" data-act="change-media">音频</a>
+         </li>
+         <li>
+            <a href="#video" data-toggle="tab" data-act="change-media">
+               视频
+            </a>
+         </li>
+         <li class="btn-group">
+    <!--        <a href="#customize" data-toggle="tab" data-act="change-media">
+               视频
+            </a>
+            --> 
+            <a href="#customize" style="background-color: white; margin-bottom: 1px; border: 1px solid white;" class="btn btn-danger customize" data-toggle="tab" data-act="change-media">自定义图片</a>
+          <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-customize" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret caret-customize"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-customize">
+            <li><a href="#customize-image-detail" data-act="change-customize" id="customize-image-chosen">自定义图片</a></li>
+            <li><a href="#customize-voice-detail" data-act="change-customize" id="customize-voice-chosen">自定义音频</a></li>
+            <li><a href="#customize-video-detail" data-act="change-customize" id="customize-video-chosen">自定义视频</a></li>
+            </ul>
+         </li>
+         <li class="pull-right">
+            <button class="common-blank-button upload-resource-button">
+            <i style="color:#3794ff;" class="iconfont trash-icon"></i>
+              &nbsp;上传素材
+          </button>
+         </li>
+      </ul>
+      <div id="myTabContent" class="tab-content">
+           <!-- 图片 start -->
+         <div class="tab-pane fade choose-media-response active in choose-response" data-type="image" id="image">
+             <!--  <div class="reource-operation clearfix">
+              <label data-act="all-choose" style="color:#666;"><input type="checkbox" class="all-choose" />&nbsp;&nbsp;全选</label>
+              <span class="all-delete" style="margin-left:20px;" data-act="all-delete">删 除</span>
+              <div id="container" class="pull-right" style="display: inline-block; position: relative; margin-top: -9px; padding: 6px 0;"><div class="upload-image" id="pickfiles">&nbsp;</div></div>
+          </div> -->
+          <div style="line-height:16px;">&nbsp;</div>
+            <div class="image-box" data-act="image-box">
+              <div class="resource-empty-tips" ng-show="!resImgList || resImgList == 0">没有图片文件</div>
+            <ul class="clearfix image-box-ul">
+              <li class="pull-left image-box-li" style="margin-bottom:0;" data-id="{{imageObj.id}}" ng-repeat="imageObj in resImgList">
+              <div class="img-box" ng-class="{true: 'active', false: ''}[imageObj.active]" data-act="img-box-active">
+                  <div class="bg">
+                     <img ng-src="img/selected.svg"/>
+                </div>
+                  <img ng-src="{{imageObj.url}}" class="image-pic" /> 
+              </div>
+                <div class="image-text" ng-bind="imageObj.title"></div>
+                <!-- <div class="image-operation" data-title="{{imageObj.title}}" data-id="{{imageObj.id}}"><i class="edit">&nbsp;</i><i class="delete">&nbsp;</i></div> -->
+              </li>
+            </ul>
+            </div>
+         </div>
+        <!-- 图片 end -->
+        <!-- 音频 start -->
+        <div class="tab-pane fade choose-media-response choose-response" data-type="voice" id="voice">
+           <!-- <div class="reource-operation" style="height: 30px;">
+              <label data-act="all-choose" style="color:#666;"><input type="checkbox" class="all-choose" />&nbsp;&nbsp;全选</label>
+              <span class="all-delete" style="margin-left:20px;" data-act="all-delete">删 除</span>
+              <div id="container" class="pull-right" style="display: inline-block; position: relative; margin-top: -9px; padding: 6px 0;">
+                <div class="upload-voice" id="pickfilesVoice">&nbsp;</div>
+              </div>
+          </div> -->
+          <div style="line-height:16px;">&nbsp;</div>
+            <div class="image-box" data-act="voice-box">
+                <div class="resource-empty-tips" ng-show="!resVoiceList || resVoiceList == 0">没有音频文件</div>
+              <table class="table image-box-ul">
+               <tbody>
+                  <tr ng-repeat="voice in resVoiceList" data-id="{{voice.id}}" data-title="{{voice.title}}">
+                     <td style="padding-left:8px;width:4px;padding-right:20px;">
+                      <img src="img/voice-pic.svg" style="margin-top:-6px;width:24px;"/>
+                     </td>
+                     <td style="width:40px;">
+                      <input type="radio" name="local-choosed-voice" />
+                     </td>
+                     <td ng-bind="voice.title"></td>
+                     <td><span ng-bind="voice.size"></span>&nbsp;&nbsp;<span style="color:#999;">KB</span></td>
+                     <td ng-bind="voice.createTime | dataFormatMilliFilter"></td>
+                     <!-- <td class="voice-action">
+                      <i class="delete">&nbsp;</i>
+                      <i class="edit">&nbsp;</i>
+                     </td> -->
+                  </tr>
+               </tbody>
+            </table>
+            </div>
+         </div>
+         <!-- 音频 start -->
+         <!-- 视频 start -->
+        <div class="tab-pane fade choose-media-response choose-response" data-type="video" id="video">
+           <!-- <div class="reource-operation" style="height: 30px;">
+              <label data-act="all-choose" style="color:#666;"><input type="checkbox" class="all-choose" />&nbsp;&nbsp;全选</label>
+              <span class="all-delete" style="margin-left:20px;" data-act="all-delete">删 除</span>
+              <div id="container" class="pull-right" style="display: inline-block; position: relative; margin-top: -9px; padding: 6px 0;">
+                <div class="upload-video" id="pickfilesVideo">&nbsp;</div>
+              </div>
+          </div> -->
+          <div style="line-height:16px;">&nbsp;</div>
+            <div class="image-box" data-act="video-box">
+                <div class="resource-empty-tips" ng-show="!resVideoList || resVideoList.length == 0">没有视频文件</div>
+              <table class="table image-box-ul">
+               <tbody>
+                  <tr ng-repeat="video in resVideoList" data-id="{{video.id}}" data-title="{{video.title}}">
+                     <td style="padding-left:8px;width:4px;padding-right:20px;">
+                      <img src="img/video-pic.svg" style="margin-top:-6px;width:24px;"/>
+                     </td>
+                     <td style="width:40px;">
+                      <input type="radio" name="local-choosed-video" />
+                     </td>
+                     <td ng-bind="video.title"></td>
+                     <td><span ng-bind="video.size"></span>&nbsp;&nbsp;<span style="color:#999;">KB</span></td>
+                     <td ng-bind="video.createTime | dataFormatMilliFilter"></td>
+                     <!-- <td class="voice-action">
+                      <i class="delete">&nbsp;</i>
+                      <i class="edit">&nbsp;</i>
+                     </td> -->
+                  </tr>
+               </tbody>
+            </table>
+            </div>
+         </div>
+         <!-- 视频 end -->
+         <!-- 自定义 start -->
+         <div class="tab-pane fade choose-media-response choose-response" data-type="customize" id="customize">
+           <div class="row video-box">
+             <div class="customize-body">
+               <div id="customize-image-detail" class="active">
+                <div class="form-group" style="margin-bottom: 0;">
+                  <div class="col-md-10  col-md-offset-1">
+                    <label for="customize-image-name">名称：</label>
+                      <input autocomplete="off" style="border-radius: 0px; box-shadow: none;" type="text" required="required" class="form-control" id="customize-image-name" placeholder="名称" />
+                  </div>
+                </div>
+                <div class="form-group" style="margin-bottom: 25px;">
+                  <div class="col-md-10  col-md-offset-1">
+                    <label for="customize-image-url">url：</label>
+                    <input autocomplete="off" style="border-radius: 0px; box-shadow: none;" type="text" required="required" class="form-control add-bottom" id="customize-image-url" placeholder="url" />
+                  </div>
+                </div>
+               </div>
+               <div id="customize-voice-detail" style="display:none">
+              <div class="form-group" style="margin-bottom: 0;">
+                  <div class="col-md-10  col-md-offset-1">
+                    <label for="customize-voice-name">名称：</label>
+                      <input autocomplete="off" style="border-radius: 0px; box-shadow: none;" type="text" required="required" class="form-control" id="customize-voice-name" placeholder="名称" />
+                  </div>
+                </div>
+                <div class="form-group" style="margin-bottom: 25px;">
+                  <div class="col-md-10  col-md-offset-1">
+                    <label for="customize-voice-url">url：</label>
+                    <input autocomplete="off" style="border-radius: 0px; box-shadow: none;" type="text" required="required" class="form-control add-bottom" id="customize-voice-url" placeholder="url" />
+                  </div>
+                </div>
+             </div>
+               <div id="customize-video-detail" style="display:none">
+                <div class="form-group" style="margin-bottom: 0;">
+                  <div class="col-md-10  col-md-offset-1">
+                    <label for="customize-video-name">名称：</label>
+                      <input autocomplete="off" style="border-radius: 0px; box-shadow: none;" type="text" required="required" class="form-control" id="customize-video-name" placeholder="名称" />
+                  </div>
+                </div>
+                <div class="form-group" style="margin-bottom: 25px;">
+                  <div class="col-md-10  col-md-offset-1">
+                    <label for="customize-video-url">url：</label>
+                    <input autocomplete="off" style="border-radius: 0px; box-shadow: none;" type="text" required="required" class="form-control add-bottom" id="customize-video-url" placeholder="url" />
+                  </div>
+                </div>
+               </div>
+             </div>
+             
+           </div>
+         </div>
+         <!-- 自定义 start -->
+         <!-- 内容主体 end -->
+         <!-- 内容主体 end -->
+      </div>
+      <div class="modal-footer" style="height:1px;">
+        <button type="button" class="btn btn-default rating-cancel" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary rating-submit" ng-click="localResourceSubFunc()">确定</button>
+      </div>
+      </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- 上传素材 start-->
+<input type="hidden" id="domain"
+  value="http://7xtcjm.com1.z0.glb.clouddn.com/"> 
+<input
+  type="hidden" id="uptoken_url"
+  value="z48bfg40DdcAUmeSftorBVwl6HYaWE6UMs431FWj:sF6Jdo7DtEM4Q88n2JosrTF4ZmQ=:eyJzYXZlS2V5IjoiJChldGFnKS8kKGZuYW1lKSIsInNjb3BlIjoidGVzdCIsImRlYWRsaW5lIjoxNDY0NzUyMjQxfQ==" />
+<div class="modal fade" id="addresource" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document" style="width:600px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">上传素材</h4>
+      </div>
+      <div class="modal-body clearfix">
+        <!-- 添加图片 start -->
+    <div class="col-md-12" style="overflow:hidden;">
+      <table class="table table-striped table-hover text-left"
+        style="display: none">
+        <thead>
+          <tr>
+            <th class="col-md-4">Filename</th>
+            <th class="col-md-2">Size</th>
+            <th class="col-md-6">Detail</th>
+          </tr>
+        </thead>
+        <tbody id="fsUploadProgress">
+        </tbody>
+      </table>
+    </div>
+    <!-- 添加图片 end -->
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+<!-- 上传素材 end -->
+
+<!-- 修改素材名称 start-->
+<div class="modal fade" style="margin-top:-200px;" id="updateResource">
+  <div class="modal-dialog mydialog" style="width:460px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div style="cursor:pointer;"><div class="close-modal">&nbsp;</div></div>
+        <h4 class="modal-title font-size-style modal-title">修改</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" autocomplete="off">
+      <div class="form-group" style="margin-bottom: 25px;">
+        <div class="col-md-10  col-md-offset-1">
+          <input style="border-radius: 0px;" data-act="resource-name" type="text" class="form-control" placeholder="修改素材名称">
+          <input data-act="resource-id" type="hidden" />
+        </div>
+      </div>
+      <div class="form-group footer-box">
+        <div class="col-md-offset-1 col-md-10 clearfix footer-modal">
+          <div class="pull-right submit-modal" data-act="submit-rename-resource">确定</div>
+          <a class="pull-right cancel-modal">取消</a>
+        </div>
+      </div>
+    </form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- login 修改素材名称 end-->
+
+<style>
+.box .right-box .right-box-main{padding: 0 20px;}
+.addIcon{
+  background: #fff;
+  padding: 0 0 0 10px;
+}
+.moreBtn{
+  width: 110px;
+  margin: 0 auto;
+  border: 2px solid #7c91a8;
+  border-radius: 2px;
+  text-align: center;
+}
+.moreBtn *{
+  border: none !important;
+}
+.media-title.my{
+  background: #e2f2fc;
+  color: #57a5fb !important;
+}
+.modal-backdrop.in{
+  opacity:0.6;
+}
+.modal-content{
+  border-radius:0;
+}
+.modal-dialog{
+  width:490px;
+}
+.modal-header .close{
+  margin-top:-10px;
+}
+.modal-header{
+  border-bottom: 1px solid #dcdddd;
+    font-size: 16px;
+}
+.modal-footer{
+  border-top:0;
+  padding-right:30px;
+  border-top:#dcdddd 1px solid;
+  padding-top:0;
+}
+.rating-sm{
+  margin-top:-5px !important;
+}
+.modal-content{
+  padding:0;
+}
+.rating-container .rating-stars{
+  color:#FFB800 !important;
+}
+#editor-iframe-wechat,#editor-iframe-local{
+  height: 470px !important;
+}
+</style>
+
+<!-- <script type="text/javascript" src="js/qiniu/customize.js"></script> -->
+
+

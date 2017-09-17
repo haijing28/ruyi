@@ -1,0 +1,41 @@
+<hr>
+<div class="row row-height">
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 center-list-box-entity">
+		<section class="center-list-title">
+			<span>词典条目列表
+			<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="将相同种类或含义的词语编辑成词典条目，方便“用户说”的编辑，并且词典条目的值可在“助理答”中引用或者通过暗号传递给其他意图。<a href='http://docs.ruyi.ai/344934' target='_blank'>更多</a>">
+			  	&nbsp;
+			</button>
+			</span>
+			<!-- <i style="top:28px;" ng-click="createEntityFunc(-1)" data-toggle="tooltip" data-placement="bottom" title="创建词典条目"></i> -->
+			<i class="add-entity" data-toggle="tooltip" ng-click="createEntityFunc(-1)" data-placement="bottom" title="" data-original-title="添加词典条目">&nbsp;</i>
+		</section>
+		<div class="center-list-main" style="padding:13px 20px;margin-top:2px;">
+			<div class="input-group" style="display:relatice;width:94%;">
+				<input type="text" style="padding-bottom: 12px;font-size: 16px;" ng-keydown="searchEntityWordsNameKeydownFunc($event,searchEntityWords)" ng-model="searchEntityWords"  class="form-control search-intent-list" placeholder="搜索词典条目(回车确认)">
+		      	<i class="mysearch" ng-click="searchEntityWordsNameFunc(searchEntityWords)" style="top: 2px;">&nbsp;</i>
+		      	<!-- <span class="input-group-btn">
+		        	<button class="btn btn-default" ng-click="searchEntityWordsNameFunc(searchEntityWords)" type="button" style="border-radius:0;">
+		        		<i class="glyphicon glyphicon-search"></i>
+		        	</button>
+		      	</span> -->
+			</div>
+			<ul class="list-group">
+			  <li class="list-group-item" data-act="nav-entity-{{entity.id}}" ng-click="goEntityDetail(entity.id)" ng-repeat="entity in entityList" style="height: 38px;">
+			  	<span ng-bind="entity.name" class="entity-name"></span>
+			  	<i ng-click="deleteEntityNameFunc(entity.id,entity.name)" class="delete"></i>
+			  </li>
+			</ul>
+			<ul class="pagination pagination-md paging-box" ng-show="pageCount > 1">
+			  <li ng-class="{true: 'disabled', false: ''}[firstNum<9]"><a href="#">&laquo;</a></li>
+			  <li ng-repeat="entityPageNum in entityPageNumList"><a href="#" ng-bind="entityPageNum"></a></li>
+			  <li ng-class="{true: 'disabled', false: ''}[lastNum>=pageCount]"><a href="#">&raquo;</a></li>
+		   </ul>
+		</div>
+	</div>
+	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 row-height" style="padding:0;border-left:0;" ui-view></div>
+</div>
+<!-- <script src="js/entity_list.js?20161102"></script> -->
+
+
+

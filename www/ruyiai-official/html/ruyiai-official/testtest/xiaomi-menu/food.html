@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="foodApp" ng-controller="foodAppCtrl">
+<head>
+    <meta charset="UTF-8">
+    <title>菜谱详情</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <style>
+	   html,body{
+	   		font-size:12px;
+	   }
+	   body{ margin: 0;padding: 0;font-family: "微软雅黑";background-color:#363636;height:100%;overflow:hidden;overflow-y:auto;}
+        body,html{-webkit-text-size-adjust: none;width: 100%;height: 100%;}
+        *{text-decoration: none;list-style: none;}
+        img{border: 0px;}
+        ul,li,dl,dd,dt,p,ol,h1,h2,h3,h4,h5{font-size: 0.6rem;font-weight: 100;padding: 0;margin: 0;}
+        .wrap{margin: 0 auto;}
+        .fl{float: left;}
+        .fr{float: right;}
+        .index{overflow: hidden;}
+        .clr{clear:both; width:100%;overflow:hidden;}
+        .pointer{cursor:pointer;}
+        a,input,button{ outline:none; }
+        ::-moz-focus-inner{border:0px;}
+        a:link {color:#0f0;text-decoration:none;} 
+         a:visited {color: #FFFF00; text-decoration:none;} 
+        a:hover {color: #00FF00; text-decoration:none;} 
+        a:active {color: #0000FF; text-decoration:none;}
+        a{color: #000;}
+        /*第一个页面*/
+        .food-box{
+            width:100%;
+            height:100%;
+            display:none;
+            position:relative;
+        }
+        .food-box .food-img-box{
+            height:100%;
+            width:468px;
+            background-color:#80746A;
+            overflow: hidden;
+        }
+        .food-box .food-img-box img{
+        }
+        .food-box .food-detail-box{
+        	width:-moz-calc(100% - 39rem - 4rem);
+        	width:-webkit-calc(100% - 39rem - 4rem);
+            width:calc(100% - 39rem - 4rem);
+            height:-moz-calc(100% - 4.5rem);
+            height:-webkit-calc(100% - 4.5rem);
+            height:calc(100% - 4.5rem);
+            overflow:hidden;
+            padding:1.5rem 3rem 3rem 3rem;
+        }
+        .food-box .food-detail-box .title{
+            color:#fff;
+            font-size:36px;
+            margin-top:46px;
+            overflow: hidden;
+		    text-overflow: ellipsis;
+		    white-space: nowrap;
+        }
+        .food-box .food-detail-box .desc{
+            color:#B9B4AE;
+            font-size:1.5rem;
+            margin-top:0.6rem;
+            text-align:center;
+        }
+        .food-box .para-box li{
+            font-size: 1.2rem;
+		    padding: 0.50rem 0.8rem;
+		    color: #fff;
+		    margin-right: 1rem;
+		    margin-top: 1.8rem;
+		    background-color: rgba(204,204,204,0.1);
+        }
+        .food-box .food-detail-title{
+            color:#B9B4AE;
+            font-size:1.8rem;
+            margin-top:3rem;
+        }
+        .food-box .next-page{
+            margin-top: 2rem;
+		    margin-left: 7.5rem;
+		    display: inline-block;
+		    height: 1.5rem;
+		    width: 1.5rem;
+		    background-image: url(img/next.png);
+		    background-size: cover;
+		    cursor: pointer;
+		    position: absolute;
+		    bottom: 20px;
+		    right: 270px;
+        }
+        .food-box .next-page:focus{
+            border:1px solid #B9B4AE;
+        }
+        .food-box .food-detail-ul{
+            margin-top:1.5rem;
+            width:100%;
+        }
+        .food-box .food-detail-ul li{
+            width:25%;
+            padding:0.9rem 0;
+            height: 70px;
+        }
+        .food-box .food-detail-ul li section:first-child{
+            font-size:1.5rem;
+            color:#fff;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding: 0.2rem 0.5rem 0 0;
+        }
+        .food-box .food-detail-ul li section:last-child{
+            font-size:1.2rem;
+            color:#B9B4AE;
+            margin-top:0.3rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding: 0px 0.5rem 0 0;
+        }
+        .food-list-box{
+        	display:none;
+        	width:100%;
+        	height:100%;
+        	padding-left:190px;
+        	transform: translateX(-95px);
+        }
+        .menu-list-box{
+		    width: 790px;
+		    color: #fff;
+		    padding: 10px 20px;
+        }
+        .media-list-box{
+        	margin-top:26px;
+        }
+        .menu-list-box .title{
+        	font-size:26px;
+        	margin-top:36px;
+        	padding-left:15px;
+        }
+        .menu-list-box .media-box{
+        	padding:15px;
+        	display:block;
+        	color:#fff;
+        	margin-top:0;
+        }
+        .menu-list-box .media-box:hover,.menu-list-box .media-box:focus{
+        	background-color:#d3690d;
+        }
+        .menu-list-box .img-box{
+        	display:block;
+        	width: 200px; 
+        	height: 120px; 
+        	overflow: hidden;
+        }
+        .menu-list-box .img-box img{
+        	width:100%;
+        }
+        .menu-list-box .media-title{
+        	font-size:20px;
+        }
+        .menu-list-box .media-body-text{
+        	font-size: 15px;
+		    line-height: 22px;
+		    height: 84px;
+		    overflow: hidden;
+        }
+        .menu-list-box .media-body{
+        	padding-left:20px;
+        }
+        .menu-list-box .media-number-text{
+        	font-size: 12px;
+		    padding: 3px 0;
+        }
+        .menu-list-box .current-page{
+            font-size:1.8rem;
+            color:#fff;
+        }
+        .menu-list-box .total-page{
+            font-size:1.5rem;
+            color:rgba(255,255,255,0.3);
+        }
+        .menu-list-box .step-by-step-line{
+        	height:0rem;
+        	line-height:0rem;
+        }
+        .douguomeishi-logo{
+        	position: absolute;
+		    top: 11px;
+		    right: 25px;
+		    width: 121px;
+		    height: 36px;
+		    background: url(img/douguo-logo.png) no-repeat;
+		    background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <!--第一个页面-->
+    <div class="clr food-box">
+    	<div class="douguomeishi-logo"></div>
+        <section class="fr food-detail-box">
+        	<h4 class="desc" style="display:none;"><span ng-if="userSay">“</span><span ng-bind="userSay"></span><span ng-if="userSay">”</span></h4>
+            <h2 class="title" ng-bind="foodObject.title"></h2>
+            
+            <ul class="clr para-box">
+                <li class="fl" ng-bind="foodObject.cook_time" ng-if="foodObject.cook_time && foodObject.cook_time != '0'"></li>
+                <li class="fl" ng-bind="foodObject.cook_difficulty" ng-if="foodObject.cook_difficulty && foodObject.cook_difficulty != '0'"></li>
+            </ul>
+            <div class="food-detail-title">
+                食材明细.:
+            </div>
+            <ul class="clr food-detail-ul">
+                <li class="fl" ng-repeat="foodMajor in foodObject.majorMinor" ng-if="$index <= 11 && foodMajor.title">
+                    <section class="food-name" ng-bind="foodMajor.title"></section>
+                    <section class="food-desc" ng-bind="foodMajor.note"></section>
+                </li>
+            </ul>
+            <a href="#step1" class="next-page"></a>
+        </section>
+        <section class="fl food-img-box">
+            <img ng-src="{{foodObject.img.sorigin}}"/>
+        </section>
+    </div>
+    <!--第二个页面-->
+    <div class="food-list-box">
+	    <div class="menu-list-box">
+	    	<!-- <div id="step{{$index+1}}" class="step-by-step-line">&nbsp;</div> -->
+	   		<div class="media-list-box">
+	    		<a id="step{{$index+1}}" href="javascript:;" class="media media-box" data-act="step-skip" ng-repeat="cookstep in foodObject.cookstep">
+				  <div class="media-left">
+				    <span class="img-box">
+				      <img class="media-object" data-act="img-desc-food{{$index+1}}" ng-src="{{cookstep.image | imageCheckFilter}}" />
+				    </span>
+				  </div>
+				  <div class="media-body">
+				    <div class="media-body-text">
+				    	<span ng-bind="cookstep.content"></span>
+				    </div>
+				    <div class="media-number-text">
+				    	<span class="current-page" ng-bind="$index+1"></span><span class="total-page">/{{foodObject.cookstep.length}}</span>
+				    </div>
+				  </div>
+				</a>
+	   		</div>
+	   	</div>
+    </div>
+</body>
+<!-- 
+<script src="js/jquery.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/common.js"></script>
+<script src="js/smooth-scroll.min.js"></script> -->
+<script src="js/xiaomi-menu.min.js"></script>
+<script src="js/food.js"></script>
+<script>
+/* smoothScroll.init(); */
+smoothScroll.init({
+    selector: 'a[href*="#"]'
+});
+</script>
+</html>
+
+
+

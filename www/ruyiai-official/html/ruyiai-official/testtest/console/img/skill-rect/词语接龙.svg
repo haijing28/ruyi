@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="65px" height="65px" viewBox="0 0 65 65" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>词语接龙</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="角色属性-copy" transform="translate(-263.000000, -1688.000000)">
+            <g id="词语接龙" transform="translate(263.000000, 1688.000000)">
+                <rect id="Rectangle-Copy-19" fill="#9F82D6" x="0" y="0" width="65" height="65"></rect>
+                <g id="noun_22533_cc-copy" transform="translate(16.000000, 17.000000)" fill="#FFFFFF">
+                    <g id="Group">
+                        <path d="M0.219111111,0.159111111 L31.7808889,0.159111111 L31.7808889,31.7222222 L0.219111111,31.7222222 L0.219111111,0.159111111 Z M31.1528889,0.787555556 L0.847111111,0.787555556 L0.847111111,31.0937778 L31.1528889,31.0937778 L31.1528889,0.787555556 L31.1528889,0.787555556 Z" id="Shape"></path>
+                        <rect id="Rectangle-path" x="0.532888889" y="20.8551111" width="30.9342222" height="0.627555556"></rect>
+                        <rect id="Rectangle-path" x="0.532888889" y="26.0435556" width="30.9342222" height="0.627555556"></rect>
+                        <rect id="Rectangle-path" x="0.532888889" y="10.4777778" width="30.9342222" height="0.628"></rect>
+                        <rect id="Rectangle-path" x="0.532888889" y="15.6662222" width="30.9342222" height="0.628444444"></rect>
+                        <rect id="Rectangle-path" x="0.532888889" y="5.28977778" width="30.9342222" height="0.628"></rect>
+                        <rect id="Rectangle-path" x="10.4977778" y="0.305333333" width="0.628" height="30.9351111"></rect>
+                        <rect id="Rectangle-path" x="5.30888889" y="0.305333333" width="0.628" height="30.9351111"></rect>
+                        <rect id="Rectangle-path" x="20.8737778" y="0.305333333" width="0.628444444" height="30.9351111"></rect>
+                        <rect id="Rectangle-path" x="15.6862222" y="0.305333333" width="0.628" height="30.9351111"></rect>
+                        <rect id="Rectangle-path" x="26.064" y="0.305333333" width="0.628" height="30.9351111"></rect>
+                        <rect id="Rectangle-path" x="26.3777778" y="5.60355556" width="5.08933333" height="20.7542222"></rect>
+                        <rect id="Rectangle-path" x="5.62266667" y="21.1684444" width="15.5653333" height="5.18933333"></rect>
+                        <rect id="Rectangle-path" x="0.532888889" y="15.98" width="5.08977778" height="5.18844444"></rect>
+                        <rect id="Rectangle-path" x="5.62266667" y="5.60355556" width="5.18933333" height="10.1702222"></rect>
+                        <rect id="Rectangle-path" x="16" y="5.60355556" width="5.18755556" height="10.3373333"></rect>
+                        <rect id="Rectangle-path" x="10.812" y="0.305333333" width="5.18844444" height="5.29822222"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

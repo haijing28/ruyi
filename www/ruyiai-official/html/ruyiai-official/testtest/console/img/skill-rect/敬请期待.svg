@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="65px" height="65px" viewBox="0 0 65 65" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>测试图标</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="角色属性-copy" transform="translate(-267.000000, -1510.000000)">
+            <g id="测试图标" transform="translate(267.000000, 1505.000000)">
+                <rect id="Rectangle-Copy-19" fill="#6B8FD1" x="0" y="5" width="65" height="65"></rect>
+                <text id="α" font-family="AndaleMono, Andale Mono" font-size="58" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="15" y="53">α</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
