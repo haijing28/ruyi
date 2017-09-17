@@ -529,10 +529,8 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 				}
 			}
 		});
-	}
+	} 
 	/* 裁剪 end */
-
-
 
 }
 

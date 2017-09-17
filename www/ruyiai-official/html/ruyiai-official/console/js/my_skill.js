@@ -29,6 +29,21 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 		mySkillDetail = JSON.parse(mySkillDetail);
 		mySkillList.push(mySkillDetail);
 		$scope.mySkillList = mySkillList;
+		$scope.mySkillList.forEach(function(ele) {
+			if(ele.auditStatus == 'APPROVED') {
+				ele.statuClass = 'succ';
+				ele.statuText = '通过审核'
+			}
+			if(ele.auditStatus == 'PENDING_APPROVAL') {
+				ele.statuText = '审核中'
+			}
+			if(ele.auditStatus == 'REJECTED') {
+				ele.statuText = '未通过审核'
+			}
+			if(ele.auditStatus == 'OFFLINE') {
+				ele.statuText = '下线'
+			}
+		})
 		$scope.$apply();
 	}
 	
