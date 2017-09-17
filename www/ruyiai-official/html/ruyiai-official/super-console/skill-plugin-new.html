@@ -150,7 +150,7 @@
 		<div class="inner wrp" style="position:relative;">
 			<div class="logo">
 				<span style="margin-right:40px;" data-act="overall-situation"><i class="iconfont icon-overall-situation"></i>&nbsp;整体概况</span>
-				<span style="margin-right:40px;"><i class="iconfont icon-robot-head"></i>&nbsp;机器人概况</span>
+				<span id='robotSpan' style="margin-right:40px;"><i class="iconfont icon-robot-head" data-act="robot-profile"></i>&nbsp;机器人概况</span>
 				<!-- <span data-act="skill-plugin" style="margin-right:40px;"><i class="iconfont icon-ruyiaiwidget"></i>&nbsp;技能插件</span> -->
 				<span data-act="skill-plugin-new" class='active'><i class="iconfont icon-ruyiaiwidget"></i>&nbsp;技能插件( new )</span>
 				<div class="dropdown user-name-box">
@@ -278,6 +278,15 @@
 <script src="js/common.js"></script>
 <script src="js/robot.js"></script>
 <script>
+
+	$("[data-act=overall-situation]").click(function(){
+		window.location.href = "statistics.html";
+	});
+	
+	$("#robotSpan").click(function(){
+		console.log(1)
+		window.location.href = "./robot.html";
+	});
 
 	/*-------------------------------  table tr 点击事件  --------------------------------*/
 
