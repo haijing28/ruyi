@@ -1,7 +1,10 @@
 var ruyiai_host = window.location.origin;
 var static_host = "https://ruyi.ai";
 var isproductDomain = true;
-if(ruyiai_host.indexOf("http://test.ruyi.ai") > -1){
+if(window.location.href.indexOf("ruyiai-official/testtest") > -1){
+	static_host = "http://lab.ruyi.ai/ruyiai-official/testtest";
+	isproductDomain = false;
+}else if(ruyiai_host.indexOf("http://test.ruyi.ai") > -1){
 	static_host = "http://test.ruyi.ai/gitlab/ruyiai-official/www/ruyiai-official/html/ruyiai-official";
 	isproductDomain = false;
 }else if(ruyiai_host.indexOf("lab.ruyi.ai") > -1){
@@ -84,14 +87,14 @@ function delCookie(name)
 
 //跳转到首页
 var goIndex = function(){
-//	delCookie("email");
-//	delCookie("nickname");
-//	delCookie("userId");
-//	delCookie("appId");
-//	delCookie("appName");
-//	delCookie("appKey");
-//	delCookie("tgt");
-//	window.location.href = static_host + "/base/login.html"
+	delCookie("email");
+	delCookie("nickname");
+	delCookie("userId");
+	delCookie("appId");
+	delCookie("appName");
+	delCookie("appKey");
+	delCookie("tgt");
+	window.location.href = static_host + "/base/login.html"
 }
 
 //判断是否需要进行parse转换
