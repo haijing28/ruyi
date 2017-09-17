@@ -106,8 +106,9 @@
 	}
 	.close_tr {
 		position: absolute;
-		right: 20px;
+		right: 30px;
 		top: 10px;
+		font-size: 30px;
 	}
 	.al_top {
 		vertical-align: top;
@@ -126,6 +127,19 @@
 		margin-top: 10px;
 		font-weight: normal;
 		text-indent: 40px;
+	}
+	.end_status_succ, .end_status_deny {
+		color: #fff;
+		padding: 3px 30px;
+		border-radius: 10px;
+		display: inline-block;
+		margin-top: 20px;
+	}
+	.end_status_succ {
+		background: #25cc25;
+	}
+	.end_status_deny {
+		background: #d25544;
 	}
 </style>
 <body style="overflow-y: auto;">
@@ -168,13 +182,13 @@
 			<th>状态</th>
 		</tr>
 	</thead>
-	<tbody>
+	<tbody ng-repeat='skill in skills'>
 		<tr class='data'>
-			<td>1</td>
-			<td>2</td>
-			<td>3</td>
-			<td>4</td>
-			<td>5</td>
+			<td>{{skill.agents[0].agent.name}}</td>
+			<td>{{skill.agents[0].agent.description}}</td>
+			<td>暂无</td>
+			<td>{{skill.gmtUpdate}}</td>
+			<td>{{skill.auditStatus | filter_english}}</td>
 		</tr>
 		<tr class='more rel'>
 			<td colspan="5">
@@ -189,22 +203,25 @@
 					<div class="left">
 						<dl>
 							<dd>技能名字</dd>
-							<dt>{{name}}</dt>
+							<dt>{{skill.agents[0].agent.name}}</dt>
 							<br>
 							<dd>技能分类</dd>
-							<dt>{{serviceCategory}}</dt>
+							<dt>{{skill.agents[0].agent.category}}</dt>
 							<br>
 							<!-- <dd>版本说明</dd>
 							<dt>增加了回答</dt>
 							<br> -->
 							<dd>唤醒语&nbsp;&nbsp;</dd>
-							<dt>{{nickNames}}</dt>
+							<dt>{{skill.agents[0].agent.attributes.nickNames.toString()}}</dt>
 							<br>
 							<dd class='al_top'>开发者简介</dd>
-							<dt>{{developerIntroduction}}</dt>
+							<dt>{{skill.agents[0].agent.attributes.developerIntroduction}}</dt>
 							<br>
 							<dd>纠错语&nbsp;&nbsp;</dd>
-							<dt>{{nickNameVoiceVariants}}</dt>
+							<dt>{{skill.agents[0].agent.attributes.nickNameVoiceVariants.toString()}}</dt>
+							<br>
+							<dd>范例语句</dd>
+							<dt>{{skill.agents[0].agent.attributes.userInputExamples.toString()}}</dt>
 							<br>
 						</dl>
 					</div>
@@ -212,33 +229,33 @@
 						<div class="top">
 							<div class="left_center">
 								<label class="skill-img-label">技能头像:</label>
-								<img class='my_skill_img' ng-src="logo" alt="">
+								<img class='my_skill_img' ng-src="skill.agents[0].agent.logo" alt="">
 							</div>
 							<div class="right_center">
-								<p>范例语句</p>
-								<label ng-repeat='uie in userInputExamples'>{{uie}}</label> 
-							</div>
+								<!-- <p>范例语句</p>
+								<label ng-repeat='uie in skill.agents[0].agent.attributes.userInputExamples'>{{uie}}</label> 
+							 --></div>
 						</div>
 						<div class="bottom">
 							<dl>
 								<dd class='al_top'>技能简介</dd>
-								<dt>{{description}}</dt>
+								<dt>{{skill.agents[0].agent.attributes.descriptionForAudit}}</dt>
 								<br>
 								<dd>开发者主页</dd>
-								<dt>{{developerMainSite}}</dt>
+								<dt>{{skill.agents[0].agent.attributes.developerMainSite}}</dt>
 								<br>
 							</dl>
 						</div>
 					</div>
-					<div class="right">
-						<button id='btn_succ'>通过上线</button>
-						<button class='deny' id='deny'>提交失败</button>
+					<div class="right" my_id='{{skill.id}}'>
+						<button class='btn_succ' id='btn_succ'>审核通过</button>
+						<button class='deny' id='deny'>审核失败</button>
 						<dl>
 							<dd class='al_top'>技能说明</dd>
-							<dt>{{descriptionForAudit}}</dt>
+							<dt>{{skill.agents[0].agent.description}}</dt>
 							<br>
 							<dd>平台接入</dd>
-							<dt>{{thirdPartyPlatforms}}</dt>
+							<dt>{{skill.agents[0].agent.attributes.thirdPartyPlatforms.toString()}}</dt>
 							<br>
 						</dl>
 					</div>
@@ -270,56 +287,71 @@
 	$('table').on('click', '.data', function() {
 		$(this).next('.more').removeClass('more');
 	})
-	$('#btn_succ').click(function() {
-
-	})
-	$('#deny').click(function() {
-		
+	$('.body').on('click', 'button', function(e){
+		var skillID = $(this).parent().attr('my_id');
+		if(e.target.className == 'btn_succ'){
+			var text = '<span class="end_status_succ">已通过</span>';
+			var url = api_host_v2beta + 'skills/' + skillID + '/approve';
+		}else if(e.target.className == 'deny') {
+			text = '<span class="end_status_deny">已拒绝</span>';
+			url = api_host_v2beta + 'skills/' + skillID + '/reject';
+		}
+		var $this = $(this);
+		$.ajax({
+			url,
+			type: 'post',
+			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+			success: function() {
+				$.trace('操作成功')
+				$this.parent().find('button').hide();
+				$this.parent().append(text);
+			},
+			error: function(err) {
+				var err = JSON.parse(err.responseText)
+				$.trace(err.message)
+			}
+		})
 	})
 	
-	/*-------------------------------string to objArr--------------------------------*/
-	
-	function stringToObjectArr(string) {
-		var arr = string.split(';');
-		var objArr = [];
-		arr.forEach(function(ele) {
-			objArr.push({value: ele})
-		})
-		return objArr;
-	}
-
-	/*-------------------------------objArr to string--------------------------------*/
-
-	function objectArrToArr(arr) {
-		var array = [];
-		arr.forEach(function(ele){
-			array.push(ele.value);
-		})
-		return array;
-	}
 
 	var app = angular.module('app', []);
 	app.controller('controller', function($scope) {
-		// $.ajax({
-		// 	url: './test.json',
-		// 	type: 'get',
-		// 	success: function(ret) {
-		// 		console.log(ret)
-		// 		$scoscope.name = ret.name;
-		// 		$scoscope.description = ret.description;
-		// 		$scoscope.serviceCategory = ret.serviceCategory;
-		// 		$scoscope.logo = ret.logo;
-		// 		$scoscope.nickNames = ret.nickNames.toString();
-		// 		$scoscope.nickNameVoiceVariants = ret.nickNameVoiceVariants.toString();
-		// 		$scoscope.userInputExamples = ret.userInputExamples.toString();
-		// 		$scoscope.developerMainSite = ret.developerMainSite;
-		// 		$scoscope.developerIntroduction = ret.developerIntroduction;
-		// 		$scoscope.descriptionForAudit = ret.descriptionForAudit;
-		// 		$scoscope.thirdPartyPlatforms = ret.thirdPartyPlatforms.toString();
-		// 	}
-		// })
-	})
+
+		$.ajax({
+			url: api_host_v2beta + 'skills/public',
+			type: 'get',
+			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+			// data: {tag: 'Develop'},
+			success: function(ret) {
+				console.log(ret.content);
+				$scope.skills = ret.content;
+				$scope.$apply();
+			}
+		})
 	
+	})
+
+	app.filter('filter_english',function(){
+		 return function(auditStatus) {
+		 	var out = "";
+	       		if(auditStatus == 'APPROVED') {
+				out = '通过审核'
+			}
+			if(auditStatus == 'PENDING_APPROVAL') {
+				out = '审核中'
+			}
+			if(auditStatus == 'REJECTED') {
+				out = '未通过'
+			}
+			if(auditStatus == 'OFFLINE') {
+				out = '已下线'
+			}
+			if(auditStatus == 'INIT') {
+				out = '未提交审核'
+			}
+			return out;
+	       }
+	})
 </script>
 </body>
 </html>
