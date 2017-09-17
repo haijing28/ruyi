@@ -6,15 +6,14 @@ function referenceAppCtrl($rootScope,$scope, $state, $stateParams){
 	}, 200);
 	$('[data-toggle="popover"]').popover();
 
-	$('body').on('click', '.top', function(e) {
+	$('body').on('click', '.my_store .top', function(e) {
 		e = e || window.event;
 		if(e.target.tagName == 'BUTTON') {
 			return;
 		}
-		console.log(1)
-		var i = window.location.href.lastIndexOf('/');
-		var x = window.location.href.substr(0, i) + '/skill/1234';
-		window.location.href = x;
+		var $this = $(this);
+		var skillId = $this.attr("data-skill-id");
+		window.location.href = "#/skill_store/skill/" + skillId;
 	});
 }
 

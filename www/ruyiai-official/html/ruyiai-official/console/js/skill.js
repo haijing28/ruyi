@@ -120,9 +120,6 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 		}
 		
 		//TODO 记得提交代码的时候注释掉
-//		isproductDomain = true;
-		
-		//TODO
 		var url = "https://api.ruyi.ai/v1/message";
 		if(!isproductDomain){   
 		  	url = "http://lab.ruyi.ai/ruyi-api/v1/message";
@@ -669,19 +666,72 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 		}
 	});
 	
-	$scope.skillDetailObj = {
-	    "name": "天气查询接口",
-	    "description": "天气查询接口描述",
-	    "serviceCategory": "test",
-	    "logo": "https://dn-vbuluo-static.qbox.me/default-robot.svg",
-	    "nickNames": ["张三","李四"],
-	    "nickNameVoiceVariants": ["老张","老李"],
-	    "userInputExamples": ["今天上海天气如何","今天北京天气如何"],	
-	    "developerMainSite": "http://www.jd.com",
-	    "developerIntroduction": "我的一个开发者的简介",
-		"descriptionForAudit": "我是一个开发者说明",
-		 "thirdPartyPlatforms": ["xiaomi","baidu","dui"]
-	};
+//	$scope.skillDetailObj = {
+//	    "name": "天气查询接口",
+//	    "description": "天气查询接口描述",
+//	    "serviceCategory": "test",
+//	    "logo": "https://dn-vbuluo-static.qbox.me/default-robot.svg",
+//	    "nickNames": ["张三","李四"],
+//	    "nickNameVoiceVariants": ["老张","老李"],
+//	    "userInputExamples": ["今天上海天气如何","今天北京天气如何"],	
+//	    "developerMainSite": "http://www.jd.com",
+//	    "developerIntroduction": "我的一个开发者的简介",
+//		"descriptionForAudit": "我是一个开发者说明",
+//		 "thirdPartyPlatforms": ["xiaomi","baidu","dui"]
+//	};
+	
+	//我引用的技能 TODO
+	var getSkillDetilFunc = function() {
+		$.ajax({
+			url: api_host_v2beta + 'skills/' + $stateParams.skill_id,
+			type: 'get',
+			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+			success: function(data) {
+				data = dataParse(data);
+				var skillDetailObjList = [data];
+				hasSkillCheckFunc(skillDetailObjList, $rootScope.currentRobot); //判断是否已经获取
+				var skillDetailObj = skillDetailObjList[0];
+				$scope.skillDetailObj = {};
+				$scope.skillDetailObj.name = skillDetailObj.agents[0].agent.name;
+				$scope.skillDetailObj.logo = skillDetailObj.agents[0].agent.logo;
+				$scope.skillDetailObj.description = skillDetailObj.agents[0].agent.attributes.descriptionForAudit; 
+				$scope.skillDetailObj.userInputExamples = skillDetailObj.agents[0].agent.attributes.userInputExamples;
+				$scope.skillDetailObj.developerIntroduction = skillDetailObj.agents[0].agent.attributes.developerIntroduction;
+				$scope.skillDetailObj.developerMainSite = skillDetailObj.agents[0].agent.attributes.developerMainSite;
+				$scope.skillDetailObj.id = skillDetailObj.id;
+				$scope.skillDetailObj.hasSkill = skillDetailObj.hasSkill;
+				$scope.$apply();
+			},
+			error: function() {
+				 goIndex();
+			}
+		})
+	}
+	getSkillDetilFunc();
+	
+	//获取技能
+	$("body").off("click","[data-act=add-detail-skill]").on("click","[data-act=add-detail-skill]",function(event){
+		event.stopPropagation();
+		var $this = $(this);
+		var skillId = $this.attr("data-skill-id");
+		addSkillToBotFunc([$scope.skillDetailObj],skillId,$rootScope.currentRobot);
+		$scope.$apply();
+	});
+	
+	//移除技能
+	$("body").off("click","[data-act=remove-detail-skill]").on("click","[data-act=remove-detail-skill]",function(event){
+		event.stopPropagation();
+		var $this = $(this);
+		$.confirm({
+	        "text": '<div class="my_own_down_div"><label class="down_web_label">是否确认下线该技能？</label>' + '<br>' + '<span class="down_web_span">下线技能后需要重新提交技能进行审核哦！</span></div>',
+	        "title": " ",
+	        "ensureFn": function() {
+	        	var skillId = $this.attr("data-skill-id");
+	        	removeSkillFromBotFunc([$scope.skillDetailObj],skillId,$rootScope.currentRobot);
+	        	$scope.$apply();
+	        }
+		})
+	});
 	
 }
 

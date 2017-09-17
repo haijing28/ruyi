@@ -5,13 +5,14 @@
 			<div class="media" style="padding:20px;padding-right:30px;border-bottom:1px solid #eee;">
 			  <div class="media-left">
 			    <a href="javascript:;">
-			      <img class="media-object" style="width:80px;margin-left:10px;" src="https://dn-vbuluo-static.qbox.me/default-robot.svg">
+			      <img class="media-object" style="width:80px;margin-left:10px;" ng-src="{{skillDetailObj.logo}}">
 			    </a>
 			  </div>
 			  <div class="media-body clearfix" style="padding-left:30px;">
-			    <h4 class="media-heading" style="font-size:18px;text-align:right;">天气查询</h4>
+			    <h4 class="media-heading" ng-bind="skillDetailObj.name" style="text-align: right; font-size: 18px; color: #4A4A4A; align-self: flex-end; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 130px;"></h4>
 			    <div style="margin-top: -2px;font-size:14px;text-align:right;">海知智能</div>
-			    <button style="margin-top: 20px;" type="button" class="btn btn-default pull-right get-skill-detail">获取技能</button>
+			    <button class='remove-skill-button' data-act="remove-detail-skill" data-skill-id="{{skillDetailObj.id}}" ng-show="skillDetailObj.hasSkill == 'yes'" style="float: right;margin-top: 18px;">移除技能</button>
+				<button class='my_button add_kill_button' data-act="add-detail-skill" data-skill-id="{{skillDetailObj.id}}" ng-show="skillDetailObj.hasSkill == 'no'" style="float: right;margin-top: 18px;">获取技能</button>
 			  </div>
 			</div>
 			<div class="skill-content-intro">
@@ -27,7 +28,7 @@
 				<p class="content-intro" ng-bind="skillDetailObj.developerIntroduction"></p>
 				<h3 class="content-intro-title">开发者主页</h3>
 				<p class="content-intro" style="margin-bottom:0;">
-					<a href="http://www.baidu.com" style="color:#A4A9AF;" target="_blank" ng-bind="skillDetailObj.developerMainSite"></a>
+					<a href="{{skillDetailObj.developerMainSite}}" style="color:#A4A9AF;" target="_blank" ng-bind="skillDetailObj.developerMainSite"></a>
 				</p>
 			</div>
 		</section>

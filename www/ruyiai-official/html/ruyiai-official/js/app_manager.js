@@ -481,7 +481,7 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 	//获取skill对象
 	var getSkillListFunc = function(botList){
         $.ajax({
-            url: api_host_v2beta + '/skills?tag=' + developTag + "&size=100",
+            url: api_host_v2beta + 'skills?tag=' + developTag + "&size=100",
             method: 'GET',
             headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
             error: function(xhr, status, error) {
