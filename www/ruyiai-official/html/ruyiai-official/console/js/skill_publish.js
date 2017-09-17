@@ -71,7 +71,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			
 			localStorage[awakes] = JSON.stringify($scope.awakes);
 			localStorage[wrongs] = JSON.stringify($scope.wrongs);
-			localStorage.userSays] = JSON.stringify($scope.userSays);
+			localStorage.[userSays] = JSON.stringify($scope.userSays);
 		
 			localStorage[robotDesc] = $scope.robotDesc;
 			localStorage[selectedType] = $scope.selectedType;
