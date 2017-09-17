@@ -7,7 +7,7 @@ function ruyiSkillCtrl($rootScope,$scope, $state, $stateParams){
 			url: api_host_v2beta + 'skills/public',
 			type: 'get',
 			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
-			data:{"size": 100,"tag": productTag},
+			data:{"size": 100,"tag": productTag,"recommendTag":"Ruyi_Selected"},
 			success: function(data) {
 				data = dataParse(data);
 				$scope.ruyiSkillList = data.content;

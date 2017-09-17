@@ -384,14 +384,18 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 		setCookie("appName",appName);
 		setCookie("appKey",appKey);
 		setCookie("botId",botId);
-		setCookie("agentType",agentType);
+		
+		if(agentType && agentType != null && agentType.length > 10){
+			setCookie("agentType",agentType);
+		}else{
+			setCookie("agentType","SKILL");
+		}
 		if(skillId && skillId != null && skillId.length > 10){
 			setCookie("skillId",skillId);
 		}else{
 			setCookie("skillId","");
 		}
 		if("isNewUser" == getCookie("app"+appId)){
-			console.log(1111)
 			window.location.href = static_host + "/console/api_manager.html#/log_statistics";
 		}else{
 			window.location.href = static_host + "/console/api_manager.html#/log_statistics";
@@ -492,10 +496,12 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
             	for(var i in skillList){
             		for(var j in botList){
             			if(skillList[i].id == botList[j].companionSkillId){
-            				botList[j].developSkillStatus = skillList[i].developStatus;
+            				botList[j].auditStatus = skillList[i].auditStatus;
+            				console.log("botList[j].auditStatus:" + botList[j].auditStatus);
             			}
             		}
             	}
+            	console.log(JSON.stringify(botList));
             	$scope.$apply();
             },error: function(){
             	goIndex();
