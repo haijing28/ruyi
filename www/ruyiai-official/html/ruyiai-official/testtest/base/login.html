@@ -27,7 +27,7 @@
 		padding-left: 75px;
 	}
 	body{
-		overflow-y: hidden
+		overflow-y: auto;
 	}
 	.login-title {
 		font-family: STHeitiSC-Medium;
@@ -131,7 +131,7 @@
 				</div>
 				<div class="element-box">
 					<input style="font-size: 20px;" type="checkbox" id='remPass'> <label style="user-select: none; width: auto;" for="remPass" class='gray'>记住密码</label>
-					<a href="javascript:void(0)" id='forPass' style="float: right;margin-right: 75px;margin-left: 90px;" class='gray'>忘记密码</a>
+					<a href="javascript:void(0)" id='forPass' style="float: right;margin-right: 75px;margin-left: 90px;" class='gray'>忘记密码？</a>
 				</div>
 				<div class="element-box">
 					<button class='loginBtn'>登录</button>
@@ -139,7 +139,7 @@
 					<a href="phRegister.html" style="float: right;margin-right: 75px;margin-top: 13px;">注册</a>
 				</div>
 			</div>
-			<p class='helpTel'>客服电话：010-82740211</p>
+			<p class='helpTel'>客服电话：18762671093</p>
 		</div>
 	</div>
 </div>
@@ -152,6 +152,8 @@
 </body>
 <script>
 $(function(){
+	$('#login-email').val(localStorage.my_login_accout)
+ 	$('#login-password').val(localStorage.my_login_pass)
  	// 忘记密码
 	$('#forPass').click(function() {
 		window.location.href = './findPhPass.html';
@@ -166,7 +168,32 @@ $(function(){
 	$(document).mouseup(function() {
 		$('#login-password').attr('type','password');
 		$('.pass_div i').removeClass('open');
-	})
+	});
+	
+	/*测试获取用户信息*/
+	
+	
+	//获取accessToken
+	var getAccessTokenFunc = function(userName,password,fn){
+		// 获取 st
+        $.ajax({
+            url: api_host + '/auth/accessToken',
+            method: 'POST',
+            headers: {"Content-Type" : "application/json"},
+            data:JSON.stringify({"account": userName, "password": password}),
+            error: function(xhr, status, error) {
+            },
+            success: function(data, status, xhr) {
+            	data = dataParse(data);
+            	setCookie('accessToken', data.accessToken);
+            	//getUserInfoFunc();
+              	if(fn){
+              		fn();
+              	}
+            }
+        });
+	}
+	
 	// 显示密码 -- end
 	// 登录
 	$('.loginBtn').click(function () {
@@ -188,8 +215,6 @@ $(function(){
 		                if (window.location.origin.indexOf("test.ruyi.ai") > -1) {
 		                    api_host_temp = "http://test.ruyi.ai:8080";
 		                    login_environment = "?type=local_console";
-		                } else if (window.location.href.indexOf("ruyiai-official/test") > -1) {
-		                    login_environment = "?type=testtest_console";
 		                } else if (window.location.origin.indexOf("lab.ruyi.ai") > -1) {
 		                    login_environment = "?type=test_console";
 		                } else {
@@ -221,7 +246,9 @@ $(function(){
 		                        localStorage.ruyi_tk = xhr.responseText;
 		                        setCookie('tgt', tgt);
 		                        setCookie('email', $('#login-email').val());
-		                        window.location = api_host_temp + "/ruyi-ai/request" + login_environment + "&ticket=" + xhr.responseText;		             
+		                        getAccessTokenFunc($('#login-email').val(),$('#login-password').val(),function(){
+		                        	window.location = api_host_temp + "/ruyi-ai/request" + login_environment + "&ticket=" + xhr.responseText;		             
+		                        });
 		                    }
 		                })
 		                // 获取 st -- end
@@ -233,6 +260,22 @@ $(function(){
 		// 获取 tgt -- end
 	})
 	// 登录 -- end
+	// 回车登录
+	$('#login-password').keydown(function(e) {
+		if(e.keyCode == 13){
+			$('.loginBtn').click();
+		}
+	})
+	$('#login-email').keydown(function(e) {
+		if(e.keyCode == 13){
+			if($('#login-password').val().trim() == ''){
+				$('#login-password').focus();
+				return;
+			}
+			$('.loginBtn').click();
+		}
+	})
+	// 回车登录 -- end
 })
 </script>
 </html>
