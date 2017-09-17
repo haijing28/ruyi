@@ -30,7 +30,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	padding-left: 10px;
 	line-height: 1;
 	border-left: 4px solid #3794ff;
-	margin-bottom: 45px;
+	margin-bottom: 35px;
 }
 .my_body .skill_settings span {
 	color: #6d9fe4;
@@ -173,6 +173,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	background: #2b9cf7;
 	margin-bottom: 50px;
 }
+.my_body .my_gray {
+	background: #c9d2da !important;
+}
 .my_body .skill_publish:hover {
 	background: #5daff1;
 	color: #f7f7f7;
@@ -222,6 +225,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	font-weight: 100;
 	color: #ccc;
 }
+
 
 @media screen and (max-width: 1529px) {
 	.my_body div .small {
