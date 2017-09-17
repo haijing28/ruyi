@@ -2,6 +2,7 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 	$("[data-act=my_skill]").addClass("active").siblings("li").removeClass("active");
 
 	$('body').on('click', '.my_down_web', function() {
+
 		var $this = $(this);
 		$.confirm({
 	        "text": '<div class="my_own_down_div"><label class="down_web_label">是否确认下线该技能？</label>' + '<br>' + '<span class="down_web_span">下线技能后需要重新提交技能进行审核哦！</span></div>',
@@ -52,18 +53,28 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 		mySkillList.push(mySkillDetail);
 		$scope.mySkillList = mySkillList;
 		$scope.mySkillList.forEach(function(ele) {
+
+			ele.btn_show = true
+			ele.btn_Text = '从技能商店撤回技能';
+			
 			if(ele.auditStatus == 'APPROVED') {
 				ele.statuClass = 'succ';
 				ele.statuText = '通过审核'
+				ele.btn_Text = '从技能商店撤回技能';
+				ele.btn_show = true;
 			}
 			if(ele.auditStatus == 'PENDING_APPROVAL') {
 				ele.statuText = '审核中'
+				ele.btn_show = false;
 			}
 			if(ele.auditStatus == 'REJECTED') {
 				ele.statuText = '未通过'
+				ele.btn_show = false;
 			}
 			if(ele.auditStatus == 'OFFLINE') {
 				ele.statuText = '下线'
+				ele.btn_Text = '已下线';
+				ele.btn_show = true;
 			}
 		})
 		
