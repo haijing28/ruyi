@@ -128,6 +128,19 @@
 		font-weight: normal;
 		text-indent: 40px;
 	}
+	.end_status_succ, .end_status_deny {
+		color: #fff;
+		padding: 3px 30px;
+		border-radius: 10px;
+		display: inline-block;
+		margin-top: 20px;
+	}
+	.end_status_succ {
+		background: #25cc25;
+	}
+	.end_status_deny {
+		background: #d25544;
+	}
 </style>
 <body style="overflow-y: auto;">
 <div ng-app='app' ng-controller='controller'>
@@ -277,16 +290,21 @@
 	$('.body').on('click', 'button', function(e){
 		var skillID = $(this).parent().attr('my_id');
 		if(e.target.className == 'btn_succ'){
+			var text = '<span class="end_status_succ">已通过</span>';
 			var url = api_host_v2beta + 'skills/' + skillID + '/approve';
 		}else if(e.target.className == 'deny') {
+			text = '<span class="end_status_deny">已拒绝</span>';
 			url = api_host_v2beta + 'skills/' + skillID + '/reject';
 		}
+		var $this = $(this);
 		$.ajax({
 			url,
 			type: 'post',
 			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
 			success: function() {
 				$.trace('操作成功')
+				$this.parent().find('button').hide();
+				$this.parent().append(text);
 			},
 			error: function(err) {
 				var err = JSON.parse(err.responseText)
