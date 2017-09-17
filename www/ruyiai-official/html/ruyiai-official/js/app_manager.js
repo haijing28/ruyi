@@ -384,14 +384,18 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 		setCookie("appName",appName);
 		setCookie("appKey",appKey);
 		setCookie("botId",botId);
-		setCookie("agentType",agentType);
+		
+		if(agentType && agentType != null && agentType.length > 10){
+			setCookie("agentType",agentType);
+		}else{
+			setCookie("agentType","SKILL");
+		}
 		if(skillId && skillId != null && skillId.length > 10){
 			setCookie("skillId",skillId);
 		}else{
 			setCookie("skillId","");
 		}
 		if("isNewUser" == getCookie("app"+appId)){
-			console.log(1111)
 			window.location.href = static_host + "/console/api_manager.html#/log_statistics";
 		}else{
 			window.location.href = static_host + "/console/api_manager.html#/log_statistics";
@@ -478,10 +482,10 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 		}
 	});
 	
-	//获取skill对象
-	var getSkillListFunc = function(botList){
+	//获取develop状况的skill对象
+	var getSkillListDevelopFunc = function(botList){
         $.ajax({
-            url: api_host_v2beta + '/skills?tag=' + developTag + "&size=100",
+            url: api_host_v2beta + 'skills?tag=' + developTag + "&size=100",
             method: 'GET',
             headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
             error: function(xhr, status, error) {
@@ -492,7 +496,33 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
             	for(var i in skillList){
             		for(var j in botList){
             			if(skillList[i].id == botList[j].companionSkillId){
-            				botList[j].developSkillStatus = skillList[i].developStatus;
+            				botList[j].auditStatus = skillList[i].auditStatus;
+            			}
+            		}
+            	}
+            	getSkillListProductFunc(botList);//获取develop状况的skill对象
+            	$scope.$apply();
+            },error: function(){
+            	goIndex();
+            }
+        });
+	}
+	
+	//获取develop状况的skill对象
+	var getSkillListProductFunc = function(botList){
+        $.ajax({
+            url: api_host_v2beta + 'skills?tag=' + productTag + "&size=100",
+            method: 'GET',
+            headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+            error: function(xhr, status, error) {
+            },
+            success: function(data, status, xhr) {
+            	data = dataParse(data);
+            	var skillList = data.content;
+            	for(var i in skillList){
+            		for(var j in botList){
+            			if(skillList[i].id == botList[j].companionSkillId){
+            				botList[j].auditStatus = skillList[i].auditStatus;
             			}
             		}
             	}
@@ -516,7 +546,7 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
             	data = dataParse(data);
             	$scope.botList = data.content;
             	$scope.$apply();
-            	getSkillListFunc($scope.botList);
+            	getSkillListDevelopFunc($scope.botList);
             }
         });
 	}

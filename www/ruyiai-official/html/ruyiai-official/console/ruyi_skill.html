@@ -2,7 +2,7 @@
 	
 	<ul class="my_ul">
 		<li class='card' ng-repeat="ruyiSkill in ruyiSkillList">
-			<div class="top">
+			<div class="top" data-skill-id="{{ruyiSkill.id}}">
 				<img ng-src="{{ruyiSkill.agents[0].agent.logo}}">
 				<div class="detail">
 					<h2 ng-bind="ruyiSkill.agents[0].agent.name"></h2>
