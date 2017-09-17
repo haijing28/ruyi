@@ -33,7 +33,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 
 	/*-------------------------------全局属性--------------------------------*/
 
-	$scope.imgSrc = 'http://img95.699pic.com/photo/50004/2199.jpg_wh300.jpg';
+	$scope.imgSrc = 'https://dn-vbuluo-static.qbox.me/default-robot.svg';
 	$scope.robotName = '';
 	$scope.awakes = [{value: ''}];
 	$scope.wrongs = [{value: ''}];
@@ -203,6 +203,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 		setTimeout(function() {
 			$('.my_shake').removeClass('my_shake');
 		}, 1000)
+		$('input').blur();
 	})
 
 	/*-------------------------------添加新项--------------------------------*/
