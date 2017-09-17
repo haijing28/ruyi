@@ -72,7 +72,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			localStorage[awakes] = JSON.stringify($scope.awakes);
 			localStorage[wrongs] = JSON.stringify($scope.wrongs);
 			localStorage.userSays] = JSON.stringify($scope.userSays);
-			
+		
 			localStorage[robotDesc] = $scope.robotDesc;
 			localStorage[selectedType] = $scope.selectedType;
 			localStorage[selfDesc]= $scope.selfDesc;
@@ -135,7 +135,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 
 			$scope.awakes = JSON.parse(localStorage[awakes]);
 			$scope.wrongs = JSON.parse(localStorage[wrongs]);
-			$scope.userSays = JSON.parse(localStorage.[userSays]);
+			$scope.userSays = JSON.parse(localStorage[userSays]);
 			
 			$scope.robotDesc = localStorage[robotDesc];
 			$scope.selectedType = localStorage[selectedType];
