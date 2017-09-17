@@ -227,15 +227,15 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	.my_body div .small {
 		margin-bottom: 25px;
 	}
-	.my_body div .small:nth-child(6) {
+	.my_body div b:nth-child(6) {
 		margin-left: 153px;
 	}
 }
 @media screen and (max-width: 1333px) {
-	.my_body div .small:nth-child(6) {
+	.my_body div b:nth-child(6) {
 		margin-left: 0;
 	}
-	.my_body div .small:nth-child(5) {
+	.my_body div b:nth-child(5) {
 		margin-left: 153px;
 	}
 }
@@ -245,21 +245,20 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	}
 }
 
-@media screen and (max-width: 1140px) {
-	.addCorect {
+@media screen and (max-width: 1127px) {
+	.my_body div b:nth-child(5) {
+		margin-left: 0;
+	}
+	.my_body div b:nth-child(4) {
 		margin-left: 153px;
-		display: inline-block;
-		margin-bottom: 20px;
+	}
+	.my_body div b:nth-child(6) {
+		margin-left: 153px;
+	}
+	.my_body textarea {
+		width: 400px;
 	}
 }
-
-/* @media screen and (max-width: 1120px) {
-	.addCorect {
-		margin-left: 153px;
-		display: inline-block;
-		margin-bottom: 20px;
-	}
-} */
 
 /*-------------------------------toggle btn 样式--------------------------------*/
 
