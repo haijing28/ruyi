@@ -9,6 +9,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	});
 
 	var agentType = getCookie('agentType');
+	var appID = getCookie('appId');
 
 	/*-------------------------------stringArr to objArr--------------------------------*/
 	
@@ -46,26 +47,38 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	$scope.skillDesc = '';
 	$scope.plateforms = [];
 
+	/*-------------------------------定义缓存的名字--------------------------------*/
+	var hasSkill_storage = 'hasSkill_storage' + appID;
+	var imgSrc = 'imgSrc' + appID;
+	var robotName = 'robotName' + appID;
+	var awakes = 'awakes' + appID;
+	var wrongs = 'wrongs' + appID;
+	var userSays = 'userSays' + appID;
+	var robotDesc = 'robotDesc' + appID;
+	var selectedType = 'selectedType' + appID;
+	var selfDesc = 'selfDesc' + appID;
+	var self_homepage = 'self_homepage' + appID;
+	var skillDesc = 'skillDesc' + appID;
+	var plateforms = 'plateforms' + appID;
 
 	/*-------------------------------失焦保存--------------------------------*/
 
 	$('.my_body').on('blur', 'input, textarea', function() {
 		try{
-			localStorage.hasSkill_storage = 'true';
-			localStorage.imgSrc =  $scope.imgSrc;
-			localStorage.robotName = $scope.robotName;
+			localStorage[hasSkill_storage] = 'true';
+			localStorage[imgSrc] =  $scope.imgSrc;
+			localStorage[robotName] = $scope.robotName;
 			
-			localStorage.awakes = JSON.stringify($scope.awakes);
-			localStorage.wrongs = JSON.stringify($scope.wrongs);
-			localStorage.userSays = JSON.stringify($scope.userSays);
+			localStorage[awakes] = JSON.stringify($scope.awakes);
+			localStorage[wrongs] = JSON.stringify($scope.wrongs);
+			localStorage.userSays] = JSON.stringify($scope.userSays);
 			
-			localStorage.robotDesc = $scope.robotDesc;
-			localStorage.selectedType = $scope.selectedType;
-			localStorage.selfDesc = $scope.selfDesc;
-			localStorage.self_homepage = $scope.self_homepage;
-			localStorage.skillDesc = $scope.skillDesc;
-			console.log($scope.plateforms)
-			localStorage.plateforms = $scope.plateforms.toString();
+			localStorage[robotDesc] = $scope.robotDesc;
+			localStorage[selectedType] = $scope.selectedType;
+			localStorage[selfDesc]= $scope.selfDesc;
+			localStorage[self_homepage] = $scope.self_homepage;
+			localStorage[skillDesc] = $scope.skillDesc;
+			localStorage[plateforms] = $scope.plateforms.toString();
 		}catch(e){}
 	})
 
@@ -115,22 +128,22 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 
 	/*-------------------------------先从本地缓存拿数据--------------------------------*/
 	
-	if( localStorage.hasSkill_storage == 'true') {
+	if( localStorage[hasSkill_storage] == 'true') {
 		try{
-			$scope.imgSrc = localStorage.imgSrc;
-			$scope.robotName = localStorage.robotName;
+			$scope.imgSrc = localStorage[imgSrc];
+			$scope.robotName = localStorage[robotName];
 
-			$scope.awakes = JSON.parse(localStorage.awakes);
-			$scope.wrongs = JSON.parse(localStorage.wrongs);
-			$scope.userSays = JSON.parse(localStorage.userSays);
+			$scope.awakes = JSON.parse(localStorage[awakes]);
+			$scope.wrongs = JSON.parse(localStorage[wrongs]);
+			$scope.userSays = JSON.parse(localStorage.[userSays]);
 			
-			$scope.robotDesc = localStorage.robotDesc;
-			$scope.selectedType = localStorage.selectedType;
-			$scope.selfDesc = localStorage.selfDesc;
-			$scope.self_homepage = localStorage.self_homepage;
-			$scope.skillDesc = localStorage.skillDesc;
-			if(localStorage.plateforms.length > 1){
-				$scope.plateforms = localStorage.plateforms.split(',');
+			$scope.robotDesc = localStorage[robotDesc];
+			$scope.selectedType = localStorage[selectedType];
+			$scope.selfDesc = localStorage[selfDesc];
+			$scope.self_homepage = localStorage[self_homepage];
+			$scope.skillDesc = localStorage[skillDesc];
+			if(localStorage[plateforms].length > 1){
+				$scope.plateforms = localStorage[plateforms].split(',');
 			}
 			checkImgStatus();
 		}catch(e){}
@@ -282,7 +295,25 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 		if($('.wrong').length > 0) {
 			$.trace('要配置完技能插件才能发布哦！')
 		}else {
-			$('#uploadSuccess').modal('show');
+			// 清除空的用户说、唤醒语、纠错语
+			$scope.awakes.forEach(function(ele, index , arr) {
+				if(ele.value.trim() == ''){
+					arr.splice(index, 1);
+				}
+			})
+			$scope.wrongs.forEach(function(ele, index , arr) {
+				if(ele.value.trim() == ''){
+					arr.splice(index, 1);
+				}
+			})
+			$scope.userSays.forEach(function(ele, index , arr) {
+				if(ele.value.trim() == ''){
+					arr.splice(index, 1);
+				}
+			})
+			$('.skill_publish').attr('disabled', true);
+			$('.skill_publish').addClass('my_gray');
+			$('.skill_publish').text('提交中');
 			var skillId = getCookie("skillId");
 			var url = "";
 			if(skillId && skillId.length > 0){
@@ -311,9 +342,15 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 				}),
 				success: function(ret) {
 					setCookie('skillId' ,ret.id);
+					$('#uploadSuccess').modal('show');
 				},
 				error: function() {
 					goIndex();
+				},
+				complete: function() {
+					$('.skill_publish').attr('disabled', false);
+					$('.skill_publish').removeClass('my_gray');
+					$('.skill_publish').text('提交发布');
 				}
 			})
 		}

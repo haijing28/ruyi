@@ -173,6 +173,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	background: #2b9cf7;
 	margin-bottom: 50px;
 }
+.my_body .my_gray {
+	background: #c9d2da !important;
+}
 .my_body .skill_publish:hover {
 	background: #5daff1;
 	color: #f7f7f7;
@@ -222,6 +225,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	font-weight: 100;
 	color: #ccc;
 }
+
 
 @media screen and (max-width: 1529px) {
 	.my_body div .small {
