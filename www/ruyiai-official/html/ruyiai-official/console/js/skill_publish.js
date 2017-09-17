@@ -50,20 +50,23 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	/*-------------------------------失焦保存--------------------------------*/
 
 	$('.my_body').on('blur', 'input, textarea', function() {
-		localStorage.hasSkill_storage = 'true';
-		localStorage.imgSrc =  $scope.imgSrc;
-		localStorage.robotName = $scope.robotName;
-		
-		localStorage.awakes = JSON.stringify($scope.awakes);
-		localStorage.wrongs = JSON.stringify($scope.wrongs);
-		localStorage.userSays = JSON.stringify($scope.userSays);
-		
-		localStorage.robotDesc = $scope.robotDesc;
-		localStorage.selectedType = $scope.selectedType;
-		localStorage.selfDesc = $scope.selfDesc;
-		localStorage.self_homepage = $scope.self_homepage;
-		localStorage.skillDesc = $scope.skillDesc;
-		localStorage.plateforms = $scope.plateforms.toString();
+		try{
+			localStorage.hasSkill_storage = 'true';
+			localStorage.imgSrc =  $scope.imgSrc;
+			localStorage.robotName = $scope.robotName;
+			
+			localStorage.awakes = JSON.stringify($scope.awakes);
+			localStorage.wrongs = JSON.stringify($scope.wrongs);
+			localStorage.userSays = JSON.stringify($scope.userSays);
+			
+			localStorage.robotDesc = $scope.robotDesc;
+			localStorage.selectedType = $scope.selectedType;
+			localStorage.selfDesc = $scope.selfDesc;
+			localStorage.self_homepage = $scope.self_homepage;
+			localStorage.skillDesc = $scope.skillDesc;
+			console.log($scope.plateforms)
+			localStorage.plateforms = $scope.plateforms.toString();
+		}catch(e){}
 	})
 
 	
@@ -102,31 +105,36 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 
 	/*-------------------------------图片切换--------------------------------*/
 	function checkImgStatus() {
-//		$scope.plateforms.forEach(function(ele){
-//			$('.' + ele).addClass('active');
-//			$('.' + ele).find('input').prop('checked', true);
-//			$('.' + ele).find('.off').removeClass('off')
-//		})
+		$scope.plateforms.forEach(function(ele){
+			$('.' + ele).addClass('active');
+			$('.' + ele).find('input').prop('checked', true);
+			$('.' + ele).find('.off').removeClass('off')
+		})
 		console.log($scope.plateforms)
 	}
 
 	/*-------------------------------先从本地缓存拿数据--------------------------------*/
 	
 	if( localStorage.hasSkill_storage == 'true') {
-		$scope.imgSrc = localStorage.imgSrc;
-		$scope.robotName = localStorage.robotName;
+		try{
+			$scope.imgSrc = localStorage.imgSrc;
+			$scope.robotName = localStorage.robotName;
 
-		$scope.awakes = JSON.parse(localStorage.awakes);
-		$scope.wrongs = JSON.parse(localStorage.wrongs);
-		$scope.userSays = JSON.parse(localStorage.userSays);
+			$scope.awakes = JSON.parse(localStorage.awakes);
+			$scope.wrongs = JSON.parse(localStorage.wrongs);
+			$scope.userSays = JSON.parse(localStorage.userSays);
+			
+			$scope.robotDesc = localStorage.robotDesc;
+			$scope.selectedType = localStorage.selectedType;
+			$scope.selfDesc = localStorage.selfDesc;
+			$scope.self_homepage = localStorage.self_homepage;
+			$scope.skillDesc = localStorage.skillDesc;
+			if(localStorage.plateforms.length > 1){
+				$scope.plateforms = localStorage.plateforms.split(',');
+			}
+			checkImgStatus();
+		}catch(e){}
 		
-		$scope.robotDesc = localStorage.robotDesc;
-		$scope.selectedType = localStorage.selectedType;
-		$scope.selfDesc = localStorage.selfDesc;
-		$scope.self_homepage = localStorage.self_homepage;
-		$scope.skillDesc = localStorage.skillDesc;
-		$scope.plateforms = localStorage.plateforms.split(',');
-		checkImgStatus();
 	}else {
 		getSkillDetailFunc();
 	}
