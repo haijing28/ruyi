@@ -31,9 +31,9 @@ var hasSkillCheckFunc = function(skillList,currentRobot){
 
 //增加技能插件
 var addSkillToBotFunc = function(skillList,skillId,currentRobot){
-	skillList.forEach(function(openSkill,index,self){
-		if(openSkill.id == skillId){
-			openSkill.hasSkill = "yes";
+	skillList.forEach(function(skill,index,self){
+		if(skill.id == skillId){
+			skill.hasSkill = "yes";
 		}
 	});
 	if($.inArray(skillId, currentRobot.referencedApp) == -1){
@@ -45,9 +45,9 @@ var addSkillToBotFunc = function(skillList,skillId,currentRobot){
 
 //移除技能插件
 var removeSkillFromBotFunc = function(skillList,skillId,currentRobot){
-	skillList.forEach(function(openSkill,index,self){
-		if(openSkill.id == skillId){
-			openSkill.hasSkill = "no";
+	skillList.forEach(function(skill,index,self){
+		if(skill.id == skillId){
+			skill.hasSkill = "no";
 		}
 	});
 	var index = $.inArray(skillId, currentRobot.referencedApp);

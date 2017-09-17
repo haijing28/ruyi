@@ -526,6 +526,10 @@
 	font-size: 18px;
 	color: #4A4A4A;
 	align-self: flex-end;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width:200px;
 }
 .my_store .top .detail .span {
 	font-family: STHeitiSC-Light;
@@ -534,7 +538,8 @@
 	text-align: right;
 	margin-bottom: 12px;
 }
-.my_store .top .detail  .my_button {
+
+.add_kill_button{
 	border: 1px solid #3794FF;
 	font-family: PingFangSC-Regular;
 	font-size: 14px;
@@ -544,8 +549,7 @@
 	width: 70px;
 	align-self: flex-end;
 }
-
-.my_store .top .detail  .my_button:hover {
+.add_kill_button:hover{
 	background: #3794FF;
 	color: #fff;
 }
@@ -608,7 +612,7 @@
 	text-overflow: ellipsis;
 	white-space: nowrap
 }
-.removeSkill_button{
+.remove-skill-button{
 	font-family: PingFangSC-Regular !important;
 	font-size: 14px !important;
 	color: #FFFFFF !important;
@@ -617,7 +621,7 @@
 	height: 32px;
 	align-self: flex-end;
 }
-.removeSkill_button:hover{
+.remove-skill-button:hover{
 	background: #aab0b7 !important;
 }
 

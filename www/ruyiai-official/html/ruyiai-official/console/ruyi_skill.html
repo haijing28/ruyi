@@ -1,19 +1,20 @@
 <div class="my_ruyi_skill my_store">
 	
 	<ul class="my_ul">
-		<li class='card'>
+		<li class='card' ng-repeat="ruyiSkill in ruyiSkillList">
 			<div class="top">
-				<img src="../img/DUI_colour.svg" alt="技能头像">
+				<img ng-src="{{ruyiSkill.agents[0].agent.logo}}">
 				<div class="detail">
-					<h2>天气查询</h2>
+					<h2 ng-bind="ruyiSkill.agents[0].agent.name"></h2>
 					<span class="span">海知智能</span>
-					<button class='my_button'>获取技能</button>
+					<button class='remove-skill-button' data-act="remove-ruyi-skill" data-skill-id="{{ruyiSkill.id}}" ng-show="ruyiSkill.hasSkill == 'yes'">移除技能</button>
+					<button class='my_button add_kill_button' data-act="add-ruyi-skill" data-skill-id="{{ruyiSkill.id}}" ng-show="ruyiSkill.hasSkill == 'no'">获取技能</button>
 				</div>
 			</div>
 			<hr>
 			<p class='desc'>
 				<i class="iconfont icon-zuoshuangyinhao"></i>
-				&nbsp;&nbsp;<span>今天上海天气怎么样?</span>
+					&nbsp;&nbsp;<span ng-bind="ruyiSkill.agents[0].agent.attributes.userInputExamples[0]"></span>
 				<i class="iconfont icon-youshuangyinhao"></i>
 			</p>
 		</li>

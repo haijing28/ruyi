@@ -1,7 +1,7 @@
 function openSkillCtrl($rootScope,$scope, $state, $stateParams){
 	$("[data-act=open_skill]").addClass("active").siblings("li").removeClass("active");
-	
-	var getSkillCards = function() {
+	//第三方平台的skill TODO
+	var getOpenSkillFunc = function() {
 		$.ajax({
 			url: api_host_v2beta + 'skills/public',
 			type: 'get',
@@ -18,10 +18,10 @@ function openSkillCtrl($rootScope,$scope, $state, $stateParams){
 			}
 		})
 	}
-	getSkillCards();
+	getOpenSkillFunc();
 	
 	//获取技能
-	$("body").off("click","[data-act=getSkill]").on("click","[data-act=getSkill]",function(event){
+	$("body").off("click","[data-act=add-open-skill]").on("click","[data-act=add-open-skill]",function(event){
 		event.stopPropagation();
 		var $this = $(this);
 		var skillId = $this.attr("data-skill-id");
@@ -30,7 +30,7 @@ function openSkillCtrl($rootScope,$scope, $state, $stateParams){
 	});
 	
 	//移除技能
-	$("body").off("click","[data-act=removeSkill]").on("click","[data-act=removeSkill]",function(event){
+	$("body").off("click","[data-act=remove-open-skill]").on("click","[data-act=remove-open-skill]",function(event){
 		event.stopPropagation();
 		var $this = $(this);
 		$.confirm({
