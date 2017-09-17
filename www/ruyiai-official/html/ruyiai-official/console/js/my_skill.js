@@ -1,9 +1,22 @@
 function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 	$("[data-act=my_skill]").addClass("active").siblings("li").removeClass("active");
 
+	var downlineSkillFunc = function(dataSkillId){
+		$.ajax({
+			url: api_host_v2beta + 'skills/'+ dataSkillId +'/offline',
+			type: 'post',
+			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+			success: function(data) {
+			},
+			error: function() {
+				goIndex();
+			}
+		});
+	}
+	
 	$('body').on('click', '.my_down_web', function() {
-
 		var $this = $(this);
+		var dataSkillId = $this.attr("data-skill-id");
 		$.confirm({
 	        "text": '<div class="my_own_down_div"><label class="down_web_label">是否确认下线该技能？</label>' + '<br>' + '<span class="down_web_span">下线技能后需要重新提交技能进行审核哦！</span></div>',
 	        "title": " ",
@@ -11,6 +24,7 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 	        	$this.text('已下线');
 	        	$this.attr('disabled', true);
 	        	$this.addClass('has_dis_true');
+	        	downlineSkillFunc(dataSkillId);
 	        }
 		})
 	})
@@ -83,23 +97,25 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 	
 	//通过引用的技能id列表查询技能列表
 	var getMyHasSkillFunc = function(){
-		var referencedSkillId = $rootScope.currentRobot.referencedApp.join(",");
-		$.ajax({
-			url: api_host_v2beta + 'skills/public',
-			type: 'get',
-			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
-			//data:{"size": 100,"tag": productTag,"skillIds": "9c70c763-1b5e-455d-a49c-a10fabf6652d,a159b729-1dca-4df9-ae25-48d270de70ca"},
-			data:{"size": 100,"tag": productTag,"skillIds": referencedSkillId},
-			success: function(data) {
-				data = dataParse(data);
-				$scope.myHasSkillList = data.content;
-				hasSkillCheckFunc($scope.myHasSkillList,$rootScope.currentRobot);//判断是否已经获取
-				$scope.$apply();
-			},
-			error: function() {
-				 goIndex();
-			}
-		});
+		if($rootScope.currentRobot.referencedApp.length > 0){
+			var referencedSkillId = $rootScope.currentRobot.referencedApp.join(",");
+			$.ajax({
+				url: api_host_v2beta + 'skills/public',
+				type: 'get',
+				headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+				//data:{"size": 100,"tag": productTag,"skillIds": "9c70c763-1b5e-455d-a49c-a10fabf6652d,a159b729-1dca-4df9-ae25-48d270de70ca"},
+				data:{"size": 100,"tag": productTag,"skillIds": referencedSkillId},
+				success: function(data) {
+					data = dataParse(data);
+					$scope.myHasSkillList = data.content;
+					hasSkillCheckFunc($scope.myHasSkillList,$rootScope.currentRobot);//判断是否已经获取
+					$scope.$apply();
+				},
+				error: function() {
+					goIndex();
+				}
+			});
+		}
 	}
 	getMyHasSkillFunc();
 	

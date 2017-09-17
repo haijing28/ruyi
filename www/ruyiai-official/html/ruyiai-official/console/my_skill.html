@@ -8,7 +8,7 @@
 				<div class="detail">
 					<h2 ng-bind="mySkill.agents[0].agent.name"></h2>
 					<span class="span">海知智能</span>
-					<button ng-show='mySkill.btn_show' type="button" class="my_btn my_down_web">
+					<button ng-show='mySkill.btn_show' data-skill-id="{{mySkill.id}}" type="button" class="my_btn my_down_web">
 					  	<span class="down_arrow"></span> {{mySkill.btn_Text}}
 					</button>
 				</div>
