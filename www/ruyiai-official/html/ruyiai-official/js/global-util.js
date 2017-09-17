@@ -18,13 +18,12 @@ if(!isproductDomain){
 	api_host = "http://lab.ruyi.ai/sso";
 	api_host_v2beta = "http://lab.ruyi.ai/v2beta/";
 	if(ruyiai_host.indexOf("http://test.ruyi.ai") > -1){
-		api_host_v2beta = "http://test.ruyi.ai:8000/";
+		api_host_v2beta = "http://test.ruyi.ai:9000/";
 	}
 }
-var commonTag = "Product";
-if(!isproductDomain){
-	commonTag = "Develop";
-}
+var developTag = "Develop";
+var productTag = "Product";
+
 if(ruyiai_host.indexOf("www") > -1){
 	var myhref = window.location.href;
 	window.location.href = myhref.replace("www.","");

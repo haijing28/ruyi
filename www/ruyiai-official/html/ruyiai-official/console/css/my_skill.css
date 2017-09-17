@@ -14,18 +14,6 @@
 .my_own_skill .detail .my_btn:hover {
 	background: #F6F6F6 !important;
 }
-.my_own_skill .removeSkill {
-	font-family: PingFangSC-Regular !important;
-	font-size: 14px !important;
-	color: #FFFFFF !important;
-	background: #B8C4D1 !important;
-	border: 1px solid #B8C4D1 !important;
-	height: 32px;
-	align-self: flex-end;
-}
-.my_own_skill .removeSkill:hover{
-	background: #aab0b7 !important;
-}
 
 .my_own_skill .down_arrow {
 	display: inline-block;

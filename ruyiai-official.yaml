@@ -1,7 +1,7 @@
 # kubectl --kubeconfig chenx.conf -n qa delete -f ruyiai-official.yaml
 # kubectl --kubeconfig chenx.conf -n qa apply -f ruyiai-official.yaml
 
-# kubectl --kubeconfig chenx.conf -n dev get po
+# kubectl --kubeconfig chenx.conf -n qa get po
 
 #kubectl --kubeconfig chenx.conf -n dev port-forward XXX 9999:8080
 

@@ -478,23 +478,52 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 		}
 	});
 	
-	var getBotListFunc = function(){
+	//获取skill对象
+	var getSkillListFunc = function(botList){
 		// 获取 st
         $.ajax({
-            url: api_host_v2beta + 'bots?tag=' + commonTag + "&size=100",
+            url: api_host_v2beta + '/skills?tag=' + developTag + "&size=100",
             method: 'GET',
             headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
             error: function(xhr, status, error) {
             },
             success: function(data, status, xhr) {
             	data = dataParse(data);
-            	$scope.botList = data.content;
-            	console.log("botList:" + $scope.botList);
+            	var skillList = data.content;
+            	for(var i in skillList){
+            		for(var j in botList){
+            			if(skillList[i].id == botList[j].companionSkillId){
+            				botList[j].developSkillStatus = skillList[i].developStatus;
+            			}
+            		}
+            	}
             	$scope.$apply();
+            },error: function(){
+            	goIndex();
+            }
+        });
+	}
+	
+	var getBotListFunc = function(){
+		// 获取 st
+        $.ajax({
+            url: api_host_v2beta + 'bots?tag=' + developTag + "&size=100",
+            method: 'GET',
+            headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+            error: function(xhr, status, error) {
+            	goIndex()
+            },
+            success: function(data, status, xhr) {
+            	data = dataParse(data);
+            	$scope.botList = data.content;
+            	$scope.$apply();
+            	getSkillListFunc($scope.botList);
             }
         });
 	}
 	getBotListFunc();
+	
+	
 	
 	
 	
