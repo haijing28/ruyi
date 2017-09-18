@@ -217,6 +217,11 @@ $('.nextStep').on('click', function() {
 	if( ! va.loginPass(pass) ){
 		tag = false;
 	}
+	if( vaCode.trim().length != 6 ) {
+		$('#vaCode').nextAll('.error-tips').text('请输入正确的验证码')
+		$('#vaCode').nextAll('.error-tips').show();
+		return;
+	}
 	if( !tag ){
 		return;
 	}
