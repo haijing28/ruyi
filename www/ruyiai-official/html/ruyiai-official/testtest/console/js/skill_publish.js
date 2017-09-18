@@ -14,6 +14,12 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	/*-------------------------------stringArr to objArr--------------------------------*/
 	
 	function stringToObjectArr(str) {
+		if(str == undefined) {
+			str = [];
+		} else {
+			str = str.split(';');
+		}
+		console.log(str)
 		var arr = str;
 		var objArr = [];
 		arr.forEach(function(ele) {
@@ -214,19 +220,15 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	/*-------------------------------copy 机器人--------------------------------*/
 	
 	$('.skill_settings').on('click', '.copy_robot_attr', function() {
-		try{
-			$scope.imgSrc = $rootScope.currentRobot.headUrl || $scope.imgSrc;
-			$scope.robotName = $rootScope.currentRobot.appName;
-			$scope.robotDesc = $rootScope.currentRobot.appDesc;
-
-			$scope.awakes = stringToObjectArr($rootScope.currentRobot.attribute.alias)
-			$scope.wrongs = stringToObjectArr($rootScope.currentRobot.attribute.voiceToCorrect)
-			$scope.userSays = stringToObjectArr($rootScope.currentRobot.attribute.hobby)
-
-			$scope.awakes.splice(5, 100);
-			$scope.wrongs.splice(5, 100);
-			$scope.userSays.splice(5, 100);
-		}catch(e){}
+		console.log('------------------------')
+		console.log($rootScope.currentRobot)
+		$scope.imgSrc = $rootScope.currentRobot.headUrl || $scope.imgSrc;
+		$scope.robotName = $rootScope.currentRobot.appName;
+		$scope.robotDesc = $rootScope.currentRobot.appDesc;
+		$scope.awakes = stringToObjectArr($rootScope.currentRobot.attribute.alias)
+		$scope.wrongs = stringToObjectArr($rootScope.currentRobot.attribute.voiceToCorrect)
+		$scope.awakes.splice(5, 100);
+		$scope.wrongs.splice(5, 100);
 		$scope.$apply();
 		$('#pickSkillImg').addClass('my_shake');
 		$('.robotName').addClass('my_shake');
