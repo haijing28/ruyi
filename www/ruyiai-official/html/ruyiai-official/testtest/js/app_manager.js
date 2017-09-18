@@ -548,6 +548,7 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
             	data = dataParse(data);
             	$scope.botList = data.content;
             	$scope.$apply();
+            	$(".robot-box-item").css("opacity","1");
             	getSkillListDevelopFunc($scope.botList);
             }
         });
