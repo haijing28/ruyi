@@ -391,11 +391,68 @@
 			url: api_host_v2beta + 'skills/public',
 			type: 'get',
 			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
-			data: {tag: 'Develop', status: ['OFFLINE', 'REJECTED']},
+			data: {tag: 'Develop', status: 'PENDING_APPROVAL'},
 			success: function(ret) {
 				console.log(ret.content);
-				$scope.skills_reject_offline = ret.content;
-				$scope.skills = $scope.skills.concat($scope.skills_reject_offline);
+				$scope.skills_pedding_appr = ret.content;
+				$scope.skills = $scope.skills.concat($scope.skills_pedding_appr);
+				$scope.$apply();
+			},
+			error: function() {
+				// goIndex();
+			},
+			complete: function() {
+				tag ++;
+			}
+		})
+
+		$.ajax({
+			url: api_host_v2beta + 'skills/public',
+			type: 'get',
+			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+			data: {tag: 'Develop', status: 'REJECTED'},
+			success: function(ret) {
+				console.log(ret.content);
+				$scope.skills_reject_devl = ret.content;
+				$scope.skills = $scope.skills.concat($scope.skills_reject_devl);
+				$scope.$apply();
+			},
+			error: function() {
+				// goIndex();
+			},
+			complete: function() {
+				tag ++;
+			}
+		})
+
+		$.ajax({
+			url: api_host_v2beta + 'skills/public',
+			type: 'get',
+			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+			data: {tag: 'Develop', status: 'APPROVED'},
+			success: function(ret) {
+				console.log(ret.content);
+				$scope.skills_appr_devl = ret.content;
+				$scope.skills = $scope.skills.concat($scope.skills_appr_devl);
+				$scope.$apply();
+			},
+			error: function() {
+				// goIndex();
+			},
+			complete: function() {
+				tag ++;
+			}
+		})
+
+		$.ajax({
+			url: api_host_v2beta + 'skills/public',
+			type: 'get',
+			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+			data: {tag: 'Develop', status: 'OFFLINE'},
+			success: function(ret) {
+				console.log(ret.content);
+				$scope.skills_offline_devl = ret.content;
+				$scope.skills = $scope.skills.concat($scope.skills_offline_devl);
 				$scope.$apply();
 			},
 			error: function() {
@@ -407,7 +464,7 @@
 		})
 
 		var t = setInterval(function() {
-			if(tag == 3) {
+			if(tag == 5) {
 				clearInterval(t);
 				$scope.skills_approved = [];
 				$scope.skills_reject = [];
