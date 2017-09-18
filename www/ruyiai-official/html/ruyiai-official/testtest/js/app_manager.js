@@ -534,7 +534,6 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
             }
         });
 	}
-	
 	var getBotListFunc = function(){
 		// 获取 st
         $.ajax({
