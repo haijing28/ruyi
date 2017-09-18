@@ -3,9 +3,9 @@ $(function(){
 	var ruyiai_host = window.location.origin;
 	var validate = function(){
 		$.ajax({
-			url : api_host + "/password_reset",
+			url : api_host + "/password/reset/verify",
 			method : "get",
-			data: {"email": Request.email,"verify_code":Request.verifycode},
+			data: {"account": Request.email,"verifyCode":Request.verifycode},
 			success: function(data) {
 				console.log(data)
 				if(data && data.code == 0){
@@ -62,9 +62,9 @@ $(function(){
 		// });
 
 		$.ajax({
-			url : api_host + "/password",
+			url : api_host + "/password/reset",
 			method : "POST",
-			data: JSON.stringify({"email": Request.email,"verify_code":Request.verifycode,"status":Request.status,"new_password":my_password.val()}),
+			data: JSON.stringify({"account": Request.email,"verifyCode":Request.verifycode,"newPassword":my_password.val()}),
 			headers:{
 				"content-type": 'application/json'
 			},
