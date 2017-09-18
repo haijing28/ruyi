@@ -122,7 +122,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	function commitPublish(id) {
 		var skillID = id || getCookie('skillId');
 		$.ajax({
-			url: api_host_v2beta + 'skills/' + skillID + '/submit',
+			url: api_host_v2beta + 'skills/' + getCookie("skillId") + '/submit',
 			type: 'post',
 			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
 			success: function() {

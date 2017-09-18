@@ -396,14 +396,10 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 			setCookie("skillId","");
 		}
 		
-		if(window.location.href.indexOf("testtest") > -1){
-			window.location.href = static_host + "/testtest/console/api_manager.html#/log_statistics";
+		if("isNewUser" == getCookie("app"+appId)){
+			window.location.href = static_host + "/console/api_manager.html#/log_statistics";
 		}else{
-			if("isNewUser" == getCookie("app"+appId)){
-				window.location.href = static_host + "/console/api_manager.html#/log_statistics";
-			}else{
-				window.location.href = static_host + "/console/api_manager.html#/log_statistics";
-			}
+			window.location.href = static_host + "/console/api_manager.html#/log_statistics";
 		}
 		
 	 }

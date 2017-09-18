@@ -2,10 +2,10 @@ var ruyiai_host = window.location.origin;
 var static_host = "https://ruyi.ai";
 var isproductDomain = true;
 if(ruyiai_host.indexOf("http://test.ruyi.ai") > -1){
-	static_host = "http://test.ruyi.ai/gitlab/ruyiai-official/www/ruyiai-official/html/ruyiai-official";
+	static_host = "http://test.ruyi.ai/gitlab/ruyiai-official/www/ruyiai-official/html/ruyiai-official/testtest";
 	isproductDomain = false;
 }else if(ruyiai_host.indexOf("lab.ruyi.ai") > -1){
-	static_host = "http://lab.ruyi.ai/ruyiai-official";
+	static_host = "http://lab.ruyi.ai/ruyiai-official/testtest";
 	isproductDomain = false;
 }
 var correction_host = "http://test.ruyi.ai:3333/";
