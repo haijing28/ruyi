@@ -71,4 +71,5 @@ $(function(){
 			$helpBox.css("display","block");
 		}
 	});
+
 });
