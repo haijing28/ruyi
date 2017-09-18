@@ -39,7 +39,7 @@ var checkEmailSuffix = function(email){
 	}else if(email.indexOf("iknowing.com") > -1){
 		url = "http://mail.iknowing.com";
 	}else if(email.indexOf("ruyi.ai") > -1){
-		url = "http://qiye.163.com/login/?from=ym";
+		url = "http://exmail.qq.com/cgi-bin/loginpage";
 	}
 	return url;
 }
