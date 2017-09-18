@@ -72,7 +72,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	$('.my_body').on('blur', 'input, textarea', function() {
 		try{
 			localStorage[hasSkill_storage] = 'true';
-			localStorage[imgSrc] =  $scope.imgSrc;
+			localStorage[imgSrc] =  $('#pickSkillImg').attr('src');
 			localStorage[robotName] = $scope.robotName;
 			
 			localStorage[awakes] = JSON.stringify($scope.awakes);
