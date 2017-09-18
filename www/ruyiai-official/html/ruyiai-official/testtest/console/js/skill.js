@@ -472,9 +472,9 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 		$("#responseJson").scrollTop($("#responseJson")[0].scrollHeight);
 	}, 200);
 	
-	$("body").off("click",".content-intro li span").on("click",".content-intro li span",function(event){
+	$("body").off("click",".content-intro li").on("click",".content-intro li",function(event){
 		var $this = $(this);
-		var example = $this.text();
+		var example = $this.find("[data-act=example-text]").text();
 		if($(".try-nav-left-max li.active").hasClass("try-weixin")){
 			$scope.userSaysTextTry = example;
 			$(".testTextareaWechatSkill textarea").val(example);
