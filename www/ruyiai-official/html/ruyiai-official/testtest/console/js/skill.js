@@ -1,6 +1,8 @@
 function skillCtrl($rootScope,$scope, $state, $stateParams){
 	
 	$scope.mySkillId = getCookie("skillId");
+	$scope.wechatTalksDetail = [];
+	$scope.localTalksDetail = [];
 	
 	$("#try-try").css("display","none");
 	var data_act = $(".list-group-item.active").attr("data-act");
