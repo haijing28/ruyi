@@ -325,7 +325,7 @@
 
 	var app = angular.module('app', []);
 	app.controller('controller', function($scope) {
-
+		$scope.skills = [];
 		$.ajax({
 			url: api_host_v2beta + 'skills/public',
 			type: 'get',
@@ -333,11 +333,25 @@
 			// data: {tag: 'Develop'},
 			success: function(ret) {
 				console.log(ret.content);
-				$scope.skills = ret.content;
+				$scope.skills_product = ret.content;
+				$scope.skills = $scope.skills.concat($scope.skills_product);
 				$scope.$apply();
 			}
 		})
-	
+
+		$.ajax({
+			url: api_host_v2beta + 'skills/public',
+			type: 'get',
+			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+			data: {tag: 'Develop'},
+			success: function(ret) {
+				console.log(ret.content);
+				$scope.skills_develop = ret.content;
+				$scope.skills = $scope.skills.concat($scope.skills_develop);
+				$scope.$apply();
+			}
+		})
+
 	})
 
 	app.filter('filter_english',function(){

@@ -70,6 +70,13 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 
 			ele.btn_show = true
 			ele.btn_Text = '从技能商店撤回技能';
+
+			// if(ele.auditStatus == 'INIT') {
+			// 	ele.statuClass = 'succ';
+			// 	ele.statuText = '通过审核'
+			// 	ele.btn_Text = '从技能商店撤回技能';
+			// 	ele.btn_show = true;
+			// }
 			
 			if(ele.auditStatus == 'APPROVED') {
 				ele.statuClass = 'succ';
