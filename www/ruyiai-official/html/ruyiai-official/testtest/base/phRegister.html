@@ -281,8 +281,8 @@ $('#getVCode').click(function() {
 			}, 1000)
 		},
 		error: function(err) {
-			$('#loginEmail').next('.error-tips').text( JSON.parse(err.responseText.toString()).message )
-			$('#loginEmail').next('.error-tips').show();
+			$('#loginPhone').next('.error-tips').text( JSON.parse(err.responseText.toString()).message )
+			$('#loginPhone').next('.error-tips').show();
 			$('#getVCode').attr('disabled',false);
 		}
 	})
