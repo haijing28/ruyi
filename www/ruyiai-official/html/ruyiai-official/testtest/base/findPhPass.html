@@ -210,9 +210,12 @@ $(function() {
 		// 如果是邮箱
 		if(va.loginEmail($('#login-account').val())) {
 			$('#getVCode').click();
+			// setCookie('email', $('#login-account').val());
+			localStorage.findEmail = $('#login-account').val()
 			return;
 		}
 		// if(va.loginPhone($('#login-account').val())){
+			$('#login-account').attr('placeholder', '请输入手机号');
 			$('.my_hide').removeClass('my_hide').addClass('my_show');
 		// }
 		if($('.my_hide').length != 0) {

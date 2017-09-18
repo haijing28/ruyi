@@ -141,6 +141,10 @@
 	.end_status_deny {
 		background: #d25544;
 	}
+	.paixu_select {
+		font-size: 16px;
+    		float: right;
+	}
 </style>
 <body style="overflow-y: auto;">
 <div ng-app='app' ng-controller='controller'>
@@ -171,7 +175,16 @@
 	</div>
 </div>
 <div class="body">
-	<h1 class="bigTitle">技能插件总览{{name}}</h1>
+	<h1 class="bigTitle">
+		技能插件总览
+		<select class='paixu_select'>
+			<option value="All">所有</option>
+			<option value="skills_pedding">待审核</option>
+			<option value="skills_reject">已拒绝</option>
+			<option value="skills_approved">已通过</option>
+			<option value="skills_offline">下线</option>
+		</select>
+	</h1>
 	<table class="table table-hover table-bordered">
 	<thead>
 		<tr>
@@ -179,7 +192,7 @@
 			<th>技能描述</th>
 			<th>开发者</th>
 			<th>提交日期</th>
-			<th>状态</th>
+			<th class='shenhe_status'>状态</th>
 		</tr>
 	</thead>
 	<tbody ng-repeat='skill in skills'>
@@ -248,8 +261,9 @@
 						</div>
 					</div>
 					<div class="right" my_id='{{skill.id}}'>
-						<button class='btn_succ' id='btn_succ'>审核通过</button>
-						<button class='deny' id='deny'>审核失败</button>
+						<button class='btn_succ' id='btn_succ' ng-hide='skill.show_down_web'>审核通过</button>
+						<button class='deny' id='deny' ng-hide='skill.show_down_web'>审核失败</button>
+						<button class='down_web' id='down_web' ng-show='skill.show_down_web'>下线</button>
 						<dl>
 							<dd class='al_top'>技能说明</dd>
 							<dt>{{skill.agents[0].agent.description}}</dt>
@@ -277,6 +291,7 @@
 <script src="../js/global-util.js"></script>
 <script src="js/common.js"></script>
 <script src="js/robot.js"></script>
+
 <script>
 
 	$("[data-act=overall-situation]").click(function(){
@@ -301,9 +316,15 @@
 		if(e.target.className == 'btn_succ'){
 			var text = '<span class="end_status_succ">已通过</span>';
 			var url = api_host_v2beta + 'skills/' + skillID + '/approve';
+			var shenhe_status = '通过审核'
 		}else if(e.target.className == 'deny') {
 			text = '<span class="end_status_deny">已拒绝</span>';
 			url = api_host_v2beta + 'skills/' + skillID + '/reject';
+			shenhe_status = '已拒绝'
+		}else if(e.target.className == 'down_web') {
+			text = '<span class="end_status_deny">已下线</span>';
+			url = api_host_v2beta + 'skills/' + skillID + '/offline';
+			shenhe_status = '已下线'
 		}
 		var $this = $(this);
 		$.ajax({
@@ -314,6 +335,7 @@
 				$.trace('操作成功')
 				$this.parent().find('button').hide();
 				$this.parent().append(text);
+				$this.parents('tr').prev().find('.shenhe_status').text(shenhe_status);
 			},
 			error: function(err) {
 				var err = JSON.parse(err.responseText)
@@ -326,6 +348,7 @@
 	var app = angular.module('app', []);
 	app.controller('controller', function($scope) {
 		$scope.skills = [];
+		var tag = 0;
 		$.ajax({
 			url: api_host_v2beta + 'skills/public',
 			type: 'get',
@@ -336,6 +359,12 @@
 				$scope.skills_product = ret.content;
 				$scope.skills = $scope.skills.concat($scope.skills_product);
 				$scope.$apply();
+			},
+			error: function() {
+				goIndex();
+			},
+			complete: function() {
+				tag ++;
 			}
 		})
 
@@ -349,8 +378,77 @@
 				$scope.skills_develop = ret.content;
 				$scope.skills = $scope.skills.concat($scope.skills_develop);
 				$scope.$apply();
+			},
+			error: function() {
+				// goIndex();
+			},
+			complete: function() {
+				tag ++;
 			}
 		})
+
+		$.ajax({
+			url: api_host_v2beta + 'skills/public',
+			type: 'get',
+			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+			data: {tag: 'Develop', status: ['OFFLINE', 'REJECTED']},
+			success: function(ret) {
+				console.log(ret.content);
+				$scope.skills_reject_offline = ret.content;
+				$scope.skills = $scope.skills.concat($scope.skills_reject_offline);
+				$scope.$apply();
+			},
+			error: function() {
+				// goIndex();
+			},
+			complete: function() {
+				tag ++;
+			}
+		})
+
+		var t = setInterval(function() {
+			if(tag == 3) {
+				clearInterval(t);
+				$scope.skills_approved = [];
+				$scope.skills_reject = [];
+				$scope.skills_offline = [];
+				$scope.skills_pedding = [];
+				$scope.skills_init= [];
+				$scope.skills.forEach(function(ele, index, arr) {
+					var auditStatus = ele.auditStatus;
+					if(auditStatus == 'APPROVED') {
+						ele.show_down_web = true;
+						$scope.skills_approved.push(ele);
+					}
+					if(auditStatus == 'PENDING_APPROVAL') {
+						$scope.skills_pedding.push(ele);
+					}
+					if(auditStatus == 'REJECTED') {
+						$scope.skills_reject.push(ele);
+					}
+					if(auditStatus == 'OFFLINE') {
+						$scope.skills_offline.push(ele);
+					}
+					if(auditStatus == 'INIT') {
+						$scope.skills_init.push(ele);
+					}
+				})
+				$scope.skills = [].concat($scope.skills_pedding, $scope.skills_reject, $scope.skills_approved, $scope.skills_offline, $scope.skills_init);
+				$scope.$apply();
+			}
+		}, 100)
+		/////////////////
+		$('.paixu_select').on('change', function() {
+			var val = $(this).children('option:selected').val()
+			if(val == 'All') {
+				$scope.skills = [].concat($scope.skills_pedding, $scope.skills_reject, $scope.skills_approved, $scope.skills_offline, $scope.skills_init);
+			}else {
+				$scope.skills = $scope[val];
+			}
+			$scope.$apply();
+			console.log( $(this).children('option:selected'))
+		})
+		
 
 	})
 
@@ -375,6 +473,7 @@
 			return out;
 	       }
 	})
+
 </script>
 </body>
 </html>

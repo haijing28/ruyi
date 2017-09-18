@@ -136,8 +136,8 @@
 <script src="js/reg-common.js"></script>
 <script src="js/login.js"></script>
 <script>
-$('#loginEmail').val('');
-$('#loginPass').val('');
+$('#loginEmail').val(' ');
+$('#loginPass').val(' ');
 // 各种正则验证
 var va = {
 	loginName: function(value) {
@@ -232,6 +232,10 @@ $('.nextStep').on('click', function() {
 				localStorage.my_login_accout = $('#loginPhone').val();
 				localStorage.my_login_pass = $('#loginPass').val();
 				window.location.href = './phRegiSucc.html';
+			},
+			error: function(err) {
+				$('#loginPhone').next('.error-tips').text( JSON.parse(err.responseText.toString()).message )
+				$('#loginPhone').next('.error-tips').show();
 			}
 		})
 	}

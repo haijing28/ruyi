@@ -126,10 +126,11 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			type: 'post',
 			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
 			success: function() {
-
+				$('#uploadSuccess').modal('show');
 			},
-			error: function() {
-
+			error: function(err) {
+				err = dataParse(err.responseText);
+				$.trace('提交失败: ' + err.message);
 			}
 		})
 	}
@@ -360,13 +361,13 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 				}),
 				success: function(ret) {
 					setCookie('skillId' ,ret.id);
-					$('#uploadSuccess').modal('show');
 					commitPublish(ret.id);
+					
 				},
 				error: function(err) {
 					err = JSON.parse(err.responseText);
 					$.trace(err.message)
-					goIndex();
+					// goIndex();
 				},
 				complete: function() {
 					$('.skill_publish').attr('disabled', false);
@@ -388,7 +389,9 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	$('input[type=checkbox]').change(function() {
 		if($(this).prop('checked')) {
 			$(this).parents('li').addClass('active');
-			$scope.plateforms.push($(this).attr('name'))
+			if($scope.plateforms.toString().indexOf($(this).attr('name')) == -1) {
+				$scope.plateforms.push($(this).attr('name'))
+			}
 		}else {
 			$(this).parents('li').removeClass('active');
 			var index = $scope.plateforms.indexOf($(this).attr('name'));
@@ -548,7 +551,6 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 		});
 	} 
 	/* 裁剪 end */
-
 }
 
 
