@@ -45,7 +45,7 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 	$("body").off("keydown","[data-act=sendMsg-max-skill]").on("keydown","[data-act=sendMsg-max-skill]",function(e){
 		if(e.keyCode == 13){
 			var $parentNode = $(e.currentTarget.parentNode);
-			if($parentNode.attr("class").indexOf("testTextareaLocal") < 0){
+			if($parentNode.attr("class").indexOf("testTextareaLocalSkill") < 0){
 				$scope.testMaxSkillSubmit();
 			}else{
 				$scope.testSubmitMaxLocal();
@@ -97,15 +97,15 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 	}
 	
 	$scope.testMaxSkillSubmit = function($event){
-		var $testTextareaWechat = $(".testTextareaWechat textarea");
+		var $testTextareaWechatSkill = $(".testTextareaWechatSkill textarea");
 		var content_type = $(".tab-content-max .tab-pane.active").attr("id");
-		if(!$testTextareaWechat.val() || $testTextareaWechat.val().length == 0 || $testTextareaWechat.val().replace(/(^\s*)|(\s*$)/g,"")=="" ){
+		if(!$testTextareaWechatSkill.val() || $testTextareaWechatSkill.val().length == 0 || $testTextareaWechatSkill.val().replace(/(^\s*)|(\s*$)/g,"")=="" ){
 			$.trace("请填写你要说的话");
-			$testTextareaWechat.focus();
+			$testTextareaWechatSkill.focus();
 			return false;
 		}
-		if($testTextareaWechat.val()){
-			$scope.wechatTalksDetail.push({serverLeft: false,userRight: true,talkText:$testTextareaWechat.val()});
+		if($testTextareaWechatSkill.val()){
+			$scope.wechatTalksDetail.push({serverLeft: false,userRight: true,talkText:$testTextareaWechatSkill.val()});
 		}
 		
 		//TODO 记得提交代码的时候注释掉
@@ -121,14 +121,14 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 			'timezone':'Asia/Shanghai',
 			'domains':domains
 		}
-		$scope.skillUserSaysTextTry = $scope.handleSpecialChars($testTextareaWechat.val());
-		var demo_input = encodeURIComponent($testTextareaWechat.val());
+		$scope.skillUserSaysTextTry = $scope.handleSpecialChars($testTextareaWechatSkill.val());
+		var demo_input = encodeURIComponent($testTextareaWechatSkill.val());
 		setTimeout(function(){
 			$(".testContain").scrollTop($(".testContain")[0].scrollHeight);
 		},500);
-		$testTextareaWechat.val('');
+		$testTextareaWechatSkill.val('');
 		demo_input = {
-				"app_key":$scope.skillDetailObj.agentId,
+				"app_key":$scope.skillDetailObj.appKey,
 //				"app_key":'7b730914-a5c5-43d7-889a-e27e62931fff',
 				"q":demo_input,
 				"options":options,
@@ -285,14 +285,14 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 	});
 	
 	$scope.testSubmitMaxLocal = function($event){
-		console.log('$(".testTextareaLocal textarea").val():' + $(".testTextareaLocal textarea").val());
-		if(!$(".testTextareaLocal textarea").val() || $(".testTextareaLocal textarea").val().length == 0 || $(".testTextareaLocal textarea").val().replace(/(^\s*)|(\s*$)/g,"")==""){
+		console.log('$(".testTextareaLocalSkill textarea").val():' + $(".testTextareaLocalSkill textarea").val());
+		if(!$(".testTextareaLocalSkill textarea").val() || $(".testTextareaLocalSkill textarea").val().length == 0 || $(".testTextareaLocalSkill textarea").val().replace(/(^\s*)|(\s*$)/g,"")==""){
 			$.trace("请填写你要说的话");
 			$(".testTextarea textarea").focus();
 			return false;
 		}
-		if($(".testTextareaLocal textarea").val()){
-			$scope.localTalksDetail.push({serverLeft: false,userRight: true,talkText:$(".testTextareaLocal textarea").val()});
+		if($(".testTextareaLocalSkill textarea").val()){
+			$scope.localTalksDetail.push({serverLeft: false,userRight: true,talkText:$(".testTextareaLocalSkill textarea").val()});
 		}
 		
 		//TODO 记得提交代码的时候注释掉
@@ -312,15 +312,15 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 			'domains':domains
 		}
 		
-		$scope.skillUserSaysTextTryLocal = $scope.handleSpecialChars($(".testTextareaLocal textarea").val());
-		var demo_input = encodeURIComponent($(".testTextareaLocal textarea").val());
+		$scope.skillUserSaysTextTryLocal = $scope.handleSpecialChars($(".testTextareaLocalSkill textarea").val());
+		var demo_input = encodeURIComponent($(".testTextareaLocalSkill textarea").val());
 		console.log("demo_input:" + demo_input);
 		setTimeout(function(){
 			$(".testContainLocal").scrollTop($(".testContainLocal")[0].scrollHeight);
 		},500);
-		$(".testTextareaLocal textarea").val('');
+		$(".testTextareaLocalSkill textarea").val('');
 		demo_input = {
-				"app_key":$scope.skillDetailObj.agentId,
+				"app_key": $scope.skillDetailObj.appKey,
 //				"app_key":'7b730914-a5c5-43d7-889a-e27e62931fff',
 				"q":demo_input,
 				"options":options,
@@ -476,11 +476,11 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 		var example = $this.text();
 		if($(".try-nav-left-max li.active").hasClass("try-weixin")){
 			$scope.userSaysTextTry = example;
-			$(".testTextareaWechat textarea").val(example);
+			$(".testTextareaWechatSkill textarea").val(example);
 			$scope.testMaxSkillSubmit();
 		}else if($(".try-nav-left-max li.active").hasClass("try-local")){
 			$scope.userSaysTextTryLocal = example;
-			$(".testTextareaLocal textarea").val(example);
+			$(".testTextareaLocalSkill textarea").val(example);
 			$scope.testSubmitMaxLocal();
 		}
 	});
@@ -506,7 +506,7 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 				$scope.skillDetailObj.id = skillDetailObj.id;
 				$scope.skillDetailObj.hasSkill = skillDetailObj.hasSkill;
 				$scope.skillDetailObj.appKey = skillDetailObj.agents[0].agent.appKey;
-				$scope.skillDetailObj.agentId = skillDetailObj.agents[0].agentId;
+				//$scope.skillDetailObj.agentId = skillDetailObj.agents[0].agentId;
 				$scope.$apply();
 			},
 			error: function() {
@@ -531,7 +531,7 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 						$scope.skillDetailObj.id = skillDetailObj.id;
 						$scope.skillDetailObj.hasSkill = skillDetailObj.hasSkill;
 						$scope.skillDetailObj.appKey = skillDetailObj.agents[0].agent.appKey;
-						$scope.skillDetailObj.agentId = skillDetailObj.agents[0].agentId;
+						//$scope.skillDetailObj.agentId = skillDetailObj.agents[0].agentId;
 						$scope.$apply();
 					},
 					error: function() {

@@ -507,7 +507,7 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
             	getSkillListProductFunc(botList);//获取develop状况的skill对象
             	$scope.$apply();
             },error: function(){
-            	goIndex();
+//            	goIndex();
             }
         });
 	}
@@ -532,7 +532,7 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
             	}
             	$scope.$apply();
             },error: function(){
-            	goIndex();
+//            	goIndex();
             }
         });
 	}
