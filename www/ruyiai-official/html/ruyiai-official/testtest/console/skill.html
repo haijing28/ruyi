@@ -49,7 +49,7 @@
 						<div id="weixin-try-max" class="fade in active tab-pane">
 							<div class="searchContain" style="padding-bottom:130px;">
 								<div class="testContain scrollContain" style="height:100%;">
-									<ul class="list-unstyled" ng-repeat="talk in talks">
+									<ul class="list-unstyled" ng-repeat="talk in wechatTalksDetail">
 										<li ng-if="talk.userRight" class="clearfix userTalk">
 											<img ng-src="img/ruyi-user.svg">
 											<div>
@@ -87,14 +87,14 @@
 							</div>
 					
 							<div class="testTextarea testTextareaWechat" style="height:44px;border-top:1px solid #eee;">
-								<textarea data-act="sendMsg-max" style="height:44px;font-size:14px;" rows="4" ng-model="skillUserSaysTextTry" placeholder="请填写你要说的话"></textarea>
-								<button type="button" class="btn btn-primary" ng-click="testMaxSubmit($event)"  style="bottom:-38px;">发 送</button>
+								<textarea data-act="sendMsg-max-skill" style="height:44px;font-size:14px;" rows="4" ng-model="skillUserSaysTextTry" placeholder="请填写你要说的话"></textarea>
+								<button type="button" class="btn btn-primary" ng-click="testMaxSkillSubmit($event)"  style="bottom:-38px;">发 送</button>
 							</div>
 						</div>
 						<div id="local-try-max" class="fade tab-pane">
 							<div class="searchContainLocal" style="padding-bottom:130px;">
 								<div class="testContainLocal scrollContainLocal" style="height:100%;">
-									<ul class="list-unstyled" ng-repeat="localTalk in localTalks">
+									<ul class="list-unstyled" ng-repeat="localTalk in localTalksDetail">
 										<li ng-if="localTalk.userRight" class="clearfix userTalk">
 											<img ng-src="img/ruyi-user.svg">
 											<div>
@@ -123,7 +123,7 @@
 							</div>
 					
 							<div class="testTextarea testTextareaLocal" style="height:44px;border-top:1px solid #eee;">
-								<textarea data-act="sendMsg-max" rows="4" style="height:44px;font-size:14px;" ng-model="skillUserSaysTextTryLocal" placeholder="请填写你要说的话"></textarea>
+								<textarea data-act="sendMsg-max-skill" rows="4" style="height:44px;font-size:14px;" ng-model="skillUserSaysTextTryLocal" placeholder="请填写你要说的话"></textarea>
 								<button type="button" class="btn btn-primary" ng-click="testSubmitMaxLocal($event)" style="bottom:-38px;">发 送</button>
 							</div>
 						</div>

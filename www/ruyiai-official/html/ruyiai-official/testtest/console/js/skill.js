@@ -35,16 +35,16 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 	}, 0);
 	
 	setTimeout(function(){
-		$("[data-act=sendMsg-max]").focus();
+		$("[data-act=sendMsg-max-skill]").focus();
 		$scope.clickPlay('.testContain');
 		$scope.clickPlay('.testContainLocal');
 	}, 300);
 	//提交测试
-	$("body").off("keydown","[data-act=sendMsg-max]").on("keydown","[data-act=sendMsg-max]",function(e){
+	$("body").off("keydown","[data-act=sendMsg-max-skill]").on("keydown","[data-act=sendMsg-max-skill]",function(e){
 		if(e.keyCode == 13){
 			var $parentNode = $(e.currentTarget.parentNode);
 			if($parentNode.attr("class").indexOf("testTextareaLocal") < 0){
-				$scope.testMaxSubmit();
+				$scope.testMaxSkillSubmit();
 			}else{
 				$scope.testSubmitMaxLocal();
 			}
@@ -94,7 +94,7 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 		return inputText;
 	}
 	
-	$scope.testMaxSubmit = function($event){
+	$scope.testMaxSkillSubmit = function($event){
 		var $testTextareaWechat = $(".testTextareaWechat textarea");
 		var content_type = $(".tab-content-max .tab-pane.active").attr("id");
 		if(!$testTextareaWechat.val() || $testTextareaWechat.val().length == 0 || $testTextareaWechat.val().replace(/(^\s*)|(\s*$)/g,"")=="" ){
@@ -103,7 +103,7 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 			return false;
 		}
 		if($testTextareaWechat.val()){
-			$scope.talks.push({serverLeft: false,userRight: true,talkText:$testTextareaWechat.val()});
+			$scope.wechatTalksDetail.push({serverLeft: false,userRight: true,talkText:$testTextareaWechat.val()});
 		}
 		
 		//TODO 记得提交代码的时候注释掉
@@ -153,7 +153,7 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 										textValue = result.intents[0].outputs[i].property.text;
 										textValue = textValue.replace(/\\n/g,"<br/>");
 									}
-									$scope.talks.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "微信文本",type: "wechat_text"});
+									$scope.wechatTalksDetail.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "微信文本",type: "wechat_text"});
 								break;
 								case "wechat.image":
 									if(result.intents[0].outputs[i].property.name){
@@ -164,13 +164,13 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 									}else{
 										url = ruyi_wechat + "/ruyi-wechat/"+ $scope.skillDetailObj.appKey +"/content/" + result.intents[0].outputs[i].property.media_id;
 									}
-									$scope.talks.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "微信图片",backgroundcolor: "#56D875",type: "wechat_image",url: url});
+									$scope.wechatTalksDetail.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "微信图片",backgroundcolor: "#56D875",type: "wechat_image",url: url});
 								break;
 								case "wechat.music":
 									if(result.intents[0].outputs[i].property.title){
 										textValue = result.intents[0].outputs[i].property.title;	
 									}
-									$scope.talks.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "微信音乐",backgroundcolor: "#FF9D00",type: "wechat_music",url: result.intents[0].outputs[i].property.music_url});
+									$scope.wechatTalksDetail.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "微信音乐",backgroundcolor: "#FF9D00",type: "wechat_music",url: result.intents[0].outputs[i].property.music_url});
 								break;
 								case "wechat.voice":
 									if(result.intents[0].outputs[i].property.name){
@@ -181,13 +181,13 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 									}else{
 										url = ruyi_wechat + "/ruyi-wechat/"+ $scope.skillDetailObj.appKey +"/content/" + result.intents[0].outputs[i].property.media_id;
 									}
-									$scope.talks.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "微信音频",backgroundcolor: "#5DC9DB",type: "wechat_voice",url: url});
+									$scope.wechatTalksDetail.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "微信音频",backgroundcolor: "#5DC9DB",type: "wechat_voice",url: url});
 									break;
 								case "wechat.video":
 									if(result.intents[0].outputs[i].property.name){
 										textValue = result.intents[0].outputs[i].property.name;
 									}
-									$scope.talks.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "微信视频",backgroundcolor: "#6B89E1",type: "wechat_video",mediaId: result.intents[0].outputs[i].property.media_id,url: result.intents[0].outputs[i].property.video_url});
+									$scope.wechatTalksDetail.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "微信视频",backgroundcolor: "#6B89E1",type: "wechat_video",mediaId: result.intents[0].outputs[i].property.media_id,url: result.intents[0].outputs[i].property.video_url});
 									break;
 								case "wechat.news":
 									if(result.intents[0].outputs[i].property.name){
@@ -211,7 +211,7 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 														object.url = data.result.news_item[i].url;
 														list_temp.push(object);
 													}
-													$scope.talks.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "微信图文",backgroundcolor: "#FFB800",type: "wechat_news",list: list_temp});
+													$scope.wechatTalksDetail.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "微信图文",backgroundcolor: "#FFB800",type: "wechat_news",list: list_temp});
 													$scope.$apply();
 												}else if(data && data.code == 2){
 													goIndex();
@@ -220,7 +220,7 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 										});
 									}else{
 										var list_temp = result.intents[0].outputs[i].list;
-										$scope.talks.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "微信图文",backgroundcolor: "#FFB800",type: "wechat_news",list: list_temp});
+										$scope.wechatTalksDetail.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "微信图文",backgroundcolor: "#FFB800",type: "wechat_news",list: list_temp});
 									}
 									break;
 							}
@@ -231,7 +231,7 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 					if(result.intents && result.intents.length > 0){
 						textValue = "该意图助理答为空";
 					}
-					$scope.talks.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "未匹配到意图"});
+					$scope.wechatTalksDetail.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "未匹配到意图"});
 				}
 				$scope.responseJSONS.push({request:result._text,response:JSON.stringify(result,null,4)});
 				$scope.$apply();
@@ -290,7 +290,7 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 			return false;
 		}
 		if($(".testTextareaLocal textarea").val()){
-			$scope.localTalks.push({serverLeft: false,userRight: true,talkText:$(".testTextareaLocal textarea").val()});
+			$scope.localTalksDetail.push({serverLeft: false,userRight: true,talkText:$(".testTextareaLocal textarea").val()});
 		}
 		
 		//TODO 记得提交代码的时候注释掉
@@ -342,19 +342,19 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 								case "dialog":
 									textValue = result.intents[0].outputs[i].property.text;
 									textValue = textValue.replace(/\\n/g,"<br/>");
-									$scope.localTalks.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "硬件文本",type: "dialog"});
+									$scope.localTalksDetail.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "硬件文本",type: "dialog"});
 									break;
 								case "image":
 									textValue = result.intents[0].outputs[i].property.name;	
-									$scope.localTalks.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "硬件图片",type: "image",backgroundcolor: "#56D875",url: result.intents[0].outputs[i].property.image_url});
+									$scope.localTalksDetail.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "硬件图片",type: "image",backgroundcolor: "#56D875",url: result.intents[0].outputs[i].property.image_url});
 								break;
 								case "voice":
 									textValue = result.intents[0].outputs[i].property.name;
-									$scope.localTalks.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "硬件音频",type: "voice",backgroundcolor: "#5DC9DB",url: result.intents[0].outputs[i].property.voice_url});
+									$scope.localTalksDetail.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "硬件音频",type: "voice",backgroundcolor: "#5DC9DB",url: result.intents[0].outputs[i].property.voice_url});
 									break;
 								case "video":
 									textValue = result.intents[0].outputs[i].property.name;
-									$scope.localTalks.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "硬件视频",type: "video",backgroundcolor: "#6B89E1",url: result.intents[0].outputs[i].property.video_url});
+									$scope.localTalksDetail.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "硬件视频",type: "video",backgroundcolor: "#6B89E1",url: result.intents[0].outputs[i].property.video_url});
 									break;
 							}
 						}
@@ -364,7 +364,7 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 					if(result.intents && result.intents.length > 0){
 						textValue = "该意图助理答为空";
 					}
-					$scope.localTalks.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "未匹配到意图",type: "dialog"});
+					$scope.localTalksDetail.push({serverLeft: true,userRight: false,talkText: textValue,talkType: "未匹配到意图",type: "dialog"});
 				}
 				$scope.responseJSONS.push({request:result._text,response:JSON.stringify(result,null,4)});
 				$scope.$apply();
@@ -462,7 +462,7 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 			$("#weixin-try").addClass("active in").siblings().removeClass("active in");
 		}
 		setTimeout(function(){
-			$("[data-act=sendMsg-max]").focus();
+			$("[data-act=sendMsg-max-skill]").focus();
 		}, 300);
 	});
 	setTimeout(function(){
@@ -475,7 +475,7 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 		if($(".try-nav-left-max li.active").hasClass("try-weixin")){
 			$scope.userSaysTextTry = example;
 			$(".testTextareaWechat textarea").val(example);
-			$scope.testMaxSubmit();
+			$scope.testMaxSkillSubmit();
 		}else if($(".try-nav-left-max li.active").hasClass("try-local")){
 			$scope.userSaysTextTryLocal = example;
 			$(".testTextareaLocal textarea").val(example);
