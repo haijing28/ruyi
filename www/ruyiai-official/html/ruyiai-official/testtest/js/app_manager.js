@@ -100,6 +100,7 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 		var appName = $this.attr("data-app-name");
 		var appKey = $this.attr("data-app-key");
 		setCookie("appId",appId);
+		agentObj.name(333);
 		setCookie("appName",appName);
 		setCookie("appKey",appKey);
 		window.location.href = static_host + "/console/api_manager.html#/log_statistics";
@@ -313,6 +314,7 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 		var appName = $this.attr("data-app-name");
 		var appKey = $this.attr("data-app-key");
 		setCookie("appId",appId);
+		agentObj.name(444);
 		setCookie("appName",appName);
 		setCookie("appKey",appKey);
 		window.location.href = static_host + "/console/api_manager.html#/user_log_list/user_logs/log_statistics";
@@ -381,6 +383,7 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 	
 	 $scope.goConsoleManagerFunc = function(appId,appName,appKey,botId,skillId, agentType){
 		setCookie("appId",appId);
+		agentObj.name(555);
 		setCookie("appName",appName);
 		setCookie("appKey",appKey);
 		setCookie("botId",botId);

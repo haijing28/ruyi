@@ -1,4 +1,7 @@
 function skillCtrl($rootScope,$scope, $state, $stateParams){
+	
+	$scope.mySkillId = getCookie("skillId");
+	
 	$("#try-try").css("display","none");
 	var data_act = $(".list-group-item.active").attr("data-act");
 	var scenarioId = $(".scenario-object.list-group-item.active").attr("data-scenario-id");

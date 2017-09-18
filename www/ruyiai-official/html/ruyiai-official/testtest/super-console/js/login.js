@@ -41,6 +41,26 @@ $(function(){
             return results[1] || 0;
         }
 		
+		//获取accessToken
+		var getAccessTokenFunc = function(userName,password,fn){
+			// 获取 st
+	        $.ajax({
+	            url: api_host + '/auth/accessToken',
+	            method: 'POST',
+	            headers: {"Content-Type" : "application/json"},
+	            data:JSON.stringify({"account": userName, "password": password}),
+	            error: function(xhr, status, error) {
+	            },
+	            success: function(data, status, xhr) {
+	            	data = dataParse(data);
+	            	setCookie('accessToken', data.accessToken);
+	              	if(fn){
+	              		fn();
+	              	}
+	            }
+	        });
+		}
+		
 		$.ajax({
 			url : api_host + "/v1/tickets",
 			method : "POST",
@@ -79,7 +99,7 @@ $(function(){
 					url: location,
 					method: 'POST',
 					header: {"Content-Type": "application/x-www-form-urlencoded"},
-					data: 'service='+ api_host_temp +'/ruyi-ai/request'+login_environment,
+					data: 'service='+ api_host_temp +'/ruyi-ai/request?url='+ static_host +'/super-console/skill-plugin-new.html',
 					error: function(xhr, status, error) {
 						console.log(error)
 	                   	$("[data-act=login-email] .error-tips").text('账号或密码错误');
@@ -89,9 +109,10 @@ $(function(){
 	                	localStorage.ruyi_tk = xhr.responseText;
 	                	setCookie('tgt', tgt);
 	                	setCookie('email',$('#login-email').val());
-	                	window.location = api_host_temp + "/ruyi-ai/request"+ login_environment +"&ticket=" + xhr.responseText;
-	                	// window.location = decodeURIComponent($.urlParam('service')) + '?ticket=' + xhr.responseText;
-	                    // window.location = decodeURIComponent($.urlParam('service')) + '?ticket=' + xhr.responseText;
+	                	getAccessTokenFunc($('#login-email').val(),$('#login-password').val(),function(){
+	                		window.location = api_host_temp + "/ruyi-ai/request?ticket=" + xhr.responseText + "&url=" + static_host +'/super-console/skill-plugin-new.html';
+	                	});
+	                	
 	                }
 				})
 			},

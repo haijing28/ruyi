@@ -11,8 +11,8 @@
 			  <div class="media-body clearfix" style="padding-left:30px;">
 			    <h4 class="media-heading" ng-bind="skillDetailObj.name" style="text-align: right; font-size: 18px; color: #4A4A4A; align-self: flex-end; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 130px;"></h4>
 			    <div style="margin-top: -2px;font-size:14px;text-align:right;">海知智能</div>
-			    <button class='remove-skill-button' data-act="remove-detail-skill" data-skill-id="{{skillDetailObj.id}}" ng-show="skillDetailObj.hasSkill == 'yes'" style="float: right;margin-top: 18px;">移除技能</button>
-				<button class='my_button add_kill_button' data-act="add-detail-skill" data-skill-id="{{skillDetailObj.id}}" ng-show="skillDetailObj.hasSkill == 'no'" style="float: right;margin-top: 18px;">获取技能</button>
+			    <button class='remove-skill-button' data-act="remove-detail-skill" data-skill-id="{{skillDetailObj.id}}" ng-show="skillDetailObj.hasSkill == 'yes' && mySkillId != skillDetailObj.id" style="float: right;margin-top: 18px;">移除技能</button>
+				<button class='my_button add_kill_button' data-act="add-detail-skill" data-skill-id="{{skillDetailObj.id}}" ng-show="skillDetailObj.hasSkill == 'no' && mySkillId != skillDetailObj.id" style="float: right;margin-top: 18px;">获取技能</button>
 			  </div>
 			</div>
 			<div class="skill-content-intro">
