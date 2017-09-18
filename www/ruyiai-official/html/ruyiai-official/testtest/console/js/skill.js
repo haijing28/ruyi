@@ -99,6 +99,7 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 	$scope.testMaxSkillSubmit = function($event){
 		var $testTextareaWechatSkill = $(".testTextareaWechatSkill textarea");
 		var content_type = $(".tab-content-max .tab-pane.active").attr("id");
+		console.log("22222");
 		if(!$testTextareaWechatSkill.val() || $testTextareaWechatSkill.val().length == 0 || $testTextareaWechatSkill.val().replace(/(^\s*)|(\s*$)/g,"")=="" ){
 			$.trace("请填写你要说的话");
 			$testTextareaWechatSkill.focus();
@@ -285,10 +286,10 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 	});
 	
 	$scope.testSubmitMaxLocal = function($event){
-		console.log('$(".testTextareaLocalSkill textarea").val():' + $(".testTextareaLocalSkill textarea").val());
+		console.log('111111$(".testTextareaLocalSkill textarea").val():' + $(".testTextareaLocalSkill textarea").val());
 		if(!$(".testTextareaLocalSkill textarea").val() || $(".testTextareaLocalSkill textarea").val().length == 0 || $(".testTextareaLocalSkill textarea").val().replace(/(^\s*)|(\s*$)/g,"")==""){
 			$.trace("请填写你要说的话");
-			$(".testTextarea textarea").focus();
+			$(".testTextareaLocalSkill textarea").focus();
 			return false;
 		}
 		if($(".testTextareaLocalSkill textarea").val()){

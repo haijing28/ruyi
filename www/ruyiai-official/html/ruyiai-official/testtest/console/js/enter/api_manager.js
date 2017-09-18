@@ -1350,17 +1350,18 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 	
 	$scope.testSubmit = function($event){
 		var content_type = $(".tab-content-max .tab-pane.active").attr("id");
-		if(!$(".testTextarea textarea").val() || $(".testTextarea textarea").val().length == 0  || $(".testTextarea textarea").val().replace(/(^\s*)|(\s*$)/g,"")==""){
+		console.log("aaaaaa");
+		if(!$(".testTextarea [data-act=sendMsg]").val() || $(".testTextarea [data-act=sendMsg]").val().length == 0  || $(".testTextarea [data-act=sendMsg]").val().replace(/(^\s*)|(\s*$)/g,"")==""){
 			$.trace("请填写你要说的话");
-			$(".testTextarea textarea").focus();
+			$(".testTextarea [data-act=sendMsg]").focus();
 			return false;
 		}
-		if($(".testTextarea textarea").val()){
-			$scope.talks.push({serverLeft: false,userRight: true,talkText:$(".testTextarea textarea").val()});
+		if($(".testTextarea [data-act=sendMsg]").val()){
+			$scope.talks.push({serverLeft: false,userRight: true,talkText:$(".testTextarea [data-act=sendMsg]").val()});
 			setTimeout(function(){
 				$(".try-testContain").scrollTop($(".try-testContain")[0].scrollHeight);
 			},500);
-			$(".testTextarea textarea").val('');
+			$(".testTextarea [data-act=sendMsg]").val('');
 		}
 		
 		//TODO 记得提交代码的时候注释掉
@@ -1566,9 +1567,10 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 	});
 
 	$scope.testSubmitLocal = function($event){
+		console.log("bbbbbb");
 		if(!$(".testTextareaLocal textarea").val() || $(".testTextareaLocal textarea").val().length == 0 || $(".testTextareaLocal textarea").val().replace(/(^\s*)|(\s*$)/g,"")==""){
 			$.trace("请填写你要说的话");
-			$(".testTextarea textarea").focus();
+			$(".testTextarea [data-act=sendMsg]").focus();
 			return false;
 		}
 		if($(".testTextareaLocal textarea").val()){
