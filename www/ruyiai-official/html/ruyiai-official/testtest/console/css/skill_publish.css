@@ -72,7 +72,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	width: 270px;
 	height: 33px;
 	padding-left: 15px;
-	border: 1px solid #dedada;
+	border: 1px solid #EBEEF0;
 }
 .my_body input.small {
 	width: 170px;
@@ -90,7 +90,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	vertical-align: top;
 	padding: 7px 10px;
 	margin-bottom: 25px;
-	border: 1px solid #dedada;
+	border: 1px solid #EBEEF0;
 }
 .my_body .myhelp {
 	margin-left: 0;
@@ -116,7 +116,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	list-style: none;
 	height: 80px;
 	width: 120px;
-	border: 1px solid #ccc;
+	border: 1px solid #ebeef0;
 	margin-right: 30px;
 	background-repeat: no-repeat;
 	background-position: top center;
@@ -188,7 +188,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .my_body .mySel button {
 	width: 100%;
 	background: #fff;
-	border: 1px solid #ccc;
+	border: 1px solid #ebeef0;
 	text-align: left;
 	border-radius: 0;
 	color: #4f5463;

@@ -126,7 +126,7 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 		},500);
 		$testTextareaWechat.val('');
 		demo_input = {
-				"app_key":$scope.skillDetailObj.appKey,
+				"app_key":$scope.skillDetailObj.agentId,
 //				"app_key":'7b730914-a5c5-43d7-889a-e27e62931fff',
 				"q":demo_input,
 				"options":options,
@@ -318,7 +318,7 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 		},500);
 		$(".testTextareaLocal textarea").val('');
 		demo_input = {
-				"app_key":$scope.skillDetailObj.appKey,
+				"app_key":$scope.skillDetailObj.agentId,
 //				"app_key":'7b730914-a5c5-43d7-889a-e27e62931fff',
 				"q":demo_input,
 				"options":options,
@@ -503,6 +503,8 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 				$scope.skillDetailObj.developerMainSite = skillDetailObj.agents[0].agent.attributes.developerMainSite;
 				$scope.skillDetailObj.id = skillDetailObj.id;
 				$scope.skillDetailObj.hasSkill = skillDetailObj.hasSkill;
+				$scope.skillDetailObj.appKey = skillDetailObj.agents[0].agent.appKey;
+				$scope.skillDetailObj.agentId = skillDetailObj.agents[0].agentId;
 				$scope.$apply();
 			},
 			error: function() {
@@ -527,6 +529,7 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 						$scope.skillDetailObj.id = skillDetailObj.id;
 						$scope.skillDetailObj.hasSkill = skillDetailObj.hasSkill;
 						$scope.skillDetailObj.appKey = skillDetailObj.agents[0].agent.appKey;
+						$scope.skillDetailObj.agentId = skillDetailObj.agents[0].agentId;
 						$scope.$apply();
 					},
 					error: function() {
