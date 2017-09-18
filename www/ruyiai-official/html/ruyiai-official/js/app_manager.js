@@ -382,14 +382,10 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 		setCookie("appName",appName);
 		setCookie("appKey",appKey);
 		
-		if(window.location.href.indexOf("testtest") > -1){
-			window.location.href = "http://lab.ruyi.ai/ruyiai-official/testtest/console/api_manager.html";
+		if("isNewUser" == getCookie("app"+appId)){
+			window.location.href = static_host + "/console/api_manager.html#/log_statistics";
 		}else{
-			if("isNewUser" == getCookie("app"+appId)){
-				window.location.href = static_host + "/console/api_manager.html#/log_statistics";
-			}else{
-				window.location.href = static_host + "/console/api_manager.html#/log_statistics";
-			}
+			window.location.href = static_host + "/console/api_manager.html#/log_statistics";
 		}
 		
 	 }

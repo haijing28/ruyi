@@ -397,7 +397,7 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 		}
 		
 		if(window.location.href.indexOf("testtest") > -1){
-			window.location.href = "http://lab.ruyi.ai/ruyiai-official/testtest/console/api_manager.html";
+			window.location.href = static_host + "/testtest/console/api_manager.html#/log_statistics";
 		}else{
 			if("isNewUser" == getCookie("app"+appId)){
 				window.location.href = static_host + "/console/api_manager.html#/log_statistics";
