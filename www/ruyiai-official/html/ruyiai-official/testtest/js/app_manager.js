@@ -383,7 +383,6 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 	
 	 $scope.goConsoleManagerFunc = function(appId,appName,appKey,botId,skillId, agentType){
 		setCookie("appId",appId);
-		agentObj.name(555);
 		setCookie("appName",appName);
 		setCookie("appKey",appKey);
 		setCookie("botId",botId);
