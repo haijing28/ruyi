@@ -251,7 +251,7 @@ body{
     display:none;
 }
 
-.icon-story-robot,.icon-bot-robot,.icon-speaker-robot,.icon-refrigerator-robot,.icon-home-robot,.icon-service-robot,.icon-tv-robot,.icon-yuyi-robot{
+.icon-story-robot,.icon-bot-robot,.icon-speaker-robot,.icon-refrigerator-robot,.icon-home-robot,.icon-service-robot,.icon-tv-robot{
 	background-repeat: no-repeat !important;
     background-position: center !important;
     background-size: 100px 100px !important;
@@ -278,9 +278,6 @@ body{
 }
 .icon-service-robot{
 	background: url('../img/icon_service.svg');
-}
-.icon-yuyi-robot {
-          background: url('../img/yuyi.svg');
 }
 .choose-type-box li.active .iconfont.checked-robot{
 	display:block;

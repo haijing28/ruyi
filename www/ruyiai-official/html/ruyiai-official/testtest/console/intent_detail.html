@@ -56,22 +56,72 @@
 			<div data-act="showMoreTemplate" ng-show="intentDetail.templates.length > 5" class="more"><label ng-show="!userSayFlag">查看更多</label>&nbsp;<i ng-show="!userSayFlag" class="glyphicon glyphicon-triangle-bottom"></i><label ng-show="userSayFlag">收起</label>&nbsp;<i ng-show="userSayFlag" class="glyphicon glyphicon-triangle-top"></i></div>
 		</div>
 		<!-- 用户说 end -->
+		<!-- 系统事件 start -->
+		
+		<!-- 接受暗号 start -->
+		<div data-act="event-more-box" class="clearfix" style="margin-top: 40px;">
+			<div class="input-intent-tag">
+				<div style="margin-bottom: -6px;margin-top: -18px;">
+					<span>
+						事件<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="事件为除自然语言以外触发意图的第二种方式，用户可以特定行为触发意图，进入对话。">
+						</button>
+						&nbsp;&nbsp;<i data-act="event-show-hide" class="glyphicon glyphicon-chevron-left event-show-hide"></i>
+					</span>
+				</div>
+				<div class="intent-tag" style="overflow:inherit;display:none;" data-act="event-show-ctrl">
+					<ul>
+						<li class="alert alert-default alert-dismissable event-input-obj" style="padding:0;"  ng-repeat="eventName in eventNameList track by $index">
+						    <span class="close" style="right:7px;top:8px;" ng-click="deleteEventNameFunc($index)">&times;</span>
+							<input class="event_input_para" data-toggle="tooltip" data-placement="bottom" title="超时时间以毫秒（ms）计量，输入范围为100ms-1000ms" ng-if="eventName[0] == '超时回复'" ng-change="eventParaChangeFunc()" min="100" max="1000" step="100" data-act="event-input-para" data-type="timeout" type="number" ng-model="eventName[1]" ng-if="eventName[1]"/>
+							<input class="event_input_para" ng-if="eventName[0] == '缺省回复'" data-toggle="tooltip" data-placement="bottom" title="用户输入无法被其他意图匹配的情况，输入范围为1-5" ng-change="eventParaChangeFunc()" min="1" max="5" data-act="event-input-para" type="number" data-type="default_response" ng-model="eventName[1]"/>
+							<input class="event_input_para" ng-if="eventName[0] == '重复多轮回复'" data-toggle="tooltip" data-placement="bottom" title="重复输入相同内容的情况，输入范围为2-5" ng-change="eventParaChangeFunc()" min="2" max="5" data-act="event-input-para" type="number" data-type="repeat_response" ng-model="eventName[1]"/>
+							<div class="event-input-content" ng-bind="eventName[0]"></div>
+						</li>
+						<li class="alert alert-default alert-dismissable" style="border:0;margin-left:0;">
+							<div style="position:relative;">
+								<input type="text" data-act="event-add-input" ng-blur="enterAddEvent(eventContent)" ng-keydown="enterAddEventKeydown($event,eventContent)" ng-model="eventContent" class="event-add-input" placeholder="添加特殊事件以触发意图" class="form-control"/>
+								<ul class="list-group event-choose-list">
+								  <li class="list-group-item" ng-click="addSystemEventFunc('wechat')">
+								  	 <h3>微信用户订阅</h3>
+								  	 <p>首次安装时的欢迎语设置。</p>
+								  </li>
+								  <li class="list-group-item" ng-click="addSystemEventFunc('timeout')">
+								  	 <h3>超时回复</h3>
+								  	 <p>超过限定时间需要返回的内容。</p>
+								  </li>
+								  <li class="list-group-item" ng-click="addSystemEventFunc('default_response')">
+								  	 <h3>缺省回复</h3>
+								  	 <p>未匹配到意图时需要返回的内容。</p>
+								  </li>
+								  <li class="list-group-item" ng-click="addSystemEventFunc('reepat_response')">
+								  	 <h3>重复多轮回复</h3>
+								  	 <p>重复多句同样的语句时需要返回的内容。</p>
+								  </li>
+								</ul>
+							</div>
+							
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- 系统事件 end -->
 		<!-- 助理答 start -->
 		<div class="speach-response">
 			<div class="clearfix">
 				<span data-act="robot-answer-text">机器人答
-					<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="添加随机回答：多条回答以相同概率随机出现。<br/>添加多条回复：返回多条消息。<a href='http://docs.ruyi.ai/344930' target='_blank'>更多</a>">
+					<button type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="bottom" data-content="添加随机回答：多条回答以相同概率随机出现。<br/>添加多条回复：返回多条消息。<a href='http://docs.ruyi.ai/344930' target='_blank'>更多</a>">
 					  	&nbsp;
 					</button>
 				</span>
 			</div>
 			<!-- 微信和硬件 助理答切换 start -->
 			<ul class="nav nav-tabs" style="margin-top:10px;" data-act="nav-tabs">
-			   <li class="active app-response-weixin" data-act="weixin">
-			   		<a>微信</a>
-			   </li>
 			   <li class="app-response-local" data-act="local">
 			   		<a>硬件</a>
+			   </li>
+			   <li class="active app-response-weixin" data-act="weixin">
+			   		<a>微信</a>
 			   </li>
 			</ul>
 			<div id="myTabContent" class="tab-content">
@@ -182,7 +232,7 @@
 		<div>
 			<div class="intent-detail-more"><i class="iconfont icon-arrow-right" style="color: #3794FF;font-size: 16px;margin-right: 6px;"></i>对话能力拓展</div>
 		</div>
-		<div class="intent-detail-more-box">
+		<div class="intent-detail-more-box" data-act="intent-detail-more-box">
 			<!-- 接受暗号 start -->
 			<div class="input-intent-tag">
 				<div style="margin-bottom: -6px;margin-top: -18px;">
@@ -1108,7 +1158,6 @@
 	height: 470px !important;
 }
 </style>
-
-<!-- <script type="text/javascript" src="js/qiniu/customize.js"></script> -->
+<script>
 
 

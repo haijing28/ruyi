@@ -34,10 +34,15 @@
 	<link rel="stylesheet" href="css/jquery.Jcrop.min.css" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="css/skill_store.css">
 	<link rel="stylesheet" type="text/css" href="css/star-rating.min.css">
-	<link rel="stylesheet" type="text/css" href="css/skill-publish.min.css">
+	<link rel="stylesheet" type="text/css" href="css/skill_publish.css">
+	
+	<link rel="stylesheet" type="text/css" href="css/ruyi_skill.css">
+	<link rel="stylesheet" type="text/css" href="css/open_skill.css">
+	<link rel="stylesheet" type="text/css" href="css/my_skill.css">
+	<link rel="stylesheet" type="text/css" href="css/skill.css">
 	<!-- 文件中的引用 -->
 	
-	<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_qlr8kbgvlwyiudi.css">
+	<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_159753_uhyblsjtp78hbyb9.css">
 	<title>开发者平台</title>
 	<style>
 		.tooltip-inner{
@@ -159,13 +164,13 @@ var _hmt = _hmt || [];
 					   </li>
 				 </ul>
 			  </li>
-			   <li class="list-group-item" data-act="nav-skill-publish" ng-click="goCenterList('skill-publish')">
+			  <li class="list-group-item" data-act="nav-skill-publish" ng-click="goCenterList('skill-publish')">
 			  	<i class="iconfont left-icon">&#xe615;</i>
-			  	<a href="#/skill_publish">技能插件发布</a>
+			  	<a href="#/skill_publish">提交发布技能</a>
 			  </li>
 			   <li class="list-group-item" data-act="nav-robot-skill" ng-click="goCenterList('skill_store')">
 			  	<i class="iconfont left-icon">&#xe600;</i>
-			  	<a href="#/skill_store">技能插件</a>
+			  	<a href="#/skill_store">技能商店</a>
 			  </li>
 			  <li class="list-group-item" data-act="nav-resource" ng-click="goCenterList('resource')">
 			  	<i class="iconfont left-icon">&#xe617;</i>
@@ -242,11 +247,11 @@ var _hmt = _hmt || [];
 			</div>
 			<div class="try-body">
 				<ul class="nav nav-tabs try-nav" data-act="try-nav-dbclick">
-					<li class="active try-weixin">
-						<a href="javascript:;" data-toggle="tab">微信</a>
-					</li>
 					<li class="try-local">
 						<a href="javascript:;" data-toggle="tab">硬件</a>
+					</li>
+					<li class="active try-weixin">
+						<a href="javascript:;" data-toggle="tab">微信</a>
 					</li>
 				</ul>
 				<div class="tab-content not-drag">
@@ -320,10 +325,6 @@ var _hmt = _hmt || [];
 											<img class="talk-content" ng-if="localTalk.talkType == '硬件图片'" ng-src="{{localTalk.url}}" style="width:200px;"/>
 											<audio class="talk-content" ng-src="{{localTalk.url | trustUrlFilter}}" ng-if="localTalk.talkType == '硬件音频'" controls="controls" style="height:30px;width:200px;margin-top:5px;" ></audio>
 											<video class="talk-content" ng-src="{{localTalk.url | trustUrlFilter}}" ng-if="localTalk.talkType == '硬件视频'" controls="controls" style="height:150px;width:200px;margin-top:-2px;" ></video>
-											<!-- 
-											<span class="talkType" ng-show="localTalk.talkType != '硬件文本'" style="background-color: {{localTalk.backgroundcolor}}">{{localTalk.talkType}}</span>
-											<span class="talk-content" talkType="{{localTalk.talkType}}" talkURL="{{localTalk.url}}" talkBackgroundcolor="{{localTalk.backgroundcolor}}" talkText="{{localTalk.talkText}}" Type="{{localTalk.type}}">{{localTalk.talkText}}</span>
-											-->
 										</div>
 									</li>
 								</ul>
@@ -493,7 +494,6 @@ var _hmt = _hmt || [];
 <script src="js/entity_list.js"></script>
 <script src="js/import_knowledge_base.js"></script>
 <script src="js/log_statistics.js"></script>
-<script src="js/skill_store.js"></script>
 <script src="js/resource.js"></script>
 <script src="js/robot_paramenter.js"></script>
 <script src="js/skill_store.js"></script>
@@ -503,7 +503,10 @@ var _hmt = _hmt || [];
 <script src='js/intent_timeout_detail.js'></script>
 <script src='js/intent_repeat_detail.js'></script>
 <script src='js/skill_publish.js'></script>
+<script src="js/ruyi_skill.js"></script>
+<script src="js/open_skill.js"></script>
+<script src="js/my_skill.js"></script>
+<script src="js/skill.js"></script>
  <!-- 分开的js end -->
-
 </body>
 </html>

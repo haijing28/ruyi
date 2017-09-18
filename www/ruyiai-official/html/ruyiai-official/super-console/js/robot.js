@@ -160,8 +160,8 @@ robotApp.controller("robotCtrl",function($scope){
 		window.location.href = "statistics.html";
 	});
 	
-	$("[data-act=skill-plugin-new]").click(function(){
-		window.location.href = "skill-plugin-new.html";
+	$("[data-act=skill-plugin]").click(function(){
+		window.location.href = "skill-plugin.html";
 	});
 	 
 	//获取所有技能插件 start

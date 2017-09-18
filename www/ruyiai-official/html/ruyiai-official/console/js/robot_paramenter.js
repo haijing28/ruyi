@@ -217,8 +217,6 @@ function assistantParaCtrl($rootScope, $scope, $state, $stateParams) {
 				var url = mydomain + JSON.parse(info).hash + "/" + file.name;
 
 				$("#cut-header").modal({backdrop: 'static'});
-				
-				console.log("上传成功后的url:" + url);
 
 				var eImg = $(".container").html(
 						"<img src='" + url + "' id='tar'/>");
@@ -253,7 +251,6 @@ function assistantParaCtrl($rootScope, $scope, $state, $stateParams) {
 			api.setOptions({
 				bgFade : true
 			});
-			console.log("api.ui.selection:" + api.ui.selection);
 			api.ui.selection.addClass('jcrop-selection');
 		});
 	}
@@ -278,7 +275,7 @@ function assistantParaCtrl($rootScope, $scope, $state, $stateParams) {
 				"h" : parseInt(c.h * hScale),
 			},
 			success : function(data) {
-				data = dataParse(data);
+				console.log(data)
 				try {
 					if (data.code == 0) {
 						$("#cut-header").modal("hide");

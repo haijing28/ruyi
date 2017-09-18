@@ -96,12 +96,11 @@ $(function() {
                         $("[data-act=login-email] .error-tips").text('账号或密码错误');
                     },
                     success: function(data, status, xhr) {
-                    	alert();
                         // 跳转回未登录之前浏览的界面
                         localStorage.ruyi_tk = xhr.responseText;
                         setCookie('tgt', tgt);
                         setCookie('email', $('#login-email').val());
-//                        window.location = api_host_temp + "/ruyi-ai/request" + login_environment + "&ticket=" + xhr.responseText;
+                        window.location = api_host_temp + "/ruyi-ai/request" + login_environment + "&ticket=" + xhr.responseText;
                         // window.location = decodeURIComponent($.urlParam('service')) + '?ticket=' + xhr.responseText;
                         // window.location = decodeURIComponent($.urlParam('service')) + '?ticket=' + xhr.responseText;
                     }

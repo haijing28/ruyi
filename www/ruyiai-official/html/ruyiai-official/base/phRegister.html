@@ -49,7 +49,6 @@
 	}
 	.error-tips {
 		display: none;
-		padding-top: 0;
 	}
 	.helpTel {
 		position: absolute;
@@ -113,7 +112,7 @@
 					<input type="checkbox" id='hasRead' style="font-size: 20px;margin-left: 20px;">
 					<label for="hasRead" style="width: auto;user-select: none;">
 						阅读并同意 
-						<a href="https://dn-vbuluo-static.qbox.me/ruyi.ai%E5%B9%B3%E5%8F%B0%E6%9C%8D%E5%8A%A1%E5%8D%8F%E8%AE%AE.pdf" target="_blank" style="color: #487ff1;font-family: STHeitiSC-Medium;">
+						<a href="" style="color: #487ff1;font-family: STHeitiSC-Medium;">
 							《ruyi.ai平台协议》
 						</a>
 					</label>
@@ -125,7 +124,7 @@
 					<p style="padding-left: 300px;">已有账号，<a href="login.html" style="color: #487ff1;font-family: STHeitiSC-Medium;">登录</a></p>
 				</div>
 			</div>
-			<p class='helpTel'>客服电话：18762671093</p>
+			<p class='helpTel'>客服电话：010-82740211</p>
 		</div>
 	</div>
 </div>
@@ -136,8 +135,6 @@
 <script src="js/reg-common.js"></script>
 <script src="js/login.js"></script>
 <script>
-$('#loginEmail').val('');
-$('#loginPass').val('');
 // 各种正则验证
 var va = {
 	loginName: function(value) {
@@ -163,7 +160,7 @@ var va = {
 	},
 	phoneError: '请输入合法的手机号',
 	loginEmail: function(em) {
-		if( !(/^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/).test(em) ) {
+		if( !(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/).test(em) ) {
 			$('#loginEmail').next('.error-tips').text(this.emailError)
 			$('#loginEmail').next('.error-tips').show();
 			return false;
@@ -229,8 +226,6 @@ $('.nextStep').on('click', function() {
 			},
 			data: JSON.stringify({email: email, phone_number: phoneNumber, password: pass, verify_code: vaCode, nick_name: loginName}),
 			success: function(ret) {
-				localStorage.my_login_accout = $('#loginPhone').val();
-				localStorage.my_login_pass = $('#loginPass').val();
 				window.location.href = './phRegiSucc.html';
 			}
 		})
@@ -246,8 +241,6 @@ $('#getVCode').click(function() {
 		return;
 	}
 	// 验证已输入手机号 -- end
-	clearInterval(t);
-	$(this).attr('disabled',true);
 	$.ajax({
 		url: api_host + '/signup/smsVerify',
 		type: 'post',
@@ -257,28 +250,21 @@ $('#getVCode').click(function() {
 		data: JSON.stringify({phoneNumber: $('#loginPhone').val()}),
 		success: function(ret) {
 			console.log(ret)
-			$('#loginPhone').next('.error-tips').hide();
-			$('#getVCode').text(time + 's')
-			$('#getVCode').addClass('dis');
-			t = setInterval(function() {
-				time --;
-				$('#getVCode').text(time + 's')
-				$('#getVCode').addClass('dis');
-				if(time == 0){
-					$('#getVCode').removeClass('dis');
-					$('#getVCode').text('获取验证码')
-					clearInterval(t);
-					time = 30;
-					$('#getVCode').attr('disabled',false);
-				}
-			}, 1000)
-		},
-		error: function(err) {
-			$('#loginPhone').next('.error-tips').text( JSON.parse(err.responseText.toString()).message )
-			$('#loginPhone').next('.error-tips').show();
-			$('#getVCode').attr('disabled',false);
 		}
 	})
+	$(this).attr('disabled',true);
+	t = setInterval(function() {	
+		$('#getVCode').text(time + 's')
+		time --;
+		$('#getVCode').addClass('dis');
+		if(time == 0){
+			$('#getVCode').removeClass('dis');
+			$('#getVCode').text('获取验证码')
+			clearInterval(t);
+			time = 30;
+			$('#getVCode').attr('disabled',false);
+		}
+	}, 1000)
 })
 // 获取验证码 -- end
 </script>
