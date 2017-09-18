@@ -10,6 +10,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 
 	var agentType = getCookie('agentType');
 	var appID = getCookie('appId');
+	var skillID = getCookie('skillId');
 
 	/*-------------------------------stringArr to objArr--------------------------------*/
 	
@@ -117,6 +118,22 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 		}
 	}
 
+	/*-------------------------------提交发布申请--------------------------------*/
+
+	function commitPublish() {
+		$.ajax({
+			url: api_host_v2beta + 'skills/' + skillID + '/submit',
+			type: 'post',
+			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+			success: function() {
+
+			},
+			error: function() {
+
+			}
+		})
+	}
+
 	/*-------------------------------图片切换--------------------------------*/
 	function checkImgStatus() {
 		$scope.plateforms.forEach(function(ele){
@@ -124,7 +141,6 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			$('.' + ele).find('input').prop('checked', true);
 			$('.' + ele).find('.off').removeClass('off')
 		})
-		console.log($scope.plateforms)
 	}
 
 	/*-------------------------------先从本地缓存拿数据--------------------------------*/
@@ -345,6 +361,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 				success: function(ret) {
 					setCookie('skillId' ,ret.id);
 					$('#uploadSuccess').modal('show');
+					commitPublish();
 				},
 				error: function(err) {
 					err = JSON.parse(err.responseText);
