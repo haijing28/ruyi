@@ -25,6 +25,8 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 	        	$this.attr('disabled', true);
 	        	$this.addClass('has_dis_true');
 	        	downlineSkillFunc(dataSkillId);
+	        	$scope.mySkillList[0].auditStatus = 'OFFLINE';
+	        	updateAuditStatusFunc($scope.mySkillList[0]);
 	        }
 		})
 	})
@@ -93,9 +95,8 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 				ele.btn_show = false;
 			}
 			if(ele.auditStatus == 'OFFLINE') {
-				ele.statuText = '下线'
-				ele.btn_Text = '已下线';
-				ele.btn_show = true;
+				ele.statuText = '已下线'
+				ele.btn_show = false;
 			}
 		})
 		
