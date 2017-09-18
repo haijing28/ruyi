@@ -150,6 +150,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	background-image: url('../../img/rokid_gary.svg');
 	background-size: 50%;
     	padding-top: 12px;
+    	display: none !important;
 }
 .my_body .rk.active {
 	background-image: url('../../img/rokid_colour.svg');
