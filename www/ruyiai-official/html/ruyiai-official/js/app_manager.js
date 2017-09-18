@@ -67,8 +67,6 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
             crossDomain: true,
 		 	success: function(data,status,xhr) {
 		 		data = dataParse(data);
-		 		console.log('------------')
-		 		console.log()
 		 		if(data.code == 0){
 					$scope.appList = data.result;
 					$scope.$apply();
@@ -379,22 +377,10 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 			 }
 	 });
 	
-	 $scope.goConsoleManagerFunc = function(appId,appName,appKey,botId,skillId, agentType){
+	 $scope.goConsoleManagerFunc = function(appId,appName,appKey){
 		setCookie("appId",appId);
 		setCookie("appName",appName);
 		setCookie("appKey",appKey);
-		setCookie("botId",botId);
-		
-		if(agentType && agentType != null && agentType.length > 10){
-			setCookie("agentType",agentType);
-		}else{
-			setCookie("agentType","SKILL");
-		}
-		if(skillId && skillId != null && skillId.length > 10){
-			setCookie("skillId",skillId);
-		}else{
-			setCookie("skillId","");
-		}
 		
 		if(window.location.href.indexOf("testtest") > -1){
 			window.location.href = "http://lab.ruyi.ai/ruyiai-official/testtest/console/api_manager.html";
@@ -487,80 +473,6 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 			}
 		}
 	});
-	
-	//获取develop状况的skill对象
-	var getSkillListDevelopFunc = function(botList){
-        $.ajax({
-            url: api_host_v2beta + 'skills?tag=' + developTag + "&size=100",
-            method: 'GET',
-            headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
-            error: function(xhr, status, error) {
-            },
-            success: function(data, status, xhr) {
-            	data = dataParse(data);
-            	var skillList = data.content;
-            	for(var i in skillList){
-            		for(var j in botList){
-            			if(skillList[i].id == botList[j].companionSkillId){
-            				botList[j].auditStatus = skillList[i].auditStatus;
-            			}
-            		}
-            	}
-            	getSkillListProductFunc(botList);//获取develop状况的skill对象
-            	$scope.$apply();
-            },error: function(){
-            	goIndex();
-            }
-        });
-	}
-	
-	//获取develop状况的skill对象
-	var getSkillListProductFunc = function(botList){
-        $.ajax({
-            url: api_host_v2beta + 'skills?tag=' + productTag + "&size=100",
-            method: 'GET',
-            headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
-            error: function(xhr, status, error) {
-            },
-            success: function(data, status, xhr) {
-            	data = dataParse(data);
-            	var skillList = data.content;
-            	for(var i in skillList){
-            		for(var j in botList){
-            			if(skillList[i].id == botList[j].companionSkillId){
-            				botList[j].auditStatus = skillList[i].auditStatus;
-            			}
-            		}
-            	}
-            	$scope.$apply();
-            },error: function(){
-            	goIndex();
-            }
-        });
-	}
-	
-	var getBotListFunc = function(){
-		// 获取 st
-        $.ajax({
-            url: api_host_v2beta + 'bots?tag=' + developTag + "&size=100",
-            method: 'GET',
-            headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
-            error: function(xhr, status, error) {
-            	goIndex()
-            },
-            success: function(data, status, xhr) {
-            	data = dataParse(data);
-            	$scope.botList = data.content;
-            	$scope.$apply();
-            	getSkillListDevelopFunc($scope.botList);
-            }
-        });
-	}
-	getBotListFunc();
-	
-	
-	
-	
 	
 });
 

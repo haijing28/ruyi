@@ -360,6 +360,7 @@ function entityDetailCtrl($rootScope,$scope, $state, $stateParams){
 	        			$scope.entityDetail.entries.splice(i,1);
 	        			$scope.$apply();
 	        			//dataEditedFlag = true;
+	        			$scope.saveEntityDetailFunc();
 	        			break;
 	        		}
 	        	}

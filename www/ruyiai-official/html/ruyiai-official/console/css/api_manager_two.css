@@ -3359,51 +3359,7 @@ li.birthday input.constellation{
 .box .left-box .list-group-item.active a.high-hover-ctrl{
 	color:#3794FF;
 }
-.right-box .event-choose-list{
-	display:block;
-}
-.right-box-main .event-show-hide{
-	color:#aaa;cursor:pointer;
-}
-.right-box-main .event-show-hide:hover{
-	color:#bbb;
-}
-.right-box-main .event-choose-list{
-	display:none;
-}
-.right-box-main .event-add-input{
-	width: 300px; border: 1px solid #fff;padding-left:0; box-shadow: none;
-}
-.right-box-main .event-input-obj{
-	float:left;border:1px solid #3794FF;
-}
-.right-box-main .event_input_para{
-	padding: 10px 2px; width: 56px; border: 0; background-color: #3794FF; border-right: #dcdddd 1px solid; color: #fff; text-align: center;
-}
-.right-box-main .event-input-content{
-	display:inline-block;
-	padding:6px;
-	padding-right:12px;
-}
-.right-box-main .event-choose-list li h3{
-	color:#666;
-}
-.right-box-main :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: #aaa; opacity:1; 
-}
 
-.right-box-main ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: #aaa;opacity:1;
-}
 
-.right-box-main input:-ms-input-placeholder{
-    color: #aaa;opacity:1;
-}
 
-.right-box-main input::-webkit-input-placeholder{
-    color: #aaa;opacity:1;
-}
-.center-list-box .change-option li.active a{
-	cursor:pointer;
-}
-
+    
