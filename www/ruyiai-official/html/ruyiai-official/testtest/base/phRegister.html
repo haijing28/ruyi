@@ -242,8 +242,34 @@ $('.nextStep').on('click', function() {
 				window.location.href = './phRegiSucc.html';
 			},
 			error: function(err) {
-				$('#loginPhone').next('.error-tips').text( JSON.parse(err.responseText.toString()).message )
-				$('#loginPhone').next('.error-tips').show();
+				// $('#loginPhone').next('.error-tips').text( JSON.parse(err.responseText.toString()).message )
+				// $('#loginPhone').next('.error-tips').show();
+
+				var  id  = '';
+				// switch(JSON.parse(err.responseText.toString()).type) {
+				// 	case :
+				// 		id = 'loginPhone';
+				// 		break;
+				// 	case :
+				// 		id = 'loginEmail';
+				// 		break;
+				// 	case :
+				// 		id = 'vaCode';
+				// 		break;
+				// }
+				if(JSON.parse(err.responseText.toString()).message.indexOf('手机') > -1) {
+					id = '#loginPhone';
+				}else if (JSON.parse(err.responseText.toString()).message.indexOf('邮箱') > -1){
+					id = '#loginEmail'
+				}else if(JSON.parse(err.responseText.toString()).message.indexOf('验证码') > -1) {
+					id = '#vaCode';
+				}else {
+					id = '#loginPhone'
+				}
+				console.log(id)
+				$(id).nextAll('.error-tips').text( JSON.parse(err.responseText.toString()).message )
+				$(id).nextAll('.error-tips').show();
+				$(id).attr('disabled',false);
 			}
 		})
 	}
@@ -286,9 +312,32 @@ $('#getVCode').click(function() {
 			}, 1000)
 		},
 		error: function(err) {
-			$('#loginPhone').next('.error-tips').text( JSON.parse(err.responseText.toString()).message )
-			$('#loginPhone').next('.error-tips').show();
-			$('#getVCode').attr('disabled',false);
+			var  id  = '';
+			// switch(JSON.parse(err.responseText.toString()).type) {
+			// 	case :
+			// 		id = 'loginPhone';
+			// 		break;
+			// 	case :
+			// 		id = 'loginEmail';
+			// 		break;
+			// 	case :
+			// 		id = 'vaCode';
+			// 		break;
+			// }
+			if(JSON.parse(err.responseText.toString()).message.indexOf('手机') > -1) {
+				id = '#loginPhone';
+			}else if (JSON.parse(err.responseText.toString()).message.indexOf('邮箱') > -1){
+				id = '#loginEmail'
+			}else if(JSON.parse(err.responseText.toString()).message.indexOf('验证码') > -1) {
+				id = '#vaCode';
+			}else {
+				id = '#loginPhone'
+			}
+			console.log(id)
+			console.log($(id))
+			$(id).nextAll('.error-tips').text( JSON.parse(err.responseText.toString()).message )
+			$(id).nextAll('.error-tips').show();
+			$(id).attr('disabled',false);
 		}
 	})
 })
