@@ -146,9 +146,9 @@ $(function(){
 //		 var appObjectPara = { "appName": appName,"headUrl": "https://dn-vbuluo-static.qbox.me/default-robot.svg", "agentType": agentType, "attribute": attributeObj, "appDesc": "来自海知智能ruyi.ai的酷炫聊天机器人","defaultResponses":defaultResponsesObj };
 		 
 		 var skillIds = [];
-		 if(agentType != "SKILL"){
-			 skillIds = ["2013efe4-0f8e-423e-848c-be31f9f54396","6fc1c620-e31b-4ae5-a0e1-6709bb7029d9","6e3a8217-d07d-4cb8-803c-75e952bb521b","15de5ea2-4502-4f78-a49f-fcb04625ec3c","7e9b61b7-6dac-4005-83e0-ea2197372bf2"];
-		 }
+//		 if(agentType != "SKILL"){
+//			 skillIds = ["2013efe4-0f8e-423e-848c-be31f9f54396","6fc1c620-e31b-4ae5-a0e1-6709bb7029d9","6e3a8217-d07d-4cb8-803c-75e952bb521b","15de5ea2-4502-4f78-a49f-fcb04625ec3c","7e9b61b7-6dac-4005-83e0-ea2197372bf2"];
+//		 }
 		 
 		 var appObjectPara = {
 		    "name": appName,
