@@ -10,7 +10,6 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 
 	var agentType = getCookie('agentType');
 	var appID = getCookie('appId');
-	var skillID = getCookie('skillId');
 
 	/*-------------------------------stringArr to objArr--------------------------------*/
 	
@@ -120,7 +119,8 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 
 	/*-------------------------------提交发布申请--------------------------------*/
 
-	function commitPublish() {
+	function commitPublish(id) {
+		var skillID = id || getCookie('skillId');
 		$.ajax({
 			url: api_host_v2beta + 'skills/' + skillID + '/submit',
 			type: 'post',
@@ -361,7 +361,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 				success: function(ret) {
 					setCookie('skillId' ,ret.id);
 					$('#uploadSuccess').modal('show');
-					commitPublish();
+					commitPublish(ret.id);
 				},
 				error: function(err) {
 					err = JSON.parse(err.responseText);
