@@ -138,6 +138,9 @@
 <script>
 $(function() {
 
+setTimeout(function() {
+	$('#loginEmail').val('')
+}, 100)
 // 各种正则验证
 var va = {
 	loginName: function(value) {
