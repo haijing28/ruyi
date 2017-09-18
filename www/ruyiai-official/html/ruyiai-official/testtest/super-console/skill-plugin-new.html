@@ -335,7 +335,7 @@
 				$.trace('操作成功')
 				$this.parent().find('button').hide();
 				$this.parent().append(text);
-				$this.parents('tr').prev().find('.shenhe_status').text(shenhe_status);
+				$this.parents('tr').prev().find('td:nth-child(5)').text(shenhe_status);
 			},
 			error: function(err) {
 				var err = JSON.parse(err.responseText)

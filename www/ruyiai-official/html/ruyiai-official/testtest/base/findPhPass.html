@@ -101,7 +101,7 @@
 					<p class="error-tips"></p>
 				</div>
 				<div class="element-box  my_hide" data-act="myVaCode">
-					<input required style="width: 215px;" class="email-input" id="myVaCode" type="input" placeholder="请输入验证码 " />
+					<input required style="width: 215px;" class="email-input" id="myVaCode" type="input" placeholder="请输入验证码 " value=" " />
 					<button id='getVCode' style="border: none;border-radius: 3px;background: #7ED321;color:#fff;height: 38px;vertical-align: top;box-sizing: border-box;">获取验证码</button>
 					<p class="error-tips"></p>
 				</div>
@@ -152,7 +152,9 @@ $(function() {
 	var t ;
 	var time = 30;
 	$('#login-account').val(localStorage.username)
-	$('#myVaCode').val(' ')
+	setTimeout(function() {
+		$('#myVaCode').val('')
+	}, 100)
 	// 获取验证码
 	$('#getVCode').click(function() {
 		// 验证已输入手机号
