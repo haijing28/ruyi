@@ -399,79 +399,78 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			$('[repeat-type=userSays]').parent().find( 'input' ).addClass('wrong');
 		}
 
+		// 清除空的用户说、唤醒语、纠错语
+		$scope.awakes.forEach(function(ele, index , arr) {
+			if(ele.value.trim() == ''){
+				arr.splice(index, 1);
+			}
+		})
+		$scope.wrongs.forEach(function(ele, index , arr) {
+			if(ele.value.trim() == ''){
+				arr.splice(index, 1);
+			}
+		})
+		$scope.userSays.forEach(function(ele, index , arr) {
+			if(ele.value.trim() == ''){
+				arr.splice(index, 1);
+			}
+		})
+		var has_passed = hasRepeatData('all');
+		if(has_passed.tag !== undefined) {
+			$.trace(has_passed.txt)
+			return;
+		}
 		if($('.wrong').length > 0) {
 			$.trace('要配置完技能插件才能发布哦！')
-		}else {
-			// 清除空的用户说、唤醒语、纠错语
-			$scope.awakes.forEach(function(ele, index , arr) {
-				if(ele.value.trim() == ''){
-					arr.splice(index, 1);
-				}
-			})
-			$scope.wrongs.forEach(function(ele, index , arr) {
-				if(ele.value.trim() == ''){
-					arr.splice(index, 1);
-				}
-			})
-			$scope.userSays.forEach(function(ele, index , arr) {
-				if(ele.value.trim() == ''){
-					arr.splice(index, 1);
-				}
-			})
-
-			var has_passed = hasRepeatData('all');
-			if(has_passed.tag !== undefined) {
-				$.trace(has_passed.txt)
-				return;
-			}
-			$('.skill_publish').attr('disabled', true);
-			$('.skill_publish').addClass('my_gray');
-			$('.skill_publish').text('提交中');
-			var skillId = getCookie("skillId");
-			var url = "";
-			if(skillId && skillId.length > 0){
-				url = api_host_v2beta + 'skills/' + skillId;
-			}else{
-				url = api_host_v2beta + 'skills?botId=' + getCookie("botId");
-			}
-			$.ajax({
-				url: url,
-				type: 'POST',
-				headers: {"Content-Type" : "application/json", "Authorization" : "Bearer " + getCookie('accessToken')},
-				data: JSON.stringify({
-					"name": $scope.robotName.trim(),
-					"description": $scope.skillDesc.trim(),
-					"category": $scope.selectedType.trim(),
-					"service": '123',
-					"agentType": agentType,
-					"logo": $scope.imgSrc,
-					"nickNames": objectArrToArr($scope.awakes),
-					"nickNameVoiceVariants": objectArrToArr($scope.wrongs),
-					"userInputExamples": objectArrToArr($scope.userSays),
-					"developerMainSite": $scope.self_homepage.trim(),
-					"developerIntroduction": $scope.selfDesc.trim(),
-					"descriptionForAudit": $scope.robotDesc.trim(),
-					"thirdPartyPlatforms": $scope.plateforms
-				}),
-				success: function(ret) {
-					setCookie('skillId' ,ret.id);
-					commitPublish(ret.id);
-					
-				},
-				error: function(data) {
-					data = JSON.parse(data.responseText);
-					$.trace(data.message)
-					if(data.status == 401 || data.status == 403){
-			            		goIndex();
-			            	}
-				},
-				complete: function() {
-					$('.skill_publish').attr('disabled', false);
-					$('.skill_publish').removeClass('my_gray');
-					$('.skill_publish').text('提交发布');
-				}
-			})
+			return;
 		}
+		$('.skill_publish').attr('disabled', true);
+		$('.skill_publish').addClass('my_gray');
+		$('.skill_publish').text('提交中');
+		var skillId = getCookie("skillId");
+		var url = "";
+		if(skillId && skillId.length > 0){
+			url = api_host_v2beta + 'skills/' + skillId;
+		}else{
+			url = api_host_v2beta + 'skills?botId=' + getCookie("botId");
+		}
+		$.ajax({
+			url: url,
+			type: 'POST',
+			headers: {"Content-Type" : "application/json", "Authorization" : "Bearer " + getCookie('accessToken')},
+			data: JSON.stringify({
+				"name": $scope.robotName.trim(),
+				"description": $scope.skillDesc.trim(),
+				"category": $scope.selectedType.trim(),
+				"service": '123',
+				"agentType": agentType,
+				"logo": $scope.imgSrc,
+				"nickNames": objectArrToArr($scope.awakes),
+				"nickNameVoiceVariants": objectArrToArr($scope.wrongs),
+				"userInputExamples": objectArrToArr($scope.userSays),
+				"developerMainSite": $scope.self_homepage.trim(),
+				"developerIntroduction": $scope.selfDesc.trim(),
+				"descriptionForAudit": $scope.robotDesc.trim(),
+				"thirdPartyPlatforms": $scope.plateforms
+			}),
+			success: function(ret) {
+				setCookie('skillId' ,ret.id);
+				commitPublish(ret.id);
+				
+			},
+			error: function(data) {
+				data = JSON.parse(data.responseText);
+				$.trace(data.message)
+				if(data.status == 401 || data.status == 403){
+		            		goIndex();
+		            	}
+			},
+			complete: function() {
+				$('.skill_publish').attr('disabled', false);
+				$('.skill_publish').removeClass('my_gray');
+				$('.skill_publish').text('提交发布');
+			}
+		})
 	})
 
 	/*-------------------------------点击模态框确定--------------------------------*/
