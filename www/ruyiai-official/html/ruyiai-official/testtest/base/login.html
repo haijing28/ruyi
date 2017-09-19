@@ -74,19 +74,19 @@
 	.pass_div i {
 		position: absolute;
 		display: inline-block;
-		height: 32px;
-		width: 32px;
-		background: url(../img/close-eye.svg);
+		height: 20px;
+		width: 20px;
+		background: url(../img/login_close_eye1.svg);
 		background-repeat: no-repeat;
 		background-size: contain;
 		background-position: center;
 		right: 80px;
-		top: 3px;
+		top: 8px;
 		cursor: pointer;
 		z-index: 2;
 	}
 	.pass_div i.open {
-		background: url(../img/open-eye.svg);
+		background: url(../img/login_open_eye1.svg);
 		background-position: center;
 		background-size: contain;
 	}
@@ -161,14 +161,21 @@ $(function(){
 	})
 	// 忘记密码 -- end
 	// 显示密码
-	$('.pass_div i').mousedown(function () {
-		$('#login-password').attr('type','text');
-		$(this).addClass('open');
+	var tag =  true;
+	$('.pass_div i').click(function () {
+		if(tag) {
+			$('#login-password').attr('type','text');
+			$(this).addClass('open');
+		}else {
+			$('#login-password').attr('type','password');
+			$('.pass_div i').removeClass('open');
+		}
+		tag = !tag;
 	})
-	$(document).mouseup(function() {
-		$('#login-password').attr('type','password');
-		$('.pass_div i').removeClass('open');
-	});
+	// $(document).mouseup(function() {
+	// 	$('#login-password').attr('type','password');
+	// 	$('.pass_div i').removeClass('open');
+	// });
 	
 	/*测试获取用户信息*/
 	

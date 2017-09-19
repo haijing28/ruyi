@@ -1,15 +1,15 @@
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { 
 	color: #c3bebe; 
-} 
+}
 input:-moz-placeholder, textarea:-moz-placeholder { 
 	color: #c3bebe; 
-} 
+}
 input::-moz-placeholder, textarea::-moz-placeholder { 
 	color: #c3bebe; 
-} 
+}
 input:-ms-input-placeholder, textarea:-ms-input-placeholder { 
 	color: #c3bebe; 
-} 
+}
 .box .center-box{
 	overflow: auto;
 	margin-top: 0 !important;
