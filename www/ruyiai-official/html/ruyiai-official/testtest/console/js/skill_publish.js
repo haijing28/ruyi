@@ -120,8 +120,10 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			 		$scope.plateforms = ret.attributes.thirdPartyPlatforms;
 			 		checkImgStatus();
 			 		$scope.$apply();
-				},error:function(){
-					//goIndex();
+				},error:function(data){
+					if(data.status == 401 || data.status == 403){
+	            		goIndex();
+	            	}
 				}
 			});
 		}
@@ -138,9 +140,12 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			success: function() {
 				$('#uploadSuccess').modal('show');
 			},
-			error: function(err) {
-				err = dataParse(err.responseText);
-				$.trace('提交失败: ' + err.message);
+			error: function(data) {
+				data = dataParse(data.responseText);
+				$.trace('提交失败: ' + data.message);
+				if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
 			}
 		})
 	}
@@ -235,7 +240,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			errText = '测试';
 		}
 
-		return {tag, errText}
+		return {tag，errText}
 	}
 
 	/*-------------------------------先从本地缓存拿数据--------------------------------*/
@@ -461,10 +466,12 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 					commitPublish(ret.id);
 					
 				},
-				error: function(err) {
-					err = JSON.parse(err.responseText);
-					$.trace(err.message)
-					// goIndex();
+				error: function(data) {
+					data = JSON.parse(data.responseText);
+					$.trace(data.message)
+					if(data.status == 401 || data.status == 403){
+	            		goIndex();
+	            	}
 				},
 				complete: function() {
 					$('.skill_publish').attr('disabled', false);

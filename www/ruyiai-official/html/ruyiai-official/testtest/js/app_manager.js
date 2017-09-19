@@ -503,9 +503,11 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
             	}
             	getSkillListProductFunc(botList);//获取develop状况的skill对象
             	$scope.$apply();
-            },error: function(){
+            },error: function(data, status, xhr){
             	getSkillListProductFunc(botList);//获取develop状况的skill对象
-//            	goIndex();
+            	if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
             }
         });
 	}
@@ -529,8 +531,10 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
             		}
             	}
             	$scope.$apply();
-            },error: function(){
-//            	goIndex();
+            },error: function(data){
+            	if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
             }
         });
 	}
@@ -541,7 +545,9 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
             method: 'GET',
             headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
             error: function(xhr, status, error) {
-            	goIndex()
+            	if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
             },
             success: function(data, status, xhr) {
             	data = dataParse(data);

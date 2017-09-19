@@ -70,6 +70,11 @@ var putBotParaFunc = function(currentRobot){
 		},
 		method : "POST",
 		success : function(data) {
+
+		},error:function(data){
+			if(data.status == 401 || data.status == 403){
+        		goIndex();
+        	}
 		}
 	});
 }

@@ -337,9 +337,12 @@
 				$this.parent().append(text);
 				$this.parents('tr').prev().find('td:nth-child(5)').text(shenhe_status);
 			},
-			error: function(err) {
-				var err = JSON.parse(err.responseText)
-				$.trace(err.message)
+			error: function(data) {
+				var data = JSON.parse(data.responseText)
+				$.trace(data.message)
+				if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
 			}
 		})
 	})
@@ -360,8 +363,10 @@
 				$scope.skills = $scope.skills.concat($scope.skills_product);
 				$scope.$apply();
 			},
-			error: function() {
-				goIndex();
+			error: function(data) {
+				if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
 			},
 			complete: function() {
 				tag ++;
@@ -379,8 +384,10 @@
 				$scope.skills = $scope.skills.concat($scope.skills_develop);
 				$scope.$apply();
 			},
-			error: function() {
-				// goIndex();
+			error: function(data) {
+				if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
 			},
 			complete: function() {
 				tag ++;
@@ -398,8 +405,10 @@
 				$scope.skills = $scope.skills.concat($scope.skills_pedding_appr);
 				$scope.$apply();
 			},
-			error: function() {
-				// goIndex();
+			error: function(data) {
+				if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
 			},
 			complete: function() {
 				tag ++;
@@ -412,13 +421,14 @@
 			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
 			data: {tag: 'Develop', status: 'REJECTED'},
 			success: function(ret) {
-				console.log(ret.content);
 				$scope.skills_reject_devl = ret.content;
 				$scope.skills = $scope.skills.concat($scope.skills_reject_devl);
 				$scope.$apply();
 			},
-			error: function() {
-				// goIndex();
+			error: function(data) {
+				if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
 			},
 			complete: function() {
 				tag ++;
@@ -436,8 +446,10 @@
 				$scope.skills = $scope.skills.concat($scope.skills_appr_devl);
 				$scope.$apply();
 			},
-			error: function() {
-				// goIndex();
+			error: function(data) {
+				if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
 			},
 			complete: function() {
 				tag ++;
@@ -455,8 +467,10 @@
 				$scope.skills = $scope.skills.concat($scope.skills_offline_devl);
 				$scope.$apply();
 			},
-			error: function() {
-				// goIndex();
+			error: function(data) {
+				if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
 			},
 			complete: function() {
 				tag ++;

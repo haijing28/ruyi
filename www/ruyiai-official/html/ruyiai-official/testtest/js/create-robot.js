@@ -181,8 +181,10 @@ $(function(){
 						addScenarioFunc("打招呼", addIntentFunc);
 						//创建默认的意图
 					}, 500);
-				},error:function(){
-//					goIndex();
+				},error:function(data){
+					if(data.status == 401 || data.status == 403){
+	            		goIndex();
+	            	}
 				}
 			});
 		return false;

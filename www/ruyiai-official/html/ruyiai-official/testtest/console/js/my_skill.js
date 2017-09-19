@@ -8,8 +8,10 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
 			success: function(data) {
 			},
-			error: function() {
-				goIndex();
+			error: function(data) {
+				if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
 			}
 		});
 	}
@@ -54,8 +56,10 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 						data = dataParse(data);
 						updateAuditStatusFunc(data);
 					},
-					error: function() {
-						
+					error: function(data) {
+						if(data.status == 401 || data.status == 403){
+		            		goIndex();
+		            	}
 					}
 				});
 			}
@@ -122,8 +126,10 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 					hasSkillCheckFunc($scope.myHasSkillList,$rootScope.currentRobot);//判断是否已经获取
 					$scope.$apply();
 				},
-				error: function() {
-					goIndex();
+				error: function(data) {
+					if(data.status == 401 || data.status == 403){
+	            		goIndex();
+	            	}
 				}
 			});
 		}
