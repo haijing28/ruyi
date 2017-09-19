@@ -118,7 +118,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			 		checkImgStatus();
 			 		$scope.$apply();
 				},error:function(){
-					goIndex();
+					//goIndex();
 				}
 			});
 		}
@@ -602,7 +602,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 						$("#cut-header").modal("hide");
 						$("#pickSkillImg").attr("src",data.result);
 					} else if (data.code == 2) {
-						goIndex();
+						//goIndex();
 					} else {
 						if (data.msg) {
 							$.trace(data.msg + "( " + data.detail + " )",
