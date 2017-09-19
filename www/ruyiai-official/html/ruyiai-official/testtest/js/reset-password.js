@@ -15,8 +15,8 @@ $(function(){
 				}
 			},
 			error: function(err){
-				// var err = JSON.parse(err.responseText);
-				console.log(err)
+				var err = dataParse(err.responseText);
+				$.trace(err.message)
 				$(".captcha-overdue-box").css("display","block");
 			}
 		});
