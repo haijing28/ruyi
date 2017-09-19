@@ -549,7 +549,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 		filters : {
 			mime_types : [ {
 				title : "Image files",
-				extensions : "JPG"
+				extensions : "BMP,DIB,EMF,GIF,ICB,ICO,JPG,JPEG,PBM,PGM,PNG,PPM,PSD,PSP,RLE,SGI,TGA,TIF"
 			} ]
 		},
 		auto_start : true,
