@@ -67,8 +67,6 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
             crossDomain: true,
 		 	success: function(data,status,xhr) {
 		 		data = dataParse(data);
-		 		console.log('------------')
-		 		console.log()
 		 		if(data.code == 0){
 					$scope.appList = data.result;
 					$scope.$apply();
