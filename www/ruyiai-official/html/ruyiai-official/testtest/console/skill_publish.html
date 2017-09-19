@@ -3,7 +3,7 @@
 	textarea, input {
 		font-family: '方正兰亭黑_GBK' !important;
 		border:  1px solid #EBEEF0 !important;
-		color:  #B5B5B6 !important;
+		/* color:  #B5B5B6 !important; */
 		font-weight: 300 !important;
 	}
 </style>
@@ -120,8 +120,9 @@
 	        <div style="cursor:pointer;"><div class="close-modal">&nbsp;</div></div>
 	      </div>
 	      <div class="modal-body" style="padding:0 21px 21px 10px;">
-			  <div style="font-size: 16px; padding-left: 13px; margin-bottom: 8px; color: #3794FF;">选择要截取的部分，双击确认</div>
+			  <div style="font-size: 16px; padding-left: 13px; margin-bottom: 8px; color: #3794FF;"><!-- 选择要截取的部分，双击确认 --></div>
 			  <div class="container"></div>
+			  <button id='clip_btn_sure' style="width: 100px;height: 32px;border-radius: 3px;border: none;background: #3e90bd;color: #fff;margin: 20px auto 0px;display: block;">确定</button>
 	      </div>
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
@@ -137,8 +138,8 @@
 				<div class="modal-body my-modal-body" style="text-align: center;" id='clipContainer'>
 					<b class='okImg'>&nbsp;</b>
 					<h1>提交成功</h1>
-					<p>技能审核需要一到两个工作日，审核结果会通过手机或者邮箱通知，注意查看哦！</p>
-					<button class='iKown'>确定</button>
+					<p>技能审核需要一到两个工作日，审核结果会通过手机和邮箱通知，注意查看哦！</p>
+					<button id class='iKown'>确定</button>
 				</div>
 				<div class="modal-footer">
 

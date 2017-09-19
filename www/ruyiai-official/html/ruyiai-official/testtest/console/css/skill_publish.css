@@ -1,14 +1,14 @@
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { 
-	color: #c3bebe; 
+	color: #B5B5B6; 
 }
 input:-moz-placeholder, textarea:-moz-placeholder { 
-	color: #c3bebe; 
+	color: #B5B5B6; 
 }
 input::-moz-placeholder, textarea::-moz-placeholder { 
-	color: #c3bebe; 
+	color: #B5B5B6; 
 }
 input:-ms-input-placeholder, textarea:-ms-input-placeholder { 
-	color: #c3bebe; 
+	color: #B5B5B6; 
 }
 .box .center-box{
 	overflow: auto;
@@ -20,6 +20,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .my_body h3 , .my_body h2{
 	color: #595757;
+	font-family: '方正兰亭黑_GBK';
 }
 .my_body .title {
 	margin-bottom: 30px;
