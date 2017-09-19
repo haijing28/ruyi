@@ -547,10 +547,8 @@
 
 	app.filter('filter_time',function(){
 		 return function(time) {
-			/*  time = time+"".substr(0,9); 
-		 	time = new Date(time).toLocaleString();  */
-			return time;
-	       }
+		 	return new Date(parseInt(time)).toLocaleString().replace(/:\d{1,2}$/,' ');  
+	      }
 	})
 
 </script>
