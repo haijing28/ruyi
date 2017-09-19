@@ -1824,7 +1824,7 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 		$.ajax({
 			url : api_host + "/password",
 			method : "POST",
-			data: JSON.stringify({"email": getCookie("email"),"old_password":oldpasswd.val(),"new_password":newpasswd.val()}),
+			data: JSON.stringify({"account": getCookie("email"),"oldPassword":oldpasswd.val(),"newPassword":newpasswd.val()}),
 			headers: {
 				'Content-Type': 'application/json'
 			},
