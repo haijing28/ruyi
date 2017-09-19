@@ -226,25 +226,25 @@ var _hmt = _hmt || [];
 							<p class="my_para">
 								<span ng-if="botObj.auditStatus == 'PENDING_APPROVAL'">
 									<label style="background-color:#a0a1a7;">ruyi skill store</label>
-									<span style="color:#a0a1a7;">待审核</span>
+									<span style="color:#a0a1a7;margin-left: -5px;">待审核</span>
 								</span>
 								<span ng-if="botObj.auditStatus == 'REJECTED'">
 									<label style="background-color:#a0a1a7;">ruyi skill store</label>
-									<span style="color:#a0a1a7;">审核未通过</span>
+									<span style="color:#a0a1a7;margin-left: -5px;">审核未通过</span>
 								</span>
 								<span ng-if="botObj.auditStatus == 'OFFLINE'">
 									<label style="background-color:#a0a1a7;">ruyi skill store</label>
-									<span style="color:#a0a1a7;">已下线</span>
+									<span style="color:#a0a1a7;margin-left: -5px;">已下线</span>
 								</span>
 								<span ng-if="botObj.auditStatus == 'APPROVED'">
 									<label style="background-color:#18E514;">ruyi skill store</label>
-									<span style="color:#18E514;">审核成功</span>
+									<span style="color:#18E514;margin-left: -5px;">审核成功</span>
 								</span>
 							</p>
 							<p class='maxThree'>{{botObj.agents[0].agent.description}}</p>
 						</div>
 					</div>
-					<div class='skill-status' ng-if="botObj.auditStatus == 'PENDING_APPROVAL'">
+					<!-- <div class='skill-status' ng-if="botObj.auditStatus == 'PENDING_APPROVAL'">
 						待审核
 					</div>
 					<div class='skill-status' ng-if="botObj.auditStatus == 'REJECTED'">
@@ -255,7 +255,7 @@ var _hmt = _hmt || [];
 					</div>
 					<div class='skill-status-ok' ng-if="botObj.auditStatus == 'APPROVED'">
 						审核通过
-					</div>
+					</div> -->
 				</td>
 				<td style="min-width:400px; max-width: 400px;">
 					<section class="a-message-count-box pull-left" style="padding-right:10px;">

@@ -381,7 +381,7 @@ $(function(){
 		$.ajax({
 			url : api_host + "/password",
 			method : "POST",
-			data: JSON.stringify({"account": getCookie("email"),"old_password":oldPassword.val(),"newPassword":newpasswd.val()}),
+			data: JSON.stringify({"account": getCookie("email"),"oldPassword":oldPassword.val(),"newPassword":newpasswd.val()}),
 			headers: {
 				'Content-Type': 'application/json'
 			},

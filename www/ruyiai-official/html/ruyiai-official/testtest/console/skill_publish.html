@@ -1,12 +1,23 @@
 <!-- <link href="https://cdn.bootcss.com/jquery-jcrop/2.0.4/css/Jcrop.min.css" rel="stylesheet"> -->
+<style>
+	textarea, input {
+		font-family: '方正兰亭黑_GBK' !important;
+		border:  1px solid #EBEEF0 !important;
+		color:  #B5B5B6 !important;
+		font-weight: 300 !important;
+	}
+</style>
 <div class="my_body" style="padding-top:16px;">
-	<h1 class='title'>提交发布到ruyi平台</h1>
+	<h1 class='title'>
+		发布机器人至如意技能插件商店
+		<button onmouseover="this.style.cssText='color:blue;'" onmouseout="this.style.cssText='color:black'" type="button" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="top" data-content="经过如意平台审核的技能插件将会供其他机器恩开发者安装使用">&nbsp;</button>
+	</h1>
 	<div class='skill_settings'>
-		<h2>技能设置</h2> <span class='copy_robot_attr'>一键复制bot属性设置</span>
+		<h2>技能设置</h2> <span class='copy_robot_attr'>一键复制机器人属性设置</span>
 	</div>
 	<div id="container">
 		<h3>技能头像<span class='star'>*</span>:</h3>
-		<img src="{{imgSrc}}" id="pickSkillImg" alt="头像" title="头像" class="skill-img"><span class="sub">目前仅支持小于120M的.jpg后缀文件</span>
+		<img src="{{imgSrc}}" id="pickSkillImg" alt="头像" title="头像" class="skill-img"><span class="sub">目前仅支持小于10M的.jpg后缀文件</span>
 		<!-- <input type="file" class='hide_input_img_upload'> -->
 	</div>
 	<div>
@@ -29,7 +40,7 @@
 	</div>
 	<div>
 		<h3>技能简介<span class='star'>*</span>:</h3>
-		<textarea cols="30" placeholder="为在技能插件商店中面向其他使用者呈现的内容。" ng-model='robotDesc' class='robotDesc'></textarea>
+		<textarea cols="30" maxlength='100' placeholder="在技能插件商店中面向机器人开发者呈现的技能介绍。（100字以下）" ng-model='robotDesc' class='robotDesc'></textarea>
 	</div>
 	<div>
 		<h3>技能分类<span class='star'>*</span>:</h3>
@@ -47,7 +58,7 @@
 		</div>
 	</div>
 	<div>
-		<h3>用户范例<span class='star'>*</span>:</h3>
+		<h3>用户使用范例<span class='star'>*</span>:</h3>
 		<b ng-repeat='userSay in userSays track by $index'><input type="text" placeholder="用户说" class="small" ng-model='userSay.value'><a href="javascript:void(0)" class='del_input'>&times;</a></b>
 		<a ng-hide='userSays.length >= 5' href="javascript:void(0)" repeat-type='userSays' class='addCorect'> <span class='glyphicon glyphicon-plus'></span> 添加用户说</a>
 	</div>
@@ -60,9 +71,9 @@
 		<input type="text" placeholder="主页域名将会在技能商店中显示" ng-model='self_homepage'>
 	</div>
 	<div>
-		<h3>技能说明<span class='star'>*</span>:</h3>
-		<textarea cols="30" class='skillDesc' placeholder="为加快如意技能的审核上线流程，开发者可将详细的技能功能，使用范例说明以及技能边界添加至此。技能说明的内容不会在技能商店页面中呈现。" ng-model='skillDesc'></textarea>
-		<label class='addLabel'>备注：在发布为技能插件时，机器人所获得的技能插件将不会生效。</label>
+		<h3>技能审核说明<span class='star'>*</span>:</h3>
+		<textarea cols="30" maxlength='2000' class='skillDesc' placeholder="为加快如意技能的审核上线，开发者可将详细的技能功能，使用范例说明以及技能边界添加至此。所写内容仅供审核使用。（2000字以下）" ng-model='skillDesc'></textarea>
+		<label class='addLabel'>提示：将机器人发布为技能插件时，该机器人所获得的技能插件将不会在被引用时生效;在后台做了改进之后，需要再次提交技能插件才能在线上生效。</label>
 	</div>
 	<hr>
 	<div>
