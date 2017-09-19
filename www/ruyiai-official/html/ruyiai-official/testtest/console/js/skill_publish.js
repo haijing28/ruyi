@@ -85,6 +85,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			localStorage[self_homepage] = $scope.self_homepage;
 			localStorage[skillDesc] = $scope.skillDesc;
 			localStorage[plateforms] = $scope.plateforms.toString();
+			hasRepeatData();
 		}catch(e){}
 	})
 
@@ -160,7 +161,15 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			if( awakes.indexOf(ele.value) != awakes.lastIndexOf(ele.value) ) {
 				tag = true;
 				errText = '唤醒语的内容不能重复哦！'
+
+				var i = awakes.indexOf(ele.value);
+				var l_i = awakes.lastIndexOf(ele.value);
+				$('[repeat-type=awakes]').parent().find('b')[i].children[0].classList.add('wrong')
+				$('[repeat-type=awakes]').parent().find('b')[l_i].children[0].classList.add('wrong')
+				$.trace(errText);
 				return;
+			}else {
+				$('[repeat-type=awakes]').parent().children('b').find('input').removeClass('wrong')
 			}
 		})
 		var wrongs = objectArrToArr($scope.wrongs);
@@ -168,7 +177,15 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			if( wrongs.indexOf(ele.value) != wrongs.lastIndexOf(ele.value) ) {
 				tag = true;
 				errText = '纠错语的内容不能重复哦！'
+
+				var i = wrongs.indexOf(ele.value);
+				var l_i = wrongs.lastIndexOf(ele.value);
+				$('[repeat-type=wrongs]').parent().find('b')[i].children[0].classList.add('wrong')
+				$('[repeat-type=wrongs]').parent().find('b')[l_i].children[0].classList.add('wrong')
+				$.trace(errText);
 				return;
+			}else {
+				$('[repeat-type=wrongs]').parent().children('b').find('input').removeClass('wrong')
 			}
 		})
 		var userSays = objectArrToArr($scope.userSays);
@@ -176,9 +193,18 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			if( userSays.indexOf(ele.value) != userSays.lastIndexOf(ele.value) ) {
 				tag = true;
 				errText = '用户说的内容不能重复哦！'
+
+				var i = userSays.indexOf(ele.value);
+				var l_i = userSays.lastIndexOf(ele.value);
+				$('[repeat-type=userSays]').parent().find('b')[i].children[0].classList.add('wrong')
+				$('[repeat-type=userSays]').parent().find('b')[l_i].children[0].classList.add('wrong')
+				$.trace(errText);
 				return;
+			}else {
+				$('[repeat-type=userSays]').parent().children('b').find('input').removeClass('wrong')
 			}
 		})
+
 		return {tag, errText}
 	}
 
@@ -367,7 +393,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 
 			var hasRepeatCheck = hasRepeatData();
 			if(hasRepeatCheck.tag) {
-				$.trace(hasRepeatCheck.errText)
+				// $.trace(hasRepeatCheck.errText)
 				return;
 			}
 			$('.skill_publish').attr('disabled', true);

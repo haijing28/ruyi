@@ -18,6 +18,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	padding: 30px 70px;
 	overflow-y: auto;
 }
+.my_body h3 , .my_body h2{
+	color: #595757;
+}
 .my_body .title {
 	margin-bottom: 30px;
 	font-size: 20px;
@@ -101,8 +104,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .my_body .addLabel {
 	margin-left: 152px;
-	color: #797474;
+	color: #EE892F;
 	display: block;
+	font-weight: 400;
+	font-size: 12px;
 }
 .my_body .skill-platform {
 	/* height: 50px; */
