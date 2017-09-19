@@ -461,8 +461,8 @@
 		$.ajax({
 			url: api_host_v2beta + 'skills/public',
 			type: 'get',
-			headers: {"Authorization" : "Bearer " + getCookie('accessToken'),"size":1000},
-			data: {tag: 'Develop', status: 'OFFLINE'},
+			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+			data: {tag: 'Develop', status: 'OFFLINE',"size":1000},
 			success: function(ret) {
 				console.log(ret.content);
 				$scope.skills_offline_devl = ret.content;
