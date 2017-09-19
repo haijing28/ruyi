@@ -150,6 +150,35 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 		})
 	}
 
+	/*-------------------------------检查用户说等的状态--------------------------------*/
+
+	function hasRepeatData() {
+		console.log(11111111111)
+		var tag = false;
+		var awakes = objectArrToArr($scope.awakes);
+		$scope.awakes.forEach(function(ele, index) {
+			if( awakes.indexOf(ele.value) != awakes.lastIndexOf(ele.value) ) {
+				tag = true;
+				return;
+			}
+		})
+		var wrongs = objectArrToArr($scope.wrongs);
+		$scope.wrongs.some(function(ele, index) {
+			if( wrongs.indexOf(ele.value) != wrongs.lastIndexOf(ele.value) ) {
+				tag = true;
+				return;
+			}
+		})
+		var userSays = objectArrToArr($scope.userSays);
+		$scope.userSays.some(function(ele, index) {
+			if( userSays.indexOf(ele.value) != userSays.lastIndexOf(ele.value) ) {
+				tag = true;
+				return;
+			}
+		})
+		return tag;
+	}
+
 	/*-------------------------------先从本地缓存拿数据--------------------------------*/
 	
 	if( localStorage[hasSkill_storage] == 'true') {
@@ -332,6 +361,11 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 					arr.splice(index, 1);
 				}
 			})
+
+			if(hasRepeatData()) {
+				$.trace('唤醒语、纠错语、用户说 不能有相同数据哦！')
+				return;
+			}
 			$('.skill_publish').attr('disabled', true);
 			$('.skill_publish').addClass('my_gray');
 			$('.skill_publish').text('提交中');
