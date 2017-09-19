@@ -148,7 +148,7 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 	        "title": " ",
 	        "ensureFn": function() {
 		        	var skillId = $this.attr("data-skill-id");
-		        	removeSkillFromBotFunc($scope.myHasSkillList,skillId,$rootScope.currentRobot);
+		        	removeSkillFromBotFunc($scope.myHasSkillList,skillId,$rootScope.currentRobot,"remove");
 		        	$scope.$apply();
 	        }
 		})

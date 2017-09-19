@@ -43,10 +43,14 @@ var addSkillToBotFunc = function(skillList,skillId,currentRobot){
 }
 
 //移除技能插件
-var removeSkillFromBotFunc = function(skillList,skillId,currentRobot){
+var removeSkillFromBotFunc = function(skillList,skillId,currentRobot,remove){
 	skillList.forEach(function(skill,index,self){
 		if(skill.id == skillId){
-			skill.hasSkill = "no";
+			if(remove && remove == "remove"){
+				skillList.splice(index,1);
+			}else{
+				skill.hasSkill = "no";
+			}
 		}
 	});
 	var index = $.inArray(skillId, currentRobot.referencedApp);
