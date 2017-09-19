@@ -1813,8 +1813,8 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 				//$("#change-password").modal("hide");
 			},
 			error: function(err){
-				var err = JSON.parse(err.responseText);
-				$.trace(err.msg);
+				var err = dataParse(err.responseText);
+				$.trace(err.message);
 			}
 		});
 		

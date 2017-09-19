@@ -380,8 +380,9 @@ $(function(){
 				window.location.href = static_host + "/base/login.html"
 			},
 			error: function(err){
-				var err = JSON.parse(err.responseText);
-				$.trace(err.msg);
+				console.log(err)
+				var err = dataParse(err.responseText);
+				$.trace(err.message);
 			}
 		});
 		
