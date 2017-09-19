@@ -87,7 +87,8 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			localStorage[plateforms] = $scope.plateforms.toString();
 			if( $(e.target).hasClass('small') ){
 				var arrName = $(this).parent().parent().find('.addCorect').attr('repeat-type');
-				hasRepeatData(arrName);
+				var index = $(this).parent().index();
+				hasRepeatData(arrName, index);
 			}
 		}catch(e){}
 	})
@@ -161,86 +162,107 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 
 	/*-------------------------------检查用户说等的状态--------------------------------*/
 
-	function awCheck(c) {
-		var awakes = objectArrToArr($scope.awakes);
-		$scope.awakes.forEach(function(ele, index) {
-			if( awakes.indexOf(ele.value) != awakes.lastIndexOf(ele.value) ) {
-				var errText = '唤醒语的内容不能重复哦！'
-
-				var i = awakes.indexOf(ele.value);
-				var l_i = awakes.lastIndexOf(ele.value);
-				$('[repeat-type=awakes]').parent().find('b')[i].children[0].classList.add('wrong')
-				$('[repeat-type=awakes]').parent().find('b')[l_i].children[0].classList.add('wrong')
-				$.trace(errText);
-				return c++;
-			}else {
-				$('[repeat-type=awakes]').parent().children('b').find('input').removeClass('wrong')
-			}
-		})
+	function awCheck(index) {
+		var arr = objectArrToArr($scope.awakes);
+		if(index == undefined) {
+			var errText = '';
+			$scope.awakes.forEach(function(ele, i) {
+				if( arr.indexOf(ele.value) != arr.lastIndexOf(ele.value) ) {
+					$('[repeat-type=awakes]').parent().children()[i + 1].children[0].classList.add('wrong');
+					errText =  '唤醒语的内容不能重复哦！';
+				}else {
+					$('[repeat-type=awakes]').parent().children()[i + 1].children[0].classList.remove('wrong')
+				}
+			})
+			return errText;
+		}
+		var ele = $('[repeat-type=awakes]').parent().children()[index].children[0];
+		if( arr.indexOf(ele.value) != arr.lastIndexOf(ele.value) ) {
+			ele.classList.add('wrong');
+			return '唤醒语的内容不能重复哦！';
+		}else {
+			ele.classList.remove('wrong')
+		}
 	}
 
-	function wrCheck(c) {
-		var wrongs = objectArrToArr($scope.wrongs);
-		$scope.wrongs.some(function(ele, index) {
-			if( wrongs.indexOf(ele.value) != wrongs.lastIndexOf(ele.value) ) {
-				var errText = '纠错语的内容不能重复哦！'
-
-				var i = wrongs.indexOf(ele.value);
-				var l_i = wrongs.lastIndexOf(ele.value);
-				$('[repeat-type=wrongs]').parent().find('b')[i].children[0].classList.add('wrong')
-				$('[repeat-type=wrongs]').parent().find('b')[l_i].children[0].classList.add('wrong')
-				$.trace(errText);
-				return c++;
-			}else {
-				$('[repeat-type=wrongs]').parent().children('b').find('input').removeClass('wrong')
-			}
-		})
+	function wrCheck(index) {
+		var arr = objectArrToArr($scope.wrongs);
+		if(index == undefined) {
+			var errText = '';
+			$scope.wrongs.forEach(function(ele, i) {
+				if( arr.indexOf(ele.value) != arr.lastIndexOf(ele.value) ) {
+					$('[repeat-type=wrongs]').parent().children()[i + 1].children[0].classList.add('wrong');
+					errText =  '纠错语的内容不能重复哦！';
+				}else {
+					$('[repeat-type=wrongs]').parent().children()[i + 1].children[0].classList.remove('wrong')
+				}
+			})
+			return errText;
+		}
+		var ele = $('[repeat-type=wrongs]').parent().children()[index].children[0];
+		if( arr.indexOf(ele.value) != arr.lastIndexOf(ele.value) ) {
+			ele.classList.add('wrong');
+			return '纠错语的内容不能重复哦！';
+		}else {
+			ele.classList.remove('wrong')
+		}
 	}
 
-	function usCheck(c) {
-		var userSays = objectArrToArr($scope.userSays);
-		$scope.userSays.some(function(ele, index) {
-			if( userSays.indexOf(ele.value) != userSays.lastIndexOf(ele.value) ) {
-				var errText = '用户说的内容不能重复哦！'
-
-				var i = userSays.indexOf(ele.value);
-				var l_i = userSays.lastIndexOf(ele.value);
-				$('[repeat-type=userSays]').parent().find('b')[i].children[0].classList.add('wrong')
-				$('[repeat-type=userSays]').parent().find('b')[l_i].children[0].classList.add('wrong')
-				$.trace(errText);
-				return c++;
-			}else {
-				$('[repeat-type=userSays]').parent().children('b').find('input').removeClass('wrong')
-			}
-		})
+	function usCheck(index) {
+		var arr = objectArrToArr($scope.userSays);
+		if(index == undefined) {
+			var errText = '';
+			$scope.userSays.forEach(function(ele, i) {
+				if( arr.indexOf(ele.value) != arr.lastIndexOf(ele.value) ) {
+					$('[repeat-type=userSays]').parent().children()[i + 1].children[0].classList.add('wrong');
+					errText = '用户说的内容不能重复哦！';
+				}else {
+					$('[repeat-type=userSays]').parent().children()[i + 1].children[0].classList.remove('wrong')
+				}
+			})
+			return errText;
+		}
+		var ele = $('[repeat-type=userSays]').parent().children()[index].children[0];
+		if( arr.indexOf(ele.value) != arr.lastIndexOf(ele.value) ) {
+			ele.classList.add('wrong');
+			return '用户说的内容不能重复哦！';
+		}else {
+			ele.classList.remove('wrong')
+		}
 	}
 
-	function hasRepeatData(arrName) {
-		var count = 0;
+	function hasRepeatData(arrName, index) {
+		var wrongStr = '';
+		var a = '';
+		var w = '';
+		var u = '';
 		arrName = arrName || '';
-		var tag = false;
-		var errText = '';
 		switch(arrName) {
 			case "awakes":
-				count = awCheck(count)
+				wrongStr = awCheck(index)
 				break;
 			case "wrongs":
-				count = wrCheck(count);
+				wrongStr = wrCheck(index);
 				break;
 			case "userSays":
-				count = usCheck(count);
+				wrongStr = usCheck(index);
 				break;
 			case "all":
-				count = awCheck(count);count = wrCheck(count);count = usCheck(count);
+				a = awCheck(index);w = wrCheck( index);u = usCheck( index);
 				break;
 		}
-
-		if(count != 0) {
-			tag = true;
-			errText = '测试';
+		if(index == undefined) {
+			if(a != '') {
+				return a;
+			}
+			if( w!= '' ){
+				return w;
+			}
+			if(u != '') {
+				return u;
+			}
 		}
-
-		return {tag，errText}
+		return wrongStr;
 	}
 
 	/*-------------------------------先从本地缓存拿数据--------------------------------*/
@@ -426,9 +448,9 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 				}
 			})
 
-			var hasRepeatCheck = hasRepeatData('all');
-			if(hasRepeatCheck.tag) {
-				// $.trace(hasRepeatCheck.errText)
+			var wrongStr = hasRepeatData('all');
+			if( wrongStr != '' && wrongStr != undefined ) {
+				$.trace(wrongStr)
 				return;
 			}
 			$('.skill_publish').attr('disabled', true);
@@ -436,7 +458,6 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			$('.skill_publish').text('提交中');
 			var skillId = getCookie("skillId");
 			var url = "";
-			console.log(skillId)
 			if(skillId && skillId.length > 0){
 				url = api_host_v2beta + 'skills/' + skillId;
 			}else{
