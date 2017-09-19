@@ -69,13 +69,13 @@
 	background:#61cc71;
 }
 .my_store .status.pending_approval {
-	background:#61cc71;
+	background:#bbbbbb;
 }
 .my_store .status.rejected{
-	background:#61cc71;
+	background:#848484;
 }
 .my_store .status.offline {
-	background:#61cc71;
+	background:#A5A5A5;
 }
 
 .has_dis_true {
