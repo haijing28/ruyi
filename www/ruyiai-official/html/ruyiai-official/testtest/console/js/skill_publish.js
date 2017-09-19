@@ -153,12 +153,13 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	/*-------------------------------检查用户说等的状态--------------------------------*/
 
 	function hasRepeatData() {
-		console.log(11111111111)
 		var tag = false;
+		var errText = '';
 		var awakes = objectArrToArr($scope.awakes);
 		$scope.awakes.forEach(function(ele, index) {
 			if( awakes.indexOf(ele.value) != awakes.lastIndexOf(ele.value) ) {
 				tag = true;
+				errText = '唤醒语的内容不能重复哦！'
 				return;
 			}
 		})
@@ -166,6 +167,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 		$scope.wrongs.some(function(ele, index) {
 			if( wrongs.indexOf(ele.value) != wrongs.lastIndexOf(ele.value) ) {
 				tag = true;
+				errText = '纠错语的内容不能重复哦！'
 				return;
 			}
 		})
@@ -173,10 +175,11 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 		$scope.userSays.some(function(ele, index) {
 			if( userSays.indexOf(ele.value) != userSays.lastIndexOf(ele.value) ) {
 				tag = true;
+				errText = '用户说的内容不能重复哦！'
 				return;
 			}
 		})
-		return tag;
+		return {tag, errText}
 	}
 
 	/*-------------------------------先从本地缓存拿数据--------------------------------*/
@@ -362,8 +365,9 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 				}
 			})
 
-			if(hasRepeatData()) {
-				$.trace('唤醒语、纠错语、用户说 不能有相同数据哦！')
+			var hasRepeatCheck = hasRepeatData();
+			if(hasRepeatCheck.tag) {
+				$.trace(hasRepeatCheck.errText)
 				return;
 			}
 			$('.skill_publish').attr('disabled', true);
