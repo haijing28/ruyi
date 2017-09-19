@@ -240,7 +240,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			errText = '测试';
 		}
 
-		return {tag，errText}
+//		return {tag，errText}
 	}
 
 	/*-------------------------------先从本地缓存拿数据--------------------------------*/
