@@ -507,6 +507,7 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
             	getSkillListProductFunc(botList);//获取develop状况的skill对象
             	$scope.$apply();
             },error: function(){
+            	getSkillListProductFunc(botList);//获取develop状况的skill对象
 //            	goIndex();
             }
         });

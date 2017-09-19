@@ -84,14 +84,17 @@ function delCookie(name)
 
 //跳转到首页
 var goIndex = function(){
-	delCookie("email");
-	delCookie("nickname");
-	delCookie("userId");
-	delCookie("appId");
-	delCookie("appName");
-	delCookie("appKey");
-	delCookie("tgt");
-	window.location.href = static_host + "/base/login.html"
+	$.trace("账号已经登出");
+	setTimeout(function(){
+		delCookie("email");
+		delCookie("nickname");
+		delCookie("userId");
+		delCookie("appId");
+		delCookie("appName");
+		delCookie("appKey");
+		delCookie("tgt");
+		window.location.href = static_host + "/base/login.html"
+	},2000);
 }
 
 //判断是否需要进行parse转换
