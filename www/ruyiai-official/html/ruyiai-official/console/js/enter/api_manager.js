@@ -1833,45 +1833,8 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 	})
 	//修改密码 end
 	
-//	$("#mylogout").click(function(){//注销
-//		$.ajax({
-//			url : ruyiai_host + "/ruyi-ai/user/logout.html",
-//			method : "get",
-//			success: function(data) {
-//				data = JSON.parse(data);
-//				if(data.code == 0){
-//					delCookie("email");
-//					delCookie("nickname");
-//					delCookie("userId");
-//					delCookie("appId");
-//					delCookie("appName");
-//					delCookie("appKey");
-//					window.location.href = static_host + "/index.html";
-//				}else if(data.code == 2){
-//					goIndex();
-//				}else if(data.code == 1){
-//					$.trace(""+data.msg,"error");
-//					$r_username.focus();
-//				}
-//			}
-//		});
-//	});
-	
 	$("#mylogout").click(function(){//注销
-		$.ajax({
-			url : api_host + "/v1/tickets/" + getCookie('tgt'),
-			method : "DELETE",
-			success: function(data) {
-				delCookie("email");
-				delCookie("nickname");
-				delCookie("userId");
-				delCookie("appId");
-				delCookie("appName");
-				delCookie("appKey");
-				delCookie('tgt');
-				window.location.href = static_host + "/index.html";
-			}
-		});
+		goIndex(true);
 	});
 	
 	//判断当前是否是创建机器人状态

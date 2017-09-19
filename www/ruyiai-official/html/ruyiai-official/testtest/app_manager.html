@@ -124,10 +124,10 @@ var _hmt = _hmt || [];
 	 	&nbsp;&nbsp;测试版
 	 </div>
 	<ul class="nav nav-pills nav-box-ul">
-		  <li role="presentation"><a href="index.html" style="margin-top:3px;">首 页<div></div></a></li>
-		  <li role="presentation" id="help"><a href="http://docs.ruyi.ai/" target="_blank" style="margin-top:3px;">开发者文档<div></div></a></li>
-		  <li role="presentation" id="nav-mylogin"><a href="#" class="nav-btn-login" data-toggle="modal" data-target="#login">登录</a></li>
-		  <!-- <li role="presentation" id="nav-register"><a href="#" class="nav-btn-login" data-toggle="modal" data-target="#qr-code">注册</a></li> -->
+		  <li role="presentation" id="robotList"><a href="javascript:;" class="active" style="margin-top:3px;">机器人列表<div></div></a></li>
+		  <li role="presentation" id="forums"><a href="http://forums.ruyi.ai/" target="_blank" style="margin-top:3px;">社区<div></div></a></li>
+		  <li role="presentation" id="docs"><a href="http://docs.ruyi.ai/" target="_blank" style="margin-top:3px;">文档<div></div></a></li>
+		  <li role="presentation" id="contactus"><a href="http://docs.ruyi.ai/344949" target="_blank" style="margin-top:3px;">联系我们<div></div></a></li>
 		  <li role="presentation" id="nav-user-info">
 			<ul class="nav navbar-nav navbar-right">
 	            <li class="dropdown" id="fat-menu">
@@ -135,7 +135,6 @@ var _hmt = _hmt || [];
 	                <span data-act="myemail"></span><span class="caret"></span>
 	              </a>
 	              <ul aria-labelledby="drop3" class="dropdown-menu" style="border-radius:0;font-size:18px;padding:0;margin-top:8px; border: none;">
-	                <!-- <li><a data-toggle="modal" data-target="#appkey" href="#" id="appkey-manager">机器人信息列表</a></li> -->
 	                <li><a href="#" data-toggle="modal" data-target="#change-password">修改密码</a></li>
 	                <li><a href="#" id="mylogout">退出登录</a></li>
 	              </ul>
@@ -169,49 +168,6 @@ var _hmt = _hmt || [];
 	</div>
 </div> -->
 <div class="robot-box">
-	<!-- <table class="table table-bordered robot-box-item" ng-repeat="appObject in appList">
-			<caption ng-if="$index == 0" style="margin-bottom: 16px;font-size: 16px;">机器人列表</caption>
-			<tr>
-				<td class="a-head-desc-box" style="overflow:hidden;position: relative;max-width: 530px;min-width:530px;word-wrap:break-word;word-break:break-all">
-					<div class="media" style="margin-left: 30px;">
-						<a class="pull-left" href="javascript:;" style="cursor:default;">
-							<img class="media-object a-header" ng-if="appObject.appModel.headUrl && appObject.appModel.headUrl != 'img/default-robot.svg'" ng-src="{{appObject.appModel.headUrl}}" alt="机器人头像">
-							<img class="media-object a-header" ng-if="!appObject.appModel.headUrl || appObject.appModel.headUrl == 'img/default-robot.svg'" src="https://dn-vbuluo-static.qbox.me/default-robot.svg" alt="机器人头像">
-						</a>
-						<div class="media-body">
-							<h4 class="media-heading a-robot-name" ng-bind="appObject.appModel.appName"></h4>
-							<p class="my_para">
-								<label>ruyi skill store</label>
-								<span href="javascript:void(0)" style="color:#a0a1a7;">审核成功</span>
-								<label>思必驰</label>
-								<label>小米水滴</label>
-								<label>Rokid</label>
-								<label>百度度秘</label>
-							</p>
-							<p class='maxThree'>{{appObject.appModel.appDesc}}</p>
-						</div>
-					</div>
-					<div class='skill-status'>
-						审核成功
-					</div>
-				</td>
-				<td style="min-width:400px; max-width: 400px;">
-					<section class="a-message-count-box pull-left" style="padding-right:10px;">
-					   <div class="a-message-title">AppKey</div>
-					   <div class="a-appkey-value" style="width:100%;word-wrap: break-all;"><span>{{appObject.appModel.appKey}}</span><span class="a-robot-small-box" data-act="copy-btn" style="margin-left:6px;" ng-click="copyAppKeyFunc(appObject.appModel.appKey)">复 制</span></div>
-					</section>
-				</td>
-				<td style="min-width:180px; max-width: 180px;">
-					<section class="a-message-count-box pull-left" style="padding-right:10px;">
-					   <div class="a-robot-small-margin"><span class="a-robot-small-box a-manager-btn" ng-click="goConsoleManagerFunc(appObject.appModel.id,appObject.appModel.appName,appObject.appModel.appKey)">管 理</span></div>
-					</section>
-					<section class="a-message-count-box pull-left">
-					   <div class="a-robot-small-margin"><span class="a-robot-small-box" style="font-size: 14px;padding: 6px 12px;" ng-click="exportHtml5LinkFunc(appObject.appModel.appName,appObject.appModel.id)">推 广</span></div>
-					</section>
-				</td>
-			</tr>
-	</table> -->
-	
 	<table class="table table-bordered robot-box-item" ng-repeat="botObj in botList" style="opacity:0;">
 			<caption ng-if="$index == 0" style="margin-bottom: 16px;font-size: 16px;">机器人列表</caption>
 			<tr>

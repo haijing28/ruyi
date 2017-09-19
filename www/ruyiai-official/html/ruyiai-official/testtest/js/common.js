@@ -239,23 +239,6 @@ $(function(){
 		
 	});
 	
-	$("#mylogout").click(function(){//注销
-		$.ajax({
-			url : api_host + "/v1/tickets/" + getCookie('tgt'),
-			method : "DELETE",
-			success: function(data) {
-				delCookie("email");
-				delCookie("nickname");
-				delCookie("userId");
-				delCookie("appId");
-				delCookie("appName");
-				delCookie("appKey");
-				delCookie('tgt');
-				window.location.href = static_host + "/index.html";
-			}
-		});
-	});
-	
 	$('#appkey').on('shown.bs.modal', function () {
 	});
 	

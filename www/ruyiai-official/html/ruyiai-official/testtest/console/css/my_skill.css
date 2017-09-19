@@ -65,8 +65,17 @@
 	line-height: 55px;
 }
 
-.my_store .status.succ {
-	background:#4bdc50;
+.my_store .status.approved {
+	background:#61cc71;
+}
+.my_store .status.pending_approval {
+	background:#61cc71;
+}
+.my_store .status.rejected{
+	background:#61cc71;
+}
+.my_store .status.offline {
+	background:#61cc71;
 }
 
 .has_dis_true {

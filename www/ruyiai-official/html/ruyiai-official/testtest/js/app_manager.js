@@ -100,7 +100,6 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 		var appName = $this.attr("data-app-name");
 		var appKey = $this.attr("data-app-key");
 		setCookie("appId",appId);
-		agentObj.name(333);
 		setCookie("appName",appName);
 		setCookie("appKey",appKey);
 		window.location.href = static_host + "/console/api_manager.html#/log_statistics";
