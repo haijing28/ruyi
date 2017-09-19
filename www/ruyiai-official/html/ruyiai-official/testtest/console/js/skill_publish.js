@@ -88,7 +88,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			if( $(e.target).hasClass('small') ){
 				var arrName = $(this).parent().parent().find('.addCorect').attr('repeat-type');
 				var index = $(this).parent().index();
-				hasRepeatData(arrName, index);
+				hasRepeatData(arrName);
 			}
 		}catch(e){}
 	})
@@ -162,107 +162,78 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 
 	/*-------------------------------检查用户说等的状态--------------------------------*/
 
-	function awCheck(index) {
+	function awCheck() {
 		var arr = objectArrToArr($scope.awakes);
-		if(index == undefined) {
-			var errText = '';
-			$scope.awakes.forEach(function(ele, i) {
-				if( arr.indexOf(ele.value) != arr.lastIndexOf(ele.value) ) {
-					$('[repeat-type=awakes]').parent().children()[i + 1].children[0].classList.add('wrong');
-					errText =  '唤醒语的内容不能重复哦！';
-				}else {
-					$('[repeat-type=awakes]').parent().children()[i + 1].children[0].classList.remove('wrong')
-				}
-			})
-			return errText;
-		}
-		var ele = $('[repeat-type=awakes]').parent().children()[index].children[0];
-		if( arr.indexOf(ele.value) != arr.lastIndexOf(ele.value) ) {
-			ele.classList.add('wrong');
-			return '唤醒语的内容不能重复哦！';
-		}else {
-			ele.classList.remove('wrong')
-		}
+		var tag = true;
+		$scope.awakes.forEach(function(ele, i) {
+			if(arr.indexOf(ele.value) != arr.lastIndexOf(ele.value)) {
+				$('[repeat-type=awakes]').parent().children()[i + 1].children[0].classList.add('wrong');
+				tag = false;
+			}else {
+				$('[repeat-type=awakes]').parent().children()[i + 1].children[0].classList.remove('wrong');
+			}
+		})
+		return tag;
 	}
 
-	function wrCheck(index) {
+	function wrCheck() {
 		var arr = objectArrToArr($scope.wrongs);
-		if(index == undefined) {
-			var errText = '';
-			$scope.wrongs.forEach(function(ele, i) {
-				if( arr.indexOf(ele.value) != arr.lastIndexOf(ele.value) ) {
-					$('[repeat-type=wrongs]').parent().children()[i + 1].children[0].classList.add('wrong');
-					errText =  '纠错语的内容不能重复哦！';
-				}else {
-					$('[repeat-type=wrongs]').parent().children()[i + 1].children[0].classList.remove('wrong')
-				}
-			})
-			return errText;
-		}
-		var ele = $('[repeat-type=wrongs]').parent().children()[index].children[0];
-		if( arr.indexOf(ele.value) != arr.lastIndexOf(ele.value) ) {
-			ele.classList.add('wrong');
-			return '纠错语的内容不能重复哦！';
-		}else {
-			ele.classList.remove('wrong')
-		}
+		var tag = true;
+		$scope.wrongs.forEach(function(ele, i) {
+			if(arr.indexOf(ele.value) != arr.lastIndexOf(ele.value)) {
+				$('[repeat-type=wrongs]').parent().children()[i + 1].children[0].classList.add('wrong');
+				tag = false;
+			}else {
+				$('[repeat-type=wrongs]').parent().children()[i + 1].children[0].classList.remove('wrong');
+			}
+		})
+		return tag;
 	}
 
-	function usCheck(index) {
+	function usCheck() {
 		var arr = objectArrToArr($scope.userSays);
-		if(index == undefined) {
-			var errText = '';
-			$scope.userSays.forEach(function(ele, i) {
-				if( arr.indexOf(ele.value) != arr.lastIndexOf(ele.value) ) {
-					$('[repeat-type=userSays]').parent().children()[i + 1].children[0].classList.add('wrong');
-					errText = '用户说的内容不能重复哦！';
-				}else {
-					$('[repeat-type=userSays]').parent().children()[i + 1].children[0].classList.remove('wrong')
-				}
-			})
-			return errText;
-		}
-		var ele = $('[repeat-type=userSays]').parent().children()[index].children[0];
-		if( arr.indexOf(ele.value) != arr.lastIndexOf(ele.value) ) {
-			ele.classList.add('wrong');
-			return '用户说的内容不能重复哦！';
-		}else {
-			ele.classList.remove('wrong')
-		}
+		var tag = true;
+		$scope.userSays.forEach(function(ele, i) {
+			if(arr.indexOf(ele.value) != arr.lastIndexOf(ele.value)) {
+				$('[repeat-type=userSays]').parent().children()[i + 1].children[0].classList.add('wrong');
+				tag = false;
+			}else {
+				$('[repeat-type=userSays]').parent().children()[i + 1].children[0].classList.remove('wrong');
+			}
+		})
+		return tag;
 	}
 
-	function hasRepeatData(arrName, index) {
-		var wrongStr = '';
-		var a = '';
-		var w = '';
-		var u = '';
+	function hasRepeatData(arrName) {
+		var has_passed = true;
+		var a = true;
+		var w = true;
+		var u = true;
 		arrName = arrName || '';
 		switch(arrName) {
 			case "awakes":
-				wrongStr = awCheck(index)
+				has_passed = awCheck()
 				break;
 			case "wrongs":
-				wrongStr = wrCheck(index);
+				has_passed = wrCheck();
 				break;
 			case "userSays":
-				wrongStr = usCheck(index);
+				has_passed = usCheck();
 				break;
 			case "all":
-				a = awCheck(index);w = wrCheck( index);u = usCheck( index);
+				a = awCheck();w = wrCheck();u = usCheck();
 				break;
 		}
-		if(index == undefined) {
-			if(a != '') {
-				return a;
-			}
-			if( w!= '' ){
-				return w;
-			}
-			if(u != '') {
-				return u;
-			}
+		if( !a ) {
+			return {tag: a, txt: '唤醒语的内容不能重复哦！'};
 		}
-		return wrongStr;
+		if( !w ) {
+			return {tag: w, txt: '纠错语的内容不能重复哦！'};
+		}
+		if( !u ) {
+			return {tag: u, txt: '用户说的内容不能重复哦！'};
+		}
+		return has_passed;
 	}
 
 	/*-------------------------------先从本地缓存拿数据--------------------------------*/
@@ -364,7 +335,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			$scope[tp].push({value: ''});
 		}
 		$scope.$apply();
-		$(this).prev('input').focus();
+		$(this).prev('b').find('input').focus();
 	})
 	$('div').on('keydown', '.small', function(e) {
 		if($(this).val() == ''){
@@ -448,9 +419,9 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 				}
 			})
 
-			var wrongStr = hasRepeatData('all');
-			if( wrongStr != '' && wrongStr != undefined ) {
-				$.trace(wrongStr)
+			var has_passed = hasRepeatData('all');
+			if(has_passed.tag !== undefined) {
+				$.trace(has_passed.txt)
 				return;
 			}
 			$('.skill_publish').attr('disabled', true);
@@ -491,8 +462,8 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 					data = JSON.parse(data.responseText);
 					$.trace(data.message)
 					if(data.status == 401 || data.status == 403){
-	            		goIndex();
-	            	}
+			            		goIndex();
+			            	}
 				},
 				complete: function() {
 					$('.skill_publish').attr('disabled', false);
