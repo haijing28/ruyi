@@ -15,7 +15,7 @@ if(!isproductDomain){
 	api_host = "http://lab.ruyi.ai/sso";
 	api_host_v2beta = "http://lab.ruyi.ai/v2beta/";
 	if(ruyiai_host.indexOf("http://test.ruyi.ai") > -1){
-		api_host_v2beta = "http://test.ruyi.ai:7776/";
+		api_host_v2beta = "http://test.ruyi.ai:1111/";
 	}
 }
 var developTag = "Develop";
@@ -82,9 +82,7 @@ function delCookie(name)
     });
 } 
 
-//跳转到首页
-var goIndex = function(){
-	$.trace("账号已经登出");
+var deleteAllCookieFunc = function(){
 	setTimeout(function(){
 		delCookie("email");
 		delCookie("nickname");
@@ -93,8 +91,33 @@ var goIndex = function(){
 		delCookie("appName");
 		delCookie("appKey");
 		delCookie("tgt");
+		delCookie("botId");
+		delCookie("skillId");
+		delCookie("agentType");
+		delCookie('accessToken');
+		delCookie('email');
 		window.location.href = static_host + "/base/login.html"
-	},2000);
+	},1000);
+}
+
+$("#mylogout").click(function(){//注销
+	goIndex(true);
+});
+
+//跳转到首页
+var goIndex = function(selfexit){
+	if(!selfexit){
+		$.trace("账号已经登出");
+	}
+	$.ajax({
+		url : api_host + "/v1/tickets/" + getCookie('tgt'),
+		method : "DELETE",
+		success: function() {
+			deleteAllCookieFunc();
+		},error: function(){
+			deleteAllCookieFunc();
+		}
+	});
 }
 
 //判断是否需要进行parse转换

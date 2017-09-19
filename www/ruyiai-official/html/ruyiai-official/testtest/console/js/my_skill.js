@@ -81,20 +81,23 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 			// }
 			
 			if(ele.auditStatus == 'APPROVED') {
-				ele.statuClass = 'succ';
+				ele.statuClass = 'approved';
 				ele.statuText = '通过审核'
 				ele.btn_Text = '从技能商店撤回技能';
 				ele.btn_show = true;
 			}
 			if(ele.auditStatus == 'PENDING_APPROVAL') {
+				ele.statuClass = 'pending_approval';
 				ele.statuText = '审核中'
 				ele.btn_show = false;
 			}
 			if(ele.auditStatus == 'REJECTED') {
+				ele.statuClass = 'rejected';
 				ele.statuText = '未通过'
 				ele.btn_show = false;
 			}
 			if(ele.auditStatus == 'OFFLINE') {
+				ele.statuClass = 'offline';
 				ele.statuText = '已下线'
 				ele.btn_show = false;
 			}
