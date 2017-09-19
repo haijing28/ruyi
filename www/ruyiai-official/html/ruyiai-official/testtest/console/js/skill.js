@@ -535,8 +535,10 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 						//$scope.skillDetailObj.agentId = skillDetailObj.agents[0].agentId;
 						$scope.$apply();
 					},
-					error: function() {
-						goIndex();
+					error: function(data) {
+						if(data.status == 401 || data.status == 403){
+		            		goIndex();
+		            	}
 					}
 				});
 			}
