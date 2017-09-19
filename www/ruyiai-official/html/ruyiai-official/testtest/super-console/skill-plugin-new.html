@@ -331,7 +331,7 @@
 			url,
 			type: 'post',
 			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
-			data:{"size",1000},
+			data:{"size":1000},
 			success: function() {
 				$.trace('操作成功')
 				$this.parent().find('button').hide();
@@ -356,7 +356,7 @@
 		$.ajax({
 			url: api_host_v2beta + 'skills/public',
 			type: 'get',
-			data:{"size",1000},
+			data:{"size":1000},
 			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
 			// data: {tag: 'Develop'},
 			success: function(ret) {
