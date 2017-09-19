@@ -545,9 +545,10 @@
 	       }
 	})
 
-	app.filter('filter_english',function(){
+	app.filter('filter_time',function(){
 		 return function(time) {
-		 	time = new Date(time).toLocaleString();
+			/*  time = time+"".substr(0,9); 
+		 	time = new Date(time).toLocaleString();  */
 			return time;
 	       }
 	})
