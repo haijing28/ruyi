@@ -12,7 +12,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	var appID = getCookie('appId');
 
 	/*-------------------------------stringArr to objArr--------------------------------*/
-	
+
 	function stringToObjectArr(str) {
 		if(str == undefined) {
 			str = [];
@@ -89,11 +89,11 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 		}catch(e){}
 	})
 
-	
+
 	/*-------------------------------获得skill详情--------------------------------*/
 
 	var botId = getCookie('botId');
-	
+
 	function getSkillDetailFunc (){
 		var skillId = getCookie("skillId");
 		if(skillId && skillId.length > 0){
