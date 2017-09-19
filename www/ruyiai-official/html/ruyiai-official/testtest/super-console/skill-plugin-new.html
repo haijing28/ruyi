@@ -200,7 +200,7 @@
 			<td>{{skill.agents[0].agent.name}}</td>
 			<td>{{skill.agents[0].agent.description}}</td>
 			<td>暂无</td>
-			<td>{{skill.gmtUpdate}}</td>
+			<td>{{skill.gmtUpdate | filter_time}}</td>
 			<td>{{skill.auditStatus | filter_english}}</td>
 		</tr>
 		<tr class='more rel'>
@@ -528,6 +528,13 @@
 				out = '未提交审核'
 			}
 			return out;
+	       }
+	})
+
+	app.filter('filter_english',function(){
+		 return function(time) {
+		 	time = new Date(time).toLocaleString();
+			return time;
 	       }
 	})
 
