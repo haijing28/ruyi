@@ -451,7 +451,8 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 				"developerMainSite": $scope.self_homepage.trim(),
 				"developerIntroduction": $scope.selfDesc.trim(),
 				"descriptionForAudit": $scope.robotDesc.trim(),
-				"thirdPartyPlatforms": $scope.plateforms
+				"thirdPartyPlatforms": $scope.plateforms,
+				"skillIds": $rootScope.currentRobot.referencedApp
 			}),
 			success: function(ret) {
 				setCookie('skillId' ,ret.id);
