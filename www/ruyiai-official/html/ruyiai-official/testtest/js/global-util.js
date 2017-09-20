@@ -8,7 +8,6 @@ if(ruyiai_host.indexOf("http://test.ruyi.ai") > -1){
 	static_host = "http://lab.ruyi.ai/ruyiai-official/testtest";
 	isproductDomain = false;
 }
-var correction_host = "http://test.ruyi.ai:3333/";
 var api_host = "https://api.ruyi.ai/sso";
 var api_host_v2beta = "http://api.ruyi.ai/v2beta/";
 if(!isproductDomain){

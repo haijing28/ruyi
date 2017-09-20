@@ -486,7 +486,7 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 	//获取develop状况的skill对象
 	var getSkillListDevelopFunc = function(botList){
         $.ajax({
-            url: api_host_v2beta + 'skills?tag=' + developTag + "&size=100",
+            url: api_host_v2beta + 'skills?tag=' + developTag + "&size=1000",
             method: 'GET',
             headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
             error: function(xhr, status, error) {
@@ -515,7 +515,7 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 	//获取develop状况的skill对象
 	var getSkillListProductFunc = function(botList){
         $.ajax({
-            url: api_host_v2beta + 'skills?tag=' + productTag + "&size=100",
+            url: api_host_v2beta + 'skills?tag=' + productTag + "&size=1000",
             method: 'GET',
             headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
             error: function(xhr, status, error) {
@@ -541,7 +541,7 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 	var getBotListFunc = function(){
 		// 获取 st
         $.ajax({
-            url: api_host_v2beta + 'bots?tag=' + developTag + "&size=100",
+            url: api_host_v2beta + 'bots?tag=' + developTag + "&size=1000",
             method: 'GET',
             headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
             error: function(xhr, status, error) {
