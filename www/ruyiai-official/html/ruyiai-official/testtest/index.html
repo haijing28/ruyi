@@ -50,19 +50,18 @@
 				</div>
 				<div class="navbar-collapse navbar-ex1-collapse collapse"
 					id="header" role="navigation">
+					
 					<ul class="nav navbar-nav navbar-right option-list">
-						<li class="myHome"><a class="current" href="javascript:void(0)">首页</a></li>
+						<li class="robotList" id="robotList">
+							<a data-toggle="modal" data-target="#appkey" href="javascript:;" id="appkey-manager">控制台</a>
+						</li>
 						<li class="recruit"><a href="javascript:void(0)">招聘</a></li>
 						<li class="sign-in" id="nav-mylogin" style="display: none;"><a
 							href="base/login.html">登录</a></li>
 						<li class="sign-up" id="nav-register" style="display: none;"><a
 							href="base/phRegister.html"
-							style="background-color: #3D96FC; color: #fff !important;">注册</a>
-						</li>
-						<li class="robotList" id="nav-user-info" style="display: none;padding-top:0;">
-							<a data-toggle="modal" data-target="#appkey" href="javascript:;" id="appkey-manager">机器人列表</a>
-						</li>
-						<!-- <li role="presentation" id="nav-user-info" style="display: none;">
+							style="background-color: #3D96FC; color: #fff !important;">注册</a></li>
+						<li role="presentation" id="nav-user-info" style="display: none;">
 							<ul class="nav navbar-nav navbar-right">
 								<li class="dropdown" id="fat-menu"><a
 									style="margin-top: -8px;" aria-expanded="true"
@@ -73,14 +72,12 @@
 									<ul aria-labelledby="drop3"
 										class="dropdown-menu user-action-box"
 										style="border-radius: 0; font-size: 18px; padding: 0; border: none;">
-										<li><a data-toggle="modal" data-target="#appkey" href="#"
-											id="appkey-manager">机器人列表</a></li>
 										<li><a href="#" data-toggle="modal"
 											data-target="#change-password">修改密码</a></li>
 										<li><a href="#" id="mylogout">退出登录</a></li>
 									</ul></li>
 							</ul>
-						</li> -->
+						</li>
 					</ul>
 				</div>
 			</div>
