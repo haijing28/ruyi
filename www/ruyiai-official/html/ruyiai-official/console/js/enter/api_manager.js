@@ -97,6 +97,30 @@ apiManagerApp.config(function($locationProvider , $stateProvider, $urlRouterProv
         controller: function($rootScope,$scope, $state, $stateParams){
         	referenceAppCtrl($rootScope,$scope, $state, $stateParams);
         }
+	}).state('skill_store.ruyi_skill',{
+		url: "/ruyi_skill",
+		templateUrl: "ruyi_skill.html",
+        controller: function($rootScope,$scope, $state, $stateParams){
+        	ruyiSkillCtrl($rootScope,$scope, $state, $stateParams);
+        }
+	}).state('skill_store.open_skill',{
+		url: "/open_skill",
+		templateUrl: "open_skill.html",
+        controller: function($rootScope,$scope, $state, $stateParams){
+        	openSkillCtrl($rootScope,$scope, $state, $stateParams);
+        }
+	}).state('skill_store.my_skill',{
+		url: "/my_skill",
+		templateUrl: "my_skill.html",
+        controller: function($rootScope,$scope, $state, $stateParams){
+        	mySkillCtrl($rootScope,$scope, $state, $stateParams);
+        }
+	}).state('skill_store.skill',{
+		url: "/skill/{skill_id}",
+		templateUrl: "skill.html",
+        controller: function($rootScope,$scope, $state, $stateParams){
+        	skillCtrl($rootScope,$scope, $state, $stateParams);
+        }
 	}).state('delete_robot',{
 		url: "/delete_robot",
 		templateUrl: "delete_robot.html",
@@ -622,6 +646,8 @@ return out;
 				return '智能家居';
 			case "INTEL_CUSTOM_SERVICE":
 				return '智能客服';
+			case "aaaaaaaaaaa":
+				return '语义技能';
 			default:
 				return '通用';
 		}
@@ -753,7 +779,7 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 			    		}else if(listType == "import_knowledge_base"){
 			    			$state.go("import_knowledge_base");
 			    		}else if(listType == "skill_store"){
-			    			$state.go("skill_store");
+			    			$state.go("skill_store.ruyi_skill");
 			    		}else if(listType == "delete_robot"){
 			    			$state.go("delete_robot");
 			    		}else if(listType == "robot_paramenter"){
@@ -799,7 +825,7 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 			}else if(listType == "import_knowledge_base"){
 				$state.go("import_knowledge_base");
 			}else if(listType == "skill_store"){
-				$state.go("skill_store");
+				$state.go("skill_store.ruyi_skill");
 			}else if(listType == "delete_robot"){
 				$state.go("delete_robot");
 			}else if(listType == "robot_paramenter"){
@@ -1324,17 +1350,18 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 	
 	$scope.testSubmit = function($event){
 		var content_type = $(".tab-content-max .tab-pane.active").attr("id");
-		if(!$(".testTextarea textarea").val() || $(".testTextarea textarea").val().length == 0  || $(".testTextarea textarea").val().replace(/(^\s*)|(\s*$)/g,"")==""){
+		console.log("aaaaaa");
+		if(!$(".testTextarea [data-act=sendMsg]").val() || $(".testTextarea [data-act=sendMsg]").val().length == 0  || $(".testTextarea [data-act=sendMsg]").val().replace(/(^\s*)|(\s*$)/g,"")==""){
 			$.trace("请填写你要说的话");
-			$(".testTextarea textarea").focus();
+			$(".testTextarea [data-act=sendMsg]").focus();
 			return false;
 		}
-		if($(".testTextarea textarea").val()){
-			$scope.talks.push({serverLeft: false,userRight: true,talkText:$(".testTextarea textarea").val()});
+		if($(".testTextarea [data-act=sendMsg]").val()){
+			$scope.talks.push({serverLeft: false,userRight: true,talkText:$(".testTextarea [data-act=sendMsg]").val()});
 			setTimeout(function(){
 				$(".try-testContain").scrollTop($(".try-testContain")[0].scrollHeight);
 			},500);
-			$(".testTextarea textarea").val('');
+			$(".testTextarea [data-act=sendMsg]").val('');
 		}
 		
 		//TODO 记得提交代码的时候注释掉
@@ -1540,9 +1567,10 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 	});
 
 	$scope.testSubmitLocal = function($event){
+		console.log("bbbbbb");
 		if(!$(".testTextareaLocal textarea").val() || $(".testTextareaLocal textarea").val().length == 0 || $(".testTextareaLocal textarea").val().replace(/(^\s*)|(\s*$)/g,"")==""){
 			$.trace("请填写你要说的话");
-			$(".testTextarea textarea").focus();
+			$(".testTextarea [data-act=sendMsg]").focus();
 			return false;
 		}
 		if($(".testTextareaLocal textarea").val()){
@@ -1792,7 +1820,7 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 	    	re_newpasswd.focus();
 	        return false;  
 	    }
-	   
+	    
 		$.ajax({
 			url : api_host + "/password",
 			method : "POST",
@@ -1813,8 +1841,8 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 				//$("#change-password").modal("hide");
 			},
 			error: function(err){
-				var err = dataParse(err.responseText);
-				$.trace(err.message);
+				var err = JSON.parse(err.responseText);
+				$.trace(err.msg);
 			}
 		});
 		
@@ -1832,10 +1860,6 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 		}
 	})
 	//修改密码 end
-	
-	$("#mylogout").click(function(){//注销
-		goIndex(true);
-	});
 	
 	//判断当前是否是创建机器人状态
 	var createRobot = getCookie("createRobot");
@@ -1865,7 +1889,7 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 			$(".para-action-tips p").text("点击卡片查看详情,添加机器人技巧插件");
 			$(".para-action-tips").css({"top":"176px","left":"30%"});
 			$(".nav-robot-box li:last").addClass("active");
-			$state.go("skill_store");
+			$state.go("skill_store.ruyi_skill");
 		}else if(href.indexOf("#/skill_store") > -1){
 			$(".nav-robot-box").css("display","none");
 			$(".create-robot-foot").css("display","none");
@@ -2086,6 +2110,7 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
     },800)
 
     $('.left-box ul:first li:first').click();
+    
 
 });
 

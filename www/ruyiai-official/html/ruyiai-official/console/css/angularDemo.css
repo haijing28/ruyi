@@ -43,7 +43,7 @@
     right: 0;
 }
 .testTextarea button:hover{
-	background-color: #0A8CBE!important;
+	background-color: #64a8f7 !important;
 }
 .testTextarea button:focus{
 	outline:none;

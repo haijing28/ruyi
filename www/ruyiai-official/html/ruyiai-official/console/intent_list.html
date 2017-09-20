@@ -122,7 +122,7 @@
 	        <!-- end -->
 			<ul class="list-group intent">
 			  <li class="list-group-item" data-act="nav-intent-{{intent.id}}" ng-click="goIntentDetail(intent.scenarioId,intent.id,$event)" ng-repeat="intent in intentList">
-			  	<span ng-bind="intent.name"></span>
+			  	<span ng-bind="intent.name" title="{{intent.name}}"></span>
 			  	<div class="btn-group pull-right">
 			  	 	<div class="dropdown-toggle glyphicon glyphicon-option-vertical btn-intent" ng-show='!isSY' type="button" data-submenu="" aria-expanded="false"></div>
 			  	 	<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">

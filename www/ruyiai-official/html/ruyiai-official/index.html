@@ -35,7 +35,7 @@
 <body>
 	<header class="top-bar clearfix">
 		<div class="version clearfix col-xs-3 col-sm-3 col-md-3">
-			<a href="#"><i class="logo iconfont icon-ruyi"></i></a>
+			<a href="https://ruyi.ai"><i class="logo iconfont icon-ruyi"></i></a>
 		</div>
 		<nav class="navbar navbar-default navbar-static-top" role="navigation">
 			<div class="container-fluid">
@@ -50,10 +50,11 @@
 				</div>
 				<div class="navbar-collapse navbar-ex1-collapse collapse"
 					id="header" role="navigation">
+					
 					<ul class="nav navbar-nav navbar-right option-list">
-						<li class="myHome"><a class="current" href="javascript:void(0)">首页</a></li>
-						<!-- <li class=""><a href="">社区</a></li> -->
-						<!-- <li class=""><a href="http://blog.ruyi.ai/" target="_blank">博客</a></li> -->
+						<li class="robotList" id="robotList">
+							<a data-toggle="modal" data-target="#appkey" href="javascript:;" id="appkey-manager">控制台</a>
+						</li>
 						<li class="recruit"><a href="javascript:void(0)">招聘</a></li>
 						<li class="sign-in" id="nav-mylogin" style="display: none;"><a
 							href="base/login.html">登录</a></li>
@@ -71,8 +72,6 @@
 									<ul aria-labelledby="drop3"
 										class="dropdown-menu user-action-box"
 										style="border-radius: 0; font-size: 18px; padding: 0; border: none;">
-										<li><a data-toggle="modal" data-target="#appkey" href="#"
-											id="appkey-manager">机器人列表</a></li>
 										<li><a href="#" data-toggle="modal"
 											data-target="#change-password">修改密码</a></li>
 										<li><a href="#" id="mylogout">退出登录</a></li>

@@ -50,8 +50,8 @@
 						<span class="action-title">header：</span>
 						<ul class="header-list">
 							<li class="header-list-li clearfix" ng-repeat="(key, value) in actionObj.header">
-								<input type="text" placeholder="name" data-act="header-key" value="{{key}}"/>
-								<input type="text" class="header-value" placeholder="value" data-act="header-value" value="{{value}}"/>
+								<input type="text" placeholder="name" data-act="header-key" title="{{key}}" value="{{key}}"/>
+								<input type="text" class="header-value" placeholder="value" title="{{value}}" data-act="header-value" value="{{value}}"/>
 								<i class="iconfont icon-delete pull-right"></i>
 							</li>
 						</ul>
@@ -82,7 +82,7 @@
 						<section class="clearfix add-cache-key-box">
 							<div>
 								<span class="add-cache-key-span" style="position:relative;" ng-repeat="keyName in actionObj.entitiesInCacheKey track by $index">
-									<input placeholder="key名称" value="{{keyName}}" />
+									<input placeholder="key名称" title="{{keyName}}" value="{{keyName}}" />
 									<i class="add-cache-key-close">&times;</i>
 								</span>
 								<input placeholder="key名称" />
