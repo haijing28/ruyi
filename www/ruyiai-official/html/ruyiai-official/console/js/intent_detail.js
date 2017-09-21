@@ -94,9 +94,9 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	var intentDetailDuplicate = "";
 	
 	// intentDetail监视
-//	$scope.$watch('intentDetail.name', function(newValue, oldValue) {
-//		
-//	}, true);
+	$scope.$watch('intentDetail', function(newValue, oldValue) {
+		console.log(111);
+	}, true);
 	
 	$scope.isSaveSuccess = true;
 	
@@ -595,7 +595,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	}
 	//点击保存按钮，创建意图
 	$scope.saveIntentDetailFunc = function(){
-		console.log("您好，我触发了保存动作");
+		
 		// 清楚空回复
 		$scope.wechatOutputs.forEach(function(ele){
 			ele.forEach(function(ele,index,arr){
