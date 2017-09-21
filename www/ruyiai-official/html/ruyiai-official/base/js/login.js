@@ -96,7 +96,6 @@ $(function() {
                         $("[data-act=login-email] .error-tips").text('账号或密码错误');
                     },
                     success: function(data, status, xhr) {
-                    	alert();
                         // 跳转回未登录之前浏览的界面
                         localStorage.ruyi_tk = xhr.responseText;
                         setCookie('tgt', tgt);
