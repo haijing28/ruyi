@@ -595,7 +595,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	}
 	//点击保存按钮，创建意图
 	$scope.saveIntentDetailFunc = function(){
-		
+		$rootScope.saveStatus = "saving";
 		// 清楚空回复
 		$scope.wechatOutputs.forEach(function(ele){
 			ele.forEach(function(ele,index,arr){
