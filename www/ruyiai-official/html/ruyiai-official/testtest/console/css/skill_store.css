@@ -463,8 +463,6 @@
 
 .my_store {
 	background: #f7f8f8;
-	height: 100%;
-	overflow-y: auto;
 }
 
 .my_store .my_ul {
