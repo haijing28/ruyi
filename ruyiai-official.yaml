@@ -19,7 +19,7 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      nodePort: 30042
+      nodePort: 31042
 ---
 apiVersion: apps/v1beta1
 kind: Deployment
