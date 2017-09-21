@@ -95,8 +95,8 @@ var _hmt = _hmt || [];
 			<div class="assistant-box clearfix">
 				<img ng-src="{{currentRobot.headUrl | robotHeadUrlFilter}}" data-act="show-app-list" data-toggle="tooltip" data-placement="bottom" title=""/>
 				<span ng-bind="currentRobot.appName" data-act="appName-global" title="{{currentRobot.appName}}"></span>
-				<span class="global-save-tips saving" ng-show="saveStatus == 'saving'">保存中...</span>
-				<span class="global-save-tips saved" ng-show="saveStatus == 'saved'">修改已保存</span>
+				<!-- <span class="global-save-tips saving" ng-show="saveStatus == 'saving'">保存中...</span>
+				<span class="global-save-tips saved" ng-show="saveStatus == 'saved'">修改已保存</span> -->
 				<!-- <ul class="list-group" data-act="app-list-box" ng-show="appList && appList.length > 0">
 				  <li class="list-group-item" style="border-bottom:1px solid #dcdddd;" ng-click="skipAppManager()">机器人列表页面</li>
 				  <li ng-repeat="appObj in appList" class="list-group-item" ng-click="goConsoleManager(appObj.id,appObj.appName,appObj.appKey)" ng-bind="appObj.appName"></li>
