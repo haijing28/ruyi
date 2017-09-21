@@ -442,7 +442,6 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 				"name": $scope.robotName.trim(),
 				"description": $scope.skillDesc.trim(),
 				"category": $scope.selectedType.trim(),
-				"service": '123',
 				"agentType": agentType,
 				"logo": $scope.imgSrc,
 				"nickNames": objectArrToArr($scope.awakes),
