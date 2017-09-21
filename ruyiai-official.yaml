@@ -19,7 +19,7 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      nodePort: 31042
+      nodePort: 30042
 ---
 apiVersion: apps/v1beta1
 kind: Deployment
@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: ruyiai-official-controller
-        image: 10.10.150.149:5000/ruyi-ai/ruyiai-official:20170920-020731
+        image: 10.10.150.149:5000/ruyi-ai/ruyiai-official:20170921-035906
         ports:
         - containerPort: 80
       imagePullSecrets:
