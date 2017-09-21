@@ -1,0 +1,78 @@
+.my_own_skill {
+
+}
+.my_own_skill .detail .my_btn {
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	background: #fff;
+	border: 1px solid #D3D3D3;
+	height: 32px;
+	width: 184px;
+	align-self: flex-end;
+	text-align: center;
+}
+.my_own_skill .detail .has_dis_true {
+	background: #B8C4D1 !important;
+	border: 1px solid #B8C4D1 !important;
+	width: 70px !important;
+	color: #fff;
+}
+.my_own_skill .detail .my_btn:hover {
+	background: #F6F6F6 !important;
+}
+
+.my_own_skill .detail .has_dis_true:hover {
+	background: #B8C4D1 !important;
+}
+
+.my_own_skill .down_arrow {
+	display: inline-block;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-image: url(../../img/down_arrow.svg);
+	height: 32px;
+	vertical-align: middle;
+	width: 13px;
+	line-height: 32px;
+	margin-top: -2px;
+}
+.my_own_down_div {
+	text-align: center !important;
+}
+.down_web_label {
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+.down_web_span {
+	font-size: 14px;
+	color: #c3c0c0;
+}
+
+.my_store .card .status {
+	position: absolute;
+	height: 36px;
+	width: 100px;
+	background: #ccc;
+	transform: rotate(-40deg);
+	font-family: PingFangSC-Regular;
+	font-size: 12px;
+	color: #FFFFFF;
+	letter-spacing: 0;
+	text-align: center;
+	top: -7px;
+	left: -34px;
+	line-height: 55px;
+}
+
+.my_store .status.succ {
+	background:  #7bc73d;
+}
+
+.has_dis_true {
+
+}
+
+
+
+

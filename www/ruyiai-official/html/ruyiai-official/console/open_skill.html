@@ -1,0 +1,22 @@
+<div class="my_open_skill my_store">
+	
+	<ul class="my_ul">
+		<li class='card' data-skill-id="{{openSkill.id}}" ng-repeat="openSkill in openSkillList">
+			<div class="top" data-skill-id="{{openSkill.id}}">
+				<img ng-src="{{openSkill.agents[0].agent.logo}}">
+				<div class="detail">
+					<h2 ng-bind="openSkill.agents[0].agent.name"></h2>
+					<span class="span">海知智能</span>
+					<button class='remove-skill-button' data-act="remove-open-skill" data-skill-id="{{openSkill.id}}" ng-show="openSkill.hasSkill == 'yes'">移除技能</button>
+					<button class='my_button add_kill_button' data-act="add-open-skill" data-skill-id="{{openSkill.id}}" ng-show="openSkill.hasSkill == 'no'">获取技能</button>
+				</div>
+			</div>
+			<hr>
+			<p class='desc'>
+				<i class="iconfont icon-zuoshuangyinhao"></i>
+					&nbsp;&nbsp;<span ng-bind="openSkill.agents[0].agent.attributes.userInputExamples[0]"></span>
+				<i class="iconfont icon-youshuangyinhao"></i>
+			</p>
+		</li>
+	</ul>
+</div>

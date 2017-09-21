@@ -9,7 +9,7 @@ if(ruyiai_host.indexOf("http://test.ruyi.ai") > -1){
 	isproductDomain = false;
 }
 var api_host = "https://api.ruyi.ai/sso";
-var api_host_v2beta = "http://api.ruyi.ai/v2beta/";
+var api_host_v2beta = "https://api.ruyi.ai/v2beta/";
 if(!isproductDomain){
 	api_host = "http://lab.ruyi.ai/sso";
 	api_host_v2beta = "http://lab.ruyi.ai/v2beta/";

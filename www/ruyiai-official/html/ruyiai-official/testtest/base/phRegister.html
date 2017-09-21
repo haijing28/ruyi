@@ -10,61 +10,194 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_cl7jbu2chp3qh0k9.css">
 <link rel="stylesheet" href="css/login.css">
 <title>ruyi.ai 登录</title>
-<style>
-	::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-	    color:    #ccc;
-	}
-	:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-	   color:    #ccc;
-	}
-	::-moz-placeholder { /* Mozilla Firefox 19+ */
-	   color:    #ccc;
-	}
-	:-ms-input-placeholder { /* Internet Explorer 10-11 */
-	   color:    #ccc;
-	}
-	.body {
-		padding: 36px 0;
-	}
-	.container_box {
-		position: relative;
-		box-shadow: 1px 1px 7px 1px #c1bbbb;
-	}
-	.my_req {
-		color:  red;
-		font-size: 20px;
-		margin-right: 8px;
-		vertical-align: top;
-   		vertical-align: -webkit-baseline-middle;
-	}
-	.nextStep {
-	    width: 300px;
-	    margin-left: 100px;
-	    background: #3091FF;
-	    border-radius: 2px;
-	    border: none;
-	    color: #fff;
-	    height: 42px;
-	    box-sizing: border-box;
-	}
-	.error-tips {
-		display: none;
-		padding-top: 0;
-	}
-	.helpTel {
-		position: absolute;
-		bottom: 40px;
-		font-family: STHeitiSC-Medium;
-		font-size: 14px;
-		color: #9B9B9B;
-		letter-spacing: 0;
-		right: 0; left: 0;
-		text-align: center;
-	}
-	.dis {
-		background: #D5D5D5 !important;
-		width: 81.31px;
-	}
+<style> 
+@keyframes lds-ellipsis3 {
+  0%, 25% {
+    left: 32px;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  50% {
+    left: 32px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  75% {
+    left: 100px;
+  }
+  100% {
+    left: 168px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes lds-ellipsis3 {
+  0%, 25% {
+    left: 32px;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  50% {
+    left: 32px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  75% {
+    left: 100px;
+  }
+  100% {
+    left: 168px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  25%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+}
+@-webkit-keyframes lds-ellipsis2 {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  25%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis {
+  0% {
+    left: 32px;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  25% {
+    left: 32px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    left: 100px;
+  }
+  75% {
+    left: 168px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  100% {
+    left: 168px;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+}
+@-webkit-keyframes lds-ellipsis {
+  0% {
+    left: 32px;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  25% {
+    left: 32px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    left: 100px;
+  }
+  75% {
+    left: 168px;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  100% {
+    left: 168px;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+}
+.lds-ellipsis {
+  position: relative;
+}
+.lds-ellipsis > div {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+}
+.lds-ellipsis div > div {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f00;
+  position: absolute;
+  top: 100px;
+  left: 32px;
+  -webkit-animation: lds-ellipsis 1s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
+  animation: lds-ellipsis 1s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
+}
+.lds-ellipsis div:nth-child(1) div {
+  -webkit-animation: lds-ellipsis2 1s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
+  animation: lds-ellipsis2 1s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
+  background: #abbd81;
+}
+.lds-ellipsis div:nth-child(2) div {
+  -webkit-animation-delay: -0.5s;
+  animation-delay: -0.5s;
+  background: #f8b26a;
+}
+.lds-ellipsis div:nth-child(3) div {
+  -webkit-animation-delay: -0.25s;
+  animation-delay: -0.25s;
+  background: #f47e60;
+}
+.lds-ellipsis div:nth-child(4) div {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  background: #e15b64;
+}
+.lds-ellipsis div:nth-child(5) div {
+  -webkit-animation: lds-ellipsis3 1s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
+  animation: lds-ellipsis3 1s cubic-bezier(0, 0.5, 0.5, 1) infinite forwards;
+  background: #abbd81;
+}
+.lds-ellipsis {
+  width: 115px !important;
+  height: 115px !important;
+  -webkit-transform: translate(-57.5px, -57.5px) scale(0.575) translate(57.5px, 57.5px);
+  transform: translate(-57.5px, -57.5px) scale(0.575) translate(57.5px, 57.5px);
+}
+h1{
+	font-size: 18px;
+	margin-bottom: 60px;
+	margin-top: 40px;
+}
+p{
+	font-size: 20px;
+	color: #929191;
+}
+.my_loading {
+	width: 100px;
+	margin:  0 auto;
+}
+button{
+	border: none;
+	border-radius: 3px;
+	padding: 7px 0;
+	color: #fff;
+	width: 200px;
+	background: #4ba4e0;
+	margin-top: 30px;
+}
+button:hover{
+	background: #208bd4;
+}
 </style>
 </head>
 <body>
@@ -79,272 +212,42 @@
 	<div class="container_box">
 		<div class="register-info-box">
 			<div class="login-box">
-				<div class="login-title" style="font-family: STHeitiSC-Medium;font-size: 20px;color: #4A4A4A;letter-spacing: 0;">注册</div>
-				<div class="register-now"><!-- 还没账号？<a href="register-baseinfo.html">立即注册</a> --></div>
-				<div class="element-box">
-					<label><span class='my_req'>*</span>用户名</label>
-					<input required class="email-input" id="loginName" type="text" placeholder="请输入用户名" />
-					<p class="error-tips"></p>
+				<h1>注册</h1>
+				<p>系统准备中，将于近日开放</p>
+				<div class="lds-css ng-scope my_loading">
+					<div style="width:100%;height:100%" class="lds-ellipsis">
+					<div>
+						<div></div>
+					</div>
+					<div>
+						<div></div>
+					</div>
+					<div>
+						<div></div>
+					</div>
+					<div>
+						<div></div>
+					</div>
+					<div>
+						<div></div>
+					</div>
 				</div>
-				<div class="element-box" data-act="loginPhone">
-					<label><span class='my_req'>*</span>手机号</label>
-					<input required class="email-input" id="loginPhone" type="input" placeholder="请输入手机号" />
-					<p class="error-tips"></p>
-					<p class="info-tips" style="margin-left: 113px;">请填写本人常用手机号，该手机号将作为登录账号</p>
 				</div>
-				<div class="element-box" data-act="vaCode">
-					<label><span class='my_req'>*</span>验证码</label>
-					<input required style="width: 215px;" class="email-input" id="vaCode" type="input" placeholder="请输入验证码" />
-					<button id='getVCode' style="border: none;border-radius: 3px;background: #7ED321;color:#fff;height: 38px;vertical-align: top;box-sizing: border-box;">获取验证码</button>
-					<p class="error-tips"></p>
-				</div>
-				<div class="element-box" data-act="loginEmail">
-					<label><span class='my_req'>*</span>邮箱</label>
-					<input required class="email-input" id="loginEmail" type="text" placeholder="请输入常用邮箱" value=" " />
-					<p class="error-tips"></p>
-				</div>
-				<div class="element-box" data-act="loginPass">
-					<label><span class='my_req'>*</span>密码</label>
-					<input required class="email-input" id="loginPass" type="password" placeholder="请输入密码" />
-					<p class="error-tips"></p>
-					<p class="info-tips" style="margin-left: 0;">支持8-20字母、数字或特殊符号</p>
-				</div>
-				<div class="element-box" data-act="login-password">
-					<input type="checkbox" id='hasRead' style="font-size: 20px;margin-left: 20px;">
-					<label for="hasRead" style="width: auto;user-select: none;">
-						阅读并同意 
-						<a href="https://dn-vbuluo-static.qbox.me/ruyi.ai%E5%B9%B3%E5%8F%B0%E6%9C%8D%E5%8A%A1%E5%8D%8F%E8%AE%AE.pdf" target="_blank" style="color: #487ff1;font-family: STHeitiSC-Medium;">
-							《ruyi.ai平台协议》
-						</a>
-					</label>
-				</div>
-				<div class="element-box" data-act="login-password" style="margin-bottom: 10px;">
-					<button class='nextStep'>下一步</button>
-				</div>
-				<div class="element-box" data-act="login-password">
-					<p style="padding-left: 300px;">已有账号，<a href="login.html" style="color: #487ff1;font-family: STHeitiSC-Medium;">登录</a></p>
-				</div>
+				<button>回到首页</button>
 			</div>
-			<p class='helpTel'>客服电话：18762671093</p>
 		</div>
 	</div>
 </div>
 <script src="https://dn-vbuluo-static.qbox.me/jquery.min.js"></script>
 <script src="https://dn-vbuluo-static.qbox.me/jquery-ui.js"></script>
 <script src="https://dn-vbuluo-static.qbox.me/jquery.cookie.js"></script>
-<script src="../js/global-util.js"></script>
-<script src="js/reg-common.js"></script>
-<script src="js/login.js"></script>
 <script>
-$(function() {
-
-setTimeout(function() {
-	$('#loginEmail').val('')
-}, 100)
-// 各种正则验证
-var va = {
-	loginName: function(value) {
-		if( value.trim() == '' ) {
-			$('#loginName').next('.error-tips').text(this.nameError);
-			$('#loginName').next('.error-tips').show();
-			return false;
-		}else {
-			$('#loginName').next('.error-tips').hide();
-			return true;
-		}
-	},
-	nameError: ' 请输入用户名',
-	loginPhone: function(number) {
-		if( !(/^1[3|4|5|8][0-9]\d{4,8}$/.test(number)) ) {
-			$('#loginPhone').next('.error-tips').text(this.phoneError)
-			$('#loginPhone').next('.error-tips').show();
-			return false;
-		}else {
-			$('#loginPhone').next('.error-tips').hide();
-			return true;
-		}
-	},
-	phoneError: '请输入合法的手机号',
-	loginEmail: function(em) {
-		if( !(/^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/).test(em) ) {
-			$('#loginEmail').next('.error-tips').text(this.emailError)
-			$('#loginEmail').next('.error-tips').show();
-			return false;
-		}else{
-			$('#loginEmail').next('.error-tips').hide();
-			return true;
-		}
-	},
-	emailError: '请输入合法的邮箱',
-	loginPass: function(pass) {
-		if ( !/^[0-9A-Za-z]{8,20}$/.test(pass) ) {
-			$('#loginPass').next('.error-tips').text(this.passError)
-			$('#loginPass').next('.error-tips').show();
-			return false;
-		}else {
-			$('#loginPass').next('.error-tips').hide();
-			return true;
-		}
-	},
-	passError: '密码要求长度为8-20位'
-}
-// 各种正则验证 -- end
-// 失焦验证
-$('.element-box').on('blur', 'input', function() {
-	var id = this.id;
-	va[id]($(this).val());
-}) 
-// 失焦验证 -- end
-// 点击下一步完成注册
-$('.nextStep').on('click', function() {
-	var loginName = $('#loginName').val();
-	var phoneNumber = $('#loginPhone').val();
-	var vaCode = $('#vaCode').val()
-	var email = $('#loginEmail').val();
-	var pass = $('#loginPass').val();
-	var check = $('#hasRead').prop('checked');
-	var tag = true;
-
-	if( ! va.loginName(loginName) ){
-		tag = false;
-	}
-	if( ! va.loginPhone(phoneNumber) ){
-		tag = false;
-	}
-	if( ! va.loginEmail(email) ){
-		tag = false;
-	}
-	if( ! va.loginPass(pass) ){
-		tag = false;
-	}
-	if( vaCode.trim().length != 6 ) {
-		$('#vaCode').nextAll('.error-tips').text('请输入正确的验证码')
-		$('#vaCode').nextAll('.error-tips').show();
-		return;
-	}
-	if( !tag ){
-		return;
-	}
-	if(!check){
-		alert('请勾选平台协议');
-		return;
-	}else{
-		$.ajax({
-			url: api_host + '/signup',
-			type: 'post',
-			headers: {
-				"Content-Type": 'application/json'
-			},
-			data: JSON.stringify({email: email, phone_number: phoneNumber, password: pass, verify_code: vaCode, nick_name: loginName}),
-			success: function(ret) {
-				localStorage.my_login_accout = $('#loginPhone').val();
-				localStorage.my_login_pass = $('#loginPass').val();
-				window.location.href = './phRegiSucc.html';
-			},
-			error: function(err) {
-				// $('#loginPhone').next('.error-tips').text( JSON.parse(err.responseText.toString()).message )
-				// $('#loginPhone').next('.error-tips').show();
-
-				var  id  = '';
-				// switch(JSON.parse(err.responseText.toString()).type) {
-				// 	case :
-				// 		id = 'loginPhone';
-				// 		break;
-				// 	case :
-				// 		id = 'loginEmail';
-				// 		break;
-				// 	case :
-				// 		id = 'vaCode';
-				// 		break;
-				// }
-				if(JSON.parse(err.responseText.toString()).message.indexOf('手机') > -1) {
-					id = '#loginPhone';
-				}else if (JSON.parse(err.responseText.toString()).message.indexOf('邮箱') > -1){
-					id = '#loginEmail'
-				}else if(JSON.parse(err.responseText.toString()).message.indexOf('验证码') > -1) {
-					id = '#vaCode';
-				}else {
-					id = '#loginPhone'
-				}
-				console.log(id)
-				$(id).nextAll('.error-tips').text( JSON.parse(err.responseText.toString()).message )
-				$(id).nextAll('.error-tips').show();
-				$(id).attr('disabled',false);
-			}
-		})
-	}
-})
-// 点击下一步完成注册 -- end
-var time = 30;
-var t = 0;
-// 获取验证码
-$('#getVCode').click(function() {
-	// 验证已输入手机号
-	if( !va.loginPhone( $('#loginPhone').val() ) ) {
-		return;
-	}
-	// 验证已输入手机号 -- end
-	clearInterval(t);
-	$(this).attr('disabled',true);
-	$.ajax({
-		url: api_host + '/signup/smsVerify',
-		type: 'post',
-		headers: {
-			"Content-Type": 'application/json'
-		},
-		data: JSON.stringify({phoneNumber: $('#loginPhone').val()}),
-		success: function(ret) {
-			console.log(ret)
-			$('#loginPhone').next('.error-tips').hide();
-			$('#getVCode').text(time + 's')
-			$('#getVCode').addClass('dis');
-			t = setInterval(function() {
-				time --;
-				$('#getVCode').text(time + 's')
-				$('#getVCode').addClass('dis');
-				if(time == 0){
-					$('#getVCode').removeClass('dis');
-					$('#getVCode').text('获取验证码')
-					clearInterval(t);
-					time = 30;
-					$('#getVCode').attr('disabled',false);
-				}
-			}, 1000)
-		},
-		error: function(err) {
-			var  id  = '';
-			// switch(JSON.parse(err.responseText.toString()).type) {
-			// 	case :
-			// 		id = 'loginPhone';
-			// 		break;
-			// 	case :
-			// 		id = 'loginEmail';
-			// 		break;
-			// 	case :
-			// 		id = 'vaCode';
-			// 		break;
-			// }
-			if(JSON.parse(err.responseText.toString()).message.indexOf('手机') > -1) {
-				id = '#loginPhone';
-			}else if (JSON.parse(err.responseText.toString()).message.indexOf('邮箱') > -1){
-				id = '#loginEmail'
-			}else if(JSON.parse(err.responseText.toString()).message.indexOf('验证码') > -1) {
-				id = '#vaCode';
-			}else {
-				id = '#loginPhone'
-			}
-			console.log(id)
-			console.log($(id))
-			$(id).nextAll('.error-tips').text( JSON.parse(err.responseText.toString()).message )
-			$(id).nextAll('.error-tips').show();
-			$(id).attr('disabled',false);
-		}
+	$('button').click(function() {
+		window.location.href = '../index.html'
 	})
-})
-
-
-})
-// 获取验证码 -- end
 </script>
 </body>
 </html>
+
+
+

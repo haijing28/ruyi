@@ -237,7 +237,7 @@ $(function(){
 		                    header: {
 		                        "Content-Type": "application/x-www-form-urlencoded"
 		                    },
-		                    data: 'service=' + api_host_temp + '/ruyi-ai/request?url='+ static_host +'/app_manager.html',
+		                    data: 'service=' + api_host_temp + '/ruyi-ai/request' + login_environment,
 		                    error: function(xhr, status, error) {
 		                        $("[data-act=login-email] .error-tips").text('账号或密码错误');
 		                    },
@@ -247,7 +247,7 @@ $(function(){
 		                        setCookie('tgt', tgt);
 		                        setCookie('email', $('#login-email').val());
 		                        getAccessTokenFunc($('#login-email').val(),$('#login-password').val(),function(){
-		                        	window.location = api_host_temp + "/ruyi-ai/request?ticket=" + xhr.responseText + "&url=" + static_host + "/app_manager.html";		             
+		                        	window.location = api_host_temp + "/ruyi-ai/request" + login_environment + "&ticket=" + xhr.responseText;		             
 		                        });
 		                    }
 		                })

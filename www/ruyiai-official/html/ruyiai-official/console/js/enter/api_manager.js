@@ -97,6 +97,30 @@ apiManagerApp.config(function($locationProvider , $stateProvider, $urlRouterProv
         controller: function($rootScope,$scope, $state, $stateParams){
         	referenceAppCtrl($rootScope,$scope, $state, $stateParams);
         }
+	}).state('skill_store.ruyi_skill',{
+		url: "/ruyi_skill",
+		templateUrl: "ruyi_skill.html",
+        controller: function($rootScope,$scope, $state, $stateParams){
+        	ruyiSkillCtrl($rootScope,$scope, $state, $stateParams);
+        }
+	}).state('skill_store.open_skill',{
+		url: "/open_skill",
+		templateUrl: "open_skill.html",
+        controller: function($rootScope,$scope, $state, $stateParams){
+        	openSkillCtrl($rootScope,$scope, $state, $stateParams);
+        }
+	}).state('skill_store.my_skill',{
+		url: "/my_skill",
+		templateUrl: "my_skill.html",
+        controller: function($rootScope,$scope, $state, $stateParams){
+        	mySkillCtrl($rootScope,$scope, $state, $stateParams);
+        }
+	}).state('skill_store.skill',{
+		url: "/skill/{skill_id}",
+		templateUrl: "skill.html",
+        controller: function($rootScope,$scope, $state, $stateParams){
+        	skillCtrl($rootScope,$scope, $state, $stateParams);
+        }
 	}).state('delete_robot',{
 		url: "/delete_robot",
 		templateUrl: "delete_robot.html",
@@ -622,6 +646,8 @@ return out;
 				return '智能家居';
 			case "INTEL_CUSTOM_SERVICE":
 				return '智能客服';
+			case "aaaaaaaaaaa":
+				return '语义技能';
 			default:
 				return '通用';
 		}
@@ -753,7 +779,7 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 			    		}else if(listType == "import_knowledge_base"){
 			    			$state.go("import_knowledge_base");
 			    		}else if(listType == "skill_store"){
-			    			$state.go("skill_store");
+			    			$state.go("skill_store.ruyi_skill");
 			    		}else if(listType == "delete_robot"){
 			    			$state.go("delete_robot");
 			    		}else if(listType == "robot_paramenter"){
@@ -799,7 +825,7 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 			}else if(listType == "import_knowledge_base"){
 				$state.go("import_knowledge_base");
 			}else if(listType == "skill_store"){
-				$state.go("skill_store");
+				$state.go("skill_store.ruyi_skill");
 			}else if(listType == "delete_robot"){
 				$state.go("delete_robot");
 			}else if(listType == "robot_paramenter"){
@@ -1792,11 +1818,11 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 	    	re_newpasswd.focus();
 	        return false;  
 	    }
-	   
+	    
 		$.ajax({
 			url : api_host + "/password",
 			method : "POST",
-			data: JSON.stringify({"account": getCookie("email"),"oldPassword":oldpasswd.val(),"newPassword":newpasswd.val()}),
+			data: JSON.stringify({"email": getCookie("email"),"old_password":oldpasswd.val(),"new_password":newpasswd.val()}),
 			headers: {
 				'Content-Type': 'application/json'
 			},
@@ -1813,8 +1839,8 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 				//$("#change-password").modal("hide");
 			},
 			error: function(err){
-				var err = dataParse(err.responseText);
-				$.trace(err.message);
+				var err = JSON.parse(err.responseText);
+				$.trace(err.msg);
 			}
 		});
 		
@@ -1833,8 +1859,45 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 	})
 	//修改密码 end
 	
+//	$("#mylogout").click(function(){//注销
+//		$.ajax({
+//			url : ruyiai_host + "/ruyi-ai/user/logout.html",
+//			method : "get",
+//			success: function(data) {
+//				data = JSON.parse(data);
+//				if(data.code == 0){
+//					delCookie("email");
+//					delCookie("nickname");
+//					delCookie("userId");
+//					delCookie("appId");
+//					delCookie("appName");
+//					delCookie("appKey");
+//					window.location.href = static_host + "/index.html";
+//				}else if(data.code == 2){
+//					goIndex();
+//				}else if(data.code == 1){
+//					$.trace(""+data.msg,"error");
+//					$r_username.focus();
+//				}
+//			}
+//		});
+//	});
+	
 	$("#mylogout").click(function(){//注销
-		goIndex(true);
+		$.ajax({
+			url : api_host + "/v1/tickets/" + getCookie('tgt'),
+			method : "DELETE",
+			success: function(data) {
+				delCookie("email");
+				delCookie("nickname");
+				delCookie("userId");
+				delCookie("appId");
+				delCookie("appName");
+				delCookie("appKey");
+				delCookie('tgt');
+				window.location.href = static_host + "/index.html";
+			}
+		});
 	});
 	
 	//判断当前是否是创建机器人状态
@@ -1865,7 +1928,7 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 			$(".para-action-tips p").text("点击卡片查看详情,添加机器人技巧插件");
 			$(".para-action-tips").css({"top":"176px","left":"30%"});
 			$(".nav-robot-box li:last").addClass("active");
-			$state.go("skill_store");
+			$state.go("skill_store.ruyi_skill");
 		}else if(href.indexOf("#/skill_store") > -1){
 			$(".nav-robot-box").css("display","none");
 			$(".create-robot-foot").css("display","none");
@@ -2086,6 +2149,7 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
     },800)
 
     $('.left-box ul:first li:first').click();
+    
 
 });
 

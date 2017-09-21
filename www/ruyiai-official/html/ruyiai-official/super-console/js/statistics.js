@@ -127,8 +127,9 @@ statisticsApp.controller("statisticsCtrl",function($scope){
 		window.location.href = "robot.html";
 	});
 	
-	$("[data-act=skill-plugin]").click(function(){
-		window.location.href = "skill-plugin.html";
+
+	$("[data-act=skill-plugin-new]").click(function(){
+		window.location.href = "skill-plugin-new.html";
 	});
 	
 });

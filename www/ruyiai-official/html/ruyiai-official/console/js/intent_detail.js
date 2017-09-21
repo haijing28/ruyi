@@ -11,6 +11,8 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	//弹层判断，如果是弹出提示层，而失去光标的时候用户说不自动添加
 	var isAtStatus = false;
 	
+	$scope.eventNameList = [];//事件存放数组
+	
 	//获取当前用户的userId
 	$scope.currentUserId = getCookie("userId");
 	
@@ -89,10 +91,6 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
     });
     
     //=======end
-	setTimeout(function(){
-		$('[data-toggle="tooltip"]').tooltip(); //初始化提示
-	}, 200);
-	
 	var intentDetailDuplicate = "";
 	
 	// intentDetail监视
@@ -139,7 +137,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 				for(var i in intentDetail.responses){
 					if(intentDetail.responses[i].parameters){
 						for(var j in intentDetail.responses[i].parameters){
-							if($.trim(intentDetail.responses[i].parameters[j].dataType).length <= 0 && $.trim(intentDetail.responses[i].parameters[j].defaultValue).length <= 0
+							if(j != intentDetail.responses[i].parameters.length - 1 && $.trim(intentDetail.responses[i].parameters[j].dataType).length <= 0 && $.trim(intentDetail.responses[i].parameters[j].defaultValue).length <= 0
 									&& $.trim(intentDetail.responses[i].parameters[j].name).length <= 0 && $.trim(intentDetail.responses[i].parameters[j].value).length <= 0
 									&& intentDetail.responses[i].parameters[j].prompts.length <= 0 && !intentDetail.responses[i].parameters[j].required){
 								intentDetail.responses[i].parameters.splice(j,1);
@@ -258,6 +256,8 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 				data = dataParse(data);
 					if(data.code == 0){
 					$scope.intentDetail = data.result;
+					$scope.eventNameList = splitEventFunc($scope.intentDetail.eventNameList);//分割事件
+					console.log("分割22事件：" + $scope.eventNameList);
 					//TODO
 					$scope.getMediaResponseFunc(true);
 					//初始化response
@@ -283,6 +283,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 					setTimeout(function(){
 						$("[data-act=nav-intent-"+ $stateParams.intent_id +"]").siblings().removeClass("active");
 						$("[data-act=nav-intent-"+ $stateParams.intent_id +"]").addClass("active")
+						$('[data-toggle="tooltip"]').tooltip(); //初始化提示
 					}, 200);
 					
 				}else if(data.code == 2){
@@ -475,6 +476,10 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 			$scope.isExits = false;
 		}
 		$scope.response.outputs = $scope.wechatOutputs.concat($scope.localOutouts); 
+		
+		$scope.intentDetail.eventNameList = mergeEventFunc($scope.eventNameList); //拼接事件字符串
+		
+		
 		var intentDetailTemp = $scope.intentDetail;
 		//将多媒体的助理答，添加到speech中 start
 		if(!intentDetailTemp.speech){
@@ -534,6 +539,8 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 //							}, 500);
 //						}, 1000);
 					}
+					
+//					$scope.eventNameList = splitEventFunc(intentDetail.eventNameList);
 					$scope.intentDetail = intentDetail;
 //					var intentList = angular.element(".center-list-box").scope().intentList;
 //					for(var i in intentList){
@@ -742,7 +749,6 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 				}
 			}
 			$scope.$apply();
-			$('[data-toggle="tooltip"]').tooltip(); //初始化提示
 			//$scope.addTemplate = "";
 			if(actionType == "add"){
 				setTimeout(function(){
@@ -3467,7 +3473,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	//查看更多功能
 	$("body").off("click",".intent-detail-more").on("click",".intent-detail-more",function(event){
 		var $this = $(this);
-		var $more = $(".intent-detail-more-box");
+		var $more = $("[data-act=intent-detail-more-box]");
 		if($more.css("display") == "block"){
 			$more.css("display","none");
 			$this.find("i").removeClass("icon-arrow-down").addClass("icon-arrow-right");
@@ -3493,7 +3499,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	}
 	if(supports_html5_storage()){
 		if(localStorage.getItem("intentDetailMore" + $stateParams.intent_id) == "open"){
-			$(".intent-detail-more-box").css("display","block");
+			$("[data-act=intent-detail-more-box]").css("display","block");
 			$(".intent-detail-more").find("i").removeClass("icon-arrow-right").addClass("icon-arrow-down");
 		}
 	}
@@ -3514,6 +3520,130 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 //		}
 //    });
 	
+	$("body").off("click","[data-act=event-show-hide]").on("click","[data-act=event-show-hide]",function(){
+		var $this = $(this);
+		if($this.hasClass("glyphicon-chevron-left")){
+			$this.removeClass("glyphicon-chevron-left").addClass("glyphicon-chevron-down");
+			$("[data-act=event-show-ctrl]").css("display","block");
+		}else{
+			$this.removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-left");
+			$("[data-act=event-show-ctrl]").css("display","none");
+		}
+	});
+	
+	$("body").off("click","[data-act=event-show-ctrl]").on("click","[data-act=event-show-ctrl]",function(){
+		var $this = $(this);
+		
+	});
+	
+	$("body").off("focus","[data-act=event-add-input]").on("focus","[data-act=event-add-input]",function(){
+		var $this = $(this);
+		$(".event-choose-list").css("display","block");
+	});
+	
+	$("body").off("blur","[data-act=event-add-input]").on("blur","[data-act=event-add-input]",function(){
+		var $this = $(this);
+		setTimeout(function(){
+			$(".event-choose-list").css("display","none");
+		},200);
+	});
+	
+	$("body").off("blur","[data-act=event-input-para]").on("blur","[data-act=event-input-para]",function(){
+		var $this = $(this);
+		var data_type = $this.attr("data-type");
+		if(data_type == "timeout"){
+			if($this.val() < 20 || $this.val() > 1000){
+				$.trace("超时回复只能设置在200到1000之间");
+				$this.focus();
+			}
+		}else if(data_type == "default_response"){
+			if($this.val() < 1 || $this.val() > 5){
+				$.trace("缺省回复只能设置在1到5之间");
+				$this.focus();
+			}
+		}else if(data_type == "repeat_response"){
+			if($this.val() < 2 || $this.val() > 5){
+				$.trace("重复多轮回复只能设置在2到5之间");
+				$this.focus();
+			}
+		}
+	});
+	
+	$scope.enterAddEvent = function(eventContent){
+		if(eventContent && eventContent.length > 0){
+			$scope.eventNameList.push([eventContent]);
+			$scope.eventContent = "";
+			$scope.saveIntentDetailFunc();
+		}
+	}
+	
+	$scope.enterAddEventKeydown = function($event,eventContent){
+		var $target = $($event.target);
+		if($event.keyCode == 13){
+			$scope.enterAddEvent(eventContent);
+			$(".event-choose-list").css("display","none");
+			return false;
+		}
+	}
+	
+	$scope.addSystemEventFunc = function(systemEventType){
+		if(systemEventType == "wechat"){
+			$scope.eventNameList.push(["微信用户订阅"]);
+		}else if(systemEventType == "default_response"){
+			$scope.eventNameList.push(["缺省回复",1]);
+		}else if(systemEventType == "timeout"){
+			$scope.eventNameList.push(["超时回复",800]);
+		}else if(systemEventType == "reepat_response"){
+			$scope.eventNameList.push(["重复多轮回复",2]);
+		}
+		setTimeout(function(){
+			$($(".event-input-obj")[$(".event-input-obj").length - 1]).find('[data-act=event-input-para]').focus();
+			$('[data-toggle="tooltip"]').tooltip(); //初始化提示
+		},100);
+		$scope.saveIntentDetailFunc();
+	}
+	
+	$scope.eventParaChangeFunc = function(){
+		$scope.saveIntentDetailFunc();
+		$('[data-toggle="tooltip"]').tooltip(); //初始化提示
+	}
+	
+	//分割事件字符串
+	var splitEventFunc = function(eventNameList){
+		var eventNameListTemp = new Array();
+		for(var i in eventNameList){
+			var eventObjArr = eventNameList[i].split("#####");
+			if(eventObjArr[1]){
+				eventObjArr[1] = parseInt(eventObjArr[1]);
+			}
+			eventNameListTemp[i] = eventObjArr;
+		}
+		return eventNameListTemp;
+	}
+	
+	//拼接事件字符串
+	var mergeEventFunc = function(eventNameList){
+		var eventNameListTemp = new Array();
+		for(var i in eventNameList){
+			if(eventNameList[i].length > 1){
+				eventObjArr = eventNameList[i][0] + '#####' + eventNameList[i][1];
+			}else if(eventNameList[i].length == 1){
+				eventObjArr = eventNameList[i][0];
+			}
+			eventNameListTemp[i] = eventObjArr;
+		}
+		return eventNameListTemp;
+	}
+	
+	$scope.deleteEventNameFunc = function(index){
+		for(var i in $scope.eventNameList){
+			if(i == index){
+				$scope.eventNameList.splice(i,1);
+				$scope.saveIntentDetailFunc();
+				break;
+			}
+		}
+	}
 	
 }
 
