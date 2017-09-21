@@ -311,6 +311,7 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 		var appName = $this.attr("data-app-name");
 		var appKey = $this.attr("data-app-key");
 		setCookie("appId",appId);
+		agentObj.name(444);
 		setCookie("appName",appName);
 		setCookie("appKey",appKey);
 		window.location.href = static_host + "/console/api_manager.html#/user_log_list/user_logs/log_statistics";
@@ -377,10 +378,22 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 			 }
 	 });
 	
-	 $scope.goConsoleManagerFunc = function(appId,appName,appKey){
+	 $scope.goConsoleManagerFunc = function(appId,appName,appKey,botId,skillId, agentType){
 		setCookie("appId",appId);
 		setCookie("appName",appName);
 		setCookie("appKey",appKey);
+		setCookie("botId",botId);
+		
+		if(agentType && agentType != null && agentType.length > 10){
+			setCookie("agentType",agentType);
+		}else{
+			setCookie("agentType","SKILL");
+		}
+		if(skillId && skillId != null && skillId.length > 10){
+			setCookie("skillId",skillId);
+		}else{
+			setCookie("skillId","");
+		}
 		
 		if("isNewUser" == getCookie("app"+appId)){
 			window.location.href = static_host + "/console/api_manager.html#/log_statistics";
@@ -469,6 +482,87 @@ appManagerApp.controller("appManagerAppCtrl",function($rootScope,$scope){
 			}
 		}
 	});
+	
+	//获取develop状况的skill对象
+	var getSkillListDevelopFunc = function(botList){
+        $.ajax({
+            url: api_host_v2beta + 'skills?tag=' + developTag + "&size=1000",
+            method: 'GET',
+            headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+            error: function(xhr, status, error) {
+            },
+            success: function(data, status, xhr) {
+            	data = dataParse(data);
+            	var skillList = data.content;
+            	for(var i in skillList){
+            		for(var j in botList){
+            			if(skillList[i].id == botList[j].companionSkillId){
+            				botList[j].auditStatus = skillList[i].auditStatus;
+            			}
+            		}
+            	}
+            	getSkillListProductFunc(botList);//获取develop状况的skill对象
+            	$scope.$apply();
+            },error: function(data, status, xhr){
+            	getSkillListProductFunc(botList);//获取develop状况的skill对象
+            	if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
+            }
+        });
+	}
+	
+	//获取develop状况的skill对象
+	var getSkillListProductFunc = function(botList){
+        $.ajax({
+            url: api_host_v2beta + 'skills?tag=' + productTag + "&size=1000",
+            method: 'GET',
+            headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+            error: function(xhr, status, error) {
+            },
+            success: function(data, status, xhr) {
+            	data = dataParse(data);
+            	var skillList = data.content;
+            	for(var i in skillList){
+            		for(var j in botList){
+            			if(skillList[i].id == botList[j].companionSkillId){
+            				botList[j].auditStatus = skillList[i].auditStatus;
+            			}
+            		}
+            	}
+            	$scope.$apply();
+            },error: function(data){
+            	if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
+            }
+        });
+	}
+	var getBotListFunc = function(){
+		// 获取 st
+        $.ajax({
+            url: api_host_v2beta + 'bots?tag=' + developTag + "&size=1000",
+            method: 'GET',
+            headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+            error: function(xhr, status, error) {
+            	if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
+            },
+            success: function(data, status, xhr) {
+            	data = dataParse(data);
+            	$scope.botList = data.content;
+            	$scope.$apply();
+            	$(".robot-box-item").css("opacity","1");
+            	getSkillListDevelopFunc($scope.botList);
+            }
+        });
+	}
+	getBotListFunc();
+	
+	
+	
+	
 	
 });
 

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>超级后台</title>
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_2rc9yzc3wodmquxr.css">
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/robot.css">
+</head>
+<style>
+	.body {
+		padding: 30px 100px;
+	}
+	.bigTitle {
+		font-size: 20px;
+		margin-bottom: 30px;
+	}
+	thead tr {
+		background: #e5e9f2;
+	}
+	th,td {
+		text-align: center;
+	}
+	h3{
+		font-size: 18px;
+		line-height: 2;
+		text-align: left;
+		padding-left: 57px;
+	}
+	h3 a {
+		text-decoration: underline;
+		font-size: 12px;
+		margin-left: 20px;
+	}
+	.content {
+		display: flex;
+	}
+	.content > div {
+		flex: 1;
+		border-right: 1px solid #ccc;
+	}
+	.content > div:last-child {
+		border-right: none;
+	}
+	dd,dt {
+		display: inline-block;
+		text-align: left;
+	}
+	dd {
+		width: 100px;
+		line-height: 50px;
+		/* vertical-align: top; */
+	}
+	dt {
+		width: 200px;
+		color: #15baf3;
+	}
+	.center {
+		display: flex;
+		flex-direction: column;
+	}
+	.top {
+		display: flex;
+	}
+	.bottom {
+		flex:  1;
+	}
+	.left_center {
+		width: 100px;
+	}
+	.right_center {
+		flex: 1;
+	}
+	.right_center label {
+		background: #4ec0fc;
+		padding: 6px 13px;
+		border-radius: 3px;
+		min-width: 100px;
+		max-width: 200px;
+		color: #fff;
+		margin-bottom: 8px;
+	}
+	.right button {
+		display: block;
+		margin: 30px auto;
+		width: 200px;
+		height: 40px;
+		border-radius: 5px;
+		color: #fff;
+		border: none;
+		background: #36d45f;
+	}
+	.right button.deny {
+		background: #e63838;
+		margin-bottom: 60px;
+	}
+	.more {
+		display: none;
+	}
+	.rel td{
+		position: relative;
+		max-height: 500px;
+		height: 500px;
+		overflow-y: auto;
+	}
+	.close_tr {
+		position: absolute;
+		right: 30px;
+		top: 10px;
+		font-size: 30px;
+	}
+	.al_top {
+		vertical-align: top;
+	}
+	.al_top + dt {
+		margin-top: 10px;
+	}
+	.my_skill_img {
+		border-radius: 50%;
+		width: 100px;
+		height: 100px;
+		margin: 3px 0 0 20px;
+	}
+	.skill-img-label {
+		margin-bottom: 0;
+		margin-top: 10px;
+		font-weight: normal;
+		text-indent: 40px;
+	}
+	.end_status_succ, .end_status_deny {
+		color: #fff;
+		padding: 3px 30px;
+		border-radius: 10px;
+		display: inline-block;
+		margin-top: 20px;
+	}
+	.end_status_succ {
+		background: #25cc25;
+	}
+	.end_status_deny {
+		background: #d25544;
+	}
+	.paixu_select {
+		font-size: 16px;
+    		float: right;
+	}
+</style>
+<body style="overflow-y: auto;">
+<div ng-app='app' ng-controller='controller'>
+
+<div class="head" id="header">
+	<div class="head_box">
+		<div class="inner wrp" style="position:relative;">
+			<div class="logo">
+				<span style="margin-right:40px;" data-act="overall-situation"><i class="iconfont icon-overall-situation"></i>&nbsp;整体概况</span>
+				<span id='robotSpan' style="margin-right:40px;"><i class="iconfont icon-robot-head" data-act="robot-profile"></i>&nbsp;机器人概况</span>
+				<!-- <span data-act="skill-plugin" style="margin-right:40px;"><i class="iconfont icon-ruyiaiwidget"></i>&nbsp;技能插件</span> -->
+				<span data-act="skill-plugin-new" class='active'><i class="iconfont icon-ruyiaiwidget"></i>&nbsp;技能插件( new )</span>
+				<div class="dropdown user-name-box">
+					<button type="button" class="btn dropdown-toggle user-name-btn" id="dropdownMenu1" 
+							data-toggle="dropdown">
+						<span data-act="user-name"></span>
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+						<!-- <li role="presentation" class="divider"></li> -->
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" href="javascript:;" data-act="user-logout">退出</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="body">
+	<h1 class="bigTitle">
+		技能插件总览
+		<select class='paixu_select'>
+			<option value="All">所有</option>
+			<option value="skills_pedding">待审核</option>
+			<option value="skills_reject">已拒绝</option>
+			<option value="skills_approved">已通过</option>
+			<option value="skills_offline">下线</option>
+		</select>
+	</h1>
+	<table class="table table-hover table-bordered">
+	<thead>
+		<tr>
+			<th>技能名称</th>
+			<th>技能描述</th>
+			<th>开发者</th>
+			<th>提交日期</th>
+			<th class='shenhe_status'>状态</th>
+		</tr>
+	</thead>
+	<tbody ng-repeat='skill in skills'>
+		<tr class='data'>
+			<td>{{skill.agents[0].agent.name}}</td>
+			<td>{{skill.agents[0].agent.description}}</td>
+			<td>暂无</td>
+			<td>{{skill.gmtUpdate | filter_time}}</td>
+			<td>{{skill.auditStatus | filter_english}}</td>
+		</tr>
+		<tr class='more rel'>
+			<td colspan="5">
+			<a href="javascript:void(0)" class='close_tr'>X</a>
+				<h3>
+					技能详情  
+					<a href="javascript:void(0)">场景镜像</a>
+					<a href="javascript:void(0)">联络开发者</a>
+					<a href="javascript:void(0)">自由测试</a>
+				</h3>
+				<div class="content">
+					<div class="left">
+						<dl>
+							<dd>技能名字</dd>
+							<dt>{{skill.agents[0].agent.name}}</dt>
+							<br>
+							<dd>技能分类</dd>
+							<dt>{{skill.agents[0].agent.category}}</dt>
+							<br>
+							<!-- <dd>版本说明</dd>
+							<dt>增加了回答</dt>
+							<br> -->
+							<dd>唤醒语&nbsp;&nbsp;</dd>
+							<dt>{{skill.agents[0].agent.attributes.nickNames.toString()}}</dt>
+							<br>
+							<dd class='al_top'>开发者简介</dd>
+							<dt>{{skill.agents[0].agent.attributes.developerIntroduction}}</dt>
+							<br>
+							<dd>纠错语&nbsp;&nbsp;</dd>
+							<dt>{{skill.agents[0].agent.attributes.nickNameVoiceVariants.toString()}}</dt>
+							<br>
+							<dd>范例语句</dd>
+							<dt>{{skill.agents[0].agent.attributes.userInputExamples.toString()}}</dt>
+							<br>
+						</dl>
+					</div>
+					<div class="center">
+						<div class="top">
+							<div class="left_center">
+								<label class="skill-img-label">技能头像:</label>
+								<img class='my_skill_img' ng-src="skill.agents[0].agent.logo" alt="">
+							</div>
+							<div class="right_center">
+								<!-- <p>范例语句</p>
+								<label ng-repeat='uie in skill.agents[0].agent.attributes.userInputExamples'>{{uie}}</label> 
+							 --></div>
+						</div>
+						<div class="bottom">
+							<dl>
+								<dd class='al_top'>技能简介</dd>
+								<dt>{{skill.agents[0].agent.attributes.descriptionForAudit}}</dt>
+								<br>
+								<dd>开发者主页</dd>
+								<dt>{{skill.agents[0].agent.attributes.developerMainSite}}</dt>
+								<br>
+							</dl>
+						</div>
+					</div>
+					<div class="right" my_id='{{skill.id}}'>
+						<button class='btn_succ' id='btn_succ' ng-hide='skill.show_down_web'>审核通过</button>
+						<button class='deny' id='deny' ng-hide='skill.show_down_web'>审核失败</button>
+						<button class='down_web' id='down_web' ng-show='skill.show_down_web'>下线</button>
+						<dl>
+							<dd class='al_top'>技能说明</dd>
+							<dt>{{skill.agents[0].agent.description}}</dt>
+							<br>
+							<dd>平台接入</dd>
+							<dt>{{skill.agents[0].agent.attributes.thirdPartyPlatforms.toString()}}</dt>
+							<br>
+						</dl>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+	</table>
+
+</div>
+</div>
+<!-- 账号信息 Modal end-->
+<script src="//dn-vbuluo-static.qbox.me/jquery.min.js"></script>
+<script src="//dn-vbuluo-static.qbox.me/angular.min.js"></script>
+<script src="//dn-vbuluo-static.qbox.me/bootstrap.min.js"></script>
+<script src="//dn-vbuluo-static.qbox.me/jquery.cookie.js"></script>
+<script src="//cdn.hcharts.cn/highcharts/highcharts.js"></script>
+<script src="js/components.js"></script>
+<script src="../js/global-util.js"></script>
+<script src="js/common.js"></script>
+<script src="js/robot.js"></script>
+
+<script>
+
+	$("[data-act=overall-situation]").click(function(){
+		window.location.href = "statistics.html";
+	});
+	
+	$("#robotSpan").click(function(){
+		console.log(1)
+		window.location.href = "./robot.html";
+	});
+
+	/*-------------------------------  table tr 点击事件  --------------------------------*/
+
+	$('table').on('click', '.close_tr', function() {
+		$(this).parents('.rel').addClass('more');
+	})
+	$('table').on('click', '.data', function() {
+		$(this).next('.more').removeClass('more');
+	})
+	$('.body').on('click', 'button', function(e){
+		var skillID = $(this).parent().attr('my_id');
+		if(e.target.className == 'btn_succ'){
+			var text = '<span class="end_status_succ">已通过</span>';
+			var url = api_host_v2beta + 'skills/' + skillID + '/approve';
+			var shenhe_status = '通过审核'
+		}else if(e.target.className == 'deny') {
+			text = '<span class="end_status_deny">已拒绝</span>';
+			url = api_host_v2beta + 'skills/' + skillID + '/reject';
+			shenhe_status = '已拒绝'
+		}else if(e.target.className == 'down_web') {
+			text = '<span class="end_status_deny">已下线</span>';
+			url = api_host_v2beta + 'skills/' + skillID + '/offline';
+			shenhe_status = '已下线'
+		}
+		var $this = $(this);
+		$.ajax({
+			url,
+			type: 'post',
+			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+			data:{"size":1000},
+			success: function() {
+				$.trace('操作成功')
+				$this.parent().find('button').hide();
+				$this.parent().append(text);
+				$this.parents('tr').prev().find('td:nth-child(5)').text(shenhe_status);
+			},
+			error: function(data) {
+				var data = JSON.parse(data.responseText)
+				$.trace(data.message)
+				if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
+			}
+		})
+	})
+	
+
+	var app = angular.module('app', []);
+	app.controller('controller', function($scope) {
+		$scope.skills = [];
+		var tag = 0;
+		$.ajax({
+			url: api_host_v2beta + 'skills/public',
+			type: 'get',
+			data:{"size":1000},
+			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+			// data: {tag: 'Develop'},
+			success: function(ret) {
+				console.log(ret.content);
+				$scope.skills_product = ret.content;
+				$scope.skills = $scope.skills.concat($scope.skills_product);
+				$scope.$apply();
+			},
+			error: function(data) {
+				if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
+			},
+			complete: function() {
+				tag ++;
+			}
+		})
+
+		$.ajax({
+			url: api_host_v2beta + 'skills/public',
+			type: 'get',
+			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+			data: {tag: 'Develop',"size":1000},
+			success: function(ret) {
+				console.log(ret.content);
+				$scope.skills_develop = ret.content;
+				$scope.skills = $scope.skills.concat($scope.skills_develop);
+				$scope.$apply();
+			},
+			error: function(data) {
+				if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
+			},
+			complete: function() {
+				tag ++;
+			}
+		})
+
+		$.ajax({
+			url: api_host_v2beta + 'skills/public',
+			type: 'get',
+			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+			data: {tag: 'Develop', status: 'PENDING_APPROVAL',"size": 1000},
+			success: function(ret) {
+				console.log(ret.content);
+				$scope.skills_pedding_appr = ret.content;
+				$scope.skills = $scope.skills.concat($scope.skills_pedding_appr);
+				$scope.$apply();
+			},
+			error: function(data) {
+				if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
+			},
+			complete: function() {
+				tag ++;
+			}
+		})
+
+		$.ajax({
+			url: api_host_v2beta + 'skills/public',
+			type: 'get',
+			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+			data: {tag: 'Develop', status: 'REJECTED',"size":1000},
+			success: function(ret) {
+				$scope.skills_reject_devl = ret.content;
+				$scope.skills = $scope.skills.concat($scope.skills_reject_devl);
+				$scope.$apply();
+			},
+			error: function(data) {
+				if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
+			},
+			complete: function() {
+				tag ++;
+			}
+		})
+
+		$.ajax({
+			url: api_host_v2beta + 'skills/public',
+			type: 'get',
+			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+			data: {tag: 'Develop', status: 'APPROVED',"size":1000},
+			success: function(ret) {
+				console.log(ret.content);
+				$scope.skills_appr_devl = ret.content;
+				$scope.skills = $scope.skills.concat($scope.skills_appr_devl);
+				$scope.$apply();
+			},
+			error: function(data) {
+				if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
+			},
+			complete: function() {
+				tag ++;
+			}
+		})
+
+		$.ajax({
+			url: api_host_v2beta + 'skills/public',
+			type: 'get',
+			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+			data: {tag: 'Develop', status: 'OFFLINE',"size":1000},
+			success: function(ret) {
+				console.log(ret.content);
+				$scope.skills_offline_devl = ret.content;
+				$scope.skills = $scope.skills.concat($scope.skills_offline_devl);
+				$scope.$apply();
+			},
+			error: function(data) {
+				if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
+			},
+			complete: function() {
+				tag ++;
+			}
+		})
+
+		var t = setInterval(function() {
+			if(tag == 5) {
+				clearInterval(t);
+				$scope.skills_approved = [];
+				$scope.skills_reject = [];
+				$scope.skills_offline = [];
+				$scope.skills_pedding = [];
+				$scope.skills_init= [];
+				$scope.skills.forEach(function(ele, index, arr) {
+					var auditStatus = ele.auditStatus;
+					if(auditStatus == 'APPROVED') {
+						ele.show_down_web = true;
+						$scope.skills_approved.push(ele);
+					}
+					if(auditStatus == 'PENDING_APPROVAL') {
+						$scope.skills_pedding.push(ele);
+					}
+					if(auditStatus == 'REJECTED') {
+						$scope.skills_reject.push(ele);
+					}
+					if(auditStatus == 'OFFLINE') {
+						$scope.skills_offline.push(ele);
+					}
+					if(auditStatus == 'INIT') {
+						$scope.skills_init.push(ele);
+					}
+				})
+				$scope.skills = [].concat($scope.skills_pedding, $scope.skills_reject, $scope.skills_approved, $scope.skills_offline, $scope.skills_init);
+				$scope.$apply();
+			}
+		}, 100)
+		/////////////////
+		$('.paixu_select').on('change', function() {
+			var val = $(this).children('option:selected').val()
+			if(val == 'All') {
+				$scope.skills = [].concat($scope.skills_pedding, $scope.skills_reject, $scope.skills_approved, $scope.skills_offline, $scope.skills_init);
+			}else {
+				$scope.skills = $scope[val];
+			}
+			$scope.$apply();
+			console.log( $(this).children('option:selected'))
+		})
+		
+
+	})
+
+	app.filter('filter_english',function(){
+		 return function(auditStatus) {
+		 	var out = "";
+	       		if(auditStatus == 'APPROVED') {
+				out = '通过审核'
+			}
+			if(auditStatus == 'PENDING_APPROVAL') {
+				out = '审核中'
+			}
+			if(auditStatus == 'REJECTED') {
+				out = '未通过'
+			}
+			if(auditStatus == 'OFFLINE') {
+				out = '已下线'
+			}
+			if(auditStatus == 'INIT') {
+				out = '未提交审核'
+			}
+			return out;
+	       }
+	})
+
+	app.filter('filter_time',function(){
+		 return function(time) {
+		 	return new Date(parseInt(time)).toLocaleString().replace(/:\d{1,2}$/,' ');  
+	      }
+	})
+
+</script>
+</body>
+</html>

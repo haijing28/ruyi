@@ -1,3 +1,11 @@
+.my_app_box-ref {
+	margin:  0 !important;
+}
+
+.my_speach-res .nav-tabs{
+	margin-left: 30px !important;
+}
+
 .s-skill-box-nav{
 	height:100%;
 	overflow:hidden;
@@ -236,6 +244,12 @@
 	cursor:pointer;
 }
 
+.my_store .icon-zuoshuangyinhao, .my_store .icon-youshuangyinhao {
+	font-size: 10px;
+	vertical-align: super;
+	color: #6f6b6b !important;
+}
+
 /** 技能排序 **/
 .skill-sort{
 	width:750px;
@@ -444,6 +458,158 @@
 .skill-create-apply-success h4{
 	text-align:center;font-size:16px;margin-bottom: 60px;
 }
+
+/*----------------------------------- skill-store -------------------------------------*/
+
+.my_store {
+	background: #f7f8f8;
+	height: 100%;
+	overflow-y: auto;
+}
+
+.my_store .my_ul {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.my_store hr {
+	margin:  0 -30px;
+}
+
+.my_store .card {
+	display: inline-block;
+	width: 347px;
+	margin:  0 20px 20px 0 !important;
+	background: #fff;
+	border: 1px solid #ccc;
+	padding: 0 30px;
+}
+
+.my_store .card:hover {
+	/*background-color:#f7f9f9;*/
+}
+.my_store .desc{
+	text-align: center;
+	font-size: 16px;
+	margin: 20px;
+	font-weight: 400;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+}
+.my_store .desc i,.my_store .desc span{
+	color:#333;
+	font-weight:400;
+}
+.my_store .top {
+	display: flex;
+	padding: 20px 0;
+	justify-content: space-between;
+	cursor:pointer;
+}
+.my_store .top img {
+	border-radius: 50%;
+	width: 70px;
+	height: 70px;
+	margin-right: 20px;
+	border: 1px solid #ccc;
+}
+.my_store .top .detail {
+	display: flex;
+	flex-direction: column;
+}
+
+.my_store .top .detail h2 {
+	font-weight: 500;
+	font-family: PingFangSC-Medium;
+	font-size: 18px;
+	color: #4A4A4A;
+	align-self: flex-end;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width:200px;
+}
+.my_store .top .detail .span {
+	font-family: STHeitiSC-Light;
+	font-size: 14px;
+	color: #9B9B9B;
+	text-align: right;
+	margin-bottom: 12px;
+}
+
+.add_kill_button{
+	border: 1px solid #3794FF;
+	font-family: PingFangSC-Regular;
+	font-size: 14px;
+	background: #fff;
+	color: #3794FF;
+	padding: 3px 0;
+	width: 70px;
+	align-self: flex-end;
+}
+.add_kill_button:hover{
+	background: #3794FF;
+	color: #fff;
+}
+
+.my_store .card {
+	display: inline-block;
+	width: 350px;
+	margin:  20px;
+	background: #fff;
+	border: 1px solid #eee;
+	position: relative;
+	overflow: hidden;
+}
+
+.my_store .card.succ .status {
+	background:  #5cc124;
+}
+
+.my_store h1 {
+	font-family: PingFangSC-Regular;
+	font-size: 16px;
+	color: #4A4A4A;
+	letter-spacing: 0;
+	padding: 0;
+	padding-bottom: 20px;
+	position: relative;
+}
+
+.my_store .my_down {
+	position: absolute;
+	right: 20px;
+	top: 13px;
+}
+
+.my_store .my_down button {
+	background: transparent;
+}
+
+.my_ul_down {
+	min-width: 0;
+	width: 100px;
+	left: -20px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap
+}
+.remove-skill-button{
+	font-family: PingFangSC-Regular !important;
+	font-size: 14px !important;
+	color: #FFFFFF !important;
+	background: #B8C4D1 !important;
+	border: 1px solid #B8C4D1 !important;
+	height: 27px;
+	align-self: flex-end;
+}
+.remove-skill-button:hover{
+	background: #aab0b7 !important;
+}
+
+
 
 
 
