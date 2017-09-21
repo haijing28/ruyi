@@ -5,7 +5,7 @@ if(ruyiai_host.indexOf("http://test.ruyi.ai") > -1){
 	static_host = "http://test.ruyi.ai/gitlab/ruyiai-official/www/ruyiai-official/html/ruyiai-official";
 	isproductDomain = false;
 }else if(ruyiai_host.indexOf("lab.ruyi.ai") > -1){
-	static_host = "http://lab.ruyi.ai/ruyiai-official";
+	static_host = "http://lab.ruyi.ai/ruyiai-official/testtest";
 	isproductDomain = false;
 }
 var api_host = "https://api.ruyi.ai/sso";
