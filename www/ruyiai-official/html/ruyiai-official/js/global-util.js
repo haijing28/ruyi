@@ -160,4 +160,19 @@ $("body").delegate(".popover","mouseout",function(){
 	}, 100);
 });
 //帮助问号完美解决 end
+var showSaveingFunc = function(){
+	$(".global-save-tips").text("保存中...").removeClass("saved").addClass("saving");
+}
+var showSaveedFunc = function(){
+	$(".global-save-tips").text("修改已保存").removeClass("saving").addClass("saved");
+}
+
+
+
+
+
+
+
+
+
 

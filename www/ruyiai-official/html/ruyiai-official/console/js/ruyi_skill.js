@@ -13,6 +13,10 @@ function ruyiSkillCtrl($rootScope,$scope, $state, $stateParams){
 				$scope.ruyiSkillList = data.content;
 				hasSkillCheckFunc($scope.ruyiSkillList,$rootScope.currentRobot);//判断是否已经获取
 				$scope.$apply();
+				//存储到localstorage中
+				if(window.localstorage){
+					
+				}
 			},
 			error: function(data) {
 				if(data.status == 401 || data.status == 403){

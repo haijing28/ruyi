@@ -220,7 +220,7 @@ function entityDetailCtrl($rootScope,$scope, $state, $stateParams){
 			headers: {"Content-Type" : "application/json"},
 			method: "POST",
 			success: function(data){
-				data = dataParse(data);
+					data = dataParse(data);
 					if(data.code == 0){
 					$scope.entityDetail.id = data.result.id;
 					//$.trace("词典创建成功","success");
@@ -286,6 +286,7 @@ function entityDetailCtrl($rootScope,$scope, $state, $stateParams){
 					dataEditedFlag = false;
 					entityDetailDuplicate = JSON.stringify($scope.entityDetail);
 					$rootScope.$apply();
+					showSaveedFunc();
 				}else if(data.code == 2){
 					goIndex();
 				}else{
@@ -332,7 +333,7 @@ function entityDetailCtrl($rootScope,$scope, $state, $stateParams){
 	
 	//保存创建词典
 	$scope.saveEntityDetailFunc = function(){
-		
+		showSaveingFunc();
 		if($(".save-and-apply .dim-div").css("display") != "block"){
 			$(".save-and-apply .dim-div").css("display","block");
 			$(".save-and-apply .save-text").text("保存中...");
