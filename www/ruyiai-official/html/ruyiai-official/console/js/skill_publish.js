@@ -12,8 +12,14 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	var appID = getCookie('appId');
 
 	/*-------------------------------stringArr to objArr--------------------------------*/
-	
+
 	function stringToObjectArr(str) {
+		if(str == undefined) {
+			str = [];
+		} else {
+			str = str.split(';');
+		}
+		console.log(str)
 		var arr = str;
 		var objArr = [];
 		arr.forEach(function(ele) {
@@ -39,7 +45,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	$scope.awakes = [{value: ''}];
 	$scope.wrongs = [{value: ''}];
 	$scope.robotDesc = '';
-	$scope.skillTypes = [{name: '如意精选', value: ''},{name: '最新技能', value: ''},{name: '热门技能', value: ''},{name: '音频点播', value: ''},{name: '视频点播', value: ''},{name: '家居指令', value: ''},{name: '语音游戏', value: ''},{name: '电商购物', value: ''},{name: '生活服务', value: ''},{name: '美妆时尚', value: ''},{name: '医疗健康', value: ''},{name: '金融服务', value: ''},{name: '新闻资讯', value: ''},{name: '法律顾问', value: ''},{name: '效率工具', value: ''},{name: '体育健身', value: ''},{name: '测试娱乐', value: ''},{name: '其他', value: ''}]
+	$scope.skillTypes = [{name: '音频点播', value: ''},{name: '视频点播', value: ''},{name: '家居指令', value: ''},{name: '语音游戏', value: ''},{name: '电商购物', value: ''},{name: '生活服务', value: ''},{name: '美妆时尚', value: ''},{name: '医疗健康', value: ''},{name: '金融服务', value: ''},{name: '新闻资讯', value: ''},{name: '法律顾问', value: ''},{name: '效率工具', value: ''},{name: '体育健身', value: ''},{name: '测试娱乐', value: ''},{name: '其他', value: ''}]
 	$scope.selectedType = '请选择'
 	$scope.userSays = [{value: ''}];
 	$scope.selfDesc = '';
@@ -63,10 +69,10 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 
 	/*-------------------------------失焦保存--------------------------------*/
 
-	$('.my_body').on('blur', 'input, textarea', function() {
+	$('.my_body').on('blur', 'input, textarea', function(e) {
 		try{
 			localStorage[hasSkill_storage] = 'true';
-			localStorage[imgSrc] =  $scope.imgSrc;
+			localStorage[imgSrc] =  $('#pickSkillImg').attr('src');
 			localStorage[robotName] = $scope.robotName;
 			
 			localStorage[awakes] = JSON.stringify($scope.awakes);
@@ -79,14 +85,19 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			localStorage[self_homepage] = $scope.self_homepage;
 			localStorage[skillDesc] = $scope.skillDesc;
 			localStorage[plateforms] = $scope.plateforms.toString();
+			if( $(e.target).hasClass('small') ){
+				var arrName = $(this).parent().parent().find('.addCorect').attr('repeat-type');
+				var index = $(this).parent().index();
+				hasRepeatData(arrName);
+			}
 		}catch(e){}
 	})
 
-	
+
 	/*-------------------------------获得skill详情--------------------------------*/
 
 	var botId = getCookie('botId');
-	
+
 	function getSkillDetailFunc (){
 		var skillId = getCookie("skillId");
 		if(skillId && skillId.length > 0){
@@ -110,11 +121,34 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			 		$scope.plateforms = ret.attributes.thirdPartyPlatforms;
 			 		checkImgStatus();
 			 		$scope.$apply();
-				},error:function(){
-					goIndex();
+				},error:function(data){
+					if(data.status == 401 || data.status == 403){
+	            		goIndex();
+	            	}
 				}
 			});
 		}
+	}
+
+	/*-------------------------------提交发布申请--------------------------------*/
+
+	function commitPublish(id) {
+		var skillID = id || getCookie('skillId');
+		$.ajax({
+			url: api_host_v2beta + 'skills/' + getCookie("skillId") + '/submit',
+			type: 'post',
+			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
+			success: function() {
+				$('#uploadSuccess').modal('show');
+			},
+			error: function(data) {
+				data = dataParse(data.responseText);
+				$.trace('提交失败: ' + data.message);
+				if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
+			}
+		})
 	}
 
 	/*-------------------------------图片切换--------------------------------*/
@@ -124,7 +158,82 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			$('.' + ele).find('input').prop('checked', true);
 			$('.' + ele).find('.off').removeClass('off')
 		})
-		console.log($scope.plateforms)
+	}
+
+	/*-------------------------------检查用户说等的状态--------------------------------*/
+
+	function awCheck() {
+		var arr = objectArrToArr($scope.awakes);
+		var tag = true;
+		$scope.awakes.forEach(function(ele, i) {
+			if(arr.indexOf(ele.value) != arr.lastIndexOf(ele.value)) {
+				$('[repeat-type=awakes]').parent().children()[i + 1].children[0].classList.add('wrong');
+				tag = false;
+			}else {
+				$('[repeat-type=awakes]').parent().children()[i + 1].children[0].classList.remove('wrong');
+			}
+		})
+		return tag;
+	}
+
+	function wrCheck() {
+		var arr = objectArrToArr($scope.wrongs);
+		var tag = true;
+		$scope.wrongs.forEach(function(ele, i) {
+			if(arr.indexOf(ele.value) != arr.lastIndexOf(ele.value)) {
+				$('[repeat-type=wrongs]').parent().children()[i + 1].children[0].classList.add('wrong');
+				tag = false;
+			}else {
+				$('[repeat-type=wrongs]').parent().children()[i + 1].children[0].classList.remove('wrong');
+			}
+		})
+		return tag;
+	}
+
+	function usCheck() {
+		var arr = objectArrToArr($scope.userSays);
+		var tag = true;
+		$scope.userSays.forEach(function(ele, i) {
+			if(arr.indexOf(ele.value) != arr.lastIndexOf(ele.value)) {
+				$('[repeat-type=userSays]').parent().children()[i + 1].children[0].classList.add('wrong');
+				tag = false;
+			}else {
+				$('[repeat-type=userSays]').parent().children()[i + 1].children[0].classList.remove('wrong');
+			}
+		})
+		return tag;
+	}
+
+	function hasRepeatData(arrName) {
+		var has_passed = true;
+		var a = true;
+		var w = true;
+		var u = true;
+		arrName = arrName || '';
+		switch(arrName) {
+			case "awakes":
+				has_passed = awCheck()
+				break;
+			case "wrongs":
+				has_passed = wrCheck();
+				break;
+			case "userSays":
+				has_passed = usCheck();
+				break;
+			case "all":
+				a = awCheck();w = wrCheck();u = usCheck();
+				break;
+		}
+		if( !a ) {
+			return {tag: a, txt: '唤醒语的内容不能重复哦！'};
+		}
+		if( !w ) {
+			return {tag: w, txt: '纠错语的内容不能重复哦！'};
+		}
+		if( !u ) {
+			return {tag: u, txt: '用户说的内容不能重复哦！'};
+		}
+		return has_passed;
 	}
 
 	/*-------------------------------先从本地缓存拿数据--------------------------------*/
@@ -197,19 +306,15 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	/*-------------------------------copy 机器人--------------------------------*/
 	
 	$('.skill_settings').on('click', '.copy_robot_attr', function() {
-		try{
-			$scope.imgSrc = $rootScope.currentRobot.headUrl || $scope.imgSrc;
-			$scope.robotName = $rootScope.currentRobot.appName;
-			$scope.robotDesc = $rootScope.currentRobot.appDesc;
-
-			$scope.awakes = stringToObjectArr($rootScope.currentRobot.attribute.alias)
-			$scope.wrongs = stringToObjectArr($rootScope.currentRobot.attribute.voiceToCorrect)
-			$scope.userSays = stringToObjectArr($rootScope.currentRobot.attribute.hobby)
-
-			$scope.awakes.splice(5, 100);
-			$scope.wrongs.splice(5, 100);
-			$scope.userSays.splice(5, 100);
-		}catch(e){}
+		console.log('------------------------')
+		console.log($rootScope.currentRobot)
+		$scope.imgSrc = $rootScope.currentRobot.headUrl || $scope.imgSrc;
+		$scope.robotName = $rootScope.currentRobot.appName;
+		$scope.robotDesc = $rootScope.currentRobot.appDesc;
+		$scope.awakes = stringToObjectArr($rootScope.currentRobot.attribute.alias)
+		$scope.wrongs = stringToObjectArr($rootScope.currentRobot.attribute.voiceToCorrect)
+		$scope.awakes.splice(5, 100);
+		$scope.wrongs.splice(5, 100);
 		$scope.$apply();
 		$('#pickSkillImg').addClass('my_shake');
 		$('.robotName').addClass('my_shake');
@@ -230,7 +335,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			$scope[tp].push({value: ''});
 		}
 		$scope.$apply();
-		$(this).prev('input').focus();
+		$(this).prev('b').find('input').focus();
 	})
 	$('div').on('keydown', '.small', function(e) {
 		if($(this).val() == ''){
@@ -294,70 +399,79 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			$('[repeat-type=userSays]').parent().find( 'input' ).addClass('wrong');
 		}
 
+		// 清除空的用户说、唤醒语、纠错语
+		$scope.awakes.forEach(function(ele, index , arr) {
+			if(ele.value.trim() == ''){
+				arr.splice(index, 1);
+			}
+		})
+		$scope.wrongs.forEach(function(ele, index , arr) {
+			if(ele.value.trim() == ''){
+				arr.splice(index, 1);
+			}
+		})
+		$scope.userSays.forEach(function(ele, index , arr) {
+			if(ele.value.trim() == ''){
+				arr.splice(index, 1);
+			}
+		})
+		var has_passed = hasRepeatData('all');
+		if(has_passed.tag !== undefined) {
+			$.trace(has_passed.txt)
+			return;
+		}
 		if($('.wrong').length > 0) {
 			$.trace('要配置完技能插件才能发布哦！')
-		}else {
-			// 清除空的用户说、唤醒语、纠错语
-			$scope.awakes.forEach(function(ele, index , arr) {
-				if(ele.value.trim() == ''){
-					arr.splice(index, 1);
-				}
-			})
-			$scope.wrongs.forEach(function(ele, index , arr) {
-				if(ele.value.trim() == ''){
-					arr.splice(index, 1);
-				}
-			})
-			$scope.userSays.forEach(function(ele, index , arr) {
-				if(ele.value.trim() == ''){
-					arr.splice(index, 1);
-				}
-			})
-			$('.skill_publish').attr('disabled', true);
-			$('.skill_publish').addClass('my_gray');
-			$('.skill_publish').text('提交中');
-			var skillId = getCookie("skillId");
-			var url = "";
-			if(skillId && skillId.length > 0){
-				url = api_host_v2beta + 'skills/' + skillId;
-			}else{
-				url = api_host_v2beta + 'skills?botId=' + getCookie("botId");
-			}
-			$.ajax({
-				url: url,
-				type: 'POST',
-				headers: {"Content-Type" : "application/json", "Authorization" : "Bearer " + getCookie('accessToken')},
-				data: JSON.stringify({
-					"name": $scope.robotName.trim(),
-					"description": $scope.skillDesc.trim(),
-					"category": $scope.selectedType.trim(),
-					"service": '123',
-					"agentType": agentType,
-					"logo": $scope.imgSrc,
-					"nickNames": objectArrToArr($scope.awakes),
-					"nickNameVoiceVariants": objectArrToArr($scope.wrongs),
-					"userInputExamples": objectArrToArr($scope.userSays),
-					"developerMainSite": $scope.self_homepage.trim(),
-					"developerIntroduction": $scope.selfDesc.trim(),
-					"descriptionForAudit": $scope.robotDesc.trim(),
-					"thirdPartyPlatforms": $scope.plateforms
-				}),
-				success: function(ret) {
-					setCookie('skillId' ,ret.id);
-					$('#uploadSuccess').modal('show');
-				},
-				error: function(err) {
-					err = JSON.parse(err.responseText);
-					$.trace(err.message)
-					goIndex();
-				},
-				complete: function() {
-					$('.skill_publish').attr('disabled', false);
-					$('.skill_publish').removeClass('my_gray');
-					$('.skill_publish').text('提交发布');
-				}
-			})
+			return;
 		}
+		$('.skill_publish').attr('disabled', true);
+		$('.skill_publish').addClass('my_gray');
+		$('.skill_publish').text('提交中');
+		var skillId = getCookie("skillId");
+		var url = "";
+		if(skillId && skillId.length > 0){
+			url = api_host_v2beta + 'skills/' + skillId;
+		}else{
+			url = api_host_v2beta + 'skills?botId=' + getCookie("botId");
+		}
+		$.ajax({
+			url: url,
+			type: 'POST',
+			headers: {"Content-Type" : "application/json", "Authorization" : "Bearer " + getCookie('accessToken')},
+			data: JSON.stringify({
+				"name": $scope.robotName.trim(),
+				"description": $scope.skillDesc.trim(),
+				"category": $scope.selectedType.trim(),
+				"service": '123',
+				"agentType": agentType,
+				"logo": $scope.imgSrc,
+				"nickNames": objectArrToArr($scope.awakes),
+				"nickNameVoiceVariants": objectArrToArr($scope.wrongs),
+				"userInputExamples": objectArrToArr($scope.userSays),
+				"developerMainSite": $scope.self_homepage.trim(),
+				"developerIntroduction": $scope.selfDesc.trim(),
+				"descriptionForAudit": $scope.robotDesc.trim(),
+				"thirdPartyPlatforms": $scope.plateforms,
+				"skillIds": $rootScope.currentRobot.referencedApp
+			}),
+			success: function(ret) {
+				setCookie('skillId' ,ret.id);
+				commitPublish(ret.id);
+				
+			},
+			error: function(data) {
+				data = JSON.parse(data.responseText);
+				$.trace(data.message)
+				if(data.status == 401 || data.status == 403){
+		            		goIndex();
+		            	}
+			},
+			complete: function() {
+				$('.skill_publish').attr('disabled', false);
+				$('.skill_publish').removeClass('my_gray');
+				$('.skill_publish').text('提交发布');
+			}
+		})
 	})
 
 	/*-------------------------------点击模态框确定--------------------------------*/
@@ -371,7 +485,9 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	$('input[type=checkbox]').change(function() {
 		if($(this).prop('checked')) {
 			$(this).parents('li').addClass('active');
-			$scope.plateforms.push($(this).attr('name'))
+			if($scope.plateforms.toString().indexOf($(this).attr('name')) == -1) {
+				$scope.plateforms.push($(this).attr('name'))
+			}
 		}else {
 			$(this).parents('li').removeClass('active');
 			var index = $scope.plateforms.indexOf($(this).attr('name'));
@@ -404,7 +520,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 		filters : {
 			mime_types : [ {
 				title : "Image files",
-				extensions : "JPG"
+				extensions : "BMP,DIB,EMF,GIF,ICB,ICO,JPG,JPEG,PBM,PGM,PNG,PPM,PSD,PSP,RLE,SGI,TGA,TIF"
 			} ]
 		},
 		auto_start : true,
@@ -485,7 +601,6 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			api.setOptions({
 				bgFade : true
 			});
-			console.log("api.ui.selection:" + api.ui.selection);
 			api.ui.selection.addClass('jcrop-selection');
 		});
 	}
@@ -493,6 +608,10 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	function jds(c) {
 
 	}
+
+	$('#clip_btn_sure').click(function() {
+		$('.jcrop-tracker').dblclick();
+	})
 
 	function cutFunc(c) {
 		var wScale = api.getScaleFactor()[0];
@@ -516,7 +635,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 						$("#cut-header").modal("hide");
 						$("#pickSkillImg").attr("src",data.result);
 					} else if (data.code == 2) {
-						goIndex();
+						//goIndex();
 					} else {
 						if (data.msg) {
 							$.trace(data.msg + "( " + data.detail + " )",
@@ -531,7 +650,6 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 		});
 	} 
 	/* 裁剪 end */
-
 }
 
 

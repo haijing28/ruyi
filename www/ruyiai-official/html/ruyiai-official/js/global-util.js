@@ -1,24 +1,20 @@
 var ruyiai_host = window.location.origin;
 var static_host = "https://ruyi.ai";
 var isproductDomain = true;
-if(window.location.href.indexOf("ruyiai-official/testtest") > -1){
-	static_host = "http://lab.ruyi.ai/ruyiai-official/testtest";
-	isproductDomain = false;
-}else if(ruyiai_host.indexOf("http://test.ruyi.ai") > -1){
+if(ruyiai_host.indexOf("http://test.ruyi.ai") > -1){
 	static_host = "http://test.ruyi.ai/gitlab/ruyiai-official/www/ruyiai-official/html/ruyiai-official";
 	isproductDomain = false;
 }else if(ruyiai_host.indexOf("lab.ruyi.ai") > -1){
 	static_host = "http://lab.ruyi.ai/ruyiai-official";
 	isproductDomain = false;
 }
-var correction_host = "http://test.ruyi.ai:3333/";
 var api_host = "https://api.ruyi.ai/sso";
-var api_host_v2beta = "http://api.ruyi.ai/v2beta/";
+var api_host_v2beta = "https://api.ruyi.ai/v2beta/";
 if(!isproductDomain){
 	api_host = "http://lab.ruyi.ai/sso";
 	api_host_v2beta = "http://lab.ruyi.ai/v2beta/";
 	if(ruyiai_host.indexOf("http://test.ruyi.ai") > -1){
-		api_host_v2beta = "http://test.ruyi.ai:8000/";
+		api_host_v2beta = "http://test.ruyi.ai:1111/";
 	}
 }
 var developTag = "Develop";
@@ -85,16 +81,42 @@ function delCookie(name)
     });
 } 
 
+var deleteAllCookieFunc = function(){
+	setTimeout(function(){
+		delCookie("email");
+		delCookie("nickname");
+		delCookie("userId");
+		delCookie("appId");
+		delCookie("appName");
+		delCookie("appKey");
+		delCookie("tgt");
+		delCookie("botId");
+		delCookie("skillId");
+		delCookie("agentType");
+		delCookie('accessToken');
+		delCookie('email');
+		window.location.href = static_host + "/base/login.html"
+	},1000);
+}
+
+$("#mylogout").click(function(){//注销
+	goIndex(true);
+});
+
 //跳转到首页
-var goIndex = function(){
-	delCookie("email");
-	delCookie("nickname");
-	delCookie("userId");
-	delCookie("appId");
-	delCookie("appName");
-	delCookie("appKey");
-	delCookie("tgt");
-	window.location.href = static_host + "/base/login.html"
+var goIndex = function(selfexit){
+	if(!selfexit){
+		$.trace("账号已经登出");
+	}
+	$.ajax({
+		url : api_host + "/v1/tickets/" + getCookie('tgt'),
+		method : "DELETE",
+		success: function() {
+			deleteAllCookieFunc();
+		},error: function(){
+			deleteAllCookieFunc();
+		}
+	});
 }
 
 //判断是否需要进行parse转换

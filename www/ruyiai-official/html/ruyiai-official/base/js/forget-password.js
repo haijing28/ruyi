@@ -19,9 +19,9 @@ $(function(){
 		$this.text("正在发送邮件...");
 		$this.removeClass("active");
 		$.ajax({
-			url : api_host + "/password_reset",
+			url : api_host + "/password/reset/verify",
 			method : "post",
-			data: JSON.stringify({"email":resetPwdEmail.val()}),
+			data: JSON.stringify({"account":resetPwdEmail.val()}),
 			headers:{
 				"content-type": 'application/json'
 			},

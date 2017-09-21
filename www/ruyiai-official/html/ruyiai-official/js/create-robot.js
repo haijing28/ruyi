@@ -146,9 +146,9 @@ $(function(){
 //		 var appObjectPara = { "appName": appName,"headUrl": "https://dn-vbuluo-static.qbox.me/default-robot.svg", "agentType": agentType, "attribute": attributeObj, "appDesc": "来自海知智能ruyi.ai的酷炫聊天机器人","defaultResponses":defaultResponsesObj };
 		 
 		 var skillIds = [];
-		 if(agentType != "SKILL"){
-			 skillIds = ["2013efe4-0f8e-423e-848c-be31f9f54396","6fc1c620-e31b-4ae5-a0e1-6709bb7029d9","6e3a8217-d07d-4cb8-803c-75e952bb521b","15de5ea2-4502-4f78-a49f-fcb04625ec3c","7e9b61b7-6dac-4005-83e0-ea2197372bf2"];
-		 }
+//		 if(agentType != "SKILL"){
+//			 skillIds = ["2013efe4-0f8e-423e-848c-be31f9f54396","6fc1c620-e31b-4ae5-a0e1-6709bb7029d9","6e3a8217-d07d-4cb8-803c-75e952bb521b","15de5ea2-4502-4f78-a49f-fcb04625ec3c","7e9b61b7-6dac-4005-83e0-ea2197372bf2"];
+//		 }
 		 
 		 var appObjectPara = {
 		    "name": appName,
@@ -169,56 +169,24 @@ $(function(){
 				data:JSON.stringify(appObjectPara),
 				success: function(data) {
 					data = dataParse(data);
-					
-					var agentObj = data.agents[0];
-					
-					setCookie("appId",agentObj.agentId);
+					var agentObj = data.agents[0].agent;
+					setCookie("appId",agentObj.id);
 					setCookie("appName",agentObj.name);
 					setCookie("appKey",agentObj.appKey);
 					setCookie("createRobot","true");
-					setCookie("app"+ agentObj.agentId,"isNewUser");
+					setCookie("app"+ agentObj.id,"isNewUser");
+					setCookie("botId",data.id);
 					setTimeout(function(){
 						//创建默认的场景
 						addScenarioFunc("打招呼", addIntentFunc);
 						//创建默认的意图
 					}, 500);
-				},error:function(){
-//					goIndex();
+				},error:function(data){
+					if(data.status == 401 || data.status == 403){
+	            		goIndex();
+	            	}
 				}
 			});
-		 
-//		 $.ajax({
-//			url : ruyiai_host + "/ruyi-ai/app/createv2.html",
-//			traditional: true,
-//			headers: {"Content-Type" : "application/json"},
-//			method : "post",
-//			data:JSON.stringify(appObjectPara),
-//			success: function(data) {
-//				
-//				data = dataParse(data);
-//		 		if(data.code == 0){
-//					appObject = data.result;
-//					appObject.referencedApp = ["2013efe4-0f8e-423e-848c-be31f9f54396","6fc1c620-e31b-4ae5-a0e1-6709bb7029d9","6e3a8217-d07d-4cb8-803c-75e952bb521b","15de5ea2-4502-4f78-a49f-fcb04625ec3c","7e9b61b7-6dac-4005-83e0-ea2197372bf2"];
-//					//默认勾选通用闲聊
-//					updateAppInfoFucn(appObject);
-//					setCookie("appId",appObject.id);
-//					setCookie("appName",appObject.appName);
-//					setCookie("appKey",appObject.appKey);
-//					setCookie("createRobot","true");
-//					setCookie("app"+appObject.id,"isNewUser");
-//					setTimeout(function(){
-//						//创建默认的场景
-//						addScenarioFunc("打招呼", addIntentFunc);
-//						//创建默认的意图
-//					}, 500);
-//				}else if(data.code == 2){
-//					goIndex();
-//				}else{
-//					$.trace(data.msg);
-//					goIndex();
-//				}
-//			}
-//		});
 		return false;
 	});
 	

@@ -35,16 +35,25 @@ $(function(){
 			$("#nav-mylogin").css("display","none");
 			$("#nav-register").css("display","none");
 			$("#nav-user-info").css("display","block");
-			$("#help").css("display","block");
+			//$("#robotList").css("display","block");
 		}else{
 			$("#nav-mylogin").css("display","block");
 			$("#nav-register").css("display","block");
 			$("#nav-user-info").css("display","none");
-			$("#help").css("display","none");
+			//$("#robotList").css("display","none");
 		}
 		$("[data-act=myemail]").text(getCookie("email"));
 	}
 	checkUserFunc();
+	
+	$("#appkey-manager").click(function(){
+		var tgt = getCookie("tgt");
+		if(tgt && tgt.length > 0){
+			window.location.href = static_host + "/app_manager.html";
+		}else{
+			window.location.href = static_host + "/base/login.html";
+		}
+	});
 	
 	// 关闭登录、申请app对话框
 	$("#mylogin-cancel, #myregister-cancel").on("click", function() {
@@ -178,10 +187,6 @@ $(function(){
 		});
 	}
 	
-	$("#appkey-manager").click(function(){
-		window.location.href = static_host + "/app_manager.html";
-	});
-	
 	//更新app信息
 	var updateAppInfoFucn = function(appDetail){
 		$.ajax({
@@ -237,23 +242,6 @@ $(function(){
 		});
 		return false;
 		
-	});
-	
-	$("#mylogout").click(function(){//注销
-		$.ajax({
-			url : api_host + "/v1/tickets/" + getCookie('tgt'),
-			method : "DELETE",
-			success: function(data) {
-				delCookie("email");
-				delCookie("nickname");
-				delCookie("userId");
-				delCookie("appId");
-				delCookie("appName");
-				delCookie("appKey");
-				delCookie('tgt');
-				window.location.href = static_host + "/index.html";
-			}
-		});
 	});
 	
 	$('#appkey').on('shown.bs.modal', function () {
@@ -381,7 +369,7 @@ $(function(){
 		$.ajax({
 			url : api_host + "/password",
 			method : "POST",
-			data: JSON.stringify({"account": getCookie("email"),"old_password":oldPassword.val(),"newPassword":newpasswd.val()}),
+			data: JSON.stringify({"account": getCookie("email"),"oldPassword":oldpasswd.val(),"newPassword":newpasswd.val()}),
 			headers: {
 				'Content-Type': 'application/json'
 			},
@@ -397,8 +385,9 @@ $(function(){
 				window.location.href = static_host + "/base/login.html"
 			},
 			error: function(err){
-				var err = JSON.parse(err.responseText);
-				$.trace(err.msg);
+				console.log(err)
+				var err = dataParse(err.responseText);
+				$.trace(err.message);
 			}
 		});
 		

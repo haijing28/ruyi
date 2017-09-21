@@ -463,8 +463,6 @@
 
 .my_store {
 	background: #f7f8f8;
-	height: 100%;
-	overflow-y: auto;
 }
 
 .my_store .my_ul {
@@ -545,7 +543,7 @@
 	font-size: 14px;
 	background: #fff;
 	color: #3794FF;
-	padding: 5px 0;
+	padding: 3px 0;
 	width: 70px;
 	align-self: flex-end;
 }

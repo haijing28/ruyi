@@ -1,15 +1,15 @@
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { 
-	color: #c3bebe; 
-} 
+	color: #B5B5B6; 
+}
 input:-moz-placeholder, textarea:-moz-placeholder { 
-	color: #c3bebe; 
-} 
+	color: #B5B5B6; 
+}
 input::-moz-placeholder, textarea::-moz-placeholder { 
-	color: #c3bebe; 
-} 
+	color: #B5B5B6; 
+}
 input:-ms-input-placeholder, textarea:-ms-input-placeholder { 
-	color: #c3bebe; 
-} 
+	color: #B5B5B6; 
+}
 .box .center-box{
 	overflow: auto;
 	margin-top: 0 !important;
@@ -17,6 +17,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .my_body {
 	padding: 30px 70px;
 	overflow-y: auto;
+}
+.my_body h3 , .my_body h2{
+	color: #595757;
+	font-family: '方正兰亭黑_GBK';
 }
 .my_body .title {
 	margin-bottom: 30px;
@@ -72,7 +76,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	width: 270px;
 	height: 33px;
 	padding-left: 15px;
-	border: 1px solid #dedada;
+	border: 1px solid #EBEEF0;
 }
 .my_body input.small {
 	width: 170px;
@@ -90,7 +94,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	vertical-align: top;
 	padding: 7px 10px;
 	margin-bottom: 25px;
-	border: 1px solid #dedada;
+	border: 1px solid #EBEEF0;
 }
 .my_body .myhelp {
 	margin-left: 0;
@@ -101,8 +105,10 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .my_body .addLabel {
 	margin-left: 152px;
-	color: #797474;
+	color: #EE892F;
 	display: block;
+	font-weight: 400;
+	font-size: 12px;
 }
 .my_body .skill-platform {
 	/* height: 50px; */
@@ -116,7 +122,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	list-style: none;
 	height: 80px;
 	width: 120px;
-	border: 1px solid #ccc;
+	border: 1px solid #ebeef0;
 	margin-right: 30px;
 	background-repeat: no-repeat;
 	background-position: top center;
@@ -150,6 +156,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	background-image: url('../../img/rokid_gary.svg');
 	background-size: 50%;
     	padding-top: 12px;
+    	display: none !important;
 }
 .my_body .rk.active {
 	background-image: url('../../img/rokid_colour.svg');
@@ -187,7 +194,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .my_body .mySel button {
 	width: 100%;
 	background: #fff;
-	border: 1px solid #ccc;
+	border: 1px solid #ebeef0;
 	text-align: left;
 	border-radius: 0;
 	color: #4f5463;

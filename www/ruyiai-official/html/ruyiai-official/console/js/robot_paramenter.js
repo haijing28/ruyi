@@ -176,7 +176,7 @@ function assistantParaCtrl($rootScope, $scope, $state, $stateParams) {
 		filters : {
 			mime_types : [ {
 				title : "Image files",
-				extensions : "JPG"
+				extensions : "BMP,DIB,EMF,GIF,ICB,ICO,JPG,JPEG,PBM,PGM,PNG,PPM,PSD,PSP,RLE,SGI,TGA,TIF"
 			} ]
 		},
 		auto_start : true,
@@ -235,6 +235,10 @@ function assistantParaCtrl($rootScope, $scope, $state, $stateParams) {
 	var uploader = Qiniu.uploader(optionImg);
 	// 七牛上传图片文件 end
 
+	$('#clip_btn_sure').click(function() {
+		$('.jcrop-tracker').dblclick();
+	})
+	
 	// 图片剪裁 start
 	var api;
 	function toJcrop(c) {
@@ -294,7 +298,7 @@ function assistantParaCtrl($rootScope, $scope, $state, $stateParams) {
 					}
 					$scope.$apply();
 				} catch (e) {
-					$.trace("请确保是.jpg格式图片(未修改过后缀)，并且小于120M");
+					$.trace("请确保是.jpg格式图片(未修改过后缀)，并且小于10M");
 				}
 			}
 		});

@@ -674,6 +674,7 @@ return out;
 });
 
 apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
+	$rootScope.saveStatus = "";
 	$rootScope.ruyi_api_help = "http://docs.ruyi.ai";
 	//设置让页面使用 start
 	$rootScope.ruyi_wechat = ruyi_wechat;
@@ -1350,17 +1351,18 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 	
 	$scope.testSubmit = function($event){
 		var content_type = $(".tab-content-max .tab-pane.active").attr("id");
-		if(!$(".testTextarea textarea").val() || $(".testTextarea textarea").val().length == 0  || $(".testTextarea textarea").val().replace(/(^\s*)|(\s*$)/g,"")==""){
+		console.log("aaaaaa");
+		if(!$(".testTextarea [data-act=sendMsg]").val() || $(".testTextarea [data-act=sendMsg]").val().length == 0  || $(".testTextarea [data-act=sendMsg]").val().replace(/(^\s*)|(\s*$)/g,"")==""){
 			$.trace("请填写你要说的话");
-			$(".testTextarea textarea").focus();
+			$(".testTextarea [data-act=sendMsg]").focus();
 			return false;
 		}
-		if($(".testTextarea textarea").val()){
-			$scope.talks.push({serverLeft: false,userRight: true,talkText:$(".testTextarea textarea").val()});
+		if($(".testTextarea [data-act=sendMsg]").val()){
+			$scope.talks.push({serverLeft: false,userRight: true,talkText:$(".testTextarea [data-act=sendMsg]").val()});
 			setTimeout(function(){
 				$(".try-testContain").scrollTop($(".try-testContain")[0].scrollHeight);
 			},500);
-			$(".testTextarea textarea").val('');
+			$(".testTextarea [data-act=sendMsg]").val('');
 		}
 		
 		//TODO 记得提交代码的时候注释掉
@@ -1566,9 +1568,10 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 	});
 
 	$scope.testSubmitLocal = function($event){
+		console.log("bbbbbb");
 		if(!$(".testTextareaLocal textarea").val() || $(".testTextareaLocal textarea").val().length == 0 || $(".testTextareaLocal textarea").val().replace(/(^\s*)|(\s*$)/g,"")==""){
 			$.trace("请填写你要说的话");
-			$(".testTextarea textarea").focus();
+			$(".testTextarea [data-act=sendMsg]").focus();
 			return false;
 		}
 		if($(".testTextareaLocal textarea").val()){
@@ -1822,7 +1825,7 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 		$.ajax({
 			url : api_host + "/password",
 			method : "POST",
-			data: JSON.stringify({"email": getCookie("email"),"old_password":oldpasswd.val(),"new_password":newpasswd.val()}),
+			data: JSON.stringify({"account": getCookie("email"),"oldPassword":oldpasswd.val(),"newPassword":newpasswd.val()}),
 			headers: {
 				'Content-Type': 'application/json'
 			},
@@ -1858,47 +1861,6 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 		}
 	})
 	//修改密码 end
-	
-//	$("#mylogout").click(function(){//注销
-//		$.ajax({
-//			url : ruyiai_host + "/ruyi-ai/user/logout.html",
-//			method : "get",
-//			success: function(data) {
-//				data = JSON.parse(data);
-//				if(data.code == 0){
-//					delCookie("email");
-//					delCookie("nickname");
-//					delCookie("userId");
-//					delCookie("appId");
-//					delCookie("appName");
-//					delCookie("appKey");
-//					window.location.href = static_host + "/index.html";
-//				}else if(data.code == 2){
-//					goIndex();
-//				}else if(data.code == 1){
-//					$.trace(""+data.msg,"error");
-//					$r_username.focus();
-//				}
-//			}
-//		});
-//	});
-	
-	$("#mylogout").click(function(){//注销
-		$.ajax({
-			url : api_host + "/v1/tickets/" + getCookie('tgt'),
-			method : "DELETE",
-			success: function(data) {
-				delCookie("email");
-				delCookie("nickname");
-				delCookie("userId");
-				delCookie("appId");
-				delCookie("appName");
-				delCookie("appKey");
-				delCookie('tgt');
-				window.location.href = static_host + "/index.html";
-			}
-		});
-	});
 	
 	//判断当前是否是创建机器人状态
 	var createRobot = getCookie("createRobot");

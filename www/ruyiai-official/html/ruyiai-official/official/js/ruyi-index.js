@@ -41,19 +41,24 @@ $(function() {
 
     /** 生产机器人 **/
     $(".make-robot").on("click", function() {
-        if(window.innerWidth >= 768){
-            if(window.innerWidth == 768){
-                $(".make-robot-qrcode").hide();
-                $(".make-robot-mobile").show();
-            }else if(window.innerWidth > 768){
-                $(".make-robot-mobile").hide();
-                $(".make-robot-qrcode").show();
-            }
-            $(".dark-background").fadeIn(200);
-        }else{
-            window.open("official/qrcode-ruyi-mobile.html","_self");
-        }
-        $(".recruit-area").hide();
+    	if(getCookie("last-location-href") && getCookie("last-location-href").length > 0){
+    		window.location.href = static_host + "/base/login.html";
+    	}else{
+    		window.location.href = static_host + "/base/phRegister.html";
+    	}
+//        if(window.innerWidth >= 768){
+//            if(window.innerWidth == 768){
+//                $(".make-robot-qrcode").hide();
+//                $(".make-robot-mobile").show();
+//            }else if(window.innerWidth > 768){
+//                $(".make-robot-mobile").hide();
+//                $(".make-robot-qrcode").show();
+//            }
+//            $(".dark-background").fadeIn(200);
+//        }else{
+//            window.open("official/qrcode-ruyi-mobile.html","_self");
+//        }
+//        $(".recruit-area").hide();
     })
 
     $(".dark-background").on("click",function(){

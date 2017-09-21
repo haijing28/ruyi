@@ -8,8 +8,10 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
 			success: function(data) {
 			},
-			error: function() {
-				goIndex();
+			error: function(data) {
+				if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
 			}
 		});
 	}
@@ -25,6 +27,8 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 	        	$this.attr('disabled', true);
 	        	$this.addClass('has_dis_true');
 	        	downlineSkillFunc(dataSkillId);
+	        	$scope.mySkillList[0].auditStatus = 'OFFLINE';
+	        	updateAuditStatusFunc($scope.mySkillList[0]);
 	        }
 		})
 	})
@@ -52,8 +56,10 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 						data = dataParse(data);
 						updateAuditStatusFunc(data);
 					},
-					error: function() {
-						
+					error: function(data) {
+						if(data.status == 401 || data.status == 403){
+		            		goIndex();
+		            	}
 					}
 				});
 			}
@@ -70,25 +76,34 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 
 			ele.btn_show = true
 			ele.btn_Text = '从技能商店撤回技能';
+
+			// if(ele.auditStatus == 'INIT') {
+			// 	ele.statuClass = 'succ';
+			// 	ele.statuText = '通过审核'
+			// 	ele.btn_Text = '从技能商店撤回技能';
+			// 	ele.btn_show = true;
+			// }
 			
 			if(ele.auditStatus == 'APPROVED') {
-				ele.statuClass = 'succ';
+				ele.statuClass = 'approved';
 				ele.statuText = '通过审核'
 				ele.btn_Text = '从技能商店撤回技能';
 				ele.btn_show = true;
 			}
 			if(ele.auditStatus == 'PENDING_APPROVAL') {
+				ele.statuClass = 'pending_approval';
 				ele.statuText = '审核中'
 				ele.btn_show = false;
 			}
 			if(ele.auditStatus == 'REJECTED') {
+				ele.statuClass = 'rejected';
 				ele.statuText = '未通过'
 				ele.btn_show = false;
 			}
 			if(ele.auditStatus == 'OFFLINE') {
-				ele.statuText = '下线'
-				ele.btn_Text = '已下线';
-				ele.btn_show = true;
+				ele.statuClass = 'offline';
+				ele.statuText = '已下线'
+				ele.btn_show = false;
 			}
 		})
 		
@@ -111,8 +126,10 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 					hasSkillCheckFunc($scope.myHasSkillList,$rootScope.currentRobot);//判断是否已经获取
 					$scope.$apply();
 				},
-				error: function() {
-					goIndex();
+				error: function(data) {
+					if(data.status == 401 || data.status == 403){
+	            		goIndex();
+	            	}
 				}
 			});
 		}
@@ -133,11 +150,11 @@ function mySkillCtrl($rootScope,$scope, $state, $stateParams){
 		event.stopPropagation();
 		var $this = $(this);
 		$.confirm({
-	        "text": '<div class="my_own_down_div"><label class="down_web_label">是否确认下线该技能？</label>' + '<br>' + '<span class="down_web_span">下线技能后需要重新提交技能进行审核哦！</span></div>',
+	        "text": '<div class="my_own_down_div"><label class="down_web_label">是否确认移除该技能？</label>' + '<br>' + '<span class="down_web_span">移除之后，将失去该技能的功能！</span></div>',
 	        "title": " ",
 	        "ensureFn": function() {
 		        	var skillId = $this.attr("data-skill-id");
-		        	removeSkillFromBotFunc($scope.myHasSkillList,skillId,$rootScope.currentRobot);
+		        	removeSkillFromBotFunc($scope.myHasSkillList,skillId,$rootScope.currentRobot,"remove");
 		        	$scope.$apply();
 	        }
 		})

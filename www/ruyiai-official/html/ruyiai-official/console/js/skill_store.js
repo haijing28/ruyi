@@ -43,10 +43,14 @@ var addSkillToBotFunc = function(skillList,skillId,currentRobot){
 }
 
 //移除技能插件
-var removeSkillFromBotFunc = function(skillList,skillId,currentRobot){
+var removeSkillFromBotFunc = function(skillList,skillId,currentRobot,remove){
 	skillList.forEach(function(skill,index,self){
 		if(skill.id == skillId){
-			skill.hasSkill = "no";
+			if(remove && remove == "remove"){
+				skillList.splice(index,1);
+			}else{
+				skill.hasSkill = "no";
+			}
 		}
 	});
 	var index = $.inArray(skillId, currentRobot.referencedApp);
@@ -57,22 +61,20 @@ var removeSkillFromBotFunc = function(skillList,skillId,currentRobot){
 //更新bot引用的app的属性
 var putBotParaFunc = function(currentRobot){
 	$.ajax({
-		url : ruyiai_host + "/ruyi-ai/app/" + appId,
-		data : JSON.stringify(currentRobot),
+		url : api_host_v2beta + "bots/" + getCookie("botId"),
+		data : JSON.stringify({"skillIds": currentRobot.referencedApp}),
 		traditional : true,
 		headers : {
-			"Content-Type" : "application/json"
+			"Content-Type" : "application/json",
+			"Authorization" : "Bearer " + getCookie('accessToken')
 		},
-		method : "PUT",
+		method : "POST",
 		success : function(data) {
-			if (data.code == 0) {
-			} else if (data.code == 2) {
-				goIndex();
-			} else {
-				if (data.msg) {
-					$.trace(data.msg + "( " + data.detail + " )","error");
-				}
-			}
+
+		},error:function(data){
+			if(data.status == 401 || data.status == 403){
+        		goIndex();
+        	}
 		}
 	});
 }

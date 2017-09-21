@@ -42,7 +42,7 @@
 	<link rel="stylesheet" type="text/css" href="css/skill.css">
 	<!-- 文件中的引用 -->
 	
-	<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_159753_uhyblsjtp78hbyb9.css">
+	<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_159753_3cg8o7tr2n7v6lxr.css">
 	<title>开发者平台</title>
 	<style>
 		.tooltip-inner{
@@ -67,25 +67,25 @@ var _hmt = _hmt || [];
 	 <div class="pull-left ruyiai-beta" data-act="skip-to-index">
 	 	&nbsp;&nbsp;测试版
 	 </div>
+	 
 	<ul class="nav nav-pills nav-box-ul">
-	  <li class="active" role="presentation"><a href="../index.html">首 页<div></div></a></li>
-	  <li role="presentation" id="help"><a href="http://docs.ruyi.ai/" target="_blank">开发者文档<div></div></a></li>
-	  <li role="presentation" id="nav-mylogin"><a href="#" class="nav-btn-login" data-toggle="modal" data-target="#login">登录</a></li>
-	  <li role="presentation" id="nav-register"><a href="#" class="nav-btn-login" data-toggle="modal" data-target="#qr-code">注册</a></li> 
-	  <li role="presentation" id="nav-user-info">
-		<ul class="nav navbar-nav navbar-right">
-	           <li class="dropdown" id="fat-menu">
-	             <a style="" aria-expanded="true" style="padding-top: 3px;" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#" id="drop3">
-	               <span data-act="myemail"></span><span class="caret"></span>
-	             </a>
-	             <ul aria-labelledby="drop3" class="dropdown-menu" style="border-radius:0;font-size:18px;padding:0;margin-top:14px; border: none;">
-	               <li><a data-toggle="modal" data-target="#appkey" href="javascript:;" id="appkey-manager">机器人列表</a></li>
-	               <li><a href="#" data-toggle="modal" data-target="#change-password">修改密码</a></li>
-	               <li><a href="#" id="mylogout">退出登录</a></li>
-	             </ul>
-	           </li>
-	         </ul>
-	  </li>
+		  <li role="presentation" id="robotList"><a href="javascript:;" id="appkey-manager" style="margin-top:3px;padding-top:0;">控制台<div></div></a></li>
+		  <li role="presentation" id="forums"><a href="http://forums.ruyi.ai/" target="_blank" style="margin-top:3px;">社区<div></div></a></li>
+		  <li role="presentation" id="docs"><a href="http://docs.ruyi.ai/" target="_blank" style="margin-top:3px;">文档<div></div></a></li>
+		  <li role="presentation" id="contactus"><a href="http://docs.ruyi.ai/344949" target="_blank" style="margin-top:3px;">联系我们<div></div></a></li>
+		  <li role="presentation" id="nav-user-info">
+			<ul class="nav navbar-nav navbar-right">
+	            <li class="dropdown" id="fat-menu">
+	              <a aria-expanded="true" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#" id="drop3">
+	                <span data-act="myemail"></span><span class="caret"></span>
+	              </a>
+	              <ul aria-labelledby="drop3" class="dropdown-menu" style="border-radius:0;font-size:18px;padding:0;margin-top:8px; border: none;">
+	                <li><a href="#" data-toggle="modal" data-target="#change-password">修改密码</a></li>
+	                <li><a href="#" id="mylogout">退出登录</a></li>
+	              </ul>
+	            </li>
+	          </ul>
+		  </li>
 	</ul>
 </nav>
 <input type="text" id="html5-link" style="position:fixed;top:-1000px;" />
@@ -95,10 +95,12 @@ var _hmt = _hmt || [];
 			<div class="assistant-box clearfix">
 				<img ng-src="{{currentRobot.headUrl | robotHeadUrlFilter}}" data-act="show-app-list" data-toggle="tooltip" data-placement="bottom" title=""/>
 				<span ng-bind="currentRobot.appName" data-act="appName-global" title="{{currentRobot.appName}}"></span>
-				<ul class="list-group" data-act="app-list-box" ng-show="appList && appList.length > 0">
+				<!-- <span class="global-save-tips saving" ng-show="saveStatus == 'saving'">保存中...</span>
+				<span class="global-save-tips saved" ng-show="saveStatus == 'saved'">修改已保存</span> -->
+				<!-- <ul class="list-group" data-act="app-list-box" ng-show="appList && appList.length > 0">
 				  <li class="list-group-item" style="border-bottom:1px solid #dcdddd;" ng-click="skipAppManager()">机器人列表页面</li>
 				  <li ng-repeat="appObj in appList" class="list-group-item" ng-click="goConsoleManager(appObj.id,appObj.appName,appObj.appKey)" ng-bind="appObj.appName"></li>
-				</ul>
+				</ul> -->
 			</div>
 			<ul class="list-group" style="margin-top:0;">
 			  <li class="list-group-item" data-act="nav-log-statistics" ng-click="goCenterList('log_statistics')">
@@ -164,8 +166,8 @@ var _hmt = _hmt || [];
 					   </li>
 				 </ul>
 			  </li>
-			  <li class="list-group-item" data-act="nav-skill-publish" ng-click="goCenterList('skill-publish')">
-			  	<i class="iconfont left-icon">&#xe615;</i>
+			  <li class="list-group-item" data-act="nav-skill-publish" ng-click="goCenterList('skill_publish')">
+			  	<i class="iconfont left-icon" style='margin-left: -4px;font-size: 14px;'>&#xe62f;</i>
 			  	<a href="#/skill_publish">提交发布技能</a>
 			  </li>
 			   <li class="list-group-item" data-act="nav-robot-skill" ng-click="goCenterList('skill_store')">
@@ -177,7 +179,7 @@ var _hmt = _hmt || [];
 			  	<a href="#/resource">素材管理</a>
 			  </li>
 		</div>
-		<div style="padding-left: 250px; width: 100%; padding-top: 10px;  margin-top: -10px;" class="center-box" ui-view>
+		<div style="padding-left: 250px; width: 100%; padding-top: 0px;  margin-top: -10px;" class="center-box" ui-view>
 		</div>
 	</div>
 </div>

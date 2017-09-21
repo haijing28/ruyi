@@ -3,8 +3,8 @@
 <div class="row row-height" id="assistantParaModal">
 	<div class="col-md-12 col-sm-12 center-list-box" style="min-width: 640px;">
 		<section class="center-list-title" style="“position: relative;">
-			<span style="border-bottom: 0;">属性设置</span> <a href="#/delete_robot"
-				class="robot-adb-setting">高级设置</a>
+			<span style="border-bottom: 0;">属性设置</span> 
+			<!-- <a href="#/delete_robot" class="robot-adb-setting">高级设置</a> -->
 		</section>
 		<div class="assistantPara-box col-md-12 col-sm-12">
 	          <!-- 头像信息 start -->
@@ -20,7 +20,7 @@
 		          	 </div>
 	          	 </div>
 	          	 <div class="robot-header-edit" data-act="edit-the-status" style="position:relative;">
-	          	 	<div style="font-size: 12px; top: 140px; left: 26px; position: absolute; color: rgb(255, 193, 7);">目前仅支持小于120M<br>的.jpg后缀文件</div>
+	          	 	<!-- <div style="font-size: 12px; top: 140px; left: 26px; position: absolute; color: rgb(255, 193, 7);">目前仅支持小于120M<br>的.jpg后缀文件</div> -->
 		          	 <div class="upload-header-box" id="container">
 		          	 	<img ng-src="{{currentRobot.headUrl | robotHeadUrlFilter}}" class="robot-head"/>
 		          	 	<p id="pickRobotImg" class="upload-header-text">编辑头像</p>
@@ -482,50 +482,6 @@
 		          <div class="edit-para" data-act="edit-para" ng-click="editPetPhraseFunc()">&nbsp;</div>
 	          </div>
 	          <!-- 缺省回复 end -->
-	          <!-- 缺省回复 start -->
-	          <!-- 超时回复 start -->
-	          <!-- <div data-act="ass-para-box">
-		          <div class="ass-para-box" data-act="check-the-status">
-		          	 <div class="assistant-title">超时回复<span class="required-tip">&nbsp;</span></div>
-		          	 <div class="assistant-value">
-			          	<label class="r-para-value">超时回复设置</label>
-		          	 </div>
-		          	 <div class="assistant-learn">
-		          	 	<label class="r-para-tip-text">多条超时回复</label>
-		          	 </div>
-		          </div>
-		          <div class="ass-para-box" data-act="edit-the-status">
-		          	 <div class="assistant-title" style="top:22px;">触发条件<button type="button" style="margin-left:0;" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="在一定时间内可被触发超时缺省回复；">&nbsp;</button>
-		          	 </div>
-		          	 <div class="assistant-value">
-		          	 	<input type="range" name="timeout" min="1" value="1500" max="3000" ng-model="timeout" ng-change="timeoutChange(timeout)" style="width: 45%; display: inline-block; margin-left: 24px; margin-top: 14px;"/>
-		          	 	<input placeholder="触发时间" type="number" value="1500" name="timeout-input" ng-model="timeout" min="1" max="3000" style="font-size: 14px;padding: 8px; width: 120px; margin-left: 20px; border-radius: 4px; border: 1px solid #bbb;"/>
-		          	 </div>
-		          	 <div class="assistant-title" style="top:72px;">助理回复<button type="button" style="margin-left:0;" data-html="true" class="btn btn-default myhelp" data-trigger="click" data-animation="true" data-container="body" data-toggle="popover" data-placement="right" data-content="在超过限定的时间后需要返回的内容；">&nbsp;</button>
-		          	 </div>
-		          	 <div class="assistant-value">
-					  	<ul class="tail-box" data-act="tail-box" style="margin-top:5px;">
-					  		<li ng-repeat="timeoutResponseStr in timeoutResponseTemp" class="tail-box-li">
-					  			<span class="and">&nbsp;</span>
-					  			<input type="text" ng-model="timeoutResponseStr" ng-blur="actionAddAttrFunc(timeoutResponseTemp,timeoutResponseStr,'timeoutResponseStr',100,$index)" ng-keydown="actionAddAttrFunc(timeoutResponseTemp,timeoutResponseStr,'timeoutResponseStr',100,$index,$event)" class="inputbox" style="width:94%;" placeholder="例如：很高兴认识你。按回车键添加" />
-					  			<i class="delete" ng-click="valueDeleteFunc(timeoutResponseTemp,$index)">&nbsp;</i>
-					  			<i class="edit" ng-click="edittimeoutResponseTextFunc(timeoutResponseStr,$index)">&nbsp;</i>
-					  		</li>
-					  		<li class="tail-box-li">
-					  			<span class="and">&nbsp;</span>
-					  			<input type="text" data-act="timeoutResponsePara" ng-model="timeoutResponsePara" ng-blur="actionAddAttrFunc(timeoutResponseTemp,timeoutResponsePara,'timeoutResponseStr',100,-1)" ng-keydown="actionAddAttrFunc(timeoutResponseTemp,timeoutResponsePara,'timeoutResponsePara',100,-1,$event)" class="inputbox" style="width:94%;" placeholder="例如：很高兴认识你。按回车键添加" />
-					  			<i class="edit" ng-click="edittimeoutResponseTextFunc(timeoutResponsePara,-1)">&nbsp;</i>
-					  		</li>
-					  	</ul>
-					  	<div class="robot-header-button">
-		          	 		<button class="common-active-button" ng-click="editTimeoutResponseSubmitFunc()" data-act="header-submit" style="margin-right:46px;">确定</button>
-		          	 		<button class="common-blank-button">取消</button>
-		          	 	</div>
-	          	 	</div>
-		          </div>
-		          <div class="edit-para" data-act="edit-para" ng-click="editTimeoutResponseFunc()">&nbsp;</div>
-	          </div> -->
-	          <!-- 超时回复 end -->
 		</div>
 	</div>
 </div>
@@ -538,8 +494,11 @@
         <div style="cursor:pointer;"><div class="close-modal">&nbsp;</div></div>
       </div>
       <div class="modal-body" style="padding:0 21px 21px 10px;">
-		  <div style="font-size: 16px; padding-left: 13px; margin-bottom: 8px; color: #3794FF;">选择要截取的部分，双击确认</div>
+		  <!-- <div style="font-size: 16px; padding-left: 13px; margin-bottom: 8px; color: #3794FF;">选择要截取的部分，双击确认</div> -->
 		  <div class="container"></div>
+      </div>
+      <div class="modal-footer" style="padding:22px;padding-top:0;">
+        <button id='clip_btn_sure' class="common-active-button" style="margin-right:4px;">确定</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

@@ -1940,4 +1940,21 @@ ul li{
   background-color:#eee;
   cursor:pointer;
 }
+.global-save-tips{
+	font-size: 12px;
+    position: absolute;
+    bottom: -4px;
+    left: 76px;
+}
+.global-save-tips.saving{
+	color: #F7BA2A;
+}
+.global-save-tips.saved{
+	color: #13CE66;
+}
+
+
+
+
+
 

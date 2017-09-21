@@ -366,6 +366,7 @@ robotApp.controller("robotCtrl",function($scope){
     	 setAccountInfoModalFunc();
     	 setInfoManagementModalFunc();
      });
+
 });
 
 

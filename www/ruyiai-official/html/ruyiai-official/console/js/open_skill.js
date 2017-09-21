@@ -13,8 +13,10 @@ function openSkillCtrl($rootScope,$scope, $state, $stateParams){
 				hasSkillCheckFunc($scope.openSkillList,$rootScope.currentRobot);//判断是否已经获取
 				$scope.$apply();
 			},
-			error: function() {
-				 goIndex();
+			error: function(data) {
+				if(data.status == 401 || data.status == 403){
+            		goIndex();
+            	}
 			}
 		})
 	}
@@ -34,7 +36,7 @@ function openSkillCtrl($rootScope,$scope, $state, $stateParams){
 		event.stopPropagation();
 		var $this = $(this);
 		$.confirm({
-	        "text": '<div class="my_own_down_div"><label class="down_web_label">是否确认下线该技能？</label>' + '<br>' + '<span class="down_web_span">下线技能后需要重新提交技能进行审核哦！</span></div>',
+	        "text": '<div class="my_own_down_div"><label class="down_web_label">是否确认移除该技能？</label>' + '<br>' + '<span class="down_web_span">移除之后，将失去该技能的功能！</span></div>',
 	        "title": " ",
 	        "ensureFn": function() {
 	        	var skillId = $this.attr("data-skill-id");
