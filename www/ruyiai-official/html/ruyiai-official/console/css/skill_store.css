@@ -461,6 +461,35 @@
 
 /*----------------------------------- skill-store -------------------------------------*/
 
+/*定义滚动条高宽及背景*/
+/*#store_viewer::-webkit-scrollbar
+{
+    width: 10px;
+    background-color: #f3f3f3;
+}
+*/
+/*#store_viewer::-webkit-scrollbar  
+{  
+    background-color: #f3f3f3;  
+}*/
+::-webkit-scrollbar-thumb  
+{  
+    border-radius: 10px;
+    background-color: #f3f3f3;  
+} 
+
+.my_store .card {
+	display: inline-block;
+	width: 348px;
+	height: 200px;
+	margin:  0 20px 20px 0 !important;
+	background: #fff;
+	border: 1px solid #eee;
+	padding: 0 30px;
+	position: relative;
+	overflow: hidden;
+}
+
 .my_store {
 	background: #f7f8f8;
 }
@@ -476,7 +505,8 @@
 
 .my_store .card {
 	display: inline-block;
-	width: 347px;
+	width: 348px;
+	height: 200px;
 	margin:  0 20px 20px 0 !important;
 	background: #fff;
 	border: 1px solid #ccc;
@@ -489,8 +519,7 @@
 .my_store .desc{
 	text-align: center;
 	font-size: 16px;
-	margin: 20px;
-	font-weight: 400;
+	margin: 20px -6px;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 3;
@@ -552,16 +581,6 @@
 	color: #fff;
 }
 
-.my_store .card {
-	display: inline-block;
-	width: 350px;
-	margin:  20px;
-	background: #fff;
-	border: 1px solid #eee;
-	position: relative;
-	overflow: hidden;
-}
-
 .my_store .card.succ .status {
 	background:  #5cc124;
 }
@@ -607,9 +626,23 @@
 	background: #aab0b7 !important;
 }
 
+/*----------------------------------- skill-store-detail-navbar -------------------------------------*/
 
+#store_viewer .my_navheader {
+	font-size: 14px;
+	padding-left: 15px;
+	margin-top: -14px;
+	margin-bottom: 15px;
+	color: #ccc;
+}
 
+#store_viewer .my_navheader a {
+	
+}
 
+#store_viewer .my_navheader span {
+	color: #333;
+}
 
 
 

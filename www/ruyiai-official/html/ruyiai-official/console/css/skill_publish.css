@@ -340,14 +340,18 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .my-modal-body button {
 	color: #fff;
-	background: #227ec7;
+	background: #3091FF;
 	border: none;
 	margin-top: 20px;
 	width: 200px;
 	height: 35px;
 	border-radius: 3px;
 }
-
+.my-modal-body .time {
+    color: #13b067;
+    margin-top: -20px;
+    margin-bottom: 15px;
+}
 /*-------------------------------copy 抖动效果--------------------------------*/
 @keyframes shake {
 	from {

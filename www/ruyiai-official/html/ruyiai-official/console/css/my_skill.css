@@ -82,6 +82,18 @@
 
 }
 
+.my_own_skill .nothing {
+	font-size: 15px;
+    text-align: center;
+    line-height: 130px;
+}
 
+.my_own_skill .nothing a{
+	color: #275cc7;
+}
+
+.my_own_skill .nothing a:hover{
+	text-decoration: underline;
+}
 
 

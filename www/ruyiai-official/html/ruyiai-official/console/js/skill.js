@@ -570,6 +570,31 @@ function skillCtrl($rootScope,$scope, $state, $stateParams){
 	        }
 		})
 	});
+
+
+	//路由判断，改变navbar				
+	function checkRouter() {
+		var tag = '';
+		var reffer = $('.change-option').find('.active').attr('data-act');
+		var href = '';
+		if(reffer == 'ruyi_skill'){
+			href = './api_manager.html#/skill_store/ruyi_skill'
+			tag = '如意精选'
+		}else if(reffer == 'open_skill'){
+			href = './api_manager.html#/skill_store/open_skill'
+			tag = '第三方开发者'
+		}else if(reffer == 'my_skill'){
+			href = './api_manager.html#/skill_store/my_skill'
+			tag = '我的技能'
+		}else {
+			tag = 'undefined'
+			href = './api_manager.html#/skill_store/ruyi_skill';
+		
+		}
+		$scope.breadcrumb = {tag,href};
+	}
+	
+	checkRouter();
 	
 }
 
