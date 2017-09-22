@@ -1,10 +1,11 @@
-var ruyiai_host = window.location.origin;
+var ruyiai_host_temp = window.location.origin;
+var ruyiai_host = "http://lab.ruyi.ai";
 var static_host = "https://ruyi.ai";
 var isproductDomain = true;
-if(ruyiai_host.indexOf("http://test.ruyi.ai") > -1){
+if(ruyiai_host_temp.indexOf("http://test.ruyi.ai") > -1){
 	static_host = "http://test.ruyi.ai/gitlab/ruyiai-official/www/ruyiai-official/html/ruyiai-official";
 	isproductDomain = false;
-}else if(ruyiai_host.indexOf("lab.ruyi.ai") > -1){
+}else if(ruyiai_host_temp.indexOf("lab.ruyi.ai") > -1){
 	static_host = "http://lab.ruyi.ai/ruyiai-official";
 	isproductDomain = false;
 }
@@ -13,14 +14,14 @@ var api_host_v2beta = "https://api.ruyi.ai/v2beta/";
 if(!isproductDomain){
 	api_host = "http://lab.ruyi.ai/sso";
 	api_host_v2beta = "http://lab.ruyi.ai/v2beta/";
-	if(ruyiai_host.indexOf("http://test.ruyi.ai") > -1){
-		api_host_v2beta = "http://test.ruyi.ai:1111/";
-	}
+//	if(ruyiai_host_temp.indexOf("http://test.ruyi.ai") > -1){
+//		api_host_v2beta = "http://test.ruyi.ai:1111/";
+//	}
 }
 var developTag = "Develop";
 var productTag = "Product";
 
-if(ruyiai_host.indexOf("www") > -1){
+if(ruyiai_host_temp.indexOf("www") > -1){
 	var myhref = window.location.href;
 	window.location.href = myhref.replace("www.","");
 }

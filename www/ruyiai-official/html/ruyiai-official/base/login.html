@@ -216,21 +216,13 @@ $(function(){
 		                var location = xhr.getResponseHeader("Location");
 		                var tgt = location.substring(location.lastIndexOf('/') + 1);
 
-		                var login_environment = "?type=prod_console";
 		                var api_host_temp = ruyiai_host;
 
-		                if (window.location.origin.indexOf("test.ruyi.ai") > -1) {
-		                    api_host_temp = "http://test.ruyi.ai:8080";
-		                    login_environment = "?type=local_console";
-		                } else if (window.location.origin.indexOf("lab.ruyi.ai") > -1) {
-		                    login_environment = "?type=test_console";
-		                } else {
-		                    if (window.location.origin.indexOf("https") > -1) {
-		                        location = location.replace("http", "https");
-		                    } else {
-		                        api_host_temp = api_host_temp.replace("http", "https");
-		                    }
-		                }
+	                    if (window.location.origin.indexOf("https") > -1) {
+	                        location = location.replace("http", "https");
+	                    } else {
+	                        api_host_temp = api_host_temp.replace("http", "https");
+	                    }
 
 		                if (localStorage.service == undefined) {
 		                    //////// 要修改成相对路径
