@@ -1966,6 +1966,9 @@ apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
 		$rootScope.currentRobot.attribute.agemonth = diffMonth;
 		$rootScope.currentRobot.attribute.ageday = diffDay;
 	}
+	
+	$rootScope.currentRobot = {"referencedApp":[]};
+	
 	//!!!!!!!!!!
 	var getAppModelFunc = function(){
 		//获取app信息
