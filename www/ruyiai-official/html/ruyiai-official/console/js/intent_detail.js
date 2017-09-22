@@ -94,8 +94,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	var intentDetailDuplicate = "";
 	
 	// intentDetail监视
-//	$scope.$watch('intentDetail.name', function(newValue, oldValue) {
-//		
+//	$scope.$watch('intentDetail', function(newValue, oldValue) {
 //	}, true);
 	
 	$scope.isSaveSuccess = true;
@@ -556,12 +555,13 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 //					angular.element(".center-list-box").scope().$apply();
 					validateIntentDetailFunc();
 					intentDetailDuplicate = JSON.stringify($scope.intentDetail);
-					$scope.$apply();
 					setTimeout(function(){
 						$("[data-act=nav-intent-"+ $stateParams.intent_id +"]").siblings().removeClass("active");
 						$("[data-act=nav-intent-"+ $stateParams.intent_id +"]").addClass("active")
 					}, 20);
 					dataEditedFlag = false;
+					$scope.$apply();
+					showSaveedFunc();
 				}else if(data.code == 2){
 					goIndex();
 				}else{
@@ -595,7 +595,7 @@ function intentDetailCtrl($rootScope,$scope, $state, $stateParams,$sce){
 	}
 	//点击保存按钮，创建意图
 	$scope.saveIntentDetailFunc = function(){
-		console.log("您好，我触发了保存动作");
+		showSaveingFunc();
 		// 清楚空回复
 		$scope.wechatOutputs.forEach(function(ele){
 			ele.forEach(function(ele,index,arr){

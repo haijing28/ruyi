@@ -674,7 +674,9 @@ return out;
 });
 
 apiManagerApp.controller("apiManagerCtrl",function($rootScope,$scope, $state){
+	$rootScope.saveStatus = "";
 	$rootScope.ruyi_api_help = "http://docs.ruyi.ai";
+	
 	//设置让页面使用 start
 	$rootScope.ruyi_wechat = ruyi_wechat;
 	$rootScope.appId = appId;
