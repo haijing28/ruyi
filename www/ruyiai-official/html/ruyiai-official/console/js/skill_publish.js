@@ -140,6 +140,13 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			headers: {"Authorization" : "Bearer " + getCookie('accessToken')},
 			success: function() {
 				$('#uploadSuccess').modal('show');
+				var date = new Date();
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1;
+				var day = date.getDate();
+				var hour = date.getHours();
+				var minute = date.getMinutes() + 1;
+				$scope.publish_time = hour + '点 ' + minute + '分 ' + month + '月 ' + day + '日 ' + year + '年'; 
 			},
 			error: function(data) {
 				data = dataParse(data.responseText);
@@ -457,7 +464,6 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			success: function(ret) {
 				setCookie('skillId' ,ret.id);
 				commitPublish(ret.id);
-				
 			},
 			error: function(data) {
 				data = JSON.parse(data.responseText);

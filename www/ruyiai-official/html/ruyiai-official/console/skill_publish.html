@@ -18,7 +18,7 @@
 	</div>
 	<div id="container">
 		<h3>技能头像<span class='star'>*</span>:</h3>
-		<img src="{{imgSrc}}" id="pickSkillImg" alt="头像" title="头像" class="skill-img"><span class="sub">点击更换头像</span>
+		<img src="{{imgSrc}}" id="pickSkillImg" alt="头像" title="头像" class="skill-img"><span class="sub">支持10M以内的jpg格式图像</span>
 		<!-- <input type="file" class='hide_input_img_upload'> -->
 	</div>
 	<div>
@@ -134,13 +134,14 @@
 
 	<div id='uploadSuccess' class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
-			<div class="modal-content" style="width: 600px;">
+			<div class="modal-content" style="width: 510px; height: 280px;">
 				<div class="modal-header">
 					
 				</div>
 				<div class="modal-body my-modal-body" style="text-align: center;" id='clipContainer'>
 					<b class='okImg'>&nbsp;</b>
 					<h1>提交成功</h1>
+					<p class="time" ng-bind='publish_time'></p>
 					<p>技能审核需要一到两个工作日，审核结果会通过手机和邮箱通知，注意查看哦！</p>
 					<button id class='iKown'>确定</button>
 				</div>
