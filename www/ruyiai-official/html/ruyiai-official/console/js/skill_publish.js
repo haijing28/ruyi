@@ -366,9 +366,9 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 
 	$('.skill_publish').click(function() {
 		$('.wrong').removeClass('wrong');
-		// if( $scope.imgSrc == 'https://dn-vbuluo-static.qbox.me/default-robot.svg' ) {
-		// 	$('.skill-img').addClass('wrong');
-		// }
+		if( $scope.imgSrc == 'https://dn-vbuluo-static.qbox.me/default-robot.svg' ) {
+			$('.skill-img').addClass('wrong');
+		}
 		if($scope.robotName.trim() == ''){
 			$('.robotName').addClass('wrong');
 		}
