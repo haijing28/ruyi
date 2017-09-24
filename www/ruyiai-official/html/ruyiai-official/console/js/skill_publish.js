@@ -50,6 +50,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	$scope.userSays = [{value: ''}];
 	$scope.selfDesc = '';
 	$scope.self_homepage = '';
+	$scope.my_service = '';
 	$scope.skillDesc = '';
 	$scope.plateforms = [];
 
@@ -64,6 +65,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 	var selectedType = 'selectedType' + appID;
 	var selfDesc = 'selfDesc' + appID;
 	var self_homepage = 'self_homepage' + appID;
+	var my_service = 'my_service' + appID;
 	var skillDesc = 'skillDesc' + appID;
 	var plateforms = 'plateforms' + appID;
 
@@ -83,6 +85,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			localStorage[selectedType] = $scope.selectedType;
 			localStorage[selfDesc]= $scope.selfDesc;
 			localStorage[self_homepage] = $scope.self_homepage;
+			localStorage[my_service] = $scope.my_service;
 			localStorage[skillDesc] = $scope.skillDesc;
 			localStorage[plateforms] = $scope.plateforms.toString();
 			if( $(e.target).hasClass('small') ){
@@ -116,6 +119,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			 		$scope.wrongs = stringToObjectArr(ret.attributes.nickNameVoiceVariants);
 			 		$scope.userSays = stringToObjectArr(ret.attributes.userInputExamples);
 			 		$scope.self_homepage = ret.attributes.developerMainSite;
+			 		$scope.my_homepage = ret.service;
 					$scope.selfDesc = ret.attributes.developerIntroduction;
 			 		$scope.robotDesc = ret.attributes.descriptionForAudit;
 			 		$scope.plateforms = ret.attributes.thirdPartyPlatforms;
@@ -251,6 +255,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 			$scope.selectedType = localStorage[selectedType];
 			$scope.selfDesc = localStorage[selfDesc];
 			$scope.self_homepage = localStorage[self_homepage];
+			$scope.my_service = localStorage[my_service];
 			$scope.skillDesc = localStorage[skillDesc];
 			if(localStorage[plateforms].length > 1){
 				$scope.plateforms = localStorage[plateforms].split(',');
@@ -448,6 +453,7 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 				"nickNameVoiceVariants": objectArrToArr($scope.wrongs),
 				"userInputExamples": objectArrToArr($scope.userSays),
 				"developerMainSite": $scope.self_homepage.trim(),
+				"service": $scope.my_service.trim(),
 				"developerIntroduction": $scope.selfDesc.trim(),
 				"descriptionForAudit": $scope.robotDesc.trim(),
 				"thirdPartyPlatforms": $scope.plateforms,
@@ -462,9 +468,11 @@ function skillPublishCtrl($rootScope, $scope, $state, $stateParams) {
 				var day = date.getDate();
 				var hour = date.getHours();
 				var minute = date.getMinutes() + 1;
-				$scope.publish_time = hour + '点 ' + minute + '分 ' + month + '月 ' + day + '日 ' + year + '年';
+				if(minute <= 9){
+					minute = "0" + minute;
+				}
+				$scope.publish_time = hour + ': ' + minute + ', ' + month + '月' + day + '日';
 				$scope.$apply();
-				console.log($scope.publish_time)
 			},
 			error: function(data) {
 				data = JSON.parse(data.responseText);

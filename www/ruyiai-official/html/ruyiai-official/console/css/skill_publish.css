@@ -43,10 +43,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .my_body h3{
 	font-size: 15px;
-	padding-left: 13px;
-	display: inline-block;
-	width: 150px;
-	margin-bottom: 30px;
+    padding-left: 13px;
+    display: inline-block;
+    width: 170px;
+    margin-bottom: 30px;
+    text-align: right;
+    padding-right: 30px;
 }
 .my_body .star {
 	color: #ff2222;
@@ -104,7 +106,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	/* display: none; */
 }
 .my_body .addLabel {
-	margin-left: 152px;
+	margin-left: 170px;
 	color: #EE892F;
 	display: block;
 	font-weight: 400;
@@ -176,7 +178,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 	border: none;
 	height: 36px;
 	color: #fff;
-	margin-left: 153px;
+	margin-left: 172px;
 	background: #2b9cf7;
 	margin-bottom: 50px;
 }
@@ -216,7 +218,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 }
 .my_body hr{
-	margin-left: 149px;
+	margin-left: 170px;
 	margin-right: 113px;
 }
 

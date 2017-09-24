@@ -1,7 +1,7 @@
 <div class="my_own_skill my_store">
 	<h1>已发布的技能</h1>
 	<p class="nothing" ng-show='!mySkillList'>
-		暂未发布技能，开始 <a href="./api_manager.html#/skill_store/skill_publish">创建</a> 技能插件
+		暂未发布技能，开始 <a href="#/skill_publish">创建</a> 技能插件
 	</p>
 	<ul class='my_ul'>
 		<li class='card' ng-repeat='mySkill in mySkillList'>
@@ -19,9 +19,9 @@
 		</li>
 	</ul>
 	<h1>
-		已获取的技能<a href="javascript:;" style="color:#3794FF;font-size:12px;margin-left:10px;">技能插件排序</a>
+		已获取的技能<!-- <a href="javascript:;" style="color:#3794FF;font-size:12px;margin-left:10px;">技能插件排序</a> -->
 	</h1><p class="nothing" ng-show='!myHasSkillList'>
-		机器人还未获取任何技能，从 <a href="./api_manager.html#/skill_store/ruyi_skill">如意</a> 或者 <a href="./api_manager.html#/skill_store/open_skill">第三方开发者</a> 处获取技能
+		机器人还未获取任何技能，从 <a href="#/skill_store/ruyi_skill">如意</a> 或者 <a href="#/skill_store/open_skill">第三方开发者</a> 处获取技能
 	</p>
 	<ul>
 		<li class='card' ng-repeat='myHasSkill in myHasSkillList'>
