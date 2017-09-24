@@ -190,10 +190,10 @@ var va = {
 }
 // 各种正则验证 -- end
 // 失焦验证
-$('.element-box').on('blur', 'input', function() {
-	var id = this.id;
-	va[id]($(this).val());
-}) 
+// $('.element-box').on('blur', 'input', function() {
+// 	var id = this.id;
+// 	va[id]($(this).val());
+// }) 
 // 失焦验证 -- end
 // 点击下一步完成注册
 $('.nextStep').on('click', function() {
@@ -221,6 +221,8 @@ $('.nextStep').on('click', function() {
 		$('#vaCode').nextAll('.error-tips').text('请输入正确的验证码')
 		$('#vaCode').nextAll('.error-tips').show();
 		return;
+	}else {
+		$('#vaCode').nextAll('.error-tips').hide();
 	}
 	if( !tag ){
 		return;
