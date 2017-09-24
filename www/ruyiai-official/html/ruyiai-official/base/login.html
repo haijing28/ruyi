@@ -225,10 +225,8 @@ $(function(){
 
 	                    if (window.location.origin.indexOf("https") > -1) {
 	                        location = location.replace("http", "https");
-	                    } else {
 	                        api_host_temp = api_host_temp.replace("http", "https");
 	                    }
-
 		                if (localStorage.service == undefined) {
 		                    //////// 要修改成相对路径
 		                    localStorage.service = api_host_temp;
