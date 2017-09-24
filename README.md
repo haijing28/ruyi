@@ -1,2 +1,2 @@
 # ruyi
-海知智能 ruyi 项目
+海知 - ruyi
