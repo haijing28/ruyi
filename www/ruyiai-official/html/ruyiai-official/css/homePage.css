@@ -1,4 +1,6 @@
 @charset "utf-8";
+
+/* NOT QUALIFIED CSS */
 /* CSS Document */
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { font-family: Microsoft YaHei, SimHei, "Helvetica Neue", Helvetica, Arial, sans-serif; }
 html, body, .vbuluo { height: 100%; width: 100%; position: relative; cursor:pointer;}
