@@ -1,3 +1,5 @@
+
+SHITTY CODE AWFUL PRODUCT
 # kubectl --kubeconfig chenx.conf -n qa delete -f ruyiai-official.yaml
 # kubectl --kubeconfig chenx.conf -n qa apply -f ruyiai-official.yaml
 
